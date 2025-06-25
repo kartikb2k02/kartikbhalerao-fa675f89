@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -10,9 +9,11 @@ export const CaseStudiesSection = () => {
       subtitle: "Order Efficiency and Conversion Analysis",
       description: "Comprehensive analysis of Blinkit's order flow and conversion optimization strategies",
       tags: ["Product teardown", "uiux", "Learning", "Metrics", "MoScow", "Product Thinking"],
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop",
+      image: "/lovable-uploads/7be1ff03-882a-48b7-a8f6-9b49f6702d01.png",
       gradient: "from-yellow-400 to-orange-500",
-      details: "Analyzed Blinkit's entire order efficiency system and identified key conversion bottlenecks. Focused on improving user experience through data-driven insights and strategic product improvements."
+      details: "Analyzed Blinkit's entire order efficiency system and identified key conversion bottlenecks. Focused on improving user experience through data-driven insights and strategic product improvements.",
+      canvaLink: "https://www.canva.com/design/DAGn_zTvLsc/32wrzjqf5YSnIj15-cvUFA/view",
+      isCanvaEmbed: true
     },
     {
       title: "Product Teardown—Feature Improvement",
@@ -102,7 +103,7 @@ export const CaseStudiesSection = () => {
               </div>
             </DialogTrigger>
             
-            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+            <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
               <DialogHeader>
                 <DialogTitle className="text-2xl font-bold text-gray-900 mb-4">
                   {study.title}
@@ -110,55 +111,81 @@ export const CaseStudiesSection = () => {
               </DialogHeader>
               
               <div className="space-y-6">
-                <div className="relative h-64 rounded-lg overflow-hidden">
-                  <img
-                    src={study.image}
-                    alt={study.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-20`} />
-                </div>
-                
-                <div>
-                  <h3 className="text-xl font-semibold text-emerald-600 mb-2">
-                    {study.subtitle}
-                  </h3>
-                  <p className="text-gray-700 leading-relaxed mb-6">
-                    {study.details}
-                  </p>
-                </div>
-                
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-3">Skills & Tools Used</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {study.tags.map((tag, i) => (
-                      <span
-                        key={i}
-                        className="bg-emerald-100 text-emerald-700 px-3 py-2 rounded-full text-sm font-medium"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                {study.isCanvaEmbed ? (
+                  <div className="w-full">
+                    <div className="relative w-full" style={{ paddingBottom: '56.25%', height: 0 }}>
+                      <iframe
+                        src={study.canvaLink}
+                        className="absolute top-0 left-0 w-full h-full border-0 rounded-lg"
+                        allowFullScreen
+                        title={study.title}
+                      />
+                    </div>
+                    <div className="mt-4 text-center">
+                      <Button asChild className="bg-emerald-600 hover:bg-emerald-700">
+                        <a 
+                          href={study.canvaLink} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                        >
+                          View Full Presentation
+                        </a>
+                      </Button>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="bg-gray-50 rounded-lg p-6">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Outcomes</h4>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-start space-x-2">
-                      <span className="text-emerald-500 mt-1">✓</span>
-                      <span>Comprehensive product analysis and strategic recommendations</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="text-emerald-500 mt-1">✓</span>
-                      <span>Data-driven insights for product improvement</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="text-emerald-500 mt-1">✓</span>
-                      <span>User experience optimization strategies</span>
-                    </li>
-                  </ul>
-                </div>
+                ) : (
+                  <>
+                    <div className="relative h-64 rounded-lg overflow-hidden">
+                      <img
+                        src={study.image}
+                        alt={study.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-20`} />
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-xl font-semibold text-emerald-600 mb-2">
+                        {study.subtitle}
+                      </h3>
+                      <p className="text-gray-700 leading-relaxed mb-6">
+                        {study.details}
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-3">Skills & Tools Used</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {study.tags.map((tag, i) => (
+                          <span
+                            key={i}
+                            className="bg-emerald-100 text-emerald-700 px-3 py-2 rounded-full text-sm font-medium"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-50 rounded-lg p-6">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Outcomes</h4>
+                      <ul className="space-y-2 text-gray-700">
+                        <li className="flex items-start space-x-2">
+                          <span className="text-emerald-500 mt-1">✓</span>
+                          <span>Comprehensive product analysis and strategic recommendations</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <span className="text-emerald-500 mt-1">✓</span>
+                          <span>Data-driven insights for product improvement</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <span className="text-emerald-500 mt-1">✓</span>
+                          <span>User experience optimization strategies</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </>
+                )}
               </div>
             </DialogContent>
           </Dialog>
