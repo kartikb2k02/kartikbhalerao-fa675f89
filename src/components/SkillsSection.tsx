@@ -2,24 +2,24 @@
 export const SkillsSection = () => {
   const skillCategories = [
     {
-      title: "Product Management",
+      title: "Product Skills",
       icon: "🎯",
-      skills: ["Product Strategy", "Roadmapping", "PRDs", "User Stories", "Agile/Scrum", "Stakeholder Management"]
+      skills: ["Product Management", "Product Discovery", "Wire-Framing", "Prioritisation", "User Experience", "Defining MVP", "Product Strategy", "Market Research", "Launch Planning"]
     },
     {
       title: "Analytics & Research",
       icon: "📊",
-      skills: ["Google Analytics", "Mixpanel", "Amplitude", "User Research", "A/B Testing", "SQL"]
+      skills: ["Business Analytics", "Data Analytics", "User Interface", "A/B Testing", "Competitive Analysis"]
     },
     {
-      title: "Design & Collaboration",
-      icon: "🎨",
-      skills: ["Figma", "Sketch", "Miro", "Notion", "Slack", "Confluence"]
-    },
-    {
-      title: "Automation & Tools",
+      title: "Development & Agile",
       icon: "⚡",
-      skills: ["Zapier", "JIRA", "Asana", "Tableau", "Python", "APIs"]
+      skills: ["Agile Development"]
+    },
+    {
+      title: "Tools & Platforms",
+      icon: "🛠️",
+      skills: ["Figma", "Jira", "SQL", "Whimsical", "Canva", "Mixpanel", "Notion", "Click-Up", "Google Analytics", "Hotjar", "Slack", "Excel", "Dovetail", "N8n", "Craft.io", "Make", "airfocus", "Lovable", "Chatgpt", "AirTable", "Typeform", "Clay", "Claude", "GCP"]
     }
   ];
 

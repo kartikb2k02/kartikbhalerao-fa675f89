@@ -20,7 +20,7 @@ export const HeroSection = () => {
       </h1>
       
       <h2 className="text-xl sm:text-2xl text-emerald-600 font-semibold mb-6">
-        Senior Product Manager
+        Associate Product Manager
       </h2>
       
       <p className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto mb-8 leading-relaxed">
