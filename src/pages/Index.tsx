@@ -1,11 +1,24 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { ArrowDown, Check, Linkedin } from "lucide-react";
+import { HeroSection } from "@/components/HeroSection";
+import { AboutSection } from "@/components/AboutSection";
+import { ExperienceSection } from "@/components/ExperienceSection";
+import { CaseStudiesSection } from "@/components/CaseStudiesSection";
+import { SkillsSection } from "@/components/SkillsSection";
+import { CertificationsSection } from "@/components/CertificationsSection";
+import { FooterSection } from "@/components/FooterSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 py-8">
+        <HeroSection />
+        <AboutSection />
+        <ExperienceSection />
+        <CaseStudiesSection />
+        <SkillsSection />
+        <CertificationsSection />
+        <FooterSection />
       </div>
     </div>
   );
