@@ -15,7 +15,7 @@ export const FooterSection = () => {
         
         <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-8">
           <a
-            href="https://linkedin.com/in/kartikbhalerao"
+            href="https://www.linkedin.com/in/kartik-bhalerao/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center space-x-2 bg-white text-emerald-600 px-6 py-3 rounded-full font-semibold hover:bg-emerald-50 transition-colors duration-200 hover:scale-105 transform"
@@ -25,9 +25,7 @@ export const FooterSection = () => {
           </a>
           
           <a
-            href="https://kartik-pm-blog.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/blog"
             className="inline-flex items-center justify-center space-x-2 bg-emerald-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-emerald-400 transition-colors duration-200 border-2 border-white hover:scale-105 transform"
           >
             <span className="text-lg">📝</span>
