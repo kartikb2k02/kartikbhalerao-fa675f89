@@ -9,7 +9,7 @@ export const CaseStudiesSection = () => {
       subtitle: "Order Efficiency and Conversion Analysis",
       description: "Comprehensive analysis of Blinkit's order flow and conversion optimization strategies",
       tags: ["Product teardown", "uiux", "Learning", "Metrics", "MoScow", "Product Thinking"],
-      image: "/lovable-uploads/7be1ff03-882a-48b7-a8f6-9b49f6702d01.png",
+      image: "/lovable-uploads/3d4a8070-20bc-4613-becb-61b277c2c14e.png",
       gradient: "from-yellow-400 to-orange-500",
       details: "Analyzed Blinkit's entire order efficiency system and identified key conversion bottlenecks. Focused on improving user experience through data-driven insights and strategic product improvements.",
       canvaLink: "https://www.canva.com/design/DAGn_zTvLsc/32wrzjqf5YSnIj15-cvUFA/view",
