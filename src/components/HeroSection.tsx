@@ -2,13 +2,20 @@
 import { ArrowDown, Target, Briefcase, TrendingUp, Users, BarChart3, Lightbulb } from "lucide-react";
 
 export const HeroSection = () => {
+  const scrollToCaseStudies = () => {
+    const caseStudiesSection = document.getElementById('case-studies');
+    if (caseStudiesSection) {
+      caseStudiesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 lg:px-8 py-20 relative">
       <div className="max-w-6xl mx-auto space-y-16 relative z-10">
         {/* Enhanced Profile Image with PM-focused styling */}
         <div className="relative inline-block mb-8">
           <div className="relative">
-            <div className="w-48 h-48 sm:w-56 sm:h-56 mx-auto relative">
+            <div className="w-52 h-52 sm:w-60 sm:h-60 mx-auto relative">
               <img
                 src="/lovable-uploads/3c59e842-8e07-4b56-8918-3fedc5f8a4e0.png"
                 alt="Kartik Bhalerao - Associate Product Manager"
@@ -59,15 +66,14 @@ export const HeroSection = () => {
               <span className="text-indigo-600 dark:text-indigo-400 font-semibold"> strategic thinking</span>
             </p>
             
-            {/* Enhanced CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-              <button className="group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-center justify-center space-x-2">
+            {/* Single CTA Button */}
+            <div className="flex justify-center pt-6">
+              <button 
+                onClick={scrollToCaseStudies}
+                className="group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-10 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-center justify-center space-x-3"
+              >
                 <span>View My Work</span>
                 <Target className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-              </button>
-              <button className="group bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border-2 border-blue-200 dark:border-blue-700 text-blue-600 dark:text-blue-400 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2">
-                <span>Download Resume</span>
-                <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" />
               </button>
             </div>
           </div>
