@@ -44,7 +44,7 @@ export const HeroSection = () => {
         <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-12 border border-white/30 dark:border-slate-700/30 shadow-2xl shadow-blue-500/20 hover:shadow-blue-500/30 transition-all duration-500">
           <div className="space-y-8">
             <div>
-              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight mb-6">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight mb-6">
                 Kartik Bhalerao
               </h1>
               

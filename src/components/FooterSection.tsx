@@ -1,5 +1,5 @@
 
-import { Linkedin, Mail, MapPin, Code, Heart } from "lucide-react";
+import { Linkedin, Code, Heart } from "lucide-react";
 
 export const FooterSection = () => {
   return (
@@ -14,11 +14,6 @@ export const FooterSection = () => {
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 py-20">
         {/* Main Content */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 backdrop-blur-sm px-6 py-3 rounded-full border border-blue-200/20 dark:border-blue-700/20 mb-6">
-            <Mail className="w-5 h-5 text-blue-400" />
-            <span className="text-blue-300 font-semibold text-sm">Let's Connect</span>
-          </div>
-          
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 tracking-tight">
             Ready to Build Something 
             <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent"> Amazing?</span>
@@ -50,33 +45,6 @@ export const FooterSection = () => {
             </a>
           </div>
         </div>
-
-        {/* Contact Info Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 group">
-            <div className="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-xl p-3 w-fit mx-auto mb-4">
-              <Mail className="w-6 h-6 text-blue-400 group-hover:scale-110 transition-transform duration-300" />
-            </div>
-            <h3 className="text-white font-semibold mb-2">Email</h3>
-            <p className="text-slate-300 text-sm">Available for opportunities</p>
-          </div>
-
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 group">
-            <div className="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-xl p-3 w-fit mx-auto mb-4">
-              <MapPin className="w-6 h-6 text-indigo-400 group-hover:scale-110 transition-transform duration-300" />
-            </div>
-            <h3 className="text-white font-semibold mb-2">Location</h3>
-            <p className="text-slate-300 text-sm">Open to remote work</p>
-          </div>
-
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 group">
-            <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl p-3 w-fit mx-auto mb-4">
-              <Linkedin className="w-6 h-6 text-purple-400 group-hover:scale-110 transition-transform duration-300" />
-            </div>
-            <h3 className="text-white font-semibold mb-2">Social</h3>
-            <p className="text-slate-300 text-sm">Let's network & share ideas</p>
-          </div>
-        </div>
         
         {/* Bottom section */}
         <div className="border-t border-slate-700/50 pt-8">
@@ -92,7 +60,7 @@ export const FooterSection = () => {
             </div>
             
             <div className="flex items-center space-x-2 text-slate-400 text-sm">
-              <span>© 2024 Crafted with</span>
+              <span>© 2025 Crafted with</span>
               <Heart className="w-4 h-4 text-red-400 animate-pulse" />
               <span>and lots of</span>
               <span className="text-lg">☕</span>
