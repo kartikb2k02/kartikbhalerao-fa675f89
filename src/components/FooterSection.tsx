@@ -3,13 +3,13 @@ import { Linkedin } from "lucide-react";
 
 export const FooterSection = () => {
   return (
-    <footer className="bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-3xl p-8 sm:p-12 text-white text-center">
+    <footer className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-3xl p-8 sm:p-12 text-white text-center">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-2xl sm:text-3xl font-bold mb-4">
           Let's Build Something Amazing Together! 🚀
         </h2>
         
-        <p className="text-emerald-100 mb-8 text-lg">
+        <p className="text-blue-100 mb-8 text-lg">
           Ready to discuss your next product challenge or just want to connect? I'd love to hear from you.
         </p>
         
@@ -18,7 +18,7 @@ export const FooterSection = () => {
             href="https://www.linkedin.com/in/kartik-bhalerao/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center space-x-2 bg-white text-emerald-600 px-6 py-3 rounded-full font-semibold hover:bg-emerald-50 transition-colors duration-200 hover:scale-105 transform"
+            className="inline-flex items-center justify-center space-x-2 bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors duration-200 hover:scale-105 transform"
           >
             <Linkedin className="w-5 h-5" />
             <span>Connect on LinkedIn</span>
@@ -26,16 +26,16 @@ export const FooterSection = () => {
           
           <a
             href="/blog"
-            className="inline-flex items-center justify-center space-x-2 bg-emerald-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-emerald-400 transition-colors duration-200 border-2 border-white hover:scale-105 transform"
+            className="inline-flex items-center justify-center space-x-2 bg-blue-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-400 transition-colors duration-200 border-2 border-white hover:scale-105 transform"
           >
             <span className="text-lg">📝</span>
             <span>Read My Blog</span>
           </a>
         </div>
         
-        <div className="border-t border-emerald-500 pt-6">
-          <p className="text-emerald-200 text-sm">
-            © 2024 Kartik Bhalerao. Crafted with 💚 and lots of ☕
+        <div className="border-t border-blue-500 pt-6">
+          <p className="text-blue-200 text-sm">
+            © 2024 Kartik Bhalerao. Crafted with 💙 and lots of ☕
           </p>
         </div>
       </div>

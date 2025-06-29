@@ -78,7 +78,7 @@ export const CaseStudiesSection = () => {
                     {study.title}
                   </h3>
                   
-                  <p className="text-sm font-medium text-emerald-600 mb-3">
+                  <p className="text-sm font-medium text-blue-600 mb-3">
                     {study.subtitle}
                   </p>
                   
@@ -90,7 +90,7 @@ export const CaseStudiesSection = () => {
                     {study.tags.slice(0, 3).map((tag, i) => (
                       <span
                         key={i}
-                        className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-medium hover:bg-emerald-200 transition-colors duration-200"
+                        className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium hover:bg-blue-200 transition-colors duration-200"
                       >
                         {tag}
                       </span>
@@ -122,7 +122,7 @@ export const CaseStudiesSection = () => {
                       />
                     </div>
                     <div className="mt-4 text-center">
-                      <Button asChild className="bg-emerald-600 hover:bg-emerald-700">
+                      <Button asChild className="bg-blue-600 hover:bg-blue-700">
                         <a 
                           href={study.canvaLink} 
                           target="_blank" 
@@ -145,7 +145,7 @@ export const CaseStudiesSection = () => {
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-semibold text-emerald-600 mb-2">
+                      <h3 className="text-xl font-semibold text-blue-600 mb-2">
                         {study.subtitle}
                       </h3>
                       <p className="text-gray-700 leading-relaxed mb-6">
@@ -159,7 +159,7 @@ export const CaseStudiesSection = () => {
                         {study.tags.map((tag, i) => (
                           <span
                             key={i}
-                            className="bg-emerald-100 text-emerald-700 px-3 py-2 rounded-full text-sm font-medium"
+                            className="bg-blue-100 text-blue-700 px-3 py-2 rounded-full text-sm font-medium"
                           >
                             {tag}
                           </span>
@@ -171,15 +171,15 @@ export const CaseStudiesSection = () => {
                       <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Outcomes</h4>
                       <ul className="space-y-2 text-gray-700">
                         <li className="flex items-start space-x-2">
-                          <span className="text-emerald-500 mt-1">✓</span>
+                          <span className="text-blue-500 mt-1">✓</span>
                           <span>Comprehensive product analysis and strategic recommendations</span>
                         </li>
                         <li className="flex items-start space-x-2">
-                          <span className="text-emerald-500 mt-1">✓</span>
+                          <span className="text-blue-500 mt-1">✓</span>
                           <span>Data-driven insights for product improvement</span>
                         </li>
                         <li className="flex items-start space-x-2">
-                          <span className="text-emerald-500 mt-1">✓</span>
+                          <span className="text-blue-500 mt-1">✓</span>
                           <span>User experience optimization strategies</span>
                         </li>
                       </ul>
@@ -193,7 +193,7 @@ export const CaseStudiesSection = () => {
       </div>
       
       <div className="text-center mt-8">
-        <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-full font-semibold">
+        <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold">
           View All Case Studies
         </Button>
       </div>

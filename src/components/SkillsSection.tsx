@@ -33,7 +33,7 @@ export const SkillsSection = () => {
         {skillCategories.map((category, index) => (
           <div
             key={index}
-            className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-100"
+            className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100"
           >
             <div className="flex items-center mb-6">
               <span className="text-3xl mr-3">{category.icon}</span>
@@ -44,7 +44,7 @@ export const SkillsSection = () => {
               {category.skills.map((skill, i) => (
                 <span
                   key={i}
-                  className="bg-gradient-to-r from-emerald-50 to-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium hover:from-emerald-100 hover:to-emerald-200 transition-all duration-200 cursor-default hover:scale-105"
+                  className="bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:from-blue-100 hover:to-blue-200 transition-all duration-200 cursor-default hover:scale-105"
                 >
                   {skill}
                 </span>

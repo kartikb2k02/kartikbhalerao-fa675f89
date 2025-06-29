@@ -6,11 +6,11 @@ export const HeroSection = () => {
     <section className="text-center py-16 animate-fade-in">
       <div className="relative inline-block mb-8">
         <img
-          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
+          src="/lovable-uploads/3c59e842-8e07-4b56-8918-3fedc5f8a4e0.png"
           alt="Kartik Bhalerao"
-          className="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto shadow-xl border-4 border-emerald-200 hover:scale-105 transition-transform duration-300"
+          className="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto shadow-xl border-4 border-blue-200 hover:scale-105 transition-transform duration-300"
         />
-        <div className="absolute -bottom-2 -right-2 bg-emerald-500 text-white p-2 rounded-full shadow-lg">
+        <div className="absolute -bottom-2 -right-2 bg-blue-500 text-white p-2 rounded-full shadow-lg">
           🎯
         </div>
       </div>
@@ -19,12 +19,12 @@ export const HeroSection = () => {
         Kartik Bhalerao
       </h1>
       
-      <h2 className="text-xl sm:text-2xl text-emerald-600 font-semibold mb-6">
+      <h2 className="text-xl sm:text-2xl text-blue-600 font-semibold mb-6">
         Associate Product Manager
       </h2>
       
       <p className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto mb-8 leading-relaxed">
-        Building Products That Customers Truly Love 💚
+        Building Products That Customers Truly Love 💙
       </p>
       
       <div className="flex justify-center items-center space-x-6 mb-12">
@@ -42,7 +42,7 @@ export const HeroSection = () => {
         </div>
       </div>
       
-      <ArrowDown className="w-6 h-6 text-emerald-500 mx-auto animate-bounce" />
+      <ArrowDown className="w-6 h-6 text-blue-500 mx-auto animate-bounce" />
     </section>
   );
 };

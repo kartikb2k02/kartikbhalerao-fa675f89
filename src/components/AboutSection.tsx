@@ -21,7 +21,7 @@ export const AboutSection = () => {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 text-left">
-            <div className="bg-emerald-50 p-6 rounded-2xl">
+            <div className="bg-blue-50 p-6 rounded-2xl">
               <div className="text-2xl mb-3">📧</div>
               <h3 className="font-semibold text-gray-900 mb-2">Email</h3>
               <p className="text-gray-600 text-sm">Kartikbhalerao948@gmail.com</p>
@@ -33,7 +33,7 @@ export const AboutSection = () => {
               <p className="text-gray-600 text-sm">91+ 9561438502</p>
             </div>
             
-            <div className="bg-purple-50 p-6 rounded-2xl">
+            <div className="bg-blue-50 p-6 rounded-2xl">
               <div className="text-2xl mb-3">📍</div>
               <h3 className="font-semibold text-gray-900 mb-2">Location</h3>
               <p className="text-gray-600 text-sm">Pune, Maharashtra</p>
@@ -45,7 +45,7 @@ export const AboutSection = () => {
           <span className="text-3xl animate-bounce">💡</span>
           <span className="text-3xl animate-bounce" style={{ animationDelay: '0.1s' }}>🎯</span>
           <span className="text-3xl animate-bounce" style={{ animationDelay: '0.2s' }}>🚀</span>
-          <span className="text-3xl animate-bounce" style={{ animationDelay: '0.3s' }}>💚</span>
+          <span className="text-3xl animate-bounce" style={{ animationDelay: '0.3s' }}>💙</span>
         </div>
       </div>
     </section>
