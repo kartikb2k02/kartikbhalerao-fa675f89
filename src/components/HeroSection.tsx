@@ -17,8 +17,8 @@ export const HeroSection = () => {
           </div>
         </div>
         
-        {/* Main Heading */}
-        <div className="space-y-8">
+        {/* Main Heading with backdrop */}
+        <div className="space-y-8 bg-white/10 dark:bg-slate-800/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 dark:border-slate-700/20">
           <h1 className="text-5xl sm:text-7xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight">
             Kartik Bhalerao
           </h1>
@@ -34,19 +34,19 @@ export const HeroSection = () => {
         
         {/* Key Attributes */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-16">
-          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 shadow-lg hover:shadow-xl">
+          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 rounded-2xl p-8 hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 shadow-lg hover:shadow-xl">
             <div className="text-4xl mb-4">🧠</div>
             <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Strategic Thinker</h3>
             <p className="text-slate-600 dark:text-slate-300 text-sm">Data-driven product decisions</p>
           </div>
           
-          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 shadow-lg hover:shadow-xl">
+          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 rounded-2xl p-8 hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 shadow-lg hover:shadow-xl">
             <div className="text-4xl mb-4">📊</div>
             <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Analytics-Focused</h3>
             <p className="text-slate-600 dark:text-slate-300 text-sm">User-centric approach</p>
           </div>
           
-          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-2xl p-8 hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 shadow-lg hover:shadow-xl">
+          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 rounded-2xl p-8 hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 shadow-lg hover:shadow-xl">
             <div className="text-4xl mb-4">🚀</div>
             <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Innovation-Driven</h3>
             <p className="text-slate-600 dark:text-slate-300 text-sm">Continuous improvement mindset</p>
