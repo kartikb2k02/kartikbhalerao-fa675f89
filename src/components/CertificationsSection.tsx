@@ -1,5 +1,5 @@
 
-import { Check } from "lucide-react";
+import { LayoutDashboard } from "lucide-react";
 
 export const CertificationsSection = () => {
   const certifications = [
@@ -38,41 +38,44 @@ export const CertificationsSection = () => {
   ];
 
   return (
-    <section className="space-y-8">
-      <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-12">
-        Certifications & Achievements <span className="text-2xl">🏆</span>
-      </h2>
+    <section className="max-w-6xl mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 tracking-tight">
+          Certifications & Achievements
+        </h2>
+        <div className="w-24 h-1 bg-blue-400 mx-auto"></div>
+      </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Certifications */}
-        <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-emerald-100">
-          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-            <span className="text-2xl mr-3">📜</span>
+        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 shadow-2xl">
+          <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
+            <span className="text-3xl mr-4">📜</span>
             Certifications
           </h3>
           
-          <div className="space-y-4">
+          <div className="space-y-6">
             {certifications.map((cert, index) => (
               <div
                 key={index}
-                className="flex items-start space-x-4 p-4 bg-white/50 rounded-xl hover:bg-white/70 transition-colors duration-200"
+                className="flex items-start space-x-4 p-6 bg-slate-800/30 border border-slate-700 rounded-xl hover:bg-slate-700/30 transition-all duration-200"
               >
-                <span className="text-2xl">{cert.icon}</span>
+                <span className="text-3xl">{cert.icon}</span>
                 <div className="flex-1">
-                  <h4 className="font-semibold text-gray-900">{cert.title}</h4>
-                  <p className="text-emerald-600 text-sm">{cert.issuer}</p>
-                  <p className="text-gray-500 text-xs">{cert.year}</p>
+                  <h4 className="font-semibold text-white text-lg leading-tight">{cert.title}</h4>
+                  <p className="text-blue-400 text-sm mt-1">{cert.issuer}</p>
+                  <p className="text-slate-400 text-xs mt-1">{cert.year}</p>
                 </div>
-                <Check className="w-5 h-5 text-emerald-500" />
+                <LayoutDashboard className="w-5 h-5 text-blue-400" />
               </div>
             ))}
           </div>
         </div>
         
         {/* Achievements & Honors */}
-        <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-emerald-100">
-          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-            <span className="text-2xl mr-3">🌟</span>
+        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 shadow-2xl">
+          <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
+            <span className="text-3xl mr-4">🌟</span>
             Achievements & Honors
           </h3>
           
@@ -80,10 +83,10 @@ export const CertificationsSection = () => {
             {achievements.map((achievement, index) => (
               <div
                 key={index}
-                className="flex items-start space-x-3 p-4 bg-white/50 rounded-xl hover:bg-white/70 transition-colors duration-200"
+                className="flex items-start space-x-4 p-4 bg-slate-800/30 border border-slate-700 rounded-xl hover:bg-slate-700/30 transition-all duration-200"
               >
-                <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-1" />
-                <span className="text-gray-700 text-sm leading-relaxed">{achievement}</span>
+                <LayoutDashboard className="w-5 h-5 text-blue-400 flex-shrink-0 mt-1" />
+                <span className="text-slate-200 leading-relaxed">{achievement}</span>
               </div>
             ))}
           </div>

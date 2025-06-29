@@ -24,27 +24,30 @@ export const SkillsSection = () => {
   ];
 
   return (
-    <section className="space-y-8">
-      <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-12">
-        Skills & Tools <span className="text-2xl">🛠️</span>
-      </h2>
+    <section className="max-w-6xl mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 tracking-tight">
+          Skills & Tools
+        </h2>
+        <div className="w-24 h-1 bg-blue-400 mx-auto"></div>
+      </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {skillCategories.map((category, index) => (
           <div
             key={index}
-            className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100"
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 shadow-2xl hover:bg-white/10 transition-all duration-300"
           >
-            <div className="flex items-center mb-6">
-              <span className="text-3xl mr-3">{category.icon}</span>
-              <h3 className="text-xl font-bold text-gray-900">{category.title}</h3>
+            <div className="flex items-center mb-8">
+              <span className="text-4xl mr-4">{category.icon}</span>
+              <h3 className="text-2xl font-bold text-white">{category.title}</h3>
             </div>
             
             <div className="flex flex-wrap gap-3">
               {category.skills.map((skill, i) => (
                 <span
                   key={i}
-                  className="bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:from-blue-100 hover:to-blue-200 transition-all duration-200 cursor-default hover:scale-105"
+                  className="bg-slate-800/50 border border-slate-700 text-slate-200 px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-700/50 hover:border-blue-400 hover:text-blue-400 transition-all duration-200 cursor-default"
                 >
                   {skill}
                 </span>

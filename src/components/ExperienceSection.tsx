@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Lightbulb } from "lucide-react";
 
 export const ExperienceSection = () => {
   const [expandedJob, setExpandedJob] = useState<number | null>(null);
@@ -18,7 +18,7 @@ export const ExperienceSection = () => {
         "🎯 MVP Scoping & Prioritization",
         "📋 PRD & Documentation Ownership"
       ],
-      gradient: "from-emerald-400 to-emerald-600",
+      gradient: "from-blue-500 to-blue-700",
       details: [
         {
           title: "Competitor Analysis",
@@ -53,7 +53,7 @@ export const ExperienceSection = () => {
         "🔬 User Testing & Feedback Loops", 
         "🚀 Go-To-Market Readiness"
       ],
-      gradient: "from-blue-400 to-blue-600",
+      gradient: "from-blue-600 to-indigo-700",
       details: [
         {
           title: "Problem Discovery & Opportunity Mapping",
@@ -89,68 +89,74 @@ export const ExperienceSection = () => {
   };
 
   return (
-    <section className="space-y-8">
-      <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-12">
-        Work Experience <span className="text-2xl">💼</span>
-      </h2>
+    <section className="max-w-6xl mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 tracking-tight">
+          Work Experience
+        </h2>
+        <div className="w-24 h-1 bg-blue-400 mx-auto"></div>
+      </div>
       
       {/* Work Experience */}
-      <div className="space-y-6">
+      <div className="space-y-8 mb-16">
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 shadow-2xl hover:bg-white/10 transition-all duration-300"
           >
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
+              <div className="space-y-2">
+                <h3 className="text-2xl font-bold text-white">
                   {exp.title}
                 </h3>
-                <p className="text-lg text-emerald-600 font-semibold mb-1">
+                <p className="text-xl text-blue-400 font-semibold">
                   {exp.company}
                 </p>
-                <p className="text-gray-600">
+                <p className="text-slate-300">
                   {exp.location}
                 </p>
               </div>
-              <div className="mt-4 md:mt-0">
-                <span className={`inline-block bg-gradient-to-r ${exp.gradient} text-white px-4 py-2 rounded-full text-sm font-semibold`}>
+              <div className="mt-4 lg:mt-0">
+                <span className={`inline-block bg-gradient-to-r ${exp.gradient} text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg`}>
                   {exp.period}
                 </span>
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               {exp.highlights.map((highlight, i) => (
                 <button
                   key={i}
                   onClick={() => toggleExpanded(index)}
-                  className="flex items-start justify-between space-x-3 p-3 bg-emerald-50 rounded-lg hover:bg-emerald-100 transition-colors duration-200 text-left w-full group"
+                  className="flex items-center justify-between p-4 bg-slate-800/50 border border-slate-700 rounded-xl hover:bg-slate-700/50 transition-all duration-200 text-left w-full group"
                 >
-                  <div className="flex items-start space-x-3">
+                  <div className="flex items-center space-x-3">
                     <span className="text-lg flex-shrink-0">
                       {highlight.split(' ')[0]}
                     </span>
-                    <span className="text-gray-700 font-medium">
+                    <span className="text-slate-200 font-medium">
                       {highlight.split(' ').slice(1).join(' ')}
                     </span>
                   </div>
                   {expandedJob === index ? (
-                    <ChevronUp className="w-4 h-4 text-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ChevronUp className="w-5 h-5 text-blue-400 opacity-70 group-hover:opacity-100 transition-opacity" />
                   ) : (
-                    <ChevronDown className="w-4 h-4 text-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ChevronDown className="w-5 h-5 text-blue-400 opacity-70 group-hover:opacity-100 transition-opacity" />
                   )}
                 </button>
               ))}
             </div>
 
             {expandedJob === index && (
-              <div className="mt-6 space-y-4 animate-fade-in">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">Detailed Experience</h4>
+              <div className="mt-8 space-y-6 animate-fade-in">
+                <div className="flex items-center space-x-2 mb-4">
+                  <Lightbulb className="w-5 h-5 text-blue-400" />
+                  <h4 className="text-lg font-semibold text-white">Detailed Experience</h4>
+                </div>
                 {exp.details.map((detail, i) => (
-                  <div key={i} className="bg-white/80 rounded-xl p-4 border-l-4 border-emerald-500">
-                    <h5 className="font-semibold text-emerald-700 mb-2">{detail.title}</h5>
-                    <p className="text-gray-700 text-sm leading-relaxed">{detail.description}</p>
+                  <div key={i} className="bg-slate-800/30 border border-slate-700 rounded-xl p-6 border-l-4 border-l-blue-400">
+                    <h5 className="font-semibold text-blue-400 mb-3 text-lg">{detail.title}</h5>
+                    <p className="text-slate-300 leading-relaxed">{detail.description}</p>
                   </div>
                 ))}
               </div>
@@ -160,21 +166,21 @@ export const ExperienceSection = () => {
       </div>
 
       {/* Product Management Cohorts */}
-      <div className="mt-12">
-        <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
-          Product Management Cohorts <span className="text-xl">🎓</span>
+      <div>
+        <h3 className="text-3xl font-bold text-white text-center mb-8">
+          Product Management Cohorts
         </h3>
         
         <div className="grid grid-cols-1 gap-6">
           {cohorts.map((cohort, index) => (
             <div
               key={index}
-              className="bg-gradient-to-r from-purple-400 to-purple-600 rounded-2xl p-6 text-white text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+              className="bg-gradient-to-r from-indigo-600 to-purple-700 rounded-2xl p-8 text-white text-center shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-[1.02]"
             >
-              <div className="text-3xl mb-3">{cohort.icon}</div>
-              <h4 className="text-xl font-bold mb-2">{cohort.title}</h4>
-              <p className="text-purple-100 mb-2">{cohort.period}</p>
-              <p className="text-purple-50">{cohort.description}</p>
+              <div className="text-4xl mb-4">{cohort.icon}</div>
+              <h4 className="text-2xl font-bold mb-3">{cohort.title}</h4>
+              <p className="text-indigo-100 mb-2 text-lg">{cohort.period}</p>
+              <p className="text-indigo-50">{cohort.description}</p>
             </div>
           ))}
         </div>
