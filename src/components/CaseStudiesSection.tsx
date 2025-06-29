@@ -1,91 +1,91 @@
+
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { ExternalLink, Eye } from "lucide-react";
 
 export const CaseStudiesSection = () => {
   const caseStudies = [
     {
-      title: "Product Case Study—Blinkit",
-      subtitle: "Order Efficiency and Conversion Analysis",
-      description: "Comprehensive analysis of Blinkit's order flow and conversion optimization strategies",
-      tags: ["Product teardown", "uiux", "Learning", "Metrics", "MoScow", "Product Thinking"],
+      title: "Blinkit Product Analysis",
+      subtitle: "Order Efficiency and Conversion Optimization",
+      description: "Comprehensive analysis of Blinkit's order flow, identifying key conversion bottlenecks and proposing strategic improvements for enhanced user experience.",
+      tags: ["Product Teardown", "UX Analysis", "Conversion Optimization", "Metrics Analysis"],
       image: "/lovable-uploads/3d4a8070-20bc-4613-becb-61b277c2c14e.png",
       gradient: "from-yellow-400 to-orange-500",
-      details: "Analyzed Blinkit's entire order efficiency system and identified key conversion bottlenecks. Focused on improving user experience through data-driven insights and strategic product improvements.",
+      details: "Conducted an in-depth analysis of Blinkit's product ecosystem, focusing on order efficiency metrics and user conversion patterns. Identified critical pain points in the checkout flow and proposed data-driven solutions to improve overall user experience and business metrics.",
       canvaLink: "https://www.canva.com/design/DAGn_zTvLsc/32wrzjqf5YSnIj15-cvUFA/view",
-      isCanvaEmbed: true
+      isCanvaEmbed: true,
+      outcomes: [
+        "Identified 3 major conversion bottlenecks in the order flow",
+        "Proposed solutions that could potentially increase conversion by 15%",
+        "Created comprehensive user journey mapping",
+        "Developed actionable recommendations for product team"
+      ]
     },
     {
-      title: "Product Teardown—Feature Improvement",
-      subtitle: "Google Pay Analysis",
-      description: "Strategic analysis of Google Pay's feature set and improvement opportunities",
-      tags: ["Product teardown", "Metrics", "MoScow", "Trade-off"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop",
-      gradient: "from-blue-400 to-blue-600",
-      details: "Deep dive into Google Pay's product features, analyzing user flows and identifying strategic improvements through comprehensive teardown methodology."
-    },
-    {
-      title: "Product Teardown—User Experience",
-      subtitle: "Airbnb Analysis", 
-      description: "Comprehensive UX analysis of Airbnb's booking and host experience",
-      tags: ["Product teardown", "uiux", "Metrics", "Product Thinking", "Learning"],
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop",
-      gradient: "from-pink-400 to-red-500",
-      details: "Analyzed Airbnb's user experience from both guest and host perspectives, focusing on trust-building mechanisms and conversion optimization."
-    },
-    {
-      title: "Product Requirement Document—GPay",
-      subtitle: "Feature Specification & Requirements",
-      description: "Detailed PRD for new GPay feature implementation",
-      tags: ["PRD", "Product Thinking", "Trade-off", "Metrics", "uiux"],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-      gradient: "from-indigo-400 to-purple-600",
-      details: "Created comprehensive Product Requirements Document for GPay feature enhancement, including user stories, acceptance criteria, and success metrics."
-    },
-    {
-      title: "Product Design—Gullak",
-      subtitle: "Fintech Product Development",
-      description: "End-to-end product design for fintech savings application",
-      tags: ["PRD", "Product Thinking", "MoScow", "Metrics", "uiux"],
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=250&fit=crop",
-      gradient: "from-green-400 to-emerald-600",
-      details: "Designed and developed Gullak fintech product from concept to MVP, focusing on user-centric savings features and financial wellness tools."
+      title: "Google Pay Feature Enhancement",
+      subtitle: "Strategic Product Improvement Analysis",
+      description: "Strategic analysis of Google Pay's feature set with focus on user engagement and retention improvements through data-driven insights.",
+      tags: ["Product Strategy", "Feature Analysis", "User Research", "Competitive Analysis"],
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      gradient: "from-blue-500 to-indigo-600",
+      details: "Deep dive into Google Pay's product features, analyzing user flows and identifying strategic improvements through comprehensive teardown methodology. Focused on enhancing user engagement and streamlining payment processes.",
+      outcomes: [
+        "Comprehensive competitive analysis of payment platforms",
+        "User flow optimization recommendations",
+        "Feature prioritization using MoSCoW method",
+        "Data-driven improvement proposals"
+      ]
     }
   ];
 
   return (
     <section className="max-w-7xl mx-auto">
       <div className="text-center mb-16">
-        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 tracking-tight">
+        <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">
           Product Case Studies
         </h2>
-        <div className="w-24 h-1 bg-blue-400 mx-auto"></div>
+        <div className="w-24 h-1 bg-blue-500 dark:bg-blue-400 mx-auto rounded-full"></div>
+        <p className="text-lg text-slate-600 dark:text-slate-400 mt-4 max-w-2xl mx-auto">
+          Real-world product analysis and strategic thinking in action
+        </p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
         {caseStudies.map((study, index) => (
           <Dialog key={index}>
             <DialogTrigger asChild>
-              <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl shadow-2xl hover:bg-white/10 transition-all duration-300 overflow-hidden hover:scale-105 cursor-pointer">
-                <div className="relative h-48 overflow-hidden">
+              <div className="group cursor-pointer bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-2">
+                <div className="relative h-64 overflow-hidden">
                   <img
                     src={study.image}
                     alt={study.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-300`} />
+                  <div className="absolute top-4 right-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <Eye className="w-4 h-4 text-slate-700 dark:text-slate-300" />
+                  </div>
                 </div>
                 
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
+                <div className="p-8">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className={`px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${study.gradient} text-white`}>
+                      Case Study
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors duration-200" />
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
                     {study.title}
                   </h3>
                   
-                  <p className="text-sm font-medium text-blue-400 mb-3">
+                  <p className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-3">
                     {study.subtitle}
                   </p>
                   
-                  <p className="text-slate-300 text-sm mb-4 line-clamp-2">
+                  <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 line-clamp-3">
                     {study.description}
                   </p>
                   
@@ -93,22 +93,22 @@ export const CaseStudiesSection = () => {
                     {study.tags.slice(0, 3).map((tag, i) => (
                       <span
                         key={i}
-                        className="bg-slate-800/50 border border-slate-700 text-slate-200 px-3 py-1 rounded-full text-xs font-medium hover:border-blue-400 hover:text-blue-400 transition-colors duration-200"
+                        className="bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-3 py-1 rounded-full text-xs font-medium border border-slate-200 dark:border-slate-600"
                       >
                         {tag}
                       </span>
                     ))}
                     {study.tags.length > 3 && (
-                      <span className="text-slate-400 text-xs">+{study.tags.length - 3} more</span>
+                      <span className="text-slate-400 text-xs self-center">+{study.tags.length - 3} more</span>
                     )}
                   </div>
                 </div>
               </div>
             </DialogTrigger>
             
-            <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto bg-slate-900 border-slate-700">
+            <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
               <DialogHeader>
-                <DialogTitle className="text-2xl font-bold text-white mb-4">
+                <DialogTitle className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
                   {study.title}
                 </DialogTitle>
               </DialogHeader>
@@ -125,7 +125,7 @@ export const CaseStudiesSection = () => {
                       />
                     </div>
                     <div className="mt-4 text-center">
-                      <Button asChild className="bg-blue-600 hover:bg-blue-700">
+                      <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white">
                         <a 
                           href={study.canvaLink} 
                           target="_blank" 
@@ -148,21 +148,21 @@ export const CaseStudiesSection = () => {
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-semibold text-blue-600 mb-2">
+                      <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
                         {study.subtitle}
                       </h3>
-                      <p className="text-gray-700 leading-relaxed mb-6">
+                      <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
                         {study.details}
                       </p>
                     </div>
                     
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-900 mb-3">Skills & Tools Used</h4>
-                      <div className="flex flex-wrap gap-2">
+                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Skills & Methods Used</h4>
+                      <div className="flex flex-wrap gap-2 mb-6">
                         {study.tags.map((tag, i) => (
                           <span
                             key={i}
-                            className="bg-blue-100 text-blue-700 px-3 py-2 rounded-full text-sm font-medium"
+                            className="bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-2 rounded-full text-sm font-medium"
                           >
                             {tag}
                           </span>
@@ -170,21 +170,15 @@ export const CaseStudiesSection = () => {
                       </div>
                     </div>
                     
-                    <div className="bg-gray-50 rounded-lg p-6">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Outcomes</h4>
-                      <ul className="space-y-2 text-gray-700">
-                        <li className="flex items-start space-x-2">
-                          <span className="text-blue-500 mt-1">✓</span>
-                          <span>Comprehensive product analysis and strategic recommendations</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <span className="text-blue-500 mt-1">✓</span>
-                          <span>Data-driven insights for product improvement</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <span className="text-blue-500 mt-1">✓</span>
-                          <span>User experience optimization strategies</span>
-                        </li>
+                    <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-6">
+                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Key Outcomes</h4>
+                      <ul className="space-y-2">
+                        {study.outcomes.map((outcome, i) => (
+                          <li key={i} className="flex items-start space-x-2 text-slate-700 dark:text-slate-300">
+                            <span className="text-blue-500 dark:text-blue-400 mt-1">✓</span>
+                            <span>{outcome}</span>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </>
@@ -195,8 +189,8 @@ export const CaseStudiesSection = () => {
         ))}
       </div>
       
-      <div className="text-center mt-12">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105">
+      <div className="text-center">
+        <button className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
           View All Case Studies
         </button>
       </div>
