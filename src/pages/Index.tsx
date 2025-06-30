@@ -1,4 +1,3 @@
-
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
@@ -6,7 +5,6 @@ import { CaseStudiesSection } from "@/components/CaseStudiesSection";
 import { SkillsSection } from "@/components/SkillsSection";
 import { CertificationsSection } from "@/components/CertificationsSection";
 import { FooterSection } from "@/components/FooterSection";
-import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Index = () => {
   return (
@@ -58,8 +56,6 @@ const Index = () => {
         <div className="absolute bottom-20 right-40 w-40 h-40 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-indigo-500/5 rounded-full blur-2xl animate-pulse"></div>
         <div className="absolute top-32 left-1/2 w-60 h-60 bg-gradient-to-l from-indigo-500/5 via-blue-500/5 to-cyan-500/5 rounded-full blur-3xl animate-pulse [animation-delay:3s]"></div>
       </div>
-
-      <ThemeToggle />
       
       {/* Enhanced Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-b border-blue-200/30 dark:border-blue-700/30 transition-all duration-300 shadow-lg shadow-blue-500/5">
