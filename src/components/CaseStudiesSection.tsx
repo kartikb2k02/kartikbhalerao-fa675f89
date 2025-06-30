@@ -43,14 +43,16 @@ export const CaseStudiesSection = () => {
       ]
     },
     {
-      title: "User Research Initiative",
+      title: "Product Teardown— User Experience",
       subtitle: "Behavioral Analysis & Insight Generation",
       description: "Led comprehensive user research studies to understand customer pain points and identify opportunities for product improvement across multiple touchpoints.",
-      tags: ["User Research", "Behavioral Analysis", "Data Analytics", "Customer Insights"],
+      tags: ["Product Teardown", "Behavioral Analysis", "Data Analytics", "Customer Insights"],
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
       gradient: "from-purple-500 to-pink-500",
-      icon: <Users className="w-6 h-6" />,
       details: "Designed and executed user research methodologies to capture actionable insights from customer behavior patterns. Utilized both qualitative and quantitative approaches to inform product decisions.",
+      canvaLink: "https://www.canva.com/design/DAGp85VdazI/QqEN-1mCN8dEuaW-PtOIbQ/view",
+      isCanvaEmbed: true,
+      icon: <Target className="w-6 h-6" />,
       outcomes: [
         "Conducted 25+ in-depth user interviews",
         "Analyzed behavioral patterns across 3 user segments",
