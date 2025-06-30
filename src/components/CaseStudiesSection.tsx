@@ -34,6 +34,9 @@ export const CaseStudiesSection = () => {
       gradient: "from-blue-500 to-indigo-600",
       icon: <Target className="w-6 h-6" />,
       details: "Deep dive into Google Pay's product features, analyzing user flows and identifying strategic improvements through comprehensive teardown methodology. Focused on enhancing user engagement and streamlining payment processes.",
+      canvaLink: "https://www.canva.com/design/DAGo6sk1mOw/RmYlhZ2SZIClh48yToNORg/view",
+      isCanvaEmbed: true,
+      icon: <BarChart3 className="w-6 h-6" />,
       outcomes: [
         "Comprehensive competitive analysis of payment platforms",
         "User flow optimization recommendations",
