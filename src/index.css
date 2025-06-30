@@ -32,6 +32,12 @@
     50% { transform: translateY(-20px) rotate(5deg); }
   }
 
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+  }
+
   .markdown-content h1,
   .markdown-content h2,
   .markdown-content h3,
