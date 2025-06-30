@@ -56,7 +56,10 @@ export const SkillsSection = () => {
     { name: "Google Analytics", category: "Analytics", color: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300" },
     { name: "Hotjar", category: "User Research", color: "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300" },
     { name: "Slack", category: "Communication", color: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300" },
-    { name: "Dovetail", category: "Research", color: "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-300" }
+    { name: "Dovetail", category: "Research", color: "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-300" },
+    { name: "Flowise", category: "AI Automation", color: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300" },
+    { name: "SuperAgent", category: "AI Agents", color: "bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300" },
+    { name: "AutogenStudio", category: "AI Development", color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300" }
   ];
 
   return (
