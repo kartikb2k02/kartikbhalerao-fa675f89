@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Star } from 'lucide-react';
+import { Menu, X, Linkedin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
@@ -40,25 +40,26 @@ export const Header = () => {
     { label: 'Experience', id: 'experience' },
     { label: 'Case Studies', id: 'case-studies' },
     { label: 'Skills', id: 'skills' },
-    { label: 'Blog', id: 'blog' },
   ];
 
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-lg border-b border-blue-200/20 dark:border-blue-700/20' 
-          : 'bg-transparent'
+          ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-blue-200/20 dark:border-blue-700/20' 
+          : 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo/Name */}
+          {/* Logo/Name with KB symbol from footer */}
           <button
             onClick={handleTitleClick}
-            className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2"
+            className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-3"
           >
-            <Star className="w-5 h-5 text-blue-500 dark:text-blue-400" />
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+              <span className="text-white font-bold text-sm">KB</span>
+            </div>
             Kartik Bhalerao
           </button>
 
@@ -74,6 +75,15 @@ export const Header = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
+            
+            {/* Blog Button with LinkedIn style */}
+            <button
+              onClick={() => scrollToSection('blog')}
+              className="group inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105 transform shadow-lg hover:shadow-xl"
+            >
+              <Linkedin className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+              <span>Blog</span>
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -98,6 +108,15 @@ export const Header = () => {
                   {item.label}
                 </button>
               ))}
+              
+              {/* Mobile Blog Button */}
+              <button
+                onClick={() => scrollToSection('blog')}
+                className="mx-4 inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300"
+              >
+                <Linkedin className="w-4 h-4" />
+                <span>Blog</span>
+              </button>
             </nav>
           </div>
         )}
