@@ -44,7 +44,7 @@ export const ExperienceSection = () => {
     },
     {
       title: "Product Manager",
-      company: "Stealth",
+      company: "Ocius Pharma",
       location: "Remote (Internship)",
       period: "Jan. 2024 - May 2024",
       highlights: [
