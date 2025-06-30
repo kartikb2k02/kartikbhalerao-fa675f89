@@ -49,7 +49,7 @@ export const SkillsSection = () => {
 
   const tools = [
     { name: "Figma", category: "Design", color: "bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300", icon: <Palette className="w-4 h-4" /> },
-    { name: "Jira", category: "Project Mgmt", color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300", icon: <Calendar className="w-4 h-4" /> },
+    { name: "Jira", category: "Project Management", color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300", icon: <Calendar className="w-4 h-4" /> },
     { name: "Mixpanel", category: "Analytics", color: "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300", icon: <PieChart className="w-4 h-4" /> },
     { name: "Notion", category: "Documentation", color: "bg-gray-100 text-gray-800 dark:bg-gray-800/30 dark:text-gray-300", icon: <FileText className="w-4 h-4" /> },
     { name: "Google Analytics", category: "Analytics", color: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300", icon: <BarChart className="w-4 h-4" /> },
@@ -59,6 +59,7 @@ export const SkillsSection = () => {
     { name: "Flowise", category: "AI Automation", color: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300", icon: <Workflow className="w-4 h-4" /> },
     { name: "SuperAgent", category: "AI Agents", color: "bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300", icon: <Bot className="w-4 h-4" /> },
     { name: "AutogenStudio", category: "AI Development", color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300", icon: <Cpu className="w-4 h-4" /> }
+    { name: "N8n", category: "AI Automation", color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300", icon: <Cpu className="w-4 h-4" /> }
   ];
 
   return (
