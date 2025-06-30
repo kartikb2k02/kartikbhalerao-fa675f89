@@ -14,9 +14,9 @@ const Blog = () => {
   const blogPosts = [
     {
       id: 1,
-      title: "The Art of Product Teardowns: Learning from Industry Giants",
-      excerpt: "How analyzing products like Blinkit and Google Pay can make you a better Product Manager",
-      content: "Product teardowns are one of the most effective ways to learn product management...",
+      title: "AI-First Product Strategy: How to Build with Intelligence at the Core",
+      excerpt: "Learn how to embed intelligence into your product’s DNA with an AI-first strategy that drives smarter decisions and scalable innovation.",
+      content: "The best PMs will use AI not as a tool, but as a thinking partner, a scout for insights.",
       category: "analysis",
       date: "2024-06-15",
       readTime: "8 min read",
@@ -25,10 +25,10 @@ const Blog = () => {
     },
     {
       id: 2,
-      title: "Building User-Centric Fintech Products: Lessons from Gullak",
-      excerpt: "Key insights from designing a savings app that users actually want to use",
-      content: "When building Gullak, we learned that fintech success isn't just about features...",
-      category: "design",
+      title: "AI as Your Co-Pilot: How Product Managers Can Supercharge Decision-Making with AI",
+      excerpt: "Discover how product managers can leverage AI as a co-pilot to enhance decision-making, boost efficiency, and build smarter products.",
+      content: "AI is not replacing product managers—it’s amplifying them.",
+      category: "research",
       date: "2024-06-10",
       readTime: "6 min read",
       tags: ["Fintech", "User Experience", "Product Design"],
