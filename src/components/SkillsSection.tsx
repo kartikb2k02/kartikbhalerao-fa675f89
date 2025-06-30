@@ -1,5 +1,4 @@
-
-import { Target, BarChart3, Palette, Code, Lightbulb, Users, TrendingUp, Zap } from "lucide-react";
+import { Target, BarChart3, Palette, Code, Lightbulb, Users, TrendingUp, Zap, Figma, Calendar, PieChart, FileText, BarChart, HelpCircle, MessageSquare, Search, Workflow, Bot, Cpu } from "lucide-react";
 
 export const SkillsSection = () => {
   const skillCategories = [
@@ -49,17 +48,17 @@ export const SkillsSection = () => {
   ];
 
   const tools = [
-    { name: "Figma", category: "Design", color: "bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300" },
-    { name: "Jira", category: "Project Mgmt", color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300" },
-    { name: "Mixpanel", category: "Analytics", color: "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300" },
-    { name: "Notion", category: "Documentation", color: "bg-gray-100 text-gray-800 dark:bg-gray-800/30 dark:text-gray-300" },
-    { name: "Google Analytics", category: "Analytics", color: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300" },
-    { name: "Hotjar", category: "User Research", color: "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300" },
-    { name: "Slack", category: "Communication", color: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300" },
-    { name: "Dovetail", category: "Research", color: "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-300" },
-    { name: "Flowise", category: "AI Automation", color: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300" },
-    { name: "SuperAgent", category: "AI Agents", color: "bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300" },
-    { name: "AutogenStudio", category: "AI Development", color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300" }
+    { name: "Figma", category: "Design", color: "bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300", icon: <Palette className="w-4 h-4" /> },
+    { name: "Jira", category: "Project Mgmt", color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300", icon: <Calendar className="w-4 h-4" /> },
+    { name: "Mixpanel", category: "Analytics", color: "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300", icon: <PieChart className="w-4 h-4" /> },
+    { name: "Notion", category: "Documentation", color: "bg-gray-100 text-gray-800 dark:bg-gray-800/30 dark:text-gray-300", icon: <FileText className="w-4 h-4" /> },
+    { name: "Google Analytics", category: "Analytics", color: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300", icon: <BarChart className="w-4 h-4" /> },
+    { name: "Hotjar", category: "User Research", color: "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300", icon: <HelpCircle className="w-4 h-4" /> },
+    { name: "Slack", category: "Communication", color: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300", icon: <MessageSquare className="w-4 h-4" /> },
+    { name: "Dovetail", category: "Research", color: "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-300", icon: <Search className="w-4 h-4" /> },
+    { name: "Flowise", category: "AI Automation", color: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300", icon: <Workflow className="w-4 h-4" /> },
+    { name: "SuperAgent", category: "AI Agents", color: "bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300", icon: <Bot className="w-4 h-4" /> },
+    { name: "AutogenStudio", category: "AI Development", color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300", icon: <Cpu className="w-4 h-4" /> }
   ];
 
   return (
@@ -138,7 +137,7 @@ export const SkillsSection = () => {
         </div>
       </div>
 
-      {/* Tools & Platforms */}
+      {/* Tools & Platforms with icons */}
       <div className="text-center">
         <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-8">Tools & Platforms</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
@@ -147,6 +146,11 @@ export const SkillsSection = () => {
               key={index}
               className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-white/30 dark:border-slate-700/30 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
             >
+              <div className="flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <div className={`p-2 rounded-lg ${tool.color.replace('text-', 'bg-').replace(/dark:text-\w+-\d+/, '').replace(/text-\w+-\d+/, 'bg-white')}`}>
+                  {tool.icon}
+                </div>
+              </div>
               <div className="font-semibold text-slate-900 dark:text-white mb-2 group-hover:scale-105 transition-transform">
                 {tool.name}
               </div>
