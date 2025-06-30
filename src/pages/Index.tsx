@@ -1,4 +1,3 @@
-
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
@@ -6,10 +5,14 @@ import { CaseStudiesSection } from "@/components/CaseStudiesSection";
 import { SkillsSection } from "@/components/SkillsSection";
 import { CertificationsSection } from "@/components/CertificationsSection";
 import { FooterSection } from "@/components/FooterSection";
+import { Header } from "@/components/Header";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950 text-slate-900 dark:text-white transition-colors duration-500 relative overflow-hidden">
+      {/* Interactive Header */}
+      <Header />
+
       {/* Enhanced background with product-focused elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         {/* Primary gradient mesh */}
@@ -58,8 +61,10 @@ const Index = () => {
         <div className="absolute top-32 left-1/2 w-60 h-60 bg-gradient-to-l from-indigo-500/5 via-blue-500/5 to-cyan-500/5 rounded-full blur-3xl animate-pulse [animation-delay:3s]"></div>
       </div>
       
-      {/* Hero Section */}
-      <HeroSection />
+      {/* Hero Section with top padding for fixed header */}
+      <div className="pt-16">
+        <HeroSection />
+      </div>
 
       {/* Main content with enhanced spacing */}
       <div className="relative z-10">
