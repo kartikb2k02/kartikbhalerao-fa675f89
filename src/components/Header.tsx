@@ -1,7 +1,8 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Linkedin } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { ThemeToggle } from './ThemeToggle';
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -76,14 +77,16 @@ export const Header = () => {
               </button>
             ))}
             
-            {/* Blog Button with LinkedIn style */}
+            {/* Blog Button without LinkedIn icon */}
             <button
               onClick={() => scrollToSection('blog')}
-              className="group inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105 transform shadow-lg hover:shadow-xl"
+              className="group inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105 transform shadow-lg hover:shadow-xl"
             >
-              <Linkedin className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
               <span>Blog</span>
             </button>
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
           </nav>
 
           {/* Mobile Menu Button */}
@@ -109,14 +112,18 @@ export const Header = () => {
                 </button>
               ))}
               
-              {/* Mobile Blog Button */}
+              {/* Mobile Blog Button without LinkedIn icon */}
               <button
                 onClick={() => scrollToSection('blog')}
-                className="mx-4 inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300"
+                className="mx-4 inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300"
               >
-                <Linkedin className="w-4 h-4" />
                 <span>Blog</span>
               </button>
+
+              {/* Mobile Theme Toggle */}
+              <div className="px-4">
+                <ThemeToggle />
+              </div>
             </nav>
           </div>
         )}

@@ -6,12 +6,16 @@ import { SkillsSection } from "@/components/SkillsSection";
 import { CertificationsSection } from "@/components/CertificationsSection";
 import { FooterSection } from "@/components/FooterSection";
 import { Header } from "@/components/Header";
+import { WelcomeToast } from "@/components/WelcomeToast";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950 text-slate-900 dark:text-white transition-colors duration-500 relative overflow-hidden">
       {/* Interactive Header */}
       <Header />
+      
+      {/* Welcome Toast */}
+      <WelcomeToast />
 
       {/* Enhanced background with product-focused elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
