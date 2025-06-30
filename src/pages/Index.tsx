@@ -1,3 +1,4 @@
+
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
@@ -5,7 +6,6 @@ import { CaseStudiesSection } from "@/components/CaseStudiesSection";
 import { SkillsSection } from "@/components/SkillsSection";
 import { CertificationsSection } from "@/components/CertificationsSection";
 import { FooterSection } from "@/components/FooterSection";
-import { Header } from "@/components/Header";
 
 const Index = () => {
   return (
@@ -58,13 +58,8 @@ const Index = () => {
         <div className="absolute top-32 left-1/2 w-60 h-60 bg-gradient-to-l from-indigo-500/5 via-blue-500/5 to-cyan-500/5 rounded-full blur-3xl animate-pulse [animation-delay:3s]"></div>
       </div>
       
-      {/* New Header */}
-      <Header />
-
       {/* Hero Section */}
-      <div className="relative pt-20">
-        <HeroSection />
-      </div>
+      <HeroSection />
 
       {/* Main content with enhanced spacing */}
       <div className="relative z-10">
