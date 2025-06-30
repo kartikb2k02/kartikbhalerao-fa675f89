@@ -1,5 +1,4 @@
 import { ArrowDown, Target, Briefcase, TrendingUp, Users, BarChart3, Lightbulb } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
 
 export const HeroSection = () => {
   const scrollToCaseStudies = () => {
@@ -23,11 +22,6 @@ export const HeroSection = () => {
               />
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-xl"></div>
             </div>
-          </div>
-          
-          {/* Theme Toggle positioned to the left after the image */}
-          <div className="absolute top-1/2 -left-20 transform -translate-y-1/2">
-            <ThemeToggle />
           </div>
           
           {/* PM Badge */}

@@ -5,6 +5,7 @@ import { CaseStudiesSection } from "@/components/CaseStudiesSection";
 import { SkillsSection } from "@/components/SkillsSection";
 import { CertificationsSection } from "@/components/CertificationsSection";
 import { FooterSection } from "@/components/FooterSection";
+import { Header } from "@/components/Header";
 
 const Index = () => {
   return (
@@ -57,46 +58,11 @@ const Index = () => {
         <div className="absolute top-32 left-1/2 w-60 h-60 bg-gradient-to-l from-indigo-500/5 via-blue-500/5 to-cyan-500/5 rounded-full blur-3xl animate-pulse [animation-delay:3s]"></div>
       </div>
       
-      {/* Enhanced Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-b border-blue-200/30 dark:border-blue-700/30 transition-all duration-300 shadow-lg shadow-blue-500/5">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-sm">KB</span>
-              </div>
-              <div>
-                <span className="font-bold text-slate-900 dark:text-white text-lg">Kartik Bhalerao</span>
-                <p className="text-xs text-blue-600 dark:text-blue-400 font-medium">Product Manager</p>
-              </div>
-            </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#about" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium relative group">
-                About
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-              <a href="#experience" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium relative group">
-                Experience
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-              <a href="#case-studies" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium relative group">
-                Case Studies
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-              <a href="#skills" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium relative group">
-                Skills
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-              <a href="/blog" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-2.5 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                Blog
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
+      {/* New Header */}
+      <Header />
 
       {/* Hero Section */}
-      <div className="relative pt-16">
+      <div className="relative pt-20">
         <HeroSection />
       </div>
 
