@@ -58,7 +58,7 @@ export const SkillsSection = () => {
     { name: "Dovetail", category: "Research", color: "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-300", icon: <Search className="w-4 h-4" /> },
     { name: "Flowise", category: "AI Automation", color: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300", icon: <Workflow className="w-4 h-4" /> },
     { name: "SuperAgent", category: "AI Agents", color: "bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300", icon: <Bot className="w-4 h-4" /> },
-    { name: "AutogenStudio", category: "AI Development", color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300", icon: <Cpu className="w-4 h-4" /> }
+    { name: "AutogenStudio", category: "AI Development", color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300", icon: <Cpu className="w-4 h-4" /> },
     { name: "N8n", category: "AI Automation", color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300", icon: <Cpu className="w-4 h-4" /> }
   ];
 
