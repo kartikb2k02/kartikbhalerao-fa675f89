@@ -1,10 +1,12 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Star } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +18,11 @@ export const Header = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
+    if (sectionId === 'blog') {
+      navigate('/blog');
+      return;
+    }
+    
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -23,12 +30,17 @@ export const Header = () => {
     }
   };
 
+  const handleTitleClick = () => {
+    navigate('/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const navItems = [
     { label: 'About', id: 'about' },
     { label: 'Experience', id: 'experience' },
     { label: 'Case Studies', id: 'case-studies' },
     { label: 'Skills', id: 'skills' },
-    { label: 'Certifications', id: 'certifications' },
+    { label: 'Blog', id: 'blog' },
   ];
 
   return (
@@ -43,9 +55,10 @@ export const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo/Name */}
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            onClick={handleTitleClick}
+            className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2"
           >
+            <Star className="w-5 h-5 text-blue-500 dark:text-blue-400" />
             Kartik Bhalerao
           </button>
 
