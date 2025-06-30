@@ -7,7 +7,7 @@ import { ExternalLink, Eye, BarChart3, Users, Target, ArrowRight } from "lucide-
 export const CaseStudiesSection = () => {
   const caseStudies = [
     {
-      title: "Blinkit Product Analysis",
+      title: "Product Case Study-Blinkit",
       subtitle: "Order Efficiency and Conversion Optimization",
       description: "Comprehensive analysis of Blinkit's order flow, identifying key conversion bottlenecks and proposing strategic improvements for enhanced user experience.",
       tags: ["Product Teardown", "UX Analysis", "Conversion Optimization", "Metrics Analysis"],
@@ -25,7 +25,7 @@ export const CaseStudiesSection = () => {
       ]
     },
     {
-      title: "Google Pay Feature Enhancement",
+      title: "Product Teardown-Feature improvement ",
       subtitle: "Strategic Product Improvement Analysis",
       description: "Strategic analysis of Google Pay's feature set with focus on user engagement and retention improvements through data-driven insights.",
       tags: ["Product Strategy", "Feature Analysis", "User Research", "Competitive Analysis"],
@@ -61,7 +61,7 @@ export const CaseStudiesSection = () => {
       ]
     },
     {
-      title: "Product requirement Document - Gpay",
+      title: "Product Requirement Document - Gpay",
       subtitle: "Strategic Product Improvement Analysis", 
       description: "Strategic analysis of Google Pay's feature set with focus on user engagement and retention improvements through data-driven insights.",
       tags: ["Product Strategy", "Feature Analysis", "User Research", "Competitive Analysis"],
