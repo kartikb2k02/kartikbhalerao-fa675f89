@@ -29,7 +29,7 @@ export const CaseStudiesSection = () => {
       subtitle: "Strategic Product Improvement Analysis",
       description: "Strategic analysis of Google Pay's feature set with focus on user engagement and retention improvements through data-driven insights.",
       tags: ["Product Strategy", "Feature Analysis", "User Research", "Competitive Analysis"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png",
       gradient: "from-blue-500 to-indigo-600",
       details: "Deep dive into Google Pay's product features, analyzing user flows and identifying strategic improvements through comprehensive teardown methodology. Focused on enhancing user engagement and streamlining payment processes.",
       canvaLink: "https://www.canva.com/design/DAGo6sk1mOw/RmYlhZ2SZIClh48yToNORg/view",
