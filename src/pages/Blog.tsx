@@ -94,6 +94,10 @@ const Blog = () => {
     ? blogPosts 
     : blogPosts.filter(post => post.category === selectedCategory);
 
+  const handleBlogPostClick = (postId: number) => {
+    window.location.href = `/blog/${postId}`;
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950 text-slate-900 dark:text-white transition-colors duration-500 relative overflow-hidden">
       {/* Enhanced background - matching main page */}
@@ -188,6 +192,7 @@ const Blog = () => {
                       <Card 
                         key={post.id} 
                         className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-white/30 dark:border-slate-700/30 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 overflow-hidden hover:-translate-y-2 cursor-pointer"
+                        onClick={() => handleBlogPostClick(post.id)}
                       >
                         <div className="relative h-48 overflow-hidden">
                           <img
