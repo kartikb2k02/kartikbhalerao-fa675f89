@@ -60,6 +60,24 @@ export const CaseStudiesSection = () => {
         "Created data-driven product roadmap recommendations"
       ]
     }
+    {
+      title: "Product requirement Document - Gpay",
+      subtitle: "Strategic Product Improvement Analysis",
+      description: "Strategic analysis of Google Pay's feature set with focus on user engagement and retention improvements through data-driven insights.",
+      tags: ["Product Strategy", "Feature Analysis", "User Research", "Competitive Analysis"],
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      gradient: "from-blue-500 to-indigo-600",
+      details: "Deep dive into Google Pay's product features, analyzing user flows and identifying strategic improvements through comprehensive teardown methodology. Focused on enhancing user engagement and streamlining payment processes.",
+      canvaLink: "https://www.canva.com/design/DAGotvS1P4Y/SczH9ACLAO3FxM0iSaf44Q/view",
+      isCanvaEmbed: true,
+      icon: <Target className="w-6 h-6" />,
+      outcomes: [
+        "Comprehensive competitive analysis of payment platforms",
+        "User flow optimization recommendations",
+        "Feature prioritization using MoSCoW method",
+        "Data-driven improvement proposals"
+      ]
+    },
   ];
 
   return (
