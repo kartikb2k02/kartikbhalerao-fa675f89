@@ -299,7 +299,7 @@ export const CaseStudiesSection = () => {
             asChild 
             className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
-            <a href="https://www.linkedin.com/in/kartik-bhalerao-5b5a98226/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/kartik-bhalerao/" target="_blank" rel="noopener noreferrer">
               Let's Talk
             </a>
           </Button>
