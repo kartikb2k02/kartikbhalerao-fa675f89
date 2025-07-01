@@ -43,11 +43,11 @@ export const AboutSection = () => {
             </div>
           </div>
           
-          {/* Personal touch */}
+          {/* Personal touch with updated text */}
           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 backdrop-blur-sm border border-blue-200/30 dark:border-blue-700/30 rounded-2xl p-8">
             <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">When I'm not building products...</h3>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-              You'll find me exploring new technologies, mentoring aspiring PMs, 
+              You'll find me exploring new technologies 
               or experimenting with the latest design tools. I believe great products 
               are born from the perfect blend of empathy, data, and relentless curiosity.
             </p>

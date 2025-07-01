@@ -77,10 +77,10 @@ export const Header = () => {
               </button>
             ))}
             
-            {/* Enhanced Blog Button with dynamic gradient */}
+            {/* Enhanced Blog Button with curved design */}
             <button
               onClick={() => scrollToSection('blog')}
-              className="group relative inline-flex items-center justify-center bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 dark:from-blue-500 dark:via-indigo-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:via-indigo-600 dark:hover:to-purple-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-500 hover:scale-105 transform shadow-lg hover:shadow-xl overflow-hidden"
+              className="group relative inline-flex items-center justify-center bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 dark:from-blue-500 dark:via-indigo-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:via-indigo-600 dark:hover:to-purple-600 text-white px-4 py-2 rounded-2xl font-medium transition-all duration-500 hover:scale-105 transform shadow-lg hover:shadow-xl overflow-hidden"
             >
               <span className="relative z-10">Blog</span>
               {/* Animated background overlay */}
@@ -114,10 +114,10 @@ export const Header = () => {
                 </button>
               ))}
               
-              {/* Mobile Blog Button with enhanced gradient */}
+              {/* Mobile Blog Button with curved design */}
               <button
                 onClick={() => scrollToSection('blog')}
-                className="mx-4 inline-flex items-center justify-center bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 dark:from-blue-500 dark:via-indigo-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:via-indigo-600 dark:hover:to-purple-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-500"
+                className="mx-4 inline-flex items-center justify-center bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 dark:from-blue-500 dark:via-indigo-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:via-indigo-600 dark:hover:to-purple-600 text-white px-4 py-2 rounded-2xl font-medium transition-all duration-500"
               >
                 <span>Blog</span>
               </button>

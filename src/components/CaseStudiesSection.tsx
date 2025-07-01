@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -178,24 +179,34 @@ export const CaseStudiesSection = () => {
                     <div className="space-y-6">
                       {study.isCanvaEmbed ? (
                         <div className="w-full">
-                          <div className="relative w-full" style={{ paddingBottom: '56.25%', height: 0 }}>
-                            <iframe
-                              src={study.canvaLink}
-                              className="absolute top-0 left-0 w-full h-full border-0 rounded-lg shadow-xl"
-                              allowFullScreen
-                              title={study.title}
+                          {/* Replace iframe with a preview image and button */}
+                          <div className="relative w-full h-96 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 rounded-xl overflow-hidden shadow-xl border border-slate-200/50 dark:border-slate-700/50">
+                            <img
+                              src={study.image}
+                              alt={study.title}
+                              className="w-full h-full object-cover"
                             />
+                            <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-20`} />
+                            
+                            {/* Overlay with call-to-action */}
+                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                              <div className="text-center text-white">
+                                <h3 className="text-2xl font-bold mb-4">View Complete Case Study</h3>
+                                <p className="text-lg mb-6 opacity-90">Click below to view the full presentation</p>
+                              </div>
+                            </div>
                           </div>
+                          
                           <div className="mt-6 text-center">
-                            <Button asChild className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
+                            <Button asChild className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-3 text-lg">
                               <a 
                                 href={study.canvaLink} 
                                 target="_blank" 
                                 rel="noopener noreferrer"
                                 className="flex items-center space-x-2"
                               >
-                                <ExternalLink className="w-4 h-4" />
-                                <span>View Full Presentation</span>
+                                <ExternalLink className="w-5 h-5" />
+                                <span>View Case Study Presentation</span>
                               </a>
                             </Button>
                           </div>
