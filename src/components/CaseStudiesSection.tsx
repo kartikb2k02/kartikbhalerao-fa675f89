@@ -48,7 +48,7 @@ export const CaseStudiesSection = () => {
       subtitle: "Behavioral Analysis & Insight Generation",
       description: "Led comprehensive user research studies to understand customer pain points and identify opportunities for product improvement across multiple touchpoints.",
       tags: ["Product Teardown", "Behavioral Analysis", "Data Analytics", "Customer Insights"],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+      image: "/lovable-uploads/b6681943-085f-4f56-ad98-ba1fac93c64a.png",
       gradient: "from-purple-500 to-pink-500",
       details: "Designed and executed user research methodologies to capture actionable insights from customer behavior patterns. Utilized both qualitative and quantitative approaches to inform product decisions.",
       canvaLink: "https://www.canva.com/design/DAGp85VdazI/QqEN-1mCN8dEuaW-PtOIbQ/view",
@@ -66,7 +66,7 @@ export const CaseStudiesSection = () => {
       subtitle: "Strategic Product Improvement Analysis", 
       description: "Strategic analysis of Google Pay's feature set with focus on user engagement and retention improvements through data-driven insights.",
       tags: ["Product Strategy", "Feature Analysis", "User Research", "Competitive Analysis"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      image: "/lovable-uploads/9b4dd787-aeb2-4969-8fc0-a1dd907efea8.png",
       gradient: "from-blue-500 to-indigo-600",
       details: "Deep dive into Google Pay's product features, analyzing user flows and identifying strategic improvements through comprehensive teardown methodology. Focused on enhancing user engagement and streamlining payment processes.",
       canvaLink: "https://www.canva.com/design/DAGotvS1P4Y/SczH9ACLAO3FxM0iSaf44Q/view",
@@ -278,8 +278,13 @@ export const CaseStudiesSection = () => {
           <p className="text-slate-600 dark:text-slate-400 mb-6 max-w-2xl mx-auto">
             These case studies represent just a glimpse of my product management approach. Let's discuss how I can help drive your product's success.
           </p>
-          <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            Get In Touch
+          <Button 
+            asChild 
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+          >
+            <a href="mailto:Kartikbhalerao948@gmail.com">
+              Let's Talk
+            </a>
           </Button>
         </div>
       </div>

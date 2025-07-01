@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { ChevronDown, ChevronUp, Lightbulb, Briefcase, GraduationCap, Calendar, MapPin } from "lucide-react";
 
@@ -19,6 +18,7 @@ export const ExperienceSection = () => {
         "📋 PRD & Documentation Ownership"
       ],
       gradient: "from-blue-500 to-blue-700",
+      status: "Current",
       details: [
         {
           title: "Competitor Analysis",
@@ -54,6 +54,7 @@ export const ExperienceSection = () => {
         "🚀 Go-To-Market Readiness"
       ],
       gradient: "from-blue-600 to-indigo-700",
+      status: "Completed",
       details: [
         {
           title: "Problem Discovery & Opportunity Mapping",
@@ -135,7 +136,7 @@ export const ExperienceSection = () => {
               
               <div className="mt-4 lg:mt-0">
                 <span className={`inline-block bg-gradient-to-r ${exp.gradient} text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg`}>
-                  Current
+                  {exp.status}
                 </span>
               </div>
             </div>
