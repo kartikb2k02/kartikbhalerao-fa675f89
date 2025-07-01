@@ -77,12 +77,14 @@ export const Header = () => {
               </button>
             ))}
             
-            {/* Blog Button without LinkedIn icon */}
+            {/* Enhanced Blog Button with dynamic gradient */}
             <button
               onClick={() => scrollToSection('blog')}
-              className="group inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105 transform shadow-lg hover:shadow-xl"
+              className="group relative inline-flex items-center justify-center bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 dark:from-blue-500 dark:via-indigo-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:via-indigo-600 dark:hover:to-purple-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-500 hover:scale-105 transform shadow-lg hover:shadow-xl overflow-hidden"
             >
-              <span>Blog</span>
+              <span className="relative z-10">Blog</span>
+              {/* Animated background overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </button>
 
             {/* Theme Toggle */}
@@ -112,10 +114,10 @@ export const Header = () => {
                 </button>
               ))}
               
-              {/* Mobile Blog Button without LinkedIn icon */}
+              {/* Mobile Blog Button with enhanced gradient */}
               <button
                 onClick={() => scrollToSection('blog')}
-                className="mx-4 inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300"
+                className="mx-4 inline-flex items-center justify-center bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 dark:from-blue-500 dark:via-indigo-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:via-indigo-600 dark:hover:to-purple-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-500"
               >
                 <span>Blog</span>
               </button>
