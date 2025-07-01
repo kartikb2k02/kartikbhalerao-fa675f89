@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -78,12 +77,12 @@ export const CaseStudiesSection = () => {
         "Feature prioritization using MoSCoW method",
         "Data-driven improvement proposals"
       ]
-    }
+    },
     {
       title: "Product Requirement Document - Gullak(Fintech Product)",
       subtitle: "A savings-led fintech app designed to empower rural women with financial independence.", 
       description: "This PRD outlines the core features, user flows, and business logic for Gullak — a goal-based savings application that enables underserved users, especially rural women, to manage and grow their finances through intuitive micro-saving mechanisms, personalized nudges, and trust-building features.",
-      tags: ["Product Strategy", "Savings App , "Fintech", "User Research", "Competitive Analysis"],
+      tags: ["Product Strategy", "Savings App", "Fintech", "User Research", "Competitive Analysis"],
       image: "/lovable-uploads/9b4dd787-aeb2-4969-8fc0-a1dd907efea8.png",
       gradient: "from-blue-500 to-indigo-600",
       details: "Deep dive into Google Pay's product features, analyzing user flows and identifying strategic improvements through comprehensive teardown methodology. Focused on enhancing user engagement and streamlining payment processes.",
@@ -300,7 +299,7 @@ export const CaseStudiesSection = () => {
             asChild 
             className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
-            <a href="mailto:Kartikbhalerao948@gmail.com">
+            <a href="https://www.linkedin.com/in/kartik-bhalerao-5b5a98226/" target="_blank" rel="noopener noreferrer">
               Let's Talk
             </a>
           </Button>
