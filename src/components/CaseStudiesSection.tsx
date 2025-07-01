@@ -79,6 +79,24 @@ export const CaseStudiesSection = () => {
         "Data-driven improvement proposals"
       ]
     }
+    {
+      title: "Product Requirement Document - Gullak(Fintech Product)",
+      subtitle: "A savings-led fintech app designed to empower rural women with financial independence.", 
+      description: "This PRD outlines the core features, user flows, and business logic for Gullak — a goal-based savings application that enables underserved users, especially rural women, to manage and grow their finances through intuitive micro-saving mechanisms, personalized nudges, and trust-building features.",
+      tags: ["Product Strategy", "Savings App",'Fintech', "User Research", "Competitive Analysis"],
+      image: "/lovable-uploads/9b4dd787-aeb2-4969-8fc0-a1dd907efea8.png",
+      gradient: "from-blue-500 to-indigo-600",
+      details: "Deep dive into Google Pay's product features, analyzing user flows and identifying strategic improvements through comprehensive teardown methodology. Focused on enhancing user engagement and streamlining payment processes.",
+      canvaLink: "https://www.canva.com/design/DAGpBZlI3X0/nX9u0jm9rawlh7BAOT2btQ/view",
+      isCanvaEmbed: true,
+      icon: <Target className="w-6 h-6" />,
+      outcomes: [
+        "Comprehensive competitive analysis of payment platforms",
+        "User flow optimization recommendations", 
+        "Feature prioritization using MoSCoW method",
+        "Data-driven improvement proposals"
+      ]
+    }
   ];
 
   return (
