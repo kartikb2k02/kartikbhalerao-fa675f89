@@ -70,27 +70,63 @@ const About = () => {
 
       <div className="relative z-10 pt-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
-          {/* Enhanced Header Section */}
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-100 to-indigo-100 px-6 py-3 rounded-full text-blue-600 font-medium text-base mb-8 shadow-lg backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <span className="text-xl animate-bounce">👋</span>
-              <span>About Me</span>
+          {/* Modern Card-based Header */}
+          <div className="mb-20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Left side - Content */}
+              <div className="space-y-8">
+                <div className="flex items-center space-x-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-xl">
+                    <img
+                      src="/lovable-uploads/9fcfee71-4f00-4d9b-81a1-24e215cf0996.png"
+                      alt="Kartik Bhalerao"
+                      className="w-full h-full rounded-2xl object-cover"
+                    />
+                  </div>
+                  <div>
+                    <span className="text-blue-600 font-semibold text-lg">👋 Hi, I'm</span>
+                    <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight">
+                      Kartik Bhalerao
+                    </h1>
+                  </div>
+                </div>
+                
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border-l-4 border-blue-500 shadow-lg">
+                  <h2 className="text-2xl font-bold text-slate-900 mb-3">Product Manager</h2>
+                  <p className="text-lg text-slate-700 leading-relaxed">
+                    Passionate about building user-centric products that drive real business impact through data-driven decisions and strategic thinking.
+                  </p>
+                </div>
+              </div>
+
+              {/* Right side - Visual Element */}
+              <div className="relative">
+                <div className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-3xl p-1 shadow-2xl">
+                  <div className="bg-white rounded-3xl p-8 h-80 flex flex-col justify-center items-center space-y-6">
+                    <div className="grid grid-cols-3 gap-4 w-full max-w-xs">
+                      <div className="h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
+                        <span className="text-blue-600 font-bold text-sm">Strategy</span>
+                      </div>
+                      <div className="h-16 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-xl flex items-center justify-center">
+                        <span className="text-indigo-600 font-bold text-sm">Research</span>
+                      </div>
+                      <div className="h-16 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl flex items-center justify-center">
+                        <span className="text-purple-600 font-bold text-sm">Analytics</span>
+                      </div>
+                      <div className="h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center col-span-2">
+                        <span className="text-green-600 font-bold text-sm">User Experience</span>
+                      </div>
+                      <div className="h-16 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl flex items-center justify-center">
+                        <span className="text-orange-600 font-bold text-sm">MVP</span>
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-slate-600 font-medium">Building Products That Matter</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-slate-900 mb-8 tracking-tight leading-none">
-              Get to Know{" "}
-              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-pulse">
-                Me
-              </span>
-            </h1>
-            
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 mx-auto rounded-full mb-8 shadow-lg"></div>
-            
-            <p className="text-xl sm:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-light">
-              Learn about my journey, skills, and passion for product management
-              <br className="hidden sm:block" />
-              and creating meaningful user experiences
-            </p>
           </div>
 
           {/* About Section Content */}
