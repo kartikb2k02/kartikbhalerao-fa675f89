@@ -19,8 +19,9 @@ const BlogPost = () => {
     const foundPost = blogPosts.find(p => p.id === parseInt(id || ""));
     if (foundPost) {
       setPost(foundPost);
-      const content = getMarkdownContent(foundPost.slug, foundPost);
-      setMarkdownContent(content);
+      getMarkdownContent(foundPost.slug, foundPost).then(content => {
+        setMarkdownContent(content);
+      });
     }
   }, [id]);
 
