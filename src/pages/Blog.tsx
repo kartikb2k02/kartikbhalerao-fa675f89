@@ -23,7 +23,7 @@ const Blog = () => {
       date: "2024-06-15",
       readTime: "8 min read",
       tags: ["Product Management", "Analysis", "Learning"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop"
+      image: "/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.png"
     },
     {
       id: 2,
