@@ -1,8 +1,12 @@
 # 🧠 Introduction: Why "AI-First" Matters Now
 
+![AI Strategy](https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
+
 The rise of generative AI, large language models (LLMs), and data-rich ecosystems has changed the way we build products. Gone are the days when AI was just a feature — today, it's a foundation.
 
 Whether you're at a startup or a scaled enterprise, embracing an AI-first mindset is no longer optional — it's strategic.
+
+---
 
 ## 🔍 1. What Is an AI-First Product Strategy?
 
@@ -14,7 +18,11 @@ An AI-first strategy involves:
 - **Starting with what data is available and what insights can be derived**
 - **Building feedback loops for continuous learning**
 
+---
+
 ## 🛠 2. Rethinking Product Vision: From Pain Points to Predictions
+
+![Product Vision](https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
 
 Traditional product thinking begins with a user's problem.
 
@@ -50,7 +58,11 @@ Grammarly has since evolved into an AI-first assistant that not only fixes mista
 - AI rewrites for intent (e.g., assertive, polite, confident)
 - Real-time suggestions that anticipate user need
 
+---
+
 ## 🔁 3. Build vs Integrate: Choosing Your AI Path
+
+![Build vs Integrate](https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
 
 As part of your AI product strategy, deciding whether to build AI capabilities in-house or integrate third-party solutions is critical. 
 
@@ -59,7 +71,11 @@ As part of your AI product strategy, deciding whether to build AI capabilities i
 
 A strategic approach often starts with integration for speed, while planning to build over time as the product matures and the value becomes proven.
 
+---
+
 ## 🧩 4. Aligning AI with the Product Roadmap
+
+![Product Roadmap](https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
 
 When introducing AI, ask:
 
@@ -67,7 +83,11 @@ When introducing AI, ask:
 - Where can predictions or automation improve UX?
 - How will we measure accuracy and trust?
 
+---
+
 ## 🔒 5. Don't Ignore Risk: Ethics, Bias & Transparency
+
+![Ethics and Transparency](https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
 
 🔑 **AI brings risks:**
 
@@ -81,7 +101,11 @@ When introducing AI, ask:
 - Fallback modes if the AI fails
 - Human-in-the-loop systems for high-stakes use cases
 
+---
+
 ## 📈 6. Metrics That Matter in AI-First Products
+
+![Metrics and Analytics](https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
 
 Traditional product metrics (retention, MAU) still matter, but AI-first products need new lenses:
 
@@ -89,7 +113,11 @@ Traditional product metrics (retention, MAU) still matter, but AI-first products
 - **Prediction value** (Did it save time, money, effort?)
 - **User trust & overrides**
 
+---
+
 ## 🔄 7. Implementing a Multi-Directional Strategy
+
+![Strategy Implementation](https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
 
 > "AI-first success comes from aligning top-down vision with bottom-up innovation."
 
@@ -111,7 +139,11 @@ A truly effective GenAI implementation doesn't come from one direction. You need
 
 💡 Together, these strategies balance big-picture planning with ground-level agility — making your AI roadmap both visionary and actionable.
 
+---
+
 ## 🔑 8. The Three Critical Elements of AI-First Strategy
+
+![Critical Elements](https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
 
 To guide both top-down and bottom-up efforts, your AI product strategy should be rooted in three foundational areas:
 
@@ -127,7 +159,11 @@ To guide both top-down and bottom-up efforts, your AI product strategy should be
 - Mitigate bias, ensure transparency, and protect user privacy
 - Build trust early by making responsibility a core design principle
 
+---
+
 ## 🛤️ 9. AI-First Roadmap: From Strategy to Execution
+
+![Roadmap Execution](https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
 
 Here's a sample roadmap to take your AI product from vision to value:
 
@@ -135,6 +171,8 @@ Here's a sample roadmap to take your AI product from vision to value:
 2. **Experimentation Phase** (Weeks 5-12): Build MVPs, test with users
 3. **Integration Phase** (Weeks 13-24): Integrate successful experiments
 4. **Optimization Phase** (Ongoing): Continuously improve model performance
+
+---
 
 ## 🧭 Conclusion: Evolving Your PM Mindset
 
