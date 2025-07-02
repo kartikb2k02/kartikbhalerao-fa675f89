@@ -47,7 +47,7 @@ export const AboutSection = () => {
             
             <div className="relative z-10">
               <h3 className="text-3xl font-bold text-slate-900 mb-8 flex items-center space-x-3">
-                <span>Professional Experience</span>
+                <span>Experience</span>
                 <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse"></div>
               </h3>
               
@@ -65,7 +65,7 @@ export const AboutSection = () => {
                     <ul className="space-y-3 text-slate-700">
                       <li className="flex items-start space-x-3">
                         <span className="text-blue-500 mt-1.5">✦</span>
-                        <span>Spearheaded the development of a B2C SaaS product for financial planning, improving user onboarding and retention by 30% through continuous user feedback loops.</span>
+                        <span>Leading the development of a B2C fintech product focused on personal finance—working from initial idea validation all the way to launch and iteration.</span>
                       </li>
                       <li className="flex items-start space-x-3">
                         <span className="text-blue-500 mt-1.5">✦</span>
@@ -73,19 +73,19 @@ export const AboutSection = () => {
                       </li>
                       <li className="flex items-start space-x-3">
                         <span className="text-blue-500 mt-1.5">✦</span>
-                        <span>Led customer interviews and usability testing to identify pain points, prioritize backlog items, and define product-market fit.</span>
+                        <span>Spending time with users (calls, feedback sessions, usability tests) to understand what’s working, what’s confusing, and where the real value lies.</span>
                       </li>
                       <li className="flex items-start space-x-3">
                         <span className="text-blue-500 mt-1.5">✦</span>
-                        <span>Created PRDs, user journey maps, and wireframes to align stakeholders across engineering, marketing, and customer support.</span>
+                        <span>Writing clear PRDs and keeping the backlog organized—not just for the sake of process, but to make sure we’re solving the right problems.</span>
                       </li>
                       <li className="flex items-start space-x-3">
                         <span className="text-blue-500 mt-1.5">✦</span>
-                        <span>Monitored product analytics using tools like Mixpanel and PostHog to drive data-informed decisions and improve feature adoption rates.</span>
+                        <span>Using tools like Mixpanel and PostHog to track usage and figure out what to double down on, what to tweak, and what to kill.</span>
                       </li>
                       <li className="flex items-start space-x-3">
                         <span className="text-blue-500 mt-1.5">✦</span>
-                        <span>Introduced an AI co-pilot concept within the platform, assisting users with financial insights and budgeting tips based on behavioral data.</span>
+                        <span>Recently started exploring how we can integrate AI into the product to give users smarter financial recommendations without overwhelming them.</span>
                       </li>
                     </ul>
                   </div>
@@ -104,23 +104,23 @@ export const AboutSection = () => {
                     <ul className="space-y-3 text-slate-700">
                       <li className="flex items-start space-x-3">
                         <span className="text-indigo-500 mt-1.5">✦</span>
-                        <span>Analyzed sales and marketing data to identify trends and optimize campaign performance, leading to a 15% increase in lead conversion.</span>
+                        <span>Took ownership of building an internal analytics dashboard to help the sales and marketing teams track campaign performance and lead conversions more effectively.</span>
                       </li>
                       <li className="flex items-start space-x-3">
                         <span className="text-indigo-500 mt-1.5">✦</span>
-                        <span>Built interactive dashboards in Google Data Studio and Excel for cross-functional teams to monitor KPIs in real-time.</span>
+                        <span>Worked closely with cross-functional teams—especially data and medical affairs—to gather requirements and prioritize features that solved real user pain points.</span>
                       </li>
                       <li className="flex items-start space-x-3">
                         <span className="text-indigo-500 mt-1.5">✦</span>
-                        <span>Cleaned and transformed large datasets using SQL and Python to generate weekly performance reports for leadership.</span>
+                        <span>Helped translate scattered requests and ideas into clear user stories and wireframes, which made collaboration with the dev team much smoother.</span>
                       </li>
                       <li className="flex items-start space-x-3">
                         <span className="text-indigo-500 mt-1.5">✦</span>
-                        <span>Collaborated with the product and medical teams to evaluate patient engagement metrics and suggest improvements in outreach strategies.</span>
+                        <span>Set up a basic feedback loop with key stakeholders that helped us ship faster and improve features based on real usage.</span>
                       </li>
                       <li className="flex items-start space-x-3">
                         <span className="text-indigo-500 mt-1.5">✦</span>
-                        <span>Created automated reporting pipelines that reduced manual reporting efforts by over 60%.</span>
+                        <span>Also dabbled in setting up automated reports using SQL to replace some of the manual Excel-based workflows, which saved the team a good chunk of time every week.</span>
                       </li>
                     </ul>
                   </div>
