@@ -5,6 +5,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { CaseStudiesSection } from "@/components/CaseStudiesSection";
 import { SkillsSection } from "@/components/SkillsSection";
 import { CertificationsSection } from "@/components/CertificationsSection";
+import { MyWorkSection } from "@/components/MyWorkSection";
 import { FooterSection } from "@/components/FooterSection";
 import { Header } from "@/components/Header";
 import { WelcomeToast } from "@/components/WelcomeToast";
@@ -93,6 +94,13 @@ const Index = () => {
         <section id="certifications" className="py-32 scroll-mt-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <CertificationsSection />
+          </div>
+        </section>
+
+        {/* My Work Section */}
+        <section id="my-work" className="py-32 bg-white/80 dark:bg-slate-800/30 backdrop-blur-sm scroll-mt-16 border-y border-slate-200/60 dark:border-blue-200/20 dark:dark:border-blue-700/20">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <MyWorkSection />
           </div>
         </section>
 

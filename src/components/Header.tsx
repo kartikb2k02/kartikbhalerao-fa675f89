@@ -38,9 +38,9 @@ export const Header = () => {
 
   const navItems = [
     { label: 'About', id: 'about' },
-    
     { label: 'Case Studies', id: 'case-studies' },
     { label: 'Skills', id: 'skills' },
+    { label: 'My Work', id: 'my-work' },
   ];
 
   return (
