@@ -4,15 +4,6 @@ import { Mail, Phone, MapPin, Heart, Coffee, Target } from "lucide-react";
 export const AboutSection = () => {
   return (
     <section className="max-w-6xl mx-auto">
-      <div className="text-center mb-20">
-        <h2 className="text-5xl sm:text-6xl font-bold text-slate-900 dark:text-white mb-8 tracking-tight">
-          Product Manager with a 
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400"> User-First </span>
-          Mindset
-        </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto rounded-full"></div>
-      </div>
-      
       <div className="space-y-12">
         {/* Main content - Enhanced design */}
         <div className="space-y-8">
