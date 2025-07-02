@@ -146,12 +146,12 @@ export const ExperienceSection = () => {
               {exp.highlights.map((highlight, i) => (
                 <div
                   key={i}
-                  className="flex items-center space-x-3 p-4 bg-white/60 dark:bg-slate-700/40 border border-blue-200/30 dark:border-blue-700/30 rounded-xl hover:bg-white/80 dark:hover:bg-slate-700/60 transition-all duration-200 shadow-sm hover:shadow-md"
+                  className="flex items-start space-x-3 p-4 bg-white/60 dark:bg-slate-700/40 border border-blue-200/30 dark:border-blue-700/30 rounded-xl hover:bg-white/80 dark:hover:bg-slate-700/60 transition-all duration-200 shadow-sm hover:shadow-md"
                 >
-                  <span className="text-lg flex-shrink-0">
+                  <span className="text-lg flex-shrink-0 mt-0.5">
                     {highlight.split(' ')[0]}
                   </span>
-                  <span className="text-slate-700 dark:text-slate-200 font-medium text-sm">
+                  <span className="text-slate-700 dark:text-slate-200 font-medium text-sm leading-relaxed">
                     {highlight.split(' ').slice(1).join(' ')}
                   </span>
                 </div>
@@ -183,6 +183,17 @@ export const ExperienceSection = () => {
                     <p className="text-slate-700 dark:text-slate-300 leading-relaxed">{detail.description}</p>
                   </div>
                 ))}
+              </div>
+            )}
+            
+            {/* Add decorative line after Decision Machine experience */}
+            {index === 0 && (
+              <div className="mt-12 mb-4 flex items-center justify-center">
+                <div className="flex-1 h-px bg-gradient-to-r from-transparent via-blue-300 dark:via-blue-600 to-transparent"></div>
+                <div className="mx-4 p-2 bg-blue-50 dark:bg-blue-900/30 rounded-full">
+                  <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse"></div>
+                </div>
+                <div className="flex-1 h-px bg-gradient-to-r from-transparent via-blue-300 dark:via-blue-600 to-transparent"></div>
               </div>
             )}
           </div>
