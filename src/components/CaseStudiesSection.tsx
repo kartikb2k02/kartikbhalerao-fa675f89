@@ -383,45 +383,6 @@ export const CaseStudiesSection = () => {
             })}
           </CarouselContent>
         </Carousel>
-
-        {/* Enhanced Navigation Controls */}
-        <div className="flex items-center justify-center mt-12 space-x-8">
-          {/* Enhanced Dot Indicators */}
-          <div className="flex space-x-3">
-            {Array.from({ length: count }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => scrollTo(index)}
-                className={`relative transition-all duration-500 ${
-                  index === current - 1
-                    ? "w-8 h-3 bg-gradient-to-r from-blue-500 to-indigo-500 dark:from-blue-400 dark:to-indigo-400 rounded-full scale-110"
-                    : "w-3 h-3 bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500 rounded-full hover:scale-125"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              >
-                {index === current - 1 && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-500 dark:from-blue-400 dark:to-indigo-400 rounded-full animate-pulse"></div>
-                )}
-              </button>
-            ))}
-          </div>
-
-          {/* Enhanced Progress Indicator */}
-          <div className="flex items-center space-x-4 text-sm text-slate-500 dark:text-slate-400">
-            <div className="flex items-center space-x-2">
-              <span className="font-medium">{current}</span>
-              <div className="w-20 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 dark:from-blue-400 dark:to-indigo-400 transition-all duration-700 rounded-full relative"
-                  style={{ width: `${(current / count) * 100}%` }}
-                >
-                  <div className="absolute inset-0 bg-white/30 rounded-full animate-pulse"></div>
-                </div>
-              </div>
-              <span className="font-medium">{count}</span>
-            </div>
-          </div>
-        </div>
       </div>
       
       {/* Call to Action */}
