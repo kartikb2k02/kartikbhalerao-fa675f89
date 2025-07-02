@@ -8,33 +8,6 @@ export const HeroSection = () => {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 lg:px-8 py-20 relative">
       <div className="max-w-6xl mx-auto space-y-16 relative z-10">
-        {/* Enhanced Profile Image with PM-focused styling */}
-        <div className="relative inline-block mb-8">
-          <div className="relative">
-            <div className="w-52 h-52 sm:w-60 sm:h-60 mx-auto relative">
-              <img
-                src="/lovable-uploads/9fcfee71-4f00-4d9b-81a1-24e215cf0996.png"
-                alt="Kartik Bhalerao - Product Manager"
-                className="w-full h-full rounded-full shadow-2xl border-4 border-white hover:scale-105 transition-all duration-500 object-cover"
-              />
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-xl"></div>
-            </div>
-          </div>
-          
-          {/* PM Badge */}
-          <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 rounded-2xl shadow-xl animate-bounce">
-            <Briefcase className="w-6 h-6" />
-          </div>
-          
-          {/* Floating metrics */}
-          <div className="absolute -top-4 -left-4 bg-white/90 backdrop-blur-sm border border-blue-200/30 rounded-xl p-3 shadow-lg animate-float">
-            <BarChart3 className="w-5 h-5 text-blue-600" />
-          </div>
-          
-          <div className="absolute -top-2 -right-8 bg-white/90 backdrop-blur-sm border border-purple-200/30 rounded-xl p-3 shadow-lg animate-float-slow">
-            <Lightbulb className="w-5 h-5 text-purple-600" />
-          </div>
-        </div>
         
         {/* Enhanced Main Content Card */}
         <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-12 border border-white/30 dark:border-slate-700/30 shadow-2xl shadow-blue-500/20 hover:shadow-blue-500/30 transition-all duration-500">
@@ -44,12 +17,6 @@ export const HeroSection = () => {
                 Kartik Bhalerao
               </h1>
               
-              <div className="flex items-center justify-center space-x-4 mb-6">
-                <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 dark:from-blue-400/10 dark:to-indigo-400/10 px-4 py-2 rounded-full border border-blue-200/30 dark:border-blue-700/30">
-                  <Briefcase className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  <span className="text-blue-600 dark:text-blue-400 font-semibold text-sm">Product Manager</span>
-                </div>
-              </div>
               
               <h2 className="text-2xl sm:text-4xl text-blue-600 font-bold mb-4">
                 Product Manager
