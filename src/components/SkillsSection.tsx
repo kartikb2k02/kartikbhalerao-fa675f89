@@ -195,7 +195,6 @@ export const SkillsSection = () => {
                   {competency.icon}
                 </div>
                 <span className="font-bold text-slate-900 dark:text-white text-xl">{competency.name}</span>
-                <span className="text-sm text-slate-500 dark:text-slate-400 ml-auto font-semibold bg-slate-100 dark:bg-slate-700 px-3 py-1 rounded-full">{competency.level}%</span>
               </div>
               <div className="h-5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden shadow-inner">
                 <div 
@@ -210,9 +209,9 @@ export const SkillsSection = () => {
         </div>
       </div>
 
-      {/* Enhanced Tools & Platforms */}
+      {/* Enhanced All Tools & Platforms */}
       <div>
-        <h3 className="text-4xl font-bold text-slate-900 dark:text-white mb-12 text-center">Tools & Platforms</h3>
+        <h3 className="text-4xl font-bold text-slate-900 dark:text-white mb-12 text-center">All Tools & Platforms</h3>
         
         <Tabs defaultValue="design" className="w-full">
           <div className="mb-12 overflow-x-auto">

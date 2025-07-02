@@ -1,5 +1,5 @@
 
-import { Linkedin, Code, Heart } from "lucide-react";
+import { Linkedin, Heart, Mail, MapPin, ExternalLink } from "lucide-react";
 
 export const FooterSection = () => {
   return (
@@ -15,34 +15,54 @@ export const FooterSection = () => {
         {/* Main Content */}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 tracking-tight">
-            Ready to Build Something 
-            <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent"> Amazing?</span>
+            Let's Build Something 
+            <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent"> Extraordinary </span>
+            Together
           </h2>
           
           <p className="text-slate-300 mb-12 text-xl max-w-3xl mx-auto leading-relaxed">
-            I'm always excited to discuss product challenges, share insights, or explore new opportunities. 
-            Let's create impactful solutions together.
+            Passionate about product innovation and user-centric solutions. Always open to discussing new opportunities, 
+            collaborations, and exciting product challenges.
           </p>
           
-          {/* Enhanced CTA Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
+          {/* Enhanced Contact Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            {/* LinkedIn */}
             <a
               href="https://www.linkedin.com/in/kartik-bhalerao/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center space-x-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 transform shadow-xl hover:shadow-2xl backdrop-blur-sm"
+              className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105 transform shadow-xl hover:shadow-2xl"
             >
-              <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-              <span>Connect on LinkedIn</span>
+              <div className="flex items-center justify-center w-16 h-16 bg-blue-600 rounded-xl mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <Linkedin className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-white font-semibold text-lg mb-2">Connect</h3>
+              <p className="text-slate-300 text-sm">Let's connect on LinkedIn</p>
+              <ExternalLink className="w-4 h-4 text-blue-400 mx-auto mt-2 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
-            
+
+            {/* Email */}
             <a
-              href="/blog"
-              className="group inline-flex items-center justify-center space-x-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 transform shadow-xl hover:shadow-2xl"
+              href="mailto:kartikbhalerao29@gmail.com"
+              className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105 transform shadow-xl hover:shadow-2xl"
             >
-              <Code className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-              <span>Read My Blog</span>
+              <div className="flex items-center justify-center w-16 h-16 bg-emerald-600 rounded-xl mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <Mail className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-white font-semibold text-lg mb-2">Email</h3>
+              <p className="text-slate-300 text-sm">kartikbhalerao29@gmail.com</p>
+              <ExternalLink className="w-4 h-4 text-emerald-400 mx-auto mt-2 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
+
+            {/* Location */}
+            <div className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 transition-all duration-300 shadow-xl">
+              <div className="flex items-center justify-center w-16 h-16 bg-purple-600 rounded-xl mx-auto mb-4">
+                <MapPin className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-white font-semibold text-lg mb-2">Location</h3>
+              <p className="text-slate-300 text-sm">Mumbai, India</p>
+            </div>
           </div>
         </div>
         
@@ -50,19 +70,23 @@ export const FooterSection = () => {
         <div className="border-t border-slate-700/50 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-sm">KB</span>
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                <img
+                  src="/lovable-uploads/9fcfee71-4f00-4d9b-81a1-24e215cf0996.png"
+                  alt="Kartik Bhalerao"
+                  className="w-full h-full rounded-xl object-cover"
+                />
               </div>
               <div>
                 <span className="font-bold text-white text-lg">Kartik Bhalerao</span>
-                <p className="text-xs text-blue-400 font-medium">Associate Product Manager</p>
+                <p className="text-xs text-blue-400 font-medium">Product Manager</p>
               </div>
             </div>
             
             <div className="flex items-center space-x-2 text-slate-400 text-sm">
-              <span>© 2025 Crafted with</span>
+              <span>© 2025 Designed with</span>
               <Heart className="w-4 h-4 text-red-400 animate-pulse" />
-              <span>and lots of</span>
+              <span>and endless</span>
               <span className="text-lg">☕</span>
             </div>
           </div>
