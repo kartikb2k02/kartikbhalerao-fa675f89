@@ -155,6 +155,14 @@ It reshapes how products are imagined, built, and improved. Adopting this mindse
 
 ---
 
+## 📖 Read the Full Article on Medium
+
+For the complete version of this article with additional insights and examples, check out:
+
+**[AI-First Product Strategy: How to Build with Intelligence at the Core](https://medium.com/@kartikbhalerao948/ai-first-product-strategy-how-to-build-with-intelligence-at-the-core-e04cf442cbae)**
+
+---
+
 *What's your experience with AI-first product development? Share your insights in the comments below.*
 `;
   }
