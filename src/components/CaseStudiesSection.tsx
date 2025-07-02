@@ -384,26 +384,6 @@ export const CaseStudiesSection = () => {
           </CarouselContent>
         </Carousel>
       </div>
-      
-      {/* Call to Action */}
-      <div className="text-center mt-16">
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-8 border border-blue-200/30 dark:border-blue-700/30 backdrop-blur-sm">
-          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-            Want to see more of my work?
-          </h3>
-          <p className="text-slate-600 dark:text-slate-400 mb-6 max-w-2xl mx-auto">
-            These case studies represent just a glimpse of my product management approach. Let's discuss how I can help drive your product's success.
-          </p>
-          <Button 
-            asChild 
-            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-          >
-            <a href="https://www.linkedin.com/in/kartik-bhalerao/" target="_blank" rel="noopener noreferrer">
-              Let's Talk
-            </a>
-          </Button>
-        </div>
-      </div>
     </section>
   );
 };
