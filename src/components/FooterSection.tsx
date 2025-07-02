@@ -12,48 +12,58 @@ export const FooterSection = () => {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 py-20">
-        {/* Enhanced Footer Content */}
+        {/* Interactive Footer Content */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Let's Connect
-          </h2>
-          
-          <p className="text-slate-300 mb-12 text-lg max-w-2xl mx-auto leading-relaxed">
-            Always open to discussing product opportunities, collaborations, and exciting challenges.
-          </p>
-          
-          {/* LinkedIn Contact */}
+          {/* Animated Social Link */}
           <div className="flex justify-center mb-12">
             <a
               href="https://www.linkedin.com/in/kartik-bhalerao/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 hover:bg-white/20 transition-all duration-300 hover:scale-105 transform shadow-xl hover:shadow-2xl max-w-sm"
+              className="group relative bg-gradient-to-br from-blue-600 to-indigo-600 p-6 rounded-2xl hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-500 hover:scale-110 transform"
             >
-              <div className="flex items-center justify-center w-20 h-20 bg-blue-600 rounded-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Linkedin className="w-10 h-10 text-white" />
+              {/* Animated background pulse */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl opacity-0 group-hover:opacity-100 animate-pulse transition-opacity duration-300"></div>
+              
+              {/* LinkedIn icon with rotation */}
+              <div className="relative z-10 flex items-center justify-center w-16 h-16 bg-white/20 rounded-xl group-hover:rotate-12 transition-transform duration-300">
+                <Linkedin className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-white font-semibold text-xl mb-3">Connect on LinkedIn</h3>
-              <p className="text-slate-300 text-sm mb-4">Let's start a conversation about product innovation</p>
-              <div className="inline-flex items-center text-blue-400 font-medium group-hover:translate-x-1 transition-transform duration-300">
-                <span>View Profile</span>
-                <ExternalLink className="w-4 h-4 ml-2" />
+              
+              {/* Animated text */}
+              <div className="relative z-10 mt-4">
+                <h3 className="text-white font-bold text-lg group-hover:scale-105 transition-transform duration-300">
+                  Connect on LinkedIn
+                </h3>
+                <p className="text-blue-100 text-sm mt-1 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                  Let's build something together
+                </p>
               </div>
+              
+              {/* Hover effect overlay */}
+              <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </a>
           </div>
 
-          {/* Quick Contact Info */}
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 text-slate-300">
+          {/* Interactive Contact Links */}
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-12">
+            {/* Email with hover animation */}
             <a 
               href="mailto:kartikbhalerao29@gmail.com"
-              className="flex items-center space-x-2 hover:text-white transition-colors duration-300"
+              className="group flex items-center space-x-3 px-6 py-3 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105"
             >
-              <Mail className="w-5 h-5" />
-              <span>kartikbhalerao29@gmail.com</span>
+              <div className="p-2 bg-emerald-500/20 rounded-lg group-hover:bg-emerald-500/30 transition-colors duration-300">
+                <Mail className="w-5 h-5 text-emerald-400 group-hover:scale-110 transition-transform duration-300" />
+              </div>
+              <span className="text-slate-300 group-hover:text-white transition-colors duration-300">kartikbhalerao29@gmail.com</span>
             </a>
-            <div className="flex items-center space-x-2">
-              <MapPin className="w-5 h-5" />
-              <span>Mumbai, India</span>
+            
+            {/* Location with pulse animation */}
+            <div className="group flex items-center space-x-3 px-6 py-3 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+              <div className="p-2 bg-purple-500/20 rounded-lg group-hover:animate-pulse">
+                <MapPin className="w-5 h-5 text-purple-400" />
+              </div>
+              <span className="text-slate-300 group-hover:text-white transition-colors duration-300">Mumbai, India</span>
             </div>
           </div>
         </div>
