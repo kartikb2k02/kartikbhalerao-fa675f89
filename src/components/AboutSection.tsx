@@ -22,47 +22,29 @@ export const AboutSection = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-transparent to-indigo-50/30 dark:from-blue-900/10 dark:via-transparent dark:to-indigo-900/10 rounded-3xl"></div>
             
             <div className="relative z-10">
-              {/* Main description with better typography */}
               <div className="space-y-6 mb-10">
-                <p className="text-2xl text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
-                  I'm a{" "}
+                <p className="text-2xl text-slate-800 leading-relaxed font-medium">
+                  Hi there! 👋 I'm{" "}
                   <span className="relative inline-block">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 font-bold">
-                      Product Manager
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 font-bold">
+                      Kartik Bhalerao
                     </span>
-                    <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-blue-600/30 to-indigo-600/30 dark:from-blue-400/30 dark:to-indigo-400/30 rounded-full"></div>
-                  </span>{" "}
-                  with{" "}
-                  <span className="relative inline-block">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 font-bold">
-                      1+ years
-                    </span>
-                    <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-blue-600/30 to-indigo-600/30 dark:from-blue-400/30 dark:to-indigo-400/30 rounded-full"></div>
-                  </span>{" "}
-                  of hands-on experience, passionate about uncovering real customer problems and identifying unmet needs.
+                    <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-blue-600/30 to-indigo-600/30 rounded-full"></div>
+                  </span>
+                  , a Product Manager passionate about building user-centric products that drive real business impact. With a background in data analytics and product strategy, I specialize in translating complex problems into simple, scalable solutions.
                 </p>
                 
-                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-                  I specialize in making data-driven decisions, working closely with stakeholders, 
-                  and collaborating across cross-functional teams to deliver impactful solutions that users love.
+                <p className="text-lg text-slate-600 leading-relaxed">
+                  My experience spans across fintech, SaaS, and AI-enabled platforms, where I've led cross-functional teams through the entire product lifecycle—from discovery to launch. I'm a strong advocate of hypothesis-driven development and love using data, user insights, and rapid experimentation (A/B testing, MVPs) to inform product decisions.
                 </p>
-              </div>
-              
-              {/* Enhanced badges */}
-              <div className="flex flex-wrap items-center gap-4">
-                <div className="group/badge flex items-center space-x-3 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 px-5 py-3 rounded-full border border-amber-200/50 dark:border-amber-700/30 hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-300">
-                  <div className="w-8 h-8 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-sm group-hover/badge:scale-110 transition-transform duration-300">
-                    <Coffee className="w-4 h-4 text-white" />
-                  </div>
-                  <span className="text-amber-700 dark:text-amber-300 font-medium text-sm">Coffee Enthusiast</span>
-                </div>
-                
-                <div className="group/badge flex items-center space-x-3 bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 px-5 py-3 rounded-full border border-red-200/50 dark:border-red-700/30 hover:shadow-lg hover:shadow-red-500/20 transition-all duration-300">
-                  <div className="w-8 h-8 bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center justify-center shadow-sm group-hover/badge:scale-110 transition-transform duration-300">
-                    <Heart className="w-4 h-4 text-white" />
-                  </div>
-                  <span className="text-red-700 dark:text-red-300 font-medium text-sm">User Advocate</span>
-                </div>
+
+                <p className="text-lg text-slate-600 leading-relaxed">
+                  Beyond product building, I document my thought process, case studies, and learnings through detailed blogs and product breakdowns. I'm also exploring the intersection of AI and product management to build smarter tools that empower PMs and teams.
+                </p>
+
+                <p className="text-lg text-slate-600 leading-relaxed">
+                  If you're equally obsessed with building meaningful products or just want to talk product, let's connect—I'm always up for great conversations!
+                </p>
               </div>
             </div>
           </div>
