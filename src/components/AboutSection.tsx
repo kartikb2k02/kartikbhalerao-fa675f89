@@ -117,27 +117,6 @@ export const AboutSection = () => {
             </div>
           </div>
 
-          {/* Phone Card */}
-          <div className="group bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-white/40 dark:border-slate-700/40 rounded-2xl p-6 hover:shadow-2xl hover:shadow-green-500/10 dark:hover:shadow-green-400/20 transition-all duration-500 hover:-translate-y-1 cursor-pointer">
-            <div className="flex flex-col items-center text-center space-y-4">
-              <div className="relative">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/30 group-hover:shadow-green-500/50 transition-all duration-300 group-hover:scale-110">
-                  <Phone className="w-8 h-8 text-white" />
-                </div>
-                <div className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-              
-              <div className="space-y-2">
-                <h3 className="font-bold text-slate-900 dark:text-white text-lg group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Phone</h3>
-                <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">Available for quick calls</p>
-                <div className="pt-2">
-                  <p className="text-green-600 dark:text-green-400 font-semibold text-lg hover:underline">
-                    +91 9561438502
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
 
           {/* Location Card */}
           <div className="group bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-white/40 dark:border-slate-700/40 rounded-2xl p-6 hover:shadow-2xl hover:shadow-purple-500/10 dark:hover:shadow-purple-400/20 transition-all duration-500 hover:-translate-y-1 cursor-pointer">

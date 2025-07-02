@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { ThemeToggle } from './ThemeToggle';
+
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,7 +38,7 @@ export const Header = () => {
 
   const navItems = [
     { label: 'About', id: 'about' },
-    { label: 'Experience', id: 'experience' },
+    
     { label: 'Case Studies', id: 'case-studies' },
     { label: 'Skills', id: 'skills' },
   ];
@@ -59,7 +59,11 @@ export const Header = () => {
             className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-3"
           >
             <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-sm">KB</span>
+              <img
+                src="/lovable-uploads/3c59e842-8e07-4b56-8918-3fedc5f8a4e0.png"
+                alt="Kartik Bhalerao"
+                className="w-full h-full rounded-xl object-cover"
+              />
             </div>
             Kartik Bhalerao
           </button>
@@ -87,8 +91,6 @@ export const Header = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </button>
 
-            {/* Theme Toggle */}
-            <ThemeToggle />
           </nav>
 
           {/* Mobile Menu Button */}
@@ -122,10 +124,6 @@ export const Header = () => {
                 <span>Blog</span>
               </button>
 
-              {/* Mobile Theme Toggle */}
-              <div className="px-4">
-                <ThemeToggle />
-              </div>
             </nav>
           </div>
         )}

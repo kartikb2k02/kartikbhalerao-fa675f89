@@ -18,7 +18,7 @@ export const HeroSection = () => {
               <img
                 src="/lovable-uploads/3c59e842-8e07-4b56-8918-3fedc5f8a4e0.png"
                 alt="Kartik Bhalerao - Product Manager"
-                className="w-full h-full rounded-full shadow-2xl border-4 border-white dark:border-slate-800 hover:scale-105 transition-all duration-500 object-cover"
+                className="w-full h-full rounded-full shadow-2xl border-4 border-white hover:scale-105 transition-all duration-500 object-cover"
               />
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-xl"></div>
             </div>
@@ -30,12 +30,12 @@ export const HeroSection = () => {
           </div>
           
           {/* Floating metrics */}
-          <div className="absolute -top-4 -left-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-blue-200/30 dark:border-blue-700/30 rounded-xl p-3 shadow-lg animate-float">
-            <BarChart3 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+          <div className="absolute -top-4 -left-4 bg-white/90 backdrop-blur-sm border border-blue-200/30 rounded-xl p-3 shadow-lg animate-float">
+            <BarChart3 className="w-5 h-5 text-blue-600" />
           </div>
           
-          <div className="absolute -top-2 -right-8 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-purple-200/30 dark:border-purple-700/30 rounded-xl p-3 shadow-lg animate-float-slow">
-            <Lightbulb className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+          <div className="absolute -top-2 -right-8 bg-white/90 backdrop-blur-sm border border-purple-200/30 rounded-xl p-3 shadow-lg animate-float-slow">
+            <Lightbulb className="w-5 h-5 text-purple-600" />
           </div>
         </div>
         
@@ -54,8 +54,8 @@ export const HeroSection = () => {
                 </div>
               </div>
               
-              <h2 className="text-2xl sm:text-4xl text-blue-600 dark:text-blue-400 font-bold mb-4">
-                Associate Product Manager
+              <h2 className="text-2xl sm:text-4xl text-blue-600 font-bold mb-4">
+                Product Manager
               </h2>
             </div>
             

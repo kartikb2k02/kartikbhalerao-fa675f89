@@ -1,7 +1,7 @@
 
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
-import { ExperienceSection } from "@/components/ExperienceSection";
+
 import { CaseStudiesSection } from "@/components/CaseStudiesSection";
 import { SkillsSection } from "@/components/SkillsSection";
 import { CertificationsSection } from "@/components/CertificationsSection";
@@ -80,12 +80,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Experience Section with improved light theme background */}
-        <section id="experience" className="py-32 bg-white/80 dark:bg-slate-800/30 backdrop-blur-sm scroll-mt-16 border-y border-slate-200/60 dark:border-blue-200/20 dark:dark:border-blue-700/20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <ExperienceSection />
-          </div>
-        </section>
 
         {/* Case Studies Section */}
         <section id="case-studies" className="py-32 scroll-mt-16">
