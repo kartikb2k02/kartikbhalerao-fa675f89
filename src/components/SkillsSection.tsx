@@ -346,26 +346,6 @@ export const SkillsSection = () => {
                           {tool.description}
                         </p>
                       </div>
-                      
-                      {/* Enhanced skill level indicator */}
-                      <div className="mt-8 pt-6 border-t border-slate-200/60 dark:border-slate-600/60">
-                        <div className="flex items-center justify-between text-xs mb-3">
-                          <span className="text-slate-500 dark:text-slate-400 font-medium">Proficiency</span>
-                          <span className="text-slate-600 dark:text-slate-300 font-bold">{Math.floor((index % 3 + 3) * 20)}%</span>
-                        </div>
-                        <div className="flex gap-1">
-                          {[...Array(5)].map((_, i) => (
-                            <div 
-                              key={i} 
-                              className={`flex-1 h-2 rounded-full transition-all duration-500 ${
-                                i < (index % 3 + 3) 
-                                  ? 'bg-gradient-to-r from-blue-500 to-indigo-500 shadow-lg group-hover:shadow-blue-500/50' 
-                                  : 'bg-slate-200 dark:bg-slate-600'
-                              }`}
-                            />
-                          ))}
-                        </div>
-                      </div>
                     </div>
                     
                     {/* Enhanced hover glow effect */}
