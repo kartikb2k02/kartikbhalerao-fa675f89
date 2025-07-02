@@ -17,45 +17,14 @@ export const AboutSection = () => {
         <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto rounded-full"></div>
       </div>
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="space-y-12">
         {/* Main content */}
         <div className="space-y-8">
-          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-white/30 dark:border-slate-700/30 rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500">
-            <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
-              I'm a <span className="text-blue-600 dark:text-blue-400 font-semibold">Product Manager</span> with <span className="text-blue-600 dark:text-blue-400 font-semibold">1+ years</span> of hands-on experience, 
-              passionate about uncovering real customer problems and identifying unmet needs.
-            </p>
-            
-            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
-              I specialize in making data-driven decisions, working closely with stakeholders, 
-              and collaborating across cross-functional teams to deliver impactful solutions that users love.
-            </p>
-            
-            <div className="flex items-center space-x-6 text-slate-600 dark:text-slate-400">
-              <div className="flex items-center space-x-2">
-                <Coffee className="w-5 h-5 text-amber-500" />
-                <span className="text-sm">Coffee Enthusiast</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Heart className="w-5 h-5 text-red-500" />
-                <span className="text-sm">User Advocate</span>
-              </div>
-            </div>
-          </div>
-          
-          {/* Personal touch with updated text */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 backdrop-blur-sm border border-blue-200/30 dark:border-blue-700/30 rounded-2xl p-8">
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">When I'm not building products...</h3>
-            <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-              You'll find me exploring new technologies 
-              or experimenting with the latest design tools. I believe great products 
-              are born from the perfect blend of empathy, data, and relentless curiosity.
-            </p>
-          </div>
+...
         </div>
         
         {/* Contact cards */}
-        <div className="space-y-6">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center">
           <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-white/30 dark:border-slate-700/30 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 group">
             <div className="flex items-center space-x-4 mb-6">
               <div className="p-3 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl">
