@@ -49,6 +49,94 @@ export const AboutSection = () => {
             </div>
           </div>
           
+          {/* Experience Section */}
+          <div className="relative group bg-white/90 backdrop-blur-xl border border-white/40 rounded-3xl p-12 shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 hover:-translate-y-1 overflow-hidden">
+            {/* Subtle background pattern */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-transparent to-indigo-50/30 rounded-3xl"></div>
+            
+            <div className="relative z-10">
+              <h3 className="text-3xl font-bold text-slate-900 mb-8 flex items-center space-x-3">
+                <span>Professional Experience</span>
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse"></div>
+              </h3>
+              
+              <div className="space-y-8">
+                {/* Decision Machine Experience */}
+                <div className="relative pl-8 border-l-4 border-blue-500/30">
+                  <div className="absolute -left-2 top-0 w-4 h-4 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full shadow-lg"></div>
+                  
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="text-xl font-bold text-slate-900">Product Manager</h4>
+                      <p className="text-blue-600 font-semibold">Decision Machine (Remote) | July 2024 – Present</p>
+                    </div>
+                    
+                    <ul className="space-y-3 text-slate-700">
+                      <li className="flex items-start space-x-3">
+                        <span className="text-blue-500 mt-1.5">✦</span>
+                        <span>Spearheaded the development of a B2C SaaS product for financial planning, improving user onboarding and retention by 30% through continuous user feedback loops.</span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <span className="text-blue-500 mt-1.5">✦</span>
+                        <span>Collaborated with design and engineering teams to launch key features like personalized savings goals and real-time expense tracking, resulting in a 25% boost in engagement.</span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <span className="text-blue-500 mt-1.5">✦</span>
+                        <span>Led customer interviews and usability testing to identify pain points, prioritize backlog items, and define product-market fit.</span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <span className="text-blue-500 mt-1.5">✦</span>
+                        <span>Created PRDs, user journey maps, and wireframes to align stakeholders across engineering, marketing, and customer support.</span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <span className="text-blue-500 mt-1.5">✦</span>
+                        <span>Monitored product analytics using tools like Mixpanel and PostHog to drive data-informed decisions and improve feature adoption rates.</span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <span className="text-blue-500 mt-1.5">✦</span>
+                        <span>Introduced an AI co-pilot concept within the platform, assisting users with financial insights and budgeting tips based on behavioral data.</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Ocius Experience */}
+                <div className="relative pl-8 border-l-4 border-indigo-500/30">
+                  <div className="absolute -left-2 top-0 w-4 h-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full shadow-lg"></div>
+                  
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="text-xl font-bold text-slate-900">Product Manager</h4>
+                      <p className="text-indigo-600 font-semibold">Ocius (Remote) | Jan 2024 – May 2024</p>
+                    </div>
+                    
+                    <ul className="space-y-3 text-slate-700">
+                      <li className="flex items-start space-x-3">
+                        <span className="text-indigo-500 mt-1.5">✦</span>
+                        <span>Analyzed sales and marketing data to identify trends and optimize campaign performance, leading to a 15% increase in lead conversion.</span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <span className="text-indigo-500 mt-1.5">✦</span>
+                        <span>Built interactive dashboards in Google Data Studio and Excel for cross-functional teams to monitor KPIs in real-time.</span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <span className="text-indigo-500 mt-1.5">✦</span>
+                        <span>Cleaned and transformed large datasets using SQL and Python to generate weekly performance reports for leadership.</span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <span className="text-indigo-500 mt-1.5">✦</span>
+                        <span>Collaborated with the product and medical teams to evaluate patient engagement metrics and suggest improvements in outreach strategies.</span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <span className="text-indigo-500 mt-1.5">✦</span>
+                        <span>Created automated reporting pipelines that reduced manual reporting efforts by over 60%.</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
