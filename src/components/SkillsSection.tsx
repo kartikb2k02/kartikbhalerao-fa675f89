@@ -105,6 +105,13 @@ export const SkillsSection = () => {
     ]
   };
 
+  // Get all tools combined for the "All" tab
+  const getAllTools = () => {
+    return Object.entries(toolCategories).flatMap(([category, tools]) => 
+      tools.map(tool => ({ ...tool, category }))
+    );
+  };
+
   return (
     <section className="max-w-7xl mx-auto">
       <div className="text-center mb-20">
@@ -213,16 +220,23 @@ export const SkillsSection = () => {
       <div>
         <h3 className="text-4xl font-bold text-slate-900 dark:text-white mb-12 text-center">All Tools & Platforms</h3>
         
-        <Tabs defaultValue="design" className="w-full">
+        <Tabs defaultValue="all" className="w-full">
           <div className="mb-12 overflow-x-auto">
             <TabsList className="inline-flex h-auto min-w-full p-2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border border-slate-200/80 dark:border-slate-600/80 rounded-2xl shadow-2xl mx-auto">
-              <div className="grid grid-cols-3 lg:grid-cols-6 gap-2 min-w-max w-full">
+              <div className="grid grid-cols-3 lg:grid-cols-7 gap-2 min-w-max w-full">
+                <TabsTrigger 
+                  value="all" 
+                  className="group relative flex flex-col items-center gap-2 px-6 py-4 rounded-xl font-bold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-slate-600 data-[state=active]:to-slate-800 data-[state=active]:text-white data-[state=active]:shadow-2xl data-[state=active]:shadow-slate-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 min-w-0"
+                >
+                  <Target className="w-5 h-5 flex-shrink-0" />
+                  <span className="whitespace-nowrap">All</span>
+                </TabsTrigger>
                 <TabsTrigger 
                   value="design" 
                   className="group relative flex flex-col items-center gap-2 px-6 py-4 rounded-xl font-bold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-pink-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-2xl data-[state=active]:shadow-pink-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 min-w-0"
                 >
                   <Palette className="w-5 h-5 flex-shrink-0" />
-                  <span className="whitespace-nowrap">All Tools Design</span>
+                  <span className="whitespace-nowrap">Design</span>
                 </TabsTrigger>
                 <TabsTrigger 
                   value="management" 
@@ -262,6 +276,65 @@ export const SkillsSection = () => {
               </div>
             </TabsList>
           </div>
+
+          {/* All Tools Tab Content */}
+          <TabsContent value="all" className="mt-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {getAllTools().map((tool, index) => (
+                <div
+                  key={`${tool.category}-${index}`}
+                  className="group relative bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border border-slate-200/80 dark:border-slate-600/80 rounded-3xl p-8 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] cursor-pointer overflow-hidden"
+                >
+                  {/* Enhanced gradient background overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-blue-50/30 dark:to-blue-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <div className="flex items-start justify-between mb-6">
+                      <div className={`p-4 rounded-2xl ${tool.color} group-hover:scale-110 transition-all duration-500 shadow-xl group-hover:shadow-2xl`}>
+                        {tool.icon}
+                      </div>
+                      <div className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-full">
+                        {tool.category}
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <h4 className="font-bold text-xl text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                        {tool.name}
+                      </h4>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        {tool.description}
+                      </p>
+                    </div>
+                    
+                    {/* Enhanced skill level indicator */}
+                    <div className="mt-8 pt-6 border-t border-slate-200/60 dark:border-slate-600/60">
+                      <div className="flex items-center justify-between text-xs mb-3">
+                        <span className="text-slate-500 dark:text-slate-400 font-medium">Proficiency</span>
+                        <span className="text-slate-600 dark:text-slate-300 font-bold">{Math.floor((index % 3 + 3) * 20)}%</span>
+                      </div>
+                      <div className="flex gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <div 
+                            key={i} 
+                            className={`flex-1 h-2 rounded-full transition-all duration-500 ${
+                              i < (index % 3 + 3) 
+                                ? 'bg-gradient-to-r from-blue-500 to-indigo-500 shadow-lg group-hover:shadow-blue-500/50' 
+                                : 'bg-slate-200 dark:bg-slate-600'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Enhanced hover glow effect */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/0 via-blue-400/10 to-purple-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+              ))}
+            </div>
+          </TabsContent>
 
           {Object.entries(toolCategories).map(([category, tools]) => (
             <TabsContent key={category} value={category} className="mt-0">
