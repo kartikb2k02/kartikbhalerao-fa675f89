@@ -1,11 +1,8 @@
 import { ArrowDown, Target, Briefcase, TrendingUp, Users, BarChart3, Lightbulb } from "lucide-react";
 
 export const HeroSection = () => {
-  const scrollToCaseStudies = () => {
-    const caseStudiesSection = document.getElementById('case-studies');
-    if (caseStudiesSection) {
-      caseStudiesSection.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollToAbout = () => {
+    window.location.href = '/about';
   };
 
   return (
@@ -16,7 +13,7 @@ export const HeroSection = () => {
           <div className="relative">
             <div className="w-52 h-52 sm:w-60 sm:h-60 mx-auto relative">
               <img
-                src="/lovable-uploads/3c59e842-8e07-4b56-8918-3fedc5f8a4e0.png"
+                src="/lovable-uploads/9fcfee71-4f00-4d9b-81a1-24e215cf0996.png"
                 alt="Kartik Bhalerao - Product Manager"
                 className="w-full h-full rounded-full shadow-2xl border-4 border-white hover:scale-105 transition-all duration-500 object-cover"
               />
@@ -68,10 +65,10 @@ export const HeroSection = () => {
             {/* Single CTA Button */}
             <div className="flex justify-center pt-6">
               <button 
-                onClick={scrollToCaseStudies}
+                onClick={scrollToAbout}
                 className="group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-10 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-center justify-center space-x-3"
               >
-                <span>View My Work</span>
+                <span>About Me</span>
                 <Target className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
               </button>
             </div>

@@ -1,6 +1,6 @@
 
 import { HeroSection } from "@/components/HeroSection";
-import { AboutSection } from "@/components/AboutSection";
+
 
 import { CaseStudiesSection } from "@/components/CaseStudiesSection";
 import { SkillsSection } from "@/components/SkillsSection";
@@ -73,12 +73,6 @@ const Index = () => {
 
       {/* Main content with enhanced spacing and better light theme sections */}
       <div className="relative z-10">
-        {/* About Section */}
-        <section id="about" className="py-32 scroll-mt-16">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <AboutSection />
-          </div>
-        </section>
 
 
         {/* Case Studies Section */}

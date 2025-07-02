@@ -60,7 +60,7 @@ export const Header = () => {
           >
             <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
               <img
-                src="/lovable-uploads/3c59e842-8e07-4b56-8918-3fedc5f8a4e0.png"
+                src="/lovable-uploads/9fcfee71-4f00-4d9b-81a1-24e215cf0996.png"
                 alt="Kartik Bhalerao"
                 className="w-full h-full rounded-xl object-cover"
               />
