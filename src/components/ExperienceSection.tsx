@@ -30,7 +30,7 @@ export const ExperienceSection = () => {
         },
         {
           title: "Development of fintech SaaS platform",
-          description: "Led end-to-end development of a financial health product aimed at improving credit awareness and savings behavior for early-stage users."
+          description: "Led end-to-end development of a fntech product aimed at improving credit awareness and savings behavior for early-stage users."
         },
         {
           title: "MVP Scoping & Prioritization",
