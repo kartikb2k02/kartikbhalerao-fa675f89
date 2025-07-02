@@ -17,7 +17,7 @@ export const HeroSection = () => {
             <div className="w-52 h-52 sm:w-60 sm:h-60 mx-auto relative">
               <img
                 src="/lovable-uploads/3c59e842-8e07-4b56-8918-3fedc5f8a4e0.png"
-                alt="Kartik Bhalerao - Associate Product Manager"
+                alt="Kartik Bhalerao - Product Manager"
                 className="w-full h-full rounded-full shadow-2xl border-4 border-white dark:border-slate-800 hover:scale-105 transition-all duration-500 object-cover"
               />
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-xl"></div>
