@@ -222,7 +222,7 @@ export const SkillsSection = () => {
                   className="group relative flex flex-col items-center gap-2 px-6 py-4 rounded-xl font-bold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-pink-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-2xl data-[state=active]:shadow-pink-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 min-w-0"
                 >
                   <Palette className="w-5 h-5 flex-shrink-0" />
-                  <span className="whitespace-nowrap">Design</span>
+                  <span className="whitespace-nowrap">All Tools Design</span>
                 </TabsTrigger>
                 <TabsTrigger 
                   value="management" 
