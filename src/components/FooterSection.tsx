@@ -12,6 +12,51 @@ export const FooterSection = () => {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 py-20">
+        {/* Enhanced Footer Content */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
+            Let's Connect
+          </h2>
+          
+          <p className="text-slate-300 mb-12 text-lg max-w-2xl mx-auto leading-relaxed">
+            Always open to discussing product opportunities, collaborations, and exciting challenges.
+          </p>
+          
+          {/* LinkedIn Contact */}
+          <div className="flex justify-center mb-12">
+            <a
+              href="https://www.linkedin.com/in/kartik-bhalerao/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 hover:bg-white/20 transition-all duration-300 hover:scale-105 transform shadow-xl hover:shadow-2xl max-w-sm"
+            >
+              <div className="flex items-center justify-center w-20 h-20 bg-blue-600 rounded-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Linkedin className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-white font-semibold text-xl mb-3">Connect on LinkedIn</h3>
+              <p className="text-slate-300 text-sm mb-4">Let's start a conversation about product innovation</p>
+              <div className="inline-flex items-center text-blue-400 font-medium group-hover:translate-x-1 transition-transform duration-300">
+                <span>View Profile</span>
+                <ExternalLink className="w-4 h-4 ml-2" />
+              </div>
+            </a>
+          </div>
+
+          {/* Quick Contact Info */}
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 text-slate-300">
+            <a 
+              href="mailto:kartikbhalerao29@gmail.com"
+              className="flex items-center space-x-2 hover:text-white transition-colors duration-300"
+            >
+              <Mail className="w-5 h-5" />
+              <span>kartikbhalerao29@gmail.com</span>
+            </a>
+            <div className="flex items-center space-x-2">
+              <MapPin className="w-5 h-5" />
+              <span>Mumbai, India</span>
+            </div>
+          </div>
+        </div>
         
         {/* Bottom section */}
         <div className="border-t border-slate-700/50 pt-8">
