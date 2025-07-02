@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ExternalLink, Eye, BarChart3, Users, Target, ArrowRight } from "lucide-react";
+import { Carousel, CarouselContent, CarouselItem, CarouselApi } from "@/components/ui/carousel";
+import { ExternalLink, Eye, BarChart3, Users, Target, ArrowRight, Play, Pause } from "lucide-react";
 
 export const CaseStudiesSection = () => {
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
+  const [count, setCount] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(true)
+
   const caseStudies = [
     {
       title: "Product Case Study-Blinkit",
@@ -98,6 +103,36 @@ export const CaseStudiesSection = () => {
     }
   ];
 
+  // Auto-play functionality
+  useEffect(() => {
+    if (!api) return
+
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap() + 1)
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1)
+    })
+  }, [api])
+
+  useEffect(() => {
+    if (!api || !isPlaying) return
+
+    const interval = setInterval(() => {
+      api.scrollNext()
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [api, isPlaying])
+
+  const scrollTo = useCallback((index: number) => {
+    api?.scrollTo(index)
+  }, [api])
+
+  const togglePlayPause = useCallback(() => {
+    setIsPlaying(!isPlaying)
+  }, [isPlaying])
+
   return (
     <section className="max-w-7xl mx-auto">
       <div className="text-center mb-16">
@@ -117,7 +152,13 @@ export const CaseStudiesSection = () => {
       
       {/* Slideable Case Studies Carousel */}
       <div className="relative">
-        <Carousel className="w-full" opts={{ align: "start", loop: true }}>
+        <Carousel 
+          setApi={setApi}
+          className="w-full" 
+          opts={{ align: "start", loop: true }}
+          onMouseEnter={() => setIsPlaying(false)}
+          onMouseLeave={() => setIsPlaying(true)}
+        >
           <CarouselContent className="-ml-4">
             {caseStudies.map((study, index) => (
               <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/2">
@@ -281,9 +322,51 @@ export const CaseStudiesSection = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="bg-white/90 dark:bg-slate-800/90 border-slate-200/50 dark:border-slate-700/50 hover:bg-white dark:hover:bg-slate-800 backdrop-blur-sm shadow-lg" />
-          <CarouselNext className="bg-white/90 dark:bg-slate-800/90 border-slate-200/50 dark:border-slate-700/50 hover:bg-white dark:hover:bg-slate-800 backdrop-blur-sm shadow-lg" />
         </Carousel>
+
+        {/* Custom Navigation Controls */}
+        <div className="flex items-center justify-center mt-8 space-x-6">
+          {/* Dot Indicators */}
+          <div className="flex space-x-2">
+            {Array.from({ length: count }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollTo(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === current - 1
+                    ? "bg-blue-500 dark:bg-blue-400 scale-125"
+                    : "bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Play/Pause Control */}
+          <button
+            onClick={togglePlayPause}
+            className="bg-white/90 dark:bg-slate-800/90 border border-slate-200/50 dark:border-slate-700/50 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm"
+            aria-label={isPlaying ? "Pause autoplay" : "Resume autoplay"}
+          >
+            {isPlaying ? (
+              <Pause className="w-5 h-5 text-slate-700 dark:text-slate-300" />
+            ) : (
+              <Play className="w-5 h-5 text-slate-700 dark:text-slate-300 ml-0.5" />
+            )}
+          </button>
+
+          {/* Progress Indicator */}
+          <div className="hidden sm:flex items-center space-x-3 text-sm text-slate-500 dark:text-slate-400">
+            <span>{current}</span>
+            <div className="w-16 h-1 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-blue-500 dark:bg-blue-400 transition-all duration-300 rounded-full"
+                style={{ width: `${(current / count) * 100}%` }}
+              />
+            </div>
+            <span>{count}</span>
+          </div>
+        </div>
       </div>
       
       {/* Call to Action */}
