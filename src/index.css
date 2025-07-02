@@ -91,4 +91,25 @@
   .markdown-content hr {
     @apply border-slate-300 dark:border-slate-700 my-8;
   }
+
+  /* 3D Perspective Effects for Case Studies */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .rotate-y-12 {
+    transform: rotateY(12deg);
+  }
+
+  .-rotate-y-12 {
+    transform: rotateY(-12deg);
+  }
+
+  .transform-gpu {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .shadow-3xl {
+    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+  }
 }

@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselApi } from "@/components/ui/carousel";
-import { ExternalLink, Eye, BarChart3, Users, Target, ArrowRight, Play, Pause } from "lucide-react";
+import { ExternalLink, Eye, BarChart3, Users, Target, ArrowRight } from "lucide-react";
 
 export const CaseStudiesSection = () => {
   const [api, setApi] = useState<CarouselApi>()
@@ -150,221 +150,276 @@ export const CaseStudiesSection = () => {
         </p>
       </div>
       
-      {/* Slideable Case Studies Carousel */}
-      <div className="relative">
+      {/* Enhanced Sliding Case Studies Carousel */}
+      <div className="relative perspective-1000">
         <Carousel 
           setApi={setApi}
           className="w-full" 
-          opts={{ align: "start", loop: true }}
+          opts={{ 
+            align: "center", 
+            loop: true,
+            skipSnaps: false,
+            dragFree: false,
+          }}
           onMouseEnter={() => setIsPlaying(false)}
           onMouseLeave={() => setIsPlaying(true)}
         >
-          <CarouselContent className="-ml-4">
-            {caseStudies.map((study, index) => (
-              <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/2">
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <div className="group cursor-pointer h-full">
-                      <div className="bg-white/80 dark:bg-slate-800/80 border border-slate-200/50 dark:border-slate-700/50 rounded-2xl shadow-xl shadow-blue-500/5 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 overflow-hidden hover:-translate-y-3 backdrop-blur-sm h-full flex flex-col">
-                        <div className="relative h-56 overflow-hidden">
-                          <img
-                            src={study.image}
-                            alt={study.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                          />
-                          <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-300`} />
-                          
-                          {/* Floating icon */}
-                          <div className="absolute top-4 left-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
-                            {study.icon}
-                          </div>
-                          
-                          {/* View indicator */}
-                          <div className="absolute top-4 right-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-full p-2.5 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                            <Eye className="w-4 h-4 text-slate-700 dark:text-slate-300" />
-                          </div>
-                          
-                          {/* Gradient overlay */}
-                          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        </div>
-                        
-                        <div className="p-8 flex-1 flex flex-col">
-                          <div className="flex items-center justify-between mb-4">
-                            <div className={`px-3 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r ${study.gradient} text-white shadow-lg`}>
-                              Case Study
+          <CarouselContent className="-ml-6">
+            {caseStudies.map((study, index) => {
+              const isActive = index === current - 1;
+              const isPrev = index === (current - 2 + caseStudies.length) % caseStudies.length;
+              const isNext = index === current % caseStudies.length;
+              
+              return (
+                <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/3">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <div className={`group cursor-pointer h-full transition-all duration-700 transform-gpu ${
+                        isActive 
+                          ? "scale-105 z-20 rotate-0" 
+                          : isPrev 
+                          ? "scale-90 opacity-60 rotate-y-12 z-10" 
+                          : isNext 
+                          ? "scale-90 opacity-60 -rotate-y-12 z-10"
+                          : "scale-75 opacity-40 z-0"
+                      }`}>
+                        <div className={`bg-white/80 dark:bg-slate-800/80 border border-slate-200/50 dark:border-slate-700/50 rounded-2xl shadow-xl overflow-hidden backdrop-blur-sm h-full flex flex-col transition-all duration-700 ${
+                          isActive 
+                            ? "shadow-2xl shadow-blue-500/20 hover:shadow-3xl hover:shadow-blue-500/30" 
+                            : "shadow-lg shadow-slate-500/10"
+                        } ${
+                          isActive ? "hover:-translate-y-4" : "hover:-translate-y-2"
+                        }`}>
+                          <div className="relative h-56 overflow-hidden">
+                            <img
+                              src={study.image}
+                              alt={study.title}
+                              className={`w-full h-full object-cover transition-all duration-1000 ${
+                                isActive ? "group-hover:scale-110" : "scale-105"
+                              }`}
+                            />
+                            <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} transition-opacity duration-500 ${
+                              isActive ? "opacity-20 group-hover:opacity-30" : "opacity-30"
+                            }`} />
+                            
+                            {/* Floating icon with enhanced animation */}
+                            <div className={`absolute top-4 left-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-xl p-3 transition-all duration-500 ${
+                              isActive 
+                                ? "opacity-0 group-hover:opacity-100 transform -translate-y-2 group-hover:translate-y-0 group-hover:rotate-12" 
+                                : "opacity-0"
+                            }`}>
+                              {study.icon}
                             </div>
-                            <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-300" />
-                          </div>
-                          
-                          <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 line-clamp-2">
-                            {study.title}
-                          </h3>
-                          
-                          <p className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-4">
-                            {study.subtitle}
-                          </p>
-                          
-                          <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 line-clamp-3 flex-1">
-                            {study.description}
-                          </p>
-                          
-                          <div className="flex flex-wrap gap-2">
-                            {study.tags.slice(0, 3).map((tag, i) => (
-                              <span
-                                key={i}
-                                className="bg-slate-100/80 dark:bg-slate-700/80 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded-full text-xs font-medium border border-slate-200/50 dark:border-slate-600/50 backdrop-blur-sm"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                            {study.tags.length > 3 && (
-                              <span className="text-slate-400 text-xs self-center font-medium">+{study.tags.length - 3}</span>
+                            
+                            {/* Enhanced view indicator */}
+                            <div className={`absolute top-4 right-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-full p-2.5 transition-all duration-500 ${
+                              isActive 
+                                ? "opacity-0 group-hover:opacity-100 group-hover:scale-110" 
+                                : "opacity-0"
+                            }`}>
+                              <Eye className="w-4 h-4 text-slate-700 dark:text-slate-300" />
+                            </div>
+                            
+                            {/* Enhanced gradient overlay */}
+                            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/70 to-transparent"></div>
+                            
+                            {/* Animated overlay for non-active cards */}
+                            {!isActive && (
+                              <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px] transition-all duration-700"></div>
                             )}
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                  </DialogTrigger>
-                  
-                  <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto bg-white/95 dark:bg-slate-900/95 border-slate-200/50 dark:border-slate-700/50 backdrop-blur-xl">
-                    <DialogHeader>
-                      <DialogTitle className="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center space-x-3">
-                        {study.icon}
-                        <span>{study.title}</span>
-                      </DialogTitle>
-                    </DialogHeader>
-                    
-                    <div className="space-y-6">
-                      {study.isCanvaEmbed ? (
-                        <div className="w-full">
-                          {/* Replace iframe with a preview image and button */}
-                          <div className="relative w-full h-96 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 rounded-xl overflow-hidden shadow-xl border border-slate-200/50 dark:border-slate-700/50">
-                            <img
-                              src={study.image}
-                              alt={study.title}
-                              className="w-full h-full object-cover"
-                            />
-                            <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-20`} />
-                            
-                            {/* Overlay with call-to-action */}
-                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                              <div className="text-center text-white">
-                                <h3 className="text-2xl font-bold mb-4">View Complete Case Study</h3>
-                                <p className="text-lg mb-6 opacity-90">Click below to view the full presentation</p>
+                          
+                          <div className="p-6 flex-1 flex flex-col">
+                            <div className="flex items-center justify-between mb-4">
+                              <div className={`px-3 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r ${study.gradient} text-white shadow-lg transition-all duration-300 ${
+                                isActive ? "scale-100" : "scale-90"
+                              }`}>
+                                Case Study
                               </div>
+                              <ArrowRight className={`w-4 h-4 text-slate-400 transition-all duration-500 ${
+                                isActive 
+                                  ? "group-hover:text-blue-500 group-hover:translate-x-2 group-hover:scale-110" 
+                                  : "opacity-60"
+                              }`} />
                             </div>
-                          </div>
-                          
-                          <div className="mt-6 text-center">
-                            <Button asChild className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-3 text-lg">
-                              <a 
-                                href={study.canvaLink} 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="flex items-center space-x-2"
-                              >
-                                <ExternalLink className="w-5 h-5" />
-                                <span>View Case Study Presentation</span>
-                              </a>
-                            </Button>
-                          </div>
-                        </div>
-                      ) : (
-                        <>
-                          <div className="relative h-64 rounded-xl overflow-hidden shadow-xl">
-                            <img
-                              src={study.image}
-                              alt={study.title}
-                              className="w-full h-full object-cover"
-                            />
-                            <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-20`} />
-                          </div>
-                          
-                          <div>
-                            <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
-                              {study.subtitle}
+                            
+                            <h3 className={`text-xl font-bold text-slate-900 dark:text-white mb-3 transition-all duration-500 line-clamp-2 ${
+                              isActive 
+                                ? "group-hover:text-blue-600 dark:group-hover:text-blue-400" 
+                                : "opacity-80"
+                            }`}>
+                              {study.title}
                             </h3>
-                            <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
-                              {study.details}
+                            
+                            <p className={`text-sm font-semibold text-blue-600 dark:text-blue-400 mb-4 transition-opacity duration-300 ${
+                              isActive ? "opacity-100" : "opacity-70"
+                            }`}>
+                              {study.subtitle}
                             </p>
-                          </div>
-                          
-                          <div>
-                            <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Skills & Methods Used</h4>
-                            <div className="flex flex-wrap gap-2 mb-6">
-                              {study.tags.map((tag, i) => (
+                            
+                            <p className={`text-slate-600 dark:text-slate-400 text-sm mb-6 line-clamp-3 flex-1 transition-opacity duration-300 ${
+                              isActive ? "opacity-100" : "opacity-60"
+                            }`}>
+                              {study.description}
+                            </p>
+                            
+                            <div className="flex flex-wrap gap-2">
+                              {study.tags.slice(0, 3).map((tag, i) => (
                                 <span
                                   key={i}
-                                  className="bg-blue-100/80 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-2 rounded-full text-sm font-medium backdrop-blur-sm"
+                                  className={`bg-slate-100/80 dark:bg-slate-700/80 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded-full text-xs font-medium border border-slate-200/50 dark:border-slate-600/50 backdrop-blur-sm transition-all duration-300 ${
+                                    isActive ? "opacity-100 scale-100" : "opacity-70 scale-95"
+                                  }`}
                                 >
                                   {tag}
                                 </span>
                               ))}
+                              {study.tags.length > 3 && (
+                                <span className={`text-slate-400 text-xs self-center font-medium transition-opacity duration-300 ${
+                                  isActive ? "opacity-100" : "opacity-50"
+                                }`}>+{study.tags.length - 3}</span>
+                              )}
                             </div>
                           </div>
-                          
-                          <div className="bg-slate-50/80 dark:bg-slate-800/80 rounded-xl p-6 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50">
-                            <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Key Outcomes</h4>
-                            <ul className="space-y-2">
-                              {study.outcomes.map((outcome, i) => (
-                                <li key={i} className="flex items-start space-x-2 text-slate-700 dark:text-slate-300">
-                                  <span className="text-blue-500 dark:text-blue-400 mt-1">✓</span>
-                                  <span>{outcome}</span>
-                                </li>
-                              ))}
-                            </ul>
+                        </div>
+                      </div>
+                    </DialogTrigger>
+                    
+                    <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto bg-white/95 dark:bg-slate-900/95 border-slate-200/50 dark:border-slate-700/50 backdrop-blur-xl">
+                      <DialogHeader>
+                        <DialogTitle className="text-2xl font-bold text-slate-900 dark:text-white mb-4 flex items-center space-x-3">
+                          {study.icon}
+                          <span>{study.title}</span>
+                        </DialogTitle>
+                      </DialogHeader>
+                      
+                      <div className="space-y-6">
+                        {study.isCanvaEmbed ? (
+                          <div className="w-full">
+                            {/* Replace iframe with a preview image and button */}
+                            <div className="relative w-full h-96 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 rounded-xl overflow-hidden shadow-xl border border-slate-200/50 dark:border-slate-700/50">
+                              <img
+                                src={study.image}
+                                alt={study.title}
+                                className="w-full h-full object-cover"
+                              />
+                              <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-20`} />
+                              
+                              {/* Overlay with call-to-action */}
+                              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                                <div className="text-center text-white">
+                                  <h3 className="text-2xl font-bold mb-4">View Complete Case Study</h3>
+                                  <p className="text-lg mb-6 opacity-90">Click below to view the full presentation</p>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div className="mt-6 text-center">
+                              <Button asChild className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-3 text-lg">
+                                <a 
+                                  href={study.canvaLink} 
+                                  target="_blank" 
+                                  rel="noopener noreferrer"
+                                  className="flex items-center space-x-2"
+                                >
+                                  <ExternalLink className="w-5 h-5" />
+                                  <span>View Case Study Presentation</span>
+                                </a>
+                              </Button>
+                            </div>
                           </div>
-                        </>
-                      )}
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              </CarouselItem>
-            ))}
+                        ) : (
+                          <>
+                            <div className="relative h-64 rounded-xl overflow-hidden shadow-xl">
+                              <img
+                                src={study.image}
+                                alt={study.title}
+                                className="w-full h-full object-cover"
+                              />
+                              <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-20`} />
+                            </div>
+                            
+                            <div>
+                              <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                                {study.subtitle}
+                              </h3>
+                              <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+                                {study.details}
+                              </p>
+                            </div>
+                            
+                            <div>
+                              <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Skills & Methods Used</h4>
+                              <div className="flex flex-wrap gap-2 mb-6">
+                                {study.tags.map((tag, i) => (
+                                  <span
+                                    key={i}
+                                    className="bg-blue-100/80 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-2 rounded-full text-sm font-medium backdrop-blur-sm"
+                                  >
+                                    {tag}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                            
+                            <div className="bg-slate-50/80 dark:bg-slate-800/80 rounded-xl p-6 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50">
+                              <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">Key Outcomes</h4>
+                              <ul className="space-y-2">
+                                {study.outcomes.map((outcome, i) => (
+                                  <li key={i} className="flex items-start space-x-2 text-slate-700 dark:text-slate-300">
+                                    <span className="text-blue-500 dark:text-blue-400 mt-1">✓</span>
+                                    <span>{outcome}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </CarouselItem>
+              );
+            })}
           </CarouselContent>
         </Carousel>
 
-        {/* Custom Navigation Controls */}
-        <div className="flex items-center justify-center mt-8 space-x-6">
-          {/* Dot Indicators */}
-          <div className="flex space-x-2">
+        {/* Enhanced Navigation Controls */}
+        <div className="flex items-center justify-center mt-12 space-x-8">
+          {/* Enhanced Dot Indicators */}
+          <div className="flex space-x-3">
             {Array.from({ length: count }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => scrollTo(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`relative transition-all duration-500 ${
                   index === current - 1
-                    ? "bg-blue-500 dark:bg-blue-400 scale-125"
-                    : "bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500"
+                    ? "w-8 h-3 bg-gradient-to-r from-blue-500 to-indigo-500 dark:from-blue-400 dark:to-indigo-400 rounded-full scale-110"
+                    : "w-3 h-3 bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500 rounded-full hover:scale-125"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
-              />
+              >
+                {index === current - 1 && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-500 dark:from-blue-400 dark:to-indigo-400 rounded-full animate-pulse"></div>
+                )}
+              </button>
             ))}
           </div>
 
-          {/* Play/Pause Control */}
-          <button
-            onClick={togglePlayPause}
-            className="bg-white/90 dark:bg-slate-800/90 border border-slate-200/50 dark:border-slate-700/50 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm"
-            aria-label={isPlaying ? "Pause autoplay" : "Resume autoplay"}
-          >
-            {isPlaying ? (
-              <Pause className="w-5 h-5 text-slate-700 dark:text-slate-300" />
-            ) : (
-              <Play className="w-5 h-5 text-slate-700 dark:text-slate-300 ml-0.5" />
-            )}
-          </button>
-
-          {/* Progress Indicator */}
-          <div className="hidden sm:flex items-center space-x-3 text-sm text-slate-500 dark:text-slate-400">
-            <span>{current}</span>
-            <div className="w-16 h-1 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
-              <div 
-                className="h-full bg-blue-500 dark:bg-blue-400 transition-all duration-300 rounded-full"
-                style={{ width: `${(current / count) * 100}%` }}
-              />
+          {/* Enhanced Progress Indicator */}
+          <div className="flex items-center space-x-4 text-sm text-slate-500 dark:text-slate-400">
+            <div className="flex items-center space-x-2">
+              <span className="font-medium">{current}</span>
+              <div className="w-20 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 dark:from-blue-400 dark:to-indigo-400 transition-all duration-700 rounded-full relative"
+                  style={{ width: `${(current / count) * 100}%` }}
+                >
+                  <div className="absolute inset-0 bg-white/30 rounded-full animate-pulse"></div>
+                </div>
+              </div>
+              <span className="font-medium">{count}</span>
             </div>
-            <span>{count}</span>
           </div>
         </div>
       </div>
