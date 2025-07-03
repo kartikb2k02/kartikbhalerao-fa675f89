@@ -87,39 +87,6 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        {/* Interactive Skills Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-          {[
-            { icon: Target, title: "Strategic Vision", desc: "Product roadmap & strategy", color: "from-blue-500 to-blue-600" },
-            { icon: Users, title: "User Research", desc: "25+ interviews conducted", color: "from-green-500 to-green-600" },
-            { icon: BarChart3, title: "Data Analysis", desc: "Metrics-driven decisions", color: "from-purple-500 to-purple-600" }
-          ].map((skill, index) => {
-            const IconComponent = skill.icon;
-            return (
-              <div 
-                key={index} 
-                className="bg-white/80 dark:bg-slate-800/80 rounded-2xl p-6 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer group"
-              >
-                <div className={`bg-gradient-to-r ${skill.color} w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform duration-300`}>
-                  <IconComponent className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{skill.title}</h3>
-                <p className="text-slate-600 dark:text-slate-300">{skill.desc}</p>
-              </div>
-            );
-          })}
-        </div>
-        
-        {/* Scroll Indicator */}
-        <div className="pt-8">
-          <div className="flex flex-col items-center space-y-4 animate-bounce">
-            <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 font-medium bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm px-6 py-3 rounded-full border border-slate-200/30 dark:border-slate-700/30 text-lg cursor-pointer hover:scale-105 transition-transform duration-300">
-              <MousePointer2 className="w-5 h-5" />
-              <span>Explore my journey</span>
-            </div>
-            <ArrowDown className="w-8 h-8 text-blue-500 dark:text-blue-400" />
-          </div>
-        </div>
       </div>
     </section>
   );
