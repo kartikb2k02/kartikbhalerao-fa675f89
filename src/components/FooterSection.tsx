@@ -1,5 +1,5 @@
 
-import { Linkedin, Heart, Github, ExternalLink, Sparkles, Code, Palette, Target } from "lucide-react";
+import { Linkedin, Heart, Github, ExternalLink, Sparkles, Code, Palette, Target , Coffee } from "lucide-react";
 
 export const FooterSection = () => {
   return (
@@ -24,9 +24,10 @@ export const FooterSection = () => {
             <div className="pt-8 border-t border-white/10">
               <div className="flex justify-center items-center">
                 <div className="text-slate-400 text-sm">
-                  © 2024 Kartik Bhalerao. Crafted with 
+                  © 2025 Kartik Bhalerao. Crafted with 
                   <Heart className="w-4 h-4 text-red-400 inline mx-1" />
-                  and modern technology.
+                  and lots of 
+                  <Coffee className="w-4 h-4 text-brown-500 inline mx-1" />
                 </div>
               </div>
             </div>
