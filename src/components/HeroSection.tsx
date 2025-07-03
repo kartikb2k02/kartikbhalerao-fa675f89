@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ArrowDown, Target, Users, BarChart3, MousePointer2, Sparkles, ChevronRight, Play } from "lucide-react";
+import { ArrowDown, Target, Users, BarChart3, MousePointer2, Sparkles, ChevronRight, Play, Linkedin, ExternalLink } from "lucide-react";
 
 export const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -64,6 +64,33 @@ export const HeroSection = () => {
               <span className="text-blue-600 dark:text-blue-400 font-semibold hover:underline cursor-pointer transition-all duration-300"> data-driven decision making</span> and 
               <span className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline cursor-pointer transition-all duration-300"> strategic thinking</span>
             </p>
+
+            {/* Social Links */}
+            <div className="flex justify-center items-center gap-6 pt-8">
+              <a 
+                href="https://linkedin.com/in/kartik-bhalerao" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 rounded-2xl px-6 py-4 hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              >
+                <Linkedin className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform" />
+                <span className="text-slate-700 dark:text-slate-300 font-medium">LinkedIn</span>
+                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-200 transition-colors" />
+              </a>
+              
+              <a 
+                href="https://medium.com/@kartik-bhalerao" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 rounded-2xl px-6 py-4 hover:bg-green-50 dark:hover:bg-slate-700 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              >
+                <div className="w-6 h-6 bg-slate-900 dark:bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <span className="text-white dark:text-slate-900 text-xs font-bold">M</span>
+                </div>
+                <span className="text-slate-700 dark:text-slate-300 font-medium">Medium</span>
+                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-200 transition-colors" />
+              </a>
+            </div>
           </div>
 
           {/* Interactive Action Buttons */}
