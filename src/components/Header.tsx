@@ -24,6 +24,11 @@ export const Header = () => {
       return;
     }
     
+    if (sectionId === 'skills') {
+      navigate('/skills');
+      return;
+    }
+    
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -37,7 +42,6 @@ export const Header = () => {
   };
 
   const navItems = [
-    { label: 'Case Studies', id: 'case-studies' },
     { label: 'Skills', id: 'skills' },
   ];
 
