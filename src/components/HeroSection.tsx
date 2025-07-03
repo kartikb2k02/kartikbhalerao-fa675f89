@@ -31,11 +31,8 @@ export const HeroSection = () => {
     window.location.href = '/about';
   };
 
-  const scrollToProjects = () => {
-    const element = document.getElementById('case-studies');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollToCaseStudies = () => {
+    window.location.href = '/case-studies';
   };
 
   return (
@@ -78,11 +75,11 @@ export const HeroSection = () => {
             </button>
             
             <button 
-              onClick={scrollToProjects}
+              onClick={scrollToCaseStudies}
               className="group bg-white/90 dark:bg-slate-800/90 border-2 border-blue-200 dark:border-blue-700 text-blue-600 dark:text-blue-400 px-10 py-5 rounded-2xl font-bold text-xl shadow-xl hover:shadow-2xl hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-300 hover:-translate-y-2 flex items-center justify-center space-x-4 backdrop-blur-sm"
             >
               <Play className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
-              <span>View Projects</span>
+              <span>View My Work</span>
               <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
           </div>
