@@ -45,12 +45,6 @@ export const SkillsSection = () => {
     }
   ];
 
-  const coreCompetencies = [
-    { name: "Problem Solving", icon: <Lightbulb className="w-5 h-5" />, level: 95 },
-    { name: "Stakeholder Management", icon: <Users className="w-5 h-5" />, level: 90 },
-    { name: "Data Analysis", icon: <TrendingUp className="w-5 h-5" />, level: 85 },
-    { name: "Product Innovation", icon: <Zap className="w-5 h-5" />, level: 88 }
-  ];
 
   const toolCategories = {
     design: [
@@ -121,32 +115,32 @@ export const SkillsSection = () => {
       </div>
 
       <div className="relative z-10">
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 px-8 py-4 rounded-full text-blue-600 dark:text-blue-400 font-bold text-lg mb-8 border border-blue-200/50 dark:border-blue-700/50 shadow-lg backdrop-blur-sm">
+        <div className="text-center mb-24">
+          <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 px-8 py-4 rounded-full text-blue-600 dark:text-blue-400 font-bold text-lg mb-10 border border-blue-200/50 dark:border-blue-700/50 shadow-lg backdrop-blur-sm">
             <Target className="w-6 h-6" />
             <span>Skills & Expertise</span>
             <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
           </div>
-          <h2 className="text-6xl sm:text-7xl font-bold text-slate-900 dark:text-white mb-8 tracking-tight leading-tight">
-            Comprehensive Product 
+          <h2 className="text-6xl sm:text-7xl font-bold text-slate-900 dark:text-white mb-10 tracking-tight leading-tight">
+            Product Management
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400">
-              Management Skills
+              Excellence
             </span>
           </h2>
-          <div className="flex justify-center mb-8">
-            <div className="w-40 h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-full shadow-lg"></div>
+          <div className="flex justify-center mb-10">
+            <div className="w-48 h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-full shadow-lg"></div>
           </div>
           <p className="text-2xl text-slate-600 dark:text-slate-400 max-w-4xl mx-auto leading-relaxed font-light">
-            Expertise across the full product lifecycle with focus on 
+            Comprehensive expertise across the full product lifecycle with unwavering focus on 
             <span className="text-blue-600 dark:text-blue-400 font-semibold"> user-centric solutions </span>
-            and 
+            and measurable 
             <span className="text-purple-600 dark:text-purple-400 font-semibold"> business impact</span>
           </p>
         </div>
       
         {/* Enhanced Skills Categories with Modern Cards */}
-        <div className="mb-24">
+        <div className="mb-32">
           <Tabs defaultValue="strategy" className="w-full">
             <div className="mb-12 overflow-x-auto">
               <TabsList className="inline-flex h-auto min-w-full p-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/80 dark:border-slate-700/80 rounded-3xl shadow-2xl mx-auto">
@@ -217,41 +211,6 @@ export const SkillsSection = () => {
           </Tabs>
         </div>
 
-        {/* Enhanced Core Competencies */}
-        <div className="bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 dark:from-slate-800 dark:via-slate-800/95 dark:to-slate-700/95 backdrop-blur-xl border border-slate-200/80 dark:border-slate-700/80 rounded-3xl p-16 mb-24 shadow-2xl relative overflow-hidden">
-          {/* Decorative Background */}
-          <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-l from-blue-500/10 to-transparent rounded-full blur-2xl"></div>
-          <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-r from-purple-500/10 to-transparent rounded-full blur-xl"></div>
-          
-          <div className="relative z-10">
-            <h3 className="text-5xl font-bold text-slate-900 dark:text-white mb-16 text-center">
-              Core Competencies
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-              {coreCompetencies.map((competency, index) => (
-                <div key={index} className="space-y-8">
-                  <div className="flex items-center gap-6">
-                    <div className="text-blue-500 dark:text-blue-400 p-5 bg-blue-100 dark:bg-blue-900/30 rounded-2xl shadow-xl hover:scale-110 transition-transform duration-300">
-                      {competency.icon}
-                    </div>
-                    <span className="font-bold text-slate-900 dark:text-white text-2xl">{competency.name}</span>
-                  </div>
-                  <div className="h-6 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden shadow-inner relative">
-                    <div 
-                      className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 rounded-full transition-all duration-1000 ease-out shadow-lg relative overflow-hidden"
-                      style={{ width: `${competency.level}%` }}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent animate-pulse"></div>
-                      <div className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white text-sm font-bold">
-                        {competency.level}%
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
 
         {/* Enhanced All Tools & Platforms */}
         <div className="relative">
