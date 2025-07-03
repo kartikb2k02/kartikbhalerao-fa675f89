@@ -80,7 +80,7 @@ export const HeroSection = () => {
                 </a>
                 
                 <a 
-                  href="https://medium.com/@kartik-bhalerao" 
+                  href="https://medium.com/@kartikbhalerao948" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative p-5 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200/60 dark:border-slate-700/60 rounded-3xl hover:bg-slate-50/80 dark:hover:bg-slate-700/80 transition-all duration-500 hover:scale-125 hover:shadow-2xl hover:shadow-slate-500/20"
