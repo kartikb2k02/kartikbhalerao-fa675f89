@@ -53,8 +53,7 @@ export const HeroSection = () => {
               </h1>
               
               <div className="flex items-center justify-center">
-                <div className={`relative bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-10 py-5 rounded-3xl text-2xl font-bold shadow-2xl transition-all duration-500 ${isHovering ? 'scale-110 shadow-blue-500/25 shadow-2xl' : ''}`}>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-3xl blur opacity-30 animate-pulse"></div>
+                <div className={`relative bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-12 py-6 rounded-3xl text-2xl font-bold shadow-lg transition-all duration-500 ${isHovering ? 'scale-105 shadow-xl' : ''} border border-white/20`}>
                   <span className="relative z-10">Product Manager</span>
                 </div>
               </div>
