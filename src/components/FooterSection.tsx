@@ -3,38 +3,63 @@ import { Linkedin, Heart, Mail, MapPin, ExternalLink } from "lucide-react";
 
 export const FooterSection = () => {
   return (
-    <footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950 transition-colors duration-300 overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.15),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.12),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.02)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
-      </div>
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 py-20">
+    <footer className="bg-slate-900 dark:bg-slate-950 text-white py-16">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          
+          {/* Left - About */}
+          <div className="space-y-4">
+            <h2 className="text-2xl font-bold text-white">Kartik Bhalerao</h2>
+            <p className="text-slate-300 leading-relaxed">
+              Senior Product Manager passionate about building products 
+              that solve real problems and create meaningful impact for 
+              users and businesses.
+            </p>
+          </div>
+          
+          {/* Center - Quick Links */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-white">Quick Links</h3>
+            <div className="flex flex-col space-y-3">
+              <a href="/about" className="text-slate-300 hover:text-white transition-colors">About Me</a>
+              <a href="#case-studies" className="text-slate-300 hover:text-white transition-colors">Case Studies</a>
+              <a href="/blog" className="text-slate-300 hover:text-white transition-colors">Blog</a>
+            </div>
+          </div>
+          
+          {/* Right - Contact */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-white">Contact</h3>
+            <div className="flex flex-col space-y-3">
+              <div className="flex items-center space-x-2">
+                <Mail className="w-4 h-4 text-slate-400" />
+                <span className="text-slate-300">kartik@example.com</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <MapPin className="w-4 h-4 text-slate-400" />
+                <span className="text-slate-300">Mumbai, India</span>
+              </div>
+              <span className="text-slate-300">Available for opportunities</span>
+            </div>
+          </div>
+        </div>
         
         {/* Bottom section */}
-        <div className="border-t border-slate-700/50 pt-8">
+        <div className="border-t border-slate-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-                <img
-                  src="/lovable-uploads/9fcfee71-4f00-4d9b-81a1-24e215cf0996.png"
-                  alt="Kartik Bhalerao"
-                  className="w-full h-full rounded-xl object-cover"
-                />
-              </div>
-              <div>
-                <span className="font-bold text-white text-lg">Kartik Bhalerao</span>
-                <p className="text-xs text-blue-400 font-medium">Product Manager</p>
-              </div>
+            <div className="flex items-center space-x-4">
+              <a href="mailto:kartik@example.com" className="text-slate-400 hover:text-white transition-colors">
+                <Mail className="w-5 h-5" />
+              </a>
+              <a href="https://linkedin.com/in/kartik-bhalerao" className="text-slate-400 hover:text-white transition-colors">
+                <Linkedin className="w-5 h-5" />
+              </a>
             </div>
             
-            <div className="flex items-center space-x-2 text-slate-400 text-sm">
-              <span>© 2025 Designed with</span>
-              <Heart className="w-4 h-4 text-red-400 animate-pulse" />
-              <span>and endless</span>
-              <span className="text-lg">☕</span>
+            <div className="text-slate-400 text-sm">
+              © 2024 Kartik Bhalerao. All rights reserved. Built with React and Tailwind CSS.
             </div>
           </div>
         </div>

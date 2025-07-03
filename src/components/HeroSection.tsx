@@ -48,10 +48,6 @@ export const HeroSection = () => {
           {/* Header Section */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-green-600 dark:text-green-400 text-sm font-medium">Available for opportunities</span>
-              </div>
               
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight">
                 Kartik Bhalerao
@@ -92,67 +88,6 @@ export const HeroSection = () => {
           </div>
         </div>
         
-        {/* Core Competencies Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          {skills.map((skill, index) => {
-            const IconComponent = skill.icon;
-            return (
-              <div
-                key={index}
-                className={`group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-white/50 dark:border-slate-700/50 rounded-3xl p-8 text-center hover:bg-white/95 dark:hover:bg-slate-800/95 transition-all duration-500 cursor-pointer hover:-translate-y-4 shadow-xl hover:shadow-2xl ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} ${currentSkill === index ? 'ring-2 ring-blue-500 ring-opacity-50' : ''}`}
-                style={{ transitionDelay: `${index * 150}ms` }}
-              >
-                <div className={`p-6 rounded-2xl mb-6 mx-auto w-fit group-hover:scale-110 transition-transform duration-300 ${
-                  currentSkill === index 
-                    ? 'bg-gradient-to-br from-blue-500 to-indigo-600 text-white' 
-                    : 'bg-gradient-to-br from-blue-500/20 to-indigo-500/20 dark:from-blue-400/20 dark:to-indigo-400/20'
-                }`}>
-                  <IconComponent className={`w-10 h-10 ${currentSkill === index ? 'text-white' : 'text-blue-500 dark:text-blue-400'} group-hover:rotate-12 transition-transform duration-300`} />
-                </div>
-                <h3 className="font-bold text-slate-900 dark:text-white mb-3 text-lg group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                  {skill.label}
-                </h3>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                  {skill.description}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Technology Stack */}
-        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-3xl p-12 border border-white/50 dark:border-slate-700/50 shadow-xl max-w-5xl mx-auto">
-          <div className="text-center mb-10">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <Code className="w-8 h-8 text-blue-500 dark:text-blue-400" />
-              <h3 className="text-3xl font-bold text-slate-900 dark:text-white">Core Expertise</h3>
-              <Database className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
-            </div>
-            <p className="text-slate-600 dark:text-slate-300 text-lg">
-              Proficiency in essential product management tools and methodologies
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {technologies.map((tech, index) => (
-              <div key={index} className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="font-semibold text-slate-900 dark:text-white text-lg">{tech.name}</span>
-                  <span className="text-slate-600 dark:text-slate-400 font-medium">{tech.level}%</span>
-                </div>
-                <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-3 overflow-hidden">
-                  <div 
-                    className={`h-full bg-gradient-to-r ${tech.color} rounded-full transition-all duration-1000 ease-out shadow-lg`}
-                    style={{ 
-                      width: isVisible ? `${tech.level}%` : '0%',
-                      transitionDelay: `${index * 200}ms`
-                    }}
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* Product Impact Showcase */}
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800/50 dark:to-slate-700/50 rounded-3xl p-12 border border-blue-200/50 dark:border-blue-700/50 backdrop-blur-sm max-w-6xl mx-auto">
