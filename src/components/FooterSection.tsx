@@ -27,7 +27,7 @@ export const FooterSection = () => {
                   © 2025 Kartik Bhalerao. Crafted with 
                   <Heart className="w-4 h-4 text-red-400 inline mx-1" />
                   and lots of 
-                  <Coffee className="w-4 h-4 text-brown-500 inline mx-1" />
+                  <Coffee className="w-5 h-5 text-brown-500 inline mx-1 cursor-pointer hover:text-amber-600 transition-transform duration-300 hover:-rotate-12" />
                 </div>
               </div>
             </div>
