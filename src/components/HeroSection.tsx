@@ -42,32 +42,6 @@ export const HeroSection = () => {
           </div>
         </div>
         
-        {/* Enhanced Key Metrics with PM focus */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm border border-white/40 dark:border-slate-700/40 rounded-2xl p-8 text-center hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 group hover:-translate-y-3 shadow-xl shadow-blue-500/10 hover:shadow-blue-500/20">
-            <div className="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 dark:from-blue-400/20 dark:to-indigo-400/20 rounded-2xl p-4 mb-4 mx-auto w-fit">
-              <TrendingUp className="w-8 h-8 text-blue-500 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300" />
-            </div>
-            <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2">1+</div>
-            <p className="text-slate-600 dark:text-slate-300 font-medium">Years in Product</p>
-          </div>
-          
-          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm border border-white/40 dark:border-slate-700/40 rounded-2xl p-8 text-center hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 group hover:-translate-y-3 shadow-xl shadow-indigo-500/10 hover:shadow-indigo-500/20">
-            <div className="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 dark:from-indigo-400/20 dark:to-purple-400/20 rounded-2xl p-4 mb-4 mx-auto w-fit">
-              <Target className="w-8 h-8 text-indigo-500 dark:text-indigo-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
-            </div>
-            <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2">2+</div>
-            <p className="text-slate-600 dark:text-slate-300 font-medium">Products Managed</p>
-          </div>
-          
-          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm border border-white/40 dark:border-slate-700/40 rounded-2xl p-8 text-center hover:bg-white/90 dark:hover:bg-slate-800/90 transition-all duration-300 group hover:-translate-y-3 shadow-xl shadow-purple-500/10 hover:shadow-purple-500/20">
-            <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 dark:from-purple-400/20 dark:to-pink-400/20 rounded-2xl p-4 mb-4 mx-auto w-fit">
-              <Users className="w-8 h-8 text-purple-500 dark:text-purple-400 group-hover:scale-110 transition-transform duration-300" />
-            </div>
-            <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2">25+</div>
-            <p className="text-slate-600 dark:text-slate-300 font-medium">User Interviews</p>
-          </div>
-        </div>
         
         {/* Enhanced Scroll Indicator */}
         <div className="pt-12">
