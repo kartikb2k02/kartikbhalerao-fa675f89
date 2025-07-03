@@ -41,51 +41,56 @@ export const HeroSection = () => {
         <div className={`space-y-12 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           
           {/* Header Section */}
-          <div className="space-y-8">
-            <div className="space-y-6">
+          <div className="space-y-12">
+            <div className="space-y-8">
               
               <h1 
-                className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight cursor-pointer hover:scale-105 transition-transform duration-300"
+                className="text-6xl sm:text-7xl lg:text-8xl font-extrabold bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent leading-tight tracking-tight cursor-pointer hover:scale-105 transition-all duration-500"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
               >
                 Kartik Bhalerao
               </h1>
               
-              <div className="flex items-center justify-center gap-4">
-                <span className={`bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-2xl text-2xl font-bold shadow-lg transition-all duration-300 ${isHovering ? 'scale-110 shadow-2xl' : ''}`}>
-                  Product Manager
-                </span>
+              <div className="flex items-center justify-center">
+                <div className={`relative bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-10 py-5 rounded-3xl text-2xl font-bold shadow-2xl transition-all duration-500 ${isHovering ? 'scale-110 shadow-blue-500/25 shadow-2xl' : ''}`}>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-3xl blur opacity-30 animate-pulse"></div>
+                  <span className="relative z-10">Product Manager</span>
+                </div>
               </div>
             </div>
             
-            <p className="text-2xl sm:text-3xl text-slate-700 dark:text-slate-300 max-w-5xl mx-auto leading-relaxed font-light">
-              Transforming user insights into product solutions that drive business growth through 
-              <span className="text-blue-600 dark:text-blue-400 font-semibold hover:underline cursor-pointer transition-all duration-300"> data-driven decision making</span> and 
-              <span className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline cursor-pointer transition-all duration-300"> strategic thinking</span>
-            </p>
+            <div className="space-y-10">
+              <p className="text-2xl sm:text-3xl lg:text-4xl text-slate-700 dark:text-slate-300 max-w-6xl mx-auto leading-relaxed font-light">
+                Transforming user insights into product solutions that drive business growth through 
+                <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent font-bold hover:from-blue-700 hover:to-indigo-700 cursor-pointer transition-all duration-300"> data-driven decision making</span> and 
+                <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent font-bold hover:from-indigo-700 hover:to-purple-700 cursor-pointer transition-all duration-300"> strategic thinking</span>
+              </p>
 
-            {/* Social Links */}
-            <div className="flex justify-center items-center gap-6 pt-8">
-              <a 
-                href="https://linkedin.com/in/kartik-bhalerao" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group p-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 rounded-2xl hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-300 hover:scale-110 hover:shadow-xl"
-              >
-                <Linkedin className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform" />
-              </a>
-              
-              <a 
-                href="https://medium.com/@kartik-bhalerao" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group p-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 rounded-2xl hover:bg-green-50 dark:hover:bg-slate-700 transition-all duration-300 hover:scale-110 hover:shadow-xl"
-              >
-                <div className="w-6 h-6 bg-slate-900 dark:bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <span className="text-white dark:text-slate-900 text-xs font-bold">M</span>
-                </div>
-              </a>
+              {/* Enhanced Social Links */}
+              <div className="flex justify-center items-center gap-8">
+                <a 
+                  href="https://linkedin.com/in/kartik-bhalerao" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative p-5 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200/60 dark:border-slate-700/60 rounded-3xl hover:bg-blue-50/80 dark:hover:bg-slate-700/80 transition-all duration-500 hover:scale-125 hover:shadow-2xl hover:shadow-blue-500/20"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <Linkedin className="w-7 h-7 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300 relative z-10" />
+                </a>
+                
+                <a 
+                  href="https://medium.com/@kartik-bhalerao" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative p-5 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200/60 dark:border-slate-700/60 rounded-3xl hover:bg-slate-50/80 dark:hover:bg-slate-700/80 transition-all duration-500 hover:scale-125 hover:shadow-2xl hover:shadow-slate-500/20"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-slate-500/20 to-slate-600/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="w-7 h-7 bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 relative z-10">
+                    <span className="text-white dark:text-slate-900 text-sm font-bold">M</span>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
 
