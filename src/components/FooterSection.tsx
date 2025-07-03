@@ -22,19 +22,11 @@ export const FooterSection = () => {
             
             {/* Simple Bottom Section */}
             <div className="pt-8 border-t border-white/10">
-              <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="flex justify-center items-center">
                 <div className="text-slate-400 text-sm">
                   © 2024 Kartik Bhalerao. Crafted with 
                   <Heart className="w-4 h-4 text-red-400 inline mx-1" />
                   and modern technology.
-                </div>
-                
-                <div className="flex items-center gap-2 text-xs text-slate-500">
-                  <span>Built with React</span>
-                  <div className="w-1 h-1 bg-slate-500 rounded-full"></div>
-                  <span>Powered by Tailwind CSS</span>
-                  <div className="w-1 h-1 bg-slate-500 rounded-full"></div>
-                  <span>Hosted on Lovable</span>
                 </div>
               </div>
             </div>
