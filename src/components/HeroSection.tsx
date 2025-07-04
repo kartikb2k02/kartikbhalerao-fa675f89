@@ -44,13 +44,15 @@ export const HeroSection = () => {
           <div className="space-y-12">
             <div className="space-y-8">
               
-              <h1 
-                className="text-6xl sm:text-7xl lg:text-8xl font-extrabold bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent leading-tight tracking-tight cursor-pointer hover:scale-105 transition-all duration-500"
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
-              >
-                Kartik Bhalerao
-              </h1>
+              <div className="flex justify-center">
+                <h1 
+                  className="text-6xl sm:text-7xl lg:text-8xl font-extrabold bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent leading-tight tracking-tight cursor-pointer hover:scale-105 transition-all duration-500 ml-8"
+                  onMouseEnter={() => setIsHovering(true)}
+                  onMouseLeave={() => setIsHovering(false)}
+                >
+                  Kartik Bhalerao
+                </h1>
+              </div>
               
               <div className="flex items-center justify-center">
                 <div className={`relative bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-12 py-6 rounded-3xl text-2xl font-bold shadow-lg transition-all duration-500 ${isHovering ? 'scale-105 shadow-xl' : ''} border border-white/20`}>
