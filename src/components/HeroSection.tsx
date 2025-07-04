@@ -61,7 +61,7 @@ export const HeroSection = () => {
             
             <div className="space-y-10">
               <p className="text-2xl sm:text-3xl lg:text-4xl text-slate-700 dark:text-slate-300 max-w-6xl mx-auto leading-relaxed font-light">
-                Building Products That 
+                <span className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 dark:from-slate-100 dark:via-white dark:to-slate-100 bg-clip-text text-transparent font-semibold">Building Products That</span> 
                 <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent font-bold hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 cursor-pointer transition-all duration-300"> Customer Truely love</span>
               </p>
 
