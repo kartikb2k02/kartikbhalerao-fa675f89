@@ -92,75 +92,13 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* Achievement Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="group relative bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative z-10 text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
-                  <Rocket className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2">5+</div>
-                <div className="text-slate-600 dark:text-slate-300 font-medium">Products Launched</div>
-              </div>
-            </div>
-
-            <div className="group relative bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative z-10 text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center">
-                  <TrendingUp className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2">30%</div>
-                <div className="text-slate-600 dark:text-slate-300 font-medium">Growth Achieved</div>
-              </div>
-            </div>
-
-            <div className="group relative bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative z-10 text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                  <Heart className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2">10k+</div>
-                <div className="text-slate-600 dark:text-slate-300 font-medium">Happy Users</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Product Management Skills Showcase */}
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                { icon: Target, label: "Strategy", color: "from-blue-500 to-cyan-500" },
-                { icon: Users, label: "User Research", color: "from-indigo-500 to-blue-500" },
-                { icon: BarChart3, label: "Analytics", color: "from-purple-500 to-indigo-500" },
-                { icon: Star, label: "Innovation", color: "from-pink-500 to-purple-500" }
-              ].map((skill, index) => (
-                <div 
-                  key={skill.label}
-                  className={`group relative bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/40 dark:border-slate-700/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 animate-fade-in`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500`}></div>
-                  <div className="relative z-10 text-center">
-                    <div className={`w-12 h-12 mx-auto mb-3 bg-gradient-to-br ${skill.color} rounded-xl flex items-center justify-center`}>
-                      <skill.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="text-sm font-semibold text-slate-700 dark:text-slate-300">{skill.label}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Interactive Action Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 pt-8">
             <button 
               onClick={scrollToAbout}
-              className="group relative bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-12 py-6 rounded-2xl font-bold text-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-105 overflow-hidden"
+              className="group relative bg-white/95 dark:bg-slate-800/95 border-2 border-blue-200 dark:border-blue-700 text-blue-600 dark:text-blue-400 px-12 py-6 rounded-2xl font-bold text-xl shadow-xl hover:shadow-2xl hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-300 hover:-translate-y-2 hover:scale-105 backdrop-blur-sm overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-700 dark:to-slate-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <span className="relative z-10">About Me</span>
             </button>
             
