@@ -60,7 +60,7 @@ export const Header = () => {
             onClick={handleTitleClick}
             className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-3"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
               <img
                 src="/lovable-uploads/b0e13af0-105a-4724-ad69-d72b85aaf0a1.png"
                 alt="Kartik Bhalerao"
