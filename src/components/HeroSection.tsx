@@ -61,9 +61,7 @@ export const HeroSection = () => {
             
             <div className="space-y-10">
               <p className="text-2xl sm:text-3xl lg:text-4xl text-slate-700 dark:text-slate-300 max-w-6xl mx-auto leading-relaxed font-light">
-                Transforming user insights into product solutions that drive business growth through 
-                <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent font-bold hover:from-blue-700 hover:to-indigo-700 cursor-pointer transition-all duration-300"> data-driven decision making</span> and 
-                <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent font-bold hover:from-indigo-700 hover:to-purple-700 cursor-pointer transition-all duration-300"> strategic thinking</span>
+                Building Products That Customer Truely love
               </p>
 
               {/* Enhanced Social Links */}
