@@ -90,6 +90,11 @@ export const AboutSection = () => {
                     </ul>
                   </div>
                 </div>
+                
+                {/* Blue effect line after Decision Machine experience */}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-60 my-8 relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent blur-sm"></div>
+                </div>
 
                 {/* Ocius Experience */}
                 <div className="relative pl-8 border-l-4 border-indigo-500/30">
