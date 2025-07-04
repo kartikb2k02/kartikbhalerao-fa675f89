@@ -45,7 +45,7 @@ const About = () => {
                 <img
                   src="/lovable-uploads/b0e13af0-105a-4724-ad69-d72b85aaf0a1.png"
                   alt="Kartik Bhalerao"
-                  className="w-full h-full rounded-2xl object-cover"
+                  className="w-full h-full rounded-xl object-cover"
                 />
               </div>
               <div>
