@@ -43,7 +43,7 @@ const About = () => {
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
                 <img
-                  src="/lovable-uploads/9fcfee71-4f00-4d9b-81a1-24e215cf0996.png"
+                  src="/lovable-uploads/b0e13af0-105a-4724-ad69-d72b85aaf0a1.png"
                   alt="Kartik Bhalerao"
                   className="w-full h-full rounded-2xl object-cover"
                 />
