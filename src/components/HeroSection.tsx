@@ -44,9 +44,9 @@ export const HeroSection = () => {
           <div className="space-y-12">
             <div className="space-y-8">
               
-              <div className="flex justify-center">
+              <div className="flex justify-center mb-8">
                 <h1 
-                  className="text-6xl sm:text-7xl lg:text-8xl font-extrabold bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent leading-tight tracking-tight cursor-pointer hover:scale-105 transition-all duration-500 ml-8"
+                  className="text-7xl sm:text-8xl lg:text-9xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight cursor-pointer hover:scale-105 transition-all duration-500"
                   onMouseEnter={() => setIsHovering(true)}
                   onMouseLeave={() => setIsHovering(false)}
                 >
@@ -64,7 +64,7 @@ export const HeroSection = () => {
             <div className="space-y-10">
               <p className="text-2xl sm:text-3xl lg:text-4xl text-slate-700 dark:text-slate-300 max-w-6xl mx-auto leading-relaxed font-light">
                 <span className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 dark:from-slate-100 dark:via-white dark:to-slate-100 bg-clip-text text-transparent font-semibold">Building Products That</span> 
-                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent font-bold hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 cursor-pointer transition-all duration-300"> Customers Truely love</span>
+                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent font-bold hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 cursor-pointer transition-all duration-300"> Customers Truly love</span>
               </p>
 
               {/* Enhanced Social Links */}
