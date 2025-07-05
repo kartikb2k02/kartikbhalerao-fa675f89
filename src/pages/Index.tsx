@@ -67,8 +67,15 @@ const Index = () => {
       </div>
       
       {/* Hero Section with top padding for fixed header - Full viewport height */}
-      <div className="h-screen flex items-center justify-center">
-        <HeroSection />
+      <div className="min-h-screen flex flex-col">
+        <div className="flex-1 flex items-center justify-center">
+          <HeroSection />
+        </div>
+        
+        {/* Footer */}
+        <div className="relative z-10">
+          <FooterSection />
+        </div>
       </div>
     </div>
   );
