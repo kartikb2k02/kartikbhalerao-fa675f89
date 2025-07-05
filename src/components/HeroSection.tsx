@@ -26,7 +26,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 lg:px-8 py-20 relative overflow-hidden">
+    <section className="h-full flex flex-col justify-center items-center text-center px-6 lg:px-8 relative overflow-hidden">
       {/* Interactive Background Elements */}
       <div 
         className="absolute inset-0 pointer-events-none"

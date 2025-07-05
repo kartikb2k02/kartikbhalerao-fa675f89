@@ -66,15 +66,9 @@ const Index = () => {
         <div className="absolute top-32 left-1/2 w-60 h-60 bg-gradient-to-l from-indigo-100/30 via-blue-100/30 to-cyan-100/30 dark:from-indigo-500/5 dark:via-blue-500/5 dark:to-cyan-500/5 rounded-full blur-3xl animate-pulse [animation-delay:3s]"></div>
       </div>
       
-      {/* Hero Section with top padding for fixed header */}
-      <div className="pt-16">
+      {/* Hero Section with top padding for fixed header - Full viewport height */}
+      <div className="h-screen flex items-center justify-center">
         <HeroSection />
-      </div>
-
-      {/* Main content */}
-      <div className="relative z-10">
-        {/* Footer */}
-        <FooterSection />
       </div>
     </div>
   );

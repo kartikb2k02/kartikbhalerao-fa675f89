@@ -1,11 +1,9 @@
 import { Header } from "@/components/Header";
-import { SkillsSection } from "@/components/SkillsSection";
-import { CertificationsSection } from "@/components/CertificationsSection";
-import { FooterSection } from "@/components/FooterSection";
+import { CompactSkillsSection } from "@/components/CompactSkillsSection";
 
 const Skills = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-blue-50/30 dark:from-emerald-950 dark:via-slate-900 dark:to-indigo-950 text-slate-900 dark:text-white transition-colors duration-500 relative overflow-hidden">
+    <div className="h-screen bg-gradient-to-br from-emerald-50 via-white to-blue-50/30 dark:from-emerald-950 dark:via-slate-900 dark:to-indigo-950 text-slate-900 dark:text-white transition-colors duration-500 relative overflow-hidden">
       {/* Interactive Header */}
       <Header />
       
@@ -60,24 +58,11 @@ const Skills = () => {
         <div className="absolute top-40 left-1/2 w-60 h-60 bg-gradient-to-l from-blue-100/30 via-indigo-100/30 to-purple-100/30 dark:from-blue-500/5 dark:via-indigo-500/5 dark:to-purple-500/5 rounded-full blur-3xl animate-pulse [animation-delay:2s]"></div>
       </div>
       
-      {/* Content with top padding for fixed header */}
-      <div className="pt-16 relative z-10">
-        {/* Skills Section */}
-        <section className="py-32">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <SkillsSection />
-          </div>
-        </section>
-
-        {/* Certifications & Achievements Section */}
-        <section className="py-32 bg-white/80 dark:bg-slate-800/30 backdrop-blur-sm border-y border-emerald-200/60 dark:border-emerald-700/20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <CertificationsSection />
-          </div>
-        </section>
-
-        {/* Footer */}
-        <FooterSection />
+      {/* Content with top padding for fixed header - Full viewport height */}
+      <div className="h-screen pt-16 relative z-10 flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+          <CompactSkillsSection />
+        </div>
       </div>
     </div>
   );
