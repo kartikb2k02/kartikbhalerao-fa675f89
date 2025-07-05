@@ -35,6 +35,37 @@ export const HeroSection = () => {
         }}
       />
       
+      {/* Floating Elements to match uploaded image */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Floating PM card - top left */}
+        <div className="absolute top-20 left-20 w-20 h-20 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/60 dark:border-slate-700/60 rounded-2xl shadow-xl flex items-center justify-center rotate-12 animate-float-slow">
+          <div className="text-lg font-bold text-blue-600 dark:text-blue-400">PM</div>
+        </div>
+        
+        {/* Small floating element - bottom left */}
+        <div className="absolute bottom-40 left-32 w-16 h-16 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/60 dark:border-slate-700/60 rounded-xl shadow-xl -rotate-12 animate-float-slower">
+          <div className="w-full h-full flex items-center justify-center">
+            <div className="grid grid-cols-2 gap-1">
+              <div className="w-2 h-2 bg-blue-200 dark:bg-blue-700 rounded-sm"></div>
+              <div className="w-2 h-2 bg-purple-200 dark:bg-purple-700 rounded-sm"></div>
+              <div className="w-2 h-2 bg-purple-200 dark:bg-purple-700 rounded-sm"></div>
+              <div className="w-2 h-2 bg-blue-200 dark:bg-blue-700 rounded-sm"></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Data visualization chart - top right */}
+        <div className="absolute top-60 right-20 w-24 h-12 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/60 dark:border-slate-700/60 rounded-full shadow-xl animate-float">
+          <div className="w-full h-full flex items-center justify-center space-x-1">
+            <div className="w-1 h-4 bg-blue-400 dark:bg-blue-500 rounded-full"></div>
+            <div className="w-1 h-6 bg-blue-500 dark:bg-blue-400 rounded-full"></div>
+            <div className="w-1 h-3 bg-blue-300 dark:bg-blue-600 rounded-full"></div>
+            <div className="w-1 h-7 bg-blue-600 dark:bg-blue-300 rounded-full"></div>
+            <div className="w-1 h-5 bg-blue-400 dark:bg-blue-500 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+      
       <div className="max-w-7xl mx-auto space-y-16 relative z-10">
         
         {/* Main Hero Content */}
