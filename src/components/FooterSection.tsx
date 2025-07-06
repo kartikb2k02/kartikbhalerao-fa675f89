@@ -14,14 +14,14 @@ export const FooterSection = () => {
       {/* Subtle Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]"></div>
 
-      <div className="relative z-10 py-20">
+      <div className="relative z-10 py-12">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           
           {/* Minimal Footer Content */}
-          <div className="text-center space-y-8">
+          <div className="text-center space-y-6">
             
             {/* Simple Bottom Section */}
-            <div className="pt-8 border-t border-white/10">
+            <div className="pt-6 border-t border-white/10">
               <div className="flex justify-center items-center">
                 <div className="text-slate-400 text-sm">
                   © 2025 Kartik Bhalerao. Crafted with 
