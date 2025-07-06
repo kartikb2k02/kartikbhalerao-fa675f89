@@ -8,66 +8,67 @@ import { WelcomeToast } from "@/components/WelcomeToast";
 
 const Index = () => {
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-blue-50 via-white to-indigo-50/30 dark:from-blue-950 dark:via-slate-900 dark:to-indigo-950 text-slate-900 dark:text-white transition-colors duration-500 relative overflow-hidden">
+    <div className="min-h-screen w-full bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800 dark:from-slate-950 dark:via-purple-950 dark:to-slate-900 text-slate-900 dark:text-white transition-colors duration-500 relative overflow-hidden">
       {/* Header */}
       <Header />
       
       {/* Welcome Toast */}
       <WelcomeToast />
 
-      {/* Enhanced smart background effects */}
+      {/* New Dynamic Background Effects */}
       <div className="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
-        {/* Primary gradient mesh with blue focus */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(59,130,246,0.12),transparent_50%)] dark:bg-[radial-gradient(circle_at_20%_30%,rgba(59,130,246,0.15),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(99,102,241,0.08),transparent_50%)] dark:bg-[radial-gradient(circle_at_80%_70%,rgba(99,102,241,0.12),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(37,99,235,0.06),transparent_60%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(37,99,235,0.08),transparent_60%)]"></div>
+        {/* Animated gradient orbs */}
+        <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-red-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-indigo-500/20 rounded-full blur-3xl animate-pulse [animation-delay:2s]"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-emerald-500/15 via-teal-500/15 to-cyan-500/15 rounded-full blur-3xl animate-pulse [animation-delay:4s]"></div>
         
-        {/* Smart floating elements */}
-        <div className="absolute top-20 left-16 w-24 h-24 bg-white/80 dark:bg-gradient-to-br dark:from-blue-500/15 dark:to-indigo-500/15 rounded-3xl backdrop-blur-sm border border-blue-200/60 dark:border-blue-700/30 rotate-12 animate-float-slow flex items-center justify-center shadow-xl">
-          <div className="w-8 h-8 bg-blue-50 dark:bg-blue-500/25 rounded-xl flex items-center justify-center border border-blue-100 dark:border-transparent">
-            <span className="text-blue-600 dark:text-blue-400 text-sm font-bold">🎯</span>
-          </div>
+        {/* Floating geometric shapes */}
+        <div className="absolute top-32 left-16 w-20 h-20 bg-gradient-to-br from-purple-400/30 to-pink-400/30 transform rotate-45 animate-float-slow backdrop-blur-sm border border-purple-300/20 shadow-lg"></div>
+        
+        <div className="absolute top-60 right-32 w-16 h-16 bg-gradient-to-br from-cyan-400/30 to-blue-400/30 rounded-full animate-float backdrop-blur-sm border border-cyan-300/20 shadow-lg"></div>
+        
+        <div className="absolute bottom-40 left-1/4 w-24 h-24 bg-gradient-to-br from-emerald-400/30 to-teal-400/30 transform rotate-12 animate-float-slower backdrop-blur-sm border border-emerald-300/20 shadow-lg" style={{clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'}}></div>
+        
+        <div className="absolute top-1/4 right-16 w-18 h-18 bg-gradient-to-br from-amber-400/30 to-orange-400/30 transform -rotate-12 animate-float backdrop-blur-sm border border-amber-300/20 shadow-lg" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}></div>
+        
+        {/* Particle-like dots */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-purple-400/60 rounded-full animate-pulse"></div>
+          <div className="absolute top-3/4 left-1/4 w-1 h-1 bg-cyan-400/60 rounded-full animate-pulse [animation-delay:1s]"></div>
+          <div className="absolute top-1/2 right-1/3 w-3 h-3 bg-pink-400/60 rounded-full animate-pulse [animation-delay:3s]"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-emerald-400/60 rounded-full animate-pulse [animation-delay:2s]"></div>
+          <div className="absolute top-1/6 left-2/3 w-1 h-1 bg-amber-400/60 rounded-full animate-pulse [animation-delay:4s]"></div>
         </div>
         
-        <div className="absolute top-32 right-20 w-28 h-28 bg-white/80 dark:bg-gradient-to-br dark:from-indigo-500/15 dark:to-purple-500/15 rounded-2xl backdrop-blur-sm border border-indigo-200/60 dark:border-indigo-700/30 rotate-45 animate-float shadow-xl">
-          <div className="w-full h-full flex items-center justify-center">
-            <div className="w-10 h-10 bg-indigo-50 dark:bg-indigo-500/25 rounded-full border border-indigo-100 dark:border-transparent flex items-center justify-center">
-              <span className="text-indigo-600 dark:text-indigo-400 text-sm">💡</span>
-            </div>
-          </div>
+        {/* Wavy lines */}
+        <div className="absolute inset-0">
+          <svg className="absolute top-0 left-0 w-full h-full opacity-10" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <path d="M0,300 Q250,200 500,300 T1000,300 L1000,0 L0,0 Z" fill="url(#gradient1)" />
+            <path d="M0,700 Q250,600 500,700 T1000,700 L1000,1000 L0,1000 Z" fill="url(#gradient2)" />
+            <defs>
+              <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="rgb(168, 85, 247)" stopOpacity="0.2"/>
+                <stop offset="50%" stopColor="rgb(236, 72, 153)" stopOpacity="0.1"/>
+                <stop offset="100%" stopColor="rgb(59, 130, 246)" stopOpacity="0.2"/>
+              </linearGradient>
+              <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="rgb(6, 182, 212)" stopOpacity="0.2"/>
+                <stop offset="50%" stopColor="rgb(16, 185, 129)" stopOpacity="0.1"/>
+                <stop offset="100%" stopColor="rgb(139, 69, 19)" stopOpacity="0.2"/>
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
         
-        <div className="absolute bottom-32 left-24 w-32 h-32 bg-white/80 dark:bg-gradient-to-br dark:from-blue-500/15 dark:to-cyan-500/15 rounded-xl backdrop-blur-sm border border-blue-200/60 dark:border-blue-700/30 -rotate-12 animate-float-slower shadow-xl">
-          <div className="w-full h-full flex items-center justify-center">
-            <div className="grid grid-cols-2 gap-2">
-              <div className="w-4 h-4 bg-blue-50 dark:bg-blue-500/25 rounded border border-blue-100 dark:border-transparent"></div>
-              <div className="w-4 h-4 bg-cyan-50 dark:bg-cyan-500/25 rounded border border-cyan-100 dark:border-transparent"></div>
-              <div className="w-4 h-4 bg-cyan-50 dark:bg-cyan-500/25 rounded border border-cyan-100 dark:border-transparent"></div>
-              <div className="w-4 h-4 bg-blue-50 dark:bg-blue-500/25 rounded border border-blue-100 dark:border-transparent"></div>
-            </div>
-          </div>
-        </div>
-
-        {/* Data visualization element */}
-        <div className="absolute top-60 right-32 w-40 h-24 bg-white/80 dark:bg-gradient-to-r dark:from-blue-500/15 dark:to-indigo-500/15 rounded-2xl backdrop-blur-sm border border-blue-200/60 dark:border-blue-700/30 animate-float shadow-xl">
-          <div className="w-full h-full flex items-center justify-center space-x-2 px-4">
-            <div className="w-2 h-8 bg-blue-200 dark:bg-blue-500/40 rounded-full"></div>
-            <div className="w-2 h-12 bg-blue-300 dark:bg-blue-500/50 rounded-full"></div>
-            <div className="w-2 h-6 bg-blue-200 dark:bg-blue-500/40 rounded-full"></div>
-            <div className="w-2 h-14 bg-blue-400 dark:bg-blue-500/60 rounded-full"></div>
-            <div className="w-2 h-10 bg-blue-300 dark:bg-blue-500/50 rounded-full"></div>
-          </div>
-        </div>
-
-        {/* Enhanced grid pattern with blue tint */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.04)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:radial-gradient(ellipse_100%_80%_at_50%_0%,#000_50%,transparent_100%)]"></div>
+        {/* Subtle mesh pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(168,85,247,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_100%_100%_at_50%_50%,#000_40%,transparent_100%)]"></div>
         
-        {/* Smart ambient effects */}
-        <div className="absolute bottom-20 right-40 w-48 h-48 bg-gradient-to-br from-blue-100/40 via-indigo-100/40 to-purple-100/40 dark:from-blue-500/8 dark:via-indigo-500/8 dark:to-purple-500/8 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-40 left-1/2 w-64 h-64 bg-gradient-to-l from-indigo-100/40 via-blue-100/40 to-cyan-100/40 dark:from-indigo-500/8 dark:via-blue-500/8 dark:to-cyan-500/8 rounded-full blur-3xl animate-pulse [animation-delay:2s]"></div>
+        {/* Dynamic light beams */}
+        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-purple-400/30 to-transparent animate-pulse"></div>
+        <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-cyan-400/30 to-transparent animate-pulse [animation-delay:2s]"></div>
         
-        {/* Additional smart overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-50/30 via-transparent to-indigo-50/20 dark:from-blue-950/20 dark:via-transparent dark:to-indigo-950/15"></div>
+        {/* Overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-slate-900/20"></div>
       </div>
       
       {/* Main Content */}
