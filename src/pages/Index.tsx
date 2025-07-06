@@ -1,8 +1,6 @@
-
 import { HeroSection } from "@/components/HeroSection";
 import { SkillsSection } from "@/components/SkillsSection";
 import { CertificationsSection } from "@/components/CertificationsSection";
-import { FooterSection } from "@/components/FooterSection";
 import { Header } from "@/components/Header";
 import { WelcomeToast } from "@/components/WelcomeToast";
 
@@ -76,11 +74,6 @@ const Index = () => {
         {/* Hero Section - takes most of viewport */}
         <div className="flex-1 flex items-center justify-center pt-16 w-full">
           <HeroSection />
-        </div>
-        
-        {/* Footer */}
-        <div className="relative z-10 w-full">
-          <FooterSection />
         </div>
       </div>
     </div>
