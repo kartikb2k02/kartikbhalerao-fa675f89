@@ -1,8 +1,5 @@
 
 import { HeroSection } from "@/components/HeroSection";
-
-
-
 import { SkillsSection } from "@/components/SkillsSection";
 import { CertificationsSection } from "@/components/CertificationsSection";
 import { FooterSection } from "@/components/FooterSection";
@@ -11,64 +8,27 @@ import { WelcomeToast } from "@/components/WelcomeToast";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50/30 dark:from-blue-950 dark:via-slate-900 dark:to-indigo-950 text-slate-900 dark:text-white transition-colors duration-500 relative overflow-hidden">
-      {/* Interactive Header */}
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 text-slate-900 dark:text-white transition-colors duration-500 relative overflow-hidden">
+      {/* Header */}
       <Header />
       
       {/* Welcome Toast */}
       <WelcomeToast />
 
-      {/* Enhanced background with product-focused elements */}
+      {/* Minimal background effects */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        {/* Primary gradient mesh with blue color scheme */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.08),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.08),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(99,102,241,0.06),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(99,102,241,0.06),transparent_50%)]"></div>
+        {/* Subtle gradient overlays */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(59,130,246,0.03),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(99,102,241,0.02),transparent_50%)]"></div>
         
-        {/* Floating product management icons with blue color scheme */}
-        <div className="absolute top-20 left-20 w-24 h-24 bg-white/60 dark:bg-gradient-to-br dark:from-blue-500/10 dark:to-indigo-500/10 rounded-2xl backdrop-blur-sm border border-blue-200/60 dark:border-blue-700/20 rotate-12 animate-float-slow flex items-center justify-center shadow-lg">
-          <div className="w-8 h-8 bg-blue-50 dark:bg-blue-500/20 rounded-lg flex items-center justify-center border border-blue-100 dark:border-transparent">
-            <span className="text-blue-600 dark:text-blue-400 text-xs font-bold">PM</span>
-          </div>
-        </div>
-        
-        <div className="absolute top-40 right-32 w-20 h-20 bg-white/60 dark:bg-gradient-to-br dark:from-indigo-500/10 dark:to-purple-500/10 rounded-xl backdrop-blur-sm border border-indigo-200/60 dark:border-indigo-700/20 rotate-45 animate-float shadow-lg">
-          <div className="w-full h-full flex items-center justify-center">
-            <div className="w-6 h-6 bg-indigo-50 dark:bg-indigo-500/20 rounded-full border border-indigo-100 dark:border-transparent"></div>
-          </div>
-        </div>
-        
-        <div className="absolute bottom-40 left-32 w-28 h-28 bg-white/60 dark:bg-gradient-to-br dark:from-blue-500/10 dark:to-cyan-500/10 rounded-lg backdrop-blur-sm border border-blue-200/60 dark:border-blue-700/20 -rotate-12 animate-float-slower shadow-lg">
-          <div className="w-full h-full flex items-center justify-center">
-            <div className="grid grid-cols-2 gap-1">
-              <div className="w-3 h-3 bg-blue-50 dark:bg-blue-500/20 rounded-sm border border-blue-100 dark:border-transparent"></div>
-              <div className="w-3 h-3 bg-cyan-50 dark:bg-cyan-500/20 rounded-sm border border-cyan-100 dark:border-transparent"></div>
-              <div className="w-3 h-3 bg-cyan-50 dark:bg-cyan-500/20 rounded-sm border border-cyan-100 dark:border-transparent"></div>
-              <div className="w-3 h-3 bg-blue-50 dark:bg-blue-500/20 rounded-sm border border-blue-100 dark:border-transparent"></div>
-            </div>
-          </div>
-        </div>
-
-        {/* Data visualization elements with blue color scheme */}
-        <div className="absolute top-60 right-20 w-32 h-16 bg-white/60 dark:bg-gradient-to-r dark:from-blue-500/10 dark:to-indigo-500/10 rounded-full backdrop-blur-sm border border-blue-200/60 dark:border-blue-700/20 animate-float shadow-lg">
-          <div className="w-full h-full flex items-center justify-center space-x-1">
-            <div className="w-1 h-6 bg-blue-200 dark:bg-blue-500/30 rounded-full"></div>
-            <div className="w-1 h-8 bg-blue-300 dark:bg-blue-500/40 rounded-full"></div>
-            <div className="w-1 h-4 bg-blue-200 dark:bg-blue-500/30 rounded-full"></div>
-            <div className="w-1 h-10 bg-blue-400 dark:bg-blue-500/50 rounded-full"></div>
-          </div>
-        </div>
-
-        {/* Grid pattern overlay with blue theme integration */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(59,130,246,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
-        
-        {/* Additional decorative elements with blue color scheme */}
-        <div className="absolute bottom-20 right-40 w-40 h-40 bg-gradient-to-br from-blue-100/30 via-indigo-100/30 to-purple-100/30 dark:from-blue-500/5 dark:via-indigo-500/5 dark:to-purple-500/5 rounded-full blur-2xl animate-pulse"></div>
-        <div className="absolute top-32 left-1/2 w-60 h-60 bg-gradient-to-l from-indigo-100/30 via-blue-100/30 to-cyan-100/30 dark:from-indigo-500/5 dark:via-blue-500/5 dark:to-cyan-500/5 rounded-full blur-3xl animate-pulse [animation-delay:3s]"></div>
+        {/* Very subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.01)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
       </div>
       
-      {/* Hero Section with top padding for fixed header - Full viewport height */}
+      {/* Main Content */}
       <div className="min-h-screen flex flex-col">
-        <div className="flex-1 flex items-center justify-center">
+        {/* Hero Section - takes most of viewport */}
+        <div className="flex-1 flex items-center justify-center pt-16">
           <HeroSection />
         </div>
         
