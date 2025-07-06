@@ -4,18 +4,10 @@ import { Linkedin } from "lucide-react";
 
 export const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
-    
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const scrollToAbout = () => {
@@ -28,13 +20,6 @@ export const HeroSection = () => {
 
   return (
     <section className="min-h-[85vh] flex flex-col justify-center items-center text-center px-6 lg:px-8 relative overflow-hidden">
-      {/* Subtle Interactive Background */}
-      <div 
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.03), transparent 400px)`
-        }}
-      />
       
       {/* Clean Floating Elements matching the image */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
