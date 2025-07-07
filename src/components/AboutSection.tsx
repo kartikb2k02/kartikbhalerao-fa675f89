@@ -58,8 +58,8 @@ export const AboutSection = () => {
                   
                   <div className="space-y-4">
                     <div>
-                      <h4 className="text-xl font-bold text-slate-900">Product Manager</h4>
-                      <p className="text-blue-600 font-semibold">Decision Machine (Remote) | July 2024 – Present</p>
+                      <h4 className="text-xl font-bold text-slate-900">Product Analyst</h4>
+                      <p className="text-blue-600 font-semibold">Decision Machine (Remote) | June 2024 – Present</p>
                     </div>
                     
                     <ul className="space-y-3 text-slate-700">
