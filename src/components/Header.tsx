@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -72,27 +71,25 @@ export const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200 relative group"
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
-              </button>
-            ))}
+            {/* Skills Button - Modern outline style */}
+            <button
+              onClick={() => scrollToSection('skills')}
+              className="group relative inline-flex items-center justify-center px-6 py-2.5 border-2 border-slate-300 dark:border-slate-600 hover:border-blue-500 dark:hover:border-blue-400 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-xl transition-all duration-300 hover:scale-105 transform hover:shadow-md overflow-hidden"
+            >
+              <span className="relative z-10">Skills</span>
+              {/* Subtle hover background */}
+              <div className="absolute inset-0 bg-blue-50 dark:bg-blue-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </button>
             
-            {/* Enhanced Blog Button with curved design */}
+            {/* Blog Button - Enhanced gradient design */}
             <button
               onClick={() => scrollToSection('blog')}
-              className="group relative inline-flex items-center justify-center bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 dark:from-blue-500 dark:via-indigo-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:via-indigo-600 dark:hover:to-purple-600 text-white px-4 py-2 rounded-2xl font-medium transition-all duration-500 hover:scale-105 transform shadow-lg hover:shadow-xl overflow-hidden"
+              className="group relative inline-flex items-center justify-center bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 dark:from-blue-500 dark:via-indigo-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:via-indigo-600 dark:hover:to-purple-600 text-white px-6 py-2.5 rounded-xl font-medium transition-all duration-500 hover:scale-105 transform shadow-lg hover:shadow-xl overflow-hidden"
             >
               <span className="relative z-10">Blog</span>
               {/* Animated background overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </button>
-
           </nav>
 
           {/* Mobile Menu Button */}
@@ -108,24 +105,21 @@ export const Header = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-blue-200/20 dark:border-blue-700/20 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
             <nav className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-left px-4 py-2 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-slate-800/50 rounded-lg font-medium transition-all duration-200"
-                >
-                  {item.label}
-                </button>
-              ))}
+              {/* Mobile Skills Button - Outline style */}
+              <button
+                onClick={() => scrollToSection('skills')}
+                className="mx-4 inline-flex items-center justify-center px-6 py-2.5 border-2 border-slate-300 dark:border-slate-600 hover:border-blue-500 dark:hover:border-blue-400 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-xl transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20"
+              >
+                <span>Skills</span>
+              </button>
               
-              {/* Mobile Blog Button with curved design */}
+              {/* Mobile Blog Button - Gradient style */}
               <button
                 onClick={() => scrollToSection('blog')}
-                className="mx-4 inline-flex items-center justify-center bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 dark:from-blue-500 dark:via-indigo-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:via-indigo-600 dark:hover:to-purple-600 text-white px-4 py-2 rounded-2xl font-medium transition-all duration-500"
+                className="mx-4 inline-flex items-center justify-center bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 dark:from-blue-500 dark:via-indigo-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:via-indigo-600 dark:hover:to-purple-600 text-white px-6 py-2.5 rounded-xl font-medium transition-all duration-500"
               >
                 <span>Blog</span>
               </button>
-
             </nav>
           </div>
         )}
