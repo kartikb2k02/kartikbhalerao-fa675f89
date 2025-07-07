@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { ArrowLeft, Calendar, Clock, Tag, Search, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,12 +5,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
+import { useNavigate } from "react-router-dom";
 
 import { FooterSection } from "@/components/FooterSection";
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
   const blogPosts = [
     {
@@ -29,7 +30,7 @@ const Blog = () => {
       id: 2,
       title: "AI as Your Co-Pilot: How Product Managers Can Supercharge Decision-Making with AI",
       excerpt: "Discover how product managers can leverage AI as a co-pilot to enhance decision-making, boost efficiency, and build smarter products.",
-      content: "AI is not replacing product managers—it’s amplifying them.",
+      content: "AI is not replacing product managers—it's amplifying them.",
       category: "research",
       date: "2024-06-10",
       readTime: "6 min read",
@@ -105,6 +106,11 @@ const Blog = () => {
     window.location.href = `/blog/${postId}`;
   };
 
+  const handleTitleClick = () => {
+    navigate('/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950 text-slate-900 dark:text-white transition-colors duration-500 relative overflow-hidden">
       {/* Enhanced Animated Background */}
@@ -137,26 +143,29 @@ const Blog = () => {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
       </div>
 
-      
-      
-      {/* Enhanced Navigation */}
+      {/* Enhanced Navigation - Updated to match home page */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-blue-200/30 dark:border-blue-700/30 transition-all duration-300 shadow-xl shadow-blue-500/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-18">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                <span className="text-white font-bold text-lg">KB</span>
+          <div className="flex items-center justify-between h-16">
+            {/* Logo/Name matching home page */}
+            <button
+              onClick={handleTitleClick}
+              className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-3"
+            >
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                <img
+                  src="/lovable-uploads/b0e13af0-105a-4724-ad69-d72b85aaf0a1.png"
+                  alt="Kartik Bhalerao"
+                  className="w-full h-full rounded-xl object-cover"
+                />
               </div>
-              <div>
-                <span className="font-bold text-slate-900 dark:text-white text-xl">Kartik Bhalerao</span>
-                <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">Product Manager</p>
-              </div>
-            </div>
+              Kartik Bhalerao
+            </button>
             <div className="flex items-center space-x-6">
               <Button 
                 variant="ghost" 
                 className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 font-medium relative group hover:bg-blue-50 dark:hover:bg-blue-900/20 px-6 py-3 rounded-xl"
-                onClick={() => window.location.href = '/'}
+                onClick={() => navigate('/')}
               >
                 <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
                 Back to Portfolio
