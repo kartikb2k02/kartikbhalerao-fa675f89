@@ -75,6 +75,7 @@ export const HeroSection = () => {
                 Product Manager
               </div>
             </div>
+
           </div>
           
           {/* Tagline */}
