@@ -1,6 +1,4 @@
-
 import { HeroSection } from "@/components/HeroSection";
-import { SkillsSection } from "@/components/SkillsSection";
 import { CertificationsSection } from "@/components/CertificationsSection";
 import { FooterSection } from "@/components/FooterSection";
 import { Header } from "@/components/Header";
