@@ -71,7 +71,7 @@ export const HeroSection = () => {
             
             {/* Product Manager Badge */}
             <div className="flex justify-center">
-                      <div className="px-6 py-2 rounded-full text-white text-base font-semibold backdrop-blur-md bg-blue-900/30 border border-blue-300/20 shadow-lg hover:bg-blue-900/40 transition-all duration-300">
+                      <div className="px-6 py-2 rounded-full border border-blue-500 text-blue-400 text-base font-semibold hover:bg-blue-900/30 hover:text-white transition duration-300">
                             Product Manager
                       </div>
             </div>
