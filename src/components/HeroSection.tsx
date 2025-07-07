@@ -70,12 +70,11 @@ export const HeroSection = () => {
             </h1>
             
             {/* Product Manager Badge */}
-              <div className="inline-flex items-center gap-2 bg-white text-gray-800 text-sm font-medium px-4 py-2 rounded-full shadow-md border border-gray-200 hover:shadow-lg transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2a4 4 0 014-4h4" />
-                </svg>
+            <div className="flex justify-center">
+              <div className={bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full text-xl font-semibold shadow-lg transition-all duration-500 ${isHovering ? 'scale-105 shadow-xl' : ''}}>
                 Product Manager
               </div>
+            </div>
           </div>
           
           {/* Tagline */}
