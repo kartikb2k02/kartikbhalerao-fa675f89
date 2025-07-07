@@ -71,9 +71,15 @@ export const HeroSection = () => {
             
             {/* Product Manager Badge */}
             <div className="flex justify-center">
-              <div className={`bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full text-xl font-semibold shadow-lg transition-all duration-500 ${isHovering ? 'scale-105 shadow-xl' : ''}`}>
-                Product Manager
-              </div>
+                <div
+                    onMouseEnter={() => setIsHovering(true)}
+                    onMouseLeave={() => setIsHovering(false)}
+                    className={`bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-8 py-3 md:py-4 rounded-full text-base md:text-xl font-semibold shadow-md transition-transform duration-300 ease-in-out cursor-pointer ${
+                    isHovering ? 'scale-105 shadow-xl' : ''
+                    }`}
+                      >
+                    Product Manager
+                </div>
             </div>
           </div>
           
