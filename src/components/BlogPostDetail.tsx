@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { BlogPost } from "@/data/blogPosts";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { BlogComments } from "./BlogComments";
 
 interface BlogPostDetailProps {
   post: BlogPost;
@@ -81,7 +82,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
       </div>
 
       {/* Post Content */}
-      <div className="prose prose-lg prose-slate dark:prose-invert max-w-none prose-p:mb-6 prose-headings:mt-8 prose-headings:mb-4">
+      <div className="prose prose-lg prose-slate dark:prose-invert max-w-none prose-p:mb-6 prose-headings:mt-8 prose-headings:mb-4 mb-12">
         <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 border border-white/30 dark:border-slate-700/30 shadow-lg">
           <ReactMarkdown 
             remarkPlugins={[remarkGfm]}
@@ -102,6 +103,9 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
           </ReactMarkdown>
         </div>
       </div>
+
+      {/* Comments Section */}
+      <BlogComments postId={post.id} />
     </div>
   );
 };
