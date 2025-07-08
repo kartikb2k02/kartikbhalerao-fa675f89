@@ -9,7 +9,7 @@ export const SkillsSection = () => {
       title: "Product Strategy",
       description: "Strategic product planning with focus on market fit and business impact",
       icon: <Target className="w-5 h-5" />,
-      skills: ["Product Discovery", "Market Research", "Competitive Analysis", "Product Vision", "Go-to-Market Strategy"],
+      skills: ["Product Discovery", "Market Research", "Competitive Analysis", "Product Vision", "Go-to-Market Strategy", "Minimum Viable Product"],
       color: "from-blue-500 to-cyan-500",
       bgColor: "bg-blue-50 dark:bg-blue-900/20",
       iconBg: "bg-blue-500"
