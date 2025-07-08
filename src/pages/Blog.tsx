@@ -116,10 +116,10 @@ const Blog = () => {
             <div className="p-8 text-center">
               <div className="max-w-2xl mx-auto">
                 <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-6">
-                  Select a Blog Post
+                  Ready to explore? 
                 </h1>
                 <p className="text-xl text-slate-600 dark:text-slate-400 mb-8">
-                  Choose from {filteredPosts.length} articles in the sidebar to read the full content
+                  Click any article {filteredPosts.length} in the sidebar to get started!
                 </p>
                 <div className="text-8xl mb-8 animate-bounce">📝</div>
               </div>
