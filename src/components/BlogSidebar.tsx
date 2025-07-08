@@ -1,9 +1,7 @@
 
-import { Search, Calendar, Clock } from "lucide-react";
+import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BlogPost } from "@/data/blogPosts";
 
 interface BlogSidebarProps {
@@ -61,59 +59,22 @@ export const BlogSidebar = ({
           </TabsList>
         </Tabs>
 
-        {/* Posts List */}
-        <div className="space-y-4">
+        {/* Posts List - Clean List Design */}
+        <div className="space-y-2">
           {posts.map((post) => (
-            <Card
+            <div
               key={post.id}
-              className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
+              className={`cursor-pointer transition-all duration-200 p-4 rounded-lg hover:bg-blue-50/80 dark:hover:bg-blue-900/20 ${
                 selectedPost?.id === post.id
-                  ? 'ring-2 ring-blue-500 shadow-lg bg-blue-50/50 dark:bg-blue-900/20'
-                  : 'hover:shadow-md bg-white/80 dark:bg-slate-700/80'
+                  ? 'bg-blue-100/80 dark:bg-blue-900/30 border-l-4 border-l-blue-500'
+                  : 'hover:border-l-4 hover:border-l-blue-300 dark:hover:border-l-blue-600'
               }`}
               onClick={() => onPostClick(post)}
             >
-              <CardHeader className="pb-3">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex-1 min-w-0">
-                    <CardTitle className="text-sm font-semibold line-clamp-2 leading-5 text-slate-900 dark:text-white">
-                      {post.title}
-                    </CardTitle>
-                  </div>
-                </div>
-              </CardHeader>
-              
-              <CardContent className="pt-0">
-                <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3">
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
-                      <span>{new Date(post.date).toLocaleDateString('en-US', { 
-                        month: 'short', 
-                        day: 'numeric' 
-                      })}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      <span>{post.readTime}</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-4 mb-3">
-                  {post.excerpt}
-                </p>
-                
-                <div className="flex flex-wrap gap-1">
-                  <Badge 
-                    variant="secondary" 
-                    className="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300"
-                  >
-                    {categories[post.category as keyof typeof categories]}
-                  </Badge>
-                </div>
-              </CardContent>
-            </Card>
+              <h3 className="text-base font-semibold text-slate-900 dark:text-white leading-6 line-clamp-2">
+                {post.title}
+              </h3>
+            </div>
           ))}
           
           {posts.length === 0 && (
