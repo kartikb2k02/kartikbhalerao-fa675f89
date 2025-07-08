@@ -1,87 +1,24 @@
 import { useState } from "react";
-import { ArrowLeft, Calendar, Clock, Tag, Search, Filter } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Tag, Search, Filter, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 import { FooterSection } from "@/components/FooterSection";
+import { blogPosts } from "@/data/blogPosts";
+import { getMarkdownContent } from "@/utils/blogContent";
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedPost, setSelectedPost] = useState<any>(null);
+  const [markdownContent, setMarkdownContent] = useState<string>("");
   const navigate = useNavigate();
-
-  const blogPosts = [
-    {
-      id: 1,
-      title: "AI-First Product Strategy: How to Build with Intelligence at the Core",
-      excerpt: "Learn how to embed intelligence into your product's DNA with an AI-first strategy that drives smarter decisions and scalable innovation.",
-      content: "The best PMs will use AI not as a tool, but as a thinking partner, a scout for insights.",
-      category: "analysis",
-      date: "2024-06-15",
-      readTime: "8 min read",
-      tags: ["Product Management", "Analysis", "Learning"],
-      image: "/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.png"
-    },
-    {
-      id: 2,
-      title: "AI as Your Co-Pilot: How Product Managers Can Supercharge Decision-Making with AI",
-      excerpt: "Discover how product managers can leverage AI as a co-pilot to enhance decision-making, boost efficiency, and build smarter products.",
-      content: "AI is not replacing product managers—it's amplifying them.",
-      category: "research",
-      date: "2024-06-10",
-      readTime: "6 min read",
-      tags: ["Fintech", "User Experience", "Product Design"],
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=300&fit=crop"
-    },
-    {
-      id: 3,
-      title: "Data-Driven Decision Making: My Experience at Decision Machine",
-      excerpt: "How to balance quantitative insights with qualitative user feedback",
-      content: "Working as a Product Analyst taught me the importance of data in product decisions...",
-      category: "analytics",
-      date: "2024-06-05",
-      readTime: "7 min read",
-      tags: ["Data Analytics", "Product Strategy", "Decision Making"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop"
-    },
-    {
-      id: 4,
-      title: "From Idea to MVP: A Product Manager's Journey",
-      excerpt: "Step-by-step guide to building your first product from concept to launch",
-      content: "Building an MVP is both an art and a science. Here's what I learned...",
-      category: "strategy",
-      date: "2024-05-28",
-      readTime: "10 min read",
-      tags: ["MVP", "Product Strategy", "Startup"],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=300&fit=crop"
-    },
-    {
-      id: 5,
-      title: "User Research That Actually Matters",
-      excerpt: "Moving beyond vanity metrics to insights that drive product decisions",
-      content: "User research is the foundation of great product management...",
-      category: "research",
-      date: "2024-05-20",
-      readTime: "9 min read",
-      tags: ["User Research", "Product Management", "Insights"],
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=300&fit=crop"
-    },
-    {
-      id: 6,
-      title: "Scaling Product Teams: Lessons Learned",
-      excerpt: "How to maintain product quality while growing your team",
-      content: "Scaling a product team is one of the biggest challenges in product management...",
-      category: "leadership",
-      date: "2024-05-15",
-      readTime: "12 min read",
-      tags: ["Team Management", "Leadership", "Scaling"],
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=300&fit=crop"
-    }
-  ];
 
   const categories = {
     all: "All Posts",
@@ -102,14 +39,122 @@ const Blog = () => {
     return matchesCategory && matchesSearch;
   });
 
-  const handleBlogPostClick = (postId: number) => {
-    window.location.href = `/blog/${postId}`;
+  const handleBlogPostClick = async (post: any) => {
+    setSelectedPost(post);
+    const content = await getMarkdownContent(post.slug, post);
+    setMarkdownContent(content);
+  };
+
+  const handleBackToList = () => {
+    setSelectedPost(null);
+    setMarkdownContent("");
   };
 
   const handleTitleClick = () => {
     navigate('/');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // If a post is selected, show the full post view
+  if (selectedPost) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950 text-slate-900 dark:text-white transition-colors duration-500">
+        {/* Navigation */}
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-blue-200/30 dark:border-blue-700/30 transition-all duration-300 shadow-xl shadow-blue-500/5">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <button
+                onClick={handleTitleClick}
+                className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-3"
+              >
+                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <img
+                    src="/lovable-uploads/b0e13af0-105a-4724-ad69-d72b85aaf0a1.png"
+                    alt="Kartik Bhalerao"
+                    className="w-full h-full rounded-xl object-cover"
+                  />
+                </div>
+                Kartik Bhalerao
+              </button>
+              <div className="flex items-center space-x-6">
+                <Button 
+                  variant="ghost" 
+                  className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 font-medium relative group hover:bg-blue-50 dark:hover:bg-blue-900/20 px-6 py-3 rounded-xl"
+                  onClick={handleBackToList}
+                >
+                  <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
+                  Back to Blog
+                </Button>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <div className="pt-24">
+          <div className="max-w-4xl mx-auto px-6 lg:px-8 py-16">
+            {/* Post Header */}
+            <div className="mb-12">
+              <div className="relative h-64 rounded-2xl overflow-hidden mb-8">
+                <img
+                  src={selectedPost.image}
+                  alt={selectedPost.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-4 left-4">
+                  <Badge className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg capitalize mb-2">
+                    {selectedPost.category}
+                  </Badge>
+                </div>
+              </div>
+              
+              <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+                {selectedPost.title}
+              </h1>
+              
+              <div className="flex items-center space-x-6 text-slate-600 dark:text-slate-400 mb-6">
+                <div className="flex items-center space-x-2">
+                  <Calendar className="w-4 h-4" />
+                  <span>{new Date(selectedPost.date).toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  })}</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Clock className="w-4 h-4" />
+                  <span>{selectedPost.readTime}</span>
+                </div>
+              </div>
+              
+              <div className="flex flex-wrap gap-2">
+                {selectedPost.tags.map((tag: string) => (
+                  <Badge 
+                    key={tag} 
+                    variant="outline" 
+                    className="border-blue-200/50 dark:border-blue-700/50 text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/20"
+                  >
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+
+            {/* Post Content */}
+            <div className="prose prose-lg prose-slate dark:prose-invert max-w-none">
+              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 border border-white/30 dark:border-slate-700/30 shadow-lg">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {markdownContent}
+                </ReactMarkdown>
+              </div>
+            </div>
+          </div>
+
+          <FooterSection />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950 text-slate-900 dark:text-white transition-colors duration-500 relative overflow-hidden">
@@ -245,7 +290,7 @@ const Blog = () => {
                       <Card 
                         key={post.id} 
                         className="group bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border-2 border-white/40 dark:border-slate-700/40 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-500 overflow-hidden hover:-translate-y-3 cursor-pointer rounded-2xl"
-                        onClick={() => handleBlogPostClick(post.id)}
+                        onClick={() => handleBlogPostClick(post)}
                         style={{
                           animationDelay: `${index * 0.1}s`
                         }}
