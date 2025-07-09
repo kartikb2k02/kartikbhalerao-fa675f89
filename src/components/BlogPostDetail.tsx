@@ -106,13 +106,15 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
 
       {/* Liquid Glass Read More Button */}
       <div className="mb-12 flex justify-center">
-        <button
-          onClick={onBack}
-          className="group px-8 py-3 rounded-xl bg-gradient-to-r from-blue-500/10 to-indigo-500/10 backdrop-blur-lg border border-blue-200/30 dark:border-blue-700/30 text-blue-600 dark:text-blue-400 font-medium text-base transition-all duration-300 hover:from-blue-500/20 hover:to-indigo-500/20 hover:border-blue-300/50 dark:hover:border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
-        >
-          Read More Articles
-          <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-        </button>
+          <a
+            href="https://medium.com/@kartikbhalerao948/ai-first-product-strategy-how-to-build-with-intelligence-at-the-core-e04cf442cbae"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group px-8 py-3 rounded-xl bg-gradient-to-r from-blue-500/10 to-indigo-500/10 backdrop-blur-lg border border-blue-200/30 dark:border-blue-700/30 text-blue-600 dark:text-blue-400 font-medium text-base transition-all duration-300 hover:from-blue-500/20 hover:to-indigo-500/20 hover:border-blue-300/50 dark:hover:border-blue-600/50 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
+            >
+            Read Full Blog
+            <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
       </div>
 
       {/* Comments Section */}
