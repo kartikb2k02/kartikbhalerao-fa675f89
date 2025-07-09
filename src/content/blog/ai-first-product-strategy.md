@@ -1,4 +1,6 @@
-# 🧠 AI-First Product Strategy: How to Build with Intelligence at the Core
+# Introduction
+
+## 🧠 AI-First Product Strategy: How to Build with Intelligence at the Core
 
 ![AI Strategy](https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
 
