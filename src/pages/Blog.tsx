@@ -119,7 +119,7 @@ const Blog = () => {
                   Ready to explore? 
                 </div>
                 <p className="text-xl text-slate-600 dark:text-slate-400 mb-8">
-                  Click any article in the sidebar to get started!
+                  Click any article in the sidebar to get started and join the conversation in the comments!
                 </p>
                 <div className="text-8xl mb-8 animate-bounce">📝</div>
               </div>
