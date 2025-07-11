@@ -59,7 +59,15 @@ const Blog = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950 text-slate-900 dark:text-white transition-colors duration-500">
+    <div className="min-h-screen w-full relative">
+      {/* Radial Gradient Background from Bottom */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background: "radial-gradient(125% 125% at 50% 90%, #fff 40%, #7c3aed 100%)",
+        }}
+      />
+      
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-blue-200/30 dark:border-blue-700/30 transition-all duration-300 shadow-xl shadow-blue-500/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -91,7 +99,7 @@ const Blog = () => {
         </div>
       </nav>
 
-      <div className="pt-16 flex min-h-screen">
+      <div className="pt-16 flex min-h-screen relative z-10">
         {/* Sidebar */}
         <BlogSidebar
           posts={filteredPosts}
