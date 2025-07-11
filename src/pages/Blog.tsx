@@ -59,12 +59,17 @@ const Blog = () => {
   };
 
   return (
-    <div className="min-h-screen w-full relative">
-      {/* Radial Gradient Background from Bottom */}
+    <div className="min-h-screen w-full bg-white relative">
+      {/* Purple Gradient Grid Right Background */}
       <div
         className="absolute inset-0 z-0"
         style={{
-          background: "radial-gradient(125% 125% at 50% 90%, #fff 40%, #7c3aed 100%)",
+          backgroundImage: `
+            linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+            linear-gradient(to bottom, #f0f0f0 1px, transparent 1px),
+            radial-gradient(circle 800px at 100% 200px, #d5c5ff, transparent)
+          `,
+          backgroundSize: "96px 64px, 96px 64px, 100% 100%",
         }}
       />
       
