@@ -60,16 +60,17 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen w-full bg-white relative">
-      {/* Blue Gradient Grid Right Background */}
+      {/* Dual Gradient Overlay Background */}
       <div
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `
-            linear-gradient(to right, #f0f0f0 1px, transparent 1px),
-            linear-gradient(to bottom, #f0f0f0 1px, transparent 1px),
-            radial-gradient(circle 800px at 100% 200px, #c5d5ff, transparent)
+            linear-gradient(to right, rgba(229,231,235,0.8) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(229,231,235,0.8) 1px, transparent 1px),
+            radial-gradient(circle 500px at 20% 80%, rgba(139,92,246,0.3), transparent),
+            radial-gradient(circle 500px at 80% 20%, rgba(59,130,246,0.3), transparent)
           `,
-          backgroundSize: "96px 64px, 96px 64px, 100% 100%",
+          backgroundSize: "48px 48px, 48px 48px, 100% 100%, 100% 100%",
         }}
       />
       
