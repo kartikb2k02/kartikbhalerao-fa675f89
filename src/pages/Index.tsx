@@ -1,3 +1,4 @@
+
 import { HeroSection } from "@/components/HeroSection";
 import { CertificationsSection } from "@/components/CertificationsSection";
 import { FooterSection } from "@/components/FooterSection";
@@ -69,17 +70,15 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-white/10"></div>
       </div>
       
-      {/* Main Content */}
-      <div className="min-h-screen w-full flex flex-col relative z-10">
-        {/* Hero Section - takes most of viewport */}
-        <div className="flex-1 flex items-center justify-center pt-16 w-full">
+      {/* Main Content Container */}
+      <div className="relative z-10">
+        {/* Hero Section - Full viewport height */}
+        <div className="min-h-screen w-full flex items-center justify-center pt-16">
           <HeroSection />
         </div>
         
-        {/* Footer */}
-        <div className="relative z-10 w-full">
-          <FooterSection />
-        </div>
+        {/* Footer - Only visible when scrolled to bottom */}
+        <FooterSection />
       </div>
     </div>
   );
