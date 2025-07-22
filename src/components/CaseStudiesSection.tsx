@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselApi } from "@/components/ui/carousel";
-import { BarChart3, Target, FileText, Zap, ArrowUpRight, Calendar, Tag, Clock, TrendingUp } from "lucide-react";
+import { BarChart3, Target, FileText, Zap, ArrowUpRight, Calendar, Clock, TrendingUp } from "lucide-react";
 
 export const CaseStudiesSection = () => {
   const [api, setApi] = useState<CarouselApi>()
@@ -17,7 +17,6 @@ export const CaseStudiesSection = () => {
       description: "Comprehensive analysis of Blinkit's order flow, identifying key conversion bottlenecks and proposing strategic improvements for enhanced user experience.",
       type: "Product Teardown",
       category: "E-commerce",
-      tags: ["Product Analysis", "UX Research", "Conversion Optimization", "Data Analytics"],
       image: "/lovable-uploads/3d4a8070-20bc-4613-becb-61b277c2c14e.png",
       gradient: "from-amber-400 via-orange-500 to-red-500",
       cardColor: "bg-gradient-to-br from-amber-50 to-orange-50",
@@ -34,7 +33,6 @@ export const CaseStudiesSection = () => {
       description: "Strategic analysis of Google Pay's feature set with focus on user engagement and retention improvements through data-driven insights.",
       type: "Feature Analysis",
       category: "Fintech",
-      tags: ["Product Strategy", "Feature Analysis", "User Research", "Competitive Analysis"],
       image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png",
       gradient: "from-blue-500 via-indigo-600 to-purple-600",
       cardColor: "bg-gradient-to-br from-blue-50 to-indigo-50",
@@ -51,7 +49,6 @@ export const CaseStudiesSection = () => {
       description: "Led comprehensive user research studies to understand customer pain points and identify opportunities for product improvement.",
       type: "UX Research",
       category: "Research",
-      tags: ["User Research", "Behavioral Analysis", "Data Analytics", "Customer Insights"],
       image: "/lovable-uploads/b6681943-085f-4f56-ad98-ba1fac93c64a.png",
       gradient: "from-purple-500 via-pink-500 to-rose-500",
       cardColor: "bg-gradient-to-br from-purple-50 to-pink-50",
@@ -68,10 +65,9 @@ export const CaseStudiesSection = () => {
       description: "Comprehensive PRD outlining strategic improvements for Google Pay's core features and user engagement mechanisms.",
       type: "PRD",
       category: "Documentation",
-      tags: ["Product Strategy", "Requirements", "Documentation", "Feature Planning"],
       image: "/lovable-uploads/9b4dd787-aeb2-4969-8fc0-a1dd907efea8.png",
-      gradient: "from-emerald-500 via-teal-600 to-cyan-600",
-      cardColor: "bg-gradient-to-br from-emerald-50 to-teal-50",
+      gradient: "from-blue-500 via-blue-600 to-blue-700",
+      cardColor: "bg-gradient-to-br from-blue-50 to-blue-100",
       canvaLink: "https://www.canva.com/design/DAGotvS1P4Y/SczH9ACLAO3FxM0iSaf44Q/view",
       icon: <FileText className="w-5 h-5" />,
       duration: "1 week",
@@ -85,7 +81,6 @@ export const CaseStudiesSection = () => {
       description: "Complete PRD for a goal-based savings application designed to empower rural women with financial independence through intuitive micro-saving mechanisms.",
       type: "PRD",
       category: "Fintech",
-      tags: ["Fintech", "Savings App", "User Research", "Financial Inclusion"],
       image: "/lovable-uploads/b1ba7330-6bbc-43d5-a1d2-56baa716c077.png",
       gradient: "from-green-500 via-emerald-600 to-teal-600",
       cardColor: "bg-gradient-to-br from-green-50 to-emerald-50",
@@ -205,27 +200,9 @@ export const CaseStudiesSection = () => {
           </p>
           
           {/* Description with improved readability */}
-          <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3 flex-1">
+          <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-4 flex-1">
             {study.description}
           </p>
-          
-          {/* Enhanced tags section */}
-          <div className="flex flex-wrap gap-2">
-            {study.tags.slice(0, 3).map((tag: string, i: number) => (
-              <span
-                key={i}
-                className="flex items-center space-x-1.5 bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-700/70 dark:to-slate-600/70 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs font-semibold border border-slate-200/50 dark:border-slate-600/50 hover:scale-105 transition-transform duration-300"
-              >
-                <Tag className="w-3 h-3" />
-                <span>{tag}</span>
-              </span>
-            ))}
-            {study.tags.length > 3 && (
-              <span className="flex items-center justify-center bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/50 dark:to-indigo-900/50 text-blue-700 dark:text-blue-300 px-3 py-2 rounded-xl text-xs font-bold border border-blue-200/50 dark:border-blue-700/50">
-                +{study.tags.length - 3} more
-              </span>
-            )}
-          </div>
         </div>
 
         {/* Subtle glow effect on hover */}
