@@ -204,20 +204,26 @@ export const CaseStudiesSection = () => {
 
   return (
     <section className="relative max-w-7xl mx-auto space-y-16 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-indigo-50/50 dark:from-slate-900/50 dark:via-blue-900/20 dark:to-indigo-900/30 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50/80 via-blue-50/60 to-indigo-50/80 dark:from-slate-950/90 dark:via-slate-900/80 dark:to-indigo-950/90 -z-10" />
       
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full blur-3xl animate-float-slow" />
-        <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-r from-indigo-400/10 to-pink-400/10 rounded-full blur-3xl animate-float-slower" />
-        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-r from-purple-400/10 to-blue-400/10 rounded-full blur-3xl animate-float" />
-        
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
-      </div>
-
       <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-32 left-1/4 w-3 h-3 bg-blue-400/30 rounded-full animate-float" />
-        <div className="absolute top-48 right-1/4 w-2 h-2 bg-purple-400/40 rounded-full animate-float-slow" />
-        <div className="absolute bottom-32 left-1/2 w-4 h-4 bg-indigo-400/20 rounded-full animate-float-slower" />
+        <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-r from-blue-200/30 via-indigo-200/20 to-purple-200/30 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute top-40 right-20 w-80 h-80 bg-gradient-to-r from-cyan-200/25 via-sky-200/20 to-blue-200/25 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-gradient-to-r from-indigo-200/20 via-blue-200/15 to-cyan-200/20 rounded-full blur-3xl animate-float-slower" />
+        
+        <div className="absolute top-32 left-16 w-20 h-20 bg-gradient-to-br from-blue-300/40 to-indigo-300/40 transform rotate-45 animate-float-slow backdrop-blur-sm border border-blue-200/30 shadow-lg"></div>
+        <div className="absolute top-60 right-32 w-16 h-16 bg-gradient-to-br from-cyan-300/40 to-blue-300/40 rounded-full animate-float backdrop-blur-sm border border-cyan-200/30 shadow-lg"></div>
+        <div className="absolute bottom-40 left-1/4 w-24 h-24 bg-gradient-to-br from-indigo-300/40 to-purple-300/40 transform rotate-12 animate-float-slower backdrop-blur-sm border border-indigo-200/30 shadow-lg" style={{clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'}}></div>
+        
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:6rem_6rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+        
+        <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-blue-400/60 rounded-full animate-pulse"></div>
+        <div className="absolute top-3/4 left-1/4 w-1 h-1 bg-cyan-400/60 rounded-full animate-pulse [animation-delay:1s]"></div>
+        <div className="absolute top-1/2 right-1/3 w-3 h-3 bg-indigo-400/60 rounded-full animate-pulse [animation-delay:3s]"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-sky-400/60 rounded-full animate-pulse [animation-delay:2s]"></div>
+        
+        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-blue-300/20 to-transparent animate-pulse"></div>
+        <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-indigo-300/20 to-transparent animate-pulse [animation-delay:2s]"></div>
       </div>
 
       <div className="text-center relative z-10">
@@ -274,7 +280,7 @@ export const CaseStudiesSection = () => {
       </div>
 
       <div className="text-center relative z-10">
-        <div className="bg-gradient-to-r from-blue-50/80 to-indigo-50/80 dark:from-slate-800/80 dark:to-slate-700/80 backdrop-blur-sm rounded-2xl p-8 border border-blue-200/20 dark:border-blue-700/20 shadow-xl">
+        <div className="bg-gradient-to-r from-slate-50/80 to-blue-50/80 dark:from-slate-800/80 dark:to-slate-700/80 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/20 dark:border-slate-700/20 shadow-xl">
           <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
             Ready to collaborate?
           </h3>
