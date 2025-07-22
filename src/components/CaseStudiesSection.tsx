@@ -1,4 +1,3 @@
-
 import { useState, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselApi } from "@/components/ui/carousel";
@@ -100,7 +99,6 @@ export const CaseStudiesSection = () => {
 
   const featuredStudies = caseStudies.filter(study => study.featured);
 
-  // Auto-play functionality
   useEffect(() => {
     if (!api) return
 
@@ -131,8 +129,7 @@ export const CaseStudiesSection = () => {
       onClick={() => openCaseStudy(study.canvaLink)}
       className="group cursor-pointer transition-all duration-500 hover:-translate-y-2 h-full"
     >
-      <div className={`h-full rounded-2xl ${study.cardColor} dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col`}>
-        {/* Image Section */}
+      <div className={`h-full rounded-2xl ${study.cardColor} dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col backdrop-blur-sm bg-white/80 dark:bg-slate-800/80`}>
         <div className="relative h-48 overflow-hidden">
           <img
             src={study.image}
@@ -141,7 +138,6 @@ export const CaseStudiesSection = () => {
           />
           <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
           
-          {/* Type Badge */}
           <div className="absolute top-4 left-4">
             <div className="flex items-center space-x-2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
               {study.icon}
@@ -149,14 +145,12 @@ export const CaseStudiesSection = () => {
             </div>
           </div>
 
-          {/* External Link Icon */}
           <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
             <div className="bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm p-2 rounded-full shadow-lg">
               <ArrowUpRight className="w-4 h-4 text-slate-700 dark:text-slate-300" />
             </div>
           </div>
 
-          {/* Category Badge */}
           <div className="absolute bottom-4 left-4">
             <span className="bg-black/70 text-white px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm">
               {study.category}
@@ -164,7 +158,6 @@ export const CaseStudiesSection = () => {
           </div>
         </div>
 
-        {/* Content Section */}
         <div className="p-6 flex-1 flex flex-col">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center space-x-2 text-sm text-slate-600 dark:text-slate-400">
@@ -188,7 +181,6 @@ export const CaseStudiesSection = () => {
             {study.description}
           </p>
           
-          {/* Tags */}
           <div className="flex flex-wrap gap-2">
             {study.tags.slice(0, 3).map((tag: string, i: number) => (
               <span
@@ -211,10 +203,25 @@ export const CaseStudiesSection = () => {
   );
 
   return (
-    <section className="max-w-7xl mx-auto space-y-16">
-      {/* Header */}
-      <div className="text-center">
-        <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 dark:from-blue-400/10 dark:to-indigo-400/10 px-6 py-3 rounded-full backdrop-blur-sm mb-6">
+    <section className="relative max-w-7xl mx-auto space-y-16 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-indigo-50/50 dark:from-slate-900/50 dark:via-blue-900/20 dark:to-indigo-900/30 -z-10" />
+      
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-r from-indigo-400/10 to-pink-400/10 rounded-full blur-3xl animate-float-slower" />
+        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-r from-purple-400/10 to-blue-400/10 rounded-full blur-3xl animate-float" />
+        
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+      </div>
+
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-32 left-1/4 w-3 h-3 bg-blue-400/30 rounded-full animate-float" />
+        <div className="absolute top-48 right-1/4 w-2 h-2 bg-purple-400/40 rounded-full animate-float-slow" />
+        <div className="absolute bottom-32 left-1/2 w-4 h-4 bg-indigo-400/20 rounded-full animate-float-slower" />
+      </div>
+
+      <div className="text-center relative z-10">
+        <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 dark:from-blue-400/10 dark:to-indigo-400/10 px-6 py-3 rounded-full backdrop-blur-sm mb-6 border border-blue-200/20 dark:border-blue-700/20">
           <BarChart3 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
           <span className="text-blue-600 dark:text-blue-400 font-semibold text-sm">My Work Portfolio</span>
         </div>
@@ -228,10 +235,9 @@ export const CaseStudiesSection = () => {
         </p>
       </div>
 
-      {/* Case Studies Carousel */}
-      <div className="space-y-8">
+      <div className="space-y-8 relative z-10">
         <div className="flex items-center justify-center">
-          <div className="flex space-x-1">
+          <div className="flex space-x-1 bg-white/20 dark:bg-slate-800/20 backdrop-blur-sm rounded-full p-1 border border-white/20 dark:border-slate-700/20">
             {featuredStudies.map((_, index) => (
               <button
                 key={index}
@@ -267,17 +273,18 @@ export const CaseStudiesSection = () => {
         </Carousel>
       </div>
 
-      {/* Call to Action */}
-      <div className="text-center bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-8">
-        <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-          Ready to collaborate?
-        </h3>
-        <p className="text-slate-600 dark:text-slate-400 mb-6 max-w-2xl mx-auto">
-          I'm always excited to work on challenging product problems and create impactful solutions. Let's discuss your next project!
-        </p>
-        <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-3">
-          Get In Touch
-        </Button>
+      <div className="text-center relative z-10">
+        <div className="bg-gradient-to-r from-blue-50/80 to-indigo-50/80 dark:from-slate-800/80 dark:to-slate-700/80 backdrop-blur-sm rounded-2xl p-8 border border-blue-200/20 dark:border-blue-700/20 shadow-xl">
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+            Ready to collaborate?
+          </h3>
+          <p className="text-slate-600 dark:text-slate-400 mb-6 max-w-2xl mx-auto">
+            I'm always excited to work on challenging product problems and create impactful solutions. Let's discuss your next project!
+          </p>
+          <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-3">
+            Get In Touch
+          </Button>
+        </div>
       </div>
     </section>
   );
