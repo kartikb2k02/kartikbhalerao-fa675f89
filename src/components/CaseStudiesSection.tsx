@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselApi } from "@/components/ui/carousel";
-import { BarChart3, Target, FileText, Zap, ArrowUpRight, Calendar, Tag } from "lucide-react";
+import { BarChart3, Target, FileText, Zap, ArrowUpRight, Calendar, Tag, Clock, TrendingUp } from "lucide-react";
 
 export const CaseStudiesSection = () => {
   const [api, setApi] = useState<CarouselApi>()
@@ -127,77 +127,109 @@ export const CaseStudiesSection = () => {
   const WorkCard = ({ study }: { study: any }) => (
     <div 
       onClick={() => openCaseStudy(study.canvaLink)}
-      className="group cursor-pointer transition-all duration-500 hover:-translate-y-2 h-full"
+      className="group cursor-pointer transition-all duration-700 hover:-translate-y-3 hover:scale-[1.02] h-full"
     >
-      <div className={`h-full rounded-2xl ${study.cardColor} dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col backdrop-blur-sm bg-white/80 dark:bg-slate-800/80`}>
-        <div className="relative h-48 overflow-hidden">
+      <div className={`relative h-full rounded-3xl ${study.cardColor} dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 flex flex-col backdrop-blur-xl bg-white/90 dark:bg-slate-800/90 border border-white/20 dark:border-slate-700/50`}>
+        {/* Animated border gradient */}
+        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-cyan-400/20 p-[1px]">
+          <div className={`w-full h-full rounded-3xl ${study.cardColor} dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900`}></div>
+        </div>
+
+        {/* Image section with enhanced overlay */}
+        <div className="relative h-56 overflow-hidden rounded-t-3xl">
           <img
             src={study.image}
             alt={study.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
           />
-          <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
           
-          <div className="absolute top-4 left-4">
-            <div className="flex items-center space-x-2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-              {study.icon}
-              <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{study.type}</span>
+          {/* Multi-layer gradient overlay */}
+          <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-30 group-hover:opacity-40 transition-all duration-700`} />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-all duration-700" />
+          
+          {/* Floating type badge */}
+          <div className="absolute top-6 left-6">
+            <div className="flex items-center space-x-2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl px-4 py-2 rounded-2xl shadow-lg border border-white/20 dark:border-slate-700/50 transform group-hover:scale-105 transition-all duration-500">
+              <div className={`p-1 rounded-lg bg-gradient-to-r ${study.gradient}`}>
+                <div className="text-white">
+                  {study.icon}
+                </div>
+              </div>
+              <span className="text-sm font-bold text-slate-800 dark:text-slate-200">{study.type}</span>
             </div>
           </div>
 
-          <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-            <div className="bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm p-2 rounded-full shadow-lg">
-              <ArrowUpRight className="w-4 h-4 text-slate-700 dark:text-slate-300" />
+          {/* Enhanced arrow icon */}
+          <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+            <div className="bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl p-3 rounded-2xl shadow-lg border border-white/20 dark:border-slate-700/50 group-hover:bg-blue-500 transition-all duration-300">
+              <ArrowUpRight className="w-5 h-5 text-slate-700 dark:text-slate-300 group-hover:text-white transition-colors duration-300" />
             </div>
           </div>
 
-          <div className="absolute bottom-4 left-4">
-            <span className="bg-black/70 text-white px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm">
+          {/* Category badge */}
+          <div className="absolute bottom-6 left-6">
+            <span className="bg-black/80 text-white px-4 py-2 rounded-full text-sm font-bold backdrop-blur-sm border border-white/10 shadow-lg">
               {study.category}
             </span>
           </div>
+
+          {/* Impact badge */}
+          <div className="absolute bottom-6 right-6">
+            <div className="flex items-center space-x-2 bg-green-500/90 text-white px-3 py-1.5 rounded-full text-xs font-bold backdrop-blur-sm shadow-lg">
+              <TrendingUp className="w-3 h-3" />
+              <span>{study.impact}</span>
+            </div>
+          </div>
         </div>
 
-        <div className="p-6 flex-1 flex flex-col">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center space-x-2 text-sm text-slate-600 dark:text-slate-400">
-              <Calendar className="w-4 h-4" />
-              <span>{study.duration}</span>
-            </div>
-            <div className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-              {study.impact}
+        {/* Content section with enhanced spacing */}
+        <div className="p-8 flex-1 flex flex-col">
+          {/* Metadata row */}
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center space-x-3 text-sm text-slate-600 dark:text-slate-400">
+              <div className="flex items-center space-x-1.5 bg-slate-100/80 dark:bg-slate-700/50 px-3 py-1.5 rounded-xl">
+                <Clock className="w-4 h-4" />
+                <span className="font-medium">{study.duration}</span>
+              </div>
             </div>
           </div>
 
-          <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 line-clamp-2">
+          {/* Title with better typography */}
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all duration-500 line-clamp-2 leading-tight">
             {study.title}
           </h3>
           
-          <p className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-3">
+          {/* Subtitle with accent color */}
+          <p className="text-base font-semibold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">
             {study.subtitle}
           </p>
           
-          <p className="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-3 flex-1">
+          {/* Description with improved readability */}
+          <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3 flex-1">
             {study.description}
           </p>
           
+          {/* Enhanced tags section */}
           <div className="flex flex-wrap gap-2">
             {study.tags.slice(0, 3).map((tag: string, i: number) => (
               <span
                 key={i}
-                className="flex items-center space-x-1 bg-slate-100/80 dark:bg-slate-700/80 text-slate-700 dark:text-slate-300 px-2 py-1 rounded-md text-xs font-medium"
+                className="flex items-center space-x-1.5 bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-700/70 dark:to-slate-600/70 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl text-xs font-semibold border border-slate-200/50 dark:border-slate-600/50 hover:scale-105 transition-transform duration-300"
               >
                 <Tag className="w-3 h-3" />
                 <span>{tag}</span>
               </span>
             ))}
             {study.tags.length > 3 && (
-              <span className="text-slate-400 text-xs self-center font-medium">
-                +{study.tags.length - 3}
+              <span className="flex items-center justify-center bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/50 dark:to-indigo-900/50 text-blue-700 dark:text-blue-300 px-3 py-2 rounded-xl text-xs font-bold border border-blue-200/50 dark:border-blue-700/50">
+                +{study.tags.length - 3} more
               </span>
             )}
           </div>
         </div>
+
+        {/* Subtle glow effect on hover */}
+        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-700 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 blur-xl -z-10" />
       </div>
     </div>
   );
