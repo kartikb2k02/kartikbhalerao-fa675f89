@@ -2,7 +2,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselApi } from "@/components/ui/carousel";
-import { ExternalLink, BarChart3, Target, FileText, Zap, ArrowUpRight, Calendar, Tag } from "lucide-react";
+import { BarChart3, Target, FileText, Zap, ArrowUpRight, Calendar, Tag } from "lucide-react";
 
 export const CaseStudiesSection = () => {
   const [api, setApi] = useState<CarouselApi>()
@@ -21,7 +21,7 @@ export const CaseStudiesSection = () => {
       tags: ["Product Analysis", "UX Research", "Conversion Optimization", "Data Analytics"],
       image: "/lovable-uploads/3d4a8070-20bc-4613-becb-61b277c2c14e.png",
       gradient: "from-amber-400 via-orange-500 to-red-500",
-      cardColor: "border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50",
+      cardColor: "bg-gradient-to-br from-amber-50 to-orange-50",
       canvaLink: "https://www.canva.com/design/DAGn_zTvLsc/32wrzjqf5YSnIj15-cvUFA/view",
       icon: <BarChart3 className="w-5 h-5" />,
       duration: "3 weeks",
@@ -38,7 +38,7 @@ export const CaseStudiesSection = () => {
       tags: ["Product Strategy", "Feature Analysis", "User Research", "Competitive Analysis"],
       image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png",
       gradient: "from-blue-500 via-indigo-600 to-purple-600",
-      cardColor: "border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50",
+      cardColor: "bg-gradient-to-br from-blue-50 to-indigo-50",
       canvaLink: "https://www.canva.com/design/DAGo6sk1mOw/RmYlhZ2SZIClh48yToNORg/view",
       icon: <Target className="w-5 h-5" />,
       duration: "2 weeks",
@@ -55,12 +55,12 @@ export const CaseStudiesSection = () => {
       tags: ["User Research", "Behavioral Analysis", "Data Analytics", "Customer Insights"],
       image: "/lovable-uploads/b6681943-085f-4f56-ad98-ba1fac93c64a.png",
       gradient: "from-purple-500 via-pink-500 to-rose-500",
-      cardColor: "border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50",
+      cardColor: "bg-gradient-to-br from-purple-50 to-pink-50",
       canvaLink: "https://www.canva.com/design/DAGp85VdazI/QqEN-1mCN8dEuaW-PtOIbQ/view",
       icon: <Target className="w-5 h-5" />,
       duration: "4 weeks",
       impact: "12 key insights",
-      featured: false
+      featured: true
     },
     {
       id: 4,
@@ -72,12 +72,12 @@ export const CaseStudiesSection = () => {
       tags: ["Product Strategy", "Requirements", "Documentation", "Feature Planning"],
       image: "/lovable-uploads/9b4dd787-aeb2-4969-8fc0-a1dd907efea8.png",
       gradient: "from-emerald-500 via-teal-600 to-cyan-600",
-      cardColor: "border-emerald-200 bg-gradient-to-br from-emerald-50 to-teal-50",
+      cardColor: "bg-gradient-to-br from-emerald-50 to-teal-50",
       canvaLink: "https://www.canva.com/design/DAGotvS1P4Y/SczH9ACLAO3FxM0iSaf44Q/view",
       icon: <FileText className="w-5 h-5" />,
       duration: "1 week",
       impact: "Complete feature spec",
-      featured: false
+      featured: true
     },
     {
       id: 5,
@@ -89,7 +89,7 @@ export const CaseStudiesSection = () => {
       tags: ["Fintech", "Savings App", "User Research", "Financial Inclusion"],
       image: "/lovable-uploads/b1ba7330-6bbc-43d5-a1d2-56baa716c077.png",
       gradient: "from-green-500 via-emerald-600 to-teal-600",
-      cardColor: "border-green-200 bg-gradient-to-br from-green-50 to-emerald-50",
+      cardColor: "bg-gradient-to-br from-green-50 to-emerald-50",
       canvaLink: "https://www.canva.com/design/DAGpBZlI3X0/nX9u0jm9rawlh7BAOT2btQ/view",
       icon: <Zap className="w-5 h-5" />,
       duration: "2 weeks",
@@ -99,7 +99,6 @@ export const CaseStudiesSection = () => {
   ];
 
   const featuredStudies = caseStudies.filter(study => study.featured);
-  const allStudies = caseStudies;
 
   // Auto-play functionality
   useEffect(() => {
@@ -127,14 +126,12 @@ export const CaseStudiesSection = () => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
-  const WorkCard = ({ study, variant = 'default' }: { study: any, variant?: 'featured' | 'default' }) => (
+  const WorkCard = ({ study }: { study: any }) => (
     <div 
       onClick={() => openCaseStudy(study.canvaLink)}
-      className={`group cursor-pointer transition-all duration-500 hover:-translate-y-2 ${
-        variant === 'featured' ? 'h-full' : 'h-80'
-      }`}
+      className="group cursor-pointer transition-all duration-500 hover:-translate-y-2 h-full"
     >
-      <div className={`h-full rounded-2xl border-2 ${study.cardColor} dark:border-slate-700 dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col`}>
+      <div className={`h-full rounded-2xl ${study.cardColor} dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col`}>
         {/* Image Section */}
         <div className="relative h-48 overflow-hidden">
           <img
@@ -146,7 +143,7 @@ export const CaseStudiesSection = () => {
           
           {/* Type Badge */}
           <div className="absolute top-4 left-4">
-            <div className={`flex items-center space-x-2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm px-3 py-1.5 rounded-full border shadow-sm`}>
+            <div className="flex items-center space-x-2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
               {study.icon}
               <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{study.type}</span>
             </div>
@@ -192,11 +189,11 @@ export const CaseStudiesSection = () => {
           </p>
           
           {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-2">
             {study.tags.slice(0, 3).map((tag: string, i: number) => (
               <span
                 key={i}
-                className="flex items-center space-x-1 bg-slate-100/80 dark:bg-slate-700/80 text-slate-700 dark:text-slate-300 px-2 py-1 rounded-md text-xs font-medium border border-slate-200/50 dark:border-slate-600/50"
+                className="flex items-center space-x-1 bg-slate-100/80 dark:bg-slate-700/80 text-slate-700 dark:text-slate-300 px-2 py-1 rounded-md text-xs font-medium"
               >
                 <Tag className="w-3 h-3" />
                 <span>{tag}</span>
@@ -208,16 +205,6 @@ export const CaseStudiesSection = () => {
               </span>
             )}
           </div>
-
-          {/* Action Button */}
-          <Button 
-            variant="outline" 
-            size="sm"
-            className="w-full group-hover:bg-blue-50 group-hover:border-blue-200 group-hover:text-blue-700 dark:group-hover:bg-blue-950 dark:group-hover:border-blue-800 dark:group-hover:text-blue-300 transition-all duration-300"
-          >
-            <ExternalLink className="w-4 h-4 mr-2" />
-            View Case Study
-          </Button>
         </div>
       </div>
     </div>
@@ -227,7 +214,7 @@ export const CaseStudiesSection = () => {
     <section className="max-w-7xl mx-auto space-y-16">
       {/* Header */}
       <div className="text-center">
-        <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 dark:from-blue-400/10 dark:to-indigo-400/10 px-6 py-3 rounded-full border border-blue-200/30 dark:border-blue-700/30 backdrop-blur-sm mb-6">
+        <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 dark:from-blue-400/10 dark:to-indigo-400/10 px-6 py-3 rounded-full backdrop-blur-sm mb-6">
           <BarChart3 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
           <span className="text-blue-600 dark:text-blue-400 font-semibold text-sm">My Work Portfolio</span>
         </div>
@@ -241,24 +228,21 @@ export const CaseStudiesSection = () => {
         </p>
       </div>
 
-      {/* Featured Work - Carousel */}
+      {/* Case Studies Carousel */}
       <div className="space-y-8">
-        <div className="flex items-center justify-between">
-          <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Featured Projects</h3>
-          <div className="flex items-center space-x-2">
-            <div className="flex space-x-1">
-              {featuredStudies.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => api?.scrollTo(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === current - 1 
-                      ? 'bg-blue-500 w-6' 
-                      : 'bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500'
-                  }`}
-                />
-              ))}
-            </div>
+        <div className="flex items-center justify-center">
+          <div className="flex space-x-1">
+            {featuredStudies.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === current - 1 
+                    ? 'bg-blue-500 w-6' 
+                    : 'bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500'
+                }`}
+              />
+            ))}
           </div>
         </div>
 
@@ -276,31 +260,15 @@ export const CaseStudiesSection = () => {
           <CarouselContent className="-ml-6">
             {featuredStudies.map((study, index) => (
               <CarouselItem key={study.id} className="pl-6 md:basis-1/2 lg:basis-1/3">
-                <WorkCard study={study} variant="featured" />
+                <WorkCard study={study} />
               </CarouselItem>
             ))}
           </CarouselContent>
         </Carousel>
       </div>
 
-      {/* All Work - Grid Layout */}
-      <div className="space-y-8">
-        <div className="flex items-center justify-between">
-          <h3 className="text-2xl font-bold text-slate-900 dark:text-white">All Projects</h3>
-          <div className="text-sm text-slate-600 dark:text-slate-400">
-            {allStudies.length} projects completed
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {allStudies.map((study) => (
-            <WorkCard key={study.id} study={study} />
-          ))}
-        </div>
-      </div>
-
       {/* Call to Action */}
-      <div className="text-center bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-8 border border-blue-200/30 dark:border-slate-600/30">
+      <div className="text-center bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-8">
         <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
           Ready to collaborate?
         </h3>
