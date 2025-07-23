@@ -132,7 +132,7 @@ export const SkillsSection = () => {
                 <TabsTrigger 
                   key={category.id} 
                   value={category.id}
-                  className="group relative flex flex-col items-center gap-3 px-6 py-5 rounded-xl font-semibold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-slate-900 data-[state=active]:to-slate-800 data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:shadow-slate-500/25 hover:bg-slate-50 dark:hover:bg-slate-700/50 data-[state=active]:scale-105"
+                  className="group relative flex flex-col items-center gap-3 px-6 py-5 rounded-xl font-semibold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:shadow-blue-500/25 hover:bg-slate-50 dark:hover:bg-slate-700/50 data-[state=active]:scale-105"
                 >
                   <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-700 group-data-[state=active]:bg-white/20 transition-all duration-300 group-data-[state=active]:shadow-lg group-hover:scale-110">
                     {category.icon}
@@ -207,12 +207,12 @@ export const SkillsSection = () => {
         <Tabs defaultValue="all" className="w-full">
           <div className="mb-10 flex justify-center">
             <TabsList className="grid w-full max-w-5xl grid-cols-3 lg:grid-cols-6 h-auto p-2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border border-slate-200/80 dark:border-slate-600/80 rounded-2xl shadow-xl">
-              <TabsTrigger value="all" className="group relative flex flex-col items-center gap-2 px-4 py-4 rounded-xl font-semibold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-slate-900 data-[state=active]:to-slate-700 data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:shadow-slate-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 data-[state=active]:scale-105">
+              <TabsTrigger value="all" className="group relative flex flex-col items-center gap-2 px-4 py-4 rounded-xl font-semibold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:shadow-blue-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 data-[state=active]:scale-105">
                 <Target className="w-5 h-5" />
                 <span>All</span>
               </TabsTrigger>
               {Object.entries(toolCategories).map(([key, tools]) => (
-                <TabsTrigger key={key} value={key} className="group relative flex flex-col items-center gap-2 px-4 py-4 rounded-xl font-semibold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-500 data-[state=active]:to-indigo-500 data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:shadow-blue-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 data-[state=active]:scale-105 capitalize">
+                <TabsTrigger key={key} value={key} className="group relative flex flex-col items-center gap-2 px-4 py-4 rounded-xl font-semibold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:shadow-blue-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 data-[state=active]:scale-105 capitalize">
                   {tools[0]?.icon}
                   <span>{key}</span>
                 </TabsTrigger>
