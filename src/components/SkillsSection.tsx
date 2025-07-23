@@ -14,7 +14,8 @@ export const SkillsSection = () => {
       skills: ["Product Discovery", "Market Research", "Competitive Analysis", "Product Vision & Roadmap", "Go-to-Market Strategy", "MVP Development"],
       color: "from-blue-500 to-cyan-500",
       bgColor: "bg-blue-50 dark:bg-blue-900/20",
-      borderColor: "border-blue-200 dark:border-blue-800"
+      borderColor: "border-blue-200 dark:border-blue-800",
+      tabColor: "data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:shadow-blue-500/25"
     },
     {
       id: "analytics",
@@ -24,7 +25,8 @@ export const SkillsSection = () => {
       skills: ["User Analytics", "A/B Testing", "KPI Definition & Tracking", "Data Visualization", "Performance Metrics", "Conversion Optimization"],
       color: "from-emerald-500 to-green-500",
       bgColor: "bg-emerald-50 dark:bg-emerald-900/20",
-      borderColor: "border-emerald-200 dark:border-emerald-800"
+      borderColor: "border-emerald-200 dark:border-emerald-800",
+      tabColor: "data-[state=active]:from-emerald-500 data-[state=active]:to-green-500 data-[state=active]:shadow-emerald-500/25"
     },
     {
       id: "ux",
@@ -34,7 +36,8 @@ export const SkillsSection = () => {
       skills: ["User Research", "Journey Mapping", "Wireframing & Prototyping", "Usability Testing", "Design Systems", "Accessibility"],
       color: "from-purple-500 to-pink-500",
       bgColor: "bg-purple-50 dark:bg-purple-900/20",
-      borderColor: "border-purple-200 dark:border-purple-800"
+      borderColor: "border-purple-200 dark:border-purple-800",
+      tabColor: "data-[state=active]:from-purple-500 data-[state=active]:to-pink-500 data-[state=active]:shadow-purple-500/25"
     },
     {
       id: "technical",
@@ -44,52 +47,71 @@ export const SkillsSection = () => {
       skills: ["Agile/Scrum Methodologies", "API Design", "Database Fundamentals", "Technical Documentation", "System Architecture", "DevOps Basics"],
       color: "from-orange-500 to-red-500",
       bgColor: "bg-orange-50 dark:bg-orange-900/20",
-      borderColor: "border-orange-200 dark:border-orange-800"
+      borderColor: "border-orange-200 dark:border-orange-800",
+      tabColor: "data-[state=active]:from-orange-500 data-[state=active]:to-red-500 data-[state=active]:shadow-orange-500/25"
     }
   ];
 
   const toolCategories = {
-    design: [
-      { name: "Figma", icon: <Palette className="w-4 h-4" />, color: "bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-300", description: "UI/UX Design & Prototyping" },
-      { name: "Adobe XD", icon: <Palette className="w-4 h-4" />, color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300", description: "Interactive Prototyping" },
-      { name: "Sketch", icon: <Palette className="w-4 h-4" />, color: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300", description: "Interface Design" },
-      { name: "Framer", icon: <Palette className="w-4 h-4" />, color: "bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300", description: "Advanced Prototyping" },
-    ],
-    management: [
-      { name: "Jira", icon: <Calendar className="w-4 h-4" />, color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300", description: "Agile Project Management" },
-      { name: "Notion", icon: <FileText className="w-4 h-4" />, color: "bg-gray-100 text-gray-700 dark:bg-gray-800/30 dark:text-gray-300", description: "Documentation & Planning" },
-      { name: "Linear", icon: <Calendar className="w-4 h-4" />, color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300", description: "Modern Issue Tracking" },
-      { name: "Monday.com", icon: <Calendar className="w-4 h-4" />, color: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300", description: "Team Collaboration" },
-    ],
-    analytics: [
-      { name: "Mixpanel", icon: <PieChart className="w-4 h-4" />, color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300", description: "Advanced User Analytics" },
-      { name: "Google Analytics", icon: <BarChart className="w-4 h-4" />, color: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300", description: "Web Analytics Platform" },
-      { name: "Amplitude", icon: <BarChart className="w-4 h-4" />, color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300", description: "Product Analytics" },
-      { name: "Hotjar", icon: <Search className="w-4 h-4" />, color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300", description: "User Behavior Analysis" },
-    ],
-    communication: [
-      { name: "Slack", icon: <MessageSquare className="w-4 h-4" />, color: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300", description: "Team Communication" },
-      { name: "Miro", icon: <Workflow className="w-4 h-4" />, color: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300", description: "Visual Collaboration" },
-      { name: "Zoom", icon: <Globe className="w-4 h-4" />, color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300", description: "Video Conferencing" },
-      { name: "Dovetail", icon: <Search className="w-4 h-4" />, color: "bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300", description: "User Research Platform" },
-    ],
-    development: [
-      { name: "GitHub", icon: <Code className="w-4 h-4" />, color: "bg-gray-100 text-gray-700 dark:bg-gray-800/30 dark:text-gray-300", description: "Version Control & Collaboration" },
-      { name: "GitLab", icon: <Code className="w-4 h-4" />, color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300", description: "DevOps Platform" },
-      { name: "Postman", icon: <Globe className="w-4 h-4" />, color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300", description: "API Development & Testing" },
-      { name: "AWS", icon: <Cloud className="w-4 h-4" />, color: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300", description: "Cloud Infrastructure" },
-    ],
-    ai: [
-      { name: "ChatGPT", icon: <Bot className="w-4 h-4" />, color: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300", description: "AI Assistant & Automation" },
-      { name: "Claude", icon: <Bot className="w-4 h-4" />, color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300", description: "Advanced AI Assistant" },
-      { name: "Zapier", icon: <Workflow className="w-4 h-4" />, color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300", description: "Workflow Automation" },
-      { name: "Make", icon: <Workflow className="w-4 h-4" />, color: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300", description: "Visual Automation Platform" },
-    ]
+    design: {
+      tools: [
+        { name: "Figma", icon: <Palette className="w-4 h-4" />, color: "bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-300", description: "UI/UX Design & Prototyping" },
+        { name: "Adobe XD", icon: <Palette className="w-4 h-4" />, color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300", description: "Interactive Prototyping" },
+        { name: "Sketch", icon: <Palette className="w-4 h-4" />, color: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300", description: "Interface Design" },
+        { name: "Framer", icon: <Palette className="w-4 h-4" />, color: "bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300", description: "Advanced Prototyping" },
+      ],
+      tabColor: "data-[state=active]:from-pink-500 data-[state=active]:to-purple-500 data-[state=active]:shadow-pink-500/25"
+    },
+    management: {
+      tools: [
+        { name: "Jira", icon: <Calendar className="w-4 h-4" />, color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300", description: "Agile Project Management" },
+        { name: "Notion", icon: <FileText className="w-4 h-4" />, color: "bg-gray-100 text-gray-700 dark:bg-gray-800/30 dark:text-gray-300", description: "Documentation & Planning" },
+        { name: "Linear", icon: <Calendar className="w-4 h-4" />, color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300", description: "Modern Issue Tracking" },
+        { name: "Monday.com", icon: <Calendar className="w-4 h-4" />, color: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300", description: "Team Collaboration" },
+      ],
+      tabColor: "data-[state=active]:from-blue-500 data-[state=active]:to-indigo-500 data-[state=active]:shadow-blue-500/25"
+    },
+    analytics: {
+      tools: [
+        { name: "Mixpanel", icon: <PieChart className="w-4 h-4" />, color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300", description: "Advanced User Analytics" },
+        { name: "Google Analytics", icon: <BarChart className="w-4 h-4" />, color: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300", description: "Web Analytics Platform" },
+        { name: "Amplitude", icon: <BarChart className="w-4 h-4" />, color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300", description: "Product Analytics" },
+        { name: "Hotjar", icon: <Search className="w-4 h-4" />, color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300", description: "User Behavior Analysis" },
+      ],
+      tabColor: "data-[state=active]:from-emerald-500 data-[state=active]:to-green-500 data-[state=active]:shadow-emerald-500/25"
+    },
+    communication: {
+      tools: [
+        { name: "Slack", icon: <MessageSquare className="w-4 h-4" />, color: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300", description: "Team Communication" },
+        { name: "Miro", icon: <Workflow className="w-4 h-4" />, color: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300", description: "Visual Collaboration" },
+        { name: "Zoom", icon: <Globe className="w-4 h-4" />, color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300", description: "Video Conferencing" },
+        { name: "Dovetail", icon: <Search className="w-4 h-4" />, color: "bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300", description: "User Research Platform" },
+      ],
+      tabColor: "data-[state=active]:from-indigo-500 data-[state=active]:to-purple-500 data-[state=active]:shadow-indigo-500/25"
+    },
+    development: {
+      tools: [
+        { name: "GitHub", icon: <Code className="w-4 h-4" />, color: "bg-gray-100 text-gray-700 dark:bg-gray-800/30 dark:text-gray-300", description: "Version Control & Collaboration" },
+        { name: "GitLab", icon: <Code className="w-4 h-4" />, color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300", description: "DevOps Platform" },
+        { name: "Postman", icon: <Globe className="w-4 h-4" />, color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300", description: "API Development & Testing" },
+        { name: "AWS", icon: <Cloud className="w-4 h-4" />, color: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300", description: "Cloud Infrastructure" },
+      ],
+      tabColor: "data-[state=active]:from-orange-500 data-[state=active]:to-red-500 data-[state=active]:shadow-orange-500/25"
+    },
+    ai: {
+      tools: [
+        { name: "ChatGPT", icon: <Bot className="w-4 h-4" />, color: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300", description: "AI Assistant & Automation" },
+        { name: "Claude", icon: <Bot className="w-4 h-4" />, color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300", description: "Advanced AI Assistant" },
+        { name: "Zapier", icon: <Workflow className="w-4 h-4" />, color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300", description: "Workflow Automation" },
+        { name: "Make", icon: <Workflow className="w-4 h-4" />, color: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300", description: "Visual Automation Platform" },
+      ],
+      tabColor: "data-[state=active]:from-violet-500 data-[state=active]:to-indigo-500 data-[state=active]:shadow-violet-500/25"
+    }
   };
 
   const getAllTools = () => {
-    return Object.entries(toolCategories).flatMap(([category, tools]) => 
-      tools.map(tool => ({ ...tool, category }))
+    return Object.entries(toolCategories).flatMap(([category, data]) => 
+      data.tools.map(tool => ({ ...tool, category }))
     );
   };
 
@@ -132,7 +154,7 @@ export const SkillsSection = () => {
                 <TabsTrigger 
                   key={category.id} 
                   value={category.id}
-                  className="group relative flex flex-col items-center gap-3 px-6 py-5 rounded-xl font-semibold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:shadow-blue-500/25 hover:bg-slate-50 dark:hover:bg-slate-700/50 data-[state=active]:scale-105"
+                  className={`group relative flex flex-col items-center gap-3 px-6 py-5 rounded-xl font-semibold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br ${category.tabColor} data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:scale-105 hover:bg-slate-50 dark:hover:bg-slate-700/50`}
                 >
                   <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-700 group-data-[state=active]:bg-white/20 transition-all duration-300 group-data-[state=active]:shadow-lg group-hover:scale-110">
                     {category.icon}
@@ -206,14 +228,18 @@ export const SkillsSection = () => {
         
         <Tabs defaultValue="all" className="w-full">
           <div className="mb-10 flex justify-center">
-            <TabsList className="grid w-full max-w-5xl grid-cols-3 lg:grid-cols-6 h-auto p-2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border border-slate-200/80 dark:border-slate-600/80 rounded-2xl shadow-xl">
-              <TabsTrigger value="all" className="group relative flex flex-col items-center gap-2 px-4 py-4 rounded-xl font-semibold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:shadow-blue-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 data-[state=active]:scale-105">
+            <TabsList className="grid w-full max-w-5xl grid-cols-3 lg:grid-cols-6 xl:grid-cols-7 h-auto p-2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border border-slate-200/80 dark:border-slate-600/80 rounded-2xl shadow-xl">
+              <TabsTrigger value="all" className="group relative flex flex-col items-center gap-2 px-4 py-4 rounded-xl font-semibold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-slate-600 data-[state=active]:to-slate-700 data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:shadow-slate-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 data-[state=active]:scale-105">
                 <Target className="w-5 h-5" />
                 <span>All</span>
               </TabsTrigger>
-              {Object.entries(toolCategories).map(([key, tools]) => (
-                <TabsTrigger key={key} value={key} className="group relative flex flex-col items-center gap-2 px-4 py-4 rounded-xl font-semibold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:shadow-blue-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 data-[state=active]:scale-105 capitalize">
-                  {tools[0]?.icon}
+              {Object.entries(toolCategories).map(([key, data]) => (
+                <TabsTrigger 
+                  key={key} 
+                  value={key} 
+                  className={`group relative flex flex-col items-center gap-2 px-4 py-4 rounded-xl font-semibold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br ${data.tabColor} data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:scale-105 hover:bg-slate-100 dark:hover:bg-slate-600 capitalize`}
+                >
+                  {data.tools[0]?.icon}
                   <span>{key}</span>
                 </TabsTrigger>
               ))}
@@ -240,10 +266,10 @@ export const SkillsSection = () => {
             </div>
           </TabsContent>
 
-          {Object.entries(toolCategories).map(([category, tools]) => (
+          {Object.entries(toolCategories).map(([category, data]) => (
             <TabsContent key={category} value={category} className="mt-0">
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {tools.map((tool, index) => (
+                {data.tools.map((tool, index) => (
                   <Card key={index} className="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden">
                     <CardContent className="p-6">
                       <div className="flex flex-col items-center text-center space-y-4">
