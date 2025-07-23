@@ -175,39 +175,38 @@ export const SkillsSection = () => {
               <Card className="border-0 shadow-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl relative overflow-hidden rounded-3xl">
                 <div className={`absolute top-0 left-0 w-full h-2 bg-gradient-to-r ${category.color}`}></div>
                 
-                <CardHeader className="pb-8 pt-8">
-                  <div className="flex items-start gap-8">
-                    <div className={`p-8 rounded-3xl bg-gradient-to-br ${category.color} text-white shadow-2xl relative overflow-hidden`}>
-                      <div className="relative z-10 w-8 h-8 flex items-center justify-center">
+                <CardHeader className="pb-6 pt-8">
+                  <div className="flex items-start gap-6">
+                    <div className={`p-6 rounded-2xl bg-gradient-to-br ${category.color} text-white shadow-xl relative overflow-hidden`}>
+                      <div className="relative z-10 w-6 h-6 flex items-center justify-center">
                         {category.icon}
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent"></div>
-                      <div className="absolute -top-4 -right-4 w-16 h-16 bg-white/10 rounded-full blur-xl"></div>
+                      <div className="absolute -top-2 -right-2 w-12 h-12 bg-white/10 rounded-full blur-xl"></div>
                     </div>
                     <div className="flex-1">
-                      <CardTitle className="text-4xl font-bold text-slate-900 dark:text-white mb-4 leading-tight">
+                      <CardTitle className="text-3xl font-bold text-slate-900 dark:text-white mb-3 leading-tight">
                         {category.title}
                       </CardTitle>
-                      <CardDescription className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+                      <CardDescription className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
                         {category.description}
                       </CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 
-                <CardContent className="pb-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <CardContent className="pb-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {category.skills.map((skill, i) => (
                       <div key={i} className="group relative">
-                        <div className="flex items-center gap-5 p-7 bg-gradient-to-br from-white via-white to-slate-50/30 dark:from-slate-700/50 dark:via-slate-700/30 dark:to-slate-800/50 rounded-2xl border border-slate-200/60 dark:border-slate-600/40 hover:scale-105 hover:shadow-2xl transition-all duration-500 hover:border-blue-300/60 dark:hover:border-blue-600/60 relative overflow-hidden backdrop-blur-sm">
-                          <div className={`w-4 h-4 rounded-full bg-gradient-to-br ${category.color} group-hover:scale-125 transition-all duration-500 shadow-lg flex-shrink-0`}>
+                        <div className="flex items-center gap-3 p-4 bg-gradient-to-br from-white via-white to-slate-50/30 dark:from-slate-700/50 dark:via-slate-700/30 dark:to-slate-800/50 rounded-xl border border-slate-200/60 dark:border-slate-600/40 hover:scale-105 hover:shadow-lg transition-all duration-300 hover:border-blue-300/60 dark:hover:border-blue-600/60 relative overflow-hidden backdrop-blur-sm">
+                          <div className={`w-3 h-3 rounded-full bg-gradient-to-br ${category.color} group-hover:scale-125 transition-all duration-300 shadow-md flex-shrink-0`}>
                             <div className="w-full h-full rounded-full bg-gradient-to-br from-white/30 to-transparent"></div>
                           </div>
-                          <span className="text-slate-800 dark:text-slate-200 font-bold text-base leading-tight">
+                          <span className="text-slate-800 dark:text-slate-200 font-semibold text-sm leading-tight">
                             {skill}
                           </span>
-                          <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}></div>
-                          <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-white/5 to-transparent rounded-full -translate-y-4 translate-x-4 group-hover:scale-150 transition-transform duration-500"></div>
+                          <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-xl`}></div>
                         </div>
                       </div>
                     ))}
@@ -255,22 +254,22 @@ export const SkillsSection = () => {
           </div>
 
           <TabsContent value="all" className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {getAllTools().map((tool, index) => (
-                <Card key={index} className="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border-2 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden rounded-3xl hover:-translate-y-2">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-slate-50/30 dark:from-slate-700/30 dark:via-transparent dark:to-slate-800/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <CardContent className="p-8 relative z-10">
-                    <div className="flex flex-col items-center text-center space-y-6">
-                      <div className={`p-6 rounded-2xl ${tool.color} group-hover:scale-110 transition-all duration-500 shadow-xl relative overflow-hidden border-2`}>
+                <Card key={index} className="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden rounded-2xl hover:-translate-y-1 border-0">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-slate-50/30 dark:from-slate-700/30 dark:via-transparent dark:to-slate-800/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <CardContent className="p-6 relative z-10">
+                    <div className="flex flex-col items-center text-center space-y-4">
+                      <div className={`p-4 rounded-xl ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-md relative overflow-hidden`}>
                         <div className="relative z-10">
                           {tool.icon}
                         </div>
                         <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent"></div>
-                        <div className="absolute -top-2 -right-2 w-8 h-8 bg-white/20 rounded-full blur-lg"></div>
+                        <div className="absolute -top-1 -right-1 w-6 h-6 bg-white/20 rounded-full blur-md"></div>
                       </div>
-                      <div className="space-y-3">
-                        <h4 className="font-bold text-lg text-slate-900 dark:text-white">{tool.name}</h4>
-                        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-medium px-2">{tool.description}</p>
+                      <div className="space-y-2">
+                        <h4 className="font-bold text-base text-slate-900 dark:text-white">{tool.name}</h4>
+                        <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{tool.description}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -281,22 +280,22 @@ export const SkillsSection = () => {
 
           {Object.entries(toolCategories).map(([category, data]) => (
             <TabsContent key={category} value={category} className="mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {data.tools.map((tool, index) => (
-                  <Card key={index} className="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border-2 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden rounded-3xl hover:-translate-y-2">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-slate-50/30 dark:from-slate-700/30 dark:via-transparent dark:to-slate-800/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <CardContent className="p-8 relative z-10">
-                      <div className="flex flex-col items-center text-center space-y-6">
-                        <div className={`p-6 rounded-2xl ${tool.color} group-hover:scale-110 transition-all duration-500 shadow-xl relative overflow-hidden border-2`}>
+                  <Card key={index} className="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden rounded-2xl hover:-translate-y-1 border-0">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-slate-50/30 dark:from-slate-700/30 dark:via-transparent dark:to-slate-800/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <CardContent className="p-6 relative z-10">
+                      <div className="flex flex-col items-center text-center space-y-4">
+                        <div className={`p-4 rounded-xl ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-md relative overflow-hidden`}>
                           <div className="relative z-10">
                             {tool.icon}
                           </div>
                           <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent"></div>
-                          <div className="absolute -top-2 -right-2 w-8 h-8 bg-white/20 rounded-full blur-lg"></div>
+                          <div className="absolute -top-1 -right-1 w-6 h-6 bg-white/20 rounded-full blur-md"></div>
                         </div>
-                        <div className="space-y-3">
-                          <h4 className="font-bold text-lg text-slate-900 dark:text-white">{tool.name}</h4>
-                          <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-medium px-2">{tool.description}</p>
+                        <div className="space-y-2">
+                          <h4 className="font-bold text-base text-slate-900 dark:text-white">{tool.name}</h4>
+                          <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{tool.description}</p>
                         </div>
                       </div>
                     </CardContent>
