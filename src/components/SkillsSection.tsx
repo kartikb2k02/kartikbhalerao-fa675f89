@@ -1,5 +1,4 @@
-
-import { Target, BarChart3, Palette, Code, Calendar, PieChart, FileText, BarChart, MessageSquare, Search, Workflow, Bot, Globe, Database, Cloud } from "lucide-react";
+import { Target, BarChart3, Palette, Code, Calendar, PieChart, FileText, BarChart, MessageSquare, Search, Workflow, Bot, Globe, Database, Cloud, Boxes, Zap, Settings, Sliders } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -79,8 +78,8 @@ export const SkillsSection = () => {
         { name: "Mixpanel", icon: <PieChart className="w-4 h-4" />, color: "bg-gradient-to-br from-purple-50 to-purple-100 text-purple-700 dark:from-purple-900/30 dark:to-purple-800/30 dark:text-purple-300", description: "Advanced User Analytics" },
         { name: "Google Analytics", icon: <BarChart className="w-4 h-4" />, color: "bg-gradient-to-br from-green-50 to-green-100 text-green-700 dark:from-green-900/30 dark:to-green-800/30 dark:text-green-300", description: "Web Analytics Platform" },
         { name: "Amplitude", icon: <BarChart className="w-4 h-4" />, color: "bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 dark:from-blue-900/30 dark:to-blue-800/30 dark:text-blue-300", description: "Product Analytics" },
-        { name: "Tableau", icon: <BarChart2 className="w-4 h-4" />, color: "bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-700 dark:from-indigo-900/30 dark:to-indigo-800/30 dark:text-indigo-300", description: "Data Visualization" },
-        { name: "Segment", icon: <SlidersHorizontal className="w-4 h-4" />, color: "bg-gradient-to-br from-teal-50 to-teal-100 text-teal-700 dark:from-teal-900/30 dark:to-teal-800/30 dark:text-teal-300", description: "Customer Data Infrastructure" },
+        { name: "Tableau", icon: <BarChart className="w-4 h-4" />, color: "bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-700 dark:from-indigo-900/30 dark:to-indigo-800/30 dark:text-indigo-300", description: "Data Visualization" },
+        { name: "Segment", icon: <Sliders className="w-4 h-4" />, color: "bg-gradient-to-br from-teal-50 to-teal-100 text-teal-700 dark:from-teal-900/30 dark:to-teal-800/30 dark:text-teal-300", description: "Customer Data Infrastructure" },
         { name: "Hotjar", icon: <Search className="w-4 h-4" />, color: "bg-gradient-to-br from-orange-50 to-orange-100 text-orange-700 dark:from-orange-900/30 dark:to-orange-800/30 dark:text-orange-300", description: "User Behavior Analysis" },
       ],
       tabColor: "data-[state=active]:from-emerald-500 data-[state=active]:to-green-500 data-[state=active]:shadow-emerald-500/25"
@@ -90,7 +89,7 @@ export const SkillsSection = () => {
         { name: "Slack", icon: <MessageSquare className="w-4 h-4" />, color: "bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-700 dark:from-indigo-900/30 dark:to-indigo-800/30 dark:text-indigo-300", description: "Team Communication" },
         { name: "Miro", icon: <Workflow className="w-4 h-4" />, color: "bg-gradient-to-br from-yellow-50 to-yellow-100 text-yellow-700 dark:from-yellow-900/30 dark:to-yellow-800/30 dark:text-yellow-300", description: "Visual Collaboration" },
         { name: "Zoom", icon: <Globe className="w-4 h-4" />, color: "bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 dark:from-blue-900/30 dark:to-blue-800/30 dark:text-blue-300", description: "Video Conferencing" },
-        { name: "Discord", icon: <MessageCircle className="w-4 h-4" />, color: "bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-700 dark:from-indigo-900/30 dark:to-indigo-800/30 dark:text-indigo-300", description: "Team Communication" },
+        { name: "Discord", icon: <MessageSquare className="w-4 h-4" />, color: "bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-700 dark:from-indigo-900/30 dark:to-indigo-800/30 dark:text-indigo-300", description: "Team Communication" },
         { name: "Microsoft Teams", icon: <MessageSquare className="w-4 h-4" />, color: "bg-gradient-to-br from-violet-50 to-violet-100 text-violet-700 dark:from-violet-900/30 dark:to-violet-800/30 dark:text-violet-300", description: "Collaboration Platform" },
         { name: "Dovetail", icon: <Search className="w-4 h-4" />, color: "bg-gradient-to-br from-teal-50 to-teal-100 text-teal-700 dark:from-teal-900/30 dark:to-teal-800/30 dark:text-teal-300", description: "User Research Platform" },
       ],
@@ -114,7 +113,7 @@ export const SkillsSection = () => {
         { name: "Superagent", icon: <Zap className="w-4 h-4" />, color: "bg-gradient-to-br from-rose-50 to-rose-100 text-rose-700 dark:from-rose-900/30 dark:to-rose-800/30 dark:text-rose-300", description: "AI Agent Framework" },
         { name: "Autogen Studio", icon: <Settings className="w-4 h-4" />, color: "bg-gradient-to-br from-fuchsia-50 to-fuchsia-100 text-fuchsia-700 dark:from-fuchsia-900/30 dark:to-fuchsia-800/30 dark:text-fuchsia-300", description: "Multi-Agent AI Orchestration" },
         { name: "n8n", icon: <Workflow className="w-4 h-4" />, color: "bg-gradient-to-br from-orange-50 to-orange-100 text-orange-700 dark:from-orange-900/30 dark:to-orange-800/30 dark:text-orange-300", description: "Workflow Automation Tool" },
-        { name: "Flowise", icon: <Flowchart className="w-4 h-4" />, color: "bg-gradient-to-br from-green-50 to-green-100 text-green-700 dark:from-green-900/30 dark:to-green-800/30 dark:text-green-300", description: "Visual AI Workflow Builder" },
+        { name: "Flowise", icon: <Workflow className="w-4 h-4" />, color: "bg-gradient-to-br from-green-50 to-green-100 text-green-700 dark:from-green-900/30 dark:to-green-800/30 dark:text-green-300", description: "Visual AI Workflow Builder" },
         { name: "Zapier", icon: <Workflow className="w-4 h-4" />, color: "bg-gradient-to-br from-orange-50 to-orange-100 text-orange-700 dark:from-orange-900/30 dark:to-orange-800/30 dark:text-orange-300", description: "Workflow Automation" },
         { name: "Make", icon: <Workflow className="w-4 h-4" />, color: "bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-700 dark:from-indigo-900/30 dark:to-indigo-800/30 dark:text-indigo-300", description: "Visual Automation Platform" },
       ],
@@ -168,9 +167,9 @@ export const SkillsSection = () => {
                   <TabsTrigger 
                     key={category.id} 
                     value={category.id}
-                    className={`group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-xl font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br ${category.tabColor} data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:scale-102`}
+                    className={`group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-2xl font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br ${category.tabColor} data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:scale-102`}
                   >
-                    <div className="flex items-center justify-center w-6 h-6 rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-data-[state=active]:shadow-md group-hover:scale-110 group-data-[state=active]:from-white/20 group-data-[state=active]:to-white/10">
+                    <div className="flex items-center justify-center w-6 h-6 rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-data-[state=active]:shadow-md group-hover:scale-110 group-data-[state=active]:from-white/20 group-data-[state=active]:to-white/10">
                       {category.icon}
                     </div>
                     <div className="text-center">
@@ -183,12 +182,12 @@ export const SkillsSection = () => {
 
             {skillCategories.map((category) => (
               <TabsContent key={category.id} value={category.id} className="mt-0">
-                <Card className="border-0 shadow-lg bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl relative overflow-hidden rounded-2xl">
+                <Card className="border-0 shadow-lg bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl relative overflow-hidden rounded-3xl">
                   <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${category.color}`}></div>
                   
                   <CardHeader className="pb-3 pt-4">
                     <div className="flex items-start gap-3">
-                      <div className={`p-3 rounded-xl bg-gradient-to-br ${category.color} text-white shadow-lg relative overflow-hidden`}>
+                      <div className={`p-3 rounded-2xl bg-gradient-to-br ${category.color} text-white shadow-lg relative overflow-hidden`}>
                         <div className="relative z-10 w-4 h-4 flex items-center justify-center">
                           {category.icon}
                         </div>
@@ -210,14 +209,14 @@ export const SkillsSection = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                       {category.skills.map((skill, i) => (
                         <div key={i} className="group relative">
-                          <div className="flex items-center gap-2 p-2 bg-gradient-to-br from-white via-white to-slate-50/30 dark:from-slate-700/50 dark:via-slate-700/30 dark:to-slate-800/50 rounded-xl hover:scale-105 hover:shadow-md transition-all duration-300 hover:border-blue-300/60 dark:hover:border-blue-600/60 relative overflow-hidden backdrop-blur-sm">
+                          <div className="flex items-center gap-2 p-2 bg-gradient-to-br from-white via-white to-slate-50/30 dark:from-slate-700/50 dark:via-slate-700/30 dark:to-slate-800/50 rounded-2xl hover:scale-105 hover:shadow-md transition-all duration-300 hover:border-blue-300/60 dark:hover:border-blue-600/60 relative overflow-hidden backdrop-blur-sm">
                             <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${category.color} group-hover:scale-125 transition-all duration-300 shadow-sm flex-shrink-0`}>
                               <div className="w-full h-full rounded-full bg-gradient-to-br from-white/30 to-transparent"></div>
                             </div>
                             <span className="text-slate-800 dark:text-slate-200 font-medium text-xs leading-tight">
                               {skill}
                             </span>
-                            <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-xl`}></div>
+                            <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl`}></div>
                           </div>
                         </div>
                       ))}
@@ -242,9 +241,9 @@ export const SkillsSection = () => {
           
           <Tabs defaultValue="all" className="w-full">
             <div className="mb-6 flex justify-center">
-              <TabsList className="grid w-full max-w-4xl grid-cols-3 lg:grid-cols-6 xl:grid-cols-7 h-auto p-2 bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border border-slate-200/60 dark:border-slate-600/60 rounded-2xl shadow-xl">
-                <TabsTrigger value="all" className="group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-xl font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-slate-600 data-[state=active]:to-slate-700 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-slate-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 data-[state=active]:scale-105">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-hover:scale-110">
+              <TabsList className="grid w-full max-w-4xl grid-cols-3 lg:grid-cols-6 xl:grid-cols-7 h-auto p-2 bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border border-slate-200/60 dark:border-slate-600/60 rounded-3xl shadow-xl">
+                <TabsTrigger value="all" className="group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-3xl font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-slate-600 data-[state=active]:to-slate-700 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-slate-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 data-[state=active]:scale-105">
+                  <div className="flex items-center justify-center w-6 h-6 rounded-3xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-hover:scale-110">
                     <Target className="w-3 h-3" />
                   </div>
                   <span className="font-bold text-xs">All</span>
@@ -253,9 +252,9 @@ export const SkillsSection = () => {
                   <TabsTrigger 
                     key={key} 
                     value={key} 
-                    className={`group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-xl font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br ${data.tabColor} data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 hover:bg-slate-100 dark:hover:bg-slate-600 capitalize`}
+                    className={`group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-3xl font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br ${data.tabColor} data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 hover:bg-slate-100 dark:hover:bg-slate-600 capitalize`}
                   >
-                    <div className="flex items-center justify-center w-6 h-6 rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                    <div className="flex items-center justify-center w-6 h-6 rounded-3xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-hover:scale-110">
                       {data.tools[0]?.icon}
                     </div>
                     <span className="font-bold text-xs">{key}</span>
@@ -267,11 +266,11 @@ export const SkillsSection = () => {
             <TabsContent value="all" className="mt-0">
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                 {getAllTools().map((tool, index) => (
-                  <div key={index} className="group relative bg-white/30 dark:bg-slate-800/30 backdrop-blur-md border border-white/20 dark:border-slate-700/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden rounded-2xl hover:-translate-y-1 hover:bg-white/40 dark:hover:bg-slate-800/40">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-slate-50/20 dark:from-slate-700/20 dark:via-transparent dark:to-slate-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div key={index} className="group relative bg-white/10 dark:bg-slate-800/10 backdrop-blur-2xl border border-white/30 dark:border-slate-700/30 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 overflow-hidden rounded-3xl hover:-translate-y-1 hover:bg-white/20 dark:hover:bg-slate-800/20 hover:border-white/50 dark:hover:border-slate-600/50">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-slate-50/10 dark:from-slate-700/10 dark:via-transparent dark:to-slate-800/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div className="p-3 relative z-10">
                       <div className="flex flex-col items-center text-center space-y-2">
-                        <div className={`p-2 rounded-xl ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-sm relative overflow-hidden backdrop-blur-sm`}>
+                        <div className={`p-2 rounded-3xl ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-sm relative overflow-hidden backdrop-blur-sm`}>
                           <div className="relative z-10">
                             {tool.icon}
                           </div>
@@ -292,11 +291,11 @@ export const SkillsSection = () => {
               <TabsContent key={category} value={category} className="mt-0">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                   {data.tools.map((tool, index) => (
-                    <div key={index} className="group relative bg-white/30 dark:bg-slate-800/30 backdrop-blur-md border border-white/20 dark:border-slate-700/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden rounded-2xl hover:-translate-y-1 hover:bg-white/40 dark:hover:bg-slate-800/40">
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-slate-50/20 dark:from-slate-700/20 dark:via-transparent dark:to-slate-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div key={index} className="group relative bg-white/10 dark:bg-slate-800/10 backdrop-blur-2xl border border-white/30 dark:border-slate-700/30 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 overflow-hidden rounded-3xl hover:-translate-y-1 hover:bg-white/20 dark:hover:bg-slate-800/20 hover:border-white/50 dark:hover:border-slate-600/50">
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-slate-50/10 dark:from-slate-700/10 dark:via-transparent dark:to-slate-800/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       <div className="p-3 relative z-10">
                         <div className="flex flex-col items-center text-center space-y-2">
-                          <div className={`p-2 rounded-xl ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-sm relative overflow-hidden backdrop-blur-sm`}>
+                          <div className={`p-2 rounded-3xl ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-sm relative overflow-hidden backdrop-blur-sm`}>
                             <div className="relative z-10">
                               {tool.icon}
                             </div>
