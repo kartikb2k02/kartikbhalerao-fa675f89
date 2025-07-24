@@ -30,10 +30,7 @@ export const WelcomeToast = () => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Enhanced backdrop with blur */}
-      <div 
-        className="absolute inset-0 bg-black/40 backdrop-blur-md"
-        onClick={() => setIsVisible(false)}
-      />
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-md" />
       
       {/* Enhanced Welcome Card */}
       <div className="relative bg-gradient-to-br from-white/95 via-white/90 to-slate-50/95 dark:from-slate-800/95 dark:via-slate-800/90 dark:to-slate-900/95 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-white/20 dark:border-slate-700/30 max-w-md w-full animate-in fade-in slide-in-from-bottom-8 duration-500">
@@ -52,10 +49,10 @@ export const WelcomeToast = () => {
 
         {/* Content */}
         <div className="text-center space-y-6">
-          {/* Enhanced icon section */}
+          {/* Enhanced icon section with animated hand */}
           <div className="relative">
             <div className="text-6xl mb-2 relative">
-              <span className="relative z-10">👋</span>
+              <span className="relative z-10 inline-block animate-[wiggle_1s_ease-in-out_infinite]">👋</span>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-xl scale-150 animate-pulse"></div>
             </div>
             <div className="flex items-center justify-center gap-2 text-yellow-400">
