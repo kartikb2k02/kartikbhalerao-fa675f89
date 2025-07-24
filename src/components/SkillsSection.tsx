@@ -57,6 +57,7 @@ export const SkillsSection = () => {
       tools: [
         { name: "Figma", icon: <Palette className="w-4 h-4" />, color: "bg-gradient-to-br from-pink-50 to-pink-100 text-pink-700 dark:from-pink-900/30 dark:to-pink-800/30 dark:text-pink-300", description: "UI/UX Design & Prototyping" },
         { name: "Adobe XD", icon: <Palette className="w-4 h-4" />, color: "bg-gradient-to-br from-purple-50 to-purple-100 text-purple-700 dark:from-purple-900/30 dark:to-purple-800/30 dark:text-purple-300", description: "Interactive Prototyping" },
+        { name: "Canva", icon: <Palette className="w-4 h-4" />, color: "bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 dark:from-blue-900/30 dark:to-blue-800/30 dark:text-blue-300", description: "Graphic Design" },
         { name: "Sketch", icon: <Palette className="w-4 h-4" />, color: "bg-gradient-to-br from-yellow-50 to-yellow-100 text-yellow-700 dark:from-yellow-900/30 dark:to-yellow-800/30 dark:text-yellow-300", description: "Interface Design" },
         { name: "Framer", icon: <Palette className="w-4 h-4" />, color: "bg-gradient-to-br from-teal-50 to-teal-100 text-teal-700 dark:from-teal-900/30 dark:to-teal-800/30 dark:text-teal-300", description: "Advanced Prototyping" },
       ],
@@ -66,6 +67,8 @@ export const SkillsSection = () => {
       tools: [
         { name: "Jira", icon: <Calendar className="w-4 h-4" />, color: "bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 dark:from-blue-900/30 dark:to-blue-800/30 dark:text-blue-300", description: "Agile Project Management" },
         { name: "Notion", icon: <FileText className="w-4 h-4" />, color: "bg-gradient-to-br from-gray-50 to-gray-100 text-gray-700 dark:from-gray-800/30 dark:to-gray-700/30 dark:text-gray-300", description: "Documentation & Planning" },
+        { name: "Trello", icon: <FileText className="w-4 h-4" />, color: "bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 dark:from-blue-900/30 dark:to-blue-800/30 dark:text-blue-300", description: "Task Management" },
+        { name: "Asana", icon: <FileText className="w-4 h-4" />, color: "bg-gradient-to-br from-orange-50 to-orange-100 text-orange-700 dark:from-orange-900/30 dark:to-orange-800/30 dark:text-orange-300", description: "Project Tracking" },
         { name: "Linear", icon: <Calendar className="w-4 h-4" />, color: "bg-gradient-to-br from-purple-50 to-purple-100 text-purple-700 dark:from-purple-900/30 dark:to-purple-800/30 dark:text-purple-300", description: "Modern Issue Tracking" },
         { name: "Monday.com", icon: <Calendar className="w-4 h-4" />, color: "bg-gradient-to-br from-green-50 to-green-100 text-green-700 dark:from-green-900/30 dark:to-green-800/30 dark:text-green-300", description: "Team Collaboration" },
       ],
@@ -76,6 +79,8 @@ export const SkillsSection = () => {
         { name: "Mixpanel", icon: <PieChart className="w-4 h-4" />, color: "bg-gradient-to-br from-purple-50 to-purple-100 text-purple-700 dark:from-purple-900/30 dark:to-purple-800/30 dark:text-purple-300", description: "Advanced User Analytics" },
         { name: "Google Analytics", icon: <BarChart className="w-4 h-4" />, color: "bg-gradient-to-br from-green-50 to-green-100 text-green-700 dark:from-green-900/30 dark:to-green-800/30 dark:text-green-300", description: "Web Analytics Platform" },
         { name: "Amplitude", icon: <BarChart className="w-4 h-4" />, color: "bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 dark:from-blue-900/30 dark:to-blue-800/30 dark:text-blue-300", description: "Product Analytics" },
+        { name: "Tableau", icon: <BarChart2 className="w-4 h-4" />, color: "bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-700 dark:from-indigo-900/30 dark:to-indigo-800/30 dark:text-indigo-300", description: "Data Visualization" },
+        { name: "Segment", icon: <SlidersHorizontal className="w-4 h-4" />, color: "bg-gradient-to-br from-teal-50 to-teal-100 text-teal-700 dark:from-teal-900/30 dark:to-teal-800/30 dark:text-teal-300", description: "Customer Data Infrastructure" },
         { name: "Hotjar", icon: <Search className="w-4 h-4" />, color: "bg-gradient-to-br from-orange-50 to-orange-100 text-orange-700 dark:from-orange-900/30 dark:to-orange-800/30 dark:text-orange-300", description: "User Behavior Analysis" },
       ],
       tabColor: "data-[state=active]:from-emerald-500 data-[state=active]:to-green-500 data-[state=active]:shadow-emerald-500/25"
@@ -85,6 +90,8 @@ export const SkillsSection = () => {
         { name: "Slack", icon: <MessageSquare className="w-4 h-4" />, color: "bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-700 dark:from-indigo-900/30 dark:to-indigo-800/30 dark:text-indigo-300", description: "Team Communication" },
         { name: "Miro", icon: <Workflow className="w-4 h-4" />, color: "bg-gradient-to-br from-yellow-50 to-yellow-100 text-yellow-700 dark:from-yellow-900/30 dark:to-yellow-800/30 dark:text-yellow-300", description: "Visual Collaboration" },
         { name: "Zoom", icon: <Globe className="w-4 h-4" />, color: "bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 dark:from-blue-900/30 dark:to-blue-800/30 dark:text-blue-300", description: "Video Conferencing" },
+        { name: "Discord", icon: <MessageCircle className="w-4 h-4" />, color: "bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-700 dark:from-indigo-900/30 dark:to-indigo-800/30 dark:text-indigo-300", description: "Team Communication" },
+        { name: "Microsoft Teams", icon: <MessageSquare className="w-4 h-4" />, color: "bg-gradient-to-br from-violet-50 to-violet-100 text-violet-700 dark:from-violet-900/30 dark:to-violet-800/30 dark:text-violet-300", description: "Collaboration Platform" },
         { name: "Dovetail", icon: <Search className="w-4 h-4" />, color: "bg-gradient-to-br from-teal-50 to-teal-100 text-teal-700 dark:from-teal-900/30 dark:to-teal-800/30 dark:text-teal-300", description: "User Research Platform" },
       ],
       tabColor: "data-[state=active]:from-indigo-500 data-[state=active]:to-purple-500 data-[state=active]:shadow-indigo-500/25"
@@ -94,6 +101,8 @@ export const SkillsSection = () => {
         { name: "GitHub", icon: <Code className="w-4 h-4" />, color: "bg-gradient-to-br from-gray-50 to-gray-100 text-gray-700 dark:from-gray-800/30 dark:to-gray-700/30 dark:text-gray-300", description: "Version Control & Collaboration" },
         { name: "GitLab", icon: <Code className="w-4 h-4" />, color: "bg-gradient-to-br from-orange-50 to-orange-100 text-orange-700 dark:from-orange-900/30 dark:to-orange-800/30 dark:text-orange-300", description: "DevOps Platform" },
         { name: "Postman", icon: <Globe className="w-4 h-4" />, color: "bg-gradient-to-br from-orange-50 to-orange-100 text-orange-700 dark:from-orange-900/30 dark:to-orange-800/30 dark:text-orange-300", description: "API Development & Testing" },
+        { name: "Docker", icon: <Boxes className="w-4 h-4" />, color: "bg-gradient-to-br from-sky-50 to-sky-100 text-sky-700 dark:from-sky-900/30 dark:to-sky-800/30 dark:text-sky-300", description: "Containerization Platform" },
+        { name: "VS Code", icon: <Code className="w-4 h-4" />, color: "bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 dark:from-blue-900/30 dark:to-blue-800/30 dark:text-blue-300", description: "Code Editor" },
         { name: "AWS", icon: <Cloud className="w-4 h-4" />, color: "bg-gradient-to-br from-yellow-50 to-yellow-100 text-yellow-700 dark:from-yellow-900/30 dark:to-yellow-800/30 dark:text-yellow-300", description: "Cloud Infrastructure" },
       ],
       tabColor: "data-[state=active]:from-orange-500 data-[state=active]:to-red-500 data-[state=active]:shadow-orange-500/25"
@@ -102,6 +111,10 @@ export const SkillsSection = () => {
       tools: [
         { name: "ChatGPT", icon: <Bot className="w-4 h-4" />, color: "bg-gradient-to-br from-green-50 to-green-100 text-green-700 dark:from-green-900/30 dark:to-green-800/30 dark:text-green-300", description: "AI Assistant & Automation" },
         { name: "Claude", icon: <Bot className="w-4 h-4" />, color: "bg-gradient-to-br from-purple-50 to-purple-100 text-purple-700 dark:from-purple-900/30 dark:to-purple-800/30 dark:text-purple-300", description: "Advanced AI Assistant" },
+        { name: "Superagent", icon: <Zap className="w-4 h-4" />, color: "bg-gradient-to-br from-rose-50 to-rose-100 text-rose-700 dark:from-rose-900/30 dark:to-rose-800/30 dark:text-rose-300", description: "AI Agent Framework" },
+        { name: "Autogen Studio", icon: <Settings className="w-4 h-4" />, color: "bg-gradient-to-br from-fuchsia-50 to-fuchsia-100 text-fuchsia-700 dark:from-fuchsia-900/30 dark:to-fuchsia-800/30 dark:text-fuchsia-300", description: "Multi-Agent AI Orchestration" },
+        { name: "n8n", icon: <Workflow className="w-4 h-4" />, color: "bg-gradient-to-br from-orange-50 to-orange-100 text-orange-700 dark:from-orange-900/30 dark:to-orange-800/30 dark:text-orange-300", description: "Workflow Automation Tool" },
+        { name: "Flowise", icon: <Flowchart className="w-4 h-4" />, color: "bg-gradient-to-br from-green-50 to-green-100 text-green-700 dark:from-green-900/30 dark:to-green-800/30 dark:text-green-300", description: "Visual AI Workflow Builder" },
         { name: "Zapier", icon: <Workflow className="w-4 h-4" />, color: "bg-gradient-to-br from-orange-50 to-orange-100 text-orange-700 dark:from-orange-900/30 dark:to-orange-800/30 dark:text-orange-300", description: "Workflow Automation" },
         { name: "Make", icon: <Workflow className="w-4 h-4" />, color: "bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-700 dark:from-indigo-900/30 dark:to-indigo-800/30 dark:text-indigo-300", description: "Visual Automation Platform" },
       ],
