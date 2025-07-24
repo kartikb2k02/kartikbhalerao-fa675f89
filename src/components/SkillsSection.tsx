@@ -3,7 +3,6 @@ import { Target, BarChart3, Palette, Code, Calendar, PieChart, FileText, BarChar
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { FooterSection } from "@/components/FooterSection";
 
 export const SkillsSection = () => {
   const skillCategories = [
@@ -119,15 +118,15 @@ export const SkillsSection = () => {
   return (
     <div className="w-full">
       <section className="max-w-6xl mx-auto relative pb-16">
-        {/* Hero Section - Made smaller */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 px-6 py-3 rounded-full text-blue-600 dark:text-blue-400 font-semibold text-base mb-6 border border-blue-200/60 dark:border-blue-700/60 shadow-lg backdrop-blur-sm">
-            <Target className="w-5 h-5" />
+        {/* Hero Section */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 px-4 py-2 rounded-full text-blue-600 dark:text-blue-400 font-semibold text-sm mb-4 border border-blue-200/60 dark:border-blue-700/60 shadow-lg backdrop-blur-sm">
+            <Target className="w-4 h-4" />
             <span>Skills & Expertise</span>
-            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
           </div>
           
-          <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight leading-tight">
             Product Management
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400">
@@ -135,34 +134,34 @@ export const SkillsSection = () => {
             </span>
           </h1>
           
-          <div className="flex justify-center mb-6">
-            <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-full shadow-lg"></div>
+          <div className="flex justify-center mb-4">
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-full shadow-lg"></div>
           </div>
           
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive expertise across the full product lifecycle with unwavering focus on 
+          <p className="text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            Comprehensive expertise across the full product lifecycle with focus on 
             <span className="text-blue-600 dark:text-blue-400 font-semibold"> user-centric solutions </span>
             and measurable 
             <span className="text-purple-600 dark:text-purple-400 font-semibold"> business impact</span>
           </p>
         </div>
 
-        {/* Skills Categories - Made smaller */}
-        <div className="mb-16">
+        {/* Skills Categories */}
+        <div className="mb-12">
           <Tabs defaultValue="strategy" className="w-full">
-            <div className="mb-8 flex justify-center">
-              <TabsList className="grid w-full max-w-4xl grid-cols-2 lg:grid-cols-4 h-auto p-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/60 dark:border-slate-700/60 rounded-2xl shadow-xl">
+            <div className="mb-6 flex justify-center">
+              <TabsList className="grid w-full max-w-3xl grid-cols-2 lg:grid-cols-4 h-auto p-1.5 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/60 dark:border-slate-700/60 rounded-xl shadow-xl">
                 {skillCategories.map((category) => (
                   <TabsTrigger 
                     key={category.id} 
                     value={category.id}
-                    className={`group relative flex flex-col items-center gap-2 px-4 py-3 rounded-xl font-bold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br ${category.tabColor} data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:scale-105 hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:scale-102`}
+                    className={`group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-lg font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br ${category.tabColor} data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:scale-102`}
                   >
-                    <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-data-[state=active]:shadow-md group-hover:scale-110 group-data-[state=active]:from-white/20 group-data-[state=active]:to-white/10">
+                    <div className="flex items-center justify-center w-6 h-6 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-data-[state=active]:shadow-md group-hover:scale-110 group-data-[state=active]:from-white/20 group-data-[state=active]:to-white/10">
                       {category.icon}
                     </div>
                     <div className="text-center">
-                      <div className="font-bold text-sm">{category.title}</div>
+                      <div className="font-bold text-xs">{category.title}</div>
                     </div>
                   </TabsTrigger>
                 ))}
@@ -171,38 +170,38 @@ export const SkillsSection = () => {
 
             {skillCategories.map((category) => (
               <TabsContent key={category.id} value={category.id} className="mt-0">
-                <Card className="border-0 shadow-xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl relative overflow-hidden rounded-2xl">
-                  <div className={`absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r ${category.color}`}></div>
+                <Card className="border-0 shadow-lg bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl relative overflow-hidden rounded-xl">
+                  <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${category.color}`}></div>
                   
-                  <CardHeader className="pb-4 pt-6">
-                    <div className="flex items-start gap-4">
-                      <div className={`p-4 rounded-xl bg-gradient-to-br ${category.color} text-white shadow-lg relative overflow-hidden`}>
-                        <div className="relative z-10 w-5 h-5 flex items-center justify-center">
+                  <CardHeader className="pb-3 pt-4">
+                    <div className="flex items-start gap-3">
+                      <div className={`p-3 rounded-lg bg-gradient-to-br ${category.color} text-white shadow-lg relative overflow-hidden`}>
+                        <div className="relative z-10 w-4 h-4 flex items-center justify-center">
                           {category.icon}
                         </div>
                         <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent"></div>
-                        <div className="absolute -top-1 -right-1 w-8 h-8 bg-white/10 rounded-full blur-lg"></div>
+                        <div className="absolute -top-1 -right-1 w-6 h-6 bg-white/10 rounded-full blur-lg"></div>
                       </div>
                       <div className="flex-1">
-                        <CardTitle className="text-2xl font-bold text-slate-900 dark:text-white mb-2 leading-tight">
+                        <CardTitle className="text-xl font-bold text-slate-900 dark:text-white mb-1 leading-tight">
                           {category.title}
                         </CardTitle>
-                        <CardDescription className="text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <CardDescription className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                           {category.description}
                         </CardDescription>
                       </div>
                     </div>
                   </CardHeader>
                   
-                  <CardContent className="pb-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  <CardContent className="pb-3">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                       {category.skills.map((skill, i) => (
                         <div key={i} className="group relative">
-                          <div className="flex items-center gap-3 p-3 bg-gradient-to-br from-white via-white to-slate-50/30 dark:from-slate-700/50 dark:via-slate-700/30 dark:to-slate-800/50 rounded-lg hover:scale-105 hover:shadow-md transition-all duration-300 hover:border-blue-300/60 dark:hover:border-blue-600/60 relative overflow-hidden backdrop-blur-sm">
-                            <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${category.color} group-hover:scale-125 transition-all duration-300 shadow-sm flex-shrink-0`}>
+                          <div className="flex items-center gap-2 p-2 bg-gradient-to-br from-white via-white to-slate-50/30 dark:from-slate-700/50 dark:via-slate-700/30 dark:to-slate-800/50 rounded-lg hover:scale-105 hover:shadow-md transition-all duration-300 hover:border-blue-300/60 dark:hover:border-blue-600/60 relative overflow-hidden backdrop-blur-sm">
+                            <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${category.color} group-hover:scale-125 transition-all duration-300 shadow-sm flex-shrink-0`}>
                               <div className="w-full h-full rounded-full bg-gradient-to-br from-white/30 to-transparent"></div>
                             </div>
-                            <span className="text-slate-800 dark:text-slate-200 font-medium text-sm leading-tight">
+                            <span className="text-slate-800 dark:text-slate-200 font-medium text-xs leading-tight">
                               {skill}
                             </span>
                             <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-lg`}></div>
@@ -217,23 +216,23 @@ export const SkillsSection = () => {
           </Tabs>
         </div>
 
-        {/* Tools & Platforms - Made smaller */}
+        {/* Tools & Platforms */}
         <div className="relative">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 leading-tight">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 leading-tight">
               Tools & Platforms
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
               Comprehensive toolkit for modern product management excellence
             </p>
           </div>
           
           <Tabs defaultValue="all" className="w-full">
-            <div className="mb-8 flex justify-center">
-              <TabsList className="grid w-full max-w-5xl grid-cols-3 lg:grid-cols-6 xl:grid-cols-7 h-auto p-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/60 dark:border-slate-600/60 rounded-2xl shadow-xl">
-                <TabsTrigger value="all" className="group relative flex flex-col items-center gap-2 px-4 py-3 rounded-xl font-bold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-slate-600 data-[state=active]:to-slate-700 data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:shadow-slate-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 data-[state=active]:scale-105">
-                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-hover:scale-110">
-                    <Target className="w-4 h-4" />
+            <div className="mb-6 flex justify-center">
+              <TabsList className="grid w-full max-w-4xl grid-cols-3 lg:grid-cols-6 xl:grid-cols-7 h-auto p-1.5 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/60 dark:border-slate-600/60 rounded-xl shadow-xl">
+                <TabsTrigger value="all" className="group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-lg font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-slate-600 data-[state=active]:to-slate-700 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-slate-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 data-[state=active]:scale-105">
+                  <div className="flex items-center justify-center w-6 h-6 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                    <Target className="w-3 h-3" />
                   </div>
                   <span className="font-bold text-xs">All</span>
                 </TabsTrigger>
@@ -241,9 +240,9 @@ export const SkillsSection = () => {
                   <TabsTrigger 
                     key={key} 
                     value={key} 
-                    className={`group relative flex flex-col items-center gap-2 px-4 py-3 rounded-xl font-bold text-sm transition-all duration-500 data-[state=active]:bg-gradient-to-br ${data.tabColor} data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:scale-105 hover:bg-slate-100 dark:hover:bg-slate-600 capitalize`}
+                    className={`group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-lg font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br ${data.tabColor} data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 hover:bg-slate-100 dark:hover:bg-slate-600 capitalize`}
                   >
-                    <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                    <div className="flex items-center justify-center w-6 h-6 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-hover:scale-110">
                       {data.tools[0]?.icon}
                     </div>
                     <span className="font-bold text-xs">{key}</span>
@@ -253,20 +252,20 @@ export const SkillsSection = () => {
             </div>
 
             <TabsContent value="all" className="mt-0">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                 {getAllTools().map((tool, index) => (
-                  <Card key={index} className="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden rounded-xl hover:-translate-y-1">
+                  <Card key={index} className="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 overflow-hidden rounded-lg hover:-translate-y-1">
                     <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-slate-50/30 dark:from-slate-700/30 dark:via-transparent dark:to-slate-800/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <CardContent className="p-4 relative z-10">
-                      <div className="flex flex-col items-center text-center space-y-3">
-                        <div className={`p-3 rounded-lg ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-sm relative overflow-hidden`}>
+                    <CardContent className="p-3 relative z-10">
+                      <div className="flex flex-col items-center text-center space-y-2">
+                        <div className={`p-2 rounded-lg ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-sm relative overflow-hidden`}>
                           <div className="relative z-10">
                             {tool.icon}
                           </div>
                           <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent"></div>
                         </div>
                         <div className="space-y-1">
-                          <h4 className="font-bold text-sm text-slate-900 dark:text-white">{tool.name}</h4>
+                          <h4 className="font-bold text-xs text-slate-900 dark:text-white">{tool.name}</h4>
                           <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{tool.description}</p>
                         </div>
                       </div>
@@ -278,20 +277,20 @@ export const SkillsSection = () => {
 
             {Object.entries(toolCategories).map(([category, data]) => (
               <TabsContent key={category} value={category} className="mt-0">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                   {data.tools.map((tool, index) => (
-                    <Card key={index} className="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden rounded-xl hover:-translate-y-1">
+                    <Card key={index} className="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 overflow-hidden rounded-lg hover:-translate-y-1">
                       <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-slate-50/30 dark:from-slate-700/30 dark:via-transparent dark:to-slate-800/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <CardContent className="p-4 relative z-10">
-                        <div className="flex flex-col items-center text-center space-y-3">
-                          <div className={`p-3 rounded-lg ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-sm relative overflow-hidden`}>
+                      <CardContent className="p-3 relative z-10">
+                        <div className="flex flex-col items-center text-center space-y-2">
+                          <div className={`p-2 rounded-lg ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-sm relative overflow-hidden`}>
                             <div className="relative z-10">
                               {tool.icon}
                             </div>
                             <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent"></div>
                           </div>
                           <div className="space-y-1">
-                            <h4 className="font-bold text-sm text-slate-900 dark:text-white">{tool.name}</h4>
+                            <h4 className="font-bold text-xs text-slate-900 dark:text-white">{tool.name}</h4>
                             <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{tool.description}</p>
                           </div>
                         </div>
@@ -304,9 +303,6 @@ export const SkillsSection = () => {
           </Tabs>
         </div>
       </section>
-
-      {/* Footer Section */}
-      <FooterSection />
     </div>
   );
 };
