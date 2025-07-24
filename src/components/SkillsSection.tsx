@@ -117,7 +117,7 @@ export const SkillsSection = () => {
 
   return (
     <div className="w-full">
-      <section className="max-w-6xl mx-auto relative pb-16">
+      <section className="max-w-5xl mx-auto relative pb-16">
         {/* Hero Section */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 px-4 py-2 rounded-full text-blue-600 dark:text-blue-400 font-semibold text-sm mb-4 border border-blue-200/60 dark:border-blue-700/60 shadow-lg backdrop-blur-sm">
@@ -150,14 +150,14 @@ export const SkillsSection = () => {
         <div className="mb-12">
           <Tabs defaultValue="strategy" className="w-full">
             <div className="mb-6 flex justify-center">
-              <TabsList className="grid w-full max-w-3xl grid-cols-2 lg:grid-cols-4 h-auto p-1.5 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/60 dark:border-slate-700/60 rounded-xl shadow-xl">
+              <TabsList className="grid w-full max-w-3xl grid-cols-2 lg:grid-cols-4 h-auto p-2 bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border border-slate-200/60 dark:border-slate-700/60 rounded-2xl shadow-xl">
                 {skillCategories.map((category) => (
                   <TabsTrigger 
                     key={category.id} 
                     value={category.id}
-                    className={`group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-lg font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br ${category.tabColor} data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:scale-102`}
+                    className={`group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-xl font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br ${category.tabColor} data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:scale-102`}
                   >
-                    <div className="flex items-center justify-center w-6 h-6 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-data-[state=active]:shadow-md group-hover:scale-110 group-data-[state=active]:from-white/20 group-data-[state=active]:to-white/10">
+                    <div className="flex items-center justify-center w-6 h-6 rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-data-[state=active]:shadow-md group-hover:scale-110 group-data-[state=active]:from-white/20 group-data-[state=active]:to-white/10">
                       {category.icon}
                     </div>
                     <div className="text-center">
@@ -170,12 +170,12 @@ export const SkillsSection = () => {
 
             {skillCategories.map((category) => (
               <TabsContent key={category.id} value={category.id} className="mt-0">
-                <Card className="border-0 shadow-lg bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl relative overflow-hidden rounded-xl">
+                <Card className="border-0 shadow-lg bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl relative overflow-hidden rounded-2xl">
                   <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${category.color}`}></div>
                   
                   <CardHeader className="pb-3 pt-4">
                     <div className="flex items-start gap-3">
-                      <div className={`p-3 rounded-lg bg-gradient-to-br ${category.color} text-white shadow-lg relative overflow-hidden`}>
+                      <div className={`p-3 rounded-xl bg-gradient-to-br ${category.color} text-white shadow-lg relative overflow-hidden`}>
                         <div className="relative z-10 w-4 h-4 flex items-center justify-center">
                           {category.icon}
                         </div>
@@ -197,14 +197,14 @@ export const SkillsSection = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                       {category.skills.map((skill, i) => (
                         <div key={i} className="group relative">
-                          <div className="flex items-center gap-2 p-2 bg-gradient-to-br from-white via-white to-slate-50/30 dark:from-slate-700/50 dark:via-slate-700/30 dark:to-slate-800/50 rounded-lg hover:scale-105 hover:shadow-md transition-all duration-300 hover:border-blue-300/60 dark:hover:border-blue-600/60 relative overflow-hidden backdrop-blur-sm">
+                          <div className="flex items-center gap-2 p-2 bg-gradient-to-br from-white via-white to-slate-50/30 dark:from-slate-700/50 dark:via-slate-700/30 dark:to-slate-800/50 rounded-xl hover:scale-105 hover:shadow-md transition-all duration-300 hover:border-blue-300/60 dark:hover:border-blue-600/60 relative overflow-hidden backdrop-blur-sm">
                             <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${category.color} group-hover:scale-125 transition-all duration-300 shadow-sm flex-shrink-0`}>
                               <div className="w-full h-full rounded-full bg-gradient-to-br from-white/30 to-transparent"></div>
                             </div>
                             <span className="text-slate-800 dark:text-slate-200 font-medium text-xs leading-tight">
                               {skill}
                             </span>
-                            <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-lg`}></div>
+                            <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-xl`}></div>
                           </div>
                         </div>
                       ))}
@@ -229,9 +229,9 @@ export const SkillsSection = () => {
           
           <Tabs defaultValue="all" className="w-full">
             <div className="mb-6 flex justify-center">
-              <TabsList className="grid w-full max-w-4xl grid-cols-3 lg:grid-cols-6 xl:grid-cols-7 h-auto p-1.5 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-slate-200/60 dark:border-slate-600/60 rounded-xl shadow-xl">
-                <TabsTrigger value="all" className="group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-lg font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-slate-600 data-[state=active]:to-slate-700 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-slate-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 data-[state=active]:scale-105">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-hover:scale-110">
+              <TabsList className="grid w-full max-w-4xl grid-cols-3 lg:grid-cols-6 xl:grid-cols-7 h-auto p-2 bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border border-slate-200/60 dark:border-slate-600/60 rounded-2xl shadow-xl">
+                <TabsTrigger value="all" className="group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-xl font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-slate-600 data-[state=active]:to-slate-700 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-slate-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 data-[state=active]:scale-105">
+                  <div className="flex items-center justify-center w-6 h-6 rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-hover:scale-110">
                     <Target className="w-3 h-3" />
                   </div>
                   <span className="font-bold text-xs">All</span>
@@ -240,9 +240,9 @@ export const SkillsSection = () => {
                   <TabsTrigger 
                     key={key} 
                     value={key} 
-                    className={`group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-lg font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br ${data.tabColor} data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 hover:bg-slate-100 dark:hover:bg-slate-600 capitalize`}
+                    className={`group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-xl font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br ${data.tabColor} data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 hover:bg-slate-100 dark:hover:bg-slate-600 capitalize`}
                   >
-                    <div className="flex items-center justify-center w-6 h-6 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                    <div className="flex items-center justify-center w-6 h-6 rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-hover:scale-110">
                       {data.tools[0]?.icon}
                     </div>
                     <span className="font-bold text-xs">{key}</span>
@@ -254,11 +254,11 @@ export const SkillsSection = () => {
             <TabsContent value="all" className="mt-0">
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                 {getAllTools().map((tool, index) => (
-                  <Card key={index} className="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 overflow-hidden rounded-lg hover:-translate-y-1">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-slate-50/30 dark:from-slate-700/30 dark:via-transparent dark:to-slate-800/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <CardContent className="p-3 relative z-10">
+                  <div key={index} className="group relative bg-white/30 dark:bg-slate-800/30 backdrop-blur-md border border-white/20 dark:border-slate-700/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden rounded-2xl hover:-translate-y-1 hover:bg-white/40 dark:hover:bg-slate-800/40">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-slate-50/20 dark:from-slate-700/20 dark:via-transparent dark:to-slate-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="p-3 relative z-10">
                       <div className="flex flex-col items-center text-center space-y-2">
-                        <div className={`p-2 rounded-lg ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-sm relative overflow-hidden`}>
+                        <div className={`p-2 rounded-xl ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-sm relative overflow-hidden backdrop-blur-sm`}>
                           <div className="relative z-10">
                             {tool.icon}
                           </div>
@@ -269,8 +269,8 @@ export const SkillsSection = () => {
                           <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{tool.description}</p>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 ))}
               </div>
             </TabsContent>
@@ -279,11 +279,11 @@ export const SkillsSection = () => {
               <TabsContent key={category} value={category} className="mt-0">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                   {data.tools.map((tool, index) => (
-                    <Card key={index} className="group relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 overflow-hidden rounded-lg hover:-translate-y-1">
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-slate-50/30 dark:from-slate-700/30 dark:via-transparent dark:to-slate-800/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <CardContent className="p-3 relative z-10">
+                    <div key={index} className="group relative bg-white/30 dark:bg-slate-800/30 backdrop-blur-md border border-white/20 dark:border-slate-700/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden rounded-2xl hover:-translate-y-1 hover:bg-white/40 dark:hover:bg-slate-800/40">
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-slate-50/20 dark:from-slate-700/20 dark:via-transparent dark:to-slate-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="p-3 relative z-10">
                         <div className="flex flex-col items-center text-center space-y-2">
-                          <div className={`p-2 rounded-lg ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-sm relative overflow-hidden`}>
+                          <div className={`p-2 rounded-xl ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-sm relative overflow-hidden backdrop-blur-sm`}>
                             <div className="relative z-10">
                               {tool.icon}
                             </div>
@@ -294,8 +294,8 @@ export const SkillsSection = () => {
                             <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{tool.description}</p>
                           </div>
                         </div>
-                      </CardContent>
-                    </Card>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </TabsContent>
