@@ -69,10 +69,37 @@ export const HeroSection = () => {
               Kartik Bhalerao
             </h1>
             
-            {/* Product Manager Badge */}
+            {/* Creative Glass Product Manager Badge */}
             <div className="flex justify-center">
-              <div className={`bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full text-xl font-semibold shadow-lg transition-all duration-500 ${isHovering ? 'scale-105 shadow-xl' : ''}`}>
-                Product Manager
+              <div className={`group relative px-12 py-5 rounded-3xl transition-all duration-700 ${isHovering ? 'scale-110 rotate-1' : 'scale-100 rotate-0'}`}>
+                {/* Multiple glass layers for depth */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 dark:from-blue-400/25 dark:via-indigo-400/25 dark:to-purple-400/25 rounded-3xl backdrop-blur-xl border border-white/30 dark:border-white/20 shadow-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent rounded-3xl"></div>
+                
+                {/* Animated border glow */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 p-[1px] group-hover:animate-pulse">
+                  <div className="h-full w-full rounded-3xl bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 dark:from-blue-400/15 dark:via-indigo-400/15 dark:to-purple-400/15 backdrop-blur-xl"></div>
+                </div>
+                
+                {/* Floating particles effect */}
+                <div className="absolute inset-0 rounded-3xl overflow-hidden">
+                  <div className="absolute top-2 left-4 w-1 h-1 bg-blue-400 dark:bg-blue-300 rounded-full animate-pulse opacity-70"></div>
+                  <div className="absolute top-6 right-6 w-1 h-1 bg-purple-400 dark:bg-purple-300 rounded-full animate-pulse opacity-50 [animation-delay:1s]"></div>
+                  <div className="absolute bottom-3 left-8 w-1 h-1 bg-indigo-400 dark:bg-indigo-300 rounded-full animate-pulse opacity-60 [animation-delay:2s]"></div>
+                  <div className="absolute bottom-5 right-4 w-1 h-1 bg-blue-300 dark:bg-blue-400 rounded-full animate-pulse opacity-40 [animation-delay:0.5s]"></div>
+                </div>
+                
+                {/* Main text with enhanced styling */}
+                <div className="relative z-10 flex items-center space-x-3">
+                  <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse"></div>
+                  <span className="text-xl font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent tracking-wide">
+                    Product Manager
+                  </span>
+                  <div className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full animate-pulse [animation-delay:1s]"></div>
+                </div>
+                
+                {/* Subtle inner glow */}
+                <div className="absolute inset-2 rounded-2xl bg-gradient-to-r from-blue-500/5 via-indigo-500/5 to-purple-500/5 dark:from-blue-400/10 dark:via-indigo-400/10 dark:to-purple-400/10"></div>
               </div>
             </div>
 
