@@ -1,9 +1,13 @@
-import { Target, BarChart3, Palette, Code, Calendar, PieChart, FileText, BarChart, MessageSquare, Search, Workflow, Bot, Globe, Database, Cloud, Boxes, Zap, Settings, Sliders } from "lucide-react";
+import { Target, BarChart3, Palette, Code, Calendar, PieChart, FileText, BarChart, MessageSquare, Search, Workflow, Bot, Globe, Database, Cloud, Boxes, Zap, Settings, Sliders, Award } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const SkillsSection = () => {
+  const handleCertificationClick = () => {
+    window.open('https://www.canva.com/design/DAGrQ2ETbAE/JvZhDbPAJAXcsMx0uQ4dYA/view', '_blank');
+  };
+
   const skillCategories = [
     {
       id: "strategy",
@@ -18,7 +22,7 @@ export const SkillsSection = () => {
     },
     {
       id: "analytics",
-      title: "Data & Analytics",
+      title: "Data & Analytics", 
       description: "Data-driven decision making through comprehensive user behavior analysis",
       icon: <BarChart3 className="w-4 h-4" />,
       skills: ["User Analytics", "A/B Testing", "KPI Definition & Tracking", "Data Visualization", "Performance Metrics", "Conversion Optimization"],
@@ -150,12 +154,50 @@ export const SkillsSection = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-full shadow-lg"></div>
           </div>
           
-          <p className="text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mb-6">
             Comprehensive expertise across the full product lifecycle with focus on 
             <span className="text-blue-600 dark:text-blue-400 font-semibold"> user-centric solutions </span>
             and measurable 
             <span className="text-purple-600 dark:text-purple-400 font-semibold"> business impact</span>
           </p>
+
+          {/* Glass Certification Button */}
+          <div className="flex justify-center">
+            <button 
+              onClick={handleCertificationClick}
+              className="group relative px-8 py-4 rounded-2xl transition-all duration-500 hover:scale-105 hover:rotate-1 cursor-pointer"
+            >
+              {/* Multiple glass layers for depth */}
+              <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 via-yellow-500/20 to-orange-500/20 dark:from-amber-400/25 dark:via-yellow-400/25 dark:to-orange-400/25 rounded-2xl backdrop-blur-xl border border-white/40 dark:border-white/30 shadow-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-transparent dark:from-white/30 dark:via-white/10 dark:to-transparent rounded-2xl"></div>
+              
+              {/* Animated border glow */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500 p-[1px] group-hover:animate-pulse">
+                <div className="h-full w-full rounded-2xl bg-gradient-to-r from-amber-500/10 via-yellow-500/10 to-orange-500/10 dark:from-amber-400/15 dark:via-yellow-400/15 dark:to-orange-400/15 backdrop-blur-xl"></div>
+              </div>
+              
+              {/* Floating particles effect */}
+              <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                <div className="absolute top-2 left-4 w-1 h-1 bg-amber-400 dark:bg-amber-300 rounded-full animate-pulse opacity-70"></div>
+                <div className="absolute top-4 right-6 w-1 h-1 bg-orange-400 dark:bg-orange-300 rounded-full animate-pulse opacity-50 [animation-delay:1s]"></div>
+                <div className="absolute bottom-3 left-8 w-1 h-1 bg-yellow-400 dark:bg-yellow-300 rounded-full animate-pulse opacity-60 [animation-delay:2s]"></div>
+                <div className="absolute bottom-4 right-4 w-1 h-1 bg-amber-300 dark:bg-amber-400 rounded-full animate-pulse opacity-40 [animation-delay:0.5s]"></div>
+              </div>
+              
+              {/* Main content */}
+              <div className="relative z-10 flex items-center space-x-3">
+                <div className="p-2 bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl text-white shadow-lg">
+                  <Award className="w-5 h-5" />
+                </div>
+                <span className="text-lg font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent tracking-wide">
+                  View Certifications
+                </span>
+              </div>
+              
+              {/* Subtle inner glow */}
+              <div className="absolute inset-2 rounded-xl bg-gradient-to-r from-amber-500/5 via-yellow-500/5 to-orange-500/5 dark:from-amber-400/10 dark:via-yellow-400/10 dark:to-orange-400/10"></div>
+            </button>
+          </div>
         </div>
 
         {/* Skills Categories */}
