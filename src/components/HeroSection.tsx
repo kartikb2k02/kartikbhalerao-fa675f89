@@ -162,28 +162,29 @@ export const HeroSection = () => {
 
           {/* Enhanced Action Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6">
-            <button 
-              onClick={scrollToAbout}
-              className="group relative overflow-hidden bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-xl border border-blue-200/30 dark:border-blue-700/30 text-blue-600 dark:text-blue-400 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:border-blue-300/50"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative flex items-center justify-center gap-2">
-                <span>About Me</span>
-                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </button>
-            
-            <button 
-              onClick={scrollToCaseStudies}
-              className="group relative overflow-hidden bg-gradient-to-r from-emerald-500/10 to-teal-500/10 backdrop-blur-xl border border-emerald-200/30 dark:border-emerald-700/30 text-emerald-600 dark:text-emerald-400 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:border-emerald-300/50"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative flex items-center justify-center gap-2">
-                <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
-                <span>View My Work</span>
-              </div>
-            </button>
-          </div>
+  {/* About Me button */}
+  <button 
+    onClick={scrollToAbout}
+    className="group relative overflow-hidden bg-gradient-to-br from-blue-100/20 to-purple-100/20 dark:from-blue-800/20 dark:to-purple-800/20 backdrop-blur-xl border border-blue-400/30 dark:border-blue-500/40 text-blue-700 dark:text-blue-200 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 hover:border-blue-400/60"
+  >
+    <div className="absolute inset-0 bg-gradient-to-r from-blue-300/10 to-purple-300/10 dark:from-blue-600/10 dark:to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+    <div className="relative flex items-center justify-center">
+      <span>About Me</span>
+    </div>
+  </button>
+
+  {/* View My Work button */}
+  <button 
+    onClick={scrollToCaseStudies}
+    className="group relative overflow-hidden bg-gradient-to-br from-emerald-100/20 to-teal-100/20 dark:from-emerald-800/20 dark:to-teal-800/20 backdrop-blur-xl border border-emerald-400/30 dark:border-emerald-500/40 text-emerald-700 dark:text-emerald-200 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 hover:border-emerald-400/60"
+  >
+    <div className="absolute inset-0 bg-gradient-to-r from-emerald-300/10 to-teal-300/10 dark:from-emerald-600/10 dark:to-teal-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+    <div className="relative flex items-center justify-center">
+      <span>View My Work</span>
+    </div>
+  </button>
+</div>
+
         </div>
 
       </div>
