@@ -163,10 +163,10 @@ export const HeroSection = () => {
           {/* Enhanced Action Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6">
   {/* About Me button */}
-  <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6">
-  <button 
+           <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6">
+                  <button 
     onClick={scrollToAbout}
-    className="group relative overflow-hidden bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-xl border border-blue-300 dark:border-blue-600 text-blue-600 dark:text-blue-300 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:border-blue-400"
+    className="group relative overflow-hidden bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-xl border border-blue-200/30 dark:border-blue-700/30 text-blue-600 dark:text-blue-400 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:border-blue-300/50"
   >
     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     <div className="relative flex items-center justify-center">
@@ -176,9 +176,9 @@ export const HeroSection = () => {
 
   <button 
     onClick={scrollToCaseStudies}
-    className="group relative overflow-hidden bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-xl border border-blue-300 dark:border-blue-600 text-blue-600 dark:text-blue-300 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:border-blue-400"
+    className="group relative overflow-hidden bg-gradient-to-r from-emerald-500/10 to-teal-500/10 backdrop-blur-xl border border-emerald-200/30 dark:border-emerald-700/30 text-emerald-600 dark:text-emerald-400 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:border-emerald-300/50"
   >
-    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     <div className="relative flex items-center justify-center">
       <span>View My Work</span>
     </div>
