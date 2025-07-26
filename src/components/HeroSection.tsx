@@ -18,10 +18,6 @@ export const HeroSection = () => {
     window.location.href = '/case-studies';
   };
 
-  const navigateToSkills = () => {
-    window.location.href = '/skills';
-  };
-
   return (
     <section className="min-h-[85vh] flex flex-col justify-center items-center text-center px-6 lg:px-8 relative overflow-hidden">
       
@@ -75,7 +71,7 @@ export const HeroSection = () => {
           onMouseLeave={() => setActiveCard(null)}
         >
           <div className="w-full h-full flex items-center justify-center">
-            <Sparkles className="w-8 h-8 text-gradient bg-gradient-to-r from-blue-500 to-purple-500" />
+            <Award className="w-8 h-8 text-blue-500" />
           </div>
         </div>
       </div>
@@ -93,23 +89,13 @@ export const HeroSection = () => {
               </span>
             </h1>
             
-            {/* Product Manager Certification Badge */}
+            {/* Product Manager Badge */}
             <div className="flex justify-center">
-              <button
-                onClick={navigateToSkills}
-                className="group relative px-8 py-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:bg-emerald-50/80 dark:hover:bg-emerald-900/20"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-cyan-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative z-10 flex items-center space-x-3">
-                  <Award className="w-5 h-5 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                    Product Manager
-                  </span>
-                  <span className="text-sm text-emerald-600 dark:text-emerald-400 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                    View Certification
-                  </span>
-                </div>
-              </button>
+              <div className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full">
+                <span className="text-white font-semibold text-lg">
+                  Product Manager
+                </span>
+              </div>
             </div>
           </div>
           
@@ -147,27 +133,19 @@ export const HeroSection = () => {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6">
+          <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6">
             <button 
               onClick={scrollToAbout}
-              className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 text-gray-800 dark:text-gray-200 px-8 py-4 rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl hover:bg-blue-50/80 dark:hover:bg-blue-900/20 transition-all duration-300 hover:-translate-y-1 hover:scale-105 overflow-hidden"
+              className="group relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/20 dark:border-gray-700/20 text-blue-600 dark:text-blue-400 px-12 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <span className="relative z-10 flex items-center gap-2">
-                About Me
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </span>
+              <span className="relative z-10">About Me</span>
             </button>
             
             <button 
               onClick={scrollToCaseStudies}
-              className="group relative bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 overflow-hidden"
+              className="group relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/20 dark:border-gray-700/20 text-blue-600 dark:text-blue-400 px-12 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <span className="relative z-10 flex items-center gap-2">
-                View My Work
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </span>
+              <span className="relative z-10">View My Work</span>
             </button>
           </div>
         </div>
