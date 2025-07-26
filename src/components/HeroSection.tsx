@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Linkedin, ArrowRight, Sparkles } from "lucide-react";
+import { Linkedin, ArrowRight, Sparkles, Award } from "lucide-react";
 
 export const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -18,14 +18,35 @@ export const HeroSection = () => {
     window.location.href = '/case-studies';
   };
 
+  const navigateToSkills = () => {
+    window.location.href = '/skills';
+  };
+
   return (
     <section className="min-h-[85vh] flex flex-col justify-center items-center text-center px-6 lg:px-8 relative overflow-hidden">
+      
+      {/* Moving background effects */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Moving gradient orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400/10 via-purple-400/10 to-pink-400/10 rounded-full blur-3xl animate-pulse opacity-80 animate-float"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-emerald-400/10 via-teal-400/10 to-cyan-400/10 rounded-full blur-3xl animate-pulse [animation-delay:3s] opacity-70 animate-float-slow"></div>
+        
+        {/* Moving particles */}
+        <div className="absolute top-1/6 left-1/3 w-2 h-2 bg-blue-400/40 rounded-full animate-bounce animate-float"></div>
+        <div className="absolute bottom-1/3 left-1/5 w-2 h-2 bg-purple-400/40 rounded-full animate-bounce [animation-delay:1s] animate-float-slower"></div>
+        <div className="absolute top-2/3 right-1/5 w-2 h-2 bg-emerald-400/40 rounded-full animate-bounce [animation-delay:2s] animate-float"></div>
+        
+        {/* Moving geometric shapes */}
+        <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl rotate-12 animate-pulse animate-float"></div>
+        <div className="absolute bottom-32 right-24 w-24 h-24 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-full animate-pulse [animation-delay:2s] animate-float-slow"></div>
+        <div className="absolute top-1/3 right-16 w-20 h-20 bg-gradient-to-br from-orange-500/10 to-pink-500/10 transform rotate-45 animate-pulse [animation-delay:4s] animate-float-slower"></div>
+      </div>
       
       {/* Modern floating cards */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Clean PM badge */}
         <div 
-          className={`absolute top-16 left-16 w-24 h-24 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-xl flex items-center justify-center rotate-6 transition-all duration-700 hover:rotate-12 hover:scale-110 ${activeCard === 1 ? 'scale-110 rotate-12' : ''}`}
+          className={`absolute top-16 left-16 w-24 h-24 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-xl flex items-center justify-center rotate-6 transition-all duration-700 hover:rotate-12 hover:scale-110 animate-float ${activeCard === 1 ? 'scale-110 rotate-12' : ''}`}
           onMouseEnter={() => setActiveCard(1)}
           onMouseLeave={() => setActiveCard(null)}
         >
@@ -34,22 +55,22 @@ export const HeroSection = () => {
         
         {/* Analytics chart */}
         <div 
-          className={`absolute bottom-32 left-20 w-28 h-20 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-xl -rotate-6 transition-all duration-700 hover:rotate-0 hover:scale-110 ${activeCard === 2 ? 'scale-110 rotate-0' : ''}`}
+          className={`absolute bottom-32 left-20 w-28 h-20 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-xl -rotate-6 transition-all duration-700 hover:rotate-0 hover:scale-110 animate-float-slow ${activeCard === 2 ? 'scale-110 rotate-0' : ''}`}
           onMouseEnter={() => setActiveCard(2)}
           onMouseLeave={() => setActiveCard(null)}
         >
           <div className="w-full h-full flex items-center justify-center space-x-1 px-3">
-            <div className="w-1.5 h-4 bg-blue-400 rounded-full"></div>
-            <div className="w-1.5 h-6 bg-purple-400 rounded-full"></div>
-            <div className="w-1.5 h-3 bg-emerald-400 rounded-full"></div>
-            <div className="w-1.5 h-7 bg-orange-400 rounded-full"></div>
-            <div className="w-1.5 h-5 bg-pink-400 rounded-full"></div>
+            <div className="w-1.5 h-4 bg-blue-400 rounded-full animate-pulse"></div>
+            <div className="w-1.5 h-6 bg-purple-400 rounded-full animate-pulse [animation-delay:0.5s]"></div>
+            <div className="w-1.5 h-3 bg-emerald-400 rounded-full animate-pulse [animation-delay:1s]"></div>
+            <div className="w-1.5 h-7 bg-orange-400 rounded-full animate-pulse [animation-delay:1.5s]"></div>
+            <div className="w-1.5 h-5 bg-pink-400 rounded-full animate-pulse [animation-delay:2s]"></div>
           </div>
         </div>
 
         {/* Product icon */}
         <div 
-          className={`absolute top-48 right-16 w-20 h-20 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-xl rotate-12 transition-all duration-700 hover:rotate-6 hover:scale-110 ${activeCard === 3 ? 'scale-110 rotate-6' : ''}`}
+          className={`absolute top-48 right-16 w-20 h-20 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-xl rotate-12 transition-all duration-700 hover:rotate-6 hover:scale-110 animate-float-slower ${activeCard === 3 ? 'scale-110 rotate-6' : ''}`}
           onMouseEnter={() => setActiveCard(3)}
           onMouseLeave={() => setActiveCard(null)}
         >
@@ -64,27 +85,31 @@ export const HeroSection = () => {
         {/* Main Content */}
         <div className={`space-y-12 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           
-          {/* Name Section */}
+          {/* Name Section - Single Line */}
           <div className="space-y-8">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white leading-tight tracking-tight">
-              <span className="block">Kartik</span>
-              <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent">
-                Bhalerao
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent">
+                Kartik Bhalerao
               </span>
             </h1>
             
-            {/* Modern Product Manager Badge */}
+            {/* Product Manager Certification Badge */}
             <div className="flex justify-center">
-              <div className="group relative px-8 py-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-emerald-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <button
+                onClick={navigateToSkills}
+                className="group relative px-8 py-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:bg-emerald-50/80 dark:hover:bg-emerald-900/20"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-cyan-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10 flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+                  <Award className="w-5 h-5 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-300" />
                   <span className="text-lg font-semibold text-gray-800 dark:text-gray-200">
                     Product Manager
                   </span>
-                  <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-full animate-pulse [animation-delay:0.5s]"></div>
+                  <span className="text-sm text-emerald-600 dark:text-emerald-400 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                    View Certification
+                  </span>
                 </div>
-              </div>
+              </button>
             </div>
           </div>
           
