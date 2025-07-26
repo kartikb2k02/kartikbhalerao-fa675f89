@@ -91,39 +91,40 @@ export const HeroSection = () => {
             
             {/* Product Manager Badge with Glassmorphism */}
             
-  <div className="flex justify-center">
-  <div
-    onClick={() => console.log("Clicked: Product Manager")}
-    className="relative px-10 py-5 rounded-2xl bg-white/10 dark:bg-black/10 backdrop-blur-md cursor-pointer transition-transform duration-500 hover:scale-105 hover:shadow-[0_0_20px_#60a5fa55] overflow-hidden group"
+  <div className="flex justify-center mt-6">
+  <div 
+    onClick={() => console.log("Product Manager clicked")}
+    className="group relative px-8 py-4 rounded-2xl transition-all duration-500 hover:scale-105 hover:rotate-1 cursor-pointer select-none"
   >
-    {/* Glow border layer */}
-    <div className="absolute inset-0 z-0 rounded-2xl bg-gradient-to-r from-blue-500/30 via-sky-500/30 to-indigo-500/30 group-hover:opacity-100 opacity-60 blur-lg transition duration-700"></div>
+    {/* Glass layer and border */}
+    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-sky-500/20 to-indigo-500/20 dark:from-blue-400/25 dark:via-sky-400/25 dark:to-indigo-400/25 rounded-2xl backdrop-blur-xl border border-white/40 dark:border-white/30 shadow-2xl"></div>
+    <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-transparent dark:from-white/30 dark:via-white/10 dark:to-transparent rounded-2xl"></div>
 
-    {/* Light sweep animation */}
-    <div className="absolute inset-0 z-10 overflow-hidden rounded-2xl pointer-events-none">
-      <div className="absolute -left-1/4 w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent transform -rotate-12 animate-[sweep_2.5s_ease-in-out_infinite] opacity-20"></div>
+    {/* Glow border */}
+    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 via-sky-500 to-indigo-500 p-[1px] group-hover:animate-pulse">
+      <div className="h-full w-full rounded-2xl bg-gradient-to-r from-blue-500/10 via-sky-500/10 to-indigo-500/10 dark:from-blue-400/15 dark:via-sky-400/15 dark:to-indigo-400/15 backdrop-blur-xl"></div>
     </div>
 
-    {/* Inner shimmer */}
-    <div className="absolute inset-1.5 rounded-xl bg-gradient-to-br from-blue-300/5 via-sky-300/5 to-indigo-300/5 dark:from-blue-200/10 dark:via-sky-200/10 dark:to-indigo-200/10 z-0"></div>
-
-    {/* Label content */}
-    <div className="relative z-20 text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 dark:from-blue-300 dark:via-indigo-300 dark:to-sky-300 tracking-wide text-center">
-      Product Manager
+    {/* Animated floating particles */}
+    <div className="absolute inset-0 rounded-2xl overflow-hidden">
+      <div className="absolute top-2 left-4 w-1 h-1 bg-blue-400 dark:bg-blue-300 rounded-full animate-pulse opacity-70"></div>
+      <div className="absolute top-4 right-6 w-1 h-1 bg-sky-400 dark:bg-sky-300 rounded-full animate-pulse opacity-50 [animation-delay:1s]"></div>
+      <div className="absolute bottom-3 left-8 w-1 h-1 bg-indigo-400 dark:bg-indigo-300 rounded-full animate-pulse opacity-60 [animation-delay:2s]"></div>
+      <div className="absolute bottom-4 right-4 w-1 h-1 bg-blue-300 dark:bg-blue-400 rounded-full animate-pulse opacity-40 [animation-delay:0.5s]"></div>
     </div>
+
+    {/* Text content */}
+    <div className="relative z-10 flex items-center justify-center">
+      <span className="text-lg font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent tracking-wide">
+        Product Manager
+      </span>
+    </div>
+
+    {/* Subtle inner glow */}
+    <div className="absolute inset-2 rounded-xl bg-gradient-to-r from-blue-500/5 via-sky-500/5 to-indigo-500/5 dark:from-blue-400/10 dark:via-sky-400/10 dark:to-indigo-400/10"></div>
   </div>
 </div>
 
-<style>
-@keyframes sweep {
-  0% {
-    transform: translateX(-100%) rotate(-12deg);
-  }
-  100% {
-    transform: translateX(200%) rotate(-12deg);
-  }
-}
-</style>
 
           
           {/* Tagline */}
