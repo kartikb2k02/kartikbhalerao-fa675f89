@@ -90,39 +90,41 @@ export const HeroSection = () => {
             </h1>
             
             {/* Product Manager Badge with Glassmorphism */}
-            <div className="flex justify-center">
-  <div className="group relative px-8 py-4 rounded-2xl transition-all duration-500 scale-100 rotate-0 cursor-default select-none">
+            
+  <div className="flex justify-center">
+  <div 
+    onClick={() => console.log("Product Manager clicked")}
+    className="group relative px-8 py-4 rounded-2xl transition-all duration-500 hover:scale-105 hover:rotate-1 cursor-pointer select-none"
+  >
     {/* Multiple glass layers for depth */}
-    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-cyan-500/20 dark:from-emerald-400/25 dark:via-teal-400/25 dark:to-cyan-400/25 rounded-2xl backdrop-blur-xl border border-white/40 dark:border-white/30 shadow-2xl"></div>
+    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-sky-500/20 to-indigo-500/20 dark:from-blue-400/25 dark:via-sky-400/25 dark:to-indigo-400/25 rounded-2xl backdrop-blur-xl border border-white/40 dark:border-white/30 shadow-2xl"></div>
     <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-transparent dark:from-white/30 dark:via-white/10 dark:to-transparent rounded-2xl"></div>
     
     {/* Animated border glow */}
-    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 p-[1px] animate-none">
-      <div className="h-full w-full rounded-2xl bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-cyan-500/10 dark:from-emerald-400/15 dark:via-teal-400/15 dark:to-cyan-400/15 backdrop-blur-xl"></div>
+    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 via-sky-500 to-indigo-500 p-[1px] group-hover:animate-pulse">
+      <div className="h-full w-full rounded-2xl bg-gradient-to-r from-blue-500/10 via-sky-500/10 to-indigo-500/10 dark:from-blue-400/15 dark:via-sky-400/15 dark:to-indigo-400/15 backdrop-blur-xl"></div>
     </div>
     
     {/* Floating particles effect */}
     <div className="absolute inset-0 rounded-2xl overflow-hidden">
-      <div className="absolute top-2 left-4 w-1 h-1 bg-emerald-400 dark:bg-emerald-300 rounded-full animate-pulse opacity-70"></div>
-      <div className="absolute top-4 right-6 w-1 h-1 bg-cyan-400 dark:bg-cyan-300 rounded-full animate-pulse opacity-50 [animation-delay:1s]"></div>
-      <div className="absolute bottom-3 left-8 w-1 h-1 bg-teal-400 dark:bg-teal-300 rounded-full animate-pulse opacity-60 [animation-delay:2s]"></div>
-      <div className="absolute bottom-4 right-4 w-1 h-1 bg-emerald-300 dark:bg-emerald-400 rounded-full animate-pulse opacity-40 [animation-delay:0.5s]"></div>
+      <div className="absolute top-2 left-4 w-1 h-1 bg-blue-400 dark:bg-blue-300 rounded-full animate-pulse opacity-70"></div>
+      <div className="absolute top-4 right-6 w-1 h-1 bg-sky-400 dark:bg-sky-300 rounded-full animate-pulse opacity-50 [animation-delay:1s]"></div>
+      <div className="absolute bottom-3 left-8 w-1 h-1 bg-indigo-400 dark:bg-indigo-300 rounded-full animate-pulse opacity-60 [animation-delay:2s]"></div>
+      <div className="absolute bottom-4 right-4 w-1 h-1 bg-blue-300 dark:bg-blue-400 rounded-full animate-pulse opacity-40 [animation-delay:0.5s]"></div>
     </div>
     
     {/* Main content */}
-    <div className="relative z-10 flex items-center space-x-3">
-      <div className="p-2 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl text-white shadow-lg">
-        <Award className="w-5 h-5" />
-      </div>
+    <div className="relative z-10 flex items-center justify-center">
       <span className="text-lg font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent tracking-wide">
         Product Manager
       </span>
     </div>
 
     {/* Subtle inner glow */}
-    <div className="absolute inset-2 rounded-xl bg-gradient-to-r from-emerald-500/5 via-teal-500/5 to-cyan-500/5 dark:from-emerald-400/10 dark:via-teal-400/10 dark:to-cyan-400/10"></div>
+    <div className="absolute inset-2 rounded-xl bg-gradient-to-r from-blue-500/5 via-sky-500/5 to-indigo-500/5 dark:from-blue-400/10 dark:via-sky-400/10 dark:to-indigo-400/10"></div>
   </div>
 </div>
+
 
 
           </div>
