@@ -89,12 +89,15 @@ export const HeroSection = () => {
               </span>
             </h1>
             
-            {/* Product Manager Badge */}
+            {/* Product Manager Badge with Glassmorphism */}
             <div className="flex justify-center">
-              <div className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full">
-                <span className="text-white font-semibold text-lg">
-                  Product Manager
-                </span>
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition duration-300"></div>
+                <div className="relative px-12 py-4 bg-white/20 dark:bg-gray-800/20 backdrop-blur-xl border border-white/30 dark:border-gray-700/30 rounded-full shadow-2xl">
+                  <span className="text-gray-800 dark:text-white font-semibold text-lg bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 bg-clip-text text-transparent">
+                    Product Manager
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -132,20 +135,28 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* Action Buttons */}
+          {/* Enhanced Action Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6">
             <button 
               onClick={scrollToAbout}
-              className="group relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/20 dark:border-gray-700/20 text-blue-600 dark:text-blue-400 px-12 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden"
+              className="group relative overflow-hidden bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-xl border border-blue-200/30 dark:border-blue-700/30 text-blue-600 dark:text-blue-400 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:border-blue-300/50"
             >
-              <span className="relative z-10">About Me</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative flex items-center justify-center gap-2">
+                <span>About Me</span>
+                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
             </button>
             
             <button 
               onClick={scrollToCaseStudies}
-              className="group relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/20 dark:border-gray-700/20 text-blue-600 dark:text-blue-400 px-12 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden"
+              className="group relative overflow-hidden bg-gradient-to-r from-emerald-500/10 to-teal-500/10 backdrop-blur-xl border border-emerald-200/30 dark:border-emerald-700/30 text-emerald-600 dark:text-emerald-400 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:border-emerald-300/50"
             >
-              <span className="relative z-10">View My Work</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative flex items-center justify-center gap-2">
+                <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
+                <span>View My Work</span>
+              </div>
             </button>
           </div>
         </div>
