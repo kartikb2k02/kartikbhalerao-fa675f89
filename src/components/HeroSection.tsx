@@ -90,16 +90,18 @@ export const HeroSection = () => {
             </h1>
             
             {/* Product Manager Badge with Glassmorphism */}
-            <div className="flex justify-center">
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition duration-300"></div>
-                <div className="relative px-12 py-4 bg-white/20 dark:bg-gray-800/20 backdrop-blur-xl border border-white/30 dark:border-gray-700/30 rounded-full shadow-2xl">
-                  <span className="text-gray-800 dark:text-white font-semibold text-lg bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 bg-clip-text text-transparent">
-                    Product Manager
-                  </span>
-                </div>
-              </div>
-            </div>
+            <div class="relative w-full h-64 rounded-3xl overflow-hidden bg-gray-100 dark:bg-gray-900">
+  <div class="absolute inset-0 rounded-3xl overflow-hidden">
+    <div class="absolute top-2 left-4 w-1 h-1 bg-blue-400 dark:bg-blue-300 rounded-full animate-pulse opacity-70"></div>
+    <div class="absolute top-6 right-6 w-1 h-1 bg-purple-400 dark:bg-purple-300 rounded-full animate-pulse opacity-50 [animation-delay:1s]"></div>
+    <div class="absolute bottom-3 left-8 w-1 h-1 bg-indigo-400 dark:bg-indigo-300 rounded-full animate-pulse opacity-60 [animation-delay:2s]"></div>
+    <div class="absolute bottom-5 right-4 w-1 h-1 bg-blue-300 dark:bg-blue-400 rounded-full animate-pulse opacity-40 [animation-delay:0.5s]"></div>
+  </div>
+  <div class="absolute inset-0 flex items-center justify-center">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Product Manager</h2>
+  </div>
+</div>
+
           </div>
           
           {/* Tagline */}
