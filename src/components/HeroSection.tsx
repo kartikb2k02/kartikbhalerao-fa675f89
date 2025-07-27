@@ -90,42 +90,37 @@ export const HeroSection = () => {
             </h1>
             
             {/* Product Manager Badge with Glassmorphism */}
-            
-  <div className="flex justify-center mt-6">
-  <div 
-    onClick={() => console.log("Product Manager clicked")}
-    className="group relative px-8 py-4 rounded-2xl transition-all duration-500 hover:scale-105 hover:rotate-1 cursor-pointer select-none"
-  >
-    {/* Glass layer and border */}
-    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-sky-500/20 to-indigo-500/20 dark:from-blue-400/25 dark:via-sky-400/25 dark:to-indigo-400/25 rounded-2xl backdrop-blur-xl border border-white/40 dark:border-white/30 shadow-2xl"></div>
-    <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-transparent dark:from-white/30 dark:via-white/10 dark:to-transparent rounded-2xl"></div>
+            <div className="flex justify-center mt-6">
+              <div className="group relative px-8 py-4 rounded-2xl transition-all duration-500 hover:scale-105 hover:rotate-1 cursor-pointer select-none">
+                {/* Glass layer and border */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-sky-500/20 to-indigo-500/20 dark:from-blue-400/25 dark:via-sky-400/25 dark:to-indigo-400/25 rounded-2xl backdrop-blur-xl border border-white/40 dark:border-white/30 shadow-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-transparent dark:from-white/30 dark:via-white/10 dark:to-transparent rounded-2xl"></div>
 
-    {/* Glow border */}
-    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 via-sky-500 to-indigo-500 p-[1px] group-hover:animate-pulse">
-      <div className="h-full w-full rounded-2xl bg-gradient-to-r from-blue-500/10 via-sky-500/10 to-indigo-500/10 dark:from-blue-400/15 dark:via-sky-400/15 dark:to-indigo-400/15 backdrop-blur-xl"></div>
-    </div>
+                {/* Glow border */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 via-sky-500 to-indigo-500 p-[1px] group-hover:animate-pulse">
+                  <div className="h-full w-full rounded-2xl bg-gradient-to-r from-blue-500/10 via-sky-500/10 to-indigo-500/10 dark:from-blue-400/15 dark:via-sky-400/15 dark:to-indigo-400/15 backdrop-blur-xl"></div>
+                </div>
 
-    {/* Animated floating particles */}
-    <div className="absolute inset-0 rounded-2xl overflow-hidden">
-      <div className="absolute top-2 left-4 w-1 h-1 bg-blue-400 dark:bg-blue-300 rounded-full animate-pulse opacity-70"></div>
-      <div className="absolute top-4 right-6 w-1 h-1 bg-sky-400 dark:bg-sky-300 rounded-full animate-pulse opacity-50 [animation-delay:1s]"></div>
-      <div className="absolute bottom-3 left-8 w-1 h-1 bg-indigo-400 dark:bg-indigo-300 rounded-full animate-pulse opacity-60 [animation-delay:2s]"></div>
-      <div className="absolute bottom-4 right-4 w-1 h-1 bg-blue-300 dark:bg-blue-400 rounded-full animate-pulse opacity-40 [animation-delay:0.5s]"></div>
-    </div>
+                {/* Animated floating particles */}
+                <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                  <div className="absolute top-2 left-4 w-1 h-1 bg-blue-400 dark:bg-blue-300 rounded-full animate-pulse opacity-70"></div>
+                  <div className="absolute top-4 right-6 w-1 h-1 bg-sky-400 dark:bg-sky-300 rounded-full animate-pulse opacity-50 [animation-delay:1s]"></div>
+                  <div className="absolute bottom-3 left-8 w-1 h-1 bg-indigo-400 dark:bg-indigo-300 rounded-full animate-pulse opacity-60 [animation-delay:2s]"></div>
+                  <div className="absolute bottom-4 right-4 w-1 h-1 bg-blue-300 dark:bg-blue-400 rounded-full animate-pulse opacity-40 [animation-delay:0.5s]"></div>
+                </div>
 
-    {/* Text content */}
-    <div className="relative z-10 flex items-center justify-center">
-      <span className="text-lg font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent tracking-wide">
-        Product Manager
-      </span>
-    </div>
+                {/* Text content */}
+                <div className="relative z-10 flex items-center justify-center">
+                  <span className="text-lg font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent tracking-wide">
+                    Product Manager
+                  </span>
+                </div>
 
-    {/* Subtle inner glow */}
-    <div className="absolute inset-2 rounded-xl bg-gradient-to-r from-blue-500/5 via-sky-500/5 to-indigo-500/5 dark:from-blue-400/10 dark:via-sky-400/10 dark:to-indigo-400/10"></div>
-  </div>
-</div>
-
-
+                {/* Subtle inner glow */}
+                <div className="absolute inset-2 rounded-xl bg-gradient-to-r from-blue-500/5 via-sky-500/5 to-indigo-500/5 dark:from-blue-400/10 dark:via-sky-400/10 dark:to-indigo-400/10"></div>
+              </div>
+            </div>
+          </div>
           
           {/* Tagline */}
           <div className="space-y-6">
@@ -162,32 +157,47 @@ export const HeroSection = () => {
 
           {/* Enhanced Action Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6">
-  {/* About Me button */}
-           <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6">
-                  <button 
-    onClick={scrollToAbout}
-    className="group relative overflow-hidden bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-xl border border-blue-200/30 dark:border-blue-700/30 text-blue-600 dark:text-blue-400 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:border-blue-300/50"
-  >
-    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-    <div className="relative flex items-center justify-center">
-      <span>About Me</span>
-    </div>
-  </button>
+            <button 
+              onClick={scrollToAbout}
+              className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+            >
+              {/* Background with gradient and glass effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 backdrop-blur-xl rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent rounded-2xl"></div>
+              
+              {/* Border */}
+              <div className="absolute inset-0 rounded-2xl border border-blue-200/50 dark:border-blue-700/50 group-hover:border-blue-300/70 transition-colors duration-300"></div>
+              
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              {/* Text */}
+              <div className="relative z-10 text-blue-700 dark:text-blue-300 group-hover:text-blue-800 dark:group-hover:text-blue-200 transition-colors duration-300">
+                About Me
+              </div>
+            </button>
 
-  <button 
-    onClick={scrollToCaseStudies}
-    className="group relative overflow-hidden bg-gradient-to-r from-emerald-500/10 to-teal-500/10 backdrop-blur-xl border border-emerald-200/30 dark:border-emerald-700/30 text-emerald-600 dark:text-emerald-400 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:border-emerald-300/50"
-  >
-    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-    <div className="relative flex items-center justify-center">
-      <span>View My Work</span>
-    </div>
-  </button>
-</div>
-
-
+            <button 
+              onClick={scrollToCaseStudies}
+              className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+            >
+              {/* Background with gradient and glass effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-cyan-500/20 backdrop-blur-xl rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent rounded-2xl"></div>
+              
+              {/* Border */}
+              <div className="absolute inset-0 rounded-2xl border border-emerald-200/50 dark:border-emerald-700/50 group-hover:border-emerald-300/70 transition-colors duration-300"></div>
+              
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              {/* Text */}
+              <div className="relative z-10 text-emerald-700 dark:text-emerald-300 group-hover:text-emerald-800 dark:group-hover:text-emerald-200 transition-colors duration-300">
+                View My Work
+              </div>
+            </button>
+          </div>
         </div>
-
       </div>
     </section>
   );
