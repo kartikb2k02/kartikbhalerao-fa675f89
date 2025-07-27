@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Linkedin, ArrowRight, Sparkles, Award } from "lucide-react";
+import { Linkedin, Award } from "lucide-react";
 
 export const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -81,43 +81,63 @@ export const HeroSection = () => {
         {/* Main Content */}
         <div className={`space-y-12 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           
-          {/* Name Section - Single Line */}
+          {/* Name Section with Enhanced Hover Effects */}
           <div className="space-y-8">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white leading-tight tracking-tight">
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
+              <span className="group relative cursor-pointer bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent transition-all duration-700 hover:from-purple-600 hover:via-pink-600 hover:to-blue-600 hover:scale-105">
                 Kartik Bhalerao
+                
+                {/* Enhanced glow effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-emerald-500/20 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 scale-110"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-purple-400/10 to-emerald-400/10 rounded-3xl blur-3xl opacity-0 group-hover:opacity-80 transition-all duration-1000 scale-125"></div>
+                
+                {/* Floating particles on hover */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-700">
+                  <div className="absolute top-0 left-1/4 w-1 h-1 bg-blue-400 rounded-full animate-bounce"></div>
+                  <div className="absolute top-2 right-1/4 w-1 h-1 bg-purple-400 rounded-full animate-bounce [animation-delay:0.5s]"></div>
+                  <div className="absolute bottom-0 left-1/2 w-1 h-1 bg-emerald-400 rounded-full animate-bounce [animation-delay:1s]"></div>
+                  <div className="absolute bottom-2 right-1/3 w-1 h-1 bg-pink-400 rounded-full animate-bounce [animation-delay:1.5s]"></div>
+                </div>
               </span>
             </h1>
             
-            {/* Product Manager Badge with Glassmorphism */}
+            {/* Enhanced Product Manager Badge */}
             <div className="flex justify-center mt-6">
-              <div className="group relative px-8 py-4 rounded-2xl transition-all duration-500 hover:scale-105 hover:rotate-1 cursor-pointer select-none">
-                {/* Glass layer and border */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-sky-500/20 to-indigo-500/20 dark:from-blue-400/25 dark:via-sky-400/25 dark:to-indigo-400/25 rounded-2xl backdrop-blur-xl border border-white/40 dark:border-white/30 shadow-2xl"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-transparent dark:from-white/30 dark:via-white/10 dark:to-transparent rounded-2xl"></div>
+              <div className="group relative px-10 py-5 rounded-3xl transition-all duration-700 hover:scale-110 hover:rotate-1 cursor-pointer select-none">
+                {/* Multiple glass layers for depth */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/25 via-sky-500/25 to-indigo-500/25 dark:from-blue-400/30 dark:via-sky-400/30 dark:to-indigo-400/30 rounded-3xl backdrop-blur-2xl border-2 border-white/50 dark:border-white/40 shadow-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-white/25 to-white/10 dark:from-white/40 dark:via-white/20 dark:to-white/5 rounded-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/10 to-white/20 dark:from-transparent dark:via-white/5 dark:to-white/10 rounded-3xl"></div>
 
-                {/* Glow border */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 via-sky-500 to-indigo-500 p-[1px] group-hover:animate-pulse">
-                  <div className="h-full w-full rounded-2xl bg-gradient-to-r from-blue-500/10 via-sky-500/10 to-indigo-500/10 dark:from-blue-400/15 dark:via-sky-400/15 dark:to-indigo-400/15 backdrop-blur-xl"></div>
+                {/* Enhanced animated border */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500 via-sky-500 to-indigo-500 p-[2px] group-hover:animate-pulse group-hover:shadow-2xl">
+                  <div className="h-full w-full rounded-3xl bg-gradient-to-r from-blue-500/15 via-sky-500/15 to-indigo-500/15 dark:from-blue-400/20 dark:via-sky-400/20 dark:to-indigo-400/20 backdrop-blur-2xl"></div>
                 </div>
 
-                {/* Animated floating particles */}
-                <div className="absolute inset-0 rounded-2xl overflow-hidden">
-                  <div className="absolute top-2 left-4 w-1 h-1 bg-blue-400 dark:bg-blue-300 rounded-full animate-pulse opacity-70"></div>
-                  <div className="absolute top-4 right-6 w-1 h-1 bg-sky-400 dark:bg-sky-300 rounded-full animate-pulse opacity-50 [animation-delay:1s]"></div>
-                  <div className="absolute bottom-3 left-8 w-1 h-1 bg-indigo-400 dark:bg-indigo-300 rounded-full animate-pulse opacity-60 [animation-delay:2s]"></div>
-                  <div className="absolute bottom-4 right-4 w-1 h-1 bg-blue-300 dark:bg-blue-400 rounded-full animate-pulse opacity-40 [animation-delay:0.5s]"></div>
+                {/* Multiple glow layers */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/30 to-indigo-500/30 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 to-indigo-400/20 blur-2xl opacity-0 group-hover:opacity-80 transition-all duration-1000"></div>
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-300/10 to-indigo-300/10 blur-3xl opacity-0 group-hover:opacity-60 transition-all duration-1200"></div>
+
+                {/* Enhanced floating particles */}
+                <div className="absolute inset-0 rounded-3xl overflow-hidden">
+                  <div className="absolute top-3 left-6 w-1.5 h-1.5 bg-blue-400 dark:bg-blue-300 rounded-full animate-pulse opacity-70 group-hover:animate-bounce"></div>
+                  <div className="absolute top-6 right-8 w-1 h-1 bg-sky-400 dark:bg-sky-300 rounded-full animate-pulse opacity-50 [animation-delay:1s] group-hover:animate-bounce"></div>
+                  <div className="absolute bottom-4 left-10 w-1.5 h-1.5 bg-indigo-400 dark:bg-indigo-300 rounded-full animate-pulse opacity-60 [animation-delay:2s] group-hover:animate-bounce"></div>
+                  <div className="absolute bottom-6 right-6 w-1 h-1 bg-blue-300 dark:bg-blue-400 rounded-full animate-pulse opacity-40 [animation-delay:0.5s] group-hover:animate-bounce"></div>
+                  <div className="absolute top-8 left-1/2 w-1 h-1 bg-sky-300 dark:bg-sky-400 rounded-full animate-pulse opacity-50 [animation-delay:1.5s] group-hover:animate-bounce"></div>
+                  <div className="absolute bottom-8 right-1/2 w-1 h-1 bg-indigo-300 dark:bg-indigo-400 rounded-full animate-pulse opacity-60 [animation-delay:2.5s] group-hover:animate-bounce"></div>
                 </div>
 
-                {/* Text content */}
+                {/* Text with enhanced gradient */}
                 <div className="relative z-10 flex items-center justify-center">
-                  <span className="text-lg font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent tracking-wide">
+                  <span className="text-xl font-bold bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent tracking-wide group-hover:from-blue-900 group-hover:via-indigo-900 group-hover:to-purple-900 dark:group-hover:from-blue-100 dark:group-hover:via-indigo-100 dark:group-hover:to-purple-100 transition-all duration-700">
                     Product Manager
                   </span>
                 </div>
 
-                {/* Subtle inner glow */}
-                <div className="absolute inset-2 rounded-xl bg-gradient-to-r from-blue-500/5 via-sky-500/5 to-indigo-500/5 dark:from-blue-400/10 dark:via-sky-400/10 dark:to-indigo-400/10"></div>
+                {/* Enhanced inner glow */}
+                <div className="absolute inset-3 rounded-2xl bg-gradient-to-r from-blue-500/8 via-sky-500/8 to-indigo-500/8 dark:from-blue-400/15 dark:via-sky-400/15 dark:to-indigo-400/15 group-hover:from-blue-500/15 group-hover:via-sky-500/15 group-hover:to-indigo-500/15 transition-all duration-700"></div>
               </div>
             </div>
           </div>
