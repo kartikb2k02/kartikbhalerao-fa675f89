@@ -40,83 +40,135 @@ export const Header = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const navItems = [
-    { label: 'Skills', id: 'skills' },
-  ];
-
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-blue-200/20 dark:border-blue-700/20' 
-          : 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm'
+          ? 'bg-white/10 dark:bg-slate-900/10 backdrop-blur-2xl shadow-2xl border-b border-white/20 dark:border-white/10' 
+          : 'bg-white/5 dark:bg-slate-900/5 backdrop-blur-xl'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* Glass overlay effect */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 dark:from-white/10 dark:via-white/5 dark:to-white/10"></div>
+      
+      {/* Subtle top border glow */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"></div>
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         <div className="flex items-center justify-between h-16">
-          {/* Logo/Name with KB symbol from footer */}
+          {/* Logo/Name with enhanced glass effect */}
           <button
             onClick={handleTitleClick}
-            className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-3"
+            className="group relative text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 flex items-center gap-3"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-              <img
-                src="/lovable-uploads/b0e13af0-105a-4724-ad69-d72b85aaf0a1.png"
-                alt="Kartik Bhalerao"
-                className="w-full h-full rounded-xl object-cover"
-              />
+            <div className="relative">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-2xl group-hover:shadow-blue-500/30 transition-all duration-300 group-hover:scale-110">
+                <img
+                  src="/lovable-uploads/b0e13af0-105a-4724-ad69-d72b85aaf0a1.png"
+                  alt="Kartik Bhalerao"
+                  className="w-full h-full rounded-xl object-cover"
+                />
+              </div>
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-600/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
-            Kartik Bhalerao
+            <span className="relative">
+              Kartik Bhalerao
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </span>
           </button>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {/* Skills Button - Box-less with hover effects */}
+          {/* Desktop Navigation with glass effects */}
+          <nav className="hidden md:flex items-center space-x-2">
+            {/* Skills Button */}
             <button
               onClick={() => scrollToSection('skills')}
-              className="inline-flex items-center justify-center px-6 py-2.5 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-xl transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20"
+              className="group relative px-6 py-2.5 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-xl transition-all duration-300 overflow-hidden"
             >
-              Skills
+              {/* Glass background */}
+              <div className="absolute inset-0 bg-white/10 dark:bg-white/5 backdrop-blur-xl rounded-xl border border-white/20 dark:border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              {/* Gradient background on hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+              
+              <span className="relative z-10">Skills</span>
             </button>
             
-            {/* Blog Button - Box-less with same hover effects */}
+            {/* Blog Button */}
             <button
               onClick={() => scrollToSection('blog')}
-              className="inline-flex items-center justify-center px-6 py-2.5 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-xl transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20"
+              className="group relative px-6 py-2.5 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-xl transition-all duration-300 overflow-hidden"
             >
-              Blog
+              {/* Glass background */}
+              <div className="absolute inset-0 bg-white/10 dark:bg-white/5 backdrop-blur-xl rounded-xl border border-white/20 dark:border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              {/* Gradient background on hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-xl blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+              
+              <span className="relative z-10">Blog</span>
             </button>
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button with glass effect */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            className="group relative md:hidden p-2 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 rounded-xl overflow-hidden"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {/* Glass background */}
+            <div className="absolute inset-0 bg-white/10 dark:bg-white/5 backdrop-blur-xl rounded-xl border border-white/20 dark:border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            
+            <div className="relative z-10">
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </div>
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation with enhanced glass effect */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-blue-200/20 dark:border-blue-700/20 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
-            <nav className="flex flex-col space-y-4">
-              {/* Mobile Skills Button - Box-less with hover effects */}
-              <button
-                onClick={() => scrollToSection('skills')}
-                className="mx-4 inline-flex items-center justify-center px-6 py-2.5 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-xl transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20"
-              >
-                Skills
-              </button>
-              
-              {/* Mobile Blog Button - Box-less with same hover effects */}
-              <button
-                onClick={() => scrollToSection('blog')}
-                className="mx-4 inline-flex items-center justify-center px-6 py-2.5 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-xl transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20"
-              >
-                Blog
-              </button>
-            </nav>
+          <div className="md:hidden relative">
+            {/* Glass container */}
+            <div className="absolute inset-0 bg-white/10 dark:bg-slate-900/10 backdrop-blur-2xl rounded-2xl border border-white/20 dark:border-white/10 shadow-2xl"></div>
+            
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/5 to-white/20 dark:from-white/10 dark:via-white/5 dark:to-white/10 rounded-2xl"></div>
+            
+            <div className="relative py-6 px-4">
+              <nav className="flex flex-col space-y-4">
+                {/* Mobile Skills Button */}
+                <button
+                  onClick={() => scrollToSection('skills')}
+                  className="group relative px-6 py-3 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-xl transition-all duration-300 overflow-hidden"
+                >
+                  {/* Glass background */}
+                  <div className="absolute inset-0 bg-white/10 dark:bg-white/5 backdrop-blur-xl rounded-xl border border-white/20 dark:border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  {/* Gradient background on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  <span className="relative z-10">Skills</span>
+                </button>
+                
+                {/* Mobile Blog Button */}
+                <button
+                  onClick={() => scrollToSection('blog')}
+                  className="group relative px-6 py-3 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium rounded-xl transition-all duration-300 overflow-hidden"
+                >
+                  {/* Glass background */}
+                  <div className="absolute inset-0 bg-white/10 dark:bg-white/5 backdrop-blur-xl rounded-xl border border-white/20 dark:border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  {/* Gradient background on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  <span className="relative z-10">Blog</span>
+                </button>
+              </nav>
+            </div>
           </div>
         )}
       </div>
