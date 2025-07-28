@@ -103,43 +103,18 @@ export const HeroSection = () => {
             
             {/* Enhanced Product Manager Badge with Gradient Background */}
             <div className="flex justify-center mt-6">
-                <div className="group relative px-16 py-6 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl shadow-2xl transition-all duration-700 hover:scale-105 hover:shadow-3xl overflow-hidden cursor-pointer">
+                <div className="relative px-12 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-[30px] shadow-md cursor-pointer">
     
-    {/* Animated gradient background */}
-    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-all duration-700 rounded-2xl"></div>
-
-    {/* Shimmer effect */}
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 rounded-2xl"></div>
-
-    {/* Subtle pulse animation */}
-    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl animate-pulse"></div>
-
-    {/* Floating particles on hover */}
-    <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-700">
-      <div className="absolute top-2 left-6 w-1 h-1 bg-white/60 rounded-full animate-bounce"></div>
-      <div className="absolute top-4 right-8 w-1 h-1 bg-white/60 rounded-full animate-bounce [animation-delay:0.5s]"></div>
-      <div className="absolute bottom-2 left-1/2 w-1 h-1 bg-white/60 rounded-full animate-bounce [animation-delay:1s]"></div>
-      <div className="absolute bottom-4 right-1/3 w-1 h-1 bg-white/60 rounded-full animate-bounce [animation-delay:1.5s]"></div>
-    </div>
-
-    {/* Outer glow on hover */}
-    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 blur-xl opacity-0 group-hover:opacity-50 transition-all duration-700 scale-125"></div>
-
-    {/* Icon + Text */}
-    <div className="relative z-10 flex items-center gap-3">
-      <div className="w-6 h-6">
-        <svg xmlns="http://www.w3.org/2000/svg" className="text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a5 5 0 00-10 0v2M5 12h14M12 12v9m0 0l-3-3m3 3l3-3" />
-        </svg>
-      </div>
-      <span className="text-2xl font-bold text-white group-hover:text-white transition-colors duration-300">
-        View Certifications
-      </span>
-    </div>
-
-  </div>
-</div>
-
+            {/* Floating dots (subtle decoration) */}
+                    <div className="absolute top-2 left-2 w-1 h-1 bg-blue-200 rounded-full opacity-60"></div>
+                    <div className="absolute top-2 right-2 w-1 h-1 bg-purple-300 rounded-full opacity-60"></div>
+                    <div className="absolute bottom-2 left-1/2 w-1 h-1 bg-blue-300 rounded-full opacity-60"></div>
+                    <div className="absolute bottom-2 right-1/3 w-1 h-1 bg-purple-400 rounded-full opacity-60"></div>
+                    <span className="relative z-10 text-xl font-bold text-black">
+                    Product Manager
+                    </span>
+                </div>
+            </div>
           
           {/* Tagline */}
           <div className="space-y-6">
