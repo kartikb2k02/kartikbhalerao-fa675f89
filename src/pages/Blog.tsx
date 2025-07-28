@@ -1,20 +1,12 @@
 
 import { useState } from "react";
-import { ArrowLeft, Calendar, Clock, Tag, Search, Filter, X } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 
-import { FooterSection } from "@/components/FooterSection";
 import { blogPosts } from "@/data/blogPosts";
 import { getMarkdownContent } from "@/utils/blogContent";
-import { BlogSidebar } from "@/components/BlogSidebar";
-import { BlogPostDetail } from "@/components/BlogPostDetail";
+import { ResizableBlogLayout } from "@/components/ResizableBlogLayout";
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -114,70 +106,19 @@ const Blog = () => {
         </div>
       </nav>
 
-      <div className="pt-16 flex min-h-screen relative z-10">
-        {/* Enhanced Sidebar with Effects */}
-        <div className="w-96 bg-white/80 dark:bg-slate-800/80 backdrop-blur-2xl border-r border-slate-200/50 dark:border-slate-700/50 shadow-2xl relative overflow-hidden">
-          {/* Animated background gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 via-purple-500/3 to-emerald-500/5 animate-pulse"></div>
-          
-          {/* Floating particles */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-20 left-8 w-2 h-2 bg-blue-400/30 rounded-full animate-bounce"></div>
-            <div className="absolute top-40 right-12 w-1 h-1 bg-purple-400/40 rounded-full animate-bounce [animation-delay:1s]"></div>
-            <div className="absolute bottom-32 left-16 w-1.5 h-1.5 bg-emerald-400/35 rounded-full animate-bounce [animation-delay:2s]"></div>
-          </div>
-          
-          <BlogSidebar
-            posts={filteredPosts}
-            selectedPost={selectedPost}
-            onPostClick={handleBlogPostClick}
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onCategoryChange={setSelectedCategory}
-            searchTerm={searchTerm}
-            onSearchChange={setSearchTerm}
-          />
-        </div>
-
-        {/* Enhanced Main Content */}
-        <div className="flex-1 overflow-y-auto bg-gradient-to-br from-white/30 via-slate-50/50 to-blue-50/30 dark:from-slate-800/30 dark:via-slate-900/50 dark:to-slate-800/30">
-          {selectedPost ? (
-            <BlogPostDetail
-              post={selectedPost}
-              content={markdownContent}
-              onBack={handleBackToList}
-            />
-          ) : (
-            <div className="p-8 text-center">
-              <div className="max-w-2xl mx-auto">
-                <div className="relative">
-                  {/* Enhanced decorative background */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-emerald-500/10 rounded-3xl blur-xl animate-pulse"></div>
-                  
-                  {/* Floating elements */}
-                  <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-400/20 rounded-full animate-bounce"></div>
-                  <div className="absolute -top-2 -right-6 w-6 h-6 bg-purple-400/25 rounded-full animate-bounce [animation-delay:1s]"></div>
-                  <div className="absolute -bottom-4 left-1/4 w-4 h-4 bg-emerald-400/30 rounded-full animate-bounce [animation-delay:2s]"></div>
-                  
-                  <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-3xl p-12 border border-slate-200/50 dark:border-slate-700/50 shadow-2xl">
-                    <div className="text-4xl font-bold bg-gradient-to-r from-slate-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent mb-6">
-                      Ready to explore? 
-                    </div>
-                    <p className="text-xl text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-                      Click any article in the sidebar to get started and join the conversation in the comments!
-                    </p>
-                    
-                    {/* Enhanced animated icon */}
-                    <div className="relative mb-8">
-                      <div className="text-8xl animate-bounce">📝</div>
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-emerald-500/20 rounded-full blur-2xl animate-pulse"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
+      <div className="pt-16 relative z-10">
+        <ResizableBlogLayout
+          posts={filteredPosts}
+          selectedPost={selectedPost}
+          onPostClick={handleBlogPostClick}
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onCategoryChange={setSelectedCategory}
+          searchTerm={searchTerm}
+          onSearchChange={setSearchTerm}
+          markdownContent={markdownContent}
+          onBackToList={handleBackToList}
+        />
       </div>
     </div>
   );

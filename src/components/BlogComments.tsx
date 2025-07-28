@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { MessageCircle, Send, User } from "lucide-react";
+import { MessageCircle, Send, User, Heart, Reply } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -73,7 +73,7 @@ export const BlogComments = ({ postId }: BlogCommentsProps) => {
         .insert([{
           blog_post_id: postId,
           author_name: newComment.author_name.trim(),
-          author_email: `${newComment.author_name.trim().toLowerCase().replace(/\s+/g, '')}@example.com`, // Auto-generate email
+          author_email: `${newComment.author_name.trim().toLowerCase().replace(/\s+/g, '')}@example.com`,
           content: newComment.content.trim()
         }]);
 
@@ -85,7 +85,7 @@ export const BlogComments = ({ postId }: BlogCommentsProps) => {
       });
 
       setNewComment({ author_name: "", content: "" });
-      fetchComments(); // Refresh comments
+      fetchComments();
     } catch (error) {
       console.error('Error submitting comment:', error);
       toast({
@@ -101,7 +101,7 @@ export const BlogComments = ({ postId }: BlogCommentsProps) => {
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
-      month: 'long',
+      month: 'short',
       day: 'numeric',
       hour: '2-digit',
       minute: '2-digit'
@@ -109,76 +109,124 @@ export const BlogComments = ({ postId }: BlogCommentsProps) => {
   };
 
   return (
-    <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-6 border border-white/30 dark:border-slate-700/30 shadow-lg">
-      <div className="flex items-center gap-2 mb-4">
-        <MessageCircle className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-        <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-          Comments ({comments.length})
-        </h3>
+    <div className="max-w-4xl mx-auto mt-12">
+      {/* Comments Header */}
+      <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+            <MessageCircle className="w-5 h-5 text-white" />
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+              Discussion
+            </h2>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              {comments.length} {comments.length === 1 ? 'comment' : 'comments'}
+            </p>
+          </div>
+        </div>
       </div>
 
-      {/* Compact Comment Form */}
-      <form onSubmit={handleSubmitComment} className="mb-6 space-y-3">
-        <Input
-          placeholder="Your name"
-          value={newComment.author_name}
-          onChange={(e) => setNewComment(prev => ({ ...prev, author_name: e.target.value }))}
-          className="bg-white/50 dark:bg-slate-700/50 border-blue-200/50 dark:border-blue-700/50 h-10"
-          required
-        />
-        <Textarea
-          placeholder="Share your thoughts..."
-          value={newComment.content}
-          onChange={(e) => setNewComment(prev => ({ ...prev, content: e.target.value }))}
-          className="bg-white/50 dark:bg-slate-700/50 border-blue-200/50 dark:border-blue-700/50 min-h-[80px] resize-none"
-          required
-        />
-        <Button 
-          type="submit" 
-          disabled={isSubmitting}
-          className="bg-blue-600 hover:bg-blue-700 text-white h-9 px-4 text-sm"
-        >
-          <Send className="w-3 h-3 mr-1" />
-          {isSubmitting ? "Posting..." : "Post Comment"}
-        </Button>
-      </form>
+      {/* Comment Form */}
+      <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6 mb-8 shadow-sm">
+        <form onSubmit={handleSubmitComment} className="space-y-4">
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+              <User className="w-5 h-5 text-white" />
+            </div>
+            <Input
+              placeholder="Your name"
+              value={newComment.author_name}
+              onChange={(e) => setNewComment(prev => ({ ...prev, author_name: e.target.value }))}
+              className="flex-1 border-slate-200 dark:border-slate-600 focus:border-blue-500 dark:focus:border-blue-400"
+              required
+            />
+          </div>
+          
+          <Textarea
+            placeholder="Join the conversation..."
+            value={newComment.content}
+            onChange={(e) => setNewComment(prev => ({ ...prev, content: e.target.value }))}
+            className="min-h-[100px] border-slate-200 dark:border-slate-600 focus:border-blue-500 dark:focus:border-blue-400 resize-none"
+            required
+          />
+          
+          <div className="flex justify-end">
+            <Button 
+              type="submit" 
+              disabled={isSubmitting}
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-2 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
+            >
+              <Send className="w-4 h-4 mr-2" />
+              {isSubmitting ? "Posting..." : "Post Comment"}
+            </Button>
+          </div>
+        </form>
+      </div>
 
-      {/* Compact Comments List */}
-      <div className="space-y-4">
+      {/* Comments List */}
+      <div className="space-y-6">
         {isLoading ? (
-          <div className="text-center py-6">
-            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm">Loading comments...</p>
+          <div className="text-center py-12">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-4"></div>
+            <p className="text-slate-600 dark:text-slate-400">Loading comments...</p>
           </div>
         ) : comments.length === 0 ? (
-          <div className="text-center py-6">
-            <MessageCircle className="w-8 h-8 text-slate-400 mx-auto mb-2" />
-            <p className="text-slate-600 dark:text-slate-400 text-sm">
-              No comments yet. Be the first to share your thoughts!
+          <div className="text-center py-12">
+            <div className="w-16 h-16 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
+              <MessageCircle className="w-8 h-8 text-slate-400" />
+            </div>
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
+              No comments yet
+            </h3>
+            <p className="text-slate-600 dark:text-slate-400">
+              Be the first to share your thoughts on this post!
             </p>
           </div>
         ) : (
-          comments.map((comment) => (
+          comments.map((comment, index) => (
             <div
               key={comment.id}
-              className="bg-white/40 dark:bg-slate-700/40 rounded-lg p-4 border border-white/20 dark:border-slate-600/20"
+              className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm hover:shadow-md transition-shadow duration-200"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <User className="w-4 h-4 text-white" />
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <User className="w-5 h-5 text-white" />
                 </div>
+                
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h4 className="font-semibold text-slate-900 dark:text-white text-sm">
+                  <div className="flex items-center gap-3 mb-2">
+                    <h4 className="font-semibold text-slate-900 dark:text-white">
                       {comment.author_name}
                     </h4>
-                    <span className="text-xs text-slate-500 dark:text-slate-400">
+                    <span className="text-sm text-slate-500 dark:text-slate-400">
                       {formatDate(comment.created_at)}
                     </span>
                   </div>
-                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-wrap text-sm">
+                  
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4 whitespace-pre-wrap">
                     {comment.content}
                   </p>
+                  
+                  <div className="flex items-center gap-4">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400 p-1 h-auto"
+                    >
+                      <Heart className="w-4 h-4 mr-1" />
+                      Like
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400 p-1 h-auto"
+                    >
+                      <Reply className="w-4 h-4 mr-1" />
+                      Reply
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
