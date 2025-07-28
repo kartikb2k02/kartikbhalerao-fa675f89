@@ -59,42 +59,51 @@ const Blog = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-white relative">
-      {/* Dual Gradient Overlay Background */}
+    <div className="min-h-screen w-full bg-gradient-to-br from-slate-50 via-white to-blue-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative">
+      {/* Enhanced Grid Background */}
       <div
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(229,231,235,0.8) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(229,231,235,0.8) 1px, transparent 1px),
-            radial-gradient(circle 500px at 20% 80%, rgba(139,92,246,0.3), transparent),
-            radial-gradient(circle 500px at 80% 20%, rgba(59,130,246,0.3), transparent)
+            linear-gradient(to right, rgba(148,163,184,0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(148,163,184,0.1) 1px, transparent 1px),
+            radial-gradient(circle 600px at 30% 40%, rgba(99,102,241,0.15), transparent),
+            radial-gradient(circle 800px at 70% 80%, rgba(168,85,247,0.1), transparent),
+            radial-gradient(circle 400px at 40% 100%, rgba(59,130,246,0.1), transparent)
           `,
-          backgroundSize: "48px 48px, 48px 48px, 100% 100%, 100% 100%",
+          backgroundSize: "60px 60px, 60px 60px, 100% 100%, 100% 100%, 100% 100%",
         }}
       />
       
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-blue-200/30 dark:border-blue-700/30 transition-all duration-300 shadow-xl shadow-blue-500/5">
+      {/* Enhanced Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl border-b border-slate-200/50 dark:border-slate-700/50 transition-all duration-300 shadow-xl shadow-slate-900/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <button
               onClick={handleTitleClick}
-              className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-3"
+              className="flex items-center gap-3 text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 group"
             >
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300"
+                   style={{
+                     clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
+                   }}>
                 <img
                   src="/lovable-uploads/b0e13af0-105a-4724-ad69-d72b85aaf0a1.png"
                   alt="Kartik Bhalerao"
-                  className="w-full h-full rounded-xl object-cover"
+                  className="w-full h-full object-cover"
+                  style={{
+                    clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
+                  }}
                 />
               </div>
-              Kartik Bhalerao
+              <span className="group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                Kartik Bhalerao
+              </span>
             </button>
             <div className="flex items-center space-x-6">
               <Button 
                 variant="ghost" 
-                className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 font-medium relative group hover:bg-blue-50 dark:hover:bg-blue-900/20 px-6 py-3 rounded-xl"
+                className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 font-medium relative group hover:bg-blue-50/80 dark:hover:bg-blue-900/20 px-6 py-3 rounded-xl border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50"
                 onClick={() => navigate('/')}
               >
                 <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
@@ -106,20 +115,22 @@ const Blog = () => {
       </nav>
 
       <div className="pt-16 flex min-h-screen relative z-10">
-        {/* Sidebar */}
-        <BlogSidebar
-          posts={filteredPosts}
-          selectedPost={selectedPost}
-          onPostClick={handleBlogPostClick}
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
-        />
+        {/* Enhanced Sidebar */}
+        <div className="w-96 bg-white/70 dark:bg-slate-800/70 backdrop-blur-2xl border-r border-slate-200/50 dark:border-slate-700/50 shadow-xl">
+          <BlogSidebar
+            posts={filteredPosts}
+            selectedPost={selectedPost}
+            onPostClick={handleBlogPostClick}
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+            searchTerm={searchTerm}
+            onSearchChange={setSearchTerm}
+          />
+        </div>
 
-        {/* Main Content */}
-        <div className="flex-1 overflow-y-auto">
+        {/* Enhanced Main Content */}
+        <div className="flex-1 overflow-y-auto bg-gradient-to-br from-white/30 via-slate-50/50 to-blue-50/30 dark:from-slate-800/30 dark:via-slate-900/50 dark:to-slate-800/30">
           {selectedPost ? (
             <BlogPostDetail
               post={selectedPost}
@@ -129,13 +140,37 @@ const Blog = () => {
           ) : (
             <div className="p-8 text-center">
               <div className="max-w-2xl mx-auto">
-                <div className="text-4xl font-bold text-slate-900 dark:text-white mb-6">
-                  Ready to explore? 
+                <div className="relative">
+                  {/* Decorative background */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-emerald-500/5 rounded-3xl blur-xl"></div>
+                  
+                  <div className="relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-12 border border-slate-200/50 dark:border-slate-700/50 shadow-xl">
+                    <div className="text-4xl font-bold bg-gradient-to-r from-slate-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent mb-6">
+                      Ready to explore? 
+                    </div>
+                    <p className="text-xl text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                      Click any article in the sidebar to get started and join the conversation in the comments!
+                    </p>
+                    
+                    {/* Animated icon */}
+                    <div className="relative mb-8">
+                      <div className="text-8xl animate-bounce">📝</div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-emerald-500/10 rounded-full blur-2xl animate-pulse"></div>
+                    </div>
+                    
+                    {/* Featured stats */}
+                    <div className="grid grid-cols-2 gap-6 mt-8">
+                      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-6 border border-blue-200/30 dark:border-blue-700/30">
+                        <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{blogPosts.length}</div>
+                        <div className="text-sm text-slate-600 dark:text-slate-400">Articles</div>
+                      </div>
+                      <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 border border-purple-200/30 dark:border-purple-700/30">
+                        <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">{new Set(blogPosts.map(p => p.category)).size}</div>
+                        <div className="text-sm text-slate-600 dark:text-slate-400">Categories</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-xl text-slate-600 dark:text-slate-400 mb-8">
-                  Click any article in the sidebar to get started and join the conversation in the comments!
-                </p>
-                <div className="text-8xl mb-8 animate-bounce">📝</div>
               </div>
             </div>
           )}

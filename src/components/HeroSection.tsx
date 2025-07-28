@@ -101,51 +101,76 @@ export const HeroSection = () => {
               </span>
             </h1>
             
-            {/* Enhanced Unique Product Manager Badge */}
+            {/* Unique Hexagonal Product Manager Badge */}
             <div className="flex justify-center mt-6">
-              <div className="group relative px-12 py-6 rounded-full transition-all duration-700 hover:scale-110 cursor-pointer select-none">
+              <div className="group relative cursor-pointer select-none">
                 
-                {/* Animated rotating border */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-500 via-pink-500 to-blue-500 animate-spin opacity-75 group-hover:opacity-100 transition-all duration-700 blur-sm"></div>
-                
-                {/* Multiple glass layers for depth */}
-                <div className="absolute inset-1 bg-gradient-to-r from-violet-500/20 via-pink-500/20 to-blue-500/20 rounded-full backdrop-blur-3xl"></div>
-                <div className="absolute inset-2 bg-gradient-to-br from-white/60 via-white/30 to-white/10 dark:from-gray-800/80 dark:via-gray-900/60 dark:to-gray-800/40 rounded-full backdrop-blur-2xl"></div>
-                
-                {/* Holographic effect */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-400/30 via-pink-400/30 to-blue-400/30 opacity-0 group-hover:opacity-100 transition-all duration-700 animate-pulse"></div>
-                
-                {/* Multiple layered glows */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-500/40 via-pink-500/40 to-blue-500/40 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-400/20 via-pink-400/20 to-blue-400/20 blur-2xl opacity-0 group-hover:opacity-80 transition-all duration-1000"></div>
-                
-                {/* Floating magical particles */}
-                <div className="absolute inset-0 rounded-full overflow-hidden">
-                  <div className="absolute top-4 left-8 w-2 h-2 bg-violet-400 rounded-full animate-ping opacity-60"></div>
-                  <div className="absolute top-8 right-10 w-1.5 h-1.5 bg-pink-400 rounded-full animate-ping opacity-50 [animation-delay:0.5s]"></div>
-                  <div className="absolute bottom-6 left-12 w-2 h-2 bg-blue-400 rounded-full animate-ping opacity-70 [animation-delay:1s]"></div>
-                  <div className="absolute bottom-8 right-8 w-1.5 h-1.5 bg-violet-300 rounded-full animate-ping opacity-40 [animation-delay:1.5s]"></div>
-                  <div className="absolute top-10 left-1/2 w-1 h-1 bg-pink-300 rounded-full animate-ping opacity-50 [animation-delay:2s]"></div>
-                  <div className="absolute bottom-10 right-1/2 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping opacity-60 [animation-delay:2.5s]"></div>
+                {/* Hexagonal shape container */}
+                <div className="relative px-16 py-8 transition-all duration-700 hover:scale-110">
+                  
+                  {/* Hexagonal background with clip-path */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-violet-500/80 via-pink-500/80 to-blue-500/80 transition-all duration-700 group-hover:from-violet-600 group-hover:via-pink-600 group-hover:to-blue-600" 
+                       style={{
+                         clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
+                       }}>
+                  </div>
+                  
+                  {/* Inner hexagonal glass layer */}
+                  <div className="absolute inset-1 bg-gradient-to-br from-white/70 via-white/40 to-white/20 dark:from-gray-800/90 dark:via-gray-900/70 dark:to-gray-800/50 backdrop-blur-2xl transition-all duration-700" 
+                       style={{
+                         clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
+                       }}>
+                  </div>
+                  
+                  {/* Animated border effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-violet-400 via-pink-400 to-blue-400 animate-pulse opacity-0 group-hover:opacity-100 transition-all duration-700"
+                       style={{
+                         clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
+                       }}>
+                  </div>
+                  
+                  {/* Holographic shimmer effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-1000 animate-pulse"
+                       style={{
+                         clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
+                       }}>
+                  </div>
+                  
+                  {/* Outer glow effects */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-violet-500/40 via-pink-500/40 to-blue-500/40 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"
+                       style={{
+                         clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
+                       }}>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-violet-400/20 via-pink-400/20 to-blue-400/20 blur-2xl opacity-0 group-hover:opacity-80 transition-all duration-1000"
+                       style={{
+                         clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
+                       }}>
+                  </div>
+                  
+                  {/* Corner particles */}
+                  <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute top-4 left-8 w-2 h-2 bg-violet-400 opacity-0 group-hover:opacity-100 animate-ping transition-all duration-700"></div>
+                    <div className="absolute top-8 right-10 w-1.5 h-1.5 bg-pink-400 opacity-0 group-hover:opacity-100 animate-ping [animation-delay:0.5s] transition-all duration-700"></div>
+                    <div className="absolute bottom-6 left-12 w-2 h-2 bg-blue-400 opacity-0 group-hover:opacity-100 animate-ping [animation-delay:1s] transition-all duration-700"></div>
+                    <div className="absolute bottom-8 right-8 w-1.5 h-1.5 bg-violet-300 opacity-0 group-hover:opacity-100 animate-ping [animation-delay:1.5s] transition-all duration-700"></div>
+                  </div>
+                  
+                  {/* Floating sparkles */}
+                  <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-700">
+                    <div className="absolute top-3 left-6 w-3 h-3 bg-gradient-to-r from-violet-400 to-pink-400 blur-sm animate-bounce"></div>
+                    <div className="absolute top-6 right-8 w-2 h-2 bg-gradient-to-r from-pink-400 to-blue-400 blur-sm animate-bounce [animation-delay:0.3s]"></div>
+                    <div className="absolute bottom-4 left-10 w-3 h-3 bg-gradient-to-r from-blue-400 to-violet-400 blur-sm animate-bounce [animation-delay:0.6s]"></div>
+                    <div className="absolute bottom-6 right-6 w-2 h-2 bg-gradient-to-r from-violet-400 to-pink-400 blur-sm animate-bounce [animation-delay:0.9s]"></div>
+                  </div>
+                  
+                  {/* Text with enhanced gradient */}
+                  <div className="relative z-10 flex items-center justify-center">
+                    <span className="text-xl font-bold bg-gradient-to-r from-violet-900 via-pink-900 to-blue-900 dark:from-violet-100 dark:via-pink-100 dark:to-blue-100 bg-clip-text text-transparent tracking-wide group-hover:from-violet-950 group-hover:via-pink-950 group-hover:to-blue-950 dark:group-hover:from-white dark:group-hover:via-pink-50 dark:group-hover:to-violet-50 transition-all duration-700">
+                      Product Manager
+                    </span>
+                  </div>
                 </div>
-
-                {/* Sparkle effects */}
-                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-700">
-                  <div className="absolute top-3 left-6 w-3 h-3 bg-gradient-to-r from-violet-400 to-pink-400 rounded-full animate-bounce blur-sm"></div>
-                  <div className="absolute top-6 right-8 w-2 h-2 bg-gradient-to-r from-pink-400 to-blue-400 rounded-full animate-bounce [animation-delay:0.3s] blur-sm"></div>
-                  <div className="absolute bottom-4 left-10 w-3 h-3 bg-gradient-to-r from-blue-400 to-violet-400 rounded-full animate-bounce [animation-delay:0.6s] blur-sm"></div>
-                  <div className="absolute bottom-6 right-6 w-2 h-2 bg-gradient-to-r from-violet-400 to-pink-400 rounded-full animate-bounce [animation-delay:0.9s] blur-sm"></div>
-                </div>
-
-                {/* Text with enhanced magical gradient */}
-                <div className="relative z-10 flex items-center justify-center">
-                  <span className="text-xl font-bold bg-gradient-to-r from-violet-800 via-pink-800 to-blue-800 dark:from-violet-100 dark:via-pink-100 dark:to-blue-100 bg-clip-text text-transparent tracking-wide group-hover:from-violet-900 group-hover:via-pink-900 group-hover:to-blue-900 dark:group-hover:from-white dark:group-hover:via-pink-50 dark:group-hover:to-violet-50 transition-all duration-700">
-                    Product Manager
-                  </span>
-                </div>
-
-                {/* Inner magical glow */}
-                <div className="absolute inset-4 rounded-full bg-gradient-to-r from-violet-500/15 via-pink-500/15 to-blue-500/15 group-hover:from-violet-500/25 group-hover:via-pink-500/25 group-hover:to-blue-500/25 transition-all duration-700"></div>
               </div>
             </div>
           </div>
