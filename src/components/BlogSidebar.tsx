@@ -54,11 +54,21 @@ export const BlogSidebar = ({
           </div>
         </div>
 
-        {/* Enhanced Categories */}
+        {/* Enhanced Categories - matching the image style */}
         <Tabs value={selectedCategory} onValueChange={onCategoryChange} className="mb-6">
-          <TabsList className="grid w-full grid-cols-2 h-auto bg-white/90 dark:bg-slate-700/90 p-1 backdrop-blur-xl border border-blue-200/30 dark:border-blue-700/30">
-            <TabsTrigger value="all" className="text-xs py-2 data-[state=active]:bg-blue-500 data-[state=active]:text-white transition-all duration-300">All</TabsTrigger>
-            <TabsTrigger value="strategy" className="text-xs py-2 data-[state=active]:bg-blue-500 data-[state=active]:text-white transition-all duration-300">Strategy</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 h-auto bg-gray-100 dark:bg-slate-700/90 p-1 backdrop-blur-xl border-none rounded-lg">
+            <TabsTrigger 
+              value="all" 
+              className="text-sm py-3 px-6 data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:rounded-md data-[state=inactive]:text-gray-600 dark:data-[state=inactive]:text-gray-400 transition-all duration-300 font-medium"
+            >
+              All
+            </TabsTrigger>
+            <TabsTrigger 
+              value="strategy" 
+              className="text-sm py-3 px-6 data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:rounded-md data-[state=inactive]:text-gray-600 dark:data-[state=inactive]:text-gray-400 transition-all duration-300 font-medium"
+            >
+              Strategy
+            </TabsTrigger>
           </TabsList>
         </Tabs>
 
