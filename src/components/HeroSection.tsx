@@ -101,26 +101,30 @@ export const HeroSection = () => {
               </span>
             </h1>
             
-            {/* Enhanced Product Manager Badge with Effects */}
+            {/* Enhanced Product Manager Badge with Gradient Background */}
             <div className="flex justify-center mt-6">
-              <div className="group relative px-12 py-4 bg-gradient-to-r from-blue-50 via-white to-purple-50 dark:from-blue-950/50 dark:via-slate-900/50 dark:to-purple-950/50 border-2 border-blue-200 dark:border-blue-700 backdrop-blur-xl transition-all duration-700 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 overflow-hidden" style={{clipPath: 'polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)'}}>
-                {/* Animated background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/10 to-blue-500/5 animate-pulse"></div>
+              <div className="group relative px-16 py-6 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full shadow-2xl transition-all duration-700 hover:scale-105 hover:shadow-3xl overflow-hidden cursor-pointer">
+                {/* Animated gradient background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
                 
                 {/* Shimmer effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                 
-                {/* Floating particles */}
+                {/* Subtle pulse animation */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-full animate-pulse"></div>
+                
+                {/* Floating particles on hover */}
                 <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-700">
-                  <div className="absolute top-2 left-4 w-1 h-1 bg-blue-400 rounded-full animate-bounce"></div>
-                  <div className="absolute top-3 right-6 w-1 h-1 bg-purple-400 rounded-full animate-bounce [animation-delay:0.5s]"></div>
-                  <div className="absolute bottom-2 left-1/2 w-1 h-1 bg-emerald-400 rounded-full animate-bounce [animation-delay:1s]"></div>
+                  <div className="absolute top-2 left-6 w-1 h-1 bg-white/60 rounded-full animate-bounce"></div>
+                  <div className="absolute top-4 right-8 w-1 h-1 bg-white/60 rounded-full animate-bounce [animation-delay:0.5s]"></div>
+                  <div className="absolute bottom-2 left-1/2 w-1 h-1 bg-white/60 rounded-full animate-bounce [animation-delay:1s]"></div>
+                  <div className="absolute bottom-4 right-1/3 w-1 h-1 bg-white/60 rounded-full animate-bounce [animation-delay:1.5s]"></div>
                 </div>
                 
-                {/* Border glow */}
-                <div className="absolute inset-0 border-2 border-blue-400/50 dark:border-blue-500/50 opacity-0 group-hover:opacity-100 transition-all duration-700" style={{clipPath: 'polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)'}}></div>
+                {/* Outer glow on hover */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 blur-xl opacity-0 group-hover:opacity-50 transition-all duration-700 scale-125"></div>
                 
-                <span className="relative z-10 text-xl font-bold text-blue-800 dark:text-blue-200 group-hover:text-blue-900 dark:group-hover:text-blue-100 transition-colors duration-300">
+                <span className="relative z-10 text-2xl font-bold text-white group-hover:text-white transition-colors duration-300">
                   Product Manager
                 </span>
               </div>
