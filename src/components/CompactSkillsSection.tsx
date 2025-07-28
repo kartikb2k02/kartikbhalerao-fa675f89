@@ -1,4 +1,3 @@
-import { Target } from "lucide-react";
 
 export const CompactSkillsSection = () => {
   return (
@@ -11,11 +10,19 @@ export const CompactSkillsSection = () => {
       </div>
 
       <div className="relative z-10 text-center">
-        {/* Header Badge */}
-        <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 px-6 py-3 rounded-full text-blue-600 dark:text-blue-400 font-bold text-lg mb-8 border border-blue-200/50 dark:border-blue-700/50 shadow-lg backdrop-blur-sm">
-          <Target className="w-5 h-5" />
-          <span>Skills & Expertise</span>
-          <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+        {/* Certification Style Badge */}
+        <div className="flex justify-center mb-8">
+          <div className="relative px-12 py-4 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-800 dark:from-slate-700 dark:via-slate-800 dark:to-slate-700 border-2 border-slate-700 dark:border-slate-600 transition-all duration-300 hover:shadow-xl hover:shadow-slate-900/20 dark:hover:shadow-slate-800/30 overflow-hidden" style={{clipPath: 'polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)'}}>
+            {/* Subtle background texture */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-800/50 via-slate-900/80 to-slate-800/50 dark:from-slate-700/50 dark:via-slate-800/80 dark:to-slate-700/50"></div>
+            
+            {/* Border styling */}
+            <div className="absolute inset-0 border-2 border-slate-600 dark:border-slate-500 opacity-50" style={{clipPath: 'polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)'}}></div>
+            
+            <span className="relative z-10 text-xl font-bold text-white tracking-wide">
+              Skills & Expertise
+            </span>
+          </div>
         </div>
 
         {/* Main Title */}
