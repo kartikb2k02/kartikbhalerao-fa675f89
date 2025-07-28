@@ -101,20 +101,34 @@ export const HeroSection = () => {
               </span>
             </h1>
             
-            {/* Enhanced Product Manager Badge with Gradient Background */}
+            {/* Enhanced Product Manager Badge */}
             <div className="flex justify-center mt-6">
-                <div className="relative px-12 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-[30px] shadow-md cursor-pointer">
-    
-            {/* Floating dots (subtle decoration) */}
-                    <div className="absolute top-2 left-2 w-1 h-1 bg-blue-200 rounded-full opacity-60"></div>
-                    <div className="absolute top-2 right-2 w-1 h-1 bg-purple-300 rounded-full opacity-60"></div>
-                    <div className="absolute bottom-2 left-1/2 w-1 h-1 bg-blue-300 rounded-full opacity-60"></div>
-                    <div className="absolute bottom-2 right-1/3 w-1 h-1 bg-purple-400 rounded-full opacity-60"></div>
-                    <span className="relative z-10 text-xl font-bold text-black">
+              <div className="group relative cursor-pointer">
+                {/* Main badge */}
+                <div className="relative px-12 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-[30px] shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105">
+                  
+                  {/* Shimmer effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-[30px] transform -skew-x-12 animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Floating particles */}
+                  <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-700">
+                    <div className="absolute top-1 left-3 w-1 h-1 bg-white/60 rounded-full animate-bounce"></div>
+                    <div className="absolute top-2 right-4 w-1 h-1 bg-white/60 rounded-full animate-bounce [animation-delay:0.5s]"></div>
+                    <div className="absolute bottom-1 left-1/2 w-1 h-1 bg-white/60 rounded-full animate-bounce [animation-delay:1s]"></div>
+                    <div className="absolute bottom-2 right-1/3 w-1 h-1 bg-white/60 rounded-full animate-bounce [animation-delay:1.5s]"></div>
+                  </div>
+                  
+                  <span className="relative z-10 text-xl font-bold text-white">
                     Product Manager
-                    </span>
+                  </span>
                 </div>
+                
+                {/* Outer glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-[30px] blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-purple-400/10 to-pink-400/10 rounded-[30px] blur-2xl opacity-0 group-hover:opacity-80 transition-all duration-700 scale-125"></div>
+              </div>
             </div>
+          </div>
           
           {/* Tagline */}
           <div className="space-y-6">
