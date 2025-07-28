@@ -105,10 +105,10 @@ export const HeroSection = () => {
             <div className="flex justify-center mt-6">
               <div className="group relative cursor-pointer">
                 {/* Main badge */}
-                <div className="relative px-12 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-[30px] shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105">
+                <div className="relative px-12 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105">
                   
                   {/* Shimmer effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-[30px] transform -skew-x-12 animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-xl transform -skew-x-12 animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
                   {/* Floating particles */}
                   <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-700">
@@ -124,8 +124,8 @@ export const HeroSection = () => {
                 </div>
                 
                 {/* Outer glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-[30px] blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-purple-400/10 to-pink-400/10 rounded-[30px] blur-2xl opacity-0 group-hover:opacity-80 transition-all duration-700 scale-125"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-purple-400/10 to-pink-400/10 rounded-xl blur-2xl opacity-0 group-hover:opacity-80 transition-all duration-700 scale-125"></div>
               </div>
             </div>
           </div>
