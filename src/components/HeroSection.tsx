@@ -101,76 +101,12 @@ export const HeroSection = () => {
               </span>
             </h1>
             
-            {/* Unique Hexagonal Product Manager Badge */}
+            {/* Simple Product Manager Badge */}
             <div className="flex justify-center mt-6">
-              <div className="group relative cursor-pointer select-none">
-                
-                {/* Hexagonal shape container */}
-                <div className="relative px-16 py-8 transition-all duration-700 hover:scale-110">
-                  
-                  {/* Hexagonal background with clip-path */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-violet-500/80 via-pink-500/80 to-blue-500/80 transition-all duration-700 group-hover:from-violet-600 group-hover:via-pink-600 group-hover:to-blue-600" 
-                       style={{
-                         clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
-                       }}>
-                  </div>
-                  
-                  {/* Inner hexagonal glass layer */}
-                  <div className="absolute inset-1 bg-gradient-to-br from-white/70 via-white/40 to-white/20 dark:from-gray-800/90 dark:via-gray-900/70 dark:to-gray-800/50 backdrop-blur-2xl transition-all duration-700" 
-                       style={{
-                         clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
-                       }}>
-                  </div>
-                  
-                  {/* Animated border effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-violet-400 via-pink-400 to-blue-400 animate-pulse opacity-0 group-hover:opacity-100 transition-all duration-700"
-                       style={{
-                         clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
-                       }}>
-                  </div>
-                  
-                  {/* Holographic shimmer effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-1000 animate-pulse"
-                       style={{
-                         clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
-                       }}>
-                  </div>
-                  
-                  {/* Outer glow effects */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-violet-500/40 via-pink-500/40 to-blue-500/40 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"
-                       style={{
-                         clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
-                       }}>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-violet-400/20 via-pink-400/20 to-blue-400/20 blur-2xl opacity-0 group-hover:opacity-80 transition-all duration-1000"
-                       style={{
-                         clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
-                       }}>
-                  </div>
-                  
-                  {/* Corner particles */}
-                  <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-4 left-8 w-2 h-2 bg-violet-400 opacity-0 group-hover:opacity-100 animate-ping transition-all duration-700"></div>
-                    <div className="absolute top-8 right-10 w-1.5 h-1.5 bg-pink-400 opacity-0 group-hover:opacity-100 animate-ping [animation-delay:0.5s] transition-all duration-700"></div>
-                    <div className="absolute bottom-6 left-12 w-2 h-2 bg-blue-400 opacity-0 group-hover:opacity-100 animate-ping [animation-delay:1s] transition-all duration-700"></div>
-                    <div className="absolute bottom-8 right-8 w-1.5 h-1.5 bg-violet-300 opacity-0 group-hover:opacity-100 animate-ping [animation-delay:1.5s] transition-all duration-700"></div>
-                  </div>
-                  
-                  {/* Floating sparkles */}
-                  <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-700">
-                    <div className="absolute top-3 left-6 w-3 h-3 bg-gradient-to-r from-violet-400 to-pink-400 blur-sm animate-bounce"></div>
-                    <div className="absolute top-6 right-8 w-2 h-2 bg-gradient-to-r from-pink-400 to-blue-400 blur-sm animate-bounce [animation-delay:0.3s]"></div>
-                    <div className="absolute bottom-4 left-10 w-3 h-3 bg-gradient-to-r from-blue-400 to-violet-400 blur-sm animate-bounce [animation-delay:0.6s]"></div>
-                    <div className="absolute bottom-6 right-6 w-2 h-2 bg-gradient-to-r from-violet-400 to-pink-400 blur-sm animate-bounce [animation-delay:0.9s]"></div>
-                  </div>
-                  
-                  {/* Text with enhanced gradient */}
-                  <div className="relative z-10 flex items-center justify-center">
-                    <span className="text-xl font-bold bg-gradient-to-r from-violet-900 via-pink-900 to-blue-900 dark:from-violet-100 dark:via-pink-100 dark:to-blue-100 bg-clip-text text-transparent tracking-wide group-hover:from-violet-950 group-hover:via-pink-950 group-hover:to-blue-950 dark:group-hover:from-white dark:group-hover:via-pink-50 dark:group-hover:to-violet-50 transition-all duration-700">
-                      Product Manager
-                    </span>
-                  </div>
-                </div>
+              <div className="px-8 py-3 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/50 dark:to-purple-900/50 border border-blue-200/50 dark:border-blue-700/50 rounded-lg">
+                <span className="text-lg font-semibold text-blue-800 dark:text-blue-200">
+                  Product Manager
+                </span>
               </div>
             </div>
           </div>
