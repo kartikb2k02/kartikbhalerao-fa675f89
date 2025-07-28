@@ -101,10 +101,26 @@ export const HeroSection = () => {
               </span>
             </h1>
             
-            {/* Simple Product Manager Badge */}
+            {/* Enhanced Product Manager Badge with Effects */}
             <div className="flex justify-center mt-6">
-              <div className="px-8 py-3 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/50 dark:to-purple-900/50 border border-blue-200/50 dark:border-blue-700/50 rounded-lg">
-                <span className="text-lg font-semibold text-blue-800 dark:text-blue-200">
+              <div className="group relative px-12 py-4 bg-gradient-to-r from-blue-50 via-white to-purple-50 dark:from-blue-950/50 dark:via-slate-900/50 dark:to-purple-950/50 border-2 border-blue-200 dark:border-blue-700 backdrop-blur-xl transition-all duration-700 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 overflow-hidden" style={{clipPath: 'polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)'}}>
+                {/* Animated background gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/10 to-blue-500/5 animate-pulse"></div>
+                
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                
+                {/* Floating particles */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-700">
+                  <div className="absolute top-2 left-4 w-1 h-1 bg-blue-400 rounded-full animate-bounce"></div>
+                  <div className="absolute top-3 right-6 w-1 h-1 bg-purple-400 rounded-full animate-bounce [animation-delay:0.5s]"></div>
+                  <div className="absolute bottom-2 left-1/2 w-1 h-1 bg-emerald-400 rounded-full animate-bounce [animation-delay:1s]"></div>
+                </div>
+                
+                {/* Border glow */}
+                <div className="absolute inset-0 border-2 border-blue-400/50 dark:border-blue-500/50 opacity-0 group-hover:opacity-100 transition-all duration-700" style={{clipPath: 'polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)'}}></div>
+                
+                <span className="relative z-10 text-xl font-bold text-blue-800 dark:text-blue-200 group-hover:text-blue-900 dark:group-hover:text-blue-100 transition-colors duration-300">
                   Product Manager
                 </span>
               </div>

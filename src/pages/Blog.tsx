@@ -115,8 +115,18 @@ const Blog = () => {
       </nav>
 
       <div className="pt-16 flex min-h-screen relative z-10">
-        {/* Enhanced Sidebar */}
-        <div className="w-96 bg-white/70 dark:bg-slate-800/70 backdrop-blur-2xl border-r border-slate-200/50 dark:border-slate-700/50 shadow-xl">
+        {/* Enhanced Sidebar with Effects */}
+        <div className="w-96 bg-white/80 dark:bg-slate-800/80 backdrop-blur-2xl border-r border-slate-200/50 dark:border-slate-700/50 shadow-2xl relative overflow-hidden">
+          {/* Animated background gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 via-purple-500/3 to-emerald-500/5 animate-pulse"></div>
+          
+          {/* Floating particles */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-20 left-8 w-2 h-2 bg-blue-400/30 rounded-full animate-bounce"></div>
+            <div className="absolute top-40 right-12 w-1 h-1 bg-purple-400/40 rounded-full animate-bounce [animation-delay:1s]"></div>
+            <div className="absolute bottom-32 left-16 w-1.5 h-1.5 bg-emerald-400/35 rounded-full animate-bounce [animation-delay:2s]"></div>
+          </div>
+          
           <BlogSidebar
             posts={filteredPosts}
             selectedPost={selectedPost}
@@ -141,10 +151,15 @@ const Blog = () => {
             <div className="p-8 text-center">
               <div className="max-w-2xl mx-auto">
                 <div className="relative">
-                  {/* Decorative background */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-emerald-500/5 rounded-3xl blur-xl"></div>
+                  {/* Enhanced decorative background */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-emerald-500/10 rounded-3xl blur-xl animate-pulse"></div>
                   
-                  <div className="relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-12 border border-slate-200/50 dark:border-slate-700/50 shadow-xl">
+                  {/* Floating elements */}
+                  <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-400/20 rounded-full animate-bounce"></div>
+                  <div className="absolute -top-2 -right-6 w-6 h-6 bg-purple-400/25 rounded-full animate-bounce [animation-delay:1s]"></div>
+                  <div className="absolute -bottom-4 left-1/4 w-4 h-4 bg-emerald-400/30 rounded-full animate-bounce [animation-delay:2s]"></div>
+                  
+                  <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-3xl p-12 border border-slate-200/50 dark:border-slate-700/50 shadow-2xl">
                     <div className="text-4xl font-bold bg-gradient-to-r from-slate-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent mb-6">
                       Ready to explore? 
                     </div>
@@ -152,22 +167,10 @@ const Blog = () => {
                       Click any article in the sidebar to get started and join the conversation in the comments!
                     </p>
                     
-                    {/* Animated icon */}
+                    {/* Enhanced animated icon */}
                     <div className="relative mb-8">
                       <div className="text-8xl animate-bounce">📝</div>
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-emerald-500/10 rounded-full blur-2xl animate-pulse"></div>
-                    </div>
-                    
-                    {/* Featured stats */}
-                    <div className="grid grid-cols-2 gap-6 mt-8">
-                      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-6 border border-blue-200/30 dark:border-blue-700/30">
-                        <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{blogPosts.length}</div>
-                        <div className="text-sm text-slate-600 dark:text-slate-400">Articles</div>
-                      </div>
-                      <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 border border-purple-200/30 dark:border-purple-700/30">
-                        <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">{new Set(blogPosts.map(p => p.category)).size}</div>
-                        <div className="text-sm text-slate-600 dark:text-slate-400">Categories</div>
-                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-emerald-500/20 rounded-full blur-2xl animate-pulse"></div>
                     </div>
                   </div>
                 </div>
