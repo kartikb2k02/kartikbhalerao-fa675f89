@@ -73,12 +73,12 @@ export const BlogSidebar = ({
           </TabsList>
         </Tabs>
 
-        {/* Enhanced Posts List */}
-        <div className="space-y-4">
+        {/* Enhanced Posts List - Only Titles */}
+        <div className="space-y-3">
           {posts.map((post, index) => (
             <article
               key={post.id}
-              className={`cursor-pointer transition-all duration-500 p-5 rounded-2xl backdrop-blur-sm border group relative overflow-hidden ${
+              className={`cursor-pointer transition-all duration-500 p-4 rounded-xl backdrop-blur-sm border group relative overflow-hidden ${
                 selectedPost?.id === post.id
                   ? 'bg-gradient-to-br from-blue-50/90 to-indigo-50/80 dark:from-blue-950/60 dark:to-indigo-950/50 border-blue-300/60 dark:border-blue-600/60 shadow-xl shadow-blue-500/20 transform scale-105'
                   : 'bg-white/60 dark:bg-slate-800/60 border-slate-200/40 dark:border-slate-700/40 hover:bg-gradient-to-br hover:from-blue-50/80 hover:to-indigo-50/60 dark:hover:from-blue-950/50 dark:hover:to-indigo-950/40 hover:border-blue-300/60 dark:hover:border-blue-600/60 hover:shadow-xl hover:shadow-blue-500/10 hover:transform hover:scale-102'
@@ -89,38 +89,17 @@ export const BlogSidebar = ({
               }}
             >
               {/* Background Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-emerald-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-emerald-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
-              {/* Content */}
+              {/* Content - Only Title */}
               <div className="relative z-10">
-                <h3 className="text-base font-semibold text-slate-900 dark:text-white leading-6 mb-2 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300">
+                <h3 className="text-base font-semibold text-slate-900 dark:text-white leading-6 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300">
                   {post.title}
                 </h3>
-                
-                <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-3 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
-                  {post.excerpt}
-                </p>
-                
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1">
-                  {post.tags.slice(0, 2).map((tag, tagIndex) => (
-                    <span 
-                      key={tagIndex}
-                      className="px-2 py-1 text-xs font-medium bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 text-blue-700 dark:text-blue-300 rounded-full border border-blue-200/50 dark:border-blue-700/50"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                  {post.tags.length > 2 && (
-                    <span className="px-2 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full border border-slate-200/50 dark:border-slate-700/50">
-                      +{post.tags.length - 2}
-                    </span>
-                  )}
-                </div>
               </div>
               
               {/* Shimmer Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 rounded-xl"></div>
             </article>
           ))}
           
