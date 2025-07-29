@@ -64,7 +64,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
           </div>
         </div>
 
-        <p className="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+        <p className="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
           {post.excerpt}
         </p>
         
@@ -83,20 +83,20 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
 
       {/* Post Content */}
       <div className="prose prose-lg prose-slate dark:prose-invert max-w-none prose-p:mb-6 prose-headings:mt-8 prose-headings:mb-4 mb-12">
-        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 border border-white/30 dark:border-slate-700/30 shadow-lg">
+        <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-2xl p-8 border border-white/30 dark:border-slate-600/30 shadow-lg">
           <ReactMarkdown 
             remarkPlugins={[remarkGfm]}
             components={{
-              p: ({ children }) => <p className="mb-6 leading-relaxed">{children}</p>,
-              h1: ({ children }) => <h1 className="text-3xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">{children}</h1>,
-              h2: ({ children }) => <h2 className="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">{children}</h2>,
-              h3: ({ children }) => <h3 className="text-xl font-bold mt-6 mb-3 text-slate-900 dark:text-white">{children}</h3>,
+              p: ({ children }) => <p className="mb-6 leading-relaxed text-slate-700 dark:text-slate-300">{children}</p>,
+              h1: ({ children }) => <h1 className="text-3xl font-bold mt-8 mb-4 text-slate-900 dark:text-slate-100">{children}</h1>,
+              h2: ({ children }) => <h2 className="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-slate-100">{children}</h2>,
+              h3: ({ children }) => <h3 className="text-xl font-bold mt-6 mb-3 text-slate-900 dark:text-slate-100">{children}</h3>,
               ul: ({ children }) => <ul className="mb-6 space-y-2">{children}</ul>,
               ol: ({ children }) => <ol className="mb-6 space-y-2">{children}</ol>,
-              li: ({ children }) => <li className="leading-relaxed">{children}</li>,
+              li: ({ children }) => <li className="leading-relaxed text-slate-700 dark:text-slate-300">{children}</li>,
               blockquote: ({ children }) => <blockquote className="border-l-4 border-blue-500 pl-4 italic my-6 text-slate-600 dark:text-slate-400">{children}</blockquote>,
-              code: ({ children }) => <code className="bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-sm">{children}</code>,
-              pre: ({ children }) => <pre className="bg-slate-100 dark:bg-slate-700 p-4 rounded-lg overflow-x-auto mb-6">{children}</pre>,
+              code: ({ children }) => <code className="bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-sm text-slate-800 dark:text-slate-200">{children}</code>,
+              pre: ({ children }) => <pre className="bg-slate-100 dark:bg-slate-700 p-4 rounded-lg overflow-x-auto mb-6 text-slate-800 dark:text-slate-200">{children}</pre>,
             }}
           >
             {content}
