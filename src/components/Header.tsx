@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -123,21 +124,27 @@ export const Header = () => {
               
               <span className="relative z-10 tracking-wide">Blog</span>
             </button>
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
           </nav>
 
           {/* Enhanced Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="group relative md:hidden p-3 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-500 rounded-2xl overflow-hidden"
-          >
-            {/* Enhanced glass background */}
-            <div className="absolute inset-0 bg-white/15 dark:bg-white/8 backdrop-blur-2xl rounded-2xl border border-white/30 dark:border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-            
-            <div className="relative z-10 transition-transform duration-300 group-hover:scale-110">
-              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </div>
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="group relative p-3 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-500 rounded-2xl overflow-hidden"
+            >
+              {/* Enhanced glass background */}
+              <div className="absolute inset-0 bg-white/15 dark:bg-white/8 backdrop-blur-2xl rounded-2xl border border-white/30 dark:border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+              
+              <div className="relative z-10 transition-transform duration-300 group-hover:scale-110">
+                {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </div>
+            </button>
+          </div>
         </div>
 
         {/* Enhanced Mobile Navigation */}
