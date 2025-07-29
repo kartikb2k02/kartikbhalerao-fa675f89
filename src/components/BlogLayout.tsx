@@ -147,22 +147,6 @@ export const BlogLayout = ({
                       <div className="text-8xl animate-bounce">📚</div>
                       <div className="absolute -top-2 -right-2 text-2xl animate-ping">✨</div>
                     </div>
-                    
-                    {/* Stats or Features */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                      <div className="text-center p-4 bg-gradient-to-br from-blue-50/50 to-indigo-50/50 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-2xl border border-blue-200/30 dark:border-blue-800/30">
-                        <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{posts.length}</div>
-                        <div className="text-sm text-slate-600 dark:text-slate-400">Articles</div>
-                      </div>
-                      <div className="text-center p-4 bg-gradient-to-br from-purple-50/50 to-pink-50/50 dark:from-purple-950/30 dark:to-pink-950/30 rounded-2xl border border-purple-200/30 dark:border-purple-800/30">
-                        <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">💡</div>
-                        <div className="text-sm text-slate-600 dark:text-slate-400">Insights</div>
-                      </div>
-                      <div className="text-center p-4 bg-gradient-to-br from-emerald-50/50 to-teal-50/50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-2xl border border-emerald-200/30 dark:border-emerald-800/30">
-                        <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">🚀</div>
-                        <div className="text-sm text-slate-600 dark:text-slate-400">Innovation</div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>

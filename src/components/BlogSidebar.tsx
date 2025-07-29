@@ -55,18 +55,18 @@ export const BlogSidebar = ({
           </div>
         </div>
 
-        {/* Enhanced Categories */}
+        {/* Simplified Categories - Only Titles */}
         <Tabs value={selectedCategory} onValueChange={onCategoryChange} className="mb-6">
           <TabsList className="grid w-full grid-cols-2 h-auto bg-slate-100/80 dark:bg-slate-800/80 p-1 backdrop-blur-sm border border-slate-200/60 dark:border-slate-700/60 rounded-xl">
             <TabsTrigger 
               value="all" 
-              className="text-sm py-3 px-6 rounded-lg font-medium transition-all duration-300 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=inactive]:text-slate-600 dark:data-[state=inactive]:text-slate-400 data-[state=inactive]:hover:text-blue-600 dark:data-[state=inactive]:hover:text-blue-400"
+              className="text-sm py-2 px-4 rounded-lg font-medium transition-all duration-300 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=inactive]:text-slate-600 dark:data-[state=inactive]:text-slate-400 data-[state=inactive]:hover:text-blue-600 dark:data-[state=inactive]:hover:text-blue-400"
             >
-              All Posts
+              All
             </TabsTrigger>
             <TabsTrigger 
               value="strategy" 
-              className="text-sm py-3 px-6 rounded-lg font-medium transition-all duration-300 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=inactive]:text-slate-600 dark:data-[state=inactive]:text-slate-400 data-[state=inactive]:hover:text-blue-600 dark:data-[state=inactive]:hover:text-blue-400"
+              className="text-sm py-2 px-4 rounded-lg font-medium transition-all duration-300 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=inactive]:text-slate-600 dark:data-[state=inactive]:text-slate-400 data-[state=inactive]:hover:text-blue-600 dark:data-[state=inactive]:hover:text-blue-400"
             >
               Strategy
             </TabsTrigger>
