@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import { blogPosts } from "@/data/blogPosts";
 import { getMarkdownContent } from "@/utils/blogContent";
-import { ResizableBlogLayout } from "@/components/ResizableBlogLayout";
+import { BlogLayout } from "@/components/BlogLayout";
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -107,7 +107,7 @@ const Blog = () => {
       </nav>
 
       <div className="pt-16 relative z-10">
-        <ResizableBlogLayout
+        <BlogLayout
           posts={filteredPosts}
           selectedPost={selectedPost}
           onPostClick={handleBlogPostClick}
