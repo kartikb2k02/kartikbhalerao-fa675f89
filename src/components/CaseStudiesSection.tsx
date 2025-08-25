@@ -1,7 +1,8 @@
+
 import { useState, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselApi } from "@/components/ui/carousel";
-import { BarChart3, Target, FileText, Zap, ArrowUpRight, Calendar, Clock, TrendingUp } from "lucide-react";
+import { BarChart3, Target, FileText, Zap, ArrowUpRight, Calendar, Clock, TrendingUp, Megaphone } from "lucide-react";
 
 export const CaseStudiesSection = () => {
   const [api, setApi] = useState<CarouselApi>()
@@ -88,6 +89,22 @@ export const CaseStudiesSection = () => {
       icon: <Zap className="w-5 h-5" />,
       duration: "2 weeks",
       impact: "Complete app design",
+      featured: true
+    },
+    {
+      id: 6,
+      title: "Codeant.AI Product Marketing",
+      subtitle: "Strategic Marketing Requirements Document",
+      description: "Comprehensive MRD outlining go-to-market strategy, positioning framework, and customer acquisition tactics for AI-powered code security platform.",
+      type: "MRD",
+      category: "Marketing",
+      image: "/lovable-uploads/b6681943-085f-4f56-ad98-ba1fac93c64a.png",
+      gradient: "from-black via-violet-900 to-violet-600",
+      cardColor: "bg-gradient-to-br from-gray-900 to-violet-950",
+      canvaLink: "https://www.canva.com/design/DAGuong-JoM/p1KoI6r5aSNVNdhG64Kd-A/view",
+      icon: <Megaphone className="w-5 h-5" />,
+      duration: "3 weeks",
+      impact: "Complete GTM strategy",
       featured: true
     }
   ];
