@@ -1,4 +1,3 @@
-
 import { useState, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselApi } from "@/components/ui/carousel";
@@ -29,7 +28,7 @@ export const CaseStudiesSection = () => {
     },
     {
       id: 2,
-      title: "Google Pay Feature Analysis",
+      title: "Google Pay Feature Analysis", 
       subtitle: "Strategic Product Improvement Study",
       description: "Strategic analysis of Google Pay's feature set with focus on user engagement and retention improvements through data-driven insights.",
       type: "Feature Analysis",
@@ -99,8 +98,8 @@ export const CaseStudiesSection = () => {
       type: "MRD",
       category: "Marketing",
       image: "/lovable-uploads/b6681943-085f-4f56-ad98-ba1fac93c64a.png",
-      gradient: "from-black via-violet-900 to-violet-600",
-      cardColor: "bg-gradient-to-br from-gray-900 to-violet-950",
+      gradient: "from-slate-600 via-slate-700 to-slate-800",
+      cardColor: "bg-gradient-to-br from-slate-50 to-white",
       canvaLink: "https://www.canva.com/design/DAGuong-JoM/p1KoI6r5aSNVNdhG64Kd-A/view",
       icon: <Megaphone className="w-5 h-5" />,
       duration: "3 weeks",
