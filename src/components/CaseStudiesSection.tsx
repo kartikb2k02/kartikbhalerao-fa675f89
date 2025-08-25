@@ -138,91 +138,105 @@ export const CaseStudiesSection = () => {
   const WorkCard = ({ study }: { study: any }) => (
     <div 
       onClick={() => openCaseStudy(study.canvaLink)}
-      className="group cursor-pointer transition-all duration-700 hover:-translate-y-3 hover:scale-[1.02] h-full"
+      className="group cursor-pointer transition-all duration-700 hover:-translate-y-4 hover:scale-[1.03] h-full"
     >
-      <div className={`relative h-full rounded-3xl ${study.cardColor} dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 flex flex-col backdrop-blur-xl bg-white/90 dark:bg-slate-800/90 border border-white/20 dark:border-slate-700/50`}>
-        {/* Animated border gradient */}
-        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-cyan-400/20 p-[1px]">
-          <div className={`w-full h-full rounded-3xl ${study.cardColor} dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900`}></div>
-        </div>
+      <div className={`relative h-full rounded-3xl ${study.cardColor} dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-700 flex flex-col backdrop-blur-xl bg-white/95 dark:bg-slate-800/95 border border-white/30 dark:border-slate-700/50 hover:border-white/50 dark:hover:border-slate-600/70`}>
+        
+        {/* Enhanced animated border gradient */}
+        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-blue-400/30 via-purple-400/30 to-cyan-400/30 blur-sm animate-pulse"></div>
+        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
 
         {/* Image section with enhanced overlay */}
-        <div className="relative h-56 overflow-hidden rounded-t-3xl">
+        <div className="relative h-60 overflow-hidden rounded-t-3xl">
           <img
             src={study.image}
             alt={study.title}
-            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110 group-hover:contrast-110"
           />
           
-          {/* Multi-layer gradient overlay */}
-          <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-30 group-hover:opacity-40 transition-all duration-700`} />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-all duration-700" />
+          {/* Enhanced multi-layer gradient overlay */}
+          <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-25 group-hover:opacity-35 transition-all duration-700`} />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-90 group-hover:opacity-70 transition-all duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/30 opacity-60 group-hover:opacity-40 transition-all duration-700" />
           
-          {/* Floating type badge */}
+          {/* Enhanced floating type badge */}
           <div className="absolute top-6 left-6">
-            <div className="flex items-center space-x-2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl px-4 py-2 rounded-2xl shadow-lg border border-white/20 dark:border-slate-700/50 transform group-hover:scale-105 transition-all duration-500">
-              <div className={`p-1 rounded-lg bg-gradient-to-r ${study.gradient}`}>
-                <div className="text-white">
+            <div className="flex items-center space-x-2 bg-white/98 dark:bg-slate-800/98 backdrop-blur-xl px-5 py-3 rounded-2xl shadow-xl border border-white/30 dark:border-slate-700/50 transform group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
+              <div className={`p-2 rounded-xl bg-gradient-to-r ${study.gradient} shadow-lg`}>
+                <div className="text-white drop-shadow-sm">
                   {study.icon}
                 </div>
               </div>
-              <span className="text-sm font-bold text-slate-800 dark:text-slate-200">{study.type}</span>
+              <span className="text-sm font-bold text-slate-800 dark:text-slate-200 tracking-wide">{study.type}</span>
             </div>
           </div>
 
-          {/* Enhanced arrow icon */}
-          <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-            <div className="bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl p-3 rounded-2xl shadow-lg border border-white/20 dark:border-slate-700/50 group-hover:bg-blue-500 transition-all duration-300">
-              <ArrowUpRight className="w-5 h-5 text-slate-700 dark:text-slate-300 group-hover:text-white transition-colors duration-300" />
+          {/* Enhanced arrow icon with better animation */}
+          <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-3 group-hover:translate-y-0 rotate-12 group-hover:rotate-0">
+            <div className="bg-white/98 dark:bg-slate-800/98 backdrop-blur-xl p-4 rounded-2xl shadow-xl border border-white/30 dark:border-slate-700/50 group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-600 transition-all duration-500">
+              <ArrowUpRight className="w-5 h-5 text-slate-700 dark:text-slate-300 group-hover:text-white transition-all duration-300 group-hover:scale-110" />
             </div>
           </div>
 
-          {/* Category badge */}
+          {/* Enhanced category badge */}
           <div className="absolute bottom-6 left-6">
-            <span className="bg-black/80 text-white px-4 py-2 rounded-full text-sm font-bold backdrop-blur-sm border border-white/10 shadow-lg">
-              {study.category}
-            </span>
+            <div className="bg-black/90 backdrop-blur-sm text-white px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 shadow-xl group-hover:bg-black/95 transition-all duration-300">
+              <span className="drop-shadow-sm">{study.category}</span>
+            </div>
           </div>
 
-          {/* Impact badge */}
+          {/* Enhanced impact badge with animation */}
           <div className="absolute bottom-6 right-6">
-            <div className="flex items-center space-x-2 bg-green-500/90 text-white px-3 py-1.5 rounded-full text-xs font-bold backdrop-blur-sm shadow-lg">
-              <TrendingUp className="w-3 h-3" />
-              <span>{study.impact}</span>
+            <div className="flex items-center space-x-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-4 py-2 rounded-full text-xs font-bold backdrop-blur-sm shadow-xl group-hover:from-emerald-400 group-hover:to-teal-500 group-hover:shadow-2xl transition-all duration-300">
+              <TrendingUp className="w-4 h-4 animate-pulse" />
+              <span className="drop-shadow-sm">{study.impact}</span>
             </div>
           </div>
         </div>
 
-        {/* Content section with enhanced spacing */}
-        <div className="p-8 flex-1 flex flex-col">
-          {/* Metadata row */}
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center space-x-3 text-sm text-slate-600 dark:text-slate-400">
-              <div className="flex items-center space-x-1.5 bg-slate-100/80 dark:bg-slate-700/50 px-3 py-1.5 rounded-xl">
-                <Clock className="w-4 h-4" />
-                <span className="font-medium">{study.duration}</span>
+        {/* Enhanced content section */}
+        <div className="p-8 flex-1 flex flex-col space-y-5">
+          {/* Enhanced metadata row */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2 text-sm text-slate-600 dark:text-slate-400">
+              <div className="flex items-center space-x-2 bg-slate-100/90 dark:bg-slate-700/60 px-4 py-2 rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-600/50">
+                <Clock className="w-4 h-4 text-blue-500" />
+                <span className="font-semibold">{study.duration}</span>
               </div>
             </div>
           </div>
 
-          {/* Title with better typography */}
-          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all duration-500 line-clamp-2 leading-tight">
-            {study.title}
-          </h3>
+          {/* Enhanced title with better typography */}
+          <div className="space-y-3">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all duration-500 line-clamp-2 leading-tight tracking-tight">
+              {study.title}
+            </h3>
+            
+            {/* Enhanced subtitle with gradient */}
+            <p className="text-base font-semibold bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 dark:from-blue-400 dark:via-purple-400 dark:to-teal-400 bg-clip-text text-transparent leading-relaxed">
+              {study.subtitle}
+            </p>
+          </div>
           
-          {/* Subtitle with accent color */}
-          <p className="text-base font-semibold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">
-            {study.subtitle}
-          </p>
-          
-          {/* Description with improved readability */}
-          <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-4 flex-1">
+          {/* Enhanced description with better spacing */}
+          <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-4 flex-1 text-justify">
             {study.description}
           </p>
+
+          {/* Enhanced call-to-action area */}
+          <div className="pt-4 mt-auto">
+            <div className="flex items-center justify-between p-4 bg-gradient-to-r from-slate-50/80 to-blue-50/60 dark:from-slate-700/40 dark:to-slate-600/40 rounded-2xl border border-slate-200/50 dark:border-slate-600/30 group-hover:from-blue-50/80 group-hover:to-purple-50/60 dark:group-hover:from-blue-900/20 dark:group-hover:to-purple-900/20 transition-all duration-500">
+              <span className="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300">
+                View Case Study
+              </span>
+              <ArrowUpRight className="w-4 h-4 text-slate-500 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </div>
+          </div>
         </div>
 
-        {/* Subtle glow effect on hover */}
-        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-700 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 blur-xl -z-10" />
+        {/* Enhanced subtle glow effect on hover */}
+        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-30 transition-opacity duration-700 bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-cyan-400/20 blur-2xl -z-10" />
+        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-1000 bg-gradient-to-br from-white/10 via-blue-200/10 to-purple-200/10 blur-3xl -z-10" />
       </div>
     </div>
   );
