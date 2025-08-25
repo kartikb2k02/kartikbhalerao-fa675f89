@@ -1,334 +1,139 @@
-import { useState, useCallback, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselApi } from "@/components/ui/carousel";
-import { BarChart3, Target, FileText, Zap, ArrowUpRight, Calendar, Clock, TrendingUp, Megaphone } from "lucide-react";
+
+import { ExternalLink, Calendar, Tag } from "lucide-react";
 
 export const CaseStudiesSection = () => {
-  const [api, setApi] = useState<CarouselApi>()
-  const [current, setCurrent] = useState(0)
-  const [count, setCount] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(true)
-
   const caseStudies = [
     {
-      id: 1,
-      title: "Blinkit Product Analysis",
-      subtitle: "Order Efficiency & Conversion Optimization",
-      description: "Comprehensive analysis of Blinkit's order flow, identifying key conversion bottlenecks and proposing strategic improvements for enhanced user experience.",
-      type: "Product Teardown",
-      category: "E-commerce",
-      image: "/lovable-uploads/3d4a8070-20bc-4613-becb-61b277c2c14e.png",
-      gradient: "from-amber-400 via-orange-500 to-red-500",
-      cardColor: "bg-gradient-to-br from-amber-50 to-orange-50",
-      canvaLink: "https://www.canva.com/design/DAGn_zTvLsc/32wrzjqf5YSnIj15-cvUFA/view",
-      icon: <BarChart3 className="w-5 h-5" />,
-      duration: "3 weeks",
-      impact: "15% conversion improvement",
-      featured: true
+      title: "Gullak: Fintech App",
+      description: "Designed and launched a comprehensive fintech application focusing on savings and investment solutions for young professionals.",
+      tags: ["Product Strategy", "UX Design", "Fintech"],
+      link: "https://www.behance.net/gallery/154819469/Gullak-Fintech-App-UIUX-Case-Study",
+      date: "2023",
+      type: "Product Design",
+      color: "blue"
     },
     {
-      id: 2,
-      title: "Google Pay Feature Analysis", 
-      subtitle: "Strategic Product Improvement Study",
-      description: "Strategic analysis of Google Pay's feature set with focus on user engagement and retention improvements through data-driven insights.",
-      type: "Feature Analysis",
-      category: "Fintech",
-      image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png",
-      gradient: "from-blue-500 via-indigo-600 to-purple-600",
-      cardColor: "bg-gradient-to-br from-blue-50 to-indigo-50",
-      canvaLink: "https://www.canva.com/design/DAGo6sk1mOw/RmYlhZ2SZIClh48yToNORg/view",
-      icon: <Target className="w-5 h-5" />,
-      duration: "2 weeks",
-      impact: "Enhanced UX flow",
-      featured: true
-    },
-    {
-      id: 3,
-      title: "User Experience Research",
-      subtitle: "Behavioral Analysis & Insight Generation",
-      description: "Led comprehensive user research studies to understand customer pain points and identify opportunities for product improvement.",
-      type: "UX Research",
-      category: "Research",
-      image: "/lovable-uploads/b6681943-085f-4f56-ad98-ba1fac93c64a.png",
-      gradient: "from-purple-500 via-pink-500 to-rose-500",
-      cardColor: "bg-gradient-to-br from-purple-50 to-pink-50",
-      canvaLink: "https://www.canva.com/design/DAGp85VdazI/QqEN-1mCN8dEuaW-PtOIbQ/view",
-      icon: <Target className="w-5 h-5" />,
-      duration: "4 weeks",
-      impact: "12 key insights",
-      featured: true
-    },
-    {
-      id: 4,
-      title: "Google Pay PRD",
-      subtitle: "Product Requirements Documentation",
-      description: "Comprehensive PRD outlining strategic improvements for Google Pay's core features and user engagement mechanisms.",
-      type: "PRD",
-      category: "Documentation",
-      image: "/lovable-uploads/9b4dd787-aeb2-4969-8fc0-a1dd907efea8.png",
-      gradient: "from-blue-500 via-blue-600 to-blue-700",
-      cardColor: "bg-gradient-to-br from-blue-50 to-blue-100",
-      canvaLink: "https://www.canva.com/design/DAGotvS1P4Y/SczH9ACLAO3FxM0iSaf44Q/view",
-      icon: <FileText className="w-5 h-5" />,
-      duration: "1 week",
-      impact: "Complete feature spec",
-      featured: true
-    },
-    {
-      id: 5,
-      title: "Gullak Fintech App",
-      subtitle: "Savings-Led Financial Empowerment Platform",
-      description: "Complete PRD for a goal-based savings application designed to empower rural women with financial independence through intuitive micro-saving mechanisms.",
-      type: "PRD",
-      category: "Fintech",
-      image: "/lovable-uploads/b1ba7330-6bbc-43d5-a1d2-56baa716c077.png",
-      gradient: "from-green-500 via-emerald-600 to-teal-600",
-      cardColor: "bg-gradient-to-br from-green-50 to-emerald-50",
-      canvaLink: "https://www.canva.com/design/DAGpBZlI3X0/nX9u0jm9rawlh7BAOT2btQ/view",
-      icon: <Zap className="w-5 h-5" />,
-      duration: "2 weeks",
-      impact: "Complete app design",
-      featured: true
-    },
-    {
-      id: 6,
       title: "Codeant.AI Product Marketing",
-      subtitle: "Strategic Marketing Requirements Document",
-      description: "Comprehensive MRD outlining go-to-market strategy, positioning framework, and customer acquisition tactics for AI-powered code security platform.",
-      type: "MRD",
-      category: "Marketing",
-      image: "/lovable-uploads/b6681943-085f-4f56-ad98-ba1fac93c64a.png",
-      gradient: "from-slate-600 via-slate-700 to-slate-800",
-      cardColor: "bg-gradient-to-br from-slate-50 to-white",
-      canvaLink: "https://www.canva.com/design/DAGuong-JoM/p1KoI6r5aSNVNdhG64Kd-A/view",
-      icon: <Megaphone className="w-5 h-5" />,
-      duration: "3 weeks",
-      impact: "Complete GTM strategy",
-      featured: true
+      description: "Strategic product marketing initiative for AI-powered code analysis platform, including market research and positioning.",
+      tags: ["MRD", "Product Marketing", "AI"],
+      link: "https://www.canva.com/design/DAGuong-JoM/p1KoI6r5aSNVNdhG64Kd-A/view",
+      date: "2024",
+      type: "Marketing Strategy",
+      color: "gray"
     }
   ];
 
-  const featuredStudies = caseStudies.filter(study => study.featured);
-
-  useEffect(() => {
-    if (!api) return
-
-    setCount(api.scrollSnapList().length)
-    setCurrent(api.selectedScrollSnap() + 1)
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1)
-    })
-  }, [api])
-
-  useEffect(() => {
-    if (!api || !isPlaying) return
-
-    const interval = setInterval(() => {
-      api.scrollNext()
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [api, isPlaying])
-
-  const openCaseStudy = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer');
+  const getColorClasses = (color: string) => {
+    switch (color) {
+      case 'blue':
+        return {
+          border: 'border-blue-200 dark:border-blue-800',
+          text: 'text-blue-700 dark:text-blue-300',
+          bg: 'bg-blue-50 dark:bg-blue-900/20'
+        };
+      case 'gray':
+        return {
+          border: 'border-gray-200 dark:border-gray-700',
+          text: 'text-gray-700 dark:text-gray-300',
+          bg: 'bg-gray-50 dark:bg-gray-800/20'
+        };
+      default:
+        return {
+          border: 'border-gray-200 dark:border-gray-700',
+          text: 'text-gray-700 dark:text-gray-300',
+          bg: 'bg-gray-50 dark:bg-gray-800/20'
+        };
+    }
   };
 
-  const WorkCard = ({ study }: { study: any }) => (
-    <div 
-      onClick={() => openCaseStudy(study.canvaLink)}
-      className="group cursor-pointer transition-all duration-700 hover:-translate-y-4 hover:scale-[1.03] h-full"
-    >
-      <div className={`relative h-full rounded-3xl ${study.cardColor} dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-700 flex flex-col backdrop-blur-xl bg-white/95 dark:bg-slate-800/95 border border-white/30 dark:border-slate-700/50 hover:border-white/50 dark:hover:border-slate-600/70`}>
-        
-        {/* Enhanced animated border gradient */}
-        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-blue-400/30 via-purple-400/30 to-cyan-400/30 blur-sm animate-pulse"></div>
-        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+  return (
+    <section className="py-20">
+      <div className="space-y-16">
+        {/* Header */}
+        <div className="text-center space-y-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
+            Case Studies & Projects
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Real-world projects showcasing product strategy, design thinking, and user-centered solutions
+          </p>
+        </div>
 
-        {/* Image section with enhanced overlay */}
-        <div className="relative h-60 overflow-hidden rounded-t-3xl">
-          <img
-            src={study.image}
-            alt={study.title}
-            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110 group-hover:contrast-110"
-          />
-          
-          {/* Enhanced multi-layer gradient overlay */}
-          <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-25 group-hover:opacity-35 transition-all duration-700`} />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-90 group-hover:opacity-70 transition-all duration-700" />
-          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/30 opacity-60 group-hover:opacity-40 transition-all duration-700" />
-          
-          {/* Enhanced floating type badge */}
-          <div className="absolute top-6 left-6">
-            <div className="flex items-center space-x-2 bg-white/98 dark:bg-slate-800/98 backdrop-blur-xl px-5 py-3 rounded-2xl shadow-xl border border-white/30 dark:border-slate-700/50 transform group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
-              <div className={`p-2 rounded-xl bg-gradient-to-r ${study.gradient} shadow-lg`}>
-                <div className="text-white drop-shadow-sm">
-                  {study.icon}
+        {/* Case Studies Grid */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {caseStudies.map((study, index) => {
+            const colors = getColorClasses(study.color);
+            
+            return (
+              <div
+                key={index}
+                className={`bg-white dark:bg-gray-900 border ${colors.border} rounded-lg p-6 transition-all duration-200 hover:border-gray-300 dark:hover:border-gray-600`}
+              >
+                {/* Header */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className={`px-3 py-1 ${colors.bg} rounded-full`}>
+                      <span className={`text-sm font-medium ${colors.text}`}>
+                        {study.type}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1 text-gray-500 dark:text-gray-400">
+                      <Calendar className="w-4 h-4" />
+                      <span className="text-sm">{study.date}</span>
+                    </div>
+                  </div>
+                  
+                  <a
+                    href={study.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors duration-200"
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                  </a>
+                </div>
+
+                {/* Content */}
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                    {study.title}
+                  </h3>
+                  
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {study.description}
+                  </p>
+                  
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {study.tags.map((tag, tagIndex) => (
+                      <div
+                        key={tagIndex}
+                        className="flex items-center gap-1 px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full"
+                      >
+                        <Tag className="w-3 h-3 text-gray-500 dark:text-gray-400" />
+                        <span className="text-sm text-gray-700 dark:text-gray-300">
+                          {tag}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-              <span className="text-sm font-bold text-slate-800 dark:text-slate-200 tracking-wide">{study.type}</span>
-            </div>
-          </div>
-
-          {/* Enhanced arrow icon with better animation */}
-          <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-3 group-hover:translate-y-0 rotate-12 group-hover:rotate-0">
-            <div className="bg-white/98 dark:bg-slate-800/98 backdrop-blur-xl p-4 rounded-2xl shadow-xl border border-white/30 dark:border-slate-700/50 group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-600 transition-all duration-500">
-              <ArrowUpRight className="w-5 h-5 text-slate-700 dark:text-slate-300 group-hover:text-white transition-all duration-300 group-hover:scale-110" />
-            </div>
-          </div>
-
-          {/* Enhanced category badge */}
-          <div className="absolute bottom-6 left-6">
-            <div className="bg-black/90 backdrop-blur-sm text-white px-5 py-2.5 rounded-full text-sm font-bold border border-white/20 shadow-xl group-hover:bg-black/95 transition-all duration-300">
-              <span className="drop-shadow-sm">{study.category}</span>
-            </div>
-          </div>
-
-          {/* Enhanced impact badge with animation */}
-          <div className="absolute bottom-6 right-6">
-            <div className="flex items-center space-x-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-4 py-2 rounded-full text-xs font-bold backdrop-blur-sm shadow-xl group-hover:from-emerald-400 group-hover:to-teal-500 group-hover:shadow-2xl transition-all duration-300">
-              <TrendingUp className="w-4 h-4 animate-pulse" />
-              <span className="drop-shadow-sm">{study.impact}</span>
-            </div>
-          </div>
+            );
+          })}
         </div>
 
-        {/* Enhanced content section */}
-        <div className="p-8 flex-1 flex flex-col space-y-5">
-          {/* Enhanced metadata row */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2 text-sm text-slate-600 dark:text-slate-400">
-              <div className="flex items-center space-x-2 bg-slate-100/90 dark:bg-slate-700/60 px-4 py-2 rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-600/50">
-                <Clock className="w-4 h-4 text-blue-500" />
-                <span className="font-semibold">{study.duration}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Enhanced title with better typography */}
-          <div className="space-y-3">
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all duration-500 line-clamp-2 leading-tight tracking-tight">
-              {study.title}
-            </h3>
-            
-            {/* Enhanced subtitle with gradient */}
-            <p className="text-base font-semibold bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 dark:from-blue-400 dark:via-purple-400 dark:to-teal-400 bg-clip-text text-transparent leading-relaxed">
-              {study.subtitle}
-            </p>
-          </div>
-          
-          {/* Enhanced description with better spacing */}
-          <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-4 flex-1 text-justify">
-            {study.description}
+        {/* Call to Action */}
+        <div className="text-center">
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+            Interested in seeing more of my work or discussing a project?
           </p>
-
-          {/* Enhanced call-to-action area */}
-          <div className="pt-4 mt-auto">
-            <div className="flex items-center justify-between p-4 bg-gradient-to-r from-slate-50/80 to-blue-50/60 dark:from-slate-700/40 dark:to-slate-600/40 rounded-2xl border border-slate-200/50 dark:border-slate-600/30 group-hover:from-blue-50/80 group-hover:to-purple-50/60 dark:group-hover:from-blue-900/20 dark:group-hover:to-purple-900/20 transition-all duration-500">
-              <span className="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300">
-                View Case Study
-              </span>
-              <ArrowUpRight className="w-4 h-4 text-slate-500 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </div>
-          </div>
-        </div>
-
-        {/* Enhanced subtle glow effect on hover */}
-        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-30 transition-opacity duration-700 bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-cyan-400/20 blur-2xl -z-10" />
-        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-1000 bg-gradient-to-br from-white/10 via-blue-200/10 to-purple-200/10 blur-3xl -z-10" />
-      </div>
-    </div>
-  );
-
-  return (
-    <section className="relative max-w-7xl mx-auto space-y-16 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50/80 via-blue-50/60 to-indigo-50/80 dark:from-slate-950/90 dark:via-slate-900/80 dark:to-indigo-950/90 -z-10" />
-      
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-r from-blue-200/30 via-indigo-200/20 to-purple-200/30 rounded-full blur-3xl animate-float-slow" />
-        <div className="absolute top-40 right-20 w-80 h-80 bg-gradient-to-r from-cyan-200/25 via-sky-200/20 to-blue-200/25 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-gradient-to-r from-indigo-200/20 via-blue-200/15 to-cyan-200/20 rounded-full blur-3xl animate-float-slower" />
-        
-        <div className="absolute top-32 left-16 w-20 h-20 bg-gradient-to-br from-blue-300/40 to-indigo-300/40 transform rotate-45 animate-float-slow backdrop-blur-sm border border-blue-200/30 shadow-lg"></div>
-        <div className="absolute top-60 right-32 w-16 h-16 bg-gradient-to-br from-cyan-300/40 to-blue-300/40 rounded-full animate-float backdrop-blur-sm border border-cyan-200/30 shadow-lg"></div>
-        <div className="absolute bottom-40 left-1/4 w-24 h-24 bg-gradient-to-br from-indigo-300/40 to-purple-300/40 transform rotate-12 animate-float-slower backdrop-blur-sm border border-indigo-200/30 shadow-lg" style={{clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'}}></div>
-        
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:6rem_6rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
-        
-        <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-blue-400/60 rounded-full animate-pulse"></div>
-        <div className="absolute top-3/4 left-1/4 w-1 h-1 bg-cyan-400/60 rounded-full animate-pulse [animation-delay:1s]"></div>
-        <div className="absolute top-1/2 right-1/3 w-3 h-3 bg-indigo-400/60 rounded-full animate-pulse [animation-delay:3s]"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-sky-400/60 rounded-full animate-pulse [animation-delay:2s]"></div>
-        
-        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-blue-300/20 to-transparent animate-pulse"></div>
-        <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-indigo-300/20 to-transparent animate-pulse [animation-delay:2s]"></div>
-      </div>
-
-      <div className="text-center relative z-10">
-        <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 dark:from-blue-400/10 dark:to-indigo-400/10 px-6 py-3 rounded-full backdrop-blur-sm mb-6 border border-blue-200/20 dark:border-blue-700/20">
-          <BarChart3 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-          <span className="text-blue-600 dark:text-blue-400 font-semibold text-sm">My Work Portfolio</span>
-        </div>
-        
-        <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">
-          Product Impact Stories
-        </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 dark:from-blue-400 dark:to-indigo-400 mx-auto rounded-full mb-6"></div>
-        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
-          Real-world product analysis and strategic thinking that drives meaningful business outcomes
-        </p>
-      </div>
-
-      <div className="space-y-8 relative z-10">
-        <div className="flex items-center justify-center">
-          <div className="flex space-x-1 bg-white/20 dark:bg-slate-800/20 backdrop-blur-sm rounded-full p-1 border border-white/20 dark:border-slate-700/20">
-            {featuredStudies.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => api?.scrollTo(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === current - 1 
-                    ? 'bg-blue-500 w-6' 
-                    : 'bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500'
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-
-        <Carousel 
-          setApi={setApi}
-          className="w-full" 
-          opts={{ 
-            align: "center", 
-            loop: true,
-            skipSnaps: false,
-          }}
-          onMouseEnter={() => setIsPlaying(false)}
-          onMouseLeave={() => setIsPlaying(true)}
-        >
-          <CarouselContent className="-ml-6">
-            {featuredStudies.map((study, index) => (
-              <CarouselItem key={study.id} className="pl-6 md:basis-1/2 lg:basis-1/3">
-                <WorkCard study={study} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
-
-      <div className="text-center relative z-10">
-        <div className="bg-gradient-to-r from-slate-50/80 to-blue-50/80 dark:from-slate-800/80 dark:to-slate-700/80 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/20 dark:border-slate-700/20 shadow-xl">
-          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-            Ready to collaborate?
-          </h3>
-          <p className="text-slate-600 dark:text-slate-400 mb-6 max-w-2xl mx-auto">
-            I'm always excited to work on challenging product problems and create impactful solutions. Let's discuss your next project!
-          </p>
-          <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-3">
+          <a
+            href="mailto:kartikbhalerao948@gmail.com"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
+          >
             Get In Touch
-          </Button>
+          </a>
         </div>
       </div>
     </section>
