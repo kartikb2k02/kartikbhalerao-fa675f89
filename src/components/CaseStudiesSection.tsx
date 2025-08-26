@@ -51,12 +51,40 @@ export const CaseStudiesSection = () => {
       achievement: "Enhanced UX flow",
       bgGradient: "from-blue-400 to-purple-600",
       image: "/lovable-uploads/89406d0e-28cd-4dbf-9e94-3244e4646a29.png"
+    },
+    {
+      title: "E-commerce Platform Redesign",
+      subtitle: "User Experience Optimization",
+      description: "Complete redesign of an e-commerce platform focusing on mobile-first approach and improved conversion rates through better user journey mapping.",
+      tags: ["UX Design", "E-commerce", "Mobile Design"],
+      link: "#",
+      duration: "4 weeks",
+      type: "Design Case Study",
+      typeShort: "Design",
+      category: "E-commerce",
+      achievement: "25% increase in conversions",
+      bgGradient: "from-purple-400 to-pink-600",
+      image: "/lovable-uploads/89406d0e-28cd-4dbf-9e94-3244e4646a29.png"
+    },
+    {
+      title: "Healthcare App UX Research",
+      subtitle: "Patient-Centered Design Approach",
+      description: "Comprehensive UX research study for a healthcare application, focusing on accessibility and user-friendly interface for elderly patients.",
+      tags: ["UX Research", "Healthcare", "Accessibility"],
+      link: "#",
+      duration: "3 weeks",
+      type: "UX Research Study",
+      typeShort: "Research",
+      category: "Healthcare",
+      achievement: "Improved accessibility score by 40%",
+      bgGradient: "from-teal-400 to-cyan-600",
+      image: "/lovable-uploads/89406d0e-28cd-4dbf-9e94-3244e4646a29.png"
     }
   ];
 
   return (
-    <section className="py-20">
-      <div className="space-y-16">
+    <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <div className="container mx-auto px-4 space-y-16">
         {/* Header */}
         <div className="text-center space-y-6">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
@@ -68,94 +96,106 @@ export const CaseStudiesSection = () => {
         </div>
 
         {/* Case Studies Carousel */}
-        <div className="max-w-7xl mx-auto px-4">
-          <Carousel className="w-full" opts={{ align: "start", loop: true }}>
+        <div className="relative">
+          <Carousel 
+            className="w-full max-w-7xl mx-auto" 
+            opts={{ 
+              align: "start", 
+              loop: true,
+              skipSnaps: false,
+              dragFree: true
+            }}
+          >
             <CarouselContent className="-ml-2 md:-ml-4">
               {caseStudies.map((study, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <div className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 group">
-                    {/* Card Header with Gradient Background */}
-                    <div className={`relative h-48 bg-gradient-to-br ${study.bgGradient} p-6 flex flex-col justify-between`}>
-                      {/* Type Badge */}
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                            <span className="text-white text-sm font-medium">
-                              {study.typeShort}
+                <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                  <div className="h-full">
+                    <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
+                      {/* Card Header with Gradient Background */}
+                      <div className={`relative h-48 bg-gradient-to-br ${study.bgGradient} p-6 flex flex-col justify-between`}>
+                        {/* Type Badge and Link */}
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
+                              <span className="text-white text-sm font-medium">
+                                {study.typeShort}
+                              </span>
+                            </div>
+                            <span className="text-white/90 text-sm font-medium">
+                              {study.type}
                             </span>
                           </div>
-                          <span className="text-white/90 text-sm font-medium">
-                            {study.type}
-                          </span>
-                        </div>
-                        <a
-                          href={study.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors duration-200"
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                        </a>
-                      </div>
-
-                      {/* Category and Achievement */}
-                      <div className="space-y-2">
-                        <div className="bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full inline-block">
-                          <span className="text-white font-semibold text-lg">
-                            {study.category}
-                          </span>
-                        </div>
-                        <div className="bg-green-500/80 backdrop-blur-sm px-4 py-1 rounded-full inline-block">
-                          <span className="text-white text-sm font-medium">
-                            ✓ {study.achievement}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Card Content */}
-                    <div className="p-6 space-y-4">
-                      {/* Duration */}
-                      <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-                        <Clock className="w-4 h-4" />
-                        <span className="text-sm">{study.duration}</span>
-                      </div>
-
-                      {/* Title and Subtitle */}
-                      <div className="space-y-2">
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                          {study.title}
-                        </h3>
-                        <h4 className="text-lg font-semibold text-blue-600 dark:text-blue-400">
-                          {study.subtitle}
-                        </h4>
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed line-clamp-3">
-                        {study.description}
-                      </p>
-
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-2">
-                        {study.tags.slice(0, 3).map((tag, tagIndex) => (
-                          <div
-                            key={tagIndex}
-                            className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full"
+                          <a
+                            href={study.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors duration-200"
                           >
-                            <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">
-                              {tag}
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
+                        </div>
+
+                        {/* Category and Achievement */}
+                        <div className="space-y-2">
+                          <div className="bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full inline-block">
+                            <span className="text-white font-semibold text-lg">
+                              {study.category}
                             </span>
                           </div>
-                        ))}
+                          <div className="bg-green-500/80 backdrop-blur-sm px-4 py-1 rounded-full inline-block">
+                            <span className="text-white text-sm font-medium">
+                              ✓ {study.achievement}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Card Content */}
+                      <div className="p-6 space-y-4 flex-1 flex flex-col">
+                        {/* Duration */}
+                        <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                          <Clock className="w-4 h-4" />
+                          <span className="text-sm">{study.duration}</span>
+                        </div>
+
+                        {/* Title and Subtitle */}
+                        <div className="space-y-2">
+                          <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                            {study.title}
+                          </h3>
+                          <h4 className="text-lg font-semibold text-blue-600 dark:text-blue-400">
+                            {study.subtitle}
+                          </h4>
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed flex-1">
+                          {study.description}
+                        </p>
+
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-2 mt-auto">
+                          {study.tags.slice(0, 3).map((tag, tagIndex) => (
+                            <div
+                              key={tagIndex}
+                              className="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full"
+                            >
+                              <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">
+                                {tag}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex" />
-            <CarouselNext className="hidden md:flex" />
+            <div className="flex justify-center mt-8 gap-4">
+              <CarouselPrevious className="relative left-0 top-0 translate-y-0" />
+              <CarouselNext className="relative right-0 top-0 translate-y-0" />
+            </div>
           </Carousel>
         </div>
 
