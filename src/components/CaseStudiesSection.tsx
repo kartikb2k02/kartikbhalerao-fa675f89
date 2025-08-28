@@ -1,4 +1,3 @@
-
 import { ExternalLink, Calendar, Tag, Clock } from "lucide-react";
 import {
   Carousel,
@@ -12,7 +11,7 @@ export const CaseStudiesSection = () => {
   const caseStudies = [
     {
       title: "Gullak Fintech App",
-      subtitle: "Savings-Led Financial Empowerment Platform",
+      subtitle: "Savings-Led Financial Empowerment Platform", 
       description: "Complete PRD for a goal-based savings application designed to empower rural women with financial independence through intuitive micro-saving mechanisms.",
       tags: ["Product Strategy", "UX Design", "Fintech"],
       link: "https://www.behance.net/gallery/154819469/Gullak-Fintech-App-UIUX-Case-Study",
@@ -125,11 +124,8 @@ export const CaseStudiesSection = () => {
                           alt={study.title}
                           className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
                           style={{
-                            imageRendering: 'crisp-edges',
-                            WebkitImageRendering: 'crisp-edges',
-                            MozImageRendering: 'crisp-edges',
-                            msImageRendering: 'crisp-edges'
-                          }}
+                            imageRendering: 'crisp-edges'
+                          } as React.CSSProperties}
                         />
                         <div className={`absolute inset-0 bg-gradient-to-br ${study.bgGradient} opacity-60 group-hover:opacity-50 transition-opacity duration-300`}></div>
                         
