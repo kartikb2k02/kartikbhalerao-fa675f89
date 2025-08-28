@@ -111,17 +111,17 @@ export const CaseStudiesSection = () => {
             <CarouselContent className="-ml-0 md:-ml-0">
               {caseStudies.map((study, index) => (
                 <CarouselItem key={index} className="pl-0 md:pl-0 basis-full md:basis-1/2 lg:basis-2/5">
-                  <div className="h-full p-2">
+                  <div className="h-full p-4">
                     <div 
                       onClick={() => handleCardClick(study.link)}
-                      className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/30 dark:border-gray-700/50 aspect-[4/5]"
+                      className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/50 dark:border-gray-700/50 aspect-[3/4]"
                     >
-                      {/* Image Section - 70% */}
-                      <div className="relative flex-[7] overflow-hidden rounded-t-2xl">
+                      {/* Image Section - 80% */}
+                      <div className="relative flex-[8] overflow-hidden">
                         <img 
                           src={study.image} 
                           alt={study.title}
-                          className="w-full h-full object-contain bg-white"
+                          className="w-full h-full object-cover"
                         />
                         
                         {/* Top Right Arrow */}
@@ -132,7 +132,7 @@ export const CaseStudiesSection = () => {
                         </div>
 
                         {/* Duration Badge */}
-                        <div className="absolute bottom-4 left-4">
+                        <div className="absolute top-4 left-4">
                           <div className="flex items-center gap-2 bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-full">
                             <Clock className="w-4 h-4 text-white" />
                             <span className="text-white text-sm font-medium">{study.duration}</span>
@@ -140,17 +140,31 @@ export const CaseStudiesSection = () => {
                         </div>
                       </div>
 
-                      {/* Content Section - 30% */}
-                      <div className="flex-[3] p-6 flex flex-col justify-center space-y-3">
-                        {/* Title */}
-                        <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight">
-                          {study.title}
-                        </h3>
+                      {/* Colored Footer Section - 20% */}
+                      <div className={`flex-[2] bg-gradient-to-r ${study.bgGradient} p-6 flex flex-col justify-center relative overflow-hidden`}>
+                        {/* Background pattern overlay */}
+                        <div className="absolute inset-0 opacity-10">
+                          <div className="absolute top-2 right-2 w-8 h-8 border-2 border-white rounded-full"></div>
+                          <div className="absolute bottom-2 left-2 w-6 h-6 border-2 border-white rounded-full"></div>
+                          <div className="absolute top-1/2 right-6 w-4 h-4 bg-white/30 rounded-full"></div>
+                        </div>
                         
-                        {/* Subtitle */}
-                        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                          {study.subtitle}
-                        </p>
+                        {/* Content */}
+                        <div className="relative z-10 space-y-1">
+                          <h3 className="text-lg font-bold text-white leading-tight">
+                            {study.title}
+                          </h3>
+                          <p className="text-sm text-white/90 leading-relaxed">
+                            {study.subtitle}
+                          </p>
+                        </div>
+
+                        {/* Arrow Icon */}
+                        <div className="absolute bottom-4 right-4">
+                          <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                            <ArrowUpRight className="w-4 h-4 text-white" />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
