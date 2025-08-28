@@ -114,14 +114,14 @@ export const CaseStudiesSection = () => {
                   <div className="h-full p-4">
                     <div 
                       onClick={() => handleCardClick(study.link)}
-                      className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/50 dark:border-gray-700/50 aspect-[3/4]"
+                      className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/50 dark:border-gray-700/50 aspect-[4/5]"
                     >
-                      {/* Image Section - 80% */}
-                      <div className="relative flex-[8] overflow-hidden">
+                      {/* Image Section - 75% */}
+                      <div className="relative flex-[3] overflow-hidden">
                         <img 
                           src={study.image} 
                           alt={study.title}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover object-center"
                         />
                         
                         {/* Top Right Arrow */}
@@ -140,29 +140,29 @@ export const CaseStudiesSection = () => {
                         </div>
                       </div>
 
-                      {/* Colored Footer Section - 20% */}
-                      <div className={`flex-[2] bg-gradient-to-r ${study.bgGradient} p-6 flex flex-col justify-center relative overflow-hidden`}>
+                      {/* Colored Footer Section - 25% */}
+                      <div className={`flex-[1] bg-gradient-to-r ${study.bgGradient} p-4 flex flex-col justify-center relative overflow-hidden`}>
                         {/* Background pattern overlay */}
                         <div className="absolute inset-0 opacity-10">
-                          <div className="absolute top-2 right-2 w-8 h-8 border-2 border-white rounded-full"></div>
-                          <div className="absolute bottom-2 left-2 w-6 h-6 border-2 border-white rounded-full"></div>
-                          <div className="absolute top-1/2 right-6 w-4 h-4 bg-white/30 rounded-full"></div>
+                          <div className="absolute top-2 right-2 w-6 h-6 border-2 border-white rounded-full"></div>
+                          <div className="absolute bottom-2 left-2 w-4 h-4 border-2 border-white rounded-full"></div>
+                          <div className="absolute top-1/2 right-4 w-3 h-3 bg-white/30 rounded-full"></div>
                         </div>
                         
                         {/* Content */}
                         <div className="relative z-10 space-y-1">
-                          <h3 className="text-lg font-bold text-white leading-tight">
+                          <h3 className="text-base font-bold text-white leading-tight">
                             {study.title}
                           </h3>
-                          <p className="text-sm text-white/90 leading-relaxed">
+                          <p className="text-xs text-white/90 leading-relaxed">
                             {study.subtitle}
                           </p>
                         </div>
 
                         {/* Arrow Icon */}
-                        <div className="absolute bottom-4 right-4">
-                          <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                            <ArrowUpRight className="w-4 h-4 text-white" />
+                        <div className="absolute bottom-3 right-3">
+                          <div className="w-6 h-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                            <ArrowUpRight className="w-3 h-3 text-white" />
                           </div>
                         </div>
                       </div>
