@@ -1,4 +1,3 @@
-
 import { ExternalLink, Clock, ArrowUpRight } from "lucide-react";
 import {
   Carousel,
@@ -128,27 +127,26 @@ export const CaseStudiesSection = () => {
                           alt={study.title}
                           className="w-full h-full object-cover object-center"
                           style={{
-                            imageRendering: 'crisp-edges',
-                            WebkitImageRendering: 'crisp-edges'
+                            imageRendering: 'auto',
+                            WebkitImageRendering: 'auto'
                           } as React.CSSProperties}
                         />
-                        <div className={`absolute inset-0 bg-gradient-to-br ${study.bgGradient} opacity-75`}></div>
                         
                         {/* Top Badge and Duration */}
                         <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                          <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
-                            <span className="text-white text-sm font-semibold">
+                          <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border border-white/50">
+                            <span className="text-gray-800 text-sm font-semibold">
                               📊 {study.typeShort}
                             </span>
                           </div>
-                          <div className="bg-white/20 backdrop-blur-sm p-2 rounded-full border border-white/30 hover:bg-white/30 transition-colors">
-                            <ArrowUpRight className="w-4 h-4 text-white" />
+                          <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full border border-white/50 hover:bg-white transition-colors">
+                            <ArrowUpRight className="w-4 h-4 text-gray-800" />
                           </div>
                         </div>
 
                         {/* Duration Badge */}
                         <div className="absolute bottom-4 left-4">
-                          <div className="flex items-center gap-2 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                          <div className="flex items-center gap-2 bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-full">
                             <Clock className="w-4 h-4 text-white" />
                             <span className="text-white text-sm font-medium">{study.duration}</span>
                           </div>
