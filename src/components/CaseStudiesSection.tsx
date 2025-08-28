@@ -107,10 +107,10 @@ export const CaseStudiesSection = () => {
               dragFree: false
             }}
           >
-            <CarouselContent className="-ml-2 md:-ml-4">
+            <CarouselContent className="-ml-0 md:-ml-0">
               {caseStudies.map((study, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                  <div className="h-full">
+                <CarouselItem key={index} className="pl-0 md:pl-0 basis-full md:basis-1/2 lg:basis-2/5">
+                  <div className="h-full p-2">
                     <div 
                       onClick={() => handleCardClick(study.link)}
                       className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/30 dark:border-gray-700/50 aspect-[4/5]"
