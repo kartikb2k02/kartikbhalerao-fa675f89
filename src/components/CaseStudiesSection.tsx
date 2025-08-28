@@ -1,4 +1,3 @@
-
 import { ExternalLink, Clock, ArrowUpRight } from "lucide-react";
 import {
   Carousel,
@@ -110,7 +109,7 @@ export const CaseStudiesSection = () => {
           >
             <CarouselContent className="-ml-0 md:-ml-0">
               {caseStudies.map((study, index) => (
-                <CarouselItem key={index} className="pl-0 md:pl-0 basis-full md:basis-1/2 lg:basis-2/5">
+                <CarouselItem key={index} className="pl-0 md:pl-0 basis-full md:basis-1/2 lg:basis-1/3">
                   <div className="h-full p-4">
                     <div 
                       onClick={() => handleCardClick(study.link)}
