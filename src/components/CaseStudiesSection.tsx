@@ -109,22 +109,18 @@ export const CaseStudiesSection = () => {
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {caseStudies.map((study, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-2/5">
+                <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                   <div className="h-full">
                     <div 
                       onClick={() => handleCardClick(study.link)}
-                      className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/30 dark:border-gray-700/50"
+                      className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/30 dark:border-gray-700/50 aspect-[4/5]"
                     >
                       {/* Image Section - 70% */}
-                      <div className="relative h-96 overflow-hidden rounded-t-3xl">
+                      <div className="relative flex-[7] overflow-hidden rounded-t-2xl">
                         <img 
                           src={study.image} 
                           alt={study.title}
-                          className="w-full h-full object-cover object-center"
-                          style={{
-                            imageRendering: 'auto',
-                            WebkitImageRendering: 'auto'
-                          } as React.CSSProperties}
+                          className="w-full h-full object-contain bg-white"
                         />
                         
                         {/* Top Right Arrow */}
@@ -144,7 +140,7 @@ export const CaseStudiesSection = () => {
                       </div>
 
                       {/* Content Section - 30% */}
-                      <div className="p-6 flex-1 flex flex-col justify-center space-y-3">
+                      <div className="flex-[3] p-6 flex flex-col justify-center space-y-3">
                         {/* Title */}
                         <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight">
                           {study.title}
