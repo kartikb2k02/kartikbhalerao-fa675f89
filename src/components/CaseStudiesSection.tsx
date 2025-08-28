@@ -113,14 +113,14 @@ export const CaseStudiesSection = () => {
                   <div className="h-full p-4">
                     <div 
                       onClick={() => handleCardClick(study.link)}
-                      className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/50 dark:border-gray-700/50 aspect-[4/5]"
+                      className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/50 dark:border-gray-700/50 aspect-[3/4]"
                     >
                       {/* Image Section - 75% */}
                       <div className="relative flex-[3] overflow-hidden">
                         <img 
                           src={study.image} 
                           alt={study.title}
-                          className="w-full h-full object-cover object-center"
+                          className="w-full h-full object-cover object-top"
                         />
                         
                         {/* Top Right Arrow */}
