@@ -87,8 +87,11 @@ export const CaseStudiesSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto px-4 space-y-16">
+    <section className="py-20 relative bg-gradient-to-br from-slate-50/80 via-blue-50/80 to-indigo-50/80 dark:from-slate-950/80 dark:via-slate-900/80 dark:to-indigo-950/80 backdrop-blur-md border-t border-white/20 dark:border-white/10">
+      {/* Glass overlay effect */}
+      <div className="absolute inset-0 bg-white/30 dark:bg-gray-900/30 backdrop-blur-xl"></div>
+      
+      <div className="container mx-auto px-4 space-y-16 relative z-10">
         {/* Header */}
         <div className="text-center space-y-6">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
@@ -116,7 +119,7 @@ export const CaseStudiesSection = () => {
                   <div className="h-full">
                     <div 
                       onClick={() => handleCardClick(study.link)}
-                      className="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700"
+                      className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/30 dark:border-gray-700/50"
                     >
                       {/* Header Section with Image and Overlay */}
                       <div className="relative h-56 overflow-hidden rounded-t-3xl">
@@ -124,8 +127,12 @@ export const CaseStudiesSection = () => {
                           src={study.image} 
                           alt={study.title}
                           className="w-full h-full object-cover object-center"
+                          style={{
+                            imageRendering: 'crisp-edges',
+                            WebkitImageRendering: 'crisp-edges'
+                          } as React.CSSProperties}
                         />
-                        <div className={`absolute inset-0 bg-gradient-to-br ${study.bgGradient} opacity-85`}></div>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${study.bgGradient} opacity-75`}></div>
                         
                         {/* Top Badge and Duration */}
                         <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
@@ -179,7 +186,7 @@ export const CaseStudiesSection = () => {
                           {study.tags.slice(0, 3).map((tag, tagIndex) => (
                             <span
                               key={tagIndex}
-                              className="px-3 py-1.5 bg-gray-100 dark:bg-gray-700 rounded-full text-xs text-gray-700 dark:text-gray-300 font-medium hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors"
+                              className="px-3 py-1.5 bg-gray-100/80 dark:bg-gray-700/80 backdrop-blur-sm rounded-full text-xs text-gray-700 dark:text-gray-300 font-medium hover:bg-blue-50/80 dark:hover:bg-blue-900/50 transition-colors border border-white/20 dark:border-gray-600/30"
                             >
                               {tag}
                             </span>
@@ -194,8 +201,8 @@ export const CaseStudiesSection = () => {
             
             {/* Navigation Controls */}
             <div className="flex justify-center mt-8 gap-4">
-              <CarouselPrevious className="relative left-0 top-0 translate-y-0 bg-white dark:bg-gray-800 border-2 hover:bg-gray-50 dark:hover:bg-gray-700 shadow-lg" />
-              <CarouselNext className="relative right-0 top-0 translate-y-0 bg-white dark:bg-gray-800 border-2 hover:bg-gray-50 dark:hover:bg-gray-700 shadow-lg" />
+              <CarouselPrevious className="relative left-0 top-0 translate-y-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-2 border-white/30 dark:border-gray-700/50 hover:bg-white/90 dark:hover:bg-gray-700/90 shadow-lg" />
+              <CarouselNext className="relative right-0 top-0 translate-y-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-2 border-white/30 dark:border-gray-700/50 hover:bg-white/90 dark:hover:bg-gray-700/90 shadow-lg" />
             </div>
           </Carousel>
         </div>
@@ -207,7 +214,7 @@ export const CaseStudiesSection = () => {
           </p>
           <a
             href="mailto:kartikbhalerao948@gmail.com"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600/90 hover:bg-blue-700/90 backdrop-blur-sm border border-white/20 text-white font-medium rounded-lg transition-colors duration-200"
           >
             Get In Touch
           </a>
