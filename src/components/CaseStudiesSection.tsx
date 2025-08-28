@@ -1,4 +1,3 @@
-
 import { ExternalLink, Clock, ArrowUpRight } from "lucide-react";
 import {
   Carousel,
@@ -110,14 +109,14 @@ export const CaseStudiesSection = () => {
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {caseStudies.map((study, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-2/5">
                   <div className="h-full">
                     <div 
                       onClick={() => handleCardClick(study.link)}
                       className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/30 dark:border-gray-700/50"
                     >
                       {/* Image Section - 70% */}
-                      <div className="relative h-80 overflow-hidden rounded-t-3xl">
+                      <div className="relative h-96 overflow-hidden rounded-t-3xl">
                         <img 
                           src={study.image} 
                           alt={study.title}
