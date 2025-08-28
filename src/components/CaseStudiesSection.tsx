@@ -43,44 +43,48 @@ export const CaseStudiesSection = () => {
       subtitle: "Strategic Product Improvement Study",
       description: "Strategic analysis of Google Pay's feature set with focus on user engagement and retention improvements through data-driven insights.",
       tags: ["Feature Analysis", "Product Strategy", "Fintech"],
-      link: "#",
+      link: "https://www.behance.net/gallery/154819469/Gullak-Fintech-App-UIUX-Case-Study",
       duration: "2 weeks",
       type: "Feature Analysis",
       typeShort: "Analysis",
       category: "Fintech",
       achievement: "Enhanced UX flow",
       bgGradient: "from-blue-400 to-purple-600",
-      image: "/lovable-uploads/89406d0e-28cd-4dbf-9e94-3244e4646a29.png"
+      image: "/lovable-uploads/3c59e842-8e07-4b56-8918-3fedc5f8a4e0.png"
     },
     {
       title: "E-commerce Platform Redesign",
       subtitle: "User Experience Optimization",
       description: "Complete redesign of an e-commerce platform focusing on mobile-first approach and improved conversion rates through better user journey mapping.",
       tags: ["UX Design", "E-commerce", "Mobile Design"],
-      link: "#",
+      link: "https://www.behance.net/gallery/154819469/Gullak-Fintech-App-UIUX-Case-Study",
       duration: "4 weeks",
       type: "Design Case Study",
       typeShort: "Design",
       category: "E-commerce",
       achievement: "25% increase in conversions",
       bgGradient: "from-purple-400 to-pink-600",
-      image: "/lovable-uploads/89406d0e-28cd-4dbf-9e94-3244e4646a29.png"
+      image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png"
     },
     {
       title: "Healthcare App UX Research",
       subtitle: "Patient-Centered Design Approach",
       description: "Comprehensive UX research study for a healthcare application, focusing on accessibility and user-friendly interface for elderly patients.",
       tags: ["UX Research", "Healthcare", "Accessibility"],
-      link: "#",
+      link: "https://www.behance.net/gallery/154819469/Gullak-Fintech-App-UIUX-Case-Study",
       duration: "3 weeks",
       type: "UX Research Study",
       typeShort: "Research",
       category: "Healthcare",
       achievement: "Improved accessibility score by 40%",
       bgGradient: "from-teal-400 to-cyan-600",
-      image: "/lovable-uploads/89406d0e-28cd-4dbf-9e94-3244e4646a29.png"
+      image: "/lovable-uploads/3d4a8070-20bc-4613-becb-61b277c2c14e.png"
     }
   ];
+
+  const handleCardClick = (link: string) => {
+    window.open(link, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <section className="py-20 bg-gray-50 dark:bg-gray-900">
@@ -103,49 +107,54 @@ export const CaseStudiesSection = () => {
               align: "start", 
               loop: true,
               skipSnaps: false,
-              dragFree: true
+              dragFree: false
             }}
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {caseStudies.map((study, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                   <div className="h-full">
-                    <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
-                      {/* Card Header with Gradient Background */}
-                      <div className={`relative h-48 bg-gradient-to-br ${study.bgGradient} p-6 flex flex-col justify-between`}>
-                        {/* Type Badge and Link */}
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                              <span className="text-white text-sm font-medium">
-                                {study.typeShort}
+                    <div 
+                      onClick={() => handleCardClick(study.link)}
+                      className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02]"
+                    >
+                      {/* Image Section */}
+                      <div className="relative h-48 overflow-hidden">
+                        <img 
+                          src={study.image} 
+                          alt={study.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                        <div className={`absolute inset-0 bg-gradient-to-br ${study.bgGradient} opacity-80`}></div>
+                        
+                        {/* Overlay Content */}
+                        <div className="absolute inset-0 p-6 flex flex-col justify-between">
+                          {/* Type Badge and Link */}
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
+                                <span className="text-white text-sm font-medium">
+                                  {study.typeShort}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="p-2 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors duration-200">
+                              <ExternalLink className="w-4 h-4" />
+                            </div>
+                          </div>
+
+                          {/* Category and Achievement */}
+                          <div className="space-y-2">
+                            <div className="bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full inline-block">
+                              <span className="text-white font-semibold text-lg">
+                                {study.category}
                               </span>
                             </div>
-                            <span className="text-white/90 text-sm font-medium">
-                              {study.type}
-                            </span>
-                          </div>
-                          <a
-                            href={study.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors duration-200"
-                          >
-                            <ExternalLink className="w-4 h-4" />
-                          </a>
-                        </div>
-
-                        {/* Category and Achievement */}
-                        <div className="space-y-2">
-                          <div className="bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full inline-block">
-                            <span className="text-white font-semibold text-lg">
-                              {study.category}
-                            </span>
-                          </div>
-                          <div className="bg-green-500/80 backdrop-blur-sm px-4 py-1 rounded-full inline-block">
-                            <span className="text-white text-sm font-medium">
-                              ✓ {study.achievement}
-                            </span>
+                            <div className="bg-green-500/80 backdrop-blur-sm px-4 py-1 rounded-full inline-block">
+                              <span className="text-white text-sm font-medium">
+                                ✓ {study.achievement}
+                              </span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -156,11 +165,12 @@ export const CaseStudiesSection = () => {
                         <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
                           <Clock className="w-4 h-4" />
                           <span className="text-sm">{study.duration}</span>
+                          <span className="text-sm">• {study.type}</span>
                         </div>
 
                         {/* Title and Subtitle */}
                         <div className="space-y-2">
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                          <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                             {study.title}
                           </h3>
                           <h4 className="text-lg font-semibold text-blue-600 dark:text-blue-400">
@@ -178,7 +188,7 @@ export const CaseStudiesSection = () => {
                           {study.tags.slice(0, 3).map((tag, tagIndex) => (
                             <div
                               key={tagIndex}
-                              className="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full"
+                              className="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 transition-colors"
                             >
                               <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">
                                 {tag}
@@ -192,9 +202,11 @@ export const CaseStudiesSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
+            
+            {/* Navigation Controls */}
             <div className="flex justify-center mt-8 gap-4">
-              <CarouselPrevious className="relative left-0 top-0 translate-y-0" />
-              <CarouselNext className="relative right-0 top-0 translate-y-0" />
+              <CarouselPrevious className="relative left-0 top-0 translate-y-0 bg-white dark:bg-gray-800 border-2 hover:bg-gray-50 dark:hover:bg-gray-700" />
+              <CarouselNext className="relative right-0 top-0 translate-y-0 bg-white dark:bg-gray-800 border-2 hover:bg-gray-50 dark:hover:bg-gray-700" />
             </div>
           </Carousel>
         </div>
