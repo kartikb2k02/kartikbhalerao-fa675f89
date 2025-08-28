@@ -123,34 +123,40 @@ export const CaseStudiesSection = () => {
                         <img 
                           src={study.image} 
                           alt={study.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                          style={{
+                            imageRendering: 'crisp-edges',
+                            WebkitImageRendering: 'crisp-edges',
+                            MozImageRendering: 'crisp-edges',
+                            msImageRendering: 'crisp-edges'
+                          }}
                         />
-                        <div className={`absolute inset-0 bg-gradient-to-br ${study.bgGradient} opacity-80`}></div>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${study.bgGradient} opacity-60 group-hover:opacity-50 transition-opacity duration-300`}></div>
                         
                         {/* Overlay Content */}
                         <div className="absolute inset-0 p-6 flex flex-col justify-between">
                           {/* Type Badge and Link */}
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
-                              <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                                <span className="text-white text-sm font-medium">
+                              <div className="bg-white/25 px-3 py-1 rounded-full">
+                                <span className="text-white text-sm font-semibold">
                                   {study.typeShort}
                                 </span>
                               </div>
                             </div>
-                            <div className="p-2 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors duration-200">
+                            <div className="p-2 bg-white/25 rounded-full text-white hover:bg-white/35 transition-colors duration-200">
                               <ExternalLink className="w-4 h-4" />
                             </div>
                           </div>
 
                           {/* Category and Achievement */}
                           <div className="space-y-2">
-                            <div className="bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full inline-block">
+                            <div className="bg-black/30 px-4 py-2 rounded-full inline-block">
                               <span className="text-white font-semibold text-lg">
                                 {study.category}
                               </span>
                             </div>
-                            <div className="bg-green-500/80 backdrop-blur-sm px-4 py-1 rounded-full inline-block">
+                            <div className="bg-green-500/90 px-4 py-1 rounded-full inline-block">
                               <span className="text-white text-sm font-medium">
                                 ✓ {study.achievement}
                               </span>
