@@ -1,4 +1,5 @@
-import { ExternalLink, Calendar, Tag, Clock } from "lucide-react";
+
+import { ExternalLink, Clock, ArrowUpRight } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -115,87 +116,73 @@ export const CaseStudiesSection = () => {
                   <div className="h-full">
                     <div 
                       onClick={() => handleCardClick(study.link)}
-                      className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02]"
+                      className="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-gray-100 dark:border-gray-700"
                     >
-                      {/* Image Section */}
-                      <div className="relative h-48 overflow-hidden">
+                      {/* Header Section with Image and Overlay */}
+                      <div className="relative h-56 overflow-hidden rounded-t-3xl">
                         <img 
                           src={study.image} 
                           alt={study.title}
-                          className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                          style={{
-                            imageRendering: 'crisp-edges'
-                          } as React.CSSProperties}
+                          className="w-full h-full object-cover object-center"
                         />
-                        <div className={`absolute inset-0 bg-gradient-to-br ${study.bgGradient} opacity-60 group-hover:opacity-50 transition-opacity duration-300`}></div>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${study.bgGradient} opacity-85`}></div>
                         
-                        {/* Overlay Content */}
-                        <div className="absolute inset-0 p-6 flex flex-col justify-between">
-                          {/* Type Badge and Link */}
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2">
-                              <div className="bg-white/25 px-3 py-1 rounded-full">
-                                <span className="text-white text-sm font-semibold">
-                                  {study.typeShort}
-                                </span>
-                              </div>
-                            </div>
-                            <div className="p-2 bg-white/25 rounded-full text-white hover:bg-white/35 transition-colors duration-200">
-                              <ExternalLink className="w-4 h-4" />
-                            </div>
+                        {/* Top Badge and Duration */}
+                        <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                          <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                            <span className="text-white text-sm font-semibold">
+                              📊 {study.typeShort}
+                            </span>
                           </div>
+                          <div className="bg-white/20 backdrop-blur-sm p-2 rounded-full border border-white/30 hover:bg-white/30 transition-colors">
+                            <ArrowUpRight className="w-4 h-4 text-white" />
+                          </div>
+                        </div>
 
-                          {/* Category and Achievement */}
-                          <div className="space-y-2">
-                            <div className="bg-black/30 px-4 py-2 rounded-full inline-block">
-                              <span className="text-white font-semibold text-lg">
-                                {study.category}
-                              </span>
-                            </div>
-                            <div className="bg-green-500/90 px-4 py-1 rounded-full inline-block">
-                              <span className="text-white text-sm font-medium">
-                                ✓ {study.achievement}
-                              </span>
-                            </div>
+                        {/* Duration Badge */}
+                        <div className="absolute bottom-4 left-4">
+                          <div className="flex items-center gap-2 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                            <Clock className="w-4 h-4 text-white" />
+                            <span className="text-white text-sm font-medium">{study.duration}</span>
+                          </div>
+                        </div>
+
+                        {/* Achievement Badge */}
+                        <div className="absolute bottom-4 right-4">
+                          <div className="bg-emerald-500/90 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                            <span className="text-white text-sm font-semibold">
+                              ✓ {study.achievement}
+                            </span>
                           </div>
                         </div>
                       </div>
 
-                      {/* Card Content */}
-                      <div className="p-6 space-y-4 flex-1 flex flex-col">
-                        {/* Duration */}
-                        <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-                          <Clock className="w-4 h-4" />
-                          <span className="text-sm">{study.duration}</span>
-                          <span className="text-sm">• {study.type}</span>
-                        </div>
-
+                      {/* Content Section */}
+                      <div className="p-6 flex-1 flex flex-col space-y-4">
                         {/* Title and Subtitle */}
                         <div className="space-y-2">
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                          <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight">
                             {study.title}
                           </h3>
-                          <h4 className="text-lg font-semibold text-blue-600 dark:text-blue-400">
+                          <h4 className="text-base font-semibold text-blue-600 dark:text-blue-400 leading-tight">
                             {study.subtitle}
                           </h4>
                         </div>
 
                         {/* Description */}
-                        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed flex-1">
+                        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed flex-1 line-clamp-4">
                           {study.description}
                         </p>
 
                         {/* Tags */}
-                        <div className="flex flex-wrap gap-2 mt-auto">
+                        <div className="flex flex-wrap gap-2 mt-auto pt-4">
                           {study.tags.slice(0, 3).map((tag, tagIndex) => (
-                            <div
+                            <span
                               key={tagIndex}
-                              className="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 transition-colors"
+                              className="px-3 py-1.5 bg-gray-100 dark:bg-gray-700 rounded-full text-xs text-gray-700 dark:text-gray-300 font-medium hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors"
                             >
-                              <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">
-                                {tag}
-                              </span>
-                            </div>
+                              {tag}
+                            </span>
                           ))}
                         </div>
                       </div>
@@ -207,8 +194,8 @@ export const CaseStudiesSection = () => {
             
             {/* Navigation Controls */}
             <div className="flex justify-center mt-8 gap-4">
-              <CarouselPrevious className="relative left-0 top-0 translate-y-0 bg-white dark:bg-gray-800 border-2 hover:bg-gray-50 dark:hover:bg-gray-700" />
-              <CarouselNext className="relative right-0 top-0 translate-y-0 bg-white dark:bg-gray-800 border-2 hover:bg-gray-50 dark:hover:bg-gray-700" />
+              <CarouselPrevious className="relative left-0 top-0 translate-y-0 bg-white dark:bg-gray-800 border-2 hover:bg-gray-50 dark:hover:bg-gray-700 shadow-lg" />
+              <CarouselNext className="relative right-0 top-0 translate-y-0 bg-white dark:bg-gray-800 border-2 hover:bg-gray-50 dark:hover:bg-gray-700 shadow-lg" />
             </div>
           </Carousel>
         </div>
