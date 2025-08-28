@@ -1,3 +1,4 @@
+
 import { ExternalLink, Clock, ArrowUpRight } from "lucide-react";
 import {
   Carousel,
@@ -12,7 +13,6 @@ export const CaseStudiesSection = () => {
     {
       title: "Gullak Fintech App",
       subtitle: "Savings-Led Financial Empowerment Platform", 
-      description: "Complete PRD for a goal-based savings application designed to empower rural women with financial independence through intuitive micro-saving mechanisms.",
       tags: ["Product Strategy", "UX Design", "Fintech"],
       link: "https://www.behance.net/gallery/154819469/Gullak-Fintech-App-UIUX-Case-Study",
       duration: "2 weeks",
@@ -26,7 +26,6 @@ export const CaseStudiesSection = () => {
     {
       title: "Blinkit Product Analysis",
       subtitle: "Order Efficiency & Conversion Optimization",
-      description: "Comprehensive analysis of Blinkit's order flow, identifying key conversion bottlenecks and proposing strategic improvements for enhanced user experience.",
       tags: ["Product Analysis", "E-commerce", "UX Research"],
       link: "https://www.canva.com/design/DAGuong-JoM/p1KoI6r5aSNVNdhG64Kd-A/view",
       duration: "3 weeks",
@@ -40,7 +39,6 @@ export const CaseStudiesSection = () => {
     {
       title: "Google Pay Feature Analysis",
       subtitle: "Strategic Product Improvement Study",
-      description: "Strategic analysis of Google Pay's feature set with focus on user engagement and retention improvements through data-driven insights.",
       tags: ["Feature Analysis", "Product Strategy", "Fintech"],
       link: "https://www.behance.net/gallery/154819469/Gullak-Fintech-App-UIUX-Case-Study",
       duration: "2 weeks",
@@ -54,7 +52,6 @@ export const CaseStudiesSection = () => {
     {
       title: "E-commerce Platform Redesign",
       subtitle: "User Experience Optimization",
-      description: "Complete redesign of an e-commerce platform focusing on mobile-first approach and improved conversion rates through better user journey mapping.",
       tags: ["UX Design", "E-commerce", "Mobile Design"],
       link: "https://www.behance.net/gallery/154819469/Gullak-Fintech-App-UIUX-Case-Study",
       duration: "4 weeks",
@@ -68,7 +65,6 @@ export const CaseStudiesSection = () => {
     {
       title: "Healthcare App UX Research",
       subtitle: "Patient-Centered Design Approach",
-      description: "Comprehensive UX research study for a healthcare application, focusing on accessibility and user-friendly interface for elderly patients.",
       tags: ["UX Research", "Healthcare", "Accessibility"],
       link: "https://www.behance.net/gallery/154819469/Gullak-Fintech-App-UIUX-Case-Study",
       duration: "3 weeks",
@@ -120,8 +116,8 @@ export const CaseStudiesSection = () => {
                       onClick={() => handleCardClick(study.link)}
                       className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/30 dark:border-gray-700/50"
                     >
-                      {/* Header Section with Image and Overlay */}
-                      <div className="relative h-56 overflow-hidden rounded-t-3xl">
+                      {/* Image Section - 70% */}
+                      <div className="relative h-80 overflow-hidden rounded-t-3xl">
                         <img 
                           src={study.image} 
                           alt={study.title}
@@ -132,13 +128,8 @@ export const CaseStudiesSection = () => {
                           } as React.CSSProperties}
                         />
                         
-                        {/* Top Badge and Duration */}
-                        <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                          <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border border-white/50">
-                            <span className="text-gray-800 text-sm font-semibold">
-                              📊 {study.typeShort}
-                            </span>
-                          </div>
+                        {/* Top Right Arrow */}
+                        <div className="absolute top-4 right-4">
                           <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full border border-white/50 hover:bg-white transition-colors">
                             <ArrowUpRight className="w-4 h-4 text-gray-800" />
                           </div>
@@ -151,45 +142,19 @@ export const CaseStudiesSection = () => {
                             <span className="text-white text-sm font-medium">{study.duration}</span>
                           </div>
                         </div>
-
-                        {/* Achievement Badge */}
-                        <div className="absolute bottom-4 right-4">
-                          <div className="bg-emerald-500/90 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                            <span className="text-white text-sm font-semibold">
-                              ✓ {study.achievement}
-                            </span>
-                          </div>
-                        </div>
                       </div>
 
-                      {/* Content Section */}
-                      <div className="p-6 flex-1 flex flex-col space-y-4">
-                        {/* Title and Subtitle */}
-                        <div className="space-y-2">
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight">
-                            {study.title}
-                          </h3>
-                          <h4 className="text-base font-semibold text-blue-600 dark:text-blue-400 leading-tight">
-                            {study.subtitle}
-                          </h4>
-                        </div>
-
-                        {/* Description */}
-                        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed flex-1 line-clamp-4">
-                          {study.description}
+                      {/* Content Section - 30% */}
+                      <div className="p-6 flex-1 flex flex-col justify-center space-y-3">
+                        {/* Title */}
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight">
+                          {study.title}
+                        </h3>
+                        
+                        {/* Subtitle */}
+                        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                          {study.subtitle}
                         </p>
-
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-2 mt-auto pt-4">
-                          {study.tags.slice(0, 3).map((tag, tagIndex) => (
-                            <span
-                              key={tagIndex}
-                              className="px-3 py-1.5 bg-gray-100/80 dark:bg-gray-700/80 backdrop-blur-sm rounded-full text-xs text-gray-700 dark:text-gray-300 font-medium hover:bg-blue-50/80 dark:hover:bg-blue-900/50 transition-colors border border-white/20 dark:border-gray-600/30"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
                       </div>
                     </div>
                   </div>
