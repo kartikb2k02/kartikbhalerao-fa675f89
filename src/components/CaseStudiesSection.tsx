@@ -38,8 +38,8 @@ export const CaseStudiesSection = () => {
       typeShort: "Analysis",
       category: "E-commerce",
       achievement: "15% conversion improvement",
-      bgGradient: "from-orange-400 to-red-500",
-      image: "/lovable-uploads/89406d0e-28cd-4dbf-9e94-3244e4646a29.png"
+      bgGradient: "from-yellow-400 to-orange-500",
+      image: "/lovable-uploads/3d4a8070-20bc-4613-becb-61b277c2c14e.png"
     },
     {
       title: "Google Pay Feature Analysis",
@@ -52,7 +52,7 @@ export const CaseStudiesSection = () => {
       category: "Fintech",
       achievement: "Enhanced UX flow",
       bgGradient: "from-blue-400 to-purple-600",
-      image: "/lovable-uploads/3c59e842-8e07-4b56-8918-3fedc5f8a4e0.png"
+      image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png"
     },
     {
       title: "Google Pay PRD",
