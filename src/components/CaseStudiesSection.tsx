@@ -1,4 +1,3 @@
-
 import { ExternalLink, Clock, ArrowUpRight } from "lucide-react";
 import {
   Carousel,
@@ -179,12 +178,6 @@ export const CaseStudiesSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            
-            {/* Navigation Controls */}
-            <div className="flex justify-center mt-8 gap-4">
-              <CarouselPrevious className="relative left-0 top-0 translate-y-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-2 border-white/30 dark:border-gray-700/50 hover:bg-white/90 dark:hover:bg-gray-700/90 shadow-lg" />
-              <CarouselNext className="relative right-0 top-0 translate-y-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-2 border-white/30 dark:border-gray-700/50 hover:bg-white/90 dark:hover:bg-gray-700/90 shadow-lg" />
-            </div>
           </Carousel>
         </div>
 
