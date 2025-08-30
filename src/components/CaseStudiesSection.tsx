@@ -185,8 +185,8 @@ export const CaseStudiesSection = () => {
             }}
             plugins={[
               Autoplay({
-                delay: 4000,
-                stopOnInteraction: true,
+                delay: 3000,
+                stopOnInteraction: false,
                 stopOnMouseEnter: true,
               })
             ]}
