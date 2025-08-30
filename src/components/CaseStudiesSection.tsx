@@ -20,7 +20,7 @@ export const CaseStudiesSection = () => {
       title: "Gullak Fintech App",
       subtitle: "Savings-Led Financial Empowerment Platform", 
       tags: ["Product Strategy", "UX Design", "Fintech"],
-      link: "https://www.behance.net/gallery/154819469/Gullak-Fintech-App-UIUX-Case-Study",
+      link: "https://www.canva.com/design/DAGxiFuK6mo/lSD7Z6WwaqX6hDFwYuQ2gQ/view",
       duration: "2 weeks",
       type: "Product Requirement Document",
       typeShort: "PRD",
@@ -33,7 +33,7 @@ export const CaseStudiesSection = () => {
       title: "Blinkit Product Analysis",
       subtitle: "Order Efficiency & Conversion Optimization",
       tags: ["Product Analysis", "E-commerce", "UX Research"],
-      link: "https://www.canva.com/design/DAGuong-JoM/p1KoI6r5aSNVNdhG64Kd-A/view",
+      link: "https://www.canva.com/design/DAGxiHLuc1A/cdCbIj30b6LODnEBr_bT-Q/view",
       duration: "3 weeks",
       type: "Product Teardown",
       typeShort: "Analysis",
@@ -46,7 +46,7 @@ export const CaseStudiesSection = () => {
       title: "Google Pay Feature Analysis",
       subtitle: "Strategic Product Improvement Study",
       tags: ["Feature Analysis", "Product Strategy", "Fintech"],
-      link: "https://www.behance.net/gallery/154819469/Gullak-Fintech-App-UIUX-Case-Study",
+      link: "https://www.canva.com/design/DAGxiBL7YzA/Xk77mzvr9YaEsuEbvQ9bWg/view",
       duration: "2 weeks",
       type: "Feature Analysis",
       typeShort: "Analysis",
@@ -56,10 +56,23 @@ export const CaseStudiesSection = () => {
       image: "/lovable-uploads/3c59e842-8e07-4b56-8918-3fedc5f8a4e0.png"
     },
     {
-      title: "E-commerce Platform Redesign",
+      title: "Google Pay PRD",
+      subtitle: "Strategic Product Improvement Study",
+      tags: ["Feature Analysis", "Product Strategy", "Fintech"],
+      link: "https://www.canva.com/design/DAGxiRLzpnQ/iE96wDgatXY99zuZnHBt4g/view",
+      duration: "2 weeks",
+      type: "PRD",
+      typeShort: "Analysis",
+      category: "Fintech",
+      achievement: "Enhanced UX flow",
+      bgGradient: "from-blue-400 to-purple-600",
+      image: "/lovable-uploads/3c59e842-8e07-4b56-8918-3fedc5f8a4e0.png"
+    },
+    {
+      title: "Zepto Order effiency",
       subtitle: "User Experience Optimization",
       tags: ["UX Design", "E-commerce", "Mobile Design"],
-      link: "https://www.behance.net/gallery/154819469/Gullak-Fintech-App-UIUX-Case-Study",
+      link: "https://www.canva.com/design/DAGxiRyvVFQ/-YhV-xynX1b2K6ewewp3yQ/view",
       duration: "4 weeks",
       type: "Design Case Study",
       typeShort: "Design",
@@ -69,18 +82,57 @@ export const CaseStudiesSection = () => {
       image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png"
     },
     {
-      title: "Healthcare App UX Research",
+      title: "Airbnb Ux",
       subtitle: "Patient-Centered Design Approach",
       tags: ["UX Research", "Healthcare", "Accessibility"],
-      link: "https://www.behance.net/gallery/154819469/Gullak-Fintech-App-UIUX-Case-Study",
+      link: "https://www.canva.com/design/DAGxiIQik8Y/eWceLnISnpERQ_jx5kK0Uw/view",
       duration: "3 weeks",
       type: "UX Research Study",
       typeShort: "Research",
-      category: "Healthcare",
+      category: "Hotel",
       achievement: "Improved accessibility score by 40%",
       bgGradient: "from-teal-400 to-cyan-600",
       image: "/lovable-uploads/3d4a8070-20bc-4613-becb-61b277c2c14e.png"
     }
+    {
+      title: "Cloudeagle Ai Efficeincy",
+      subtitle: "User Experience Optimization",
+      tags: ["UX Design", "E-commerce", "Mobile Design"],
+      link: "https://www.canva.com/design/DAGsMTJF8rQ/spC9-A66wGenPorZ0VkcmA/view",
+      duration: "4 weeks",
+      type: "Design Case Study",
+      typeShort: "Design",
+      category: "E-commerce",
+      achievement: "25% increase in conversions",
+      bgGradient: "from-purple-400 to-pink-600",
+      image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png"
+    },
+    {
+      title: "Metis Feature Improvement",
+      subtitle: "User Experience Optimization",
+      tags: ["UX Design", "E-commerce", "Mobile Design"],
+      link: "https://www.canva.com/design/DAGvsNeBU9A/fT2cPDGb3P_sHKunt_xa3g/view",
+      duration: "4 weeks",
+      type: "Design Case Study",
+      typeShort: "Design",
+      category: "E-commerce",
+      achievement: "25% increase in conversions",
+      bgGradient: "from-purple-400 to-pink-600",
+      image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png"
+    },
+    {
+      title: "CodeAntAi ",
+      subtitle: "Product Launch Narrative",
+      tags: ["UX Design", "E-commerce", "Mobile Design"],
+      link: "https://www.canva.com/design/DAGuong-JoM/p1KoI6r5aSNVNdhG64Kd-A/view",
+      duration: "4 weeks",
+      type: "Design Case Study",
+      typeShort: "Design",
+      category: "E-commerce",
+      achievement: "25% increase in conversions",
+      bgGradient: "from-purple-400 to-pink-600",
+      image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png"
+    },
   ];
 
   useEffect(() => {
