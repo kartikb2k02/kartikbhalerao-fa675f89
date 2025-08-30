@@ -1,4 +1,3 @@
-
 import { ExternalLink, Clock, ArrowUpRight } from "lucide-react";
 import {
   Carousel,
@@ -93,7 +92,7 @@ export const CaseStudiesSection = () => {
       achievement: "Improved accessibility score by 40%",
       bgGradient: "from-teal-400 to-cyan-600",
       image: "/lovable-uploads/3d4a8070-20bc-4613-becb-61b277c2c14e.png"
-    }
+    },
     {
       title: "Cloudeagle Ai Efficeincy",
       subtitle: "User Experience Optimization",
