@@ -197,7 +197,7 @@ export const CaseStudiesSection = () => {
                   <div className="h-full p-4">
                     <div 
                       onClick={() => handleCardClick(study.link)}
-                      className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/50 dark:border-gray-700/50 aspect-[4/3]"
+                      className="bg-white/20 dark:bg-gray-800/20 backdrop-blur-xl rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/30 dark:border-gray-700/30 aspect-[4/3]"
                     >
                       {/* Image Section - 75% */}
                       <div className="relative flex-[3] overflow-hidden">
@@ -209,14 +209,14 @@ export const CaseStudiesSection = () => {
                         
                         {/* Top Right Arrow */}
                         <div className="absolute top-4 right-4">
-                          <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full border border-white/50 hover:bg-white transition-colors">
+                          <div className="bg-white/70 backdrop-blur-sm p-2 rounded-full border border-white/40 hover:bg-white/80 transition-colors">
                             <ArrowUpRight className="w-4 h-4 text-gray-800" />
                           </div>
                         </div>
 
                         {/* Duration Badge */}
                         <div className="absolute top-4 left-4">
-                          <div className="flex items-center gap-2 bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                          <div className="flex items-center gap-2 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full">
                             <Clock className="w-4 h-4 text-white" />
                             <span className="text-white text-sm font-medium">{study.duration}</span>
                           </div>
@@ -226,10 +226,10 @@ export const CaseStudiesSection = () => {
                       {/* Colored Footer Section - 25% */}
                       <div className={`flex-[1] bg-gradient-to-r ${study.bgGradient} p-4 flex flex-col justify-center relative overflow-hidden`}>
                         {/* Background pattern overlay */}
-                        <div className="absolute inset-0 opacity-10">
-                          <div className="absolute top-2 right-2 w-6 h-6 border-2 border-white rounded-full"></div>
-                          <div className="absolute bottom-2 left-2 w-4 h-4 border-2 border-white rounded-full"></div>
-                          <div className="absolute top-1/2 right-4 w-3 h-3 bg-white/30 rounded-full"></div>
+                        <div className="absolute inset-0 opacity-20">
+                          <div className="absolute top-2 right-2 w-6 h-6 border-2 border-white/50 rounded-full"></div>
+                          <div className="absolute bottom-2 left-2 w-4 h-4 border-2 border-white/50 rounded-full"></div>
+                          <div className="absolute top-1/2 right-4 w-3 h-3 bg-white/20 rounded-full"></div>
                         </div>
                         
                         {/* Content */}
@@ -244,7 +244,7 @@ export const CaseStudiesSection = () => {
 
                         {/* Arrow Icon */}
                         <div className="absolute bottom-3 right-3">
-                          <div className="w-6 h-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                          <div className="w-6 h-6 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center">
                             <ArrowUpRight className="w-3 h-3 text-white" />
                           </div>
                         </div>
