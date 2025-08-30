@@ -1,3 +1,4 @@
+
 import { ExternalLink, Clock, ArrowUpRight } from "lucide-react";
 import {
   Carousel,
@@ -6,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 export const CaseStudiesSection = () => {
   const caseStudies = [
@@ -106,14 +108,21 @@ export const CaseStudiesSection = () => {
               skipSnaps: false,
               dragFree: false
             }}
+            plugins={[
+              Autoplay({
+                delay: 4000,
+                stopOnInteraction: true,
+                stopOnMouseEnter: true,
+              })
+            ]}
           >
             <CarouselContent className="-ml-0 md:-ml-0">
               {caseStudies.map((study, index) => (
-                <CarouselItem key={index} className="pl-0 md:pl-0 basis-full md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="pl-0 md:pl-0 basis-full md:basis-1/2 lg:basis-1/2">
                   <div className="h-full p-4">
                     <div 
                       onClick={() => handleCardClick(study.link)}
-                      className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/50 dark:border-gray-700/50 aspect-[3/4]"
+                      className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group h-full flex flex-col cursor-pointer transform hover:scale-[1.02] border border-white/50 dark:border-gray-700/50 aspect-[4/3]"
                     >
                       {/* Image Section - 75% */}
                       <div className="relative flex-[3] overflow-hidden">
