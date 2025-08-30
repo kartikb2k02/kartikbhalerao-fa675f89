@@ -7,8 +7,13 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { useState, useEffect } from "react";
+import type { CarouselApi } from "@/components/ui/carousel";
 
 export const CaseStudiesSection = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
   const caseStudies = [
     {
       title: "Gullak Fintech App",
@@ -77,8 +82,26 @@ export const CaseStudiesSection = () => {
     }
   ];
 
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
   const handleCardClick = (link: string) => {
     window.open(link, '_blank', 'noopener,noreferrer');
+  };
+
+  const scrollToSlide = (index: number) => {
+    if (api) {
+      api.scrollTo(index);
+    }
   };
 
   return (
@@ -100,6 +123,7 @@ export const CaseStudiesSection = () => {
         {/* Case Studies Carousel */}
         <div className="relative">
           <Carousel 
+            setApi={setApi}
             className="w-full max-w-7xl mx-auto" 
             opts={{ 
               align: "start", 
@@ -179,6 +203,22 @@ export const CaseStudiesSection = () => {
               ))}
             </CarouselContent>
           </Carousel>
+
+          {/* Dot Indicators */}
+          <div className="flex justify-center mt-8 gap-2">
+            {caseStudies.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  current === index
+                    ? "bg-blue-600 dark:bg-blue-400 scale-125"
+                    : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Call to Action */}
