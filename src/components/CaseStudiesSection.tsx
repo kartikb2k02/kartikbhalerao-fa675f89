@@ -26,7 +26,7 @@ export const CaseStudiesSection = () => {
       category: "Fintech",
       achievement: "Complete app design",
       bgGradient: "from-green-400 to-emerald-600",
-      image: "/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.png"
+      image: "/lovable-uploads/b1ba7330-6bbc-43d5-a1d2-56baa716c077.png"
     },
     {
       title: "Blinkit Product Analysis",
@@ -65,7 +65,7 @@ export const CaseStudiesSection = () => {
       category: "Fintech",
       achievement: "Enhanced UX flow",
       bgGradient: "from-blue-400 to-purple-600",
-      image: "/lovable-uploads/3c59e842-8e07-4b56-8918-3fedc5f8a4e0.png"
+      image: "/lovable-uploads/9b4dd787-aeb2-4969-8fc0-a1dd907efea8.png"
     },
     {
       title: "Zepto Order effiency",
@@ -91,7 +91,7 @@ export const CaseStudiesSection = () => {
       category: "Hotel",
       achievement: "Improved accessibility score by 40%",
       bgGradient: "from-teal-400 to-cyan-600",
-      image: "/lovable-uploads/3d4a8070-20bc-4613-becb-61b277c2c14e.png"
+      image: "/lovable-uploads/b6681943-085f-4f56-ad98-ba1fac93c64a.png"
     },
     {
       title: "Cloudeagle Ai Efficeincy",
