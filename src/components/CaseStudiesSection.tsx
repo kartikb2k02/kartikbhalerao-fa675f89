@@ -78,8 +78,8 @@ export const CaseStudiesSection = () => {
       category: "E-commerce",
       achievement: "25% increase in conversions",
       bgGradient: "from-purple-400 to-pink-600",
-      image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png"
-    },
+      image: "/lovable-uploads/zepto.png"
+    },   
     {
       title: "Airbnb Ux",
       subtitle: "Patient-Centered Design Approach",
