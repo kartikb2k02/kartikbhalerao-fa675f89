@@ -51,7 +51,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Analysis",
       category: "Fintech",
       achievement: "Enhanced UX flow",
-      bgGradient: "from-blue-400 to-purple-600",
+      bgGradient: "from-blue-400 to-Dark blue-600",
       image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png"
     },
     {
@@ -129,7 +129,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Design",
       category: "E-commerce",
       achievement: "25% increase in conversions",
-      bgGradient: "from-#5c5ddd-400 to-pink-600",
+      bgGradient: "from-purple-400 to-pink-600",
       image: "/lovable-uploads/Codeant ai banner.png"
     },
   ];
