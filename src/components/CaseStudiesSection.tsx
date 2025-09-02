@@ -104,7 +104,7 @@ export const CaseStudiesSection = () => {
       category: "E-commerce",
       achievement: "25% increase in conversions",
       bgGradient: "from-purple-400 to-pink-600",
-      image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png"
+      image: "/lovable-uploads/Cloudeagle banner.png"
     },
     {
       title: "Metis Feature Improvement",
@@ -117,10 +117,10 @@ export const CaseStudiesSection = () => {
       category: "E-commerce",
       achievement: "25% increase in conversions",
       bgGradient: "from-purple-400 to-pink-600",
-      image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png"
+      image: "/lovable-uploads/Metis Banner.png"
     },
     {
-      title: "CodeAntAi ",
+      title: "CodeAnt AI ",
       subtitle: "Product Launch Narrative",
       tags: ["UX Design", "E-commerce", "Mobile Design"],
       link: "https://www.canva.com/design/DAGuong-JoM/p1KoI6r5aSNVNdhG64Kd-A/view",
@@ -130,7 +130,7 @@ export const CaseStudiesSection = () => {
       category: "E-commerce",
       achievement: "25% increase in conversions",
       bgGradient: "from-purple-400 to-pink-600",
-      image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png"
+      image: "/lovable-uploads/Codeant ai banner.png"
     },
   ];
 
