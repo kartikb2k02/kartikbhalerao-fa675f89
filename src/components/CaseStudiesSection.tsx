@@ -25,7 +25,7 @@ export const CaseStudiesSection = () => {
       typeShort: "PRD",
       category: "Fintech",
       achievement: "Complete app design",
-      bgGradient: "from-green-400 to-emerald-600",
+      bgGradient: "from-[#4ade80] to-[#059669]",
       image: "/lovable-uploads/b1ba7330-6bbc-43d5-a1d2-56baa716c077.png"
     },
     {
@@ -38,7 +38,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Analysis",
       category: "E-commerce",
       achievement: "15% conversion improvement",
-      bgGradient: "from-yellow-400 to-orange-500",
+      bgGradient: "from-[#facc15] to-[#f97316]",
       image: "/lovable-uploads/3d4a8070-20bc-4613-becb-61b277c2c14e.png"
     },
     {
@@ -51,7 +51,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Analysis",
       category: "Fintech",
       achievement: "Enhanced UX flow",
-      bgGradient: "from-blue-400 to-blue-600",
+      bgGradient: "from-[#60a5fa] to-[#2563eb]",
       image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png"
     },
     {
@@ -64,7 +64,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Analysis",
       category: "Fintech",
       achievement: "Enhanced UX flow",
-      bgGradient: "from-blue-400 to-purple-600",
+      bgGradient: "from-[#60a5fa] to-[#9333ea]",
       image: "/lovable-uploads/9b4dd787-aeb2-4969-8fc0-a1dd907efea8.png"
     },
     {
@@ -77,7 +77,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Design",
       category: "E-commerce",
       achievement: "25% increase in conversions",
-      bgGradient: "from-purple-400 to-pink-600",
+      bgGradient: "from-[#c084fc] to-[#db2777]",
       image: "/lovable-uploads/zepto.png"
     },   
     {
@@ -90,7 +90,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Research",
       category: "Hotel",
       achievement: "Improved accessibility score by 40%",
-      bgGradient: "from-red-400 to-cyan-600",
+      bgGradient: "from-[#f87171] to-[#0891b2]",
       image: "/lovable-uploads/b6681943-085f-4f56-ad98-ba1fac93c64a.png"
     },
     {
@@ -103,7 +103,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Design",
       category: "E-commerce",
       achievement: "25% increase in conversions",
-      bgGradient: "from-purple-400 to-pink-600",
+      bgGradient: "from-[#c084fc] to-[#db2777]",
       image: "/lovable-uploads/Cloudeagle banner.png"
     },
     {
@@ -116,7 +116,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Design",
       category: "E-commerce",
       achievement: "25% increase in conversions",
-      bgGradient: "from-purple-400 to-pink-600",
+      bgGradient: "from-[#c084fc] to-[#db2777]",
       image: "/lovable-uploads/Metis Banner.png"
     },
     {
@@ -129,7 +129,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Design",
       category: "E-commerce",
       achievement: "25% increase in conversions",
-      bgGradient: "from-purple-400 to-pink-600",
+      bgGradient: "from-[#c084fc] to-[#db2777]",
       image: "/lovable-uploads/Codeant ai banner.png"
     },
   ];
