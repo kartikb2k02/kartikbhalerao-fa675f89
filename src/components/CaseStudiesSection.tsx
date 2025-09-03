@@ -51,7 +51,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Analysis",
       category: "Fintech",
       achievement: "Enhanced UX flow",
-      bgGradient: "from-blue-400 to-Dark blue-600",
+      bgGradient: "from-blue-400 to-blue-600",
       image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png"
     },
     {
@@ -90,7 +90,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Research",
       category: "Hotel",
       achievement: "Improved accessibility score by 40%",
-      bgGradient: "from-Vividred-400 to-cyan-600",
+      bgGradient: "from-red-400 to-cyan-600",
       image: "/lovable-uploads/b6681943-085f-4f56-ad98-ba1fac93c64a.png"
     },
     {
