@@ -25,7 +25,7 @@ export const CaseStudiesSection = () => {
       typeShort: "PRD",
       category: "Fintech",
       achievement: "Complete app design",
-      bgGradient: "from-[#4ade80] to-[#059669]",
+      bgGradient: "from-[#fbd26c] to-[#f99e30]",
       image: "/lovable-uploads/b1ba7330-6bbc-43d5-a1d2-56baa716c077.png"
     },
     {
