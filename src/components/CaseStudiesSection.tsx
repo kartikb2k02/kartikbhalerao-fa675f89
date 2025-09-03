@@ -25,7 +25,7 @@ export const CaseStudiesSection = () => {
       typeShort: "PRD",
       category: "Fintech",
       achievement: "Complete app design",
-      bgGradient: "from-[#fbd26c] to-[#f99e30]",
+      bgGradient: "from-[#4ade80] to-[#059669]",
       image: "/lovable-uploads/b1ba7330-6bbc-43d5-a1d2-56baa716c077.png"
     },
     {
@@ -51,7 +51,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Analysis",
       category: "Fintech",
       achievement: "Enhanced UX flow",
-      bgGradient: "from-[#60a5fa] to-[#2563eb]",
+      bgGradient: "from-[#60a5fa] to-[#9333ea]",
       image: "/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png"
     },
     {
@@ -64,7 +64,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Analysis",
       category: "Fintech",
       achievement: "Enhanced UX flow",
-      bgGradient: "from-[#60a5fa] to-[#9333ea]",
+      bgGradient: "from-[#60a5fa] to-[#2563eb]",
       image: "/lovable-uploads/9b4dd787-aeb2-4969-8fc0-a1dd907efea8.png"
     },
     {
