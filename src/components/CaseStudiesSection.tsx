@@ -103,7 +103,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Design",
       category: "E-commerce",
       achievement: "25% increase in conversions",
-      bgGradient: "from-[#004aad] to-[#00000]",
+      bgGradient: "from-[#111184] to-[#00000]",
       image: "/lovable-uploads/Cloudeagle banner.png"
     },
     {
