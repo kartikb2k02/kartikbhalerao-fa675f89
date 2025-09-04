@@ -104,7 +104,7 @@ export const CaseStudiesSection = () => {
       category: "E-commerce",
       achievement: "25% increase in conversions",
       bgGradient: "from-[#111184] to-[#000000]",
-      image: "/lovable-uploads/Cloudeagle%20banner.png"
+      image: "/lovable-uploads/Cloudeagle banner.png"
     },
     {
       title: "Metis Feature Improvement",
@@ -117,7 +117,7 @@ export const CaseStudiesSection = () => {
       category: "E-commerce",
       achievement: "25% increase in conversions",
       bgGradient: "from-[#0165f1] to-[#018ff1]",
-      image: "/lovable-uploads/Metis%20Banner.png"
+      image: "/lovable-uploads/Metis Banner.png"
     },
     {
       title: "CodeAnt AI ",
@@ -130,7 +130,7 @@ export const CaseStudiesSection = () => {
       category: "E-commerce",
       achievement: "25% increase in conversions",
       bgGradient: "from-[#c084fc] to-[#db2777]",
-      image: "/lovable-uploads/Codeant%20ai%20banner.png"
+      image: "/lovable-uploads/Codeant ai banner.png"
     },
   ];
 
