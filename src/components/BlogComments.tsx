@@ -10,7 +10,6 @@ import { useToast } from "@/hooks/use-toast";
 interface Comment {
   id: string;
   author_name: string;
-  author_email: string;
   content: string;
   created_at: string;
 }
@@ -36,7 +35,7 @@ export const BlogComments = ({ postId }: BlogCommentsProps) => {
   const fetchComments = async () => {
     try {
       const { data, error } = await supabase
-        .from('blog_comments')
+        .from('blog_comments_public')
         .select('*')
         .eq('blog_post_id', postId)
         .order('created_at', { ascending: false });
