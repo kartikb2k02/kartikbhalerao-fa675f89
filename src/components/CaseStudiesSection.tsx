@@ -90,7 +90,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Research",
       category: "Hotel",
       achievement: "Improved accessibility score by 40%",
-      bgGradient: "from-[#FF5A5F] to-[#FFDADB]",
+      bgGradient: "from-[#FF5A5F] to-[#FF5A5F]",
       image: "/lovable-uploads/b6681943-085f-4f56-ad98-ba1fac93c64a.png"
     },
     {
@@ -129,7 +129,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Design",
       category: "E-commerce",
       achievement: "25% increase in conversions",
-      bgGradient: "from-[#c084fc] to-[#db2777]",
+      bgGradient: "from-[#1E90FF] to-[#E0FFFF]",
       image: "/lovable-uploads/Codeant.png"
     },
   ];
