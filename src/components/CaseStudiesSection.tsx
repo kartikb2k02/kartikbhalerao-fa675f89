@@ -129,7 +129,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Design",
       category: "E-commerce",
       achievement: "25% increase in conversions",
-      bgGradient: "from-[#3c52c3] to-[#3c52c3]",
+      bgGradient: "from-[#3c52c3] to-[#E0FFFF]",
       image: "/lovable-uploads/Codeant.png"
     },
   ];
