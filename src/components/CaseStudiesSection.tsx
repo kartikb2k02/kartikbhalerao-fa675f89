@@ -116,7 +116,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Design",
       category: "E-commerce",
       achievement: "25% increase in conversions",
-      bgGradient: "from-[#c084fc] to-[#db2777]"
+      bgGradient: "from-[#c084fc] to-[#db2777]",
       image: "/lovable-uploads/Metis%20Banner.png"
     },
     {
