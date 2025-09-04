@@ -129,7 +129,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Design",
       category: "E-commerce",
       achievement: "25% increase in conversions",
-      bgGradient: "from-[#1e40af] to-[#0ea5e9]",
+      bgGradient: "from-[#c084fc] to-[#db2777]",
       image: "/lovable-uploads/Codeant%20ai%20banner.png"
     },
   ];
@@ -157,9 +157,9 @@ export const CaseStudiesSection = () => {
   };
 
   return (
-    <section className="py-20 relative bg-white/5 dark:bg-gray-900/5 backdrop-blur-3xl border-t border-white/5 dark:border-white/5">
+    <section className="py-20 relative bg-white/30 dark:bg-gray-900/30 backdrop-blur-3xl border-t border-white/30 dark:border-white/20">
       {/* Enhanced Glass overlay effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-blue-50/5 to-indigo-50/5 dark:from-slate-950/5 dark:via-slate-900/5 dark:to-indigo-950/5 backdrop-blur-3xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-blue-50/20 to-indigo-50/20 dark:from-slate-950/20 dark:via-slate-900/20 dark:to-indigo-950/20 backdrop-blur-3xl"></div>
       
       <div className="container mx-auto px-4 space-y-16 relative z-10">
         {/* Header */}
@@ -168,7 +168,7 @@ export const CaseStudiesSection = () => {
             Case Studies & Projects
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Real-world projects showcasing my product strategy, design thinking, and user-centered solutions
+            Real-world projects showcasing product strategy, design thinking, and user-centered solutions
           </p>
         </div>
 
@@ -278,12 +278,12 @@ export const CaseStudiesSection = () => {
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
             Interested in seeing more of my work or discussing a project?
           </p>
-          <a
-            href="mailto:kartikbhalerao948@gmail.com"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600/90 hover:bg-blue-700/90 backdrop-blur-sm border border-white/20 text-white font-medium rounded-2xl transition-colors duration-200"
+          <button
+            className="bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            onClick={() => window.open('mailto:kartikbhalerao948@gmail.com', '_blank')}
           >
             Get In Touch
-          </a>
+          </button>
         </div>
       </div>
     </section>
