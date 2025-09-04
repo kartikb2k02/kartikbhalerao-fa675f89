@@ -90,7 +90,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Research",
       category: "Hotel",
       achievement: "Improved accessibility score by 40%",
-      bgGradient: "from-[#FF5A5F] to-[#FF5A5F]",
+      bgGradient: "from-[#FF5A5F] to-[#FFDADB]",
       image: "/lovable-uploads/b6681943-085f-4f56-ad98-ba1fac93c64a.png"
     },
     {
