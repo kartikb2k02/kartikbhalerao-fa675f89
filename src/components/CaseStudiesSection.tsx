@@ -134,7 +134,7 @@ export const CaseStudiesSection = () => {
   };
   return <section className="py-20 relative bg-white/30 dark:bg-gray-900/30 backdrop-blur-3xl border-t border-white/30 dark:border-white/20">
       {/* Enhanced Glass overlay effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-blue-50/20 to-indigo-50/20 dark:from-slate-950/20 dark:via-slate-900/20 dark:to-indigo-950/20 backdrop-blur-3xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-blue-50/5 to-indigo-50/5 dark:from-slate-950/5 dark:via-slate-900/5 dark:to-indigo-950/5 backdrop-blur-3xl"></div>
       
       <div className="container mx-auto px-4 space-y-16 relative z-10">
         {/* Header */}
