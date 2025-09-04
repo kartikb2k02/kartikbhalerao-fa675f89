@@ -129,7 +129,7 @@ export const CaseStudiesSection = () => {
       typeShort: "Design",
       category: "E-commerce",
       achievement: "25% increase in conversions",
-      bgGradient: "from-[#c084fc] to-[#db2777]",
+      bgGradient: "from-[#1e40af] to-[#0ea5e9]",
       image: "/lovable-uploads/Codeant%20ai%20banner.png"
     },
   ];
@@ -157,9 +157,9 @@ export const CaseStudiesSection = () => {
   };
 
   return (
-    <section className="py-20 relative bg-white/30 dark:bg-gray-900/30 backdrop-blur-3xl border-t border-white/30 dark:border-white/20">
+    <section className="py-20 relative bg-white/5 dark:bg-gray-900/5 backdrop-blur-3xl border-t border-white/5 dark:border-white/5">
       {/* Enhanced Glass overlay effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-blue-50/20 to-indigo-50/20 dark:from-slate-950/20 dark:via-slate-900/20 dark:to-indigo-950/20 backdrop-blur-3xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-blue-50/5 to-indigo-50/5 dark:from-slate-950/5 dark:via-slate-900/5 dark:to-indigo-950/5 backdrop-blur-3xl"></div>
       
       <div className="container mx-auto px-4 space-y-16 relative z-10">
         {/* Header */}
@@ -280,7 +280,7 @@ export const CaseStudiesSection = () => {
           </p>
           <a
             href="mailto:kartikbhalerao948@gmail.com"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600/90 hover:bg-blue-700/90 backdrop-blur-sm border border-white/20 text-white font-medium rounded-lg transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600/90 hover:bg-blue-700/90 backdrop-blur-sm border border-white/20 text-white font-medium rounded-2xl transition-colors duration-200"
           >
             Get In Touch
           </a>
