@@ -226,7 +226,7 @@ export const CaseStudiesSection = () => {
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
             Interested in seeing more of my work or discussing a project?
           </p>
-          <a href="mailto:kartikbhalerao948@gmail.com" className="inline-flex items-center gap-2 px-6 py-3 bg-green-600/90 hover:-bottom-0.5 -bottom-0 border-0 border-0 border-red-200 font-medium rounded-lg transition-colors duration-200 mx-[3px] my-[3px]">
+          <a href="mailto:kartikbhalerao948@gmail.com" className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 font-medium rounded-2xl transition-colors duration-200 border border-primary/20">
             Get In Touch
           </a>
         </div>
