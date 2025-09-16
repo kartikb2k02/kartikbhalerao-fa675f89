@@ -26,16 +26,14 @@ import {
 import { toast } from "sonner"
 import { Header } from "@/components/Header"
 import { FooterSection } from "@/components/FooterSection"
+import { DateTimePicker } from "@/components/ui/date-time-picker"
 
 const formSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
   message: z.string().min(10, "Message must be at least 10 characters"),
-  preferredDateTime: z.object({
-    date: z.date({
-      required_error: "Please select a preferred date",
-    }),
-    time: z.string().min(1, "Please select a preferred time"),
+  preferredDateTime: z.date({
+    required_error: "Please select a preferred date and time",
   }),
 })
 
@@ -50,10 +48,7 @@ export default function Contact() {
       fullName: "",
       email: "",
       message: "",
-      preferredDateTime: {
-        date: undefined,
-        time: "",
-      },
+      preferredDateTime: undefined,
     },
   })
 
@@ -159,131 +154,13 @@ export default function Contact() {
                       render={({ field }) => (
                         <FormItem className="space-y-3">
                           <FormLabel className="text-base font-semibold text-slate-700 dark:text-slate-200">Preferred Date & Time</FormLabel>
-                          <div className="space-y-4">
-                            {/* Date Selection */}
-                            <Popover>
-                              <PopoverTrigger asChild>
-                                <Button
-                                  variant="outline"
-                                  className={cn(
-                                    "w-full h-12 pl-3 text-left font-normal bg-white/90 dark:bg-slate-700/90 border-slate-300/60 dark:border-slate-600/60 hover:bg-slate-50 dark:hover:bg-slate-600/90 text-slate-900 dark:text-slate-100",
-                                    !field.value?.date && "text-slate-500 dark:text-slate-400"
-                                  )}
-                                >
-                                  {field.value?.date ? (
-                                    format(field.value.date, "EEEE, MMMM dd, yyyy")
-                                  ) : (
-                                    <span>Select preferred date</span>
-                                  )}
-                                  <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                                </Button>
-                              </PopoverTrigger>
-                              <PopoverContent className="w-auto p-0 bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border-slate-200/60 dark:border-slate-700/60 z-50" align="start">
-                                <Calendar
-                                  mode="single"
-                                  selected={field.value?.date}
-                                  onSelect={(date) => {
-                                    field.onChange({
-                                      ...field.value,
-                                      date: date
-                                    })
-                                  }}
-                                  disabled={(date) =>
-                                    date < new Date()
-                                  }
-                                  initialFocus
-                                  className={cn("p-3 pointer-events-auto")}
-                                />
-                              </PopoverContent>
-                            </Popover>
-
-                            {/* Time Selection */}
-                            <div className="grid grid-cols-3 gap-2">
-                              {/* Hour Selection */}
-                              <div className="space-y-2">
-                                <label className="text-sm font-medium text-slate-600 dark:text-slate-400">Hour</label>
-                                <select 
-                                  className="w-full h-12 px-3 bg-white/90 dark:bg-slate-700/90 border border-slate-300/60 dark:border-slate-600/60 rounded-md text-slate-900 dark:text-slate-100 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20"
-                                  value={field.value?.time ? field.value.time.split(':')[0] : ''}
-                                  onChange={(e) => {
-                                    const currentTime = field.value?.time || '12:00:AM'
-                                    const timeParts = currentTime.split(':')
-                                    const minutes = timeParts[1]?.split(':')[0] || '00'
-                                    const period = currentTime.includes('PM') ? 'PM' : 'AM'
-                                    field.onChange({
-                                      ...field.value,
-                                      time: `${e.target.value}:${minutes}:${period}`
-                                    })
-                                  }}
-                                >
-                                  <option value="">Hr</option>
-                                  {Array.from({ length: 12 }, (_, i) => i + 1).map(hour => (
-                                    <option key={hour} value={hour.toString().padStart(2, '0')}>
-                                      {hour}
-                                    </option>
-                                  ))}
-                                </select>
-                              </div>
-
-                              {/* Minute Selection */}
-                              <div className="space-y-2">
-                                <label className="text-sm font-medium text-slate-600 dark:text-slate-400">Minute</label>
-                                <select 
-                                  className="w-full h-12 px-3 bg-white/90 dark:bg-slate-700/90 border border-slate-300/60 dark:border-slate-600/60 rounded-md text-slate-900 dark:text-slate-100 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20"
-                                  value={field.value?.time ? field.value.time.split(':')[1]?.split(':')[0] : ''}
-                                  onChange={(e) => {
-                                    const currentTime = field.value?.time || '12:00:AM'
-                                    const hour = currentTime.split(':')[0] || '12'
-                                    const period = currentTime.includes('PM') ? 'PM' : 'AM'
-                                    field.onChange({
-                                      ...field.value,
-                                      time: `${hour}:${e.target.value}:${period}`
-                                    })
-                                  }}
-                                >
-                                  <option value="">Min</option>
-                                  {Array.from({ length: 60 }, (_, i) => i).filter(min => min % 15 === 0).map(minute => (
-                                    <option key={minute} value={minute.toString().padStart(2, '0')}>
-                                      {minute.toString().padStart(2, '0')}
-                                    </option>
-                                  ))}
-                                </select>
-                              </div>
-
-                              {/* AM/PM Selection */}
-                              <div className="space-y-2">
-                                <label className="text-sm font-medium text-slate-600 dark:text-slate-400">Period</label>
-                                <select 
-                                  className="w-full h-12 px-3 bg-white/90 dark:bg-slate-700/90 border border-slate-300/60 dark:border-slate-600/60 rounded-md text-slate-900 dark:text-slate-100 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20"
-                                  value={field.value?.time ? (field.value.time.includes('PM') ? 'PM' : 'AM') : ''}
-                                  onChange={(e) => {
-                                    const currentTime = field.value?.time || '12:00:AM'
-                                    const timeParts = currentTime.split(':')
-                                    const hour = timeParts[0] || '12'
-                                    const minutes = timeParts[1]?.split(':')[0] || '00'
-                                    field.onChange({
-                                      ...field.value,
-                                      time: `${hour}:${minutes}:${e.target.value}`
-                                    })
-                                  }}
-                                >
-                                  <option value="">--</option>
-                                  <option value="AM">AM</option>
-                                  <option value="PM">PM</option>
-                                </select>
-                              </div>
-                            </div>
-
-                            {/* Display Selected Time */}
-                            {field.value?.date && field.value?.time && (
-                              <div className="mt-3 p-3 bg-blue-50/80 dark:bg-blue-950/50 border border-blue-200/60 dark:border-blue-800/60 rounded-lg">
-                                <p className="text-sm font-medium text-blue-700 dark:text-blue-300 flex items-center gap-2">
-                                  <Clock className="h-4 w-4" />
-                                  Selected: {format(field.value.date, "EEEE, MMMM dd, yyyy")} at {field.value.time.replace(':', ' ')}
-                                </p>
-                              </div>
-                            )}
-                          </div>
+                          <FormControl>
+                            <DateTimePicker
+                              date={field.value}
+                              onDateChange={field.onChange}
+                              placeholder="Select your preferred date and time"
+                            />
+                          </FormControl>
                           <FormMessage className="text-red-500 dark:text-red-400" />
                         </FormItem>
                       )}
