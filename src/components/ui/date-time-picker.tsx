@@ -93,21 +93,33 @@ export function DateTimePicker({
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0 bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border-slate-200/60 dark:border-slate-700/60 z-50">
-        <div className="sm:flex">
-          <Calendar
-            mode="single"
-            selected={date}
-            onSelect={handleDateSelect}
-            disabled={(date) => date < new Date()}
-            initialFocus
-            className="pointer-events-auto"
-          />
-          <div className="flex flex-col sm:flex-row sm:h-[300px] divide-y sm:divide-y-0 sm:divide-x dark:divide-slate-600">
+      <PopoverContent className="w-auto p-0 bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border-slate-200/60 dark:border-slate-700/60 shadow-2xl" 
+        side="bottom" 
+        align="start" 
+        sideOffset={4}
+        style={{ 
+          position: 'fixed',
+          zIndex: 9999,
+          maxHeight: '400px',
+          overflow: 'hidden'
+        }}
+      >
+        <div className="sm:flex max-w-[600px]">
+          <div className="border-r border-slate-200 dark:border-slate-600">
+            <Calendar
+              mode="single"
+              selected={date}
+              onSelect={handleDateSelect}
+              disabled={(date) => date < new Date()}
+              initialFocus
+              className="pointer-events-auto p-3"
+            />
+          </div>
+          <div className="flex flex-col sm:flex-row sm:h-[320px] divide-y sm:divide-y-0 sm:divide-x dark:divide-slate-600 min-w-[280px]">
             {/* Hours */}
-            <ScrollArea className="w-64 sm:w-auto">
-              <div className="flex sm:flex-col p-2">
-                <div className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-2 sm:text-center">Hour</div>
+            <ScrollArea className="w-20 sm:w-auto h-[320px]">
+              <div className="flex sm:flex-col p-2 gap-1">
+                <div className="text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2 sm:text-center px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded">Hour</div>
                 {hours.map((hour) => (
                   <Button
                     key={hour}
@@ -117,7 +129,7 @@ export function DateTimePicker({
                         ? "default"
                         : "ghost"
                     }
-                    className="sm:w-full shrink-0 aspect-square text-sm"
+                    className="sm:w-full shrink-0 w-12 h-8 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-700"
                     onClick={() => handleTimeChange("hour", hour.toString())}
                   >
                     {hour}
@@ -128,9 +140,9 @@ export function DateTimePicker({
             </ScrollArea>
             
             {/* Minutes */}
-            <ScrollArea className="w-64 sm:w-auto">
-              <div className="flex sm:flex-col p-2">
-                <div className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-2 sm:text-center">Min</div>
+            <ScrollArea className="w-20 sm:w-auto h-[320px]">
+              <div className="flex sm:flex-col p-2 gap-1">
+                <div className="text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2 sm:text-center px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded">Min</div>
                 {Array.from({ length: 12 }, (_, i) => i * 5).map((minute) => (
                   <Button
                     key={minute}
@@ -140,7 +152,7 @@ export function DateTimePicker({
                         ? "default"
                         : "ghost"
                     }
-                    className="sm:w-full shrink-0 aspect-square text-sm"
+                    className="sm:w-full shrink-0 w-12 h-8 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-700"
                     onClick={() =>
                       handleTimeChange("minute", minute.toString())
                     }
@@ -153,9 +165,9 @@ export function DateTimePicker({
             </ScrollArea>
             
             {/* AM/PM */}
-            <ScrollArea className="w-20">
-              <div className="flex sm:flex-col p-2">
-                <div className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-2 sm:text-center">Period</div>
+            <ScrollArea className="w-20 h-[320px]">
+              <div className="flex sm:flex-col p-2 gap-1">
+                <div className="text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2 sm:text-center px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded">Period</div>
                 {["AM", "PM"].map((ampm) => (
                   <Button
                     key={ampm}
@@ -167,7 +179,7 @@ export function DateTimePicker({
                         ? "default"
                         : "ghost"
                     }
-                    className="sm:w-full shrink-0 aspect-square text-sm"
+                    className="sm:w-full shrink-0 w-12 h-8 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-700"
                     onClick={() => handleTimeChange("ampm", ampm)}
                   >
                     {ampm}
