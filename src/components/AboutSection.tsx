@@ -88,6 +88,15 @@ export const AboutSection = () => {
                         <span>Recently started exploring how we can integrate AI into the product to give users smarter financial recommendations without overwhelming them.</span>
                       </li>
                     </ul>
+                    
+                    {/* Keywords for Decision Machine */}
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {['Fintech', 'B2C Product', 'User Research', 'PRD Writing', 'Mixpanel', 'PostHog', 'A/B Testing', 'Personal Finance', 'AI Integration', 'Product Analytics'].map((keyword) => (
+                        <span key={keyword} className="px-3 py-1 bg-blue-100/80 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-full border border-blue-200/50 dark:border-blue-700/50">
+                          {keyword}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
                 
@@ -128,6 +137,15 @@ export const AboutSection = () => {
                         <span>Also dabbled in setting up automated reports using SQL to replace some of the manual Excel-based workflows, which saved the team a good chunk of time every week.</span>
                       </li>
                     </ul>
+                    
+                    {/* Keywords for Ocius */}
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {['Analytics Dashboard', 'Cross-functional Teams', 'Data Analytics', 'User Stories', 'Wireframing', 'SQL', 'Medical Affairs', 'Campaign Performance', 'Process Automation', 'Stakeholder Management'].map((keyword) => (
+                        <span key={keyword} className="px-3 py-1 bg-indigo-100/80 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-medium rounded-full border border-indigo-200/50 dark:border-indigo-700/50">
+                          {keyword}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
