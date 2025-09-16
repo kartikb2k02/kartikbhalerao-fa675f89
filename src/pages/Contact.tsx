@@ -24,6 +24,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { toast } from "sonner"
+import { Header } from "@/components/Header"
+import { FooterSection } from "@/components/FooterSection"
 
 const formSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -64,6 +66,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/40 dark:from-slate-950 dark:via-slate-900/95 dark:to-slate-800/40">
+      <Header />
       {/* Hero Section */}
       <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -78,28 +81,32 @@ export default function Contact() {
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Contact Form */}
-            <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-slate-200/60 dark:border-slate-700/60 shadow-xl">
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-slate-900 dark:text-slate-100">
+            <Card className="bg-white/80 dark:bg-slate-800/90 backdrop-blur-xl border-slate-200/60 dark:border-slate-700/60 shadow-xl hover:shadow-2xl transition-all duration-300">
+              <CardHeader className="pb-6">
+                <CardTitle className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">
                   Send Me a Message
                 </CardTitle>
-                <CardDescription className="text-slate-600 dark:text-slate-400">
+                <CardDescription className="text-slate-600 dark:text-slate-400 text-base">
                   Fill out the form below and I'll get back to you within 24 hours.
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="pt-0">
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7">
                     <FormField
                       control={form.control}
                       name="fullName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Full Name</FormLabel>
+                          <FormLabel className="text-base font-semibold text-slate-700 dark:text-slate-200">Full Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="John Doe" {...field} />
+                            <Input 
+                              placeholder="John Doe" 
+                              className="h-12 bg-white/90 dark:bg-slate-700/90 border-slate-300/60 dark:border-slate-600/60 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400"
+                              {...field} 
+                            />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-red-500 dark:text-red-400" />
                         </FormItem>
                       )}
                     />
@@ -109,11 +116,16 @@ export default function Contact() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email Address</FormLabel>
+                          <FormLabel className="text-base font-semibold text-slate-700 dark:text-slate-200">Email Address</FormLabel>
                           <FormControl>
-                            <Input type="email" placeholder="john@example.com" {...field} />
+                            <Input 
+                              type="email" 
+                              placeholder="john@example.com" 
+                              className="h-12 bg-white/90 dark:bg-slate-700/90 border-slate-300/60 dark:border-slate-600/60 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400"
+                              {...field} 
+                            />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-red-500 dark:text-red-400" />
                         </FormItem>
                       )}
                     />
@@ -123,34 +135,34 @@ export default function Contact() {
                       name="message"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Message</FormLabel>
+                          <FormLabel className="text-base font-semibold text-slate-700 dark:text-slate-200">Message</FormLabel>
                           <FormControl>
                             <Textarea
                               placeholder="Tell me about your project or idea..."
-                              className="min-h-[120px]"
+                              className="min-h-[140px] bg-white/90 dark:bg-slate-700/90 border-slate-300/60 dark:border-slate-600/60 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400 resize-none"
                               {...field}
                             />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-red-500 dark:text-red-400" />
                         </FormItem>
                       )}
                     />
 
-                    <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="grid sm:grid-cols-2 gap-6">
                       <FormField
                         control={form.control}
                         name="preferredDate"
                         render={({ field }) => (
                           <FormItem className="flex flex-col">
-                            <FormLabel>Preferred Date</FormLabel>
+                            <FormLabel className="text-base font-semibold text-slate-700 dark:text-slate-200">Preferred Date</FormLabel>
                             <Popover>
                               <PopoverTrigger asChild>
                                 <FormControl>
                                   <Button
                                     variant="outline"
                                     className={cn(
-                                      "pl-3 text-left font-normal",
-                                      !field.value && "text-muted-foreground"
+                                      "h-12 pl-3 text-left font-normal bg-white/90 dark:bg-slate-700/90 border-slate-300/60 dark:border-slate-600/60 hover:bg-slate-50 dark:hover:bg-slate-600/90 text-slate-900 dark:text-slate-100",
+                                      !field.value && "text-slate-500 dark:text-slate-400"
                                     )}
                                   >
                                     {field.value ? (
@@ -162,7 +174,7 @@ export default function Contact() {
                                   </Button>
                                 </FormControl>
                               </PopoverTrigger>
-                              <PopoverContent className="w-auto p-0" align="start">
+                              <PopoverContent className="w-auto p-0 bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border-slate-200/60 dark:border-slate-700/60" align="start">
                                 <Calendar
                                   mode="single"
                                   selected={field.value}
@@ -175,7 +187,7 @@ export default function Contact() {
                                 />
                               </PopoverContent>
                             </Popover>
-                            <FormMessage />
+                            <FormMessage className="text-red-500 dark:text-red-400" />
                           </FormItem>
                         )}
                       />
@@ -185,18 +197,18 @@ export default function Contact() {
                         name="preferredTime"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Preferred Time</FormLabel>
+                            <FormLabel className="text-base font-semibold text-slate-700 dark:text-slate-200">Preferred Time</FormLabel>
                             <FormControl>
                               <div className="relative">
                                 <Input
                                   type="time"
+                                  className="h-12 pl-10 bg-white/90 dark:bg-slate-700/90 border-slate-300/60 dark:border-slate-600/60 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 text-slate-900 dark:text-slate-100"
                                   {...field}
-                                  className="pl-10"
                                 />
-                                <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                                <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-500 dark:text-slate-400" />
                               </div>
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage className="text-red-500 dark:text-red-400" />
                           </FormItem>
                         )}
                       />
@@ -205,16 +217,16 @@ export default function Contact() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full h-14 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-600 dark:hover:to-indigo-600 text-white font-semibold text-lg rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                     >
                       {isSubmitting ? (
-                        <div className="flex items-center gap-2">
-                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                          Sending...
+                        <div className="flex items-center gap-3">
+                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          Sending Message...
                         </div>
                       ) : (
-                        <div className="flex items-center gap-2">
-                          <Send className="h-4 w-4" />
+                        <div className="flex items-center gap-3">
+                          <Send className="h-5 w-5" />
                           Send Message
                         </div>
                       )}
@@ -226,54 +238,54 @@ export default function Contact() {
 
             {/* Contact Information */}
             <div className="space-y-8">
-              <Card className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border-slate-200/60 dark:border-slate-700/60 shadow-xl">
-                <CardHeader>
-                  <CardTitle className="text-2xl font-bold text-slate-900 dark:text-slate-100">
+              <Card className="bg-white/80 dark:bg-slate-800/90 backdrop-blur-xl border-slate-200/60 dark:border-slate-700/60 shadow-xl hover:shadow-2xl transition-all duration-300">
+                <CardHeader className="pb-6">
+                  <CardTitle className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">
                     Get in Touch
                   </CardTitle>
-                  <CardDescription className="text-slate-600 dark:text-slate-400">
+                  <CardDescription className="text-slate-600 dark:text-slate-400 text-base">
                     Feel free to reach out through any of these channels.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="flex items-center gap-4 p-4 rounded-lg bg-slate-50/50 dark:bg-slate-700/50">
-                    <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                <CardContent className="space-y-6 pt-0">
+                  <div className="flex items-center gap-4 p-5 rounded-xl bg-slate-50/80 dark:bg-slate-700/80 border border-slate-200/40 dark:border-slate-600/40 hover:bg-slate-100/80 dark:hover:bg-slate-700/100 transition-all duration-300">
+                    <div className="p-3 bg-blue-100 dark:bg-blue-900/50 rounded-xl shadow-sm">
                       <Mail className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div>
-                      <p className="font-semibold text-slate-900 dark:text-slate-100">Email</p>
-                      <p className="text-slate-600 dark:text-slate-400">hello@example.com</p>
+                      <p className="font-semibold text-slate-900 dark:text-slate-100 text-base">Email</p>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm">hello@example.com</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 p-4 rounded-lg bg-slate-50/50 dark:bg-slate-700/50">
-                    <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                  <div className="flex items-center gap-4 p-5 rounded-xl bg-slate-50/80 dark:bg-slate-700/80 border border-slate-200/40 dark:border-slate-600/40 hover:bg-slate-100/80 dark:hover:bg-slate-700/100 transition-all duration-300">
+                    <div className="p-3 bg-green-100 dark:bg-green-900/50 rounded-xl shadow-sm">
                       <Phone className="h-5 w-5 text-green-600 dark:text-green-400" />
                     </div>
                     <div>
-                      <p className="font-semibold text-slate-900 dark:text-slate-100">Phone</p>
-                      <p className="text-slate-600 dark:text-slate-400">+1 (555) 123-4567</p>
+                      <p className="font-semibold text-slate-900 dark:text-slate-100 text-base">Phone</p>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm">+1 (555) 123-4567</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 p-4 rounded-lg bg-slate-50/50 dark:bg-slate-700/50">
-                    <div className="p-3 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+                  <div className="flex items-center gap-4 p-5 rounded-xl bg-slate-50/80 dark:bg-slate-700/80 border border-slate-200/40 dark:border-slate-600/40 hover:bg-slate-100/80 dark:hover:bg-slate-700/100 transition-all duration-300">
+                    <div className="p-3 bg-purple-100 dark:bg-purple-900/50 rounded-xl shadow-sm">
                       <MapPin className="h-5 w-5 text-purple-600 dark:text-purple-400" />
                     </div>
                     <div>
-                      <p className="font-semibold text-slate-900 dark:text-slate-100">Location</p>
-                      <p className="text-slate-600 dark:text-slate-400">San Francisco, CA</p>
+                      <p className="font-semibold text-slate-900 dark:text-slate-100 text-base">Location</p>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm">San Francisco, CA</p>
                     </div>
                   </div>
 
-                  <div className="pt-6 border-t border-slate-200 dark:border-slate-700">
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                  <div className="pt-6 border-t border-slate-200/60 dark:border-slate-600/60">
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 font-medium">
                       Connect with me on LinkedIn
                     </p>
                     <Button
                       variant="outline"
                       size="lg"
-                      className="w-full bg-[#0077B5] hover:bg-[#005885] text-white border-[#0077B5] hover:border-[#005885]"
+                      className="w-full h-12 bg-[#0077B5] hover:bg-[#005885] text-white border-[#0077B5] hover:border-[#005885] font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
                       onClick={() => window.open('https://linkedin.com', '_blank')}
                     >
                       <Linkedin className="h-5 w-5 mr-2" />
@@ -283,12 +295,12 @@ export default function Contact() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 border-blue-200/60 dark:border-blue-800/60">
+              <Card className="bg-gradient-to-br from-blue-50/80 to-indigo-50/80 dark:from-blue-950/50 dark:to-indigo-950/50 border-blue-200/60 dark:border-blue-800/60 backdrop-blur-sm">
                 <CardContent className="p-6">
-                  <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                  <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-3 text-lg">
                     Response Time
                   </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                     I typically respond to messages within 24 hours during business days. 
                     For urgent matters, feel free to reach out directly via phone or LinkedIn.
                   </p>
@@ -298,6 +310,8 @@ export default function Contact() {
           </div>
         </div>
       </section>
+      
+      <FooterSection />
     </div>
   )
 }
