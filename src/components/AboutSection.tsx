@@ -92,7 +92,7 @@ export const AboutSection = () => {
                     {/* Keywords for Decision Machine */}
                     <div className="mt-6 flex flex-wrap gap-2">
                       {['Fintech', 'B2C Product', 'User Research', 'PRD Writing', 'Mixpanel', 'PostHog', 'A/B Testing', 'Personal Finance', 'AI Integration', 'Product Analytics'].map((keyword) => (
-                        <span key={keyword} className="px-3 py-1 bg-blue-100/80 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-full border border-blue-200/50 dark:border-blue-700/50">
+                        <span key={keyword} className="px-3 py-1 bg-blue-100/80 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-full border border-blue-200/50 dark:border-blue-700/50 shadow-sm hover:shadow-lg hover:bg-blue-200/90 dark:hover:bg-blue-800/40 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                           {keyword}
                         </span>
                       ))}
@@ -141,7 +141,7 @@ export const AboutSection = () => {
                     {/* Keywords for Ocius */}
                     <div className="mt-6 flex flex-wrap gap-2">
                       {['Analytics Dashboard', 'Cross-functional Teams', 'Data Analytics', 'User Stories', 'Wireframing', 'SQL', 'Medical Affairs', 'Campaign Performance', 'Process Automation', 'Stakeholder Management'].map((keyword) => (
-                        <span key={keyword} className="px-3 py-1 bg-indigo-100/80 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-medium rounded-full border border-indigo-200/50 dark:border-indigo-700/50">
+                        <span key={keyword} className="px-3 py-1 bg-indigo-100/80 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-medium rounded-full border border-indigo-200/50 dark:border-indigo-700/50 shadow-sm hover:shadow-lg hover:bg-indigo-200/90 dark:hover:bg-indigo-800/40 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                           {keyword}
                         </span>
                       ))}
