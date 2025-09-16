@@ -13,6 +13,7 @@ import Skills from "./pages/Skills";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import CaseStudies from "./pages/CaseStudies";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 // Create a single instance of QueryClient with proper configuration
@@ -63,6 +64,7 @@ const App = () => {
                 <Route path="/case-studies" element={<CaseStudies />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:id" element={<BlogPost />} />
+                <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>

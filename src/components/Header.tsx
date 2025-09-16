@@ -28,6 +28,11 @@ export const Header = () => {
       navigate('/skills');
       return;
     }
+
+    if (sectionId === 'contact') {
+      navigate('/contact');
+      return;
+    }
     
     const element = document.getElementById(sectionId);
     if (element) {
@@ -125,6 +130,25 @@ export const Header = () => {
               <span className="relative z-10 tracking-wide">Blog</span>
             </button>
 
+            {/* Enhanced Contact Button */}
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="group relative px-8 py-3 text-slate-700 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 font-medium rounded-2xl transition-all duration-500 overflow-hidden"
+            >
+              {/* Multi-layer glass background */}
+              <div className="absolute inset-0 bg-white/15 dark:bg-white/8 backdrop-blur-2xl rounded-2xl border border-white/30 dark:border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+              
+              {/* Enhanced gradient layers */}
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/15 to-pink-500/15 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent dark:from-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+              
+              {/* Enhanced glow effects */}
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/25 to-pink-500/25 rounded-2xl blur-xl opacity-0 group-hover:opacity-70 transition-all duration-700"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-400/20 to-pink-400/20 rounded-2xl blur-2xl opacity-0 group-hover:opacity-50 transition-all duration-1000"></div>
+              
+              <span className="relative z-10 tracking-wide">Contact</span>
+            </button>
+
             {/* Theme Toggle */}
             <ThemeToggle />
           </nav>
@@ -184,6 +208,18 @@ export const Header = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-60 transition-all duration-700"></div>
                   
                   <span className="relative z-10 tracking-wide">Blog</span>
+                </button>
+
+                {/* Enhanced Mobile Contact Button */}
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="group relative px-8 py-4 text-slate-700 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 font-medium rounded-2xl transition-all duration-500 overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-white/15 dark:bg-white/8 backdrop-blur-2xl rounded-2xl border border-white/30 dark:border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500/15 to-pink-500/15 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-pink-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-60 transition-all duration-700"></div>
+                  
+                  <span className="relative z-10 tracking-wide">Contact</span>
                 </button>
               </nav>
             </div>
