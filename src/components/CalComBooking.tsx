@@ -15,43 +15,58 @@ export const CalComBooking: React.FC<CalComBookingProps> = ({
   const [isCalLoaded, setIsCalLoaded] = useState(false);
 
   useEffect(() => {
+    // Check if Cal.com script is already loaded
+    if (document.querySelector('script[src*="cal.com"]')) {
+      setIsCalLoaded(true);
+      return;
+    }
+
     // Load Cal.com embed script
     const script = document.createElement('script');
     script.src = 'https://app.cal.com/embed/embed.js';
     script.async = true;
-    script.onload = () => setIsCalLoaded(true);
+    script.onload = () => {
+      // Wait a bit for Cal to be available
+      setTimeout(() => {
+        if (window.Cal) {
+          setIsCalLoaded(true);
+        }
+      }, 100);
+    };
     document.head.appendChild(script);
 
-    // Add Cal.com CSS
-    const style = document.createElement('link');
-    style.rel = 'stylesheet';
-    style.href = 'https://app.cal.com/embed/embed.css';
-    document.head.appendChild(style);
-
     return () => {
-      const existingScript = document.querySelector('script[src="https://app.cal.com/embed/embed.js"]');
-      const existingStyle = document.querySelector('link[href="https://app.cal.com/embed/embed.css"]');
-      if (existingScript) existingScript.remove();
-      if (existingStyle) existingStyle.remove();
+      // Don't remove script to avoid conflicts
     };
   }, []);
 
   const openCalPopup = () => {
-    if (window.Cal && isCalLoaded) {
-      window.Cal("init", {
-        origin: "https://app.cal.com"
-      });
-      
-      window.Cal("ui", {
-        "theme": "light",
-        "styles": {"branding":{"brandColor":"#3b82f6"}},
-        "hideEventTypeDetails": false
-      });
-      
-      // Open the popup
-      window.Cal("openPopup", {
-        calLink: `${calUsername}/${eventType}`,
-      });
+    if (window.Cal) {
+      try {
+        // Initialize Cal.com
+        window.Cal("init", {
+          origin: "https://app.cal.com"
+        });
+        
+        // Set UI theme
+        window.Cal("ui", {
+          theme: "light",
+          styles: { branding: { brandColor: "#3b82f6" } },
+          hideEventTypeDetails: false
+        });
+        
+        // Open the popup with your actual Cal.com username
+        window.Cal("openPopup", {
+          calLink: `${calUsername}/${eventType}`
+        });
+      } catch (error) {
+        console.error('Error opening Cal.com popup:', error);
+        // Fallback: open Cal.com in new tab
+        window.open(`https://cal.com/${calUsername}/${eventType}`, '_blank');
+      }
+    } else {
+      // Fallback: open Cal.com in new tab
+      window.open(`https://cal.com/${calUsername}/${eventType}`, '_blank');
     }
   };
 
