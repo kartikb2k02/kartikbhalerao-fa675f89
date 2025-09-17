@@ -162,17 +162,17 @@ export const HeroSection = () => {
               </a>
 
               <a 
-                href="https://github.com/kartikbhalerao" 
+                href="https://github.com/kartikbh6614" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:bg-blue-50/80 dark:hover:bg-blue-900/20 transition-all duration-300 hover:scale-110 hover:shadow-xl"
                >
               <svg
-                                       xmlns="http://www.w3.org/2000/svg"
-    fill="currentColor"
-    viewBox="0 0 24 24"
-    className="w-6 h-6 text-gray-900 dark:text-gray-200 group-hover:scale-110 transition-transform duration-300"
-  >
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                className="w-6 h-6 text-gray-900 dark:text-gray-200 group-hover:scale-110 transition-transform duration-300"
+                                    >
     <path
       fillRule="evenodd"
       d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.44c.6.11.82-.26.82-.58
