@@ -15,25 +15,23 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { toast } from "sonner";
 import { Header } from "@/components/Header";
 import { FooterSection } from "@/components/FooterSection";
-import { DateTimePicker } from "@/components/ui/date-time-picker";
+import Cal from "@calcom/embed-react";
+import React from "react";
 const formSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
   message: z.string().min(10, "Message must be at least 10 characters"),
-  preferredDateTime: z.date({
-    required_error: "Please select a preferred date and time"
-  })
 });
 type FormData = z.infer<typeof formSchema>;
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showScheduler, setShowScheduler] = useState(false);
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       fullName: "",
       email: "",
       message: "",
-      preferredDateTime: undefined
     }
   });
   const onSubmit = async (data: FormData) => {
@@ -42,9 +40,9 @@ export default function Contact() {
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
     console.log("Form submitted:", data);
-    toast.success("Message sent successfully! I'll get back to you soon.");
-    form.reset();
+    toast.success("Message sent successfully! You can now schedule a meeting below.");
     setIsSubmitting(false);
+    setShowScheduler(true);
   };
   return <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/40 dark:from-slate-950 dark:via-slate-900/95 dark:to-slate-800/40">
       <Header />
@@ -115,25 +113,45 @@ export default function Contact() {
                           <FormMessage className="text-red-500 dark:text-red-400 text-sm" />
                         </FormItem>} />
 
-                    <FormField control={form.control} name="preferredDateTime" render={({
-                    field
-                  }) => <FormItem className="space-y-3">
-                          <FormLabel className="text-base font-semibold text-slate-700 dark:text-slate-200 flex items-center gap-2">
-                            <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
-                            Preferred Meeting Time
-                          </FormLabel>
-                          <FormControl>
-                            <div className="relative">
-                              <DateTimePicker 
-                                date={field.value} 
-                                onDateChange={field.onChange} 
-                                placeholder="When would you like to discuss your project?" 
-                                className="h-12 bg-white/90 dark:bg-slate-700/90 border-slate-300/60 dark:border-slate-600/60 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 text-slate-900 dark:text-slate-100 rounded-xl transition-all duration-200"
-                              />
-                            </div>
-                          </FormControl>
-                          <FormMessage className="text-red-500 dark:text-red-400 text-sm" />
-                        </FormItem>} />
+                    <div className="space-y-4">
+                      <div className="text-center">
+                        <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                          After submitting your message, you'll be able to schedule a meeting directly below.
+                        </p>
+                        {!showScheduler && (
+                          <Button
+                            type="button"
+                            variant="outline"
+                            onClick={() => setShowScheduler(true)}
+                            className="w-full mb-4"
+                          >
+                            <CalendarIcon className="w-4 h-4 mr-2" />
+                            Schedule Meeting Now
+                          </Button>
+                        )}
+                      </div>
+                      
+                      {showScheduler && (
+                        <div className="border border-slate-200 dark:border-slate-700 rounded-lg p-4 bg-slate-50/50 dark:bg-slate-800/50">
+                          <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-4 text-center">
+                            Schedule Your Meeting
+                          </h3>
+                          <p className="text-center text-slate-600 dark:text-slate-400 mb-4">
+                            Replace "your-username" with your Cal.com username and "30min" with your event type.
+                          </p>
+                          <Cal
+                            calLink="your-username/30min"
+                            style={{width:"100%",height:"600px",overflow:"scroll"}}
+                            config={{
+                              name: form.watch("fullName"),
+                              email: form.watch("email"),
+                              notes: form.watch("message"),
+                              theme: "light"
+                            }}
+                          />
+                        </div>
+                      )}
+                    </div>
 
                     <div className="pt-4">
                       <Button 
