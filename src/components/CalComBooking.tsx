@@ -13,6 +13,7 @@ export const CalComBooking: React.FC<CalComBookingProps> = ({
   eventType = "30min" 
 }) => {
   const [isCalLoaded, setIsCalLoaded] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
 
   useEffect(() => {
     // Check if Cal.com script is already loaded
@@ -40,30 +41,40 @@ export const CalComBooking: React.FC<CalComBookingProps> = ({
     };
   }, []);
 
-  const openCalPopup = () => {
-    if (window.Cal) {
-      try {
-        // Initialize Cal.com
-        window.Cal("init", {
-          origin: "https://app.cal.com"
-        });
-        
-        // Set UI theme
-        window.Cal("ui", {
-          theme: "light",
-          styles: { branding: { brandColor: "#3b82f6" } },
-          hideEventTypeDetails: false
-        });
-        
-        // Open the popup with your actual Cal.com username
-        window.Cal("openPopup", {
-          calLink: `${calUsername}/${eventType}`
-        });
-      } catch (error) {
-        console.error('Error opening Cal.com popup:', error);
-        // Fallback: open Cal.com in new tab
-        window.open(`https://cal.com/${calUsername}/${eventType}`, '_blank');
-      }
+  const handleShowCalendar = () => {
+    if (window.Cal && isCalLoaded) {
+      setShowCalendar(true);
+      
+      // Wait for the DOM element to be available
+      setTimeout(() => {
+        const calElement = document.getElementById('cal-inline-embed');
+        if (calElement) {
+          try {
+            // Initialize Cal.com
+            window.Cal("init", {
+              origin: "https://app.cal.com"
+            });
+            
+            // Set UI theme
+            window.Cal("ui", {
+              theme: "light",
+              styles: { branding: { brandColor: "#3b82f6" } },
+              hideEventTypeDetails: false
+            });
+            
+            // Create inline embed
+            window.Cal("inline", {
+              elementOrSelector: "#cal-inline-embed",
+              calLink: `${calUsername}/${eventType}`,
+              layout: "month_view"
+            });
+          } catch (error) {
+            console.error('Error loading Cal.com inline:', error);
+            // Fallback: open Cal.com in new tab
+            window.open(`https://cal.com/${calUsername}/${eventType}`, '_blank');
+          }
+        }
+      }, 100);
     } else {
       // Fallback: open Cal.com in new tab
       window.open(`https://cal.com/${calUsername}/${eventType}`, '_blank');
@@ -111,8 +122,8 @@ export const CalComBooking: React.FC<CalComBookingProps> = ({
         </div>
 
         <Button
-          onClick={openCalPopup}
-          disabled={!isCalLoaded}
+          onClick={handleShowCalendar}
+          disabled={!isCalLoaded || showCalendar}
           size="lg"
           className="w-full h-14 text-lg bg-gradient-to-r from-primary via-blue-600 to-purple-600 hover:from-primary/90 hover:via-blue-600/90 hover:to-purple-600/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] disabled:hover:scale-100"
         >
@@ -121,6 +132,11 @@ export const CalComBooking: React.FC<CalComBookingProps> = ({
               <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
               <span>Loading Calendar...</span>
             </div>
+          ) : showCalendar ? (
+            <div className="flex items-center gap-3">
+              <Calendar className="h-5 w-5" />
+              <span>Calendar Loading...</span>
+            </div>
           ) : (
             <div className="flex items-center gap-3">
               <Calendar className="h-5 w-5" />
@@ -128,6 +144,15 @@ export const CalComBooking: React.FC<CalComBookingProps> = ({
             </div>
           )}
         </Button>
+
+        {/* Cal.com Inline Embed Container */}
+        {showCalendar && (
+          <div 
+            id="cal-inline-embed" 
+            className="w-full min-h-[600px] rounded-lg border border-border/60 bg-background/50 overflow-hidden"
+            style={{ colorScheme: 'light' }}
+          />
+        )}
 
         <p className="text-xs text-center text-muted-foreground">
           Powered by Cal.com • All meetings include Google Meet/Zoom link
