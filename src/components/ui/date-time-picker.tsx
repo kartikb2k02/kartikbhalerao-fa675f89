@@ -93,12 +93,15 @@ export function DateTimePicker({
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0 bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border-slate-200/60 dark:border-slate-700/60 shadow-2xl" 
+      <PopoverContent 
+        className="w-auto p-0 bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border-slate-200/60 dark:border-slate-700/60 shadow-2xl" 
         side="bottom" 
         align="start" 
         sideOffset={4}
+        sticky="always"
+        avoidCollisions={true}
+        collisionPadding={8}
         style={{ 
-          position: 'fixed',
           zIndex: 9999,
           maxHeight: '400px',
           overflow: 'hidden'
