@@ -60,69 +60,101 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             {/* Contact Form */}
-            <Card className="bg-white/80 dark:bg-slate-800/90 backdrop-blur-xl border-slate-200/60 dark:border-slate-700/60 shadow-xl hover:shadow-2xl transition-all duration-300">
-              <CardHeader className="pb-6">
-                <CardTitle className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+            <Card className="bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border-slate-200/40 dark:border-slate-700/40 shadow-2xl hover:shadow-3xl transition-all duration-500 rounded-2xl overflow-hidden">
+              <div className="bg-gradient-to-r from-blue-50/80 via-indigo-50/60 to-purple-50/80 dark:from-slate-700/50 dark:via-slate-600/30 dark:to-slate-700/50 px-8 py-8 border-b border-slate-200/50 dark:border-slate-600/50">
+                <CardTitle className="text-3xl font-bold bg-gradient-to-r from-slate-900 via-blue-700 to-indigo-700 dark:from-slate-100 dark:via-blue-300 dark:to-indigo-300 bg-clip-text text-transparent mb-3">
                   Send Me a Message
                 </CardTitle>
-                <CardDescription className="text-slate-600 dark:text-slate-400 text-base">
-                  Fill out the form below and I'll get back to you within 24 hours.
+                <CardDescription className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+                  I'd love to hear about your project ideas and discuss how we can bring them to life together.
                 </CardDescription>
-              </CardHeader>
-              <CardContent className="pt-0">
+              </div>
+              <CardContent className="p-8">
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7">
-                    <FormField control={form.control} name="fullName" render={({
-                    field
-                  }) => <FormItem>
-                          <FormLabel className="text-base font-semibold text-slate-700 dark:text-slate-200">Full Name</FormLabel>
-                          <FormControl>
-                            <Input placeholder="John Doe" className="h-12 bg-white/90 dark:bg-slate-700/90 border-slate-300/60 dark:border-slate-600/60 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400" {...field} />
-                          </FormControl>
-                          <FormMessage className="text-red-500 dark:text-red-400" />
-                        </FormItem>} />
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <FormField control={form.control} name="fullName" render={({
+                      field
+                    }) => <FormItem className="space-y-3">
+                            <FormLabel className="text-base font-semibold text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                              <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
+                              Full Name
+                            </FormLabel>
+                            <FormControl>
+                              <Input placeholder="Enter your full name" className="h-12 bg-white/90 dark:bg-slate-700/90 border-slate-300/60 dark:border-slate-600/60 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400 rounded-xl transition-all duration-200" {...field} />
+                            </FormControl>
+                            <FormMessage className="text-red-500 dark:text-red-400 text-sm" />
+                          </FormItem>} />
 
-                    <FormField control={form.control} name="email" render={({
-                    field
-                  }) => <FormItem>
-                          <FormLabel className="text-base font-semibold text-slate-700 dark:text-slate-200">Email Address</FormLabel>
-                          <FormControl>
-                            <Input type="email" placeholder="john@example.com" className="h-12 bg-white/90 dark:bg-slate-700/90 border-slate-300/60 dark:border-slate-600/60 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400" {...field} />
-                          </FormControl>
-                          <FormMessage className="text-red-500 dark:text-red-400" />
-                        </FormItem>} />
+                      <FormField control={form.control} name="email" render={({
+                      field
+                    }) => <FormItem className="space-y-3">
+                            <FormLabel className="text-base font-semibold text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                              <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
+                              Email Address
+                            </FormLabel>
+                            <FormControl>
+                              <Input type="email" placeholder="your.email@example.com" className="h-12 bg-white/90 dark:bg-slate-700/90 border-slate-300/60 dark:border-slate-600/60 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400 rounded-xl transition-all duration-200" {...field} />
+                            </FormControl>
+                            <FormMessage className="text-red-500 dark:text-red-400 text-sm" />
+                          </FormItem>} />
+                    </div>
 
                     <FormField control={form.control} name="message" render={({
                     field
-                  }) => <FormItem>
-                          <FormLabel className="text-base font-semibold text-slate-700 dark:text-slate-200">Message</FormLabel>
+                  }) => <FormItem className="space-y-3">
+                          <FormLabel className="text-base font-semibold text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                            <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
+                            Project Details
+                          </FormLabel>
                           <FormControl>
-                            <Textarea placeholder="Tell me about your project or idea..." className="min-h-[140px] bg-white/90 dark:bg-slate-700/90 border-slate-300/60 dark:border-slate-600/60 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400 resize-none" {...field} />
+                            <Textarea placeholder="Tell me about your project vision, goals, timeline, and any specific requirements you have in mind..." className="min-h-[160px] bg-white/90 dark:bg-slate-700/90 border-slate-300/60 dark:border-slate-600/60 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400 resize-none rounded-xl transition-all duration-200" {...field} />
                           </FormControl>
-                          <FormMessage className="text-red-500 dark:text-red-400" />
+                          <FormMessage className="text-red-500 dark:text-red-400 text-sm" />
                         </FormItem>} />
 
                     <FormField control={form.control} name="preferredDateTime" render={({
                     field
                   }) => <FormItem className="space-y-3">
-                          <FormLabel className="text-base font-semibold text-slate-700 dark:text-slate-200">Preferred Date & Time</FormLabel>
+                          <FormLabel className="text-base font-semibold text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                            <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
+                            Preferred Meeting Time
+                          </FormLabel>
                           <FormControl>
-                            <DateTimePicker date={field.value} onDateChange={field.onChange} placeholder="Select your preferred date and time" />
+                            <div className="relative">
+                              <DateTimePicker 
+                                date={field.value} 
+                                onDateChange={field.onChange} 
+                                placeholder="When would you like to discuss your project?" 
+                                className="h-12 bg-white/90 dark:bg-slate-700/90 border-slate-300/60 dark:border-slate-600/60 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 text-slate-900 dark:text-slate-100 rounded-xl transition-all duration-200"
+                              />
+                            </div>
                           </FormControl>
-                          <FormMessage className="text-red-500 dark:text-red-400" />
+                          <FormMessage className="text-red-500 dark:text-red-400 text-sm" />
                         </FormItem>} />
 
-                    <Button type="submit" disabled={isSubmitting} className="w-full h-14 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-600 dark:hover:to-indigo-600 text-white font-semibold text-lg rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
-                      {isSubmitting ? <div className="flex items-center gap-3">
-                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                          Sending Message...
-                        </div> : <div className="flex items-center gap-3">
-                          <Send className="h-5 w-5" />
-                          Send Message
-                        </div>}
-                    </Button>
+                    <div className="pt-4">
+                      <Button 
+                        type="submit" 
+                        disabled={isSubmitting} 
+                        className="w-full h-16 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 dark:from-blue-500 dark:via-indigo-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:via-indigo-600 dark:hover:to-purple-600 text-white font-semibold text-lg rounded-xl transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 relative overflow-hidden group"
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        {isSubmitting ? (
+                          <div className="flex items-center gap-3 relative z-10">
+                            <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                            <span>Sending your message...</span>
+                          </div>
+                        ) : (
+                          <div className="flex items-center gap-3 relative z-10">
+                            <Send className="h-6 w-6" />
+                            <span>Send Message & Schedule Meeting</span>
+                          </div>
+                        )}
+                      </Button>
+                    </div>
                   </form>
                 </Form>
               </CardContent>
