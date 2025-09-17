@@ -193,11 +193,8 @@ export default function Contact() {
               <Card className="bg-white/80 dark:bg-slate-800/90 backdrop-blur-xl border-slate-200/60 dark:border-slate-700/60 shadow-xl hover:shadow-2xl transition-all duration-300">
                 <CardHeader className="pb-6">
                   <CardTitle className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">
-                    Get in Touch
+                    Contact Information
                   </CardTitle>
-                  <CardDescription className="text-slate-600 dark:text-slate-400 text-base">
-                    Feel free to reach out through any of these channels.
-                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6 pt-0">
                   <div className="flex items-center gap-4 p-5 rounded-xl bg-slate-50/80 dark:bg-slate-700/80 border border-slate-200/40 dark:border-slate-600/40 hover:bg-slate-100/80 dark:hover:bg-slate-700/100 transition-all duration-300">
@@ -230,34 +227,9 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <div className="pt-6 border-t border-slate-200/60 dark:border-slate-600/60">
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 font-medium">
-                      Connect with me on LinkedIn
-                    </p>
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="w-full h-12 bg-[#0077B5] hover:bg-[#005885] text-white border-[#0077B5] hover:border-[#005885] font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
-                      onClick={() => window.open('https://linkedin.com', '_blank')}
-                    >
-                      <Linkedin className="h-5 w-5 mr-2" />
-                      Connect on LinkedIn
-                    </Button>
-                  </div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-blue-50/80 to-indigo-50/80 dark:from-blue-950/50 dark:to-indigo-950/50 border-blue-200/60 dark:border-blue-800/60 backdrop-blur-sm">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-3 text-lg">
-                    Response Time
-                  </h3>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                    I typically respond to messages within 24 hours during business days. 
-                    For urgent matters, feel free to reach out directly via phone or LinkedIn.
-                  </p>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </div>
