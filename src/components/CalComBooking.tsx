@@ -106,12 +106,6 @@ export const CalComBooking: React.FC<CalComBookingProps> = ({
 
   return (
     <div className="w-full min-h-[600px] rounded-lg border border-border/60 bg-background/50 overflow-hidden relative">
-      {isCalLoading && (
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex flex-col items-center justify-center">
-          <div className="w-12 h-12 border-3 border-primary/30 border-t-primary rounded-full animate-spin mb-4" />
-          <p className="text-muted-foreground text-sm">Loading your calendar...</p>
-        </div>
-      )}
       <div 
         id="cal-inline-embed" 
         className="w-full min-h-[600px]"
