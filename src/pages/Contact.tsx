@@ -65,8 +65,8 @@ export default function Contact() {
               {/* Schedule Call Tab */}
               {activeTab === 'schedule' && (
                 <CalComBooking 
-                  calUsername="your-username" 
-                  eventType="30min" 
+                  calUsername="kartik-bhalerao-qqae1f" 
+                  eventType="secret" 
                 />
               )}
             </div>
