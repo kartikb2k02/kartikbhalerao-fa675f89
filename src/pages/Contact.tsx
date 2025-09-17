@@ -79,7 +79,7 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="max-w-2xl mx-auto">
             {/* Contact Form */}
             <Card className="bg-white/80 dark:bg-slate-800/90 backdrop-blur-xl border-slate-200/60 dark:border-slate-700/60 shadow-xl hover:shadow-2xl transition-all duration-300">
               <CardHeader className="pb-6">
