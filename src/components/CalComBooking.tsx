@@ -14,68 +14,95 @@ export const CalComBooking: React.FC<CalComBookingProps> = ({
 }) => {
   const [isCalLoaded, setIsCalLoaded] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
+  const [isCalLoading, setIsCalLoading] = useState(false);
 
   useEffect(() => {
     // Check if Cal.com script is already loaded
-    if (document.querySelector('script[src*="cal.com"]')) {
+    if (document.querySelector('script[src*="cal.com"]') && window.Cal) {
       setIsCalLoaded(true);
       return;
     }
 
-    // Load Cal.com embed script
+    // Set a timeout for script loading
+    const loadingTimeout = setTimeout(() => {
+      if (!isCalLoaded) {
+        console.warn('Cal.com script taking too long to load');
+        setIsCalLoaded(true); // Allow fallback
+      }
+    }, 5000);
+
+    // Load Cal.com embed script with prefetch
     const script = document.createElement('script');
     script.src = 'https://app.cal.com/embed/embed.js';
     script.async = true;
+    script.crossOrigin = 'anonymous';
     script.onload = () => {
+      clearTimeout(loadingTimeout);
       // Wait a bit for Cal to be available
-      setTimeout(() => {
+      const checkCalAvailable = () => {
         if (window.Cal) {
           setIsCalLoaded(true);
+        } else {
+          setTimeout(checkCalAvailable, 50);
         }
-      }, 100);
+      };
+      checkCalAvailable();
+    };
+    script.onerror = () => {
+      clearTimeout(loadingTimeout);
+      console.error('Failed to load Cal.com script');
+      setIsCalLoaded(true); // Allow fallback
     };
     document.head.appendChild(script);
 
     return () => {
-      // Don't remove script to avoid conflicts
+      clearTimeout(loadingTimeout);
     };
-  }, []);
+  }, [isCalLoaded]);
 
   const handleShowCalendar = () => {
+    setShowCalendar(true);
+    setIsCalLoading(true);
+
     if (window.Cal && isCalLoaded) {
-      setShowCalendar(true);
-      
-      // Wait for the DOM element to be available
+      // Immediately initialize for faster loading
       setTimeout(() => {
         const calElement = document.getElementById('cal-inline-embed');
         if (calElement) {
           try {
-            // Initialize Cal.com
+            // Initialize Cal.com with faster settings
             window.Cal("init", {
               origin: "https://app.cal.com"
             });
             
-            // Set UI theme
+            // Set UI theme with optimized settings
             window.Cal("ui", {
               theme: "light",
               styles: { branding: { brandColor: "#3b82f6" } },
               hideEventTypeDetails: false
             });
             
-            // Create inline embed
+            // Create inline embed with timeout
             window.Cal("inline", {
               elementOrSelector: "#cal-inline-embed",
               calLink: `${calUsername}/${eventType}`,
               layout: "month_view"
             });
+
+            // Set loading complete after a reasonable timeout
+            setTimeout(() => {
+              setIsCalLoading(false);
+            }, 2000);
           } catch (error) {
             console.error('Error loading Cal.com inline:', error);
+            setIsCalLoading(false);
             // Fallback: open Cal.com in new tab
             window.open(`https://cal.com/${calUsername}/${eventType}`, '_blank');
           }
         }
-      }, 100);
+      }, 50); // Reduced timeout for faster response
     } else {
+      setIsCalLoading(false);
       // Fallback: open Cal.com in new tab
       window.open(`https://cal.com/${calUsername}/${eventType}`, '_blank');
     }
@@ -147,11 +174,19 @@ export const CalComBooking: React.FC<CalComBookingProps> = ({
 
         {/* Cal.com Inline Embed Container */}
         {showCalendar && (
-          <div 
-            id="cal-inline-embed" 
-            className="w-full min-h-[600px] rounded-lg border border-border/60 bg-background/50 overflow-hidden"
-            style={{ colorScheme: 'light' }}
-          />
+          <div className="w-full min-h-[600px] rounded-lg border border-border/60 bg-background/50 overflow-hidden relative">
+            {isCalLoading && (
+              <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex flex-col items-center justify-center">
+                <div className="w-12 h-12 border-3 border-primary/30 border-t-primary rounded-full animate-spin mb-4" />
+                <p className="text-muted-foreground text-sm">Loading your calendar...</p>
+              </div>
+            )}
+            <div 
+              id="cal-inline-embed" 
+              className="w-full min-h-[600px]"
+              style={{ colorScheme: 'light' }}
+            />
+          </div>
         )}
 
         <p className="text-xs text-center text-muted-foreground">
