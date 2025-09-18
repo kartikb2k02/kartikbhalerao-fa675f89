@@ -27,10 +27,10 @@ export default function Contact() {
                 <span className="text-sm font-medium text-primary">Let's create something amazing</span>
               </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent mb-8 leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 bg-clip-text text-transparent mb-8 leading-tight">
                 Let's Work
                 <br />
-                <span className="bg-gradient-to-r from-primary via-accent to-primary/80 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 bg-clip-text text-transparent">
                   Together
                 </span>
               </h1>

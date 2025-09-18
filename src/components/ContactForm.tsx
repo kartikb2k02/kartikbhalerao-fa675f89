@@ -103,13 +103,13 @@ export const ContactForm = () => {
       
       <CardHeader className="relative space-y-4 pb-8">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center">
-            <Send className="h-5 w-5 text-primary-foreground" />
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl flex items-center justify-center">
+            <Send className="h-5 w-5 text-white" />
           </div>
           <div className="h-px flex-1 bg-gradient-to-r from-primary/20 to-transparent"></div>
         </div>
         
-        <CardTitle className="text-3xl sm:text-4xl bg-gradient-to-r from-primary via-accent to-primary/80 bg-clip-text text-transparent font-bold">
+        <CardTitle className="text-3xl sm:text-4xl bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 bg-clip-text text-transparent font-bold">
           Send Me a Message
         </CardTitle>
         <CardDescription className="text-lg text-muted-foreground leading-relaxed">
@@ -122,7 +122,7 @@ export const ContactForm = () => {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-4 group">
               <label className="text-sm font-semibold text-foreground flex items-center gap-3">
-                <div className="w-3 h-3 bg-gradient-to-r from-primary to-accent rounded-full group-focus-within:scale-110 transition-transform duration-200" />
+                <div className="w-3 h-3 bg-gradient-to-r from-blue-600 to-blue-500 rounded-full group-focus-within:scale-110 transition-transform duration-200" />
                 Full Name
               </label>
               <Input
@@ -142,7 +142,7 @@ export const ContactForm = () => {
 
             <div className="space-y-4 group">
               <label className="text-sm font-semibold text-foreground flex items-center gap-3">
-                <div className="w-3 h-3 bg-gradient-to-r from-primary to-accent rounded-full group-focus-within:scale-110 transition-transform duration-200" />
+                <div className="w-3 h-3 bg-gradient-to-r from-blue-600 to-blue-500 rounded-full group-focus-within:scale-110 transition-transform duration-200" />
                 Email Address
               </label>
               <Input
@@ -163,7 +163,7 @@ export const ContactForm = () => {
 
           <div className="space-y-4 group">
             <label className="text-sm font-semibold text-foreground flex items-center gap-3">
-              <div className="w-3 h-3 bg-gradient-to-r from-primary to-accent rounded-full group-focus-within:scale-110 transition-transform duration-200" />
+              <div className="w-3 h-3 bg-gradient-to-r from-blue-600 to-blue-500 rounded-full group-focus-within:scale-110 transition-transform duration-200" />
               Project Details
             </label>
             <textarea
@@ -185,9 +185,9 @@ export const ContactForm = () => {
               type="submit"
               disabled={isSubmitting}
               size="lg"
-              className="w-full h-16 text-lg bg-gradient-to-r from-primary via-accent to-primary/90 hover:from-primary/90 hover:via-accent/90 hover:to-primary/80 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] disabled:hover:scale-100 rounded-xl relative overflow-hidden group"
+              className="w-full h-16 text-lg bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 hover:from-blue-700 hover:via-blue-600 hover:to-blue-500 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] disabled:hover:scale-100 rounded-xl relative overflow-hidden group"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               {isSubmitting ? (
                 <div className="flex items-center gap-3 relative z-10">
                   <div className="w-6 h-6 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
