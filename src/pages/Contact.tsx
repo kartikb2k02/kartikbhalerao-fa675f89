@@ -78,7 +78,7 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="bg-card/40 backdrop-blur-xl rounded-3xl border border-border/40 p-8 shadow-2xl">
+                <div className="bg-card/80 backdrop-blur-xl rounded-3xl border border-border/40 p-8 shadow-2xl">
                   <div className="mb-6">
                     <Calendar className="h-12 w-12 text-primary mx-auto mb-4" />
                     <h3 className="text-2xl font-bold text-foreground mb-2">Schedule a Meeting</h3>
