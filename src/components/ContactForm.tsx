@@ -51,7 +51,16 @@ export const ContactForm = () => {
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    if (errors[field]) {
+    
+    // Real-time email validation
+    if (field === 'email' && value) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) {
+        setErrors(prev => ({ ...prev, email: 'Please enter a valid email address' }));
+      } else {
+        setErrors(prev => ({ ...prev, email: undefined }));
+      }
+    } else if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: undefined }));
     }
   };
