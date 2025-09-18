@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
-import { Calendar, Mail } from 'lucide-react';
+import React from 'react';
+import { Calendar } from 'lucide-react';
 import { ContactForm } from '@/components/ContactForm';
 import { CalComBooking } from '@/components/CalComBooking';
-import { Button } from '@/components/ui/button';
 import { Header } from '@/components/Header';
 import { FooterSection } from '@/components/FooterSection';
 
 // Main Contact Component
 export default function Contact() {
-  const [activeTab, setActiveTab] = useState('form'); // 'form' or 'schedule'
-
   return (
     <>
       <Header />
@@ -26,49 +23,22 @@ export default function Contact() {
               </p>
             </div>
 
-            {/* Tab Navigation */}
-            <div className="max-w-3xl mx-auto mb-8">
-              <div className="flex p-1 bg-card/60 backdrop-blur-xl rounded-2xl border border-border/40 shadow-lg">
-                <Button
-                  onClick={() => setActiveTab('form')}
-                  variant={activeTab === 'form' ? 'default' : 'ghost'}
-                  size="lg"
-                  className={`flex-1 transition-all duration-300 ${
-                    activeTab === 'form'
-                      ? 'bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-lg'
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  <Mail className="h-5 w-5 mr-2" />
-                  Send Message
-                </Button>
-                <Button
-                  onClick={() => setActiveTab('schedule')}
-                  variant={activeTab === 'schedule' ? 'default' : 'ghost'}
-                  size="lg"
-                  className={`flex-1 transition-all duration-300 ${
-                    activeTab === 'schedule'
-                      ? 'bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-lg'
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  <Calendar className="h-5 w-5 mr-2" />
-                  Schedule Call
-                </Button>
-              </div>
-            </div>
+            <div className="max-w-3xl mx-auto space-y-8">
+              {/* Contact Form */}
+              <ContactForm />
 
-            <div className="max-w-3xl mx-auto">
-              {/* Contact Form Tab */}
-              {activeTab === 'form' && <ContactForm />}
-
-              {/* Schedule Call Tab */}
-              {activeTab === 'schedule' && (
+              {/* Schedule Meeting Button */}
+              <div className="text-center">
+                <div className="flex items-center mb-4">
+                  <div className="flex-1 border-t border-border/40"></div>
+                  <span className="px-4 text-sm text-muted-foreground">or</span>
+                  <div className="flex-1 border-t border-border/40"></div>
+                </div>
                 <CalComBooking 
                   calUsername="kartik-bhalerao-qqae1f" 
                   eventType="secret" 
                 />
-              )}
+              </div>
             </div>
           </div>
         </section>

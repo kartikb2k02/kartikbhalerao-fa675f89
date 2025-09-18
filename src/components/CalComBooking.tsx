@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { getCalApi } from "@calcom/embed-react";
+import { Calendar } from 'lucide-react';
 
 interface CalComBookingProps {
   calUsername?: string;
@@ -39,6 +40,7 @@ export const CalComBooking: React.FC<CalComBookingProps> = ({
       data-cal-config='{"layout":"month_view"}'
       className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8 w-full max-w-md h-14 text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
     >
+      <Calendar className="h-5 w-5 mr-2" />
       Schedule a Meeting
     </button>
   );
