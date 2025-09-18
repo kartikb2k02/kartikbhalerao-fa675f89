@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 interface FormData {
   fullName: string;
@@ -25,6 +27,7 @@ export const ContactForm = () => {
     message: ''
   });
   const [errors, setErrors] = useState<FormErrors>({});
+  const { toast } = useToast();
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -62,16 +65,36 @@ export const ContactForm = () => {
 
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log("Form submitted:", formData);
-    
-    // Show success message (you can replace with your preferred notification method)
-    alert("Message sent successfully! I'll get back to you soon.");
-    
-    // Reset form
-    setFormData({ fullName: '', email: '', message: '' });
-    setIsSubmitting(false);
+    try {
+      const { error } = await supabase
+        .from('contacts')
+        .insert({
+          full_name: formData.fullName,
+          email: formData.email,
+          message: formData.message
+        });
+
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+
+      // Reset form
+      setFormData({ fullName: '', email: '', message: '' });
+    } catch (error: any) {
+      console.error('Error submitting contact form:', error);
+      toast({
+        title: "Error sending message",
+        description: "Something went wrong. Please try again or contact me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
