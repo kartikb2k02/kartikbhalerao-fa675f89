@@ -98,22 +98,31 @@ export const ContactForm = () => {
   };
 
   return (
-    <Card className="shadow-3xl border-border/40 bg-card/95 backdrop-blur-xl">
-      <CardHeader className="space-y-3 pb-8">
-        <CardTitle className="text-3xl bg-gradient-to-r from-primary via-blue-600 to-purple-600 bg-clip-text text-transparent">
+    <Card className="shadow-2xl border-border/40 bg-card/60 backdrop-blur-xl rounded-3xl overflow-hidden group hover:shadow-3xl transition-all duration-500">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      
+      <CardHeader className="relative space-y-4 pb-8">
+        <div className="flex items-center gap-3 mb-2">
+          <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center">
+            <Send className="h-5 w-5 text-primary-foreground" />
+          </div>
+          <div className="h-px flex-1 bg-gradient-to-r from-primary/20 to-transparent"></div>
+        </div>
+        
+        <CardTitle className="text-3xl sm:text-4xl bg-gradient-to-r from-primary via-accent to-primary/80 bg-clip-text text-transparent font-bold">
           Send Me a Message
         </CardTitle>
         <CardDescription className="text-lg text-muted-foreground leading-relaxed">
-          I'd love to hear about your project ideas and discuss how we can bring them to life together.
+          I'd love to hear about your project ideas and discuss how we can bring them to life together. Let's start the conversation!
         </CardDescription>
       </CardHeader>
       
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-3">
-              <label className="text-sm font-semibold text-foreground flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full" />
+      <CardContent className="relative">
+        <form onSubmit={handleSubmit} className="space-y-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-4 group">
+              <label className="text-sm font-semibold text-foreground flex items-center gap-3">
+                <div className="w-3 h-3 bg-gradient-to-r from-primary to-accent rounded-full group-focus-within:scale-110 transition-transform duration-200" />
                 Full Name
               </label>
               <Input
@@ -122,18 +131,18 @@ export const ContactForm = () => {
                 value={formData.fullName}
                 onChange={(e) => handleInputChange('fullName', e.target.value)}
                 className={cn(
-                  "h-12 text-base transition-all duration-200",
+                  "h-14 text-base transition-all duration-300 bg-background/80 backdrop-blur-sm border-border/60 focus:border-primary/40 focus:shadow-lg focus:shadow-primary/10",
                   errors.fullName && "border-destructive focus-visible:ring-destructive/20"
                 )}
               />
               {errors.fullName && (
-                <p className="text-destructive text-sm">{errors.fullName}</p>
+                <p className="text-destructive text-sm animate-fade-in">{errors.fullName}</p>
               )}
             </div>
 
-            <div className="space-y-3">
-              <label className="text-sm font-semibold text-foreground flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full" />
+            <div className="space-y-4 group">
+              <label className="text-sm font-semibold text-foreground flex items-center gap-3">
+                <div className="w-3 h-3 bg-gradient-to-r from-primary to-accent rounded-full group-focus-within:scale-110 transition-transform duration-200" />
                 Email Address
               </label>
               <Input
@@ -142,19 +151,19 @@ export const ContactForm = () => {
                 value={formData.email}
                 onChange={(e) => handleInputChange('email', e.target.value)}
                 className={cn(
-                  "h-12 text-base transition-all duration-200",
+                  "h-14 text-base transition-all duration-300 bg-background/80 backdrop-blur-sm border-border/60 focus:border-primary/40 focus:shadow-lg focus:shadow-primary/10",
                   errors.email && "border-destructive focus-visible:ring-destructive/20"
                 )}
               />
               {errors.email && (
-                <p className="text-destructive text-sm">{errors.email}</p>
+                <p className="text-destructive text-sm animate-fade-in">{errors.email}</p>
               )}
             </div>
           </div>
 
-          <div className="space-y-3">
-            <label className="text-sm font-semibold text-foreground flex items-center gap-2">
-              <div className="w-2 h-2 bg-primary rounded-full" />
+          <div className="space-y-4 group">
+            <label className="text-sm font-semibold text-foreground flex items-center gap-3">
+              <div className="w-3 h-3 bg-gradient-to-r from-primary to-accent rounded-full group-focus-within:scale-110 transition-transform duration-200" />
               Project Details
             </label>
             <textarea
@@ -162,30 +171,31 @@ export const ContactForm = () => {
               value={formData.message}
               onChange={(e) => handleInputChange('message', e.target.value)}
               className={cn(
-                "flex min-h-[160px] w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none transition-all duration-200",
+                "flex min-h-[180px] w-full rounded-xl border border-border/60 bg-background/80 backdrop-blur-sm px-4 py-4 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:ring-offset-2 focus-visible:border-primary/40 focus-visible:shadow-lg focus-visible:shadow-primary/10 disabled:cursor-not-allowed disabled:opacity-50 resize-none transition-all duration-300",
                 errors.message && "border-destructive focus-visible:ring-destructive/20"
               )}
             />
             {errors.message && (
-              <p className="text-destructive text-sm">{errors.message}</p>
+              <p className="text-destructive text-sm animate-fade-in">{errors.message}</p>
             )}
           </div>
 
-          <div className="pt-4">
+          <div className="pt-6">
             <Button
               type="submit"
               disabled={isSubmitting}
               size="lg"
-              className="w-full h-14 text-lg bg-gradient-to-r from-primary via-blue-600 to-purple-600 hover:from-primary/90 hover:via-blue-600/90 hover:to-purple-600/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] disabled:hover:scale-100"
+              className="w-full h-16 text-lg bg-gradient-to-r from-primary via-accent to-primary/90 hover:from-primary/90 hover:via-accent/90 hover:to-primary/80 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] disabled:hover:scale-100 rounded-xl relative overflow-hidden group"
             >
+              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               {isSubmitting ? (
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                <div className="flex items-center gap-3 relative z-10">
+                  <div className="w-6 h-6 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
                   <span>Sending your message...</span>
                 </div>
               ) : (
-                <div className="flex items-center gap-3">
-                  <Send className="h-5 w-5" />
+                <div className="flex items-center gap-3 relative z-10">
+                  <Send className="h-6 w-6" />
                   <span>Send Message</span>
                 </div>
               )}
