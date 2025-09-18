@@ -107,31 +107,31 @@ export const ContactForm = () => {
   };
 
   return (
-    <Card className="shadow-2xl border-border/40 bg-card/60 backdrop-blur-xl rounded-3xl overflow-hidden group hover:shadow-3xl transition-all duration-500">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    <Card className="shadow-2xl border-border/20 bg-card/60 backdrop-blur-2xl rounded-[2rem] overflow-hidden group hover:shadow-3xl hover:bg-card/70 transition-all duration-700">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-transparent to-primary/3 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
       
-      <CardHeader className="relative space-y-4 pb-8">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl flex items-center justify-center">
-            <Send className="h-5 w-5 text-white" />
+      <CardHeader className="relative space-y-6 pb-10 pt-10">
+        <div className="flex items-center gap-4 mb-4">
+          <div className="w-14 h-14 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center border border-primary/20">
+            <Send className="h-7 w-7 text-primary" />
           </div>
-          <div className="h-px flex-1 bg-gradient-to-r from-primary/20 to-transparent"></div>
+          <div className="h-px flex-1 bg-gradient-to-r from-primary/30 via-primary/10 to-transparent"></div>
         </div>
         
-        <CardTitle className="text-3xl sm:text-4xl bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 bg-clip-text text-transparent font-bold">
+        <CardTitle className="text-4xl sm:text-5xl bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent font-black tracking-tight">
           Send Me a Message
         </CardTitle>
-        <CardDescription className="text-lg text-muted-foreground leading-relaxed">
+        <CardDescription className="text-xl text-muted-foreground/80 leading-relaxed max-w-2xl">
           I'd love to hear about your project ideas and discuss how we can bring them to life together. Let's start the conversation!
         </CardDescription>
       </CardHeader>
       
-      <CardContent className="relative">
-        <form onSubmit={handleSubmit} className="space-y-8">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-4 group">
-              <label className="text-sm font-semibold text-foreground flex items-center gap-3">
-                <div className="w-3 h-3 bg-gradient-to-r from-blue-600 to-blue-500 rounded-full group-focus-within:scale-110 transition-transform duration-200" />
+      <CardContent className="relative px-10 pb-10">
+        <form onSubmit={handleSubmit} className="space-y-10">
+          <div className="grid md:grid-cols-2 gap-10">
+            <div className="space-y-5 group">
+              <label className="text-base font-bold text-foreground flex items-center gap-4">
+                <div className="w-4 h-4 bg-gradient-to-r from-primary to-primary/80 rounded-full group-focus-within:scale-125 transition-transform duration-300 shadow-lg shadow-primary/30" />
                 Full Name
               </label>
               <Input
@@ -140,18 +140,21 @@ export const ContactForm = () => {
                 value={formData.fullName}
                 onChange={(e) => handleInputChange('fullName', e.target.value)}
                 className={cn(
-                  "h-14 text-base transition-all duration-300 bg-background/80 backdrop-blur-sm border-border/60 focus:border-primary/40 focus:shadow-lg focus:shadow-primary/10",
-                  errors.fullName && "border-destructive focus-visible:ring-destructive/20"
+                  "h-16 text-lg transition-all duration-300 bg-background/60 backdrop-blur-sm border-border/40 focus:border-primary/50 focus:shadow-xl focus:shadow-primary/20 rounded-2xl",
+                  errors.fullName && "border-destructive focus-visible:ring-destructive/30"
                 )}
               />
               {errors.fullName && (
-                <p className="text-destructive text-sm animate-fade-in">{errors.fullName}</p>
+                <p className="text-destructive text-base animate-fade-in flex items-center gap-2">
+                  <div className="w-2 h-2 bg-destructive rounded-full"></div>
+                  {errors.fullName}
+                </p>
               )}
             </div>
 
-            <div className="space-y-4 group">
-              <label className="text-sm font-semibold text-foreground flex items-center gap-3">
-                <div className="w-3 h-3 bg-gradient-to-r from-blue-600 to-blue-500 rounded-full group-focus-within:scale-110 transition-transform duration-200" />
+            <div className="space-y-5 group">
+              <label className="text-base font-bold text-foreground flex items-center gap-4">
+                <div className="w-4 h-4 bg-gradient-to-r from-primary to-primary/80 rounded-full group-focus-within:scale-125 transition-transform duration-300 shadow-lg shadow-primary/30" />
                 Email Address
               </label>
               <Input
@@ -160,19 +163,22 @@ export const ContactForm = () => {
                 value={formData.email}
                 onChange={(e) => handleInputChange('email', e.target.value)}
                 className={cn(
-                  "h-14 text-base transition-all duration-300 bg-background/80 backdrop-blur-sm border-border/60 focus:border-primary/40 focus:shadow-lg focus:shadow-primary/10",
-                  errors.email && "border-destructive focus-visible:ring-destructive/20"
+                  "h-16 text-lg transition-all duration-300 bg-background/60 backdrop-blur-sm border-border/40 focus:border-primary/50 focus:shadow-xl focus:shadow-primary/20 rounded-2xl",
+                  errors.email && "border-destructive focus-visible:ring-destructive/30"
                 )}
               />
               {errors.email && (
-                <p className="text-destructive text-sm animate-fade-in">{errors.email}</p>
+                <p className="text-destructive text-base animate-fade-in flex items-center gap-2">
+                  <div className="w-2 h-2 bg-destructive rounded-full"></div>
+                  {errors.email}
+                </p>
               )}
             </div>
           </div>
 
-          <div className="space-y-4 group">
-            <label className="text-sm font-semibold text-foreground flex items-center gap-3">
-              <div className="w-3 h-3 bg-gradient-to-r from-blue-600 to-blue-500 rounded-full group-focus-within:scale-110 transition-transform duration-200" />
+          <div className="space-y-5 group">
+            <label className="text-base font-bold text-foreground flex items-center gap-4">
+              <div className="w-4 h-4 bg-gradient-to-r from-primary to-primary/80 rounded-full group-focus-within:scale-125 transition-transform duration-300 shadow-lg shadow-primary/30" />
               Project Details
             </label>
             <textarea
@@ -180,31 +186,34 @@ export const ContactForm = () => {
               value={formData.message}
               onChange={(e) => handleInputChange('message', e.target.value)}
               className={cn(
-                "flex min-h-[180px] w-full rounded-xl border border-border/60 bg-background/80 backdrop-blur-sm px-4 py-4 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:ring-offset-2 focus-visible:border-primary/40 focus-visible:shadow-lg focus-visible:shadow-primary/10 disabled:cursor-not-allowed disabled:opacity-50 resize-none transition-all duration-300",
-                errors.message && "border-destructive focus-visible:ring-destructive/20"
+                "flex min-h-[200px] w-full rounded-2xl border border-border/40 bg-background/60 backdrop-blur-sm px-6 py-6 text-lg ring-offset-background placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:border-primary/50 focus-visible:shadow-xl focus-visible:shadow-primary/20 disabled:cursor-not-allowed disabled:opacity-50 resize-none transition-all duration-300",
+                errors.message && "border-destructive focus-visible:ring-destructive/30"
               )}
             />
             {errors.message && (
-              <p className="text-destructive text-sm animate-fade-in">{errors.message}</p>
+              <p className="text-destructive text-base animate-fade-in flex items-center gap-2">
+                <div className="w-2 h-2 bg-destructive rounded-full"></div>
+                {errors.message}
+              </p>
             )}
           </div>
 
-          <div className="pt-6">
+          <div className="pt-8">
             <Button
               type="submit"
               disabled={isSubmitting}
               size="lg"
-              className="w-full h-16 text-lg bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 hover:from-blue-700 hover:via-blue-600 hover:to-blue-500 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] disabled:hover:scale-100 rounded-xl relative overflow-hidden group"
+              className="w-full h-20 text-xl bg-gradient-to-r from-primary via-primary/90 to-primary/80 hover:from-primary/90 hover:via-primary hover:to-primary/90 shadow-2xl hover:shadow-3xl transition-all duration-700 hover:scale-[1.02] disabled:hover:scale-100 rounded-2xl relative overflow-hidden group font-bold"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               {isSubmitting ? (
-                <div className="flex items-center gap-3 relative z-10">
-                  <div className="w-6 h-6 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                <div className="flex items-center gap-4 relative z-10">
+                  <div className="w-7 h-7 border-3 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
                   <span>Sending your message...</span>
                 </div>
               ) : (
-                <div className="flex items-center gap-3 relative z-10">
-                  <Send className="h-6 w-6" />
+                <div className="flex items-center gap-4 relative z-10">
+                  <Send className="h-7 w-7" />
                   <span>Send Message</span>
                 </div>
               )}
