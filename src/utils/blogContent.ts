@@ -3,7 +3,7 @@ import { BlogPost } from "@/data/blogPosts";
 export const getMarkdownContent = async (slug: string, post?: BlogPost): Promise<string> => {
   try {
     // Try to fetch the markdown file for the specific slug
-    const response = await fetch(`/src/content/blog/${slug}.md`);
+    const response = await fetch(`/content/blog/${slug}.md`);
     if (response.ok) {
       return await response.text();
     }
