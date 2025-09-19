@@ -145,16 +145,16 @@ export const ContactForm = () => {
                 )}
               />
               {errors.fullName && (
-                <p className="text-destructive text-base animate-fade-in flex items-center gap-2">
+                <p className="text-destructive text-sm animate-fade-in flex items-center gap-2">
                   <div className="w-2 h-2 bg-destructive rounded-full"></div>
                   {errors.fullName}
                 </p>
               )}
             </div>
 
-            <div className="space-y-5 group">
-              <label className="text-base font-bold text-foreground flex items-center gap-4">
-                <div className="w-4 h-4 bg-gradient-to-r from-primary to-primary/80 rounded-full group-focus-within:scale-125 transition-transform duration-300 shadow-lg shadow-primary/30" />
+            <div className="space-y-3 group">
+              <label className="text-sm font-bold text-foreground flex items-center gap-3">
+                <div className="w-3 h-3 bg-gradient-to-r from-primary to-primary/80 rounded-full group-focus-within:scale-125 transition-transform duration-300 shadow-lg shadow-primary/30" />
                 Email Address
               </label>
               <Input
@@ -168,7 +168,7 @@ export const ContactForm = () => {
                 )}
               />
               {errors.email && (
-                <p className="text-destructive text-base animate-fade-in flex items-center gap-2">
+                <p className="text-destructive text-sm animate-fade-in flex items-center gap-2">
                   <div className="w-2 h-2 bg-destructive rounded-full"></div>
                   {errors.email}
                 </p>
@@ -176,9 +176,9 @@ export const ContactForm = () => {
             </div>
           </div>
 
-          <div className="space-y-5 group">
-            <label className="text-base font-bold text-foreground flex items-center gap-4">
-              <div className="w-4 h-4 bg-gradient-to-r from-primary to-primary/80 rounded-full group-focus-within:scale-125 transition-transform duration-300 shadow-lg shadow-primary/30" />
+          <div className="space-y-3 group">
+            <label className="text-sm font-bold text-foreground flex items-center gap-3">
+              <div className="w-3 h-3 bg-gradient-to-r from-primary to-primary/80 rounded-full group-focus-within:scale-125 transition-transform duration-300 shadow-lg shadow-primary/30" />
               Project Details
             </label>
             <textarea
@@ -191,14 +191,14 @@ export const ContactForm = () => {
               )}
             />
             {errors.message && (
-              <p className="text-destructive text-base animate-fade-in flex items-center gap-2">
+              <p className="text-destructive text-sm animate-fade-in flex items-center gap-2">
                 <div className="w-2 h-2 bg-destructive rounded-full"></div>
                 {errors.message}
               </p>
             )}
           </div>
 
-          <div className="pt-8">
+          <div className="pt-6">
             <Button
               type="submit"
               disabled={isSubmitting}
