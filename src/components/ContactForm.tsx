@@ -126,7 +126,7 @@ export const ContactForm = () => {
         </CardDescription>
       </CardHeader>
       
-      <CardContent className="relative px-10 pb-10">
+      <CardContent className="relative px-6 pb-6">
         <form onSubmit={handleSubmit} className="space-y-10">
           <div className="grid md:grid-cols-2 gap-10">
             <div className="space-y-5 group">
