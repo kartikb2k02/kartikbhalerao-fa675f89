@@ -67,25 +67,25 @@ export default function Contact() {
               </div>
 
               {/* Schedule Meeting Section */}
-              <div className="text-center animate-fade-in">
-                <div className="relative mb-12">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full h-px bg-gradient-to-r from-transparent via-border/50 to-transparent"></div>
-                  </div>
-                  <div className="relative flex justify-center">
-                    <div className="bg-background/90 px-8 py-3 rounded-full border border-border/30 backdrop-blur-xl shadow-lg">
-                      <span className="text-muted-foreground/80 font-medium text-lg">or skip the form</span>
+                <div className="text-center animate-fade-in">
+                  <div className="relative mb-8">
+                    <div className="absolute inset-0 flex items-center">
+                      <div className="w-full h-px bg-gradient-to-r from-transparent via-border/50 to-transparent"></div>
+                    </div>
+                    <div className="relative flex justify-center">
+                      <div className="bg-background/90 px-6 py-2 rounded-full border border-border/30 backdrop-blur-xl shadow-lg">
+                        <span className="text-muted-foreground/80 font-medium text-base">or skip the form</span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="bg-card/70 backdrop-blur-2xl rounded-[2rem] border border-border/30 p-10 shadow-2xl hover:shadow-3xl transition-all duration-700 hover:bg-card/80">
-                  <div className="mb-8">
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-primary/20">
-                      <Calendar className="h-8 w-8 text-primary" />
+                <div className="bg-card/80 backdrop-blur-xl rounded-xl border border-border/30 p-6 shadow-lg hover:shadow-xl transition-all duration-500 hover:bg-card/90">
+                  <div className="mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 border border-primary/20">
+                      <Calendar className="h-6 w-6 text-primary" />
                     </div>
-                    <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-4">Schedule a Meeting</h3>
-                    <p className="text-lg text-muted-foreground/80 max-w-lg mx-auto leading-relaxed">
+                    <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-3">Schedule a Meeting</h3>
+                    <p className="text-sm text-muted-foreground/80 max-w-md mx-auto leading-relaxed">
                       Prefer to talk directly? Book a time that works for you and let's discuss your project in detail.
                     </p>
                   </div>

@@ -110,28 +110,28 @@ export const ContactForm = () => {
     <Card className="shadow-2xl border-border/20 bg-card/60 backdrop-blur-2xl rounded-[2rem] overflow-hidden group hover:shadow-3xl hover:bg-card/70 transition-all duration-700">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-transparent to-primary/3 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
       
-      <CardHeader className="relative space-y-6 pb-10 pt-10">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="w-14 h-14 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center border border-primary/20">
-            <Send className="h-7 w-7 text-primary" />
+      <CardHeader className="relative space-y-4 pb-6 pt-6">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
+            <Send className="h-5 w-5 text-primary" />
           </div>
           <div className="h-px flex-1 bg-gradient-to-r from-primary/30 via-primary/10 to-transparent"></div>
         </div>
         
-        <CardTitle className="text-4xl sm:text-5xl bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent font-black tracking-tight">
+        <CardTitle className="text-2xl sm:text-3xl bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent font-black tracking-tight">
           Send Me a Message
         </CardTitle>
-        <CardDescription className="text-xl text-muted-foreground/80 leading-relaxed max-w-2xl">
-          I'd love to hear about your project ideas and discuss how we can bring them to life together. Let's start the conversation!
+        <CardDescription className="text-base text-muted-foreground/80 leading-relaxed max-w-lg">
+          I'd love to hear about your project ideas and discuss how we can bring them to life together.
         </CardDescription>
       </CardHeader>
       
       <CardContent className="relative px-6 pb-6">
-        <form onSubmit={handleSubmit} className="space-y-10">
-          <div className="grid md:grid-cols-2 gap-10">
-            <div className="space-y-5 group">
-              <label className="text-base font-bold text-foreground flex items-center gap-4">
-                <div className="w-4 h-4 bg-gradient-to-r from-primary to-primary/80 rounded-full group-focus-within:scale-125 transition-transform duration-300 shadow-lg shadow-primary/30" />
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-3 group">
+              <label className="text-sm font-bold text-foreground flex items-center gap-3">
+                <div className="w-3 h-3 bg-gradient-to-r from-primary to-primary/80 rounded-full group-focus-within:scale-125 transition-transform duration-300 shadow-lg shadow-primary/30" />
                 Full Name
               </label>
               <Input
