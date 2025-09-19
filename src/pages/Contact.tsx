@@ -19,15 +19,15 @@ export default function Contact() {
         </div>
 
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-24 animate-fade-in">
-              <div className="inline-flex items-center gap-3 mb-8 px-6 py-3 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-full border border-primary/30 backdrop-blur-sm">
-                <Sparkles className="h-5 w-5 text-primary animate-pulse" />
-                <span className="text-base font-semibold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Let's create something amazing</span>
+        <section className="relative pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-full border border-primary/30 backdrop-blur-sm">
+                <Sparkles className="h-4 w-4 text-primary animate-pulse" />
+                <span className="text-sm font-semibold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Let's create something amazing</span>
               </div>
               
-              <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent mb-10 leading-[0.9] tracking-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent mb-6 leading-tight tracking-tight">
                 Let's Work
                 <br />
                 <span className="bg-gradient-to-r from-primary/80 via-primary to-primary/60 bg-clip-text text-transparent">
@@ -35,32 +35,32 @@ export default function Contact() {
                 </span>
               </h1>
               
-              <p className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground/90 max-w-5xl mx-auto leading-relaxed mb-12 font-light">
+              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground/90 max-w-3xl mx-auto leading-relaxed mb-8 font-light">
                 Ready to bring your ideas to life? Let's discuss your vision and create something extraordinary together.
               </p>
 
-              <div className="flex flex-wrap items-center justify-center gap-8 text-base text-muted-foreground/80 mb-16">
-                <div className="flex items-center gap-3 px-4 py-2 bg-background/50 rounded-full border border-border/30 backdrop-blur-sm">
-                  <MessageCircle className="h-5 w-5 text-primary" />
+              <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground/80 mb-10">
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-background/50 rounded-full border border-border/30 backdrop-blur-sm">
+                  <MessageCircle className="h-4 w-4 text-primary" />
                   <span className="font-medium">Quick Response</span>
                 </div>
-                <div className="flex items-center gap-3 px-4 py-2 bg-background/50 rounded-full border border-border/30 backdrop-blur-sm">
-                  <Calendar className="h-5 w-5 text-primary" />
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-background/50 rounded-full border border-border/30 backdrop-blur-sm">
+                  <Calendar className="h-4 w-4 text-primary" />
                   <span className="font-medium">Flexible Scheduling</span>
                 </div>
-                <div className="flex items-center gap-3 px-4 py-2 bg-background/50 rounded-full border border-border/30 backdrop-blur-sm">
-                  <Sparkles className="h-5 w-5 text-primary" />
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-background/50 rounded-full border border-border/30 backdrop-blur-sm">
+                  <Sparkles className="h-4 w-4 text-primary" />
                   <span className="font-medium">Collaborative Process</span>
                 </div>
               </div>
 
-              <div className="flex justify-center mb-8">
-                <div className="w-px h-16 bg-gradient-to-b from-transparent via-primary/40 to-transparent"></div>
+              <div className="flex justify-center mb-4">
+                <div className="w-px h-8 bg-gradient-to-b from-transparent via-primary/40 to-transparent"></div>
               </div>
-              <ArrowDown className="h-7 w-7 text-primary/60 mx-auto animate-bounce" />
+              <ArrowDown className="h-5 w-5 text-primary/60 mx-auto animate-bounce" />
             </div>
 
-            <div className="max-w-5xl mx-auto space-y-16">
+            <div className="max-w-3xl mx-auto space-y-12">
               {/* Contact Form */}
               <div className="animate-fade-in">
                 <ContactForm />
