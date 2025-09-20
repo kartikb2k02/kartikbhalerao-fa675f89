@@ -131,7 +131,7 @@ export const ContactForm = () => {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-3 group">
               <label className="text-sm font-bold text-foreground flex items-center gap-3">
-                <div className="w-3 h-3 bg-gradient-to-r from-primary to-primary/80 rounded-full group-focus-within:scale-125 transition-transform duration-300 shadow-lg shadow-primary/30" />
+                <div className="w-3 h-3 bg-gradient-to-r from-primary to-primary/80 rounded-full group-focus-within:scale-125 transition-transform duration-300 shadow-lg shadow-primary/30 border-2 border-border/60" />
                 Full Name
               </label>
               <Input
@@ -154,7 +154,7 @@ export const ContactForm = () => {
 
             <div className="space-y-3 group">
               <label className="text-sm font-bold text-foreground flex items-center gap-3">
-                <div className="w-3 h-3 bg-gradient-to-r from-primary to-primary/80 rounded-full group-focus-within:scale-125 transition-transform duration-300 shadow-lg shadow-primary/30" />
+                <div className="w-3 h-3 bg-gradient-to-r from-primary to-primary/80 rounded-full group-focus-within:scale-125 transition-transform duration-300 shadow-lg shadow-primary/30 border-2 border-border/60" />
                 Email Address
               </label>
               <Input
@@ -178,7 +178,7 @@ export const ContactForm = () => {
 
           <div className="space-y-3 group">
             <label className="text-sm font-bold text-foreground flex items-center gap-3">
-              <div className="w-3 h-3 bg-gradient-to-r from-primary to-primary/80 rounded-full group-focus-within:scale-125 transition-transform duration-300 shadow-lg shadow-primary/30" />
+              <div className="w-3 h-3 bg-gradient-to-r from-primary to-primary/80 rounded-full group-focus-within:scale-125 transition-transform duration-300 shadow-lg shadow-primary/30 border-2 border-border/60" />
               Project Details
             </label>
             <textarea
