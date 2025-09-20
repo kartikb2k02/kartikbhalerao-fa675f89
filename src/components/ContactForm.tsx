@@ -203,7 +203,7 @@ export const ContactForm = () => {
               type="submit"
               disabled={isSubmitting}
               size="lg"
-              className="w-full h-20 text-xl bg-gradient-to-r from-primary via-primary/90 to-primary/80 hover:from-primary/90 hover:via-primary hover:to-primary/90 shadow-2xl hover:shadow-3xl transition-all duration-700 hover:scale-[1.02] disabled:hover:scale-100 rounded-2xl relative overflow-hidden group font-bold"
+              className="w-full h-14 text-base bg-gradient-to-r from-primary via-primary/90 to-primary/80 hover:from-primary/90 hover:via-primary hover:to-primary/90 shadow-2xl hover:shadow-3xl transition-all duration-700 hover:scale-[1.02] disabled:hover:scale-100 rounded-2xl relative overflow-hidden group font-bold"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               {isSubmitting ? (
