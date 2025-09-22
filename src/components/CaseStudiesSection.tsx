@@ -214,13 +214,6 @@ export const CaseStudiesSection = () => {
                           </div>
                         </div>
 
-                        {/* Duration Badge */}
-                        <div className="absolute top-4 left-4">
-                          <div className="flex items-center gap-2 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                            <Clock className="w-4 h-4 text-white" />
-                            <span className="text-white text-sm font-medium">{study.duration}</span>
-                          </div>
-                        </div>
                       </div>
 
                       {/* Colored Footer Section - 25% */}
