@@ -132,6 +132,19 @@ export const CaseStudiesSection = () => {
       bgGradient: "from-[#3c52c3] to-[#E0FFFF]",
       image: "/lovable-uploads/Codeant.png"
     },
+    {
+      title: "Ether Feature PRD ",
+      subtitle: "Product Improvement",
+      tags: ["UX Design", "EdTech","web Design", "App Design"],
+      link: "https://www.canva.com/design/DAGw3QSmRIY/eIMrFE0YSiUhYc50vbS_vA/view",
+      duration: "4 weeks",
+      type: "Design Case Study",
+      typeShort: "Design",
+      category: "E-commerce",
+      achievement: "25% increase in conversions",
+      bgGradient: "from-[#3c52c3] to-[#E0FFFF]",
+      image: "/lovable-uploads/Ether.png"
+    },
   ];
 
   useEffect(() => {
