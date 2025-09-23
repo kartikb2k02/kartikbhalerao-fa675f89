@@ -59,13 +59,13 @@ export const AboutSection = () => {
                   <div className="space-y-4">
                     <div>
                       <h4 className="text-xl font-bold text-slate-900 dark:text-slate-100">Product Analyst</h4>
-                      <p className="text-blue-600 dark:text-blue-400 font-semibold">Decision Machine (Remote) | June 2024 – Present</p>
+                      <p className="text-blue-600 dark:text-blue-400 font-semibold">Decision Machine (Pune, India) | June 2024 – Present</p>
                     </div>
                     
                     <ul className="space-y-3 text-slate-700 dark:text-slate-300">
                       <li className="flex items-start space-x-3">
                         <span className="text-blue-500 dark:text-blue-400 mt-1.5">✦</span>
-                        <span>Leading the development of a B2C fintech product focused on personal finance—working from initial idea validation all the way to launch and iteration.</span>
+                        <span>Leading the development of a B2B fintech product focused on personal finance—working from initial idea validation all the way to launch and iteration.</span>
                       </li>
                       <li className="flex items-start space-x-3">
                         <span className="text-blue-500 dark:text-blue-400 mt-1.5">✦</span>
