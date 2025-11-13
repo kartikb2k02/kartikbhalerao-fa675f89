@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import { BlogPost } from "@/data/blogPosts";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { BlogComments } from "./BlogComments";
 
 interface BlogPostDetailProps {
   post: BlogPost;
@@ -117,8 +116,6 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
           </a>
       </div>
 
-      {/* Comments Section */}
-      <BlogComments postId={post.id} />
     </div>
   );
 };
