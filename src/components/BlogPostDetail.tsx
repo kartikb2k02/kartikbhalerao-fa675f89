@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { ArrowLeft, Calendar, Clock, ArrowRight, User, Twitter, Linkedin, Link2, Check } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, ArrowRight, User, Twitter, Linkedin, Link2, Check, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BlogPost } from "@/data/blogPosts";
@@ -17,6 +17,7 @@ interface BlogPostDetailProps {
 export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [copied, setCopied] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,11 +25,16 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       setScrollProgress(Math.min(progress, 100));
+      setShowBackToTop(scrollTop > 400);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
   const shareTitle = post.title;
@@ -313,6 +319,17 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
           </a>
         </div>
       </div>
+
+      {/* Back to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-6 right-6 z-50 p-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-1 transition-all duration-300 ${
+          showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+        }`}
+        title="Back to top"
+      >
+        <ArrowUp className="w-5 h-5" />
+      </button>
     </>
   );
 };
