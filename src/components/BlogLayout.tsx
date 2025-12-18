@@ -1,10 +1,10 @@
-
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BlogSidebar } from "./BlogSidebar";
 import { BlogPostDetail } from "./BlogPostDetail";
 import { BlogPost } from "@/data/blogPosts";
+import type { SortOption } from "@/pages/Blog";
 
 interface BlogLayoutProps {
   posts: BlogPost[];
@@ -17,6 +17,13 @@ interface BlogLayoutProps {
   onSearchChange: (term: string) => void;
   markdownContent: string;
   onBackToList: () => void;
+  sortBy: SortOption;
+  onSortChange: (sort: SortOption) => void;
+  allTags: string[];
+  selectedTags: string[];
+  onTagToggle: (tag: string) => void;
+  blogTheme: "light" | "dark" | "system";
+  onThemeChange: (theme: "light" | "dark" | "system") => void;
 }
 
 export const BlogLayout = ({
@@ -30,6 +37,13 @@ export const BlogLayout = ({
   onSearchChange,
   markdownContent,
   onBackToList,
+  sortBy,
+  onSortChange,
+  allTags,
+  selectedTags,
+  onTagToggle,
+  blogTheme,
+  onThemeChange,
 }: BlogLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -49,46 +63,51 @@ export const BlogLayout = ({
 
       {/* Sidebar */}
       <aside className={`
-        fixed top-16 left-0 bottom-0 w-80 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl 
+        fixed top-16 left-0 bottom-0 w-72 bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl 
         border-r border-slate-200/60 dark:border-slate-700/60 shadow-2xl z-50
         transform transition-all duration-300 ease-in-out
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
         lg:translate-x-0 lg:static lg:top-0 lg:z-30
       `}>
-        {/* Enhanced Background Effects */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white/30 to-purple-50/50 dark:from-blue-950/30 dark:via-slate-900/50 dark:to-purple-950/30" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.15),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.08),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.12),transparent_50%)]" />
-        
         {/* Close Button for Mobile */}
-        <div className="lg:hidden absolute top-4 right-4 z-10">
+        <div className="lg:hidden absolute top-3 right-3 z-10">
           <Button
             variant="ghost"
             size="sm"
             onClick={toggleSidebar}
-            className="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+            className="h-8 w-8 p-0 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </Button>
         </div>
 
         {/* Sidebar Content */}
-        <div className="relative z-10 h-full overflow-y-auto">
+        <div className="h-full overflow-hidden">
           <BlogSidebar
             posts={posts}
             selectedPost={selectedPost}
-            onPostClick={onPostClick}
+            onPostClick={(post) => {
+              onPostClick(post);
+              setSidebarOpen(false);
+            }}
             categories={categories}
             selectedCategory={selectedCategory}
             onCategoryChange={onCategoryChange}
             searchTerm={searchTerm}
             onSearchChange={onSearchChange}
+            sortBy={sortBy}
+            onSortChange={onSortChange}
+            allTags={allTags}
+            selectedTags={selectedTags}
+            onTagToggle={onTagToggle}
+            blogTheme={blogTheme}
+            onThemeChange={onThemeChange}
           />
         </div>
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 lg:ml-0 transition-all duration-300">
+      <main className="flex-1 transition-all duration-300">
         {/* Mobile Menu Button */}
         <div className="lg:hidden fixed top-20 left-4 z-40">
           <Button
@@ -126,15 +145,15 @@ export const BlogLayout = ({
               <div className="max-w-3xl mx-auto">
                 <div className="relative">
                   {/* Animated Background Glow */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-emerald-500/20 rounded-3xl blur-2xl animate-pulse"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 via-purple-500/20 to-fuchsia-500/20 rounded-3xl blur-2xl animate-pulse"></div>
                   
                   {/* Content Card */}
                   <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-3xl p-12 border border-slate-200/60 dark:border-slate-700/60 shadow-2xl">
                     {/* Floating Orbs */}
-                    <div className="absolute top-4 right-4 w-3 h-3 bg-blue-500/60 rounded-full animate-pulse"></div>
-                    <div className="absolute bottom-4 left-4 w-2 h-2 bg-purple-500/60 rounded-full animate-pulse delay-300"></div>
+                    <div className="absolute top-4 right-4 w-3 h-3 bg-violet-500/60 rounded-full animate-pulse"></div>
+                    <div className="absolute bottom-4 left-4 w-2 h-2 bg-fuchsia-500/60 rounded-full animate-pulse delay-300"></div>
                     
-                    <div className="text-5xl font-bold bg-gradient-to-r from-slate-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent mb-6">
+                    <div className="text-5xl font-bold bg-gradient-to-r from-slate-900 via-violet-800 to-fuchsia-800 dark:from-white dark:via-violet-200 dark:to-fuchsia-200 bg-clip-text text-transparent mb-6">
                       Ready to explore? 
                     </div>
                     
