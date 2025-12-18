@@ -1,9 +1,13 @@
-import { Target, BarChart3, Palette, Code, Calendar, PieChart, FileText, BarChart, MessageSquare, Search, Workflow, Bot, Globe, Database, Cloud, Boxes, Zap, Settings, Sliders, Award } from "lucide-react";
+import { useState } from "react";
+import { Target, BarChart3, Palette, Code, Calendar, PieChart, FileText, BarChart, MessageSquare, Search, Workflow, Bot, Globe, Cloud, Boxes, Zap, Settings, Sliders, Award, Sparkles, TrendingUp, MousePointer } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 export const SkillsSection = () => {
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState("strategy");
+
   const handleCertificationClick = () => {
     window.open('https://www.canva.com/design/DAGrQ2ETbAE/JvZhDbPAJAXcsMx0uQ4dYA/view', '_blank');
   };
@@ -13,115 +17,111 @@ export const SkillsSection = () => {
       id: "strategy",
       title: "Product Strategy",
       description: "Strategic product planning with market-driven insights and business impact focus",
-      icon: <Target className="w-4 h-4" />,
+      icon: <Target className="w-5 h-5" />,
       skills: ["Product Discovery", "Market Research", "Competitive Analysis", "Product Vision & Roadmap", "Go-to-Market Strategy", "MVP Development"],
       color: "from-blue-500 to-cyan-500",
-      bgColor: "bg-blue-50 dark:bg-blue-900/20",
-      borderColor: "border-blue-200 dark:border-blue-800",
-      tabColor: "data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:shadow-blue-500/25"
+      glowColor: "shadow-blue-500/30",
+      accentColor: "blue"
     },
     {
       id: "analytics",
       title: "Data & Analytics", 
       description: "Data-driven decision making through comprehensive user behavior analysis",
-      icon: <BarChart3 className="w-4 h-4" />,
+      icon: <BarChart3 className="w-5 h-5" />,
       skills: ["User Analytics", "A/B Testing", "KPI Definition & Tracking", "Data Visualization", "Performance Metrics", "Conversion Optimization"],
       color: "from-emerald-500 to-green-500",
-      bgColor: "bg-emerald-50 dark:bg-emerald-900/20",
-      borderColor: "border-emerald-200 dark:border-emerald-800",
-      tabColor: "data-[state=active]:from-emerald-500 data-[state=active]:to-green-500 data-[state=active]:shadow-emerald-500/25"
+      glowColor: "shadow-emerald-500/30",
+      accentColor: "emerald"
     },
     {
       id: "ux",
       title: "User Experience",
       description: "User-centered design approach with focus on exceptional user journeys",
-      icon: <Palette className="w-4 h-4" />,
+      icon: <Palette className="w-5 h-5" />,
       skills: ["User Research", "Journey Mapping", "Wireframing & Prototyping", "Usability Testing", "Design Systems", "Accessibility"],
       color: "from-purple-500 to-pink-500",
-      bgColor: "bg-purple-50 dark:bg-purple-900/20",
-      borderColor: "border-purple-200 dark:border-purple-800",
-      tabColor: "data-[state=active]:from-purple-500 data-[state=active]:to-pink-500 data-[state=active]:shadow-purple-500/25"
+      glowColor: "shadow-purple-500/30",
+      accentColor: "purple"
     },
     {
       id: "technical",
       title: "Technical Leadership",
       description: "Technical collaboration and system architecture understanding",
-      icon: <Code className="w-4 h-4" />,
+      icon: <Code className="w-5 h-5" />,
       skills: ["Agile/Scrum Methodologies", "API Design", "Database Fundamentals", "Technical Documentation", "System Architecture", "DevOps Basics"],
       color: "from-orange-500 to-red-500",
-      bgColor: "bg-orange-50 dark:bg-orange-900/20",
-      borderColor: "border-orange-200 dark:border-orange-800",
-      tabColor: "data-[state=active]:from-orange-500 data-[state=active]:to-red-500 data-[state=active]:shadow-orange-500/25"
+      glowColor: "shadow-orange-500/30",
+      accentColor: "orange"
     }
   ];
 
   const toolCategories = {
     design: {
       tools: [
-        { name: "Figma", icon: <Palette className="w-4 h-4" />, color: "bg-gradient-to-br from-pink-50 to-pink-100 text-pink-700 dark:from-pink-900/30 dark:to-pink-800/30 dark:text-pink-300", description: "UI/UX Design & Prototyping" },
-        { name: "Adobe XD", icon: <Palette className="w-4 h-4" />, color: "bg-gradient-to-br from-purple-50 to-purple-100 text-purple-700 dark:from-purple-900/30 dark:to-purple-800/30 dark:text-purple-300", description: "Interactive Prototyping" },
-        { name: "Canva", icon: <Palette className="w-4 h-4" />, color: "bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 dark:from-blue-900/30 dark:to-blue-800/30 dark:text-blue-300", description: "Graphic Design" },
-        { name: "Sketch", icon: <Palette className="w-4 h-4" />, color: "bg-gradient-to-br from-yellow-50 to-yellow-100 text-yellow-700 dark:from-yellow-900/30 dark:to-yellow-800/30 dark:text-yellow-300", description: "Interface Design" },
-        { name: "Framer", icon: <Palette className="w-4 h-4" />, color: "bg-gradient-to-br from-teal-50 to-teal-100 text-teal-700 dark:from-teal-900/30 dark:to-teal-800/30 dark:text-teal-300", description: "Advanced Prototyping" },
+        { name: "Figma", icon: <Palette className="w-4 h-4" />, color: "from-pink-500 to-rose-500", description: "UI/UX Design" },
+        { name: "Adobe XD", icon: <Palette className="w-4 h-4" />, color: "from-purple-500 to-violet-500", description: "Prototyping" },
+        { name: "Canva", icon: <Palette className="w-4 h-4" />, color: "from-blue-500 to-cyan-500", description: "Graphics" },
+        { name: "Sketch", icon: <Palette className="w-4 h-4" />, color: "from-yellow-500 to-orange-500", description: "Interface" },
+        { name: "Framer", icon: <Palette className="w-4 h-4" />, color: "from-teal-500 to-emerald-500", description: "Motion" },
       ],
-      tabColor: "data-[state=active]:from-pink-500 data-[state=active]:to-purple-500 data-[state=active]:shadow-pink-500/25"
+      accent: "pink"
     },
     management: {
       tools: [
-        { name: "Jira", icon: <Calendar className="w-4 h-4" />, color: "bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 dark:from-blue-900/30 dark:to-blue-800/30 dark:text-blue-300", description: "Agile Project Management" },
-        { name: "Notion", icon: <FileText className="w-4 h-4" />, color: "bg-gradient-to-br from-gray-50 to-gray-100 text-gray-700 dark:from-gray-800/30 dark:to-gray-700/30 dark:text-gray-300", description: "Documentation & Planning" },
-        { name: "Trello", icon: <FileText className="w-4 h-4" />, color: "bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 dark:from-blue-900/30 dark:to-blue-800/30 dark:text-blue-300", description: "Task Management" },
-        { name: "Asana", icon: <FileText className="w-4 h-4" />, color: "bg-gradient-to-br from-orange-50 to-orange-100 text-orange-700 dark:from-orange-900/30 dark:to-orange-800/30 dark:text-orange-300", description: "Project Tracking" },
-        { name: "Linear", icon: <Calendar className="w-4 h-4" />, color: "bg-gradient-to-br from-purple-50 to-purple-100 text-purple-700 dark:from-purple-900/30 dark:to-purple-800/30 dark:text-purple-300", description: "Modern Issue Tracking" },
-        { name: "Monday.com", icon: <Calendar className="w-4 h-4" />, color: "bg-gradient-to-br from-green-50 to-green-100 text-green-700 dark:from-green-900/30 dark:to-green-800/30 dark:text-green-300", description: "Team Collaboration" },
+        { name: "Jira", icon: <Calendar className="w-4 h-4" />, color: "from-blue-500 to-indigo-500", description: "Agile PM" },
+        { name: "Notion", icon: <FileText className="w-4 h-4" />, color: "from-slate-500 to-gray-500", description: "Docs" },
+        { name: "Trello", icon: <FileText className="w-4 h-4" />, color: "from-sky-500 to-blue-500", description: "Kanban" },
+        { name: "Asana", icon: <FileText className="w-4 h-4" />, color: "from-orange-500 to-red-500", description: "Tasks" },
+        { name: "Linear", icon: <Calendar className="w-4 h-4" />, color: "from-violet-500 to-purple-500", description: "Issues" },
+        { name: "Monday.com", icon: <Calendar className="w-4 h-4" />, color: "from-green-500 to-emerald-500", description: "Collab" },
       ],
-      tabColor: "data-[state=active]:from-blue-500 data-[state=active]:to-indigo-500 data-[state=active]:shadow-blue-500/25"
+      accent: "blue"
     },
     analytics: {
       tools: [
-        { name: "Mixpanel", icon: <PieChart className="w-4 h-4" />, color: "bg-gradient-to-br from-purple-50 to-purple-100 text-purple-700 dark:from-purple-900/30 dark:to-purple-800/30 dark:text-purple-300", description: "Advanced User Analytics" },
-        { name: "Google Analytics", icon: <BarChart className="w-4 h-4" />, color: "bg-gradient-to-br from-green-50 to-green-100 text-green-700 dark:from-green-900/30 dark:to-green-800/30 dark:text-green-300", description: "Web Analytics Platform" },
-        { name: "Amplitude", icon: <BarChart className="w-4 h-4" />, color: "bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 dark:from-blue-900/30 dark:to-blue-800/30 dark:text-blue-300", description: "Product Analytics" },
-        { name: "Tableau", icon: <BarChart className="w-4 h-4" />, color: "bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-700 dark:from-indigo-900/30 dark:to-indigo-800/30 dark:text-indigo-300", description: "Data Visualization" },
-        { name: "Segment", icon: <Sliders className="w-4 h-4" />, color: "bg-gradient-to-br from-teal-50 to-teal-100 text-teal-700 dark:from-teal-900/30 dark:to-teal-800/30 dark:text-teal-300", description: "Customer Data Infrastructure" },
-        { name: "Hotjar", icon: <Search className="w-4 h-4" />, color: "bg-gradient-to-br from-orange-50 to-orange-100 text-orange-700 dark:from-orange-900/30 dark:to-orange-800/30 dark:text-orange-300", description: "User Behavior Analysis" },
+        { name: "Mixpanel", icon: <PieChart className="w-4 h-4" />, color: "from-purple-500 to-pink-500", description: "Analytics" },
+        { name: "Google Analytics", icon: <BarChart className="w-4 h-4" />, color: "from-green-500 to-teal-500", description: "Web Stats" },
+        { name: "Amplitude", icon: <BarChart className="w-4 h-4" />, color: "from-blue-500 to-cyan-500", description: "Product" },
+        { name: "Tableau", icon: <BarChart className="w-4 h-4" />, color: "from-indigo-500 to-blue-500", description: "Viz" },
+        { name: "Segment", icon: <Sliders className="w-4 h-4" />, color: "from-teal-500 to-green-500", description: "CDP" },
+        { name: "Hotjar", icon: <Search className="w-4 h-4" />, color: "from-orange-500 to-yellow-500", description: "Heatmaps" },
       ],
-      tabColor: "data-[state=active]:from-emerald-500 data-[state=active]:to-green-500 data-[state=active]:shadow-emerald-500/25"
+      accent: "emerald"
     },
     communication: {
       tools: [
-        { name: "Slack", icon: <MessageSquare className="w-4 h-4" />, color: "bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-700 dark:from-indigo-900/30 dark:to-indigo-800/30 dark:text-indigo-300", description: "Team Communication" },
-        { name: "Miro", icon: <Workflow className="w-4 h-4" />, color: "bg-gradient-to-br from-yellow-50 to-yellow-100 text-yellow-700 dark:from-yellow-900/30 dark:to-yellow-800/30 dark:text-yellow-300", description: "Visual Collaboration" },
-        { name: "Zoom", icon: <Globe className="w-4 h-4" />, color: "bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 dark:from-blue-900/30 dark:to-blue-800/30 dark:text-blue-300", description: "Video Conferencing" },
-        { name: "Discord", icon: <MessageSquare className="w-4 h-4" />, color: "bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-700 dark:from-indigo-900/30 dark:to-indigo-800/30 dark:text-indigo-300", description: "Team Communication" },
-        { name: "Microsoft Teams", icon: <MessageSquare className="w-4 h-4" />, color: "bg-gradient-to-br from-violet-50 to-violet-100 text-violet-700 dark:from-violet-900/30 dark:to-violet-800/30 dark:text-violet-300", description: "Collaboration Platform" },
-        { name: "Dovetail", icon: <Search className="w-4 h-4" />, color: "bg-gradient-to-br from-teal-50 to-teal-100 text-teal-700 dark:from-teal-900/30 dark:to-teal-800/30 dark:text-teal-300", description: "User Research Platform" },
+        { name: "Slack", icon: <MessageSquare className="w-4 h-4" />, color: "from-indigo-500 to-purple-500", description: "Chat" },
+        { name: "Miro", icon: <Workflow className="w-4 h-4" />, color: "from-yellow-500 to-amber-500", description: "Whiteboard" },
+        { name: "Zoom", icon: <Globe className="w-4 h-4" />, color: "from-blue-500 to-sky-500", description: "Video" },
+        { name: "Discord", icon: <MessageSquare className="w-4 h-4" />, color: "from-violet-500 to-indigo-500", description: "Community" },
+        { name: "Teams", icon: <MessageSquare className="w-4 h-4" />, color: "from-purple-500 to-violet-500", description: "Collab" },
+        { name: "Dovetail", icon: <Search className="w-4 h-4" />, color: "from-teal-500 to-cyan-500", description: "Research" },
       ],
-      tabColor: "data-[state=active]:from-indigo-500 data-[state=active]:to-purple-500 data-[state=active]:shadow-indigo-500/25"
+      accent: "violet"
     },
     development: {
       tools: [
-        { name: "GitHub", icon: <Code className="w-4 h-4" />, color: "bg-gradient-to-br from-gray-50 to-gray-100 text-gray-700 dark:from-gray-800/30 dark:to-gray-700/30 dark:text-gray-300", description: "Version Control & Collaboration" },
-        { name: "GitLab", icon: <Code className="w-4 h-4" />, color: "bg-gradient-to-br from-orange-50 to-orange-100 text-orange-700 dark:from-orange-900/30 dark:to-orange-800/30 dark:text-orange-300", description: "DevOps Platform" },
-        { name: "Postman", icon: <Globe className="w-4 h-4" />, color: "bg-gradient-to-br from-orange-50 to-orange-100 text-orange-700 dark:from-orange-900/30 dark:to-orange-800/30 dark:text-orange-300", description: "API Development & Testing" },
-        { name: "Docker", icon: <Boxes className="w-4 h-4" />, color: "bg-gradient-to-br from-sky-50 to-sky-100 text-sky-700 dark:from-sky-900/30 dark:to-sky-800/30 dark:text-sky-300", description: "Containerization Platform" },
-        { name: "VS Code", icon: <Code className="w-4 h-4" />, color: "bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 dark:from-blue-900/30 dark:to-blue-800/30 dark:text-blue-300", description: "Code Editor" },
-        { name: "AWS", icon: <Cloud className="w-4 h-4" />, color: "bg-gradient-to-br from-yellow-50 to-yellow-100 text-yellow-700 dark:from-yellow-900/30 dark:to-yellow-800/30 dark:text-yellow-300", description: "Cloud Infrastructure" },
+        { name: "GitHub", icon: <Code className="w-4 h-4" />, color: "from-slate-600 to-gray-700", description: "Code" },
+        { name: "GitLab", icon: <Code className="w-4 h-4" />, color: "from-orange-500 to-red-500", description: "DevOps" },
+        { name: "Postman", icon: <Globe className="w-4 h-4" />, color: "from-orange-400 to-orange-600", description: "API" },
+        { name: "Docker", icon: <Boxes className="w-4 h-4" />, color: "from-sky-500 to-blue-600", description: "Container" },
+        { name: "VS Code", icon: <Code className="w-4 h-4" />, color: "from-blue-500 to-blue-600", description: "Editor" },
+        { name: "AWS", icon: <Cloud className="w-4 h-4" />, color: "from-yellow-500 to-orange-500", description: "Cloud" },
       ],
-      tabColor: "data-[state=active]:from-orange-500 data-[state=active]:to-red-500 data-[state=active]:shadow-orange-500/25"
+      accent: "orange"
     },
     ai: {
       tools: [
-        { name: "ChatGPT", icon: <Bot className="w-4 h-4" />, color: "bg-gradient-to-br from-green-50 to-green-100 text-green-700 dark:from-green-900/30 dark:to-green-800/30 dark:text-green-300", description: "AI Assistant & Automation" },
-        { name: "Claude", icon: <Bot className="w-4 h-4" />, color: "bg-gradient-to-br from-purple-50 to-purple-100 text-purple-700 dark:from-purple-900/30 dark:to-purple-800/30 dark:text-purple-300", description: "Advanced AI Assistant" },
-        { name: "Superagent", icon: <Zap className="w-4 h-4" />, color: "bg-gradient-to-br from-rose-50 to-rose-100 text-rose-700 dark:from-rose-900/30 dark:to-rose-800/30 dark:text-rose-300", description: "AI Agent Framework" },
-        { name: "Autogen Studio", icon: <Settings className="w-4 h-4" />, color: "bg-gradient-to-br from-fuchsia-50 to-fuchsia-100 text-fuchsia-700 dark:from-fuchsia-900/30 dark:to-fuchsia-800/30 dark:text-fuchsia-300", description: "Multi-Agent AI Orchestration" },
-        { name: "n8n", icon: <Workflow className="w-4 h-4" />, color: "bg-gradient-to-br from-orange-50 to-orange-100 text-orange-700 dark:from-orange-900/30 dark:to-orange-800/30 dark:text-orange-300", description: "Workflow Automation Tool" },
-        { name: "Flowise", icon: <Workflow className="w-4 h-4" />, color: "bg-gradient-to-br from-green-50 to-green-100 text-green-700 dark:from-green-900/30 dark:to-green-800/30 dark:text-green-300", description: "Visual AI Workflow Builder" },
-        { name: "Zapier", icon: <Workflow className="w-4 h-4" />, color: "bg-gradient-to-br from-orange-50 to-orange-100 text-orange-700 dark:from-orange-900/30 dark:to-orange-800/30 dark:text-orange-300", description: "Workflow Automation" },
-        { name: "Make", icon: <Workflow className="w-4 h-4" />, color: "bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-700 dark:from-indigo-900/30 dark:to-indigo-800/30 dark:text-indigo-300", description: "Visual Automation Platform" },
+        { name: "ChatGPT", icon: <Bot className="w-4 h-4" />, color: "from-green-500 to-emerald-500", description: "AI Chat" },
+        { name: "Claude", icon: <Bot className="w-4 h-4" />, color: "from-purple-500 to-violet-500", description: "AI" },
+        { name: "Superagent", icon: <Zap className="w-4 h-4" />, color: "from-rose-500 to-pink-500", description: "Agents" },
+        { name: "Autogen", icon: <Settings className="w-4 h-4" />, color: "from-fuchsia-500 to-purple-500", description: "Multi-AI" },
+        { name: "n8n", icon: <Workflow className="w-4 h-4" />, color: "from-orange-500 to-red-500", description: "Automation" },
+        { name: "Flowise", icon: <Workflow className="w-4 h-4" />, color: "from-green-500 to-teal-500", description: "Flow AI" },
+        { name: "Zapier", icon: <Workflow className="w-4 h-4" />, color: "from-orange-500 to-amber-500", description: "Connect" },
+        { name: "Make", icon: <Workflow className="w-4 h-4" />, color: "from-indigo-500 to-purple-500", description: "Visual" },
       ],
-      tabColor: "data-[state=active]:from-violet-500 data-[state=active]:to-indigo-500 data-[state=active]:shadow-violet-500/25"
+      accent: "violet"
     }
   };
 
@@ -133,216 +133,272 @@ export const SkillsSection = () => {
 
   return (
     <div className="w-full">
-      <section className="max-w-5xl mx-auto relative pb-16">
+      <section className="max-w-6xl mx-auto relative pb-16">
+        {/* Animated Background Pattern */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Hexagon Pattern */}
+          <svg className="absolute inset-0 w-full h-full opacity-[0.03] dark:opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="hexagons" width="50" height="43.4" patternUnits="userSpaceOnUse" patternTransform="scale(2)">
+                <polygon points="25,0 50,14.5 50,43.5 25,58 0,43.5 0,14.5" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-blue-500" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hexagons)" />
+          </svg>
+          
+          {/* Floating Orbs */}
+          <div className="absolute top-20 left-[10%] w-72 h-72 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute top-1/2 right-[5%] w-96 h-96 bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 rounded-full blur-3xl animate-pulse [animation-delay:2s]" />
+          <div className="absolute bottom-20 left-[20%] w-80 h-80 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse [animation-delay:4s]" />
+        </div>
+
         {/* Hero Section */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 px-4 py-2 rounded-full text-blue-600 dark:text-blue-400 font-semibold text-sm mb-4 border border-blue-200/60 dark:border-blue-700/60 shadow-lg backdrop-blur-sm">
-            <Target className="w-4 h-4" />
-            <span>Skills & Expertise</span>
-            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+        <div className="text-center mb-12 relative">
+          {/* Animated Badge */}
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 dark:from-blue-500/20 dark:via-purple-500/20 dark:to-pink-500/20 backdrop-blur-xl px-5 py-2.5 rounded-full border border-blue-200/50 dark:border-blue-700/50 shadow-lg mb-6 group hover:scale-105 transition-transform duration-300">
+            <div className="relative">
+              <Sparkles className="w-4 h-4 text-blue-500 animate-pulse" />
+              <div className="absolute inset-0 blur-sm bg-blue-500/50 rounded-full animate-ping" />
+            </div>
+            <span className="font-semibold text-sm bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+              Skills & Expertise
+            </span>
+            <div className="w-2 h-2 bg-gradient-to-r from-emerald-400 to-green-400 rounded-full animate-pulse" />
           </div>
           
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">
             Product Management
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400">
-              Excellence
+            <span className="relative">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400">
+                Excellence
+              </span>
+              {/* Underline Animation */}
+              <svg className="absolute -bottom-2 left-0 w-full h-3" viewBox="0 0 200 12" preserveAspectRatio="none">
+                <path d="M0,8 Q50,0 100,8 T200,8" fill="none" stroke="url(#gradient)" strokeWidth="3" strokeLinecap="round" className="animate-[dash_3s_ease-in-out_infinite]" strokeDasharray="200" strokeDashoffset="0" />
+                <defs>
+                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#3B82F6" />
+                    <stop offset="50%" stopColor="#8B5CF6" />
+                    <stop offset="100%" stopColor="#EC4899" />
+                  </linearGradient>
+                </defs>
+              </svg>
             </span>
           </h1>
           
-          <div className="flex justify-center mb-6">
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-full shadow-lg"></div>
-          </div>
+          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mt-6">
+            Comprehensive expertise across the full product lifecycle
+          </p>
 
-          {/* Glass Certification Button */}
-          <div className="flex justify-center">
+          {/* Certification Button */}
+          <div className="flex justify-center mt-8">
             <button 
               onClick={handleCertificationClick}
-              className="group relative px-8 py-4 rounded-2xl transition-all duration-500 hover:scale-105 hover:rotate-1 cursor-pointer"
+              className="group relative px-8 py-4 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105"
             >
-              {/* Multiple glass layers for depth */}
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-cyan-500/20 dark:from-emerald-400/25 dark:via-teal-400/25 dark:to-cyan-400/25 rounded-2xl backdrop-blur-xl border border-white/40 dark:border-white/30 shadow-2xl"></div>
-              <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/20 to-transparent dark:from-white/30 dark:via-white/10 dark:to-transparent rounded-2xl"></div>
-              
-              {/* Animated border glow */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 p-[1px] group-hover:animate-pulse">
-                <div className="h-full w-full rounded-2xl bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-cyan-500/10 dark:from-emerald-400/15 dark:via-teal-400/15 dark:to-cyan-400/15 backdrop-blur-xl"></div>
+              {/* Animated Border */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 p-[2px]">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 animate-[spin_4s_linear_infinite] blur-xl opacity-50" />
+                <div className="h-full w-full rounded-2xl bg-white dark:bg-slate-900 backdrop-blur-xl" />
               </div>
               
-              {/* Floating particles effect */}
-              <div className="absolute inset-0 rounded-2xl overflow-hidden">
-                <div className="absolute top-2 left-4 w-1 h-1 bg-emerald-400 dark:bg-emerald-300 rounded-full animate-pulse opacity-70"></div>
-                <div className="absolute top-4 right-6 w-1 h-1 bg-cyan-400 dark:bg-cyan-300 rounded-full animate-pulse opacity-50 [animation-delay:1s]"></div>
-                <div className="absolute bottom-3 left-8 w-1 h-1 bg-teal-400 dark:bg-teal-300 rounded-full animate-pulse opacity-60 [animation-delay:2s]"></div>
-                <div className="absolute bottom-4 right-4 w-1 h-1 bg-emerald-300 dark:bg-emerald-400 rounded-full animate-pulse opacity-40 [animation-delay:0.5s]"></div>
-              </div>
-              
-              {/* Main content */}
-              <div className="relative z-10 flex items-center space-x-3">
-                <div className="p-2 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl text-white shadow-lg">
+              {/* Content */}
+              <div className="relative z-10 flex items-center gap-3">
+                <div className="p-2.5 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl text-white shadow-lg shadow-emerald-500/30 group-hover:shadow-emerald-500/50 transition-shadow">
                   <Award className="w-5 h-5" />
                 </div>
-                <span className="text-lg font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent tracking-wide">
+                <span className="text-lg font-bold text-slate-800 dark:text-white">
                   View Certifications
                 </span>
+                <TrendingUp className="w-4 h-4 text-emerald-500 group-hover:translate-x-1 transition-transform" />
               </div>
-              
-              {/* Subtle inner glow */}
-              <div className="absolute inset-2 rounded-xl bg-gradient-to-r from-emerald-500/5 via-teal-500/5 to-cyan-500/5 dark:from-emerald-400/10 dark:via-teal-400/10 dark:to-cyan-400/10"></div>
             </button>
           </div>
         </div>
 
-        {/* Skills Categories */}
-        <div className="mb-12">
-          <Tabs defaultValue="strategy" className="w-full">
-            <div className="mb-6 flex justify-center">
-              <TabsList className="grid w-full max-w-3xl grid-cols-2 lg:grid-cols-4 h-auto p-2 bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border border-slate-200/60 dark:border-slate-700/60 rounded-2xl shadow-xl">
-                {skillCategories.map((category) => (
-                  <TabsTrigger 
-                    key={category.id} 
-                    value={category.id}
-                    className={`group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-2xl font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br ${category.tabColor} data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:scale-102`}
-                  >
-                    <div className="flex items-center justify-center w-6 h-6 rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-data-[state=active]:shadow-md group-hover:scale-110 group-data-[state=active]:from-white/20 group-data-[state=active]:to-white/10">
+        {/* Skills Categories - Interactive Cards */}
+        <div className="mb-16">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            {skillCategories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={cn(
+                  "group relative p-4 rounded-2xl transition-all duration-500 text-left overflow-hidden",
+                  activeCategory === category.id
+                    ? `bg-gradient-to-br ${category.color} text-white shadow-xl ${category.glowColor}`
+                    : "bg-white/70 dark:bg-slate-800/70 hover:bg-white dark:hover:bg-slate-800 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-lg"
+                )}
+              >
+                {/* Animated Background for active */}
+                {activeCategory === category.id && (
+                  <div className="absolute inset-0 overflow-hidden">
+                    <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-white/10 rounded-full blur-2xl animate-pulse" />
+                    <div className="absolute -bottom-1/2 -left-1/2 w-full h-full bg-white/5 rounded-full blur-2xl animate-pulse [animation-delay:1s]" />
+                  </div>
+                )}
+                
+                <div className="relative z-10">
+                  <div className={cn(
+                    "w-10 h-10 rounded-xl flex items-center justify-center mb-3 transition-all duration-300",
+                    activeCategory === category.id
+                      ? "bg-white/20"
+                      : `bg-gradient-to-br ${category.color} text-white shadow-lg`
+                  )}>
+                    {category.icon}
+                  </div>
+                  <h3 className={cn(
+                    "font-bold text-sm mb-1",
+                    activeCategory !== category.id && "text-slate-800 dark:text-white"
+                  )}>
+                    {category.title}
+                  </h3>
+                  <p className={cn(
+                    "text-xs line-clamp-2",
+                    activeCategory === category.id
+                      ? "text-white/80"
+                      : "text-slate-500 dark:text-slate-400"
+                  )}>
+                    {category.description}
+                  </p>
+                </div>
+                
+                {/* Hover indicator */}
+                <div className={cn(
+                  "absolute bottom-0 left-0 h-1 bg-gradient-to-r transition-all duration-300",
+                  category.color,
+                  activeCategory === category.id ? "w-full" : "w-0 group-hover:w-full"
+                )} />
+              </button>
+            ))}
+          </div>
+
+          {/* Skills Grid for Active Category */}
+          {skillCategories.map((category) => (
+            category.id === activeCategory && (
+              <Card key={category.id} className="border-0 shadow-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl overflow-hidden animate-fade-in">
+                {/* Gradient Top Border */}
+                <div className={`h-1.5 bg-gradient-to-r ${category.color}`} />
+                
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-4">
+                    <div className={`p-4 rounded-2xl bg-gradient-to-br ${category.color} text-white shadow-xl ${category.glowColor}`}>
                       {category.icon}
                     </div>
-                    <div className="text-center">
-                      <div className="font-bold text-xs">{category.title}</div>
+                    <div>
+                      <CardTitle className="text-2xl font-bold text-slate-900 dark:text-white">
+                        {category.title}
+                      </CardTitle>
+                      <CardDescription className="text-slate-600 dark:text-slate-400">
+                        {category.description}
+                      </CardDescription>
                     </div>
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </div>
-
-            {skillCategories.map((category) => (
-              <TabsContent key={category.id} value={category.id} className="mt-0">
-                <Card className="border-0 shadow-lg bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl relative overflow-hidden rounded-3xl">
-                  <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${category.color}`}></div>
-                  
-                  <CardHeader className="pb-3 pt-4">
-                    <div className="flex items-start gap-3">
-                      <div className={`p-3 rounded-2xl bg-gradient-to-br ${category.color} text-white shadow-lg relative overflow-hidden`}>
-                        <div className="relative z-10 w-4 h-4 flex items-center justify-center">
-                          {category.icon}
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent"></div>
-                        <div className="absolute -top-1 -right-1 w-6 h-6 bg-white/10 rounded-full blur-lg"></div>
-                      </div>
-                      <div className="flex-1">
-                        <CardTitle className="text-xl font-bold text-slate-900 dark:text-white mb-1 leading-tight">
-                          {category.title}
-                        </CardTitle>
-                        <CardDescription className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                          {category.description}
-                        </CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  
-                  <CardContent className="pb-3">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-                      {category.skills.map((skill, i) => (
-                        <div key={i} className="group relative">
-                          <div className="flex items-center gap-2 p-2 bg-gradient-to-br from-white via-white to-slate-50/30 dark:from-slate-700/50 dark:via-slate-700/30 dark:to-slate-800/50 rounded-2xl hover:scale-105 hover:shadow-md transition-all duration-300 hover:border-blue-300/60 dark:hover:border-blue-600/60 relative overflow-hidden backdrop-blur-sm">
-                            <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${category.color} group-hover:scale-125 transition-all duration-300 shadow-sm flex-shrink-0`}>
-                              <div className="w-full h-full rounded-full bg-gradient-to-br from-white/30 to-transparent"></div>
-                            </div>
-                            <span className="text-slate-800 dark:text-slate-200 font-medium text-xs leading-tight">
+                  </div>
+                </CardHeader>
+                
+                <CardContent>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    {category.skills.map((skill, i) => (
+                      <div 
+                        key={i} 
+                        className="group relative"
+                        onMouseEnter={() => setHoveredSkill(skill)}
+                        onMouseLeave={() => setHoveredSkill(null)}
+                      >
+                        <div className={cn(
+                          "relative p-4 rounded-xl border transition-all duration-300 cursor-pointer overflow-hidden",
+                          hoveredSkill === skill
+                            ? `bg-gradient-to-br ${category.color} text-white border-transparent shadow-lg ${category.glowColor}`
+                            : "bg-white dark:bg-slate-700/50 border-slate-200/50 dark:border-slate-600/50 hover:border-slate-300 dark:hover:border-slate-500"
+                        )}>
+                          {/* Shine effect */}
+                          <div className={cn(
+                            "absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full transition-transform duration-700",
+                            hoveredSkill === skill && "translate-x-full"
+                          )} />
+                          
+                          <div className="relative z-10 flex items-center gap-3">
+                            <div className={cn(
+                              "w-2 h-2 rounded-full transition-all duration-300",
+                              hoveredSkill === skill
+                                ? "bg-white scale-125"
+                                : `bg-gradient-to-br ${category.color}`
+                            )} />
+                            <span className={cn(
+                              "font-medium text-sm",
+                              hoveredSkill !== skill && "text-slate-700 dark:text-slate-200"
+                            )}>
                               {skill}
                             </span>
-                            <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl`}></div>
                           </div>
+                          
+                          {/* Hover cursor indicator */}
+                          {hoveredSkill === skill && (
+                            <MousePointer className="absolute bottom-2 right-2 w-4 h-4 text-white/50 animate-bounce" />
+                          )}
                         </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            ))}
-          </Tabs>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )
+          ))}
         </div>
 
         {/* Tools & Platforms */}
         <div className="relative">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 leading-tight">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 px-4 py-2 rounded-full mb-4">
+              <Zap className="w-4 h-4 text-amber-500" />
+              <span className="font-semibold text-sm text-slate-600 dark:text-slate-300">Powerful Toolkit</span>
+            </div>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">
               Tools & Platforms
             </h2>
-            <p className="text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-              Comprehensive toolkit for modern product management excellence
+            <p className="text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+              Comprehensive toolkit for modern product management
             </p>
           </div>
           
           <Tabs defaultValue="all" className="w-full">
-            <div className="mb-6 flex justify-center">
-              <TabsList className="grid w-full max-w-4xl grid-cols-3 lg:grid-cols-6 xl:grid-cols-7 h-auto p-2 bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border border-slate-200/60 dark:border-slate-600/60 rounded-3xl shadow-xl">
-                <TabsTrigger value="all" className="group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-3xl font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br data-[state=active]:from-slate-600 data-[state=active]:to-slate-700 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-slate-500/30 hover:bg-slate-100 dark:hover:bg-slate-600 data-[state=active]:scale-105">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-3xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-hover:scale-110">
-                    <Target className="w-3 h-3" />
-                  </div>
-                  <span className="font-bold text-xs">All</span>
+            {/* Scrollable Tab List */}
+            <div className="mb-8 overflow-x-auto pb-2 -mx-4 px-4">
+              <TabsList className="inline-flex w-auto min-w-full md:grid md:w-full md:max-w-4xl md:mx-auto md:grid-cols-7 h-auto p-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border border-slate-200/50 dark:border-slate-700/50 rounded-2xl shadow-xl gap-1">
+                <TabsTrigger 
+                  value="all" 
+                  className="flex-shrink-0 flex items-center gap-2 px-4 py-3 rounded-xl font-bold text-xs transition-all duration-300 data-[state=active]:bg-gradient-to-br data-[state=active]:from-slate-700 data-[state=active]:to-slate-800 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-700"
+                >
+                  <Target className="w-4 h-4" />
+                  <span>All</span>
                 </TabsTrigger>
                 {Object.entries(toolCategories).map(([key, data]) => (
                   <TabsTrigger 
                     key={key} 
                     value={key} 
-                    className={`group relative flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-3xl font-bold text-xs transition-all duration-500 data-[state=active]:bg-gradient-to-br ${data.tabColor} data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:scale-105 hover:bg-slate-100 dark:hover:bg-slate-600 capitalize`}
+                    className="flex-shrink-0 flex items-center gap-2 px-4 py-3 rounded-xl font-bold text-xs transition-all duration-300 data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-700 capitalize"
                   >
-                    <div className="flex items-center justify-center w-6 h-6 rounded-3xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 group-data-[state=active]:bg-white/20 transition-all duration-300 group-hover:scale-110">
-                      {data.tools[0]?.icon}
-                    </div>
-                    <span className="font-bold text-xs">{key}</span>
+                    {data.tools[0]?.icon}
+                    <span className="hidden sm:inline">{key}</span>
                   </TabsTrigger>
                 ))}
               </TabsList>
             </div>
 
-            <TabsContent value="all" className="mt-0">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+            <TabsContent value="all" className="mt-0 animate-fade-in">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                 {getAllTools().map((tool, index) => (
-                  <div key={index} className="group relative bg-white/10 dark:bg-slate-800/10 backdrop-blur-2xl border border-white/30 dark:border-slate-700/30 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 overflow-hidden rounded-3xl hover:-translate-y-1 hover:bg-white/20 dark:hover:bg-slate-800/20 hover:border-white/50 dark:hover:border-slate-600/50">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-slate-50/10 dark:from-slate-700/10 dark:via-transparent dark:to-slate-800/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="p-3 relative z-10">
-                      <div className="flex flex-col items-center text-center space-y-2">
-                        <div className={`p-2 rounded-3xl ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-sm relative overflow-hidden backdrop-blur-sm`}>
-                          <div className="relative z-10">
-                            {tool.icon}
-                          </div>
-                          <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent"></div>
-                        </div>
-                        <div className="space-y-1">
-                          <h4 className="font-bold text-xs text-slate-900 dark:text-white">{tool.name}</h4>
-                          <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{tool.description}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <ToolCard key={index} tool={tool} index={index} />
                 ))}
               </div>
             </TabsContent>
 
             {Object.entries(toolCategories).map(([category, data]) => (
-              <TabsContent key={category} value={category} className="mt-0">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+              <TabsContent key={category} value={category} className="mt-0 animate-fade-in">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                   {data.tools.map((tool, index) => (
-                    <div key={index} className="group relative bg-white/10 dark:bg-slate-800/10 backdrop-blur-2xl border border-white/30 dark:border-slate-700/30 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 overflow-hidden rounded-3xl hover:-translate-y-1 hover:bg-white/20 dark:hover:bg-slate-800/20 hover:border-white/50 dark:hover:border-slate-600/50">
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-slate-50/10 dark:from-slate-700/10 dark:via-transparent dark:to-slate-800/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                      <div className="p-3 relative z-10">
-                        <div className="flex flex-col items-center text-center space-y-2">
-                          <div className={`p-2 rounded-3xl ${tool.color} group-hover:scale-110 transition-all duration-300 shadow-sm relative overflow-hidden backdrop-blur-sm`}>
-                            <div className="relative z-10">
-                              {tool.icon}
-                            </div>
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent"></div>
-                          </div>
-                          <div className="space-y-1">
-                            <h4 className="font-bold text-xs text-slate-900 dark:text-white">{tool.name}</h4>
-                            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{tool.description}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <ToolCard key={index} tool={tool} index={index} />
                   ))}
                 </div>
               </TabsContent>
@@ -350,6 +406,55 @@ export const SkillsSection = () => {
           </Tabs>
         </div>
       </section>
+    </div>
+  );
+};
+
+// Tool Card Component
+interface ToolCardProps {
+  tool: { name: string; icon: React.ReactNode; color: string; description: string };
+  index: number;
+}
+
+const ToolCard = ({ tool, index }: ToolCardProps) => {
+  return (
+    <div 
+      className="group relative bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:border-transparent shadow-sm hover:shadow-xl transition-all duration-500 hover:scale-105 hover:-translate-y-1 overflow-hidden"
+      style={{ animationDelay: `${index * 50}ms` }}
+    >
+      {/* Gradient Background on Hover */}
+      <div className={cn(
+        "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl",
+        tool.color
+      )} />
+      
+      {/* Shine Effect */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 rounded-2xl" />
+      
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center text-center gap-3">
+        <div className={cn(
+          "w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 bg-gradient-to-br shadow-lg",
+          tool.color,
+          "text-white group-hover:scale-110 group-hover:shadow-xl"
+        )}>
+          {tool.icon}
+        </div>
+        <div>
+          <h4 className="font-bold text-sm text-slate-800 dark:text-white group-hover:text-white transition-colors">
+            {tool.name}
+          </h4>
+          <p className="text-xs text-slate-500 dark:text-slate-400 group-hover:text-white/80 transition-colors mt-0.5">
+            {tool.description}
+          </p>
+        </div>
+      </div>
+      
+      {/* Corner Accent */}
+      <div className={cn(
+        "absolute top-0 right-0 w-16 h-16 bg-gradient-to-br opacity-10 group-hover:opacity-0 transition-opacity rounded-bl-full",
+        tool.color
+      )} />
     </div>
   );
 };
