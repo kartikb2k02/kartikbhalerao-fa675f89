@@ -1,4 +1,4 @@
-import { Search, BookOpen, Sparkles, Clock, Calendar, SortAsc, Sun, Moon, Monitor, TrendingUp, ChevronRight, Eye } from "lucide-react";
+import { Search, BookOpen, Sparkles, Clock, Calendar, SortAsc, Sun, Moon, Monitor, TrendingUp, ChevronRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { BlogPost } from "@/data/blogPosts";
 import { cn } from "@/lib/utils";
@@ -51,8 +51,6 @@ export const BlogSidebar = ({
     { key: "design", label: "Design" },
   ];
 
-  // Get featured post (first post or most recent)
-  const featuredPost = posts[0];
 
   return (
     <div className="h-full flex flex-col bg-gradient-to-b from-white via-slate-50/30 to-white dark:from-slate-900 dark:via-slate-800/30 dark:to-slate-900">
@@ -112,45 +110,6 @@ export const BlogSidebar = ({
         </div>
       </div>
 
-      {/* Featured Post */}
-      {featuredPost && !searchTerm && selectedCategory === "all" && (
-        <div className="px-5 py-4 border-b border-slate-200/60 dark:border-slate-700/50">
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-5 h-5 bg-gradient-to-r from-amber-400 to-orange-500 rounded-md flex items-center justify-center">
-              <TrendingUp className="w-3 h-3 text-white" />
-            </div>
-            <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wide">Featured</span>
-          </div>
-          <button
-            onClick={() => onPostClick(featuredPost)}
-            className={cn(
-              "w-full text-left p-4 rounded-xl transition-all duration-300 group",
-              selectedPost?.id === featuredPost.id
-                ? "bg-gradient-to-br from-violet-100 to-fuchsia-100 dark:from-violet-900/40 dark:to-fuchsia-900/40 shadow-md"
-                : "bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 hover:shadow-md"
-            )}
-          >
-            <h4 className={cn(
-              "text-sm font-semibold mb-2 line-clamp-2 transition-colors",
-              selectedPost?.id === featuredPost.id
-                ? "text-violet-700 dark:text-violet-300"
-                : "text-slate-800 dark:text-slate-200 group-hover:text-violet-600 dark:group-hover:text-violet-400"
-            )}>
-              {featuredPost.title}
-            </h4>
-            <div className="flex items-center gap-3 text-xs text-slate-500">
-              <span className="flex items-center gap-1">
-                <Clock className="w-3 h-3" />
-                {featuredPost.readTime}
-              </span>
-              <span className="flex items-center gap-1">
-                <Eye className="w-3 h-3" />
-                Featured
-              </span>
-            </div>
-          </button>
-        </div>
-      )}
 
       {/* Sorting & Categories */}
       <div className="px-5 py-4 space-y-4 border-b border-slate-200/60 dark:border-slate-700/50">
