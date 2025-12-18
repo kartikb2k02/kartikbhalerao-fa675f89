@@ -4,6 +4,7 @@ import { blogPosts, BlogPost } from "@/data/blogPosts";
 import { getMarkdownContent } from "@/utils/blogContent";
 import { BlogLayout } from "@/components/BlogLayout";
 import { Header } from "@/components/Header";
+import { useBlogPreferences } from "@/hooks/useBlogPreferences";
 
 export type SortOption = "date" | "readTime" | "title";
 
@@ -15,8 +16,24 @@ const Blog = () => {
   const [sortBy, setSortBy] = useState<SortOption>("date");
   const [blogTheme, setBlogTheme] = useState<"light" | "dark" | "system">("system");
 
+  // Blog preferences from localStorage
+  const {
+    bookmarkedPosts,
+    readPosts,
+    recentSearches,
+    isCollapsed,
+    viewMode,
+    toggleBookmark,
+    markAsRead,
+    addRecentSearch,
+    clearSearchHistory,
+    toggleCollapsed,
+    setViewMode,
+  } = useBlogPreferences();
+
   const categories = {
     all: "All Posts",
+    bookmarks: "Bookmarks",
     analysis: "Product Analysis",
     design: "Product Design", 
     analytics: "Data & Analytics",
@@ -33,12 +50,19 @@ const Blog = () => {
 
   const filteredAndSortedPosts = useMemo(() => {
     let posts = blogPosts.filter(post => {
-      const matchesCategory = selectedCategory === "all" || post.category === selectedCategory;
+      // Handle bookmarks category specially
+      if (selectedCategory === "bookmarks") {
+        if (!bookmarkedPosts.includes(post.id)) return false;
+      } else {
+        const matchesCategory = selectedCategory === "all" || post.category === selectedCategory;
+        if (!matchesCategory) return false;
+      }
+      
       const matchesSearch = searchTerm === "" || 
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
         post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-      return matchesCategory && matchesSearch;
+      return matchesSearch;
     });
 
     // Sort posts
@@ -56,10 +80,11 @@ const Blog = () => {
     });
 
     return posts;
-  }, [selectedCategory, searchTerm, sortBy]);
+  }, [selectedCategory, searchTerm, sortBy, bookmarkedPosts]);
 
   const handleBlogPostClick = async (post: BlogPost) => {
     setSelectedPost(post);
+    markAsRead(post.id); // Mark as read when clicked
     const content = await getMarkdownContent(post.slug, post);
     setMarkdownContent(content);
   };
@@ -67,6 +92,10 @@ const Blog = () => {
   const handleBackToList = () => {
     setSelectedPost(null);
     setMarkdownContent("");
+  };
+
+  const handleSearchChange = (term: string) => {
+    setSearchTerm(term);
   };
 
   // Determine blog-specific theme class
@@ -99,19 +128,31 @@ const Blog = () => {
       <div className="pt-16 relative z-10">
         <BlogLayout
           posts={filteredAndSortedPosts}
+          allPosts={blogPosts}
           selectedPost={selectedPost}
           onPostClick={handleBlogPostClick}
           categories={categories}
           selectedCategory={selectedCategory}
           onCategoryChange={setSelectedCategory}
           searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
+          onSearchChange={handleSearchChange}
           markdownContent={markdownContent}
           onBackToList={handleBackToList}
           sortBy={sortBy}
           onSortChange={setSortBy}
           blogTheme={blogTheme}
           onThemeChange={setBlogTheme}
+          // New props for enhanced features
+          bookmarkedPosts={bookmarkedPosts}
+          onToggleBookmark={toggleBookmark}
+          readPosts={readPosts}
+          recentSearches={recentSearches}
+          onClearSearchHistory={clearSearchHistory}
+          onAddRecentSearch={addRecentSearch}
+          isCollapsed={isCollapsed}
+          onToggleCollapse={toggleCollapsed}
+          viewMode={viewMode}
+          onViewModeChange={setViewMode}
         />
       </div>
     </div>

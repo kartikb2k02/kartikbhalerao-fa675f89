@@ -8,6 +8,7 @@ export interface BlogPost {
   tags: string[];
   image: string;
   slug: string;
+  featured?: boolean;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -20,7 +21,8 @@ export const blogPosts: BlogPost[] = [
     readTime: "12 min read",
     tags: ["AI Strategy", "Product Management", "Innovation", "Future Tech"],
     image: "/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.png",
-    slug: "ai-first-product-strategy"
+    slug: "ai-first-product-strategy",
+    featured: true
   },
   {
     id: 2,
@@ -31,7 +33,8 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 min read",
     tags: ["Product Management", "Analysis", "Learning"],
     image: "/lovable-uploads/89406d0e-28cd-4dbf-9e94-3244e4646a29.png",
-    slug: "product-teardowns-learning-from-giants"
+    slug: "product-teardowns-learning-from-giants",
+    featured: true
   },
   {
     id: 3,
@@ -64,7 +67,8 @@ export const blogPosts: BlogPost[] = [
     readTime: "10 min read",
     tags: ["MVP", "Product Strategy", "Startup"],
     image: "/lovable-uploads/89406d0e-28cd-4dbf-9e94-3244e4646a29.png",
-    slug: "idea-to-mvp-product-manager-journey"
+    slug: "idea-to-mvp-product-manager-journey",
+    featured: true
   },
   {
     id: 6,
