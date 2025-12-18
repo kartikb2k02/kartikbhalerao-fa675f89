@@ -201,7 +201,7 @@ export const CaseStudiesSection = () => {
                 delay: 3000,
                 stopOnInteraction: false,
                 stopOnMouseEnter: true,
-              })
+              }) as any
             ]}
           >
             <CarouselContent className="-ml-0 md:-ml-0">
