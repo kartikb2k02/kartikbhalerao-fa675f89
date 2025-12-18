@@ -321,41 +321,39 @@ export const SkillsSection = () => {
                           <div className="relative z-10">
                             <div className="flex items-center justify-between mb-3">
                               <span className={cn(
-                                "font-semibold text-sm transition-colors",
+                                "font-semibold text-sm transition-colors flex-1",
                                 hoveredSkill === skill.name ? "text-white" : "text-slate-800 dark:text-slate-200"
                               )}>
                                 {skill.name}
                               </span>
+                              <span className={cn(
+                                "text-xs font-bold transition-colors mr-2",
+                                hoveredSkill === skill.name ? "text-white/90" : "text-slate-500 dark:text-slate-400"
+                              )}>
+                                {skill.level}%
+                              </span>
                               <CheckCircle2 className={cn(
-                                "w-5 h-5 transition-all",
+                                "w-4 h-4 flex-shrink-0 transition-all",
                                 hoveredSkill === skill.name 
-                                  ? "text-white/80 scale-110" 
+                                  ? "text-white/80" 
                                   : currentCategory.textColor
                               )} />
                             </div>
                             
                             {/* Progress Bar */}
-                            <div className="relative">
-                              <div className={cn(
-                                "h-2 rounded-full overflow-hidden transition-colors",
-                                hoveredSkill === skill.name ? "bg-white/20" : "bg-slate-200 dark:bg-slate-700"
-                              )}>
-                                <div 
-                                  className={cn(
-                                    "h-full rounded-full transition-all duration-700 ease-out",
-                                    hoveredSkill === skill.name 
-                                      ? "bg-white" 
-                                      : `bg-gradient-to-r ${currentCategory.lightColor}`
-                                  )}
-                                  style={{ width: `${skill.level}%` }}
-                                />
-                              </div>
-                              <span className={cn(
-                                "absolute right-0 -top-6 text-xs font-bold transition-colors",
-                                hoveredSkill === skill.name ? "text-white/80" : "text-slate-500"
-                              )}>
-                                {skill.level}%
-                              </span>
+                            <div className={cn(
+                              "h-2 rounded-full overflow-hidden transition-colors",
+                              hoveredSkill === skill.name ? "bg-white/20" : "bg-slate-200 dark:bg-slate-700"
+                            )}>
+                              <div 
+                                className={cn(
+                                  "h-full rounded-full transition-all duration-700 ease-out",
+                                  hoveredSkill === skill.name 
+                                    ? "bg-white" 
+                                    : `bg-gradient-to-r ${currentCategory.lightColor}`
+                                )}
+                                style={{ width: `${skill.level}%` }}
+                              />
                             </div>
                           </div>
                         </div>
