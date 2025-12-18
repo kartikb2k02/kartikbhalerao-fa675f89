@@ -114,21 +114,47 @@ export const BlogLayout = ({
         {/* Content Area */}
         <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/30 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800">
           {/* Ambient Gradient Orbs */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-violet-200/40 via-purple-200/30 to-transparent dark:from-violet-900/20 dark:via-purple-900/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-blue-200/40 via-cyan-200/30 to-transparent dark:from-blue-900/20 dark:via-cyan-900/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
-          <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-gradient-to-r from-fuchsia-200/20 to-pink-200/20 dark:from-fuchsia-900/10 dark:to-pink-900/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-violet-200/40 via-purple-200/30 to-transparent dark:from-violet-900/20 dark:via-purple-900/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-blue-200/40 via-cyan-200/30 to-transparent dark:from-blue-900/20 dark:via-cyan-900/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-gradient-to-r from-fuchsia-200/20 to-pink-200/20 dark:from-fuchsia-900/10 dark:to-pink-900/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse" style={{ animationDelay: '0.5s' }} />
+          
+          {/* Floating Geometric Shapes */}
+          <div className="absolute top-20 left-[15%] w-16 h-16 border border-violet-300/30 dark:border-violet-600/20 rounded-lg rotate-12 animate-bounce" style={{ animationDuration: '6s' }} />
+          <div className="absolute top-40 right-[20%] w-12 h-12 border border-blue-300/30 dark:border-blue-600/20 rounded-full animate-bounce" style={{ animationDuration: '5s', animationDelay: '1s' }} />
+          <div className="absolute bottom-32 left-[25%] w-8 h-8 bg-gradient-to-br from-purple-300/20 to-pink-300/20 dark:from-purple-700/10 dark:to-pink-700/10 rounded-md rotate-45 animate-bounce" style={{ animationDuration: '7s', animationDelay: '2s' }} />
+          <div className="absolute top-[60%] right-[10%] w-6 h-6 border-2 border-cyan-300/30 dark:border-cyan-600/20 rounded-full animate-ping" style={{ animationDuration: '3s' }} />
+          
+          {/* Decorative Lines */}
+          <div className="absolute top-32 left-0 w-48 h-px bg-gradient-to-r from-transparent via-violet-300/40 dark:via-violet-600/20 to-transparent" />
+          <div className="absolute bottom-40 right-0 w-64 h-px bg-gradient-to-r from-transparent via-blue-300/40 dark:via-blue-600/20 to-transparent" />
           
           {/* Subtle Dot Pattern */}
           <div 
-            className="absolute inset-0 opacity-[0.4] dark:opacity-[0.15]"
+            className="absolute inset-0 opacity-[0.3] dark:opacity-[0.1]"
             style={{
-              backgroundImage: `radial-gradient(circle at 1px 1px, rgb(148 163 184 / 0.3) 1px, transparent 0)`,
-              backgroundSize: "32px 32px",
+              backgroundImage: `radial-gradient(circle at 1px 1px, rgb(148 163 184 / 0.4) 1px, transparent 0)`,
+              backgroundSize: "40px 40px",
+            }}
+          />
+          
+          {/* Cross Pattern Overlay */}
+          <div 
+            className="absolute inset-0 opacity-[0.08] dark:opacity-[0.05]"
+            style={{
+              backgroundImage: `
+                linear-gradient(45deg, rgb(139 92 246 / 0.1) 1px, transparent 1px),
+                linear-gradient(-45deg, rgb(59 130 246 / 0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: "60px 60px",
             }}
           />
           
           {/* Top Fade Line */}
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-300/50 dark:via-slate-600/50 to-transparent" />
+          
+          {/* Side Accent Bars */}
+          <div className="absolute left-0 top-1/4 w-1 h-24 bg-gradient-to-b from-transparent via-violet-400/30 dark:via-violet-500/20 to-transparent rounded-r-full" />
+          <div className="absolute right-0 top-2/3 w-1 h-32 bg-gradient-to-b from-transparent via-blue-400/30 dark:via-blue-500/20 to-transparent rounded-l-full" />
           
           {selectedPost ? (
             <BlogPostDetail
