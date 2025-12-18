@@ -1,11 +1,9 @@
 import { useState, useMemo } from "react";
-import { ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 
 import { blogPosts, BlogPost } from "@/data/blogPosts";
 import { getMarkdownContent } from "@/utils/blogContent";
 import { BlogLayout } from "@/components/BlogLayout";
+import { Header } from "@/components/Header";
 
 export type SortOption = "date" | "readTime" | "title";
 
@@ -16,7 +14,6 @@ const Blog = () => {
   const [markdownContent, setMarkdownContent] = useState<string>("");
   const [sortBy, setSortBy] = useState<SortOption>("date");
   const [blogTheme, setBlogTheme] = useState<"light" | "dark" | "system">("system");
-  const navigate = useNavigate();
 
   const categories = {
     all: "All Posts",
@@ -72,11 +69,6 @@ const Blog = () => {
     setMarkdownContent("");
   };
 
-  const handleTitleClick = () => {
-    navigate('/');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   // Determine blog-specific theme class
   const blogThemeClass = blogTheme === "system" 
     ? "" 
@@ -101,44 +93,8 @@ const Blog = () => {
         }}
       />
       
-      {/* Enhanced Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl border-b border-slate-200/50 dark:border-slate-700/50 transition-all duration-300 shadow-xl shadow-slate-900/5">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <button
-              onClick={handleTitleClick}
-              className="flex items-center gap-3 text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 group"
-            >
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300"
-                   style={{
-                     clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
-                   }}>
-                <img
-                  src="/lovable-uploads/b0e13af0-105a-4724-ad69-d72b85aaf0a1.png"
-                  alt="Kartik Bhalerao"
-                  className="w-full h-full object-cover"
-                  style={{
-                    clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
-                  }}
-                />
-              </div>
-              <span className="group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
-                Kartik Bhalerao
-              </span>
-            </button>
-            <div className="flex items-center space-x-6">
-              <Button 
-                variant="ghost" 
-                className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 font-medium relative group hover:bg-blue-50/80 dark:hover:bg-blue-900/20 px-6 py-3 rounded-xl border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50"
-                onClick={() => navigate('/')}
-              >
-                <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
-                Back to Portfolio
-              </Button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      {/* Header - Same as home page */}
+      <Header />
 
       <div className="pt-16 relative z-10">
         <BlogLayout
