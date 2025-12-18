@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { Search, BookOpen, Sparkles, Clock, Calendar, SortAsc, TrendingUp, ChevronRight, Zap, Flame, Star, ArrowUpRight, Hash, Layers, Bookmark, BookmarkCheck, X, History, Mail, Send, CheckCircle, PanelLeftClose, PanelLeft, Eye, ListFilter, Archive } from "lucide-react";
+import blogIcon from "@/assets/blog-icon.png";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { BlogPost } from "@/data/blogPosts";
@@ -159,8 +160,8 @@ export const BlogSidebar = ({
         <Button variant="ghost" size="sm" onClick={onToggleCollapse} className="mb-4 p-2">
           <PanelLeft className="w-5 h-5 text-violet-500" />
         </Button>
-        <div className="w-10 h-10 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-xl flex items-center justify-center mb-4">
-          <BookOpen className="w-5 h-5 text-white" />
+        <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4">
+          <img src={blogIcon} alt="Blog" className="w-9 h-9 object-contain" />
         </div>
         <div className="flex-1 flex flex-col gap-2 items-center">
           {posts.slice(0, 5).map(post => <button key={post.id} onClick={() => onPostClick(post)} className={cn("w-10 h-10 rounded-lg flex items-center justify-center transition-all", selectedPost?.id === post.id ? "bg-violet-500 text-white" : "bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-violet-100")} title={post.title}>
@@ -182,8 +183,8 @@ export const BlogSidebar = ({
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3 group">
               <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-violet-500 via-purple-500 to-fuchsia-500 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/30">
-                  <BookOpen className="w-5 h-5 text-white" />
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center">
+                  <img src={blogIcon} alt="Blog" className="w-11 h-11 object-contain" />
                 </div>
                 <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-emerald-400 to-green-400 rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center">
                   <span className="text-[8px] text-white font-bold">{posts.length}</span>
