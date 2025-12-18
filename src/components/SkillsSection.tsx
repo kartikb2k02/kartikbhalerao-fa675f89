@@ -1,14 +1,9 @@
 import { useState } from "react";
-import { Target, BarChart3, Palette, Code, Calendar, PieChart, Zap, Award, ArrowRight, Star, CheckCircle2, Layers, Bot } from "lucide-react";
+import { Target, BarChart3, Palette, Code, Calendar, PieChart, Zap, Award, ArrowRight, Star, CheckCircle2, Layers, Bot, Figma, Pencil, Image, Frame, Play, ListTodo, FileEdit, Columns, ListChecks, GitBranch, Activity, LineChart, Flame, LayoutDashboard, BrainCircuit, Cpu, Workflow, Link2, Cog, Github, Send, Container, FileCode, Server, BarChart } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-// Brand icons from react-icons
-import { SiFigma, SiAdobexd, SiCanva, SiSketch, SiFramer, SiJira, SiNotion, SiTrello, SiAsana, SiLinear, SiMixpanel, SiGoogleanalytics, SiTableau, SiHotjar, SiOpenai, SiAnthropic, SiN8N, SiZapier, SiGithub, SiPostman, SiDocker, SiAmazonwebservices } from "react-icons/si";
-import { VscVscode } from "react-icons/vsc";
-import { SiMake } from "react-icons/si";
-import { BarChart } from "lucide-react";
 
 export const SkillsSection = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
@@ -103,55 +98,55 @@ export const SkillsSection = () => {
       title: "Design",
       icon: <Palette className="w-4 h-4" />,
       tools: [
-        { name: "Figma", description: "UI/UX Design", color: "from-[#F24E1E] to-[#A259FF]", icon: <SiFigma className="w-5 h-5" />, tooltip: "Collaborative interface design tool for creating high-fidelity prototypes and design systems" },
-        { name: "Adobe XD", description: "Prototyping", color: "from-[#FF61F6] to-[#470137]", icon: <SiAdobexd className="w-5 h-5" />, tooltip: "Vector-based design tool for crafting interactive prototypes and wireframes" },
-        { name: "Canva", description: "Graphics", color: "from-[#00C4CC] to-[#7D2AE8]", icon: <SiCanva className="w-5 h-5" />, tooltip: "Easy-to-use graphic design platform for creating presentations and marketing materials" },
-        { name: "Sketch", description: "Interface", color: "from-[#FDB300] to-[#EA6C00]", icon: <SiSketch className="w-5 h-5" />, tooltip: "Professional vector graphics editor for designing user interfaces and icons" },
-        { name: "Framer", description: "Motion", color: "from-[#0055FF] to-[#00AAFF]", icon: <SiFramer className="w-5 h-5" />, tooltip: "Interactive design tool for creating animations and micro-interactions" },
+        { name: "Figma", description: "UI/UX Design", color: "from-[#F24E1E] to-[#A259FF]", icon: <Figma className="w-5 h-5" />, tooltip: "Collaborative interface design tool for creating high-fidelity prototypes and design systems" },
+        { name: "Adobe XD", description: "Prototyping", color: "from-[#FF61F6] to-[#470137]", icon: <Pencil className="w-5 h-5" />, tooltip: "Vector-based design tool for crafting interactive prototypes and wireframes" },
+        { name: "Canva", description: "Graphics", color: "from-[#00C4CC] to-[#7D2AE8]", icon: <Image className="w-5 h-5" />, tooltip: "Easy-to-use graphic design platform for creating presentations and marketing materials" },
+        { name: "Sketch", description: "Interface", color: "from-[#FDB300] to-[#EA6C00]", icon: <Frame className="w-5 h-5" />, tooltip: "Professional vector graphics editor for designing user interfaces and icons" },
+        { name: "Framer", description: "Motion", color: "from-[#0055FF] to-[#00AAFF]", icon: <Play className="w-5 h-5" />, tooltip: "Interactive design tool for creating animations and micro-interactions" },
       ]
     },
     management: {
       title: "Management",
       icon: <Calendar className="w-4 h-4" />,
       tools: [
-        { name: "Jira", description: "Agile PM", color: "from-[#0052CC] to-[#2684FF]", icon: <SiJira className="w-5 h-5" />, tooltip: "Industry-standard agile project management for sprint planning and issue tracking" },
-        { name: "Notion", description: "Docs", color: "from-[#000000] to-[#333333]", icon: <SiNotion className="w-5 h-5" />, tooltip: "All-in-one workspace for notes, docs, wikis, and project collaboration" },
-        { name: "Trello", description: "Kanban", color: "from-[#0079BF] to-[#00C2E0]", icon: <SiTrello className="w-5 h-5" />, tooltip: "Visual kanban boards for organizing tasks and tracking project progress" },
-        { name: "Asana", description: "Tasks", color: "from-[#F06A6A] to-[#FC636B]", icon: <SiAsana className="w-5 h-5" />, tooltip: "Work management platform for team coordination and task tracking" },
-        { name: "Linear", description: "Issues", color: "from-[#5E6AD2] to-[#8B5CF6]", icon: <SiLinear className="w-5 h-5" />, tooltip: "Modern issue tracking with streamlined workflows for fast-moving teams" },
+        { name: "Jira", description: "Agile PM", color: "from-[#0052CC] to-[#2684FF]", icon: <ListTodo className="w-5 h-5" />, tooltip: "Industry-standard agile project management for sprint planning and issue tracking" },
+        { name: "Notion", description: "Docs", color: "from-[#000000] to-[#333333]", icon: <FileEdit className="w-5 h-5" />, tooltip: "All-in-one workspace for notes, docs, wikis, and project collaboration" },
+        { name: "Trello", description: "Kanban", color: "from-[#0079BF] to-[#00C2E0]", icon: <Columns className="w-5 h-5" />, tooltip: "Visual kanban boards for organizing tasks and tracking project progress" },
+        { name: "Asana", description: "Tasks", color: "from-[#F06A6A] to-[#FC636B]", icon: <ListChecks className="w-5 h-5" />, tooltip: "Work management platform for team coordination and task tracking" },
+        { name: "Linear", description: "Issues", color: "from-[#5E6AD2] to-[#8B5CF6]", icon: <GitBranch className="w-5 h-5" />, tooltip: "Modern issue tracking with streamlined workflows for fast-moving teams" },
       ]
     },
     analytics: {
       title: "Analytics",
       icon: <PieChart className="w-4 h-4" />,
       tools: [
-        { name: "Mixpanel", description: "Analytics", color: "from-[#7856FF] to-[#A855F7]", icon: <SiMixpanel className="w-5 h-5" />, tooltip: "Product analytics for tracking user behavior, funnels, and retention metrics" },
-        { name: "GA4", description: "Web Stats", color: "from-[#E37400] to-[#F9AB00]", icon: <SiGoogleanalytics className="w-5 h-5" />, tooltip: "Google's web analytics for traffic analysis, conversions, and audience insights" },
+        { name: "Mixpanel", description: "Analytics", color: "from-[#7856FF] to-[#A855F7]", icon: <Activity className="w-5 h-5" />, tooltip: "Product analytics for tracking user behavior, funnels, and retention metrics" },
+        { name: "GA4", description: "Web Stats", color: "from-[#E37400] to-[#F9AB00]", icon: <LineChart className="w-5 h-5" />, tooltip: "Google's web analytics for traffic analysis, conversions, and audience insights" },
         { name: "Amplitude", description: "Product", color: "from-[#1F2937] to-[#374151]", icon: <BarChart className="w-5 h-5" />, tooltip: "Product intelligence platform for understanding user journeys and feature adoption" },
-        { name: "Tableau", description: "Viz", color: "from-[#E97627] to-[#C72037]", icon: <SiTableau className="w-5 h-5" />, tooltip: "Powerful data visualization tool for creating interactive dashboards and reports" },
-        { name: "Hotjar", description: "Heatmaps", color: "from-[#FD3A5C] to-[#FF6B35]", icon: <SiHotjar className="w-5 h-5" />, tooltip: "Behavior analytics with heatmaps, session recordings, and user feedback" },
+        { name: "Tableau", description: "Viz", color: "from-[#E97627] to-[#C72037]", icon: <LayoutDashboard className="w-5 h-5" />, tooltip: "Powerful data visualization tool for creating interactive dashboards and reports" },
+        { name: "Hotjar", description: "Heatmaps", color: "from-[#FD3A5C] to-[#FF6B35]", icon: <Flame className="w-5 h-5" />, tooltip: "Behavior analytics with heatmaps, session recordings, and user feedback" },
       ]
     },
     ai: {
       title: "AI Tools",
       icon: <Bot className="w-4 h-4" />,
       tools: [
-        { name: "ChatGPT", description: "AI Chat", color: "from-[#10A37F] to-[#1A7F64]", icon: <SiOpenai className="w-5 h-5" />, tooltip: "OpenAI's conversational AI for content creation, analysis, and problem-solving" },
-        { name: "Claude", description: "AI", color: "from-[#D4A574] to-[#CC785C]", icon: <SiAnthropic className="w-5 h-5" />, tooltip: "Anthropic's AI assistant for research, writing, and complex reasoning tasks" },
-        { name: "n8n", description: "Automation", color: "from-[#EA4B71] to-[#FF6D5A]", icon: <SiN8N className="w-5 h-5" />, tooltip: "Self-hosted workflow automation for connecting apps and automating processes" },
-        { name: "Zapier", description: "Connect", color: "from-[#FF4A00] to-[#FF8C00]", icon: <SiZapier className="w-5 h-5" />, tooltip: "No-code automation platform connecting 5000+ apps for seamless workflows" },
-        { name: "Make", description: "Visual", color: "from-[#6D00CC] to-[#9B51E0]", icon: <SiMake className="w-5 h-5" />, tooltip: "Visual workflow builder for complex automations with advanced logic" },
+        { name: "ChatGPT", description: "AI Chat", color: "from-[#10A37F] to-[#1A7F64]", icon: <BrainCircuit className="w-5 h-5" />, tooltip: "OpenAI's conversational AI for content creation, analysis, and problem-solving" },
+        { name: "Claude", description: "AI", color: "from-[#D4A574] to-[#CC785C]", icon: <Cpu className="w-5 h-5" />, tooltip: "Anthropic's AI assistant for research, writing, and complex reasoning tasks" },
+        { name: "n8n", description: "Automation", color: "from-[#EA4B71] to-[#FF6D5A]", icon: <Workflow className="w-5 h-5" />, tooltip: "Self-hosted workflow automation for connecting apps and automating processes" },
+        { name: "Zapier", description: "Connect", color: "from-[#FF4A00] to-[#FF8C00]", icon: <Link2 className="w-5 h-5" />, tooltip: "No-code automation platform connecting 5000+ apps for seamless workflows" },
+        { name: "Make", description: "Visual", color: "from-[#6D00CC] to-[#9B51E0]", icon: <Cog className="w-5 h-5" />, tooltip: "Visual workflow builder for complex automations with advanced logic" },
       ]
     },
     development: {
       title: "Dev Tools",
       icon: <Code className="w-4 h-4" />,
       tools: [
-        { name: "GitHub", description: "Code", color: "from-[#24292F] to-[#57606A]", icon: <SiGithub className="w-5 h-5" />, tooltip: "Version control and collaboration platform for code hosting and review" },
-        { name: "Postman", description: "API", color: "from-[#FF6C37] to-[#FF9E2C]", icon: <SiPostman className="w-5 h-5" />, tooltip: "API development platform for testing, documenting, and monitoring APIs" },
-        { name: "Docker", description: "Container", color: "from-[#2496ED] to-[#0DB7ED]", icon: <SiDocker className="w-5 h-5" />, tooltip: "Containerization platform for building and deploying applications consistently" },
-        { name: "VS Code", description: "Editor", color: "from-[#007ACC] to-[#0098FF]", icon: <VscVscode className="w-5 h-5" />, tooltip: "Powerful code editor with extensions for every programming language" },
-        { name: "AWS", description: "Cloud", color: "from-[#FF9900] to-[#FFB84D]", icon: <SiAmazonwebservices className="w-5 h-5" />, tooltip: "Amazon's cloud platform for scalable infrastructure and services" },
+        { name: "GitHub", description: "Code", color: "from-[#24292F] to-[#57606A]", icon: <Github className="w-5 h-5" />, tooltip: "Version control and collaboration platform for code hosting and review" },
+        { name: "Postman", description: "API", color: "from-[#FF6C37] to-[#FF9E2C]", icon: <Send className="w-5 h-5" />, tooltip: "API development platform for testing, documenting, and monitoring APIs" },
+        { name: "Docker", description: "Container", color: "from-[#2496ED] to-[#0DB7ED]", icon: <Container className="w-5 h-5" />, tooltip: "Containerization platform for building and deploying applications consistently" },
+        { name: "VS Code", description: "Editor", color: "from-[#007ACC] to-[#0098FF]", icon: <FileCode className="w-5 h-5" />, tooltip: "Powerful code editor with extensions for every programming language" },
+        { name: "AWS", description: "Cloud", color: "from-[#FF9900] to-[#FFB84D]", icon: <Server className="w-5 h-5" />, tooltip: "Amazon's cloud platform for scalable infrastructure and services" },
       ]
     }
   };
