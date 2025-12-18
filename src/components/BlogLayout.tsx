@@ -5,9 +5,11 @@ import { BlogSidebar } from "./BlogSidebar";
 import { BlogPostDetail } from "./BlogPostDetail";
 import { BlogPost } from "@/data/blogPosts";
 import type { SortOption } from "@/pages/Blog";
+import { cn } from "@/lib/utils";
 
 interface BlogLayoutProps {
   posts: BlogPost[];
+  allPosts: BlogPost[];
   selectedPost: BlogPost | null;
   onPostClick: (post: BlogPost) => void;
   categories: Record<string, string>;
@@ -21,10 +23,22 @@ interface BlogLayoutProps {
   onSortChange: (sort: SortOption) => void;
   blogTheme: "light" | "dark" | "system";
   onThemeChange: (theme: "light" | "dark" | "system") => void;
+  // New props for enhanced features
+  bookmarkedPosts: number[];
+  onToggleBookmark: (postId: number) => void;
+  readPosts: number[];
+  recentSearches: string[];
+  onClearSearchHistory: () => void;
+  onAddRecentSearch: (term: string) => void;
+  isCollapsed: boolean;
+  onToggleCollapse: () => void;
+  viewMode: "list" | "archive";
+  onViewModeChange: (mode: "list" | "archive") => void;
 }
 
 export const BlogLayout = ({
   posts,
+  allPosts,
   selectedPost,
   onPostClick,
   categories,
@@ -38,6 +52,16 @@ export const BlogLayout = ({
   onSortChange,
   blogTheme,
   onThemeChange,
+  bookmarkedPosts,
+  onToggleBookmark,
+  readPosts,
+  recentSearches,
+  onClearSearchHistory,
+  onAddRecentSearch,
+  isCollapsed,
+  onToggleCollapse,
+  viewMode,
+  onViewModeChange,
 }: BlogLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -56,13 +80,14 @@ export const BlogLayout = ({
       )}
 
       {/* Sidebar */}
-      <aside className={`
-        fixed top-16 left-0 bottom-0 w-80 bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl 
-        border-r border-slate-200/60 dark:border-slate-700/60 shadow-2xl z-50
-        transform transition-all duration-300 ease-in-out
-        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-        lg:translate-x-0 lg:static lg:top-0 lg:z-30
-      `}>
+      <aside className={cn(
+        "fixed top-16 left-0 bottom-0 bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl",
+        "border-r border-slate-200/60 dark:border-slate-700/60 shadow-2xl z-50",
+        "transform transition-all duration-300 ease-in-out",
+        sidebarOpen ? "translate-x-0" : "-translate-x-full",
+        "lg:translate-x-0 lg:static lg:top-0 lg:z-30",
+        isCollapsed ? "w-16" : "w-80"
+      )}>
         {/* Close Button for Mobile */}
         <div className="lg:hidden absolute top-3 right-3 z-10">
           <Button
@@ -79,6 +104,7 @@ export const BlogLayout = ({
         <div className="h-full overflow-hidden">
           <BlogSidebar
             posts={posts}
+            allPosts={allPosts}
             selectedPost={selectedPost}
             onPostClick={(post) => {
               onPostClick(post);
@@ -93,6 +119,16 @@ export const BlogLayout = ({
             onSortChange={onSortChange}
             blogTheme={blogTheme}
             onThemeChange={onThemeChange}
+            bookmarkedPosts={bookmarkedPosts}
+            onToggleBookmark={onToggleBookmark}
+            readPosts={readPosts}
+            recentSearches={recentSearches}
+            onClearSearchHistory={onClearSearchHistory}
+            onAddRecentSearch={onAddRecentSearch}
+            isCollapsed={isCollapsed}
+            onToggleCollapse={onToggleCollapse}
+            viewMode={viewMode}
+            onViewModeChange={onViewModeChange}
           />
         </div>
       </aside>
