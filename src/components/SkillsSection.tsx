@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export const SkillsSection = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
@@ -22,12 +23,12 @@ export const SkillsSection = () => {
       description: "Strategic product planning with market-driven insights and business impact focus",
       icon: <Target className="w-5 h-5" />,
       skills: [
-        { name: "Product Discovery", level: 95 },
-        { name: "Market Research", level: 90 },
-        { name: "Competitive Analysis", level: 88 },
-        { name: "Product Roadmap", level: 92 },
-        { name: "Go-to-Market", level: 85 },
-        { name: "MVP Development", level: 94 }
+        { name: "Product Discovery", level: 95, tooltip: "Identifying user problems and validating solutions through research and experimentation" },
+        { name: "Market Research", level: 90, tooltip: "Analyzing market trends, competitors, and customer segments to inform strategy" },
+        { name: "Competitive Analysis", level: 88, tooltip: "Evaluating competitor products, positioning, and market strategies" },
+        { name: "Product Roadmap", level: 92, tooltip: "Creating strategic roadmaps that align business goals with user needs" },
+        { name: "Go-to-Market", level: 85, tooltip: "Planning and executing product launches with cross-functional teams" },
+        { name: "MVP Development", level: 94, tooltip: "Building minimum viable products to test hypotheses quickly" }
       ],
       color: "from-blue-500 to-indigo-600",
       lightColor: "from-blue-400 to-indigo-500",
@@ -41,12 +42,12 @@ export const SkillsSection = () => {
       description: "Data-driven decision making through comprehensive user behavior analysis",
       icon: <BarChart3 className="w-5 h-5" />,
       skills: [
-        { name: "User Analytics", level: 92 },
-        { name: "A/B Testing", level: 88 },
-        { name: "KPI Tracking", level: 90 },
-        { name: "Data Visualization", level: 85 },
-        { name: "Performance Metrics", level: 87 },
-        { name: "Conversion Optimization", level: 86 }
+        { name: "User Analytics", level: 92, tooltip: "Tracking and analyzing user behavior to inform product decisions" },
+        { name: "A/B Testing", level: 88, tooltip: "Designing and running experiments to optimize features and conversions" },
+        { name: "KPI Tracking", level: 90, tooltip: "Defining and monitoring key performance indicators for product success" },
+        { name: "Data Visualization", level: 85, tooltip: "Creating dashboards and reports to communicate insights effectively" },
+        { name: "Performance Metrics", level: 87, tooltip: "Measuring product performance through quantitative metrics" },
+        { name: "Conversion Optimization", level: 86, tooltip: "Improving user flows and funnels to increase conversion rates" }
       ],
       color: "from-emerald-500 to-teal-600",
       lightColor: "from-emerald-400 to-teal-500",
@@ -60,12 +61,12 @@ export const SkillsSection = () => {
       description: "User-centered design approach with focus on exceptional user journeys",
       icon: <Palette className="w-5 h-5" />,
       skills: [
-        { name: "User Research", level: 90 },
-        { name: "Journey Mapping", level: 88 },
-        { name: "Wireframing", level: 92 },
-        { name: "Usability Testing", level: 85 },
-        { name: "Design Systems", level: 83 },
-        { name: "Accessibility", level: 80 }
+        { name: "User Research", level: 90, tooltip: "Conducting interviews, surveys, and usability studies to understand users" },
+        { name: "Journey Mapping", level: 88, tooltip: "Visualizing end-to-end user experiences to identify pain points" },
+        { name: "Wireframing", level: 92, tooltip: "Creating low and high-fidelity designs to communicate product vision" },
+        { name: "Usability Testing", level: 85, tooltip: "Testing prototypes with real users to validate design decisions" },
+        { name: "Design Systems", level: 83, tooltip: "Building consistent component libraries for scalable product design" },
+        { name: "Accessibility", level: 80, tooltip: "Ensuring products are usable by people with diverse abilities" }
       ],
       color: "from-purple-500 to-pink-600",
       lightColor: "from-purple-400 to-pink-500",
@@ -79,12 +80,12 @@ export const SkillsSection = () => {
       description: "Technical collaboration and system architecture understanding",
       icon: <Code className="w-5 h-5" />,
       skills: [
-        { name: "Agile/Scrum", level: 94 },
-        { name: "API Design", level: 82 },
-        { name: "Database Basics", level: 78 },
-        { name: "Tech Documentation", level: 88 },
-        { name: "System Architecture", level: 75 },
-        { name: "DevOps Basics", level: 72 }
+        { name: "Agile/Scrum", level: 94, tooltip: "Leading agile ceremonies and driving sprint execution" },
+        { name: "API Design", level: 82, tooltip: "Collaborating on API specifications and integration requirements" },
+        { name: "Database Basics", level: 78, tooltip: "Understanding data models and database fundamentals" },
+        { name: "Tech Documentation", level: 88, tooltip: "Writing clear technical specifications and PRDs" },
+        { name: "System Architecture", level: 75, tooltip: "Understanding system components and their interactions" },
+        { name: "DevOps Basics", level: 72, tooltip: "Familiarity with CI/CD pipelines and deployment processes" }
       ],
       color: "from-orange-500 to-red-600",
       lightColor: "from-orange-400 to-red-500",
@@ -296,70 +297,100 @@ export const SkillsSection = () => {
                 </CardHeader>
                 
                 <CardContent className="pb-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {currentCategory.skills.map((skill, i) => (
-                      <div 
-                        key={i} 
-                        className="group relative"
-                        onMouseEnter={() => setHoveredSkill(skill.name)}
-                        onMouseLeave={() => setHoveredSkill(null)}
-                      >
-                        <div className={cn(
-                          "relative p-5 rounded-2xl border-2 transition-all duration-300 cursor-pointer overflow-hidden",
-                          hoveredSkill === skill.name
-                            ? "border-transparent shadow-xl scale-[1.02] -translate-y-1"
-                            : "border-slate-200/50 dark:border-slate-700/50 bg-slate-50/50 dark:bg-slate-800/50 hover:border-slate-300 dark:hover:border-slate-600"
-                        )}>
-                          {/* Gradient background on hover */}
-                          <div className={cn(
-                            "absolute inset-0 bg-gradient-to-br transition-opacity duration-300",
-                            currentCategory.color,
-                            hoveredSkill === skill.name ? "opacity-100" : "opacity-0"
-                          )} />
-                          
-                          {/* Content */}
-                          <div className="relative z-10">
-                            <div className="flex items-center justify-between mb-3">
-                              <span className={cn(
-                                "font-semibold text-sm transition-colors flex-1",
-                                hoveredSkill === skill.name ? "text-white" : "text-slate-800 dark:text-slate-200"
+                  <TooltipProvider delayDuration={200}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {currentCategory.skills.map((skill, i) => (
+                        <Tooltip key={i}>
+                          <TooltipTrigger asChild>
+                            <div 
+                              className="group relative"
+                              onMouseEnter={() => setHoveredSkill(skill.name)}
+                              onMouseLeave={() => setHoveredSkill(null)}
+                            >
+                              <div className={cn(
+                                "relative p-5 rounded-2xl border-2 transition-all duration-300 cursor-pointer overflow-hidden",
+                                hoveredSkill === skill.name
+                                  ? "border-transparent shadow-xl scale-[1.02] -translate-y-1"
+                                  : "border-slate-200/50 dark:border-slate-700/50 bg-slate-50/50 dark:bg-slate-800/50 hover:border-slate-300 dark:hover:border-slate-600"
                               )}>
-                                {skill.name}
-                              </span>
-                              <span className={cn(
-                                "text-xs font-bold transition-colors mr-2",
-                                hoveredSkill === skill.name ? "text-white/90" : "text-slate-500 dark:text-slate-400"
-                              )}>
-                                {skill.level}%
-                              </span>
-                              <CheckCircle2 className={cn(
-                                "w-4 h-4 flex-shrink-0 transition-all",
-                                hoveredSkill === skill.name 
-                                  ? "text-white/80" 
-                                  : currentCategory.textColor
-                              )} />
+                                {/* Gradient background on hover */}
+                                <div className={cn(
+                                  "absolute inset-0 bg-gradient-to-br transition-opacity duration-300",
+                                  currentCategory.color,
+                                  hoveredSkill === skill.name ? "opacity-100" : "opacity-0"
+                                )} />
+                                
+                                {/* Content */}
+                                <div className="relative z-10">
+                                  <div className="flex items-center justify-between mb-3">
+                                    <span className={cn(
+                                      "font-semibold text-sm transition-colors flex-1",
+                                      hoveredSkill === skill.name ? "text-white" : "text-slate-800 dark:text-slate-200"
+                                    )}>
+                                      {skill.name}
+                                    </span>
+                                    <span className={cn(
+                                      "text-xs font-bold transition-colors mr-2",
+                                      hoveredSkill === skill.name ? "text-white/90" : "text-slate-500 dark:text-slate-400"
+                                    )}>
+                                      {skill.level}%
+                                    </span>
+                                    <CheckCircle2 className={cn(
+                                      "w-4 h-4 flex-shrink-0 transition-all",
+                                      hoveredSkill === skill.name 
+                                        ? "text-white/80" 
+                                        : currentCategory.textColor
+                                    )} />
+                                  </div>
+                                  
+                                  {/* Progress Bar */}
+                                  <div className={cn(
+                                    "h-2 rounded-full overflow-hidden transition-colors",
+                                    hoveredSkill === skill.name ? "bg-white/20" : "bg-slate-200 dark:bg-slate-700"
+                                  )}>
+                                    <div 
+                                      className={cn(
+                                        "h-full rounded-full transition-all duration-700 ease-out",
+                                        hoveredSkill === skill.name 
+                                          ? "bg-white" 
+                                          : `bg-gradient-to-r ${currentCategory.lightColor}`
+                                      )}
+                                      style={{ width: `${skill.level}%` }}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            
-                            {/* Progress Bar */}
-                            <div className={cn(
-                              "h-2 rounded-full overflow-hidden transition-colors",
-                              hoveredSkill === skill.name ? "bg-white/20" : "bg-slate-200 dark:bg-slate-700"
-                            )}>
-                              <div 
-                                className={cn(
-                                  "h-full rounded-full transition-all duration-700 ease-out",
-                                  hoveredSkill === skill.name 
-                                    ? "bg-white" 
-                                    : `bg-gradient-to-r ${currentCategory.lightColor}`
-                                )}
-                                style={{ width: `${skill.level}%` }}
-                              />
+                          </TooltipTrigger>
+                          <TooltipContent 
+                            side="top" 
+                            className="max-w-xs bg-slate-900 dark:bg-slate-800 text-white px-4 py-3 rounded-xl shadow-xl border-0"
+                          >
+                            <div className="space-y-2">
+                              <div className="flex items-center gap-2">
+                                <div className={cn("w-2 h-2 rounded-full bg-gradient-to-r", currentCategory.color)} />
+                                <span className="font-semibold text-sm">{skill.name}</span>
+                              </div>
+                              <p className="text-xs text-slate-300 leading-relaxed">{skill.tooltip}</p>
+                              <div className="flex items-center gap-2 pt-1 border-t border-slate-700">
+                                <span className="text-xs text-slate-400">Proficiency:</span>
+                                <span className={cn(
+                                  "text-xs font-bold",
+                                  skill.level >= 90 ? "text-emerald-400" : 
+                                  skill.level >= 80 ? "text-blue-400" : 
+                                  skill.level >= 70 ? "text-amber-400" : "text-slate-400"
+                                )}>
+                                  {skill.level >= 90 ? "Expert" : 
+                                   skill.level >= 80 ? "Advanced" : 
+                                   skill.level >= 70 ? "Proficient" : "Developing"}
+                                </span>
+                              </div>
                             </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                          </TooltipContent>
+                        </Tooltip>
+                      ))}
+                    </div>
+                  </TooltipProvider>
                 </CardContent>
               </Card>
             </div>
