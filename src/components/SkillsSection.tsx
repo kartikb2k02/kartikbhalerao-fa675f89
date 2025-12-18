@@ -8,6 +8,64 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { SiFigma, SiAdobexd, SiCanva, SiSketch, SiFramer, SiJira, SiNotion, SiTrello, SiAsana, SiLinear, SiMixpanel, SiGoogleanalytics, SiTableau, SiHotjar, SiOpenai, SiAnthropic, SiZapier, SiGithub, SiPostman, SiDocker, SiAmazonwebservices, SiN8N, SiMake } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 
+// Counter animation hook
+const useCountUp = (end: number, isVisible: boolean, duration: number = 1500, delay: number = 0) => {
+  const [count, setCount] = useState(0);
+  
+  useEffect(() => {
+    if (!isVisible) {
+      setCount(0);
+      return;
+    }
+    
+    const startTime = Date.now() + delay;
+    let animationFrame: number;
+    
+    const animate = () => {
+      const now = Date.now();
+      if (now < startTime) {
+        animationFrame = requestAnimationFrame(animate);
+        return;
+      }
+      
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const currentCount = Math.round(easeOutQuart * end);
+      
+      setCount(currentCount);
+      
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+    
+    animationFrame = requestAnimationFrame(animate);
+    
+    return () => cancelAnimationFrame(animationFrame);
+  }, [end, isVisible, duration, delay]);
+  
+  return count;
+};
+
+// Animated counter component
+const AnimatedCounter = ({ 
+  value, 
+  isVisible, 
+  delay = 0, 
+  className 
+}: { 
+  value: number; 
+  isVisible: boolean; 
+  delay?: number; 
+  className?: string;
+}) => {
+  const count = useCountUp(value, isVisible, 1200, delay);
+  return <span className={className}>{count}%</span>;
+};
+
 export const SkillsSection = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState("strategy");
@@ -364,12 +422,15 @@ export const SkillsSection = () => {
                                     )}>
                                       {skill.name}
                                     </span>
-                                    <span className={cn(
-                                      "text-xs font-bold transition-colors mr-2 tabular-nums",
-                                      hoveredSkill === skill.name ? "text-white/90" : "text-slate-500 dark:text-slate-400"
-                                    )}>
-                                      {isVisible ? skill.level : 0}%
-                                    </span>
+                                    <AnimatedCounter 
+                                      value={skill.level} 
+                                      isVisible={isVisible} 
+                                      delay={i * 150}
+                                      className={cn(
+                                        "text-xs font-bold transition-colors mr-2 tabular-nums",
+                                        hoveredSkill === skill.name ? "text-white/90" : "text-slate-500 dark:text-slate-400"
+                                      )}
+                                    />
                                     <CheckCircle2 className={cn(
                                       "w-4 h-4 flex-shrink-0 transition-all",
                                       hoveredSkill === skill.name 
