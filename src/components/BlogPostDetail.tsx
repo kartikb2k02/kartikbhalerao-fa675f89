@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { ArrowLeft, Calendar, Clock, ArrowRight, User, Twitter, Linkedin, Link2, Check, ArrowUp } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, ArrowRight, User, Linkedin, Link2, Check, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BlogPost } from "@/data/blogPosts";
@@ -148,10 +148,12 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
                 <span className="text-sm text-slate-500 dark:text-slate-400 mr-1">Share:</span>
                 <button
                   onClick={shareOnTwitter}
-                  className="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
-                  title="Share on Twitter"
+                  className="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                  title="Share on X"
                 >
-                  <Twitter className="w-4 h-4" />
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
                 </button>
                 <button
                   onClick={shareOnLinkedIn}
