@@ -84,11 +84,23 @@ export default {
     				to: {
     					height: '0'
     				}
+    			},
+    			'slide-tools': {
+    				'0%': {
+    					transform: 'translateX(0)'
+    				},
+    				'50%': {
+    					transform: 'translateX(-15px)'
+    				},
+    				'100%': {
+    					transform: 'translateX(0)'
+    				}
     			}
     		},
     		animation: {
     			'accordion-down': 'accordion-down 0.2s ease-out',
-    			'accordion-up': 'accordion-up 0.2s ease-out'
+    			'accordion-up': 'accordion-up 0.2s ease-out',
+    			'slide-tools': 'slide-tools 2s ease-in-out infinite'
     		},
     		boxShadow: {
     			'2xs': 'var(--shadow-2xs)',

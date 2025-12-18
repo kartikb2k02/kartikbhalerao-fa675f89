@@ -516,7 +516,7 @@ export const SkillsSection = () => {
           {/* Tools Grid by Category */}
           <div className="space-y-8">
             {Object.entries(toolCategories).map(([key, category]) => (
-              <div key={key} className="relative">
+              <div key={key} className="relative group/row">
                 {/* Category Header */}
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
@@ -526,9 +526,10 @@ export const SkillsSection = () => {
                   <div className="flex-1 h-px bg-gradient-to-r from-slate-200 dark:from-slate-700 to-transparent" />
                 </div>
                 
-                {/* Tools Row */}
+                {/* Tools Row with Sliding Animation */}
                 <TooltipProvider delayDuration={200}>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                  <div className="overflow-hidden">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 group-hover/row:animate-slide-tools">
                     {category.tools.map((tool, index) => (
                       <Tooltip key={index}>
                         <TooltipTrigger asChild>
@@ -612,6 +613,7 @@ export const SkillsSection = () => {
                         </TooltipContent>
                       </Tooltip>
                     ))}
+                    </div>
                   </div>
                 </TooltipProvider>
               </div>
