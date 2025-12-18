@@ -88,7 +88,7 @@ export const BlogLayout = ({
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 lg:ml-60 transition-all duration-300">
+      <main className="flex-1 lg:ml-0 transition-all duration-300">
         {/* Mobile Menu Button */}
         <div className="lg:hidden fixed top-20 left-4 z-40">
           <Button

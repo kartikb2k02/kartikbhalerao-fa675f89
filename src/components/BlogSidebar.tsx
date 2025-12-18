@@ -1,8 +1,7 @@
-
-import { Search } from "lucide-react";
+import { Search, BookOpen, Sparkles, Clock, TrendingUp } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BlogPost } from "@/data/blogPosts";
+import { cn } from "@/lib/utils";
 
 interface BlogSidebarProps {
   posts: BlogPost[];
@@ -25,91 +24,170 @@ export const BlogSidebar = ({
   searchTerm,
   onSearchChange,
 }: BlogSidebarProps) => {
-  return (
-    <div className="h-full relative">
-      <div className="p-6 relative z-10">
-        {/* Enhanced Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">KB</span>
-            </div>
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Blog Posts
-            </h2>
-          </div>
-          <div className="h-px bg-gradient-to-r from-blue-200 via-purple-200 to-transparent dark:from-blue-800 dark:via-purple-800"></div>
-        </div>
+  const categoryList = [
+    { key: "all", label: "All Posts", icon: BookOpen },
+    { key: "strategy", label: "Strategy", icon: TrendingUp },
+  ];
 
-        {/* Enhanced Search */}
-        <div className="mb-6">
-          <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg blur-sm opacity-0 group-focus-within:opacity-100 transition-opacity duration-300"></div>
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 dark:text-slate-500 w-4 h-4 group-focus-within:text-blue-500 dark:group-focus-within:text-blue-400 transition-colors duration-300" />
+  return (
+    <div className="h-full flex flex-col">
+      {/* Header Section */}
+      <div className="p-5 border-b border-slate-200/50 dark:border-slate-700/50">
+        <div className="flex items-center gap-3 mb-1">
+          <div className="relative">
+            <div className="w-10 h-10 bg-gradient-to-br from-violet-500 via-purple-500 to-fuchsia-500 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/25">
+              <Sparkles className="w-5 h-5 text-white" />
+            </div>
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full border-2 border-white dark:border-slate-900 animate-pulse" />
+          </div>
+          <div>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+              Knowledge Base
+            </h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              {posts.length} articles available
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Search Section */}
+      <div className="p-4">
+        <div className="relative group">
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl opacity-0 group-focus-within:opacity-100 blur transition-all duration-300" />
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-violet-500 transition-colors" />
             <Input
               placeholder="Search articles..."
               value={searchTerm}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="pl-10 bg-white/90 dark:bg-slate-700/90 border-slate-200/60 dark:border-slate-600/60 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-blue-500/60 dark:focus:border-blue-400/60 focus:bg-white dark:focus:bg-slate-700 transition-all duration-300 backdrop-blur-sm relative z-10"
+              className="pl-10 h-10 bg-slate-100/80 dark:bg-slate-800/80 border-0 focus:ring-2 focus:ring-violet-500/50 rounded-xl text-sm placeholder:text-slate-400"
             />
           </div>
         </div>
+      </div>
 
-        {/* Simplified Categories - Only Titles */}
-        <Tabs value={selectedCategory} onValueChange={onCategoryChange} className="mb-6">
-          <TabsList className="grid w-full grid-cols-2 h-auto bg-slate-100/90 dark:bg-slate-700/90 p-1 backdrop-blur-sm border border-slate-200/60 dark:border-slate-600/60 rounded-xl">
-            <TabsTrigger 
-              value="all" 
-              className="text-sm py-2 px-4 rounded-lg font-medium transition-all duration-300 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=inactive]:text-slate-700 dark:data-[state=inactive]:text-slate-300 data-[state=inactive]:hover:text-blue-600 dark:data-[state=inactive]:hover:text-blue-400"
+      {/* Category Pills */}
+      <div className="px-4 pb-4">
+        <div className="flex gap-2">
+          {categoryList.map(({ key, label, icon: Icon }) => (
+            <button
+              key={key}
+              onClick={() => onCategoryChange(key)}
+              className={cn(
+                "flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300",
+                selectedCategory === key
+                  ? "bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/25 scale-105"
+                  : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
+              )}
             >
-              All
-            </TabsTrigger>
-            <TabsTrigger 
-              value="strategy" 
-              className="text-sm py-2 px-4 rounded-lg font-medium transition-all duration-300 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=inactive]:text-slate-700 dark:data-[state=inactive]:text-slate-300 data-[state=inactive]:hover:text-blue-600 dark:data-[state=inactive]:hover:text-blue-400"
-            >
-              Strategy
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
-
-        {/* Enhanced Posts List - Only Titles */}
-        <div className="space-y-3">
-          {posts.map((post, index) => (
-            <article
-              key={post.id}
-              className={`cursor-pointer transition-all duration-500 p-4 rounded-xl backdrop-blur-sm border group relative overflow-hidden ${
-                selectedPost?.id === post.id
-                  ? 'bg-gradient-to-br from-blue-50/90 to-indigo-50/80 dark:from-blue-950/60 dark:to-indigo-950/50 border-blue-300/60 dark:border-blue-600/60 shadow-xl shadow-blue-500/20 transform scale-105'
-                  : 'bg-white/80 dark:bg-slate-800/80 border-slate-200/40 dark:border-slate-700/40 hover:bg-gradient-to-br hover:from-blue-50/80 hover:to-indigo-50/60 dark:hover:from-blue-950/50 dark:hover:to-indigo-950/40 hover:border-blue-300/60 dark:hover:border-blue-600/60 hover:shadow-xl hover:shadow-blue-500/10 hover:transform hover:scale-102'
-              }`}
-              onClick={() => onPostClick(post)}
-              style={{
-                animationDelay: `${index * 0.1}s`
-              }}
-            >
-              {/* Background Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-emerald-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              {/* Content - Only Title */}
-              <div className="relative z-10">
-                <h3 className="text-base font-semibold text-slate-900 dark:text-slate-100 leading-6 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300">
-                  {post.title}
-                </h3>
-              </div>
-              
-              {/* Shimmer Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 rounded-xl"></div>
-            </article>
+              <Icon className="w-3 h-3" />
+              {label}
+            </button>
           ))}
-          
+        </div>
+      </div>
+
+      {/* Posts List */}
+      <div className="flex-1 overflow-y-auto px-3 pb-4">
+        <div className="space-y-2">
+          {posts.map((post, index) => {
+            const isSelected = selectedPost?.id === post.id;
+            
+            return (
+              <article
+                key={post.id}
+                onClick={() => onPostClick(post)}
+                className={cn(
+                  "group relative cursor-pointer rounded-xl p-3 transition-all duration-300",
+                  isSelected
+                    ? "bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10 dark:from-violet-500/20 dark:to-fuchsia-500/20"
+                    : "hover:bg-slate-100/80 dark:hover:bg-slate-800/50"
+                )}
+                style={{ animationDelay: `${index * 50}ms` }}
+              >
+                {/* Selection Indicator */}
+                <div
+                  className={cn(
+                    "absolute left-0 top-1/2 -translate-y-1/2 w-1 rounded-full transition-all duration-300",
+                    isSelected
+                      ? "h-8 bg-gradient-to-b from-violet-500 to-fuchsia-500"
+                      : "h-0 bg-transparent group-hover:h-4 group-hover:bg-slate-300 dark:group-hover:bg-slate-600"
+                  )}
+                />
+
+                {/* Content */}
+                <div className="pl-2">
+                  <h3
+                    className={cn(
+                      "text-sm font-medium leading-snug transition-colors duration-300 line-clamp-2",
+                      isSelected
+                        ? "text-violet-700 dark:text-violet-300"
+                        : "text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white"
+                    )}
+                  >
+                    {post.title}
+                  </h3>
+                  
+                  {/* Meta Info */}
+                  <div className="flex items-center gap-3 mt-2">
+                    <span className="flex items-center gap-1 text-[10px] text-slate-400 dark:text-slate-500">
+                      <Clock className="w-3 h-3" />
+                      {post.readTime}
+                    </span>
+                    <span
+                      className={cn(
+                        "text-[10px] px-1.5 py-0.5 rounded-md",
+                        isSelected
+                          ? "bg-violet-500/20 text-violet-600 dark:text-violet-400"
+                          : "bg-slate-200/60 dark:bg-slate-700/60 text-slate-500 dark:text-slate-400"
+                      )}
+                    >
+                      {post.category}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Hover Glow Effect */}
+                <div
+                  className={cn(
+                    "absolute inset-0 rounded-xl transition-opacity duration-300 pointer-events-none",
+                    isSelected
+                      ? "opacity-100 bg-gradient-to-r from-violet-500/5 to-fuchsia-500/5"
+                      : "opacity-0 group-hover:opacity-50 bg-gradient-to-r from-slate-200/50 to-slate-100/50 dark:from-slate-700/50 dark:to-slate-800/50"
+                  )}
+                />
+              </article>
+            );
+          })}
+
           {posts.length === 0 && (
-            <div className="text-center py-12">
-              <div className="text-4xl mb-4">🔍</div>
-              <p className="text-slate-500 dark:text-slate-400 font-medium">No posts found</p>
-              <p className="text-sm text-slate-400 dark:text-slate-500 mt-2">Try adjusting your search or category filter</p>
+            <div className="text-center py-12 px-4">
+              <div className="w-16 h-16 mx-auto mb-4 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center">
+                <Search className="w-7 h-7 text-slate-400" />
+              </div>
+              <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                No articles found
+              </p>
+              <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
+                Try a different search term
+              </p>
             </div>
           )}
+        </div>
+      </div>
+
+      {/* Footer Stats */}
+      <div className="p-4 border-t border-slate-200/50 dark:border-slate-700/50 bg-slate-50/50 dark:bg-slate-800/30">
+        <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+          <span className="flex items-center gap-1.5">
+            <BookOpen className="w-3.5 h-3.5" />
+            {posts.length} articles
+          </span>
+          <span className="flex items-center gap-1.5">
+            <TrendingUp className="w-3.5 h-3.5" />
+            Updated weekly
+          </span>
         </div>
       </div>
     </div>
