@@ -112,18 +112,23 @@ export const BlogLayout = ({
         </div>
 
         {/* Content Area */}
-        <div className="min-h-screen bg-gradient-to-br from-white/40 via-slate-50/60 to-blue-50/40 dark:from-slate-800/40 dark:via-slate-900/60 dark:to-slate-800/40">
-          {/* Enhanced Grid Background */}
-          <div
-            className="absolute inset-0 opacity-30"
+        <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/30 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800">
+          {/* Ambient Gradient Orbs */}
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-violet-200/40 via-purple-200/30 to-transparent dark:from-violet-900/20 dark:via-purple-900/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-blue-200/40 via-cyan-200/30 to-transparent dark:from-blue-900/20 dark:via-cyan-900/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
+          <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-gradient-to-r from-fuchsia-200/20 to-pink-200/20 dark:from-fuchsia-900/10 dark:to-pink-900/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+          
+          {/* Subtle Dot Pattern */}
+          <div 
+            className="absolute inset-0 opacity-[0.4] dark:opacity-[0.15]"
             style={{
-              backgroundImage: `
-                linear-gradient(to right, rgba(148,163,184,0.1) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(148,163,184,0.1) 1px, transparent 1px)
-              `,
-              backgroundSize: "40px 40px",
+              backgroundImage: `radial-gradient(circle at 1px 1px, rgb(148 163 184 / 0.3) 1px, transparent 0)`,
+              backgroundSize: "32px 32px",
             }}
           />
+          
+          {/* Top Fade Line */}
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-300/50 dark:via-slate-600/50 to-transparent" />
           
           {selectedPost ? (
             <BlogPostDetail
