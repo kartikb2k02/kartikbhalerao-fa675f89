@@ -15,7 +15,6 @@ const Blog = () => {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [markdownContent, setMarkdownContent] = useState<string>("");
   const [sortBy, setSortBy] = useState<SortOption>("date");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [blogTheme, setBlogTheme] = useState<"light" | "dark" | "system">("system");
   const navigate = useNavigate();
 
@@ -28,13 +27,6 @@ const Blog = () => {
     research: "User Research",
     leadership: "Leadership"
   };
-
-  // Get all unique tags
-  const allTags = useMemo(() => {
-    const tags = new Set<string>();
-    blogPosts.forEach(post => post.tags.forEach(tag => tags.add(tag)));
-    return Array.from(tags).sort();
-  }, []);
 
   // Parse reading time to number for sorting
   const parseReadTime = (readTime: string): number => {
@@ -49,9 +41,7 @@ const Blog = () => {
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
         post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-      const matchesTags = selectedTags.length === 0 || 
-        selectedTags.every(tag => post.tags.includes(tag));
-      return matchesCategory && matchesSearch && matchesTags;
+      return matchesCategory && matchesSearch;
     });
 
     // Sort posts
@@ -69,7 +59,7 @@ const Blog = () => {
     });
 
     return posts;
-  }, [selectedCategory, searchTerm, selectedTags, sortBy]);
+  }, [selectedCategory, searchTerm, sortBy]);
 
   const handleBlogPostClick = async (post: BlogPost) => {
     setSelectedPost(post);
@@ -85,14 +75,6 @@ const Blog = () => {
   const handleTitleClick = () => {
     navigate('/');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleTagToggle = (tag: string) => {
-    setSelectedTags(prev => 
-      prev.includes(tag) 
-        ? prev.filter(t => t !== tag)
-        : [...prev, tag]
-    );
   };
 
   // Determine blog-specific theme class
@@ -172,9 +154,6 @@ const Blog = () => {
           onBackToList={handleBackToList}
           sortBy={sortBy}
           onSortChange={setSortBy}
-          allTags={allTags}
-          selectedTags={selectedTags}
-          onTagToggle={handleTagToggle}
           blogTheme={blogTheme}
           onThemeChange={setBlogTheme}
         />

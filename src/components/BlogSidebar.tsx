@@ -1,8 +1,7 @@
-import { Search, BookOpen, Sparkles, Clock, Calendar, SortAsc, Tag, Sun, Moon, Monitor, X, ChevronDown } from "lucide-react";
+import { Search, BookOpen, Sparkles, Clock, Calendar, SortAsc, Sun, Moon, Monitor } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { BlogPost } from "@/data/blogPosts";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 import type { SortOption } from "@/pages/Blog";
 
 interface BlogSidebarProps {
@@ -16,9 +15,6 @@ interface BlogSidebarProps {
   onSearchChange: (term: string) => void;
   sortBy: SortOption;
   onSortChange: (sort: SortOption) => void;
-  allTags: string[];
-  selectedTags: string[];
-  onTagToggle: (tag: string) => void;
   blogTheme: "light" | "dark" | "system";
   onThemeChange: (theme: "light" | "dark" | "system") => void;
 }
@@ -45,15 +41,9 @@ export const BlogSidebar = ({
   onSearchChange,
   sortBy,
   onSortChange,
-  allTags,
-  selectedTags,
-  onTagToggle,
   blogTheme,
   onThemeChange,
 }: BlogSidebarProps) => {
-  const [showAllTags, setShowAllTags] = useState(false);
-  const displayedTags = showAllTags ? allTags : allTags.slice(0, 6);
-
   const categoryList = [
     { key: "all", label: "All" },
     { key: "strategy", label: "Strategy" },
@@ -156,52 +146,6 @@ export const BlogSidebar = ({
               {label}
             </button>
           ))}
-        </div>
-      </div>
-
-      {/* Tags Section */}
-      <div className="px-4 py-3 border-b border-slate-200/60 dark:border-slate-700/50">
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-1.5">
-            <Tag className="w-3 h-3 text-slate-400" />
-            <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Tags</span>
-          </div>
-          {selectedTags.length > 0 && (
-            <button
-              onClick={() => selectedTags.forEach(tag => onTagToggle(tag))}
-              className="text-[10px] text-violet-600 dark:text-violet-400 hover:underline"
-            >
-              Clear all
-            </button>
-          )}
-        </div>
-        <div className="flex flex-wrap gap-1.5">
-          {displayedTags.map(tag => (
-            <button
-              key={tag}
-              onClick={() => onTagToggle(tag)}
-              className={cn(
-                "group flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] transition-all duration-200 border",
-                selectedTags.includes(tag)
-                  ? "bg-violet-100 dark:bg-violet-900/40 border-violet-300 dark:border-violet-700 text-violet-700 dark:text-violet-300"
-                  : "bg-transparent border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:border-violet-300 dark:hover:border-violet-700 hover:text-violet-600 dark:hover:text-violet-400"
-              )}
-            >
-              {tag}
-              {selectedTags.includes(tag) && (
-                <X className="w-2.5 h-2.5 opacity-60 group-hover:opacity-100" />
-              )}
-            </button>
-          ))}
-          {allTags.length > 6 && (
-            <button
-              onClick={() => setShowAllTags(!showAllTags)}
-              className="flex items-center gap-0.5 px-2 py-0.5 text-[10px] text-violet-600 dark:text-violet-400 hover:underline"
-            >
-              {showAllTags ? "Show less" : `+${allTags.length - 6} more`}
-              <ChevronDown className={cn("w-3 h-3 transition-transform", showAllTags && "rotate-180")} />
-            </button>
-          )}
         </div>
       </div>
 

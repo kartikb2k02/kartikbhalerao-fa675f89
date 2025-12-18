@@ -19,9 +19,6 @@ interface BlogLayoutProps {
   onBackToList: () => void;
   sortBy: SortOption;
   onSortChange: (sort: SortOption) => void;
-  allTags: string[];
-  selectedTags: string[];
-  onTagToggle: (tag: string) => void;
   blogTheme: "light" | "dark" | "system";
   onThemeChange: (theme: "light" | "dark" | "system") => void;
 }
@@ -39,9 +36,6 @@ export const BlogLayout = ({
   onBackToList,
   sortBy,
   onSortChange,
-  allTags,
-  selectedTags,
-  onTagToggle,
   blogTheme,
   onThemeChange,
 }: BlogLayoutProps) => {
@@ -97,9 +91,6 @@ export const BlogLayout = ({
             onSearchChange={onSearchChange}
             sortBy={sortBy}
             onSortChange={onSortChange}
-            allTags={allTags}
-            selectedTags={selectedTags}
-            onTagToggle={onTagToggle}
             blogTheme={blogTheme}
             onThemeChange={onThemeChange}
           />
