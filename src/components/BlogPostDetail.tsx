@@ -82,6 +82,18 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
 
         {/* Blog Header Card */}
         <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-700/50 shadow-xl overflow-hidden mb-8">
+          {/* Banner Image */}
+          {post.image && (
+            <div className="relative w-full h-48 sm:h-64 lg:h-80 overflow-hidden">
+              <img 
+                src={post.image} 
+                alt={post.title}
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            </div>
+          )}
+          
           {/* Category & Meta */}
           <div className="p-6 sm:p-8">
             <Badge 
