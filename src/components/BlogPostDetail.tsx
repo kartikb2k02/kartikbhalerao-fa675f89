@@ -72,14 +72,13 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
 
       <div className="max-w-4xl mx-auto p-4 sm:p-8">
         {/* Back Button */}
-        <Button
-          variant="ghost"
+        <button
           onClick={onBack}
-          className="mb-6 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 group"
+          className="mb-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/50 dark:bg-white/10 backdrop-blur-md border border-white/40 dark:border-white/20 text-slate-700 dark:text-slate-200 font-medium shadow-lg hover:shadow-xl hover:bg-white/70 dark:hover:bg-white/20 hover:scale-[1.02] hover:border-violet-300/50 dark:hover:border-violet-400/30 active:scale-95 transition-all duration-300 group"
         >
-          <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-          Back to posts
-        </Button>
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
+          <span>Back to posts</span>
+        </button>
 
         {/* Blog Header Card */}
         <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-700/50 shadow-xl overflow-hidden mb-8">
