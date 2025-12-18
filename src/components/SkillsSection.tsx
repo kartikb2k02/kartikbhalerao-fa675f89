@@ -646,7 +646,7 @@ export const SkillsSection = () => {
                                 <div className={cn("absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full transition-transform duration-700", hoveredTool === tool.name && "translate-x-full")} />
                                 
                                 {/* Content */}
-                                <div className="relative z-10 flex flex-col items-center gap-3">
+                                <div className="relative z-10 gap-3 items-center justify-center flex flex-row">
                                   {/* Icon with gradient background and glow */}
                                   <div className={cn("p-3 rounded-xl transition-all duration-300 shadow-lg", "bg-gradient-to-br", tool.color, hoveredTool === tool.name ? "scale-110 shadow-xl" : "shadow-md")}>
                                     <div className="text-white">
