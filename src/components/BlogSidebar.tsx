@@ -104,21 +104,15 @@ export const BlogSidebar = ({
             </div>
           </div>
 
-          {/* Enhanced Search */}
-          <div className="relative group">
-            <div className="absolute -inset-1.5 bg-gradient-to-r from-violet-500/50 via-fuchsia-500/50 to-pink-500/50 rounded-2xl opacity-0 group-focus-within:opacity-100 blur-lg transition-all duration-500 animate-pulse" />
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-violet-500 transition-colors duration-300" />
-              <Input 
-                placeholder="Search articles..." 
-                value={searchTerm} 
-                onChange={e => onSearchChange(e.target.value)} 
-                className="pl-11 h-12 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200/60 dark:border-slate-700/50 focus:border-violet-400 focus:ring-2 focus:ring-violet-500/20 rounded-xl text-sm placeholder:text-slate-400 transition-all duration-300 shadow-sm hover:shadow-md" 
-              />
-              <div className="absolute right-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-md">
-                <span className="text-[10px] font-medium text-slate-400">⌘K</span>
-              </div>
-            </div>
+          {/* Search */}
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Input 
+              placeholder="Search articles..." 
+              value={searchTerm} 
+              onChange={e => onSearchChange(e.target.value)} 
+              className="pl-11 h-11 bg-slate-100/80 dark:bg-slate-800/80 border-0 focus:ring-2 focus:ring-violet-500/30 rounded-xl text-sm placeholder:text-slate-400" 
+            />
           </div>
         </div>
 
