@@ -2,9 +2,8 @@ import { useState, useMemo } from "react";
 import { 
   Search, BookOpen, Sparkles, Clock, Calendar, SortAsc, TrendingUp, 
   ChevronRight, Zap, Flame, Star, ArrowUpRight, Hash, Layers, 
-  Bookmark, BookmarkCheck, X, History, BarChart3, Tag, 
-  ChevronDown, ChevronUp, Mail, Send, CheckCircle, PanelLeftClose, 
-  PanelLeft, Eye, ListFilter, Archive, Image
+  Bookmark, BookmarkCheck, X, History, Mail, Send, CheckCircle, 
+  PanelLeftClose, PanelLeft, Eye, ListFilter, Archive
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -80,8 +79,6 @@ export const BlogSidebar = ({
   viewMode,
   onViewModeChange
 }: BlogSidebarProps) => {
-  const [showStats, setShowStats] = useState(false);
-  const [showTags, setShowTags] = useState(true);
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [isSubscribing, setIsSubscribing] = useState(false);
 
@@ -108,19 +105,6 @@ export const BlogSidebar = ({
     icon: Sparkles
   }];
 
-  // Extract all unique tags from posts
-  const allTags = useMemo(() => {
-    const tagCounts: Record<string, number> = {};
-    allPosts.forEach(post => {
-      post.tags.forEach(tag => {
-        tagCounts[tag] = (tagCounts[tag] || 0) + 1;
-      });
-    });
-    return Object.entries(tagCounts)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 12);
-  }, [allPosts]);
-
   // Calculate total reading time
   const totalReadingTime = useMemo(() => {
     return posts.reduce((total, post) => {
@@ -128,11 +112,6 @@ export const BlogSidebar = ({
       return total + (match ? parseInt(match[1]) : 0);
     }, 0);
   }, [posts]);
-
-  // Featured posts
-  const featuredPosts = useMemo(() => 
-    posts.filter(post => post.featured), 
-  [posts]);
 
   // Archive grouped by month
   const archivedPosts = useMemo(() => {
@@ -161,23 +140,6 @@ export const BlogSidebar = ({
       .slice(0, 3)
       .map(item => item.post);
   }, [selectedPost, allPosts]);
-
-  // Stats data
-  const stats = useMemo(() => {
-    const categoryBreakdown: Record<string, number> = {};
-    allPosts.forEach(post => {
-      categoryBreakdown[post.category] = (categoryBreakdown[post.category] || 0) + 1;
-    });
-    const avgReadTime = Math.round(
-      allPosts.reduce((t, p) => t + parseInt(p.readTime.match(/(\d+)/)?.[1] || "0"), 0) / allPosts.length
-    );
-    return {
-      total: allPosts.length,
-      read: readPosts.length,
-      avgReadTime,
-      categoryBreakdown
-    };
-  }, [allPosts, readPosts]);
 
   // Handle search with history
   const handleSearchChange = (term: string) => {
@@ -385,89 +347,9 @@ export const BlogSidebar = ({
           </div>
         </div>
 
-        {/* Stats Section (Collapsible) */}
-        <div className="px-4 py-2 border-b border-slate-200/60 dark:border-slate-700/50">
-          <button
-            onClick={() => setShowStats(!showStats)}
-            className="flex items-center justify-between w-full text-[10px] font-bold text-slate-500 uppercase"
-          >
-            <span className="flex items-center gap-1"><BarChart3 className="w-3 h-3" /> Stats</span>
-            {showStats ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-          </button>
-          {showStats && (
-            <div className="mt-2 grid grid-cols-3 gap-2 animate-fade-in">
-              <div className="bg-gradient-to-br from-violet-100 to-purple-100 dark:from-violet-900/30 dark:to-purple-900/30 rounded-lg p-2 text-center">
-                <div className="text-lg font-bold text-violet-600 dark:text-violet-400">{stats.read}/{stats.total}</div>
-                <div className="text-[9px] text-slate-500">Read</div>
-              </div>
-              <div className="bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30 rounded-lg p-2 text-center">
-                <div className="text-lg font-bold text-blue-600 dark:text-blue-400">{stats.avgReadTime}</div>
-                <div className="text-[9px] text-slate-500">Avg min</div>
-              </div>
-              <div className="bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 rounded-lg p-2 text-center">
-                <div className="text-lg font-bold text-amber-600 dark:text-amber-400">{bookmarkedPosts.length}</div>
-                <div className="text-[9px] text-slate-500">Saved</div>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Tags Cloud (Collapsible) */}
-        <div className="px-4 py-2 border-b border-slate-200/60 dark:border-slate-700/50">
-          <button
-            onClick={() => setShowTags(!showTags)}
-            className="flex items-center justify-between w-full text-[10px] font-bold text-slate-500 uppercase"
-          >
-            <span className="flex items-center gap-1"><Tag className="w-3 h-3" /> Tags</span>
-            {showTags ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-          </button>
-          {showTags && (
-            <div className="mt-2 flex flex-wrap gap-1 animate-fade-in">
-              {allTags.map(([tag, count]) => (
-                <button
-                  key={tag}
-                  onClick={() => onSearchChange(tag)}
-                  className={cn(
-                    "px-2 py-0.5 rounded-full text-[10px] font-medium transition-all border",
-                    searchTerm.toLowerCase() === tag.toLowerCase()
-                      ? "bg-violet-500 text-white border-violet-500"
-                      : "bg-white/80 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:border-violet-400"
-                  )}
-                  style={{ fontSize: `${Math.min(11, 9 + count)}px` }}
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
 
         {/* Posts List */}
         <div className="flex-1 overflow-y-auto px-3 py-3">
-          {/* Featured Section */}
-          {featuredPosts.length > 0 && selectedCategory !== "bookmarks" && viewMode === "list" && (
-            <div className="mb-3">
-              <div className="flex items-center gap-1 mb-2 text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase">
-                <Star className="w-3 h-3 fill-current" /> Featured
-              </div>
-              <div className="space-y-1.5">
-                {featuredPosts.map((post) => (
-                  <PostCard
-                    key={`featured-${post.id}`}
-                    post={post}
-                    isSelected={selectedPost?.id === post.id}
-                    isRead={readPosts.includes(post.id)}
-                    isBookmarked={bookmarkedPosts.includes(post.id)}
-                    onPostClick={onPostClick}
-                    onToggleBookmark={onToggleBookmark}
-                    showThumbnail
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Related Posts (when a post is selected) */}
           {selectedPost && relatedPosts.length > 0 && (
             <div className="mb-3 p-2 bg-violet-50/50 dark:bg-violet-900/20 rounded-lg border border-violet-200/50 dark:border-violet-700/30">
               <div className="flex items-center gap-1 mb-2 text-[10px] font-bold text-violet-600 dark:text-violet-400 uppercase">
@@ -518,13 +400,6 @@ export const BlogSidebar = ({
           ) : (
             /* List View */
             <div className="space-y-1.5">
-              {/* Section Label */}
-              {featuredPosts.length > 0 && selectedCategory !== "bookmarks" && (
-                <div className="flex items-center gap-1 mb-2 text-[10px] font-bold text-slate-500 uppercase">
-                  <Hash className="w-3 h-3" /> All Posts
-                </div>
-              )}
-              
               {posts.map((post) => (
                 <PostCard
                   key={post.id}
