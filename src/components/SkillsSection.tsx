@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 // Real brand icons
 import { SiFigma, SiAdobexd, SiCanva, SiSketch, SiFramer, SiJira, SiNotion, SiTrello, SiAsana, SiLinear, SiMixpanel, SiGoogleanalytics, SiTableau, SiHotjar, SiOpenai, SiAnthropic, SiZapier, SiGithub, SiPostman, SiDocker, SiAmazonwebservices, SiN8N, SiMake } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
@@ -70,6 +71,7 @@ export const SkillsSection = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState("strategy");
   const [hoveredTool, setHoveredTool] = useState<string | null>(null);
+  const [selectedTool, setSelectedTool] = useState<{ name: string; description: string; color: string; icon: React.ReactNode; tooltip: string; categoryTitle: string } | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const skillsRef = useRef<HTMLDivElement>(null);
 
@@ -531,94 +533,160 @@ export const SkillsSection = () => {
                   <div className="overflow-hidden">
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 group-hover/row:animate-slide-tools">
                     {category.tools.map((tool, index) => (
-                      <Tooltip key={index}>
-                        <TooltipTrigger asChild>
-                          <div 
-                            className="group relative"
-                            onMouseEnter={() => setHoveredTool(tool.name)}
-                            onMouseLeave={() => setHoveredTool(null)}
-                          >
-                            <div className={cn(
-                              "relative p-4 rounded-2xl transition-all duration-300 cursor-pointer overflow-hidden",
-                              hoveredTool === tool.name
-                                ? "border-white/30 shadow-2xl scale-105 -translate-y-1"
-                                : "border border-white/20 dark:border-white/10",
-                              // Glassy background
-                              "bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl",
-                              "hover:bg-white/80 dark:hover:bg-slate-800/80"
-                            )}>
-                              {/* Subtle gradient overlay */}
-                              <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-white/10 dark:from-white/5 dark:to-transparent rounded-2xl pointer-events-none" />
-                              
-                              {/* Colored glow on hover */}
+                        <Tooltip key={index}>
+                          <TooltipTrigger asChild>
+                            <div 
+                              className="group relative"
+                              onMouseEnter={() => setHoveredTool(tool.name)}
+                              onMouseLeave={() => setHoveredTool(null)}
+                              onClick={() => setSelectedTool({ ...tool, categoryTitle: category.title })}
+                            >
                               <div className={cn(
-                                "absolute -inset-1 bg-gradient-to-br rounded-2xl blur-xl transition-opacity duration-300 -z-10",
-                                tool.color,
-                                hoveredTool === tool.name ? "opacity-40" : "opacity-0"
-                              )} />
-                              
-                              {/* Inner border highlight */}
-                              <div className="absolute inset-[1px] rounded-2xl bg-gradient-to-br from-white/60 to-transparent dark:from-white/10 pointer-events-none" />
-                              
-                              {/* Shine effect */}
-                              <div className={cn(
-                                "absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full transition-transform duration-700",
-                                hoveredTool === tool.name && "translate-x-full"
-                              )} />
-                              
-                              {/* Content */}
-                              <div className="relative z-10 flex flex-col items-center gap-3">
-                                {/* Icon with gradient background and glow */}
+                                "relative p-4 rounded-2xl transition-all duration-300 cursor-pointer overflow-hidden",
+                                hoveredTool === tool.name
+                                  ? "border-white/30 shadow-2xl scale-105 -translate-y-1"
+                                  : "border border-white/20 dark:border-white/10",
+                                // Glassy background
+                                "bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl",
+                                "hover:bg-white/80 dark:hover:bg-slate-800/80"
+                              )}>
+                                {/* Subtle gradient overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-white/10 dark:from-white/5 dark:to-transparent rounded-2xl pointer-events-none" />
+                                
+                                {/* Colored glow on hover */}
                                 <div className={cn(
-                                  "p-3 rounded-xl transition-all duration-300 shadow-lg",
-                                  "bg-gradient-to-br",
+                                  "absolute -inset-1 bg-gradient-to-br rounded-2xl blur-xl transition-opacity duration-300 -z-10",
                                   tool.color,
-                                  hoveredTool === tool.name 
-                                    ? "scale-110 shadow-xl" 
-                                    : "shadow-md"
-                                )}>
-                                  <div className="text-white">
-                                    {tool.icon}
+                                  hoveredTool === tool.name ? "opacity-40" : "opacity-0"
+                                )} />
+                                
+                                {/* Inner border highlight */}
+                                <div className="absolute inset-[1px] rounded-2xl bg-gradient-to-br from-white/60 to-transparent dark:from-white/10 pointer-events-none" />
+                                
+                                {/* Shine effect */}
+                                <div className={cn(
+                                  "absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full transition-transform duration-700",
+                                  hoveredTool === tool.name && "translate-x-full"
+                                )} />
+                                
+                                {/* Content */}
+                                <div className="relative z-10 flex flex-col items-center gap-3">
+                                  {/* Icon with gradient background and glow */}
+                                  <div className={cn(
+                                    "p-3 rounded-xl transition-all duration-300 shadow-lg",
+                                    "bg-gradient-to-br",
+                                    tool.color,
+                                    hoveredTool === tool.name 
+                                      ? "scale-110 shadow-xl" 
+                                      : "shadow-md"
+                                  )}>
+                                    <div className="text-white">
+                                      {tool.icon}
+                                    </div>
+                                  </div>
+                                  <div className="text-center">
+                                    <h4 className="font-bold text-sm text-slate-800 dark:text-white">
+                                      {tool.name}
+                                    </h4>
+                                    <p className="text-xs mt-0.5 text-slate-500 dark:text-slate-400">
+                                      {tool.description}
+                                    </p>
+                                  </div>
+                                  {/* Click indicator */}
+                                  <div className="text-[10px] text-slate-400 dark:text-slate-500 flex items-center gap-1">
+                                    <span>Click for details</span>
                                   </div>
                                 </div>
-                                <div className="text-center">
-                                  <h4 className="font-bold text-sm text-slate-800 dark:text-white">
-                                    {tool.name}
-                                  </h4>
-                                  <p className="text-xs mt-0.5 text-slate-500 dark:text-slate-400">
-                                    {tool.description}
-                                  </p>
-                                </div>
                               </div>
                             </div>
-                          </div>
-                        </TooltipTrigger>
-                        <TooltipContent 
-                          side="top" 
-                          className="max-w-xs bg-slate-900 dark:bg-slate-800 text-white px-4 py-3 rounded-xl shadow-xl border-0"
-                        >
-                          <div className="space-y-2">
-                            <div className="flex items-center gap-2">
-                              <div className={cn("p-1.5 rounded-lg bg-gradient-to-br", tool.color)}>
-                                <div className="text-white scale-75">{tool.icon}</div>
-                              </div>
-                              <span className="font-semibold text-sm">{tool.name}</span>
-                            </div>
-                            <p className="text-xs text-slate-300 leading-relaxed">{tool.tooltip}</p>
-                            <div className="flex items-center gap-2 pt-1 border-t border-slate-700">
-                              <span className="text-xs text-slate-400">Category:</span>
-                              <span className="text-xs font-medium text-blue-400">{category.title}</span>
-                            </div>
-                          </div>
-                        </TooltipContent>
-                      </Tooltip>
-                    ))}
+                          </TooltipTrigger>
+                          <TooltipContent 
+                            side="top" 
+                            className="max-w-xs bg-slate-900 dark:bg-slate-800 text-white px-3 py-2 rounded-lg shadow-xl border-0 z-50"
+                          >
+                            <span className="text-xs">Click to see more details</span>
+                          </TooltipContent>
+                        </Tooltip>
+                      ))}
                     </div>
                   </div>
                 </TooltipProvider>
               </div>
             ))}
           </div>
+
+          {/* Tool Detail Dialog */}
+          <Dialog open={!!selectedTool} onOpenChange={(open) => !open && setSelectedTool(null)}>
+            <DialogContent className="sm:max-w-md bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
+              {selectedTool && (
+                <>
+                  <DialogHeader>
+                    <div className="flex items-center gap-4 mb-2">
+                      <div className={cn(
+                        "p-4 rounded-2xl shadow-xl bg-gradient-to-br",
+                        selectedTool.color
+                      )}>
+                        <div className="text-white scale-125">
+                          {selectedTool.icon}
+                        </div>
+                      </div>
+                      <div>
+                        <DialogTitle className="text-2xl font-bold text-slate-900 dark:text-white">
+                          {selectedTool.name}
+                        </DialogTitle>
+                        <Badge variant="secondary" className="mt-1">
+                          {selectedTool.categoryTitle}
+                        </Badge>
+                      </div>
+                    </div>
+                  </DialogHeader>
+                  
+                  <div className="space-y-4 mt-4">
+                    {/* Description */}
+                    <div>
+                      <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">About</h4>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        {selectedTool.tooltip}
+                      </p>
+                    </div>
+                    
+                    {/* Use Cases */}
+                    <div>
+                      <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Key Use Cases</h4>
+                      <ul className="space-y-2">
+                        <li className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                          <span>Product development and collaboration</span>
+                        </li>
+                        <li className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                          <span>Cross-functional team workflows</span>
+                        </li>
+                        <li className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                          <span>Stakeholder presentations</span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    {/* Proficiency */}
+                    <div>
+                      <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Proficiency Level</h4>
+                      <div className="flex items-center gap-3">
+                        <div className="flex-1 h-3 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                          <div 
+                            className={cn("h-full rounded-full bg-gradient-to-r", selectedTool.color)}
+                            style={{ width: '85%' }}
+                          />
+                        </div>
+                        <span className="text-sm font-bold text-slate-700 dark:text-slate-300">Expert</span>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+            </DialogContent>
+          </Dialog>
         </div>
       </section>
     </div>
