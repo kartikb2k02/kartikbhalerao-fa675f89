@@ -57,7 +57,7 @@ export const BlogLayout = ({
 
       {/* Sidebar */}
       <aside className={`
-        fixed top-16 left-0 bottom-0 w-72 bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl 
+        fixed top-16 left-0 bottom-0 w-80 bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl 
         border-r border-slate-200/60 dark:border-slate-700/60 shadow-2xl z-50
         transform transition-all duration-300 ease-in-out
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
