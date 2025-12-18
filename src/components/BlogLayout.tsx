@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, BookOpen, Pen, Coffee, Lightbulb, Bookmark, Quote, Star, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BlogSidebar } from "./BlogSidebar";
 import { BlogPostDetail } from "./BlogPostDetail";
@@ -155,6 +155,38 @@ export const BlogLayout = ({
           {/* Side Accent Bars */}
           <div className="absolute left-0 top-1/4 w-1 h-24 bg-gradient-to-b from-transparent via-violet-400/30 dark:via-violet-500/20 to-transparent rounded-r-full" />
           <div className="absolute right-0 top-2/3 w-1 h-32 bg-gradient-to-b from-transparent via-blue-400/30 dark:via-blue-500/20 to-transparent rounded-l-full" />
+          
+          {/* Floating Blog Icons */}
+          <div className="absolute top-24 left-[8%] text-violet-300/40 dark:text-violet-500/20 animate-bounce" style={{ animationDuration: '4s' }}>
+            <BookOpen className="w-8 h-8" />
+          </div>
+          <div className="absolute top-[45%] left-[5%] text-blue-300/40 dark:text-blue-500/20 animate-bounce" style={{ animationDuration: '5s', animationDelay: '1s' }}>
+            <Pen className="w-6 h-6 rotate-45" />
+          </div>
+          <div className="absolute top-[70%] left-[12%] text-amber-300/50 dark:text-amber-500/20 animate-bounce" style={{ animationDuration: '6s', animationDelay: '0.5s' }}>
+            <Coffee className="w-7 h-7" />
+          </div>
+          <div className="absolute top-16 right-[8%] text-yellow-300/50 dark:text-yellow-500/20 animate-pulse" style={{ animationDuration: '3s' }}>
+            <Lightbulb className="w-7 h-7" />
+          </div>
+          <div className="absolute top-[35%] right-[5%] text-pink-300/40 dark:text-pink-500/20 animate-bounce" style={{ animationDuration: '5.5s', animationDelay: '2s' }}>
+            <Bookmark className="w-6 h-6" />
+          </div>
+          <div className="absolute top-[55%] right-[12%] text-purple-300/40 dark:text-purple-500/20 animate-pulse" style={{ animationDuration: '4s', animationDelay: '1.5s' }}>
+            <Quote className="w-8 h-8" />
+          </div>
+          <div className="absolute bottom-24 right-[7%] text-cyan-300/40 dark:text-cyan-500/20 animate-bounce" style={{ animationDuration: '4.5s', animationDelay: '0.8s' }}>
+            <Star className="w-5 h-5" />
+          </div>
+          <div className="absolute bottom-40 left-[6%] text-fuchsia-300/40 dark:text-fuchsia-500/20 animate-ping" style={{ animationDuration: '2s' }}>
+            <Sparkles className="w-5 h-5" />
+          </div>
+          
+          {/* Glowing Accent Dots */}
+          <div className="absolute top-32 right-[25%] w-2 h-2 bg-violet-400/60 dark:bg-violet-500/40 rounded-full animate-pulse shadow-lg shadow-violet-400/50" />
+          <div className="absolute top-[40%] left-[20%] w-3 h-3 bg-blue-400/50 dark:bg-blue-500/30 rounded-full animate-pulse shadow-lg shadow-blue-400/50" style={{ animationDelay: '1s' }} />
+          <div className="absolute bottom-[30%] right-[18%] w-2 h-2 bg-pink-400/50 dark:bg-pink-500/30 rounded-full animate-pulse shadow-lg shadow-pink-400/50" style={{ animationDelay: '0.5s' }} />
+          <div className="absolute top-[60%] left-[18%] w-1.5 h-1.5 bg-amber-400/60 dark:bg-amber-500/40 rounded-full animate-ping shadow-lg shadow-amber-400/50" style={{ animationDuration: '3s' }} />
           
           {selectedPost ? (
             <BlogPostDetail
