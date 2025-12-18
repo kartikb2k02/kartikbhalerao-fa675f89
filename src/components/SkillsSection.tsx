@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { Target, BarChart3, Palette, Code, Calendar, PieChart, FileText, BarChart, MessageSquare, Search, Workflow, Bot, Globe, Cloud, Boxes, Zap, Settings, Sliders, Award, Sparkles, TrendingUp, ArrowRight, Star, CheckCircle2, Layers, Figma, Pencil, Image, Frame, Play, ListTodo, FileEdit, Columns, ListChecks, GitBranch, Activity, LineChart, Flame, LayoutDashboard, Eye, BrainCircuit, Cpu, Repeat, Link2, Cog, Github, Send, Container, FileCode, Server } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Target, BarChart3, Palette, Code, Calendar, PieChart, Zap, Award, ArrowRight, Star, CheckCircle2, Layers, Bot } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+// Brand icons from react-icons
+import { SiFigma, SiAdobexd, SiCanva, SiSketch, SiFramer, SiJira, SiNotion, SiTrello, SiAsana, SiLinear, SiMixpanel, SiGoogleanalytics, SiTableau, SiHotjar, SiOpenai, SiAnthropic, SiN8N, SiZapier, SiGithub, SiPostman, SiDocker, SiAmazonwebservices } from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
+import { SiMake } from "react-icons/si";
+import { BarChart } from "lucide-react";
 
 export const SkillsSection = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
@@ -99,55 +103,55 @@ export const SkillsSection = () => {
       title: "Design",
       icon: <Palette className="w-4 h-4" />,
       tools: [
-        { name: "Figma", description: "UI/UX Design", color: "from-pink-500 to-rose-600", icon: <Figma className="w-5 h-5" />, tooltip: "Collaborative interface design tool for creating high-fidelity prototypes and design systems" },
-        { name: "Adobe XD", description: "Prototyping", color: "from-purple-500 to-violet-600", icon: <Pencil className="w-5 h-5" />, tooltip: "Vector-based design tool for crafting interactive prototypes and wireframes" },
-        { name: "Canva", description: "Graphics", color: "from-cyan-500 to-blue-600", icon: <Image className="w-5 h-5" />, tooltip: "Easy-to-use graphic design platform for creating presentations and marketing materials" },
-        { name: "Sketch", description: "Interface", color: "from-amber-500 to-orange-600", icon: <Frame className="w-5 h-5" />, tooltip: "Professional vector graphics editor for designing user interfaces and icons" },
-        { name: "Framer", description: "Motion", color: "from-teal-500 to-emerald-600", icon: <Play className="w-5 h-5" />, tooltip: "Interactive design tool for creating animations and micro-interactions" },
+        { name: "Figma", description: "UI/UX Design", color: "from-[#F24E1E] to-[#A259FF]", icon: <SiFigma className="w-5 h-5" />, tooltip: "Collaborative interface design tool for creating high-fidelity prototypes and design systems" },
+        { name: "Adobe XD", description: "Prototyping", color: "from-[#FF61F6] to-[#470137]", icon: <SiAdobexd className="w-5 h-5" />, tooltip: "Vector-based design tool for crafting interactive prototypes and wireframes" },
+        { name: "Canva", description: "Graphics", color: "from-[#00C4CC] to-[#7D2AE8]", icon: <SiCanva className="w-5 h-5" />, tooltip: "Easy-to-use graphic design platform for creating presentations and marketing materials" },
+        { name: "Sketch", description: "Interface", color: "from-[#FDB300] to-[#EA6C00]", icon: <SiSketch className="w-5 h-5" />, tooltip: "Professional vector graphics editor for designing user interfaces and icons" },
+        { name: "Framer", description: "Motion", color: "from-[#0055FF] to-[#00AAFF]", icon: <SiFramer className="w-5 h-5" />, tooltip: "Interactive design tool for creating animations and micro-interactions" },
       ]
     },
     management: {
       title: "Management",
       icon: <Calendar className="w-4 h-4" />,
       tools: [
-        { name: "Jira", description: "Agile PM", color: "from-blue-500 to-indigo-600", icon: <ListTodo className="w-5 h-5" />, tooltip: "Industry-standard agile project management for sprint planning and issue tracking" },
-        { name: "Notion", description: "Docs", color: "from-slate-600 to-gray-700", icon: <FileEdit className="w-5 h-5" />, tooltip: "All-in-one workspace for notes, docs, wikis, and project collaboration" },
-        { name: "Trello", description: "Kanban", color: "from-sky-500 to-blue-600", icon: <Columns className="w-5 h-5" />, tooltip: "Visual kanban boards for organizing tasks and tracking project progress" },
-        { name: "Asana", description: "Tasks", color: "from-rose-500 to-red-600", icon: <ListChecks className="w-5 h-5" />, tooltip: "Work management platform for team coordination and task tracking" },
-        { name: "Linear", description: "Issues", color: "from-violet-500 to-purple-600", icon: <GitBranch className="w-5 h-5" />, tooltip: "Modern issue tracking with streamlined workflows for fast-moving teams" },
+        { name: "Jira", description: "Agile PM", color: "from-[#0052CC] to-[#2684FF]", icon: <SiJira className="w-5 h-5" />, tooltip: "Industry-standard agile project management for sprint planning and issue tracking" },
+        { name: "Notion", description: "Docs", color: "from-[#000000] to-[#333333]", icon: <SiNotion className="w-5 h-5" />, tooltip: "All-in-one workspace for notes, docs, wikis, and project collaboration" },
+        { name: "Trello", description: "Kanban", color: "from-[#0079BF] to-[#00C2E0]", icon: <SiTrello className="w-5 h-5" />, tooltip: "Visual kanban boards for organizing tasks and tracking project progress" },
+        { name: "Asana", description: "Tasks", color: "from-[#F06A6A] to-[#FC636B]", icon: <SiAsana className="w-5 h-5" />, tooltip: "Work management platform for team coordination and task tracking" },
+        { name: "Linear", description: "Issues", color: "from-[#5E6AD2] to-[#8B5CF6]", icon: <SiLinear className="w-5 h-5" />, tooltip: "Modern issue tracking with streamlined workflows for fast-moving teams" },
       ]
     },
     analytics: {
       title: "Analytics",
       icon: <PieChart className="w-4 h-4" />,
       tools: [
-        { name: "Mixpanel", description: "Analytics", color: "from-purple-500 to-pink-600", icon: <Activity className="w-5 h-5" />, tooltip: "Product analytics for tracking user behavior, funnels, and retention metrics" },
-        { name: "GA4", description: "Web Stats", color: "from-green-500 to-emerald-600", icon: <LineChart className="w-5 h-5" />, tooltip: "Google's web analytics for traffic analysis, conversions, and audience insights" },
-        { name: "Amplitude", description: "Product", color: "from-blue-500 to-cyan-600", icon: <BarChart className="w-5 h-5" />, tooltip: "Product intelligence platform for understanding user journeys and feature adoption" },
-        { name: "Tableau", description: "Viz", color: "from-indigo-500 to-blue-600", icon: <LayoutDashboard className="w-5 h-5" />, tooltip: "Powerful data visualization tool for creating interactive dashboards and reports" },
-        { name: "Hotjar", description: "Heatmaps", color: "from-orange-500 to-amber-600", icon: <Flame className="w-5 h-5" />, tooltip: "Behavior analytics with heatmaps, session recordings, and user feedback" },
+        { name: "Mixpanel", description: "Analytics", color: "from-[#7856FF] to-[#A855F7]", icon: <SiMixpanel className="w-5 h-5" />, tooltip: "Product analytics for tracking user behavior, funnels, and retention metrics" },
+        { name: "GA4", description: "Web Stats", color: "from-[#E37400] to-[#F9AB00]", icon: <SiGoogleanalytics className="w-5 h-5" />, tooltip: "Google's web analytics for traffic analysis, conversions, and audience insights" },
+        { name: "Amplitude", description: "Product", color: "from-[#1F2937] to-[#374151]", icon: <BarChart className="w-5 h-5" />, tooltip: "Product intelligence platform for understanding user journeys and feature adoption" },
+        { name: "Tableau", description: "Viz", color: "from-[#E97627] to-[#C72037]", icon: <SiTableau className="w-5 h-5" />, tooltip: "Powerful data visualization tool for creating interactive dashboards and reports" },
+        { name: "Hotjar", description: "Heatmaps", color: "from-[#FD3A5C] to-[#FF6B35]", icon: <SiHotjar className="w-5 h-5" />, tooltip: "Behavior analytics with heatmaps, session recordings, and user feedback" },
       ]
     },
     ai: {
       title: "AI Tools",
       icon: <Bot className="w-4 h-4" />,
       tools: [
-        { name: "ChatGPT", description: "AI Chat", color: "from-green-500 to-emerald-600", icon: <BrainCircuit className="w-5 h-5" />, tooltip: "OpenAI's conversational AI for content creation, analysis, and problem-solving" },
-        { name: "Claude", description: "AI", color: "from-amber-600 to-orange-700", icon: <Cpu className="w-5 h-5" />, tooltip: "Anthropic's AI assistant for research, writing, and complex reasoning tasks" },
-        { name: "n8n", description: "Automation", color: "from-rose-500 to-red-600", icon: <Workflow className="w-5 h-5" />, tooltip: "Self-hosted workflow automation for connecting apps and automating processes" },
-        { name: "Zapier", description: "Connect", color: "from-orange-500 to-amber-600", icon: <Link2 className="w-5 h-5" />, tooltip: "No-code automation platform connecting 5000+ apps for seamless workflows" },
-        { name: "Make", description: "Visual", color: "from-indigo-500 to-purple-600", icon: <Cog className="w-5 h-5" />, tooltip: "Visual workflow builder for complex automations with advanced logic" },
+        { name: "ChatGPT", description: "AI Chat", color: "from-[#10A37F] to-[#1A7F64]", icon: <SiOpenai className="w-5 h-5" />, tooltip: "OpenAI's conversational AI for content creation, analysis, and problem-solving" },
+        { name: "Claude", description: "AI", color: "from-[#D4A574] to-[#CC785C]", icon: <SiAnthropic className="w-5 h-5" />, tooltip: "Anthropic's AI assistant for research, writing, and complex reasoning tasks" },
+        { name: "n8n", description: "Automation", color: "from-[#EA4B71] to-[#FF6D5A]", icon: <SiN8N className="w-5 h-5" />, tooltip: "Self-hosted workflow automation for connecting apps and automating processes" },
+        { name: "Zapier", description: "Connect", color: "from-[#FF4A00] to-[#FF8C00]", icon: <SiZapier className="w-5 h-5" />, tooltip: "No-code automation platform connecting 5000+ apps for seamless workflows" },
+        { name: "Make", description: "Visual", color: "from-[#6D00CC] to-[#9B51E0]", icon: <SiMake className="w-5 h-5" />, tooltip: "Visual workflow builder for complex automations with advanced logic" },
       ]
     },
     development: {
       title: "Dev Tools",
       icon: <Code className="w-4 h-4" />,
       tools: [
-        { name: "GitHub", description: "Code", color: "from-slate-700 to-gray-800", icon: <Github className="w-5 h-5" />, tooltip: "Version control and collaboration platform for code hosting and review" },
-        { name: "Postman", description: "API", color: "from-orange-500 to-red-600", icon: <Send className="w-5 h-5" />, tooltip: "API development platform for testing, documenting, and monitoring APIs" },
-        { name: "Docker", description: "Container", color: "from-sky-500 to-blue-700", icon: <Container className="w-5 h-5" />, tooltip: "Containerization platform for building and deploying applications consistently" },
-        { name: "VS Code", description: "Editor", color: "from-blue-500 to-blue-700", icon: <FileCode className="w-5 h-5" />, tooltip: "Powerful code editor with extensions for every programming language" },
-        { name: "AWS", description: "Cloud", color: "from-amber-500 to-orange-600", icon: <Server className="w-5 h-5" />, tooltip: "Amazon's cloud platform for scalable infrastructure and services" },
+        { name: "GitHub", description: "Code", color: "from-[#24292F] to-[#57606A]", icon: <SiGithub className="w-5 h-5" />, tooltip: "Version control and collaboration platform for code hosting and review" },
+        { name: "Postman", description: "API", color: "from-[#FF6C37] to-[#FF9E2C]", icon: <SiPostman className="w-5 h-5" />, tooltip: "API development platform for testing, documenting, and monitoring APIs" },
+        { name: "Docker", description: "Container", color: "from-[#2496ED] to-[#0DB7ED]", icon: <SiDocker className="w-5 h-5" />, tooltip: "Containerization platform for building and deploying applications consistently" },
+        { name: "VS Code", description: "Editor", color: "from-[#007ACC] to-[#0098FF]", icon: <VscVscode className="w-5 h-5" />, tooltip: "Powerful code editor with extensions for every programming language" },
+        { name: "AWS", description: "Cloud", color: "from-[#FF9900] to-[#FFB84D]", icon: <SiAmazonwebservices className="w-5 h-5" />, tooltip: "Amazon's cloud platform for scalable infrastructure and services" },
       ]
     }
   };
@@ -438,47 +442,53 @@ export const SkillsSection = () => {
                             onMouseLeave={() => setHoveredTool(null)}
                           >
                             <div className={cn(
-                              "relative p-4 rounded-xl border-2 transition-all duration-300 cursor-pointer overflow-hidden",
+                              "relative p-4 rounded-2xl transition-all duration-300 cursor-pointer overflow-hidden",
                               hoveredTool === tool.name
-                                ? "border-transparent shadow-xl scale-105 -translate-y-1"
-                                : "border-slate-200/50 dark:border-slate-700/50 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600"
+                                ? "border-white/30 shadow-2xl scale-105 -translate-y-1"
+                                : "border border-white/20 dark:border-white/10",
+                              // Glassy background
+                              "bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl",
+                              "hover:bg-white/80 dark:hover:bg-slate-800/80"
                             )}>
-                              {/* Gradient background on hover */}
+                              {/* Subtle gradient overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-white/10 dark:from-white/5 dark:to-transparent rounded-2xl pointer-events-none" />
+                              
+                              {/* Colored glow on hover */}
                               <div className={cn(
-                                "absolute inset-0 bg-gradient-to-br transition-opacity duration-300",
+                                "absolute -inset-1 bg-gradient-to-br rounded-2xl blur-xl transition-opacity duration-300 -z-10",
                                 tool.color,
-                                hoveredTool === tool.name ? "opacity-100" : "opacity-0"
+                                hoveredTool === tool.name ? "opacity-40" : "opacity-0"
                               )} />
+                              
+                              {/* Inner border highlight */}
+                              <div className="absolute inset-[1px] rounded-2xl bg-gradient-to-br from-white/60 to-transparent dark:from-white/10 pointer-events-none" />
                               
                               {/* Shine effect */}
                               <div className={cn(
-                                "absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full transition-transform duration-700",
+                                "absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full transition-transform duration-700",
                                 hoveredTool === tool.name && "translate-x-full"
                               )} />
                               
                               {/* Content */}
-                              <div className="relative z-10 flex flex-col items-center gap-2">
-                                {/* Icon with glow effect */}
+                              <div className="relative z-10 flex flex-col items-center gap-3">
+                                {/* Icon with gradient background and glow */}
                                 <div className={cn(
-                                  "p-2.5 rounded-xl transition-all duration-300",
+                                  "p-3 rounded-xl transition-all duration-300 shadow-lg",
+                                  "bg-gradient-to-br",
+                                  tool.color,
                                   hoveredTool === tool.name 
-                                    ? "bg-white/20 text-white shadow-lg shadow-white/20" 
-                                    : "bg-gradient-to-br text-white shadow-md",
-                                  !hoveredTool || hoveredTool !== tool.name ? tool.color : ""
+                                    ? "scale-110 shadow-xl" 
+                                    : "shadow-md"
                                 )}>
-                                  {tool.icon}
+                                  <div className="text-white">
+                                    {tool.icon}
+                                  </div>
                                 </div>
                                 <div className="text-center">
-                                  <h4 className={cn(
-                                    "font-bold text-sm transition-colors",
-                                    hoveredTool === tool.name ? "text-white" : "text-slate-800 dark:text-white"
-                                  )}>
+                                  <h4 className="font-bold text-sm text-slate-800 dark:text-white">
                                     {tool.name}
                                   </h4>
-                                  <p className={cn(
-                                    "text-xs mt-0.5 transition-colors",
-                                    hoveredTool === tool.name ? "text-white/80" : "text-slate-500 dark:text-slate-400"
-                                  )}>
+                                  <p className="text-xs mt-0.5 text-slate-500 dark:text-slate-400">
                                     {tool.description}
                                   </p>
                                 </div>
