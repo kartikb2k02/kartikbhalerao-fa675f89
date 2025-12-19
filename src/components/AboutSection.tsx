@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Mail, Phone, MapPin, Heart, Coffee, Target, ChevronLeft, ChevronRight, Quote, Users, Briefcase, Award, TrendingUp } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Mail, Phone, MapPin, Heart, Coffee, Target, Quote, Users, Briefcase, Award, TrendingUp } from "lucide-react";
 
 const testimonials = [
   {
@@ -43,13 +43,13 @@ export const AboutSection = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [hoveredStat, setHoveredStat] = useState<number | null>(null);
 
-  const nextTestimonial = () => {
-    setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
+  // Auto-slide testimonials
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="max-w-6xl mx-auto">
@@ -290,20 +290,6 @@ export const AboutSection = () => {
                   ))}
                 </div>
               </div>
-              
-              {/* Navigation Arrows */}
-              <button
-                onClick={prevTestimonial}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white/90 dark:bg-slate-700/90 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300 border border-white/50 dark:border-slate-600/50"
-              >
-                <ChevronLeft className="w-6 h-6 text-slate-700 dark:text-slate-300" />
-              </button>
-              <button
-                onClick={nextTestimonial}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white/90 dark:bg-slate-700/90 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300 border border-white/50 dark:border-slate-600/50"
-              >
-                <ChevronRight className="w-6 h-6 text-slate-700 dark:text-slate-300" />
-              </button>
             </div>
             
             {/* Dots Indicator */}
