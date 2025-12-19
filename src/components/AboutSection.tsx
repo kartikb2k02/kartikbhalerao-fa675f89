@@ -1,162 +1,232 @@
-import { Mail, Phone, MapPin, Heart, Coffee, Target } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const GlassCard = ({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) => {
+  return (
+    <div
+      className={cn(
+        "relative rounded-3xl border border-border/40 bg-background/35 backdrop-blur-3xl shadow-2xl overflow-hidden",
+        "transition-transform duration-500 will-change-transform hover:-translate-y-1",
+        className
+      )}
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5" />
+      <div className="absolute inset-0 ring-1 ring-inset ring-white/10 dark:ring-white/5" />
+      <div className="relative z-10">{children}</div>
+    </div>
+  );
+};
+
+const Bullet = ({ children }: { children: React.ReactNode }) => (
+  <li className="flex items-start gap-3">
+    <span
+      className="mt-[0.55rem] h-2 w-2 rounded-full bg-primary/80 flex-none"
+      aria-hidden="true"
+    />
+    <span className="text-muted-foreground leading-relaxed">{children}</span>
+  </li>
+);
+
 export const AboutSection = () => {
-  return <section className="max-w-6xl mx-auto">
+  return (
+    <section className="max-w-6xl mx-auto">
       <div className="space-y-12">
-        {/* Main content - Enhanced design */}
         <div className="space-y-8">
           {/* Primary content card */}
-          <div className="relative group bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-white/40 dark:border-slate-700/40 rounded-3xl p-12 shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-400/20 transition-all duration-500 hover:-translate-y-1 overflow-hidden">
-            {/* Subtle background pattern */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-transparent to-indigo-50/30 dark:from-blue-900/10 dark:via-transparent dark:to-indigo-900/10 rounded-3xl"></div>
-            
-            <div className="relative z-10">
-              <div className="space-y-6 mb-10">
-                <p className="text-2xl text-slate-800 dark:text-slate-100 leading-relaxed font-medium">
-                  Hi there! 👋 I'm{" "}
-                  <span className="relative inline-block">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 font-bold">
-                      Kartik Bhalerao
-                    </span>
-                    <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-blue-600/30 to-indigo-600/30 dark:from-blue-400/30 dark:to-indigo-400/30 rounded-full"></div>
+          <GlassCard className="p-10 sm:p-12">
+            <div className="space-y-6 mb-10">
+              <p className="text-2xl text-foreground leading-relaxed font-medium">
+                Hi there! 👋 I'm{" "}
+                <span className="relative inline-block">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/80 to-primary font-bold">
+                    Kartik Bhalerao
                   </span>
-                  , a Product Manager passionate about building user-centric products that drive real business impact. With a background in data analytics and product strategy, I specialize in translating complex problems into simple, scalable solutions.
-                </p>
-                
-                <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                  My experience spans across fintech, SaaS, and AI-enabled platforms, where I've led cross-functional teams through the entire product lifecycle—from discovery to launch. I'm a strong advocate of hypothesis-driven development and love using data, user insights, and rapid experimentation (A/B testing, MVPs) to inform product decisions.
-                </p>
+                  <span className="absolute -bottom-1 left-0 right-0 h-1 bg-primary/25 rounded-full" />
+                </span>
+                , a Product Manager passionate about building user-centric products that
+                drive real business impact. With a background in data analytics and
+                product strategy, I specialize in translating complex problems into
+                simple, scalable solutions.
+              </p>
 
-                <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                  Beyond product building, I document my thought process, case studies, and learnings through detailed blogs and product breakdowns. I'm also exploring the intersection of AI and product management to build smarter tools that empower PMs and teams.
-                </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                My experience spans across fintech, SaaS, and AI-enabled platforms,
+                where I've led cross-functional teams through the entire product
+                lifecycle—from discovery to launch. I'm a strong advocate of
+                hypothesis-driven development and love using data, user insights, and
+                rapid experimentation (A/B testing, MVPs) to inform product
+                decisions.
+              </p>
 
-                <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                  If you're equally obsessed with building meaningful products or just want to talk product, let's connect—I'm always up for great conversations!
-                </p>
-              </div>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Beyond product building, I document my thought process, case studies,
+                and learnings through detailed blogs and product breakdowns. I'm also
+                exploring the intersection of AI and product management to build
+                smarter tools that empower PMs and teams.
+              </p>
+
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                If you're equally obsessed with building meaningful products or just
+                want to talk product, let's connect—I'm always up for great
+                conversations!
+              </p>
             </div>
-          </div>
-          
+          </GlassCard>
+
           {/* Experience Section */}
-          <div className="relative group bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-white/40 dark:border-slate-700/40 rounded-3xl p-12 shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-400/20 transition-all duration-500 hover:-translate-y-1 overflow-hidden">
-            {/* Subtle background pattern */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-transparent to-indigo-50/30 dark:from-blue-900/10 dark:via-transparent dark:to-indigo-900/10 rounded-3xl"></div>
-            
-            <div className="relative z-10">
-              <h3 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-8 flex items-center space-x-3">
-                <span>Experience</span>
-                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse"></div>
-              </h3>
-              
-              <div className="space-y-8">
-                {/* Decision Machine Experience */}
-                <div className="relative pl-8 border-l-4 border-blue-500/30 dark:border-blue-400/50">
-                  <div className="absolute -left-2 top-0 w-4 h-4 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full shadow-lg"></div>
-                  
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="text-xl font-bold text-slate-900 dark:text-slate-100">Product Analyst</h4>
-                      <p className="text-blue-600 dark:text-blue-400 font-semibold">Decision Machine (Pune, India) | June 2024 – Present</p>
-                    </div>
-                    
-                    <ul className="space-y-3 text-slate-700 dark:text-slate-300">
-                      
-                      <li className="flex items-start space-x-3">
-                        <span className="text-blue-500 dark:text-blue-400 mt-1.5">✦</span>
-                        
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-blue-500 dark:text-blue-400 mt-1.5">✦</span>
-                        <span>Spending time with users (calls, feedback sessions, usability tests) to understand what's working, what's confusing, and where the real value lies.</span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        
-                        <span>Writing clear PRDs and keeping the backlog organized—not just for the sake of process, but to make sure we're solving the right problems.</span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-blue-500 dark:text-blue-400 mt-1.5">✦</span>
-                        <span>Using tools like Mixpanel and PostHog to track usage and figure out what to double down on, what to tweak, and what to kill.</span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-blue-500 dark:text-blue-400 mt-1.5">✦</span>
-                        <span>Recently started exploring how we can integrate AI into the product to give users smarter financial recommendations without overwhelming them.</span>
-                      </li>
-                    </ul>
-                    
-                    {/* Keywords for Decision Machine */}
-                    <div className="mt-6 flex flex-wrap gap-2">
-                      {['Fintech', 'B2C Product', 'User Research', 'PRD Writing', 'Mixpanel', 'PostHog', 'A/B Testing', 'Personal Finance', 'AI Integration', 'Product Analytics', 'FinTech'].map(keyword => <span key={keyword} className="px-3 py-1 bg-blue-100/80 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium rounded border border-blue-200/50 dark:border-blue-700/50 shadow-sm hover:shadow-lg hover:bg-blue-200/90 dark:hover:bg-blue-800/40 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
-                          {keyword}
-                        </span>)}
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Blue effect line after Decision Machine experience */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-60 my-8 relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent blur-sm"></div>
-                </div>
+          <GlassCard className="p-10 sm:p-12">
+            <h2 className="text-3xl font-bold text-foreground mb-8 flex items-center gap-3">
+              <span>Experience</span>
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            </h2>
 
-                {/* Ocius Experience */}
-                <div className="relative pl-8 border-l-4 border-indigo-500/30 dark:border-indigo-400/50">
-                  <div className="absolute -left-2 top-0 w-4 h-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full shadow-lg"></div>
-                  
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="text-xl font-bold text-slate-900 dark:text-slate-100">Product Manager</h4>
-                      <p className="text-indigo-600 dark:text-indigo-400 font-semibold">Ocius (Remote) | Jan 2024 – May 2024</p>
-                    </div>
-                    
-                    <ul className="space-y-3 text-slate-700 dark:text-slate-300">
-                      <li className="flex items-start space-x-3">
-                        <span className="text-indigo-500 dark:text-indigo-400 mt-1.5">✦</span>
-                        <span>Took ownership of building an internal analytics dashboard to help the sales and marketing teams track campaign performance and lead conversions more effectively.</span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-indigo-500 dark:text-indigo-400 mt-1.5">✦</span>
-                        <span>Worked closely with cross-functional teams—especially data and medical affairs—to gather requirements and prioritize features that solved real user pain points.</span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-indigo-500 dark:text-indigo-400 mt-1.5">✦</span>
-                        <span>Helped translate scattered requests and ideas into clear user stories and wireframes, which made collaboration with the dev team much smoother.</span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-indigo-500 dark:text-indigo-400 mt-1.5">✦</span>
-                        <span>Set up a basic feedback loop with key stakeholders that helped us ship faster and improve features based on real usage.</span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-indigo-500 dark:text-indigo-400 mt-1.5">✦</span>
-                        <span>Also dabbled in setting up automated reports using SQL to replace some of the manual Excel-based workflows, which saved the team a good chunk of time every week.</span>
-                      </li>
-                    </ul>
-                    
-                    {/* Keywords for Ocius */}
-                    <div className="mt-6 flex flex-wrap gap-2">
-                      {['Analytics Dashboard', 'Cross-functional Teams', 'Data Analytics', 'User Stories', 'Wireframing', 'SQL', 'Medical Awareness', 'Churn', 'Process Automation', 'Stakeholder Management', 'HealthTech'].map(keyword => <span key={keyword} className="px-3 py-1 bg-indigo-100/80 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-medium rounded border border-indigo-200/50 dark:border-indigo-700/50 shadow-sm hover:shadow-lg hover:bg-indigo-200/90 dark:hover:bg-indigo-800/40 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
-                          {keyword}
-                        </span>)}
-                    </div>
-                  </div>
+            <div className="space-y-10">
+              {/* Decision Machine */}
+              <article className="relative pl-8 border-l-2 border-primary/25">
+                <div className="absolute -left-[7px] top-1 w-3.5 h-3.5 rounded-full bg-primary shadow-lg" />
+
+                <header className="space-y-1">
+                  <h3 className="text-xl font-bold text-foreground">Product Analyst</h3>
+                  <p className="text-primary font-semibold">
+                    Decision Machine (Pune, India) | June 2024 – Present
+                  </p>
+                </header>
+
+                <ul className="mt-5 space-y-3">
+                  <Bullet>
+                    Collaborating with engineering and design to ship improvements
+                    with clear success metrics and tight feedback loops.
+                  </Bullet>
+                  <Bullet>
+                    Spending time with users (calls, feedback sessions, usability
+                    tests) to understand what's working, what's confusing, and where
+                    the real value lies.
+                  </Bullet>
+                  <Bullet>
+                    Writing clear PRDs and keeping the backlog organized—not just for
+                    the sake of process, but to make sure we're solving the right
+                    problems.
+                  </Bullet>
+                  <Bullet>
+                    Using tools like Mixpanel and PostHog to track usage and figure
+                    out what to double down on, what to tweak, and what to kill.
+                  </Bullet>
+                  <Bullet>
+                    Exploring how we can integrate AI into the product to give users
+                    smarter financial recommendations without overwhelming them.
+                  </Bullet>
+                </ul>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {["Fintech", "B2C Product", "User Research", "PRD Writing", "Mixpanel", "PostHog", "A/B Testing", "Personal Finance", "AI Integration", "Product Analytics"].map(
+                    (keyword) => (
+                      <span
+                        key={keyword}
+                        className={cn(
+                          "px-3 py-1 rounded-lg text-sm font-medium",
+                          "bg-primary/10 text-primary border border-border/40",
+                          "shadow-sm hover:shadow-md hover:bg-primary/15 transition-all duration-300"
+                        )}
+                      >
+                        {keyword}
+                      </span>
+                    )
+                  )}
                 </div>
-              </div>
+              </article>
+
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-80" />
+
+              {/* Ocius */}
+              <article className="relative pl-8 border-l-2 border-primary/25">
+                <div className="absolute -left-[7px] top-1 w-3.5 h-3.5 rounded-full bg-primary shadow-lg" />
+
+                <header className="space-y-1">
+                  <h3 className="text-xl font-bold text-foreground">Product Manager</h3>
+                  <p className="text-primary font-semibold">
+                    Ocius (Remote) | Jan 2024 – May 2024
+                  </p>
+                </header>
+
+                <ul className="mt-5 space-y-3">
+                  <Bullet>
+                    Took ownership of building an internal analytics dashboard to help
+                    sales and marketing teams track campaign performance and lead
+                    conversions.
+                  </Bullet>
+                  <Bullet>
+                    Worked closely with data and medical affairs to gather
+                    requirements and prioritize features that solved real user pain
+                    points.
+                  </Bullet>
+                  <Bullet>
+                    Translated scattered requests into clear user stories and
+                    wireframes to speed up dev collaboration.
+                  </Bullet>
+                  <Bullet>
+                    Set up a lightweight feedback loop with stakeholders to ship
+                    faster and iterate based on real usage.
+                  </Bullet>
+                  <Bullet>
+                    Automated recurring reports with SQL to replace manual
+                    Excel-heavy workflows.
+                  </Bullet>
+                </ul>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {["Analytics Dashboard", "Cross-functional", "Data Analytics", "User Stories", "Wireframing", "SQL", "Stakeholders", "Process Automation", "HealthTech"].map(
+                    (keyword) => (
+                      <span
+                        key={keyword}
+                        className={cn(
+                          "px-3 py-1 rounded-lg text-sm font-medium",
+                          "bg-primary/10 text-primary border border-border/40",
+                          "shadow-sm hover:shadow-md hover:bg-primary/15 transition-all duration-300"
+                        )}
+                      >
+                        {keyword}
+                      </span>
+                    )
+                  )}
+                </div>
+              </article>
             </div>
-          </div>
+          </GlassCard>
         </div>
-        
+
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-8 border border-blue-200/30 dark:border-blue-700/30 backdrop-blur-sm">
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+          <GlassCard className="p-8">
+            <h2 className="text-2xl font-bold text-foreground mb-4">
               Want to see more of my work?
-            </h3>
-            <p className="text-slate-600 dark:text-slate-400 mb-6 max-w-2xl mx-auto">
-              These case studies represent just a glimpse of my product management approach. Let's discuss how I can help drive your product's success.
+            </h2>
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              These case studies represent just a glimpse of my product management
+              approach. Let's discuss how I can help drive your product's success.
             </p>
-            <button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1" onClick={() => window.open('https://www.linkedin.com/in/kartik-bhalerao/', '_blank')}>
+            <button
+              className={cn(
+                "inline-flex items-center justify-center rounded-xl px-8 py-3 font-semibold",
+                "bg-primary text-primary-foreground shadow-lg",
+                "hover:shadow-xl hover:brightness-105 transition-all duration-300"
+              )}
+              onClick={() =>
+                window.open(
+                  "https://www.linkedin.com/in/kartik-bhalerao/",
+                  "_blank"
+                )
+              }
+            >
               Let's Talk
             </button>
-          </div>
+          </GlassCard>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
