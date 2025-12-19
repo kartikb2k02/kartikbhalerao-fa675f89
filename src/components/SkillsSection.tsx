@@ -730,48 +730,124 @@ export const SkillsSection = () => {
               </div>)}
           </div>
 
-          {/* Tool Detail Dialog */}
+          {/* Tool Detail Dialog - Enhanced Interactive Design */}
           <Dialog open={!!selectedTool} onOpenChange={open => !open && setSelectedTool(null)}>
-            <DialogContent className="sm:max-w-md bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
+            <DialogContent className="sm:max-w-lg p-0 overflow-hidden bg-white dark:bg-slate-900 border-0 shadow-2xl">
               {selectedTool && <>
-                  <DialogHeader>
-                    <div className="flex items-center gap-4 mb-2">
-                      <div className={cn("p-4 rounded-2xl shadow-xl bg-gradient-to-br", selectedTool.color)}>
-                        <div className="text-white scale-125">
-                          {selectedTool.icon}
-                        </div>
-                      </div>
-                      <div>
-                        <DialogTitle className="text-2xl font-bold text-slate-900 dark:text-white">
-                          {selectedTool.name}
-                        </DialogTitle>
-                        <Badge variant="secondary" className="mt-1">
-                          {selectedTool.categoryTitle}
-                        </Badge>
-                      </div>
-                    </div>
-                  </DialogHeader>
-                  
-                  <div className="space-y-4 mt-4">
-                    {/* Why I Use This */}
-                    <div>
-                      <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Why I Use This</h4>
-                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                        {selectedTool.whyIUse}
-                      </p>
+                  {/* Animated Gradient Header */}
+                  <div className={cn(
+                    "relative p-6 pb-8 bg-gradient-to-br overflow-hidden",
+                    selectedTool.color
+                  )}>
+                    {/* Animated Background Patterns */}
+                    <div className="absolute inset-0 opacity-20">
+                      <div className="absolute top-0 left-0 w-32 h-32 bg-white/20 rounded-full blur-2xl animate-pulse" />
+                      <div className="absolute bottom-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl animate-pulse [animation-delay:1s]" />
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
                     </div>
                     
-                    {/* Key Use Cases */}
-                    <div>
-                      <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Key Use Cases</h4>
+                    {/* Floating Particles */}
+                    <div className="absolute inset-0 overflow-hidden">
+                      <div className="absolute top-4 right-8 w-2 h-2 bg-white/40 rounded-full animate-bounce [animation-duration:2s]" />
+                      <div className="absolute top-12 right-16 w-1.5 h-1.5 bg-white/30 rounded-full animate-bounce [animation-duration:3s] [animation-delay:0.5s]" />
+                      <div className="absolute bottom-8 left-12 w-1 h-1 bg-white/50 rounded-full animate-ping [animation-duration:2s]" />
+                    </div>
+                    
+                    <DialogHeader className="relative z-10">
+                      <div className="flex items-center gap-4">
+                        {/* Animated Icon Container */}
+                        <div className="relative group">
+                          <div className="absolute inset-0 bg-white/30 rounded-2xl blur-xl scale-110 animate-pulse" />
+                          <div className="relative p-4 bg-white/20 backdrop-blur-sm rounded-2xl border border-white/30 shadow-xl transition-transform duration-300 hover:scale-110 hover:rotate-3">
+                            <div className="text-white scale-150">
+                              {selectedTool.icon}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <DialogTitle className="text-2xl font-bold text-white drop-shadow-lg">
+                            {selectedTool.name}
+                          </DialogTitle>
+                          <Badge className="mt-2 bg-white/20 text-white border-white/30 backdrop-blur-sm hover:bg-white/30 transition-colors">
+                            {selectedTool.categoryTitle}
+                          </Badge>
+                        </div>
+                      </div>
+                    </DialogHeader>
+                  </div>
+                  
+                  {/* Content Section with Staggered Animations */}
+                  <div className="p-6 space-y-6">
+                    {/* Why I Use This - Card Style */}
+                    <div className="group relative animate-fade-in [animation-delay:100ms]">
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 dark:from-blue-500/10 dark:to-purple-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="relative p-4 rounded-xl border border-slate-200/50 dark:border-slate-700/50 bg-slate-50/50 dark:bg-slate-800/30 transition-all duration-300 group-hover:border-slate-300 dark:group-hover:border-slate-600 group-hover:shadow-lg">
+                        <div className="flex items-center gap-2 mb-3">
+                          <div className={cn("p-1.5 rounded-lg bg-gradient-to-br", selectedTool.color)}>
+                            <Zap className="w-3.5 h-3.5 text-white" />
+                          </div>
+                          <h4 className="text-sm font-bold text-slate-800 dark:text-white">Why I Use This</h4>
+                        </div>
+                        <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                          {selectedTool.whyIUse}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    {/* Key Use Cases - Interactive List */}
+                    <div className="animate-fade-in [animation-delay:200ms]">
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className={cn("p-1.5 rounded-lg bg-gradient-to-br", selectedTool.color)}>
+                          <Layers className="w-3.5 h-3.5 text-white" />
+                        </div>
+                        <h4 className="text-sm font-bold text-slate-800 dark:text-white">Key Use Cases</h4>
+                      </div>
                       <ul className="space-y-2">
                         {selectedTool.useCases.map((useCase, index) => (
-                          <li key={index} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
-                            <span>{useCase}</span>
+                          <li 
+                            key={index} 
+                            className="group/item flex items-start gap-3 p-3 rounded-lg border border-transparent hover:border-slate-200 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200 cursor-default animate-fade-in"
+                            style={{ animationDelay: `${300 + index * 100}ms` }}
+                          >
+                            <div className={cn(
+                              "p-1 rounded-full bg-gradient-to-br flex-shrink-0 transition-transform duration-200 group-hover/item:scale-110",
+                              selectedTool.color
+                            )}>
+                              <CheckCircle2 className="w-3.5 h-3.5 text-white" />
+                            </div>
+                            <span className="text-sm text-slate-600 dark:text-slate-300 group-hover/item:text-slate-900 dark:group-hover/item:text-white transition-colors">
+                              {useCase}
+                            </span>
                           </li>
                         ))}
                       </ul>
+                    </div>
+                    
+                    {/* Interactive Footer */}
+                    <div className="pt-4 border-t border-slate-200 dark:border-slate-700 animate-fade-in [animation-delay:600ms]">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className="flex -space-x-1">
+                            {[...Array(4)].map((_, i) => (
+                              <div 
+                                key={i}
+                                className={cn(
+                                  "w-2 h-2 rounded-full border border-white dark:border-slate-900 animate-pulse",
+                                  i === 0 && "bg-emerald-500",
+                                  i === 1 && "bg-blue-500 [animation-delay:200ms]",
+                                  i === 2 && "bg-purple-500 [animation-delay:400ms]",
+                                  i === 3 && "bg-amber-500 [animation-delay:600ms]"
+                                )}
+                              />
+                            ))}
+                          </div>
+                          <span className="text-xs text-slate-500 dark:text-slate-400">Daily driver tool</span>
+                        </div>
+                        <div className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+                          <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+                          <span>Expert level</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </>}
