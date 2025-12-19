@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { TestimonialsCarousel } from "./TestimonialsCarousel";
 
 const GlassCard = ({
   className,
@@ -198,6 +199,9 @@ export const AboutSection = () => {
             </div>
           </GlassCard>
         </div>
+
+        {/* Testimonials Section */}
+        <TestimonialsCarousel />
 
         {/* Call to Action */}
         <div className="text-center mt-16">

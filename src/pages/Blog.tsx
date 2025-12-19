@@ -5,6 +5,7 @@ import { getMarkdownContent } from "@/utils/blogContent";
 import { BlogLayout } from "@/components/BlogLayout";
 import { Header } from "@/components/Header";
 import { useBlogPreferences } from "@/hooks/useBlogPreferences";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
 
 export type SortOption = "date" | "readTime" | "title";
 
@@ -35,11 +36,11 @@ const Blog = () => {
     all: "All Posts",
     bookmarks: "Bookmarks",
     analysis: "Product Analysis",
-    design: "Product Design", 
+    design: "Product Design",
     analytics: "Data & Analytics",
     strategy: "Product Strategy",
     research: "User Research",
-    leadership: "Leadership"
+    leadership: "Leadership",
   };
 
   // Parse reading time to number for sorting
@@ -49,19 +50,23 @@ const Blog = () => {
   };
 
   const filteredAndSortedPosts = useMemo(() => {
-    let posts = blogPosts.filter(post => {
+    let posts = blogPosts.filter((post) => {
       // Handle bookmarks category specially
       if (selectedCategory === "bookmarks") {
         if (!bookmarkedPosts.includes(post.id)) return false;
       } else {
-        const matchesCategory = selectedCategory === "all" || post.category === selectedCategory;
+        const matchesCategory =
+          selectedCategory === "all" || post.category === selectedCategory;
         if (!matchesCategory) return false;
       }
-      
-      const matchesSearch = searchTerm === "" || 
+
+      const matchesSearch =
+        searchTerm === "" ||
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+        post.tags.some((tag) =>
+          tag.toLowerCase().includes(searchTerm.toLowerCase())
+        );
       return matchesSearch;
     });
 
@@ -99,29 +104,16 @@ const Blog = () => {
   };
 
   // Determine blog-specific theme class
-  const blogThemeClass = blogTheme === "system" 
-    ? "" 
-    : blogTheme === "dark" 
-      ? "dark" 
-      : "light-theme";
+  const blogThemeClass =
+    blogTheme === "system" ? "" : blogTheme === "dark" ? "dark" : "light-theme";
 
   return (
-    <div className={`min-h-screen w-full bg-gradient-to-br from-slate-50 via-white to-blue-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative ${blogThemeClass}`}>
-      {/* Enhanced Grid Background */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, rgba(148,163,184,0.1) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(148,163,184,0.1) 1px, transparent 1px),
-            radial-gradient(circle 600px at 30% 40%, rgba(99,102,241,0.15), transparent),
-            radial-gradient(circle 800px at 70% 80%, rgba(168,85,247,0.1), transparent),
-            radial-gradient(circle 400px at 40% 100%, rgba(59,130,246,0.1), transparent)
-          `,
-          backgroundSize: "60px 60px, 60px 60px, 100% 100%, 100% 100%, 100% 100%",
-        }}
-      />
-      
+    <div
+      className={`min-h-screen w-full bg-background text-foreground relative ${blogThemeClass}`}
+    >
+      {/* Unified Animated Background */}
+      <AnimatedBackground intensity="light" />
+
       {/* Header - Same as home page */}
       <Header />
 
