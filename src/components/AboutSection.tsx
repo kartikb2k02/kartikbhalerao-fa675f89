@@ -60,29 +60,33 @@ export const AboutSection = () => {
                     </div>
                     
                     <ul className="space-y-3 text-slate-700 dark:text-slate-300">
-                      <li className="flex items-start space-x-3">
-                        <span className="text-blue-500 dark:text-blue-400 mt-1.5">✦</span>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-500 dark:text-blue-400 mt-0.5 flex-shrink-0">✦</span>
                         <span>Leading the development of a B2B fintech product focused on personal finance—working from initial idea validation all the way to launch and iteration.</span>
                       </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-blue-500 dark:text-blue-400 mt-1.5">✦</span>
-                        
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-500 dark:text-blue-400 mt-0.5 flex-shrink-0">✦</span>
+                        <span>Collaborating with design and engineering teams to prioritize features, ship MVPs, and iterate based on real user behavior.</span>
                       </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-blue-500 dark:text-blue-400 mt-1.5">✦</span>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-500 dark:text-blue-400 mt-0.5 flex-shrink-0">✦</span>
                         <span>Spending time with users (calls, feedback sessions, usability tests) to understand what's working, what's confusing, and where the real value lies.</span>
                       </li>
-                      <li className="flex items-start space-x-3">
-                        
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-500 dark:text-blue-400 mt-0.5 flex-shrink-0">✦</span>
                         <span>Writing clear PRDs and keeping the backlog organized—not just for the sake of process, but to make sure we're solving the right problems.</span>
                       </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-blue-500 dark:text-blue-400 mt-1.5">✦</span>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-500 dark:text-blue-400 mt-0.5 flex-shrink-0">✦</span>
                         <span>Using tools like Mixpanel and PostHog to track usage and figure out what to double down on, what to tweak, and what to kill.</span>
                       </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-blue-500 dark:text-blue-400 mt-1.5">✦</span>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-500 dark:text-blue-400 mt-0.5 flex-shrink-0">✦</span>
                         <span>Recently started exploring how we can integrate AI into the product to give users smarter financial recommendations without overwhelming them.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-blue-500 dark:text-blue-400 mt-0.5 flex-shrink-0">✦</span>
+                        <span>Running experiments and A/B tests to validate hypotheses before committing resources to full-scale development.</span>
                       </li>
                     </ul>
                     
@@ -111,25 +115,33 @@ export const AboutSection = () => {
                     </div>
                     
                     <ul className="space-y-3 text-slate-700 dark:text-slate-300">
-                      <li className="flex items-start space-x-3">
-                        <span className="text-indigo-500 dark:text-indigo-400 mt-1.5">✦</span>
+                      <li className="flex items-start gap-3">
+                        <span className="text-indigo-500 dark:text-indigo-400 mt-0.5 flex-shrink-0">✦</span>
                         <span>Took ownership of building an internal analytics dashboard to help the sales and marketing teams track campaign performance and lead conversions more effectively.</span>
                       </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-indigo-500 dark:text-indigo-400 mt-1.5">✦</span>
+                      <li className="flex items-start gap-3">
+                        <span className="text-indigo-500 dark:text-indigo-400 mt-0.5 flex-shrink-0">✦</span>
                         <span>Worked closely with cross-functional teams—especially data and medical affairs—to gather requirements and prioritize features that solved real user pain points.</span>
                       </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-indigo-500 dark:text-indigo-400 mt-1.5">✦</span>
+                      <li className="flex items-start gap-3">
+                        <span className="text-indigo-500 dark:text-indigo-400 mt-0.5 flex-shrink-0">✦</span>
                         <span>Helped translate scattered requests and ideas into clear user stories and wireframes, which made collaboration with the dev team much smoother.</span>
                       </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-indigo-500 dark:text-indigo-400 mt-1.5">✦</span>
+                      <li className="flex items-start gap-3">
+                        <span className="text-indigo-500 dark:text-indigo-400 mt-0.5 flex-shrink-0">✦</span>
                         <span>Set up a basic feedback loop with key stakeholders that helped us ship faster and improve features based on real usage.</span>
                       </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-indigo-500 dark:text-indigo-400 mt-1.5">✦</span>
+                      <li className="flex items-start gap-3">
+                        <span className="text-indigo-500 dark:text-indigo-400 mt-0.5 flex-shrink-0">✦</span>
                         <span>Also dabbled in setting up automated reports using SQL to replace some of the manual Excel-based workflows, which saved the team a good chunk of time every week.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-indigo-500 dark:text-indigo-400 mt-0.5 flex-shrink-0">✦</span>
+                        <span>Conducted user interviews and gathered insights to inform product roadmap decisions and feature prioritization.</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-indigo-500 dark:text-indigo-400 mt-0.5 flex-shrink-0">✦</span>
+                        <span>Documented product requirements and maintained clear communication channels between technical and non-technical stakeholders.</span>
                       </li>
                     </ul>
                     
