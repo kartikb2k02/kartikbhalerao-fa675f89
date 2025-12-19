@@ -247,42 +247,67 @@ export const AboutSection = () => {
         </div>
 
         {/* Testimonials / People Perspectives Section */}
-        <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-white/40 dark:border-slate-700/40 rounded-3xl p-12 shadow-2xl overflow-hidden">
-          {/* Background decoration */}
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-50/30 via-transparent to-pink-50/30 dark:from-purple-900/10 dark:via-transparent dark:to-pink-900/10 rounded-3xl"></div>
+        <div className="relative bg-white/20 dark:bg-slate-900/30 backdrop-blur-2xl border border-white/30 dark:border-white/10 rounded-3xl p-12 shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] overflow-hidden">
+          {/* Glassmorphism layers */}
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-pink-500/5 to-blue-500/10 dark:from-purple-500/20 dark:via-pink-500/10 dark:to-blue-500/20 rounded-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-white/40 via-transparent to-white/20 dark:from-white/5 dark:via-transparent dark:to-white/5 rounded-3xl"></div>
+          
+          {/* Animated gradient orbs */}
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-br from-purple-400/30 to-pink-400/30 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-gradient-to-br from-blue-400/30 to-indigo-400/30 rounded-full blur-3xl animate-pulse [animation-delay:2s]"></div>
           
           {/* Large quote decoration */}
-          <div className="absolute top-8 left-8 opacity-10">
-            <Quote className="w-24 h-24 text-purple-500" />
+          <div className="absolute top-8 right-8 opacity-20">
+            <Quote className="w-32 h-32 text-purple-400 dark:text-purple-300" />
           </div>
           
+          {/* Subtle grid pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] rounded-3xl"></div>
+          
           <div className="relative z-10">
-            <h3 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2 flex items-center space-x-3">
-              <span>What People Say</span>
-              <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse"></div>
-            </h3>
-            <p className="text-slate-600 dark:text-slate-400 mb-10">Perspectives from colleagues and collaborators</p>
+            <div className="flex items-center gap-4 mb-2">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg shadow-purple-500/25">
+                <Quote className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-3xl font-bold text-slate-900 dark:text-white">
+                What People Say
+              </h3>
+            </div>
+            <p className="text-slate-600 dark:text-slate-300 mb-10 ml-16">Perspectives from colleagues and collaborators</p>
             
             {/* Testimonial Carousel */}
             <div className="relative">
-              <div className="overflow-hidden">
+              <div className="overflow-hidden rounded-2xl">
                 <div 
-                  className="flex transition-transform duration-500 ease-out"
+                  className="flex transition-transform duration-700 ease-out"
                   style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
                 >
                   {testimonials.map((testimonial, index) => (
-                    <div key={index} className="w-full flex-shrink-0 px-4">
-                      <div className="bg-gradient-to-br from-white/60 to-white/30 dark:from-slate-700/60 dark:to-slate-700/30 backdrop-blur-lg rounded-2xl p-8 border border-white/50 dark:border-slate-600/50 shadow-xl">
-                        <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6 italic">
-                          "{testimonial.content}"
-                        </p>
-                        <div className="flex items-center gap-4">
-                          <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                            {testimonial.avatar}
-                          </div>
-                          <div>
-                            <h4 className="font-bold text-slate-900 dark:text-slate-100">{testimonial.name}</h4>
-                            <p className="text-sm text-slate-600 dark:text-slate-400">{testimonial.role} at {testimonial.company}</p>
+                    <div key={index} className="w-full flex-shrink-0 px-2">
+                      <div className="relative bg-white/40 dark:bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/50 dark:border-white/10 shadow-xl overflow-hidden group hover:bg-white/50 dark:hover:bg-white/10 transition-all duration-500">
+                        {/* Card inner glow */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        
+                        {/* Quote mark */}
+                        <div className="absolute top-4 left-4 text-6xl text-purple-300/30 dark:text-purple-400/20 font-serif leading-none">"</div>
+                        
+                        <div className="relative z-10">
+                          <p className="text-lg text-slate-700 dark:text-slate-200 leading-relaxed mb-8 pl-8 font-medium">
+                            {testimonial.content}
+                          </p>
+                          <div className="flex items-center gap-4">
+                            <div className="relative">
+                              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-rose-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-purple-500/30 ring-4 ring-white/50 dark:ring-white/20">
+                                {testimonial.avatar}
+                              </div>
+                              <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full flex items-center justify-center shadow-lg">
+                                <span className="text-white text-xs">✓</span>
+                              </div>
+                            </div>
+                            <div>
+                              <h4 className="font-bold text-slate-900 dark:text-white text-lg">{testimonial.name}</h4>
+                              <p className="text-sm text-slate-600 dark:text-slate-400">{testimonial.role} · <span className="text-purple-600 dark:text-purple-400">{testimonial.company}</span></p>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -292,16 +317,16 @@ export const AboutSection = () => {
               </div>
             </div>
             
-            {/* Dots Indicator */}
-            <div className="flex justify-center gap-2 mt-8">
+            {/* Enhanced Dots Indicator */}
+            <div className="flex justify-center gap-3 mt-10">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setActiveTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`h-2 rounded-full transition-all duration-500 ${
                     activeTestimonial === index 
-                      ? 'bg-gradient-to-r from-purple-500 to-pink-500 w-8' 
-                      : 'bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500'
+                      ? 'bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 w-10 shadow-lg shadow-purple-500/30' 
+                      : 'bg-slate-300/60 dark:bg-white/20 w-2 hover:bg-slate-400 dark:hover:bg-white/40 hover:w-4'
                   }`}
                 />
               ))}
