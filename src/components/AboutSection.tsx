@@ -227,11 +227,23 @@ export const AboutSection = () => {
                           </li>
                           <li className="flex items-start space-x-3 group/item">
                             <span className="text-blue-500 dark:text-blue-400 mt-1.5 group-hover/item:scale-125 transition-transform">✦</span>
-                            <span>Using Mixpanel and PostHog to track usage and make data-driven decisions.</span>
+                            <span>Conducting user research through interviews, feedback sessions, and usability tests to understand pain points and validate solutions.</span>
                           </li>
                           <li className="flex items-start space-x-3 group/item">
                             <span className="text-blue-500 dark:text-blue-400 mt-1.5 group-hover/item:scale-125 transition-transform">✦</span>
-                            <span>Exploring AI integration for smarter financial recommendations.</span>
+                            <span>Writing detailed PRDs and maintaining a prioritized backlog aligned with business objectives and user needs.</span>
+                          </li>
+                          <li className="flex items-start space-x-3 group/item">
+                            <span className="text-blue-500 dark:text-blue-400 mt-1.5 group-hover/item:scale-125 transition-transform">✦</span>
+                            <span>Using Mixpanel and PostHog to track user behavior, run A/B tests, and make data-driven product decisions.</span>
+                          </li>
+                          <li className="flex items-start space-x-3 group/item">
+                            <span className="text-blue-500 dark:text-blue-400 mt-1.5 group-hover/item:scale-125 transition-transform">✦</span>
+                            <span>Collaborating with design and engineering teams through agile sprints to ensure timely feature delivery.</span>
+                          </li>
+                          <li className="flex items-start space-x-3 group/item">
+                            <span className="text-blue-500 dark:text-blue-400 mt-1.5 group-hover/item:scale-125 transition-transform">✦</span>
+                            <span>Exploring AI integration to provide users with smarter financial recommendations without overwhelming them.</span>
                           </li>
                         </ul>
                         
@@ -261,7 +273,11 @@ export const AboutSection = () => {
                         <ul className="space-y-3 text-slate-700 dark:text-slate-300">
                           <li className="flex items-start space-x-3 group/item">
                             <span className="text-indigo-500 dark:text-indigo-400 mt-1.5 group-hover/item:scale-125 transition-transform">✦</span>
-                            <span>Built an internal analytics dashboard for sales and marketing teams to track campaign performance.</span>
+                            <span>Built an internal analytics dashboard for sales and marketing teams to track campaign performance and lead conversions.</span>
+                          </li>
+                          <li className="flex items-start space-x-3 group/item">
+                            <span className="text-indigo-500 dark:text-indigo-400 mt-1.5 group-hover/item:scale-125 transition-transform">✦</span>
+                            <span>Worked closely with cross-functional teams—data, medical affairs, and engineering—to gather requirements and prioritize features.</span>
                           </li>
                           <li className="flex items-start space-x-3 group/item">
                             <span className="text-indigo-500 dark:text-indigo-400 mt-1.5 group-hover/item:scale-125 transition-transform">✦</span>
@@ -269,7 +285,19 @@ export const AboutSection = () => {
                           </li>
                           <li className="flex items-start space-x-3 group/item">
                             <span className="text-indigo-500 dark:text-indigo-400 mt-1.5 group-hover/item:scale-125 transition-transform">✦</span>
-                            <span>Set up automated SQL reports to replace manual Excel workflows, saving hours weekly.</span>
+                            <span>Set up a feedback loop with key stakeholders to ship faster and improve features based on real usage patterns.</span>
+                          </li>
+                          <li className="flex items-start space-x-3 group/item">
+                            <span className="text-indigo-500 dark:text-indigo-400 mt-1.5 group-hover/item:scale-125 transition-transform">✦</span>
+                            <span>Automated SQL reports to replace manual Excel-based workflows, saving the team significant time every week.</span>
+                          </li>
+                          <li className="flex items-start space-x-3 group/item">
+                            <span className="text-indigo-500 dark:text-indigo-400 mt-1.5 group-hover/item:scale-125 transition-transform">✦</span>
+                            <span>Defined KPIs and success metrics to measure dashboard adoption and track ROI of product initiatives.</span>
+                          </li>
+                          <li className="flex items-start space-x-3 group/item">
+                            <span className="text-indigo-500 dark:text-indigo-400 mt-1.5 group-hover/item:scale-125 transition-transform">✦</span>
+                            <span>Conducted stakeholder interviews to understand pain points and ensure the dashboard solved real user problems.</span>
                           </li>
                         </ul>
                         
