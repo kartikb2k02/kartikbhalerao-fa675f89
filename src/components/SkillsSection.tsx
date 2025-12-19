@@ -524,8 +524,15 @@ export const SkillsSection = () => {
             <div className="absolute inset-0 border-2 border-emerald-500/30 group-hover:border-emerald-500/50 rounded-2xl transition-colors" />
             <div className="absolute inset-[2px] bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-[14px]" />
             
-            {/* Shine effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            {/* Enhanced Shine effect - Multi-layer */}
+            <div className="absolute inset-0 overflow-hidden rounded-2xl">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-300/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 delay-100 ease-out" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute top-0 left-1/4 w-1 h-full bg-gradient-to-b from-transparent via-white/50 to-transparent blur-sm animate-pulse" />
+                <div className="absolute top-0 right-1/3 w-0.5 h-full bg-gradient-to-b from-transparent via-emerald-400/40 to-transparent blur-sm animate-pulse [animation-delay:300ms]" />
+              </div>
+            </div>
             
             {/* Content */}
             <div className="relative flex items-center gap-3">
