@@ -85,18 +85,26 @@ const CaseStudyDetail = () => {
                   {caseStudy.gallery.map((item, index) => (
                     <div
                       key={index}
-                      className="group cursor-pointer"
+                      className="group"
                       onClick={() => openLightbox(index)}
                     >
-                      <div className="relative rounded-2xl overflow-hidden border border-border bg-card/50 backdrop-blur-sm">
+                      <div className="relative rounded-2xl overflow-hidden border border-border bg-card/50 backdrop-blur-sm cursor-pointer">
                         <img
                           src={item.src}
                           alt={item.caption}
                           className={`w-full object-cover group-hover:scale-105 transition-transform duration-500 ${id === 'ether-prd' ? 'aspect-[1/1.414]' : 'aspect-video'}`}
                         />
-                        <div className="absolute inset-0 bg-background/0 group-hover:bg-background/30 transition-colors duration-300 flex items-center justify-center">
-                          <ZoomIn className="w-10 h-10 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        {/* Hover overlay with click prompt */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/40 to-background/20 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center gap-3">
+                          <div className="w-16 h-16 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-primary/30 transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                            <ZoomIn className="w-7 h-7 text-primary-foreground" />
+                          </div>
+                          <span className="text-sm font-medium text-foreground bg-background/80 backdrop-blur-sm px-4 py-2 rounded-full border border-border shadow-md transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                            Click to enlarge
+                          </span>
                         </div>
+                        {/* Glowing border effect on hover */}
+                        <div className="absolute inset-0 rounded-2xl border-2 border-primary/0 group-hover:border-primary/50 transition-colors duration-300 pointer-events-none" />
                       </div>
                       {item.caption && (
                         <p className="text-sm text-muted-foreground mt-3 text-center">
