@@ -44,9 +44,23 @@ const CaseStudyDetail = () => {
           </Link>
 
           {/* Hero Section */}
-          <div className="relative rounded-3xl overflow-hidden mb-12">
-            <div className={`aspect-[21/9] bg-gradient-to-br ${caseStudy.bgGradient}`}>
-              <img src={caseStudy.image} alt={caseStudy.title} className="w-full h-full object-cover" />
+          <div className="relative rounded-3xl overflow-hidden mb-12 group">
+            {/* Decorative gradient border */}
+            <div className={`absolute -inset-1 bg-gradient-to-r ${caseStudy.bgGradient} rounded-[1.75rem] blur-sm opacity-50 group-hover:opacity-75 transition-opacity duration-500`} />
+            
+            <div className={`relative aspect-[16/9] lg:aspect-[2/1] bg-gradient-to-br ${caseStudy.bgGradient}`}>
+              <img 
+                src={caseStudy.image} 
+                alt={caseStudy.title} 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" 
+              />
+              {/* Overlay gradient for depth */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-background/30" />
+              
+              {/* Corner accents */}
+              <div className={`absolute top-4 left-4 w-16 h-16 border-l-2 border-t-2 border-primary/40 rounded-tl-xl`} />
+              <div className={`absolute bottom-4 right-4 w-16 h-16 border-r-2 border-b-2 border-primary/40 rounded-br-xl`} />
             </div>
           </div>
 
