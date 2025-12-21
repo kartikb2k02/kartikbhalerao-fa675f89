@@ -90,7 +90,7 @@ export const CaseStudiesSection = () => {
 
   return (
     <section className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-4 space-y-16 relative z-10">
+      <div className="max-w-[90rem] mx-auto px-6 space-y-16 relative z-10">
         {/* Header */}
         <div className="text-center space-y-6">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground">
