@@ -81,7 +81,7 @@ const CaseStudyDetail = () => {
             {caseStudy.gallery.length > 0 && (
               <section>
                 <h2 className="text-2xl font-bold text-foreground mb-6">Gallery</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className={`grid gap-6 ${id === 'ether-prd' ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
                   {caseStudy.gallery.map((item, index) => (
                     <div
                       key={index}
@@ -92,7 +92,7 @@ const CaseStudyDetail = () => {
                         <img
                           src={item.src}
                           alt={item.caption}
-                          className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500"
+                          className={`w-full object-cover group-hover:scale-105 transition-transform duration-500 ${id === 'ether-prd' ? 'aspect-[1/1.414]' : 'aspect-video'}`}
                         />
                         <div className="absolute inset-0 bg-background/0 group-hover:bg-background/30 transition-colors duration-300 flex items-center justify-center">
                           <ZoomIn className="w-10 h-10 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
