@@ -179,7 +179,18 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Comprehensive product specification for development team.",
     keyFeatures: ["EdTech features", "User requirements", "Technical specs", "Success metrics"],
     tools: ["Notion", "Figma", "User research", "Documentation"],
-    gallery: [],
+    gallery: [
+      { src: "/lovable-uploads/ether-prd-1.png", caption: "Problem Definition - Streamlining Fee Management for Schools and Parents" },
+      { src: "/lovable-uploads/ether-prd-2.png", caption: "Goals & Non-Goals - Prioritized outcomes for Admins, Parents, and Ether" },
+      { src: "/lovable-uploads/ether-prd-3.png", caption: "Competitive Analysis & Functional Metrics" },
+      { src: "/lovable-uploads/ether-prd-4.png", caption: "Validation of the Problem - Survey Insights & User Anecdotes" },
+      { src: "/lovable-uploads/ether-prd-5.png", caption: "Target Audience (Admins) - Key Personas & The Solution" },
+      { src: "/lovable-uploads/ether-prd-6.png", caption: "Admin Wireframes - EtherView & EtherComm" },
+      { src: "/lovable-uploads/ether-prd-7.png", caption: "Admin Wireframes - EtherTrack & EtherForecast" },
+      { src: "/lovable-uploads/ether-prd-8.png", caption: "Feature Prioritization & User Flow Diagram (Admin)" },
+      { src: "/lovable-uploads/ether-prd-9.png", caption: "Target Audience (Parents) - Key Personas & The Solution" },
+      { src: "/lovable-uploads/ether-prd-10.png", caption: "Parent Wireframes - EtherTrack Family, EtherPay Express, EtherRemind+, EtherSecure" },
+    ],
   },
 ];
 
