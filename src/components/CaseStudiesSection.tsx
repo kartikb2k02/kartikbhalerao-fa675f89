@@ -115,7 +115,7 @@ export const CaseStudiesSection = () => {
                   <img 
                     src={study.image} 
                     alt={study.title}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   />
                   
                   {/* Top Right Arrow */}
