@@ -249,6 +249,9 @@ export const caseStudies: CaseStudy[] = [
         src: "/lovable-uploads/ether-prd-10.png",
         caption: "Parent Wireframes - EtherTrack Family, EtherPay Express, EtherRemind+, EtherSecure",
       },
+      { src: "/lovable-uploads/11.png", caption: "Target Audience (Parents) - User Flow for updated flow" },
+      { src: "/lovable-uploads/12.png", caption: "Target Audience (Parents) - Launch Readniness and Risk" },
+      { src: "/lovable-uploads/12.png", caption: "Target Audience (Parents) - Sources Follow" },
     ],
   },
 ];
