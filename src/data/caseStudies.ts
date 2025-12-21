@@ -13,6 +13,11 @@ export interface CaseStudy {
   outcome: string;
   keyFeatures: string[];
   tools: string[];
+  // Gallery images - add your screenshots/images here
+  gallery: {
+    src: string;
+    caption: string;
+  }[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -30,6 +35,7 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Increased user engagement by 40% and improved savings completion rates significantly.",
     keyFeatures: ["Goal-based savings", "Gamification rewards", "Progress tracking", "Social features"],
     tools: ["Figma", "Miro", "User Interviews", "A/B Testing"],
+    gallery: [], // Add your images here: { src: "/path/to/image.png", caption: "Description" }
   },
   {
     id: "blinkit-analysis",
@@ -45,6 +51,7 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Recommendations aimed at reducing checkout time by 30%.",
     keyFeatures: ["Checkout optimization", "Cart analysis", "User flow mapping", "Conversion tracking"],
     tools: ["Analytics", "Heatmaps", "User Research", "Competitive Analysis"],
+    gallery: [],
   },
   {
     id: "google-pay-analysis",
@@ -60,6 +67,7 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Developed actionable recommendations for feature improvements.",
     keyFeatures: ["Feature audit", "User research", "Competitive analysis", "Roadmap planning"],
     tools: ["Figma", "Survey tools", "Data analysis", "User interviews"],
+    gallery: [],
   },
   {
     id: "google-pay-prd",
@@ -75,6 +83,7 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Delivered complete product specification ready for development.",
     keyFeatures: ["User stories", "Acceptance criteria", "Success metrics", "Technical specs"],
     tools: ["Notion", "Figma", "JIRA", "Confluence"],
+    gallery: [],
   },
   {
     id: "zepto-efficiency",
@@ -90,6 +99,7 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Proposed improvements to reduce order time significantly.",
     keyFeatures: ["Flow optimization", "Speed improvements", "UI refinements", "User testing"],
     tools: ["Figma", "Maze", "Analytics", "User testing"],
+    gallery: [],
   },
   {
     id: "airbnb-ux",
@@ -105,6 +115,7 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Created recommendations for more accessible and user-friendly experience.",
     keyFeatures: ["Accessibility audit", "Inclusive design", "User research", "Design improvements"],
     tools: ["Figma", "Accessibility tools", "User interviews", "Heuristic evaluation"],
+    gallery: [],
   },
   {
     id: "cloudeagle-ai",
@@ -120,6 +131,7 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Enhanced user productivity through smart automation.",
     keyFeatures: ["AI integration", "Workflow optimization", "Smart automation", "User efficiency"],
     tools: ["Figma", "AI tools", "User research", "Prototyping"],
+    gallery: [],
   },
   {
     id: "metis-improvement",
@@ -135,6 +147,7 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Delivered feature improvements that increased user satisfaction.",
     keyFeatures: ["Feature redesign", "Usability improvements", "User feedback", "Iterative design"],
     tools: ["Figma", "User testing", "Analytics", "Feedback tools"],
+    gallery: [],
   },
   {
     id: "codeant-ai",
@@ -150,6 +163,7 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Successful product positioning and launch narrative.",
     keyFeatures: ["Launch strategy", "Value proposition", "Market positioning", "Brand narrative"],
     tools: ["Strategy frameworks", "Market research", "Storytelling", "Presentation design"],
+    gallery: [],
   },
   {
     id: "ether-prd",
@@ -165,6 +179,7 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Comprehensive product specification for development team.",
     keyFeatures: ["EdTech features", "User requirements", "Technical specs", "Success metrics"],
     tools: ["Notion", "Figma", "User research", "Documentation"],
+    gallery: [],
   },
 ];
 
