@@ -111,7 +111,7 @@ export const CaseStudiesSection = () => {
             >
               <div className="relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2">
                 {/* Image Section with gradient background */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-white dark:bg-gray-100">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <img 
                     src={study.image} 
                     alt={study.title}
