@@ -29,9 +29,12 @@ export const caseStudies: CaseStudy[] = [
     externalLink: "https://www.canva.com/design/DAGxiFuK6mo/lSD7Z6WwaqX6hDFwYuQ2gQ/view",
     bgGradient: "from-[#fbd26c] to-[#f99e30]",
     image: "/lovable-uploads/b1ba7330-6bbc-43d5-a1d2-56baa716c077.png",
-    overview: "Gullak is a savings-led fintech platform designed to empower users with smart financial habits through gamification and goal-based savings.",
-    challenge: "Many users struggle with consistent savings habits due to lack of motivation and visibility into their progress.",
-    solution: "Designed an intuitive savings experience with goal tracking, reward systems, and social accountability features.",
+    overview:
+      "Gullak is a savings-led fintech platform designed to empower users with smart financial habits through gamification and goal-based savings.",
+    challenge:
+      "Many users struggle with consistent savings habits due to lack of motivation and visibility into their progress.",
+    solution:
+      "Designed an intuitive savings experience with goal tracking, reward systems, and social accountability features.",
     outcome: "Increased user engagement by 40% and improved savings completion rates significantly.",
     keyFeatures: ["Goal-based savings", "Gamification rewards", "Progress tracking", "Social features"],
     tools: ["Figma", "Miro", "User Interviews", "A/B Testing"],
@@ -53,15 +56,36 @@ export const caseStudies: CaseStudy[] = [
     tools: ["Analytics", "Heatmaps", "User Research", "Competitive Analysis"],
     gallery: [
       { src: "/lovable-uploads/blinkit-1.jpg", caption: "Cover - Order Efficiency and Conversion Analysis" },
-      { src: "/lovable-uploads/blinkit-2.jpg", caption: "Introduction - About Blinkit, Key Statistics, Revenue Streams & Competitors" },
+      {
+        src: "/lovable-uploads/blinkit-2.jpg",
+        caption: "Introduction - About Blinkit, Key Statistics, Revenue Streams & Competitors",
+      },
       { src: "/lovable-uploads/blinkit-3.jpg", caption: "The Minds That Made Blinkit - Founders & Pivot Story" },
-      { src: "/lovable-uploads/blinkit-4.jpg", caption: "How Blinkit Redefined Speed in Q-Commerce - Revenue, Expenses & Unit Economics" },
-      { src: "/lovable-uploads/blinkit-5.jpg", caption: "Customer Acquisition and Growth Strategy - ICPs & Market Analysis" },
-      { src: "/lovable-uploads/blinkit-6.jpg", caption: "Market Reach & Coverage - Investment Insights & Geographic Expansion" },
-      { src: "/lovable-uploads/blinkit-7.jpg", caption: "Before the 10 min Delivery Race Began - Market Context & E-Grocery Evolution" },
+      {
+        src: "/lovable-uploads/blinkit-4.jpg",
+        caption: "How Blinkit Redefined Speed in Q-Commerce - Revenue, Expenses & Unit Economics",
+      },
+      {
+        src: "/lovable-uploads/blinkit-5.jpg",
+        caption: "Customer Acquisition and Growth Strategy - ICPs & Market Analysis",
+      },
+      {
+        src: "/lovable-uploads/blinkit-6.jpg",
+        caption: "Market Reach & Coverage - Investment Insights & Geographic Expansion",
+      },
+      {
+        src: "/lovable-uploads/blinkit-7.jpg",
+        caption: "Before the 10 min Delivery Race Began - Market Context & E-Grocery Evolution",
+      },
       { src: "/lovable-uploads/blinkit-8.jpg", caption: "Understanding Consumer Motivation in Choosing Blinkit" },
-      { src: "/lovable-uploads/blinkit-9.jpg", caption: "Problem Statement - User Retention & Repeat Purchase Challenges" },
-      { src: "/lovable-uploads/blinkit-10.jpg", caption: "Industry Peer Comparison - Blinkit vs Zepto, JioMart, Instamart, Amazon Fresh" },
+      {
+        src: "/lovable-uploads/blinkit-9.jpg",
+        caption: "Problem Statement - User Retention & Repeat Purchase Challenges",
+      },
+      {
+        src: "/lovable-uploads/blinkit-10.jpg",
+        caption: "Industry Peer Comparison - Blinkit vs Zepto, JioMart, Instamart, Amazon Fresh",
+      },
       { src: "/lovable-uploads/blinkit-11.jpg", caption: "Strategic Priorities & Timeline" },
       { src: "/lovable-uploads/blinkit-12.jpg", caption: "User Research Methodology" },
       { src: "/lovable-uploads/blinkit-13.jpg", caption: "User Journey Mapping" },
@@ -72,6 +96,8 @@ export const caseStudies: CaseStudy[] = [
       { src: "/lovable-uploads/blinkit-18.jpg", caption: "Metrics & Success Criteria" },
       { src: "/lovable-uploads/blinkit-19.jpg", caption: "Implementation Roadmap" },
       { src: "/lovable-uploads/blinkit-20.jpg", caption: "Key Takeaways & Recommendations" },
+      { src: "/lovable-uploads/Blinkit case Study_page-0021.jpg", caption: "GTM Strategy" },
+      { src: "/lovable-uploads/Blinkit case Study_page-0022.jpg", caption: "Thank You" },
     ],
   },
   {
@@ -201,16 +227,28 @@ export const caseStudies: CaseStudy[] = [
     keyFeatures: ["EdTech features", "User requirements", "Technical specs", "Success metrics"],
     tools: ["Notion", "Figma", "User research", "Documentation"],
     gallery: [
-      { src: "/lovable-uploads/ether-prd-1.png", caption: "Problem Definition - Streamlining Fee Management for Schools and Parents" },
-      { src: "/lovable-uploads/ether-prd-2.png", caption: "Goals & Non-Goals - Prioritized outcomes for Admins, Parents, and Ether" },
+      {
+        src: "/lovable-uploads/ether-prd-1.png",
+        caption: "Problem Definition - Streamlining Fee Management for Schools and Parents",
+      },
+      {
+        src: "/lovable-uploads/ether-prd-2.png",
+        caption: "Goals & Non-Goals - Prioritized outcomes for Admins, Parents, and Ether",
+      },
       { src: "/lovable-uploads/ether-prd-3.png", caption: "Competitive Analysis & Functional Metrics" },
-      { src: "/lovable-uploads/ether-prd-4.png", caption: "Validation of the Problem - Survey Insights & User Anecdotes" },
+      {
+        src: "/lovable-uploads/ether-prd-4.png",
+        caption: "Validation of the Problem - Survey Insights & User Anecdotes",
+      },
       { src: "/lovable-uploads/ether-prd-5.png", caption: "Target Audience (Admins) - Key Personas & The Solution" },
       { src: "/lovable-uploads/ether-prd-6.png", caption: "Admin Wireframes - EtherView & EtherComm" },
       { src: "/lovable-uploads/ether-prd-7.png", caption: "Admin Wireframes - EtherTrack & EtherForecast" },
       { src: "/lovable-uploads/ether-prd-8.png", caption: "Feature Prioritization & User Flow Diagram (Admin)" },
       { src: "/lovable-uploads/ether-prd-9.png", caption: "Target Audience (Parents) - Key Personas & The Solution" },
-      { src: "/lovable-uploads/ether-prd-10.png", caption: "Parent Wireframes - EtherTrack Family, EtherPay Express, EtherRemind+, EtherSecure" },
+      {
+        src: "/lovable-uploads/ether-prd-10.png",
+        caption: "Parent Wireframes - EtherTrack Family, EtherPay Express, EtherRemind+, EtherSecure",
+      },
     ],
   },
 ];
