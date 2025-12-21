@@ -118,11 +118,12 @@ export default {
     			'float': 'float 6s ease-in-out infinite',
     			'float-slow': 'float-slow 8s ease-in-out infinite',
     			'float-slower': 'float-slower 10s ease-in-out infinite',
-    			'morph': 'morph 8s ease-in-out infinite',
-    			'glow-pulse': 'glow-pulse 4s ease-in-out infinite',
-    			'orbit': 'orbit 20s linear infinite',
-    			'shimmer': 'shimmer 3s linear infinite'
-    		},
+			'morph': 'morph 8s ease-in-out infinite',
+			'glow-pulse': 'glow-pulse 4s ease-in-out infinite',
+			'orbit': 'orbit 20s linear infinite',
+			'shimmer': 'shimmer 3s linear infinite',
+			'spin-slow': 'spin 25s linear infinite'
+		},
     		boxShadow: {
     			'2xs': 'var(--shadow-2xs)',
     			xs: 'var(--shadow-xs)',
