@@ -48,7 +48,7 @@ const CaseStudyDetail = () => {
             {/* Decorative gradient border */}
             <div className={`absolute -inset-1 bg-gradient-to-r ${caseStudy.bgGradient} rounded-[1.75rem] blur-sm opacity-50 group-hover:opacity-75 transition-opacity duration-500`} />
             
-            <div className={`relative aspect-[16/9] lg:aspect-[2/1] bg-gradient-to-br ${caseStudy.bgGradient}`}>
+            <div className={`relative aspect-[4/3] lg:aspect-[16/9] bg-gradient-to-br ${caseStudy.bgGradient}`}>
               <img 
                 src={caseStudy.image} 
                 alt={caseStudy.title} 
