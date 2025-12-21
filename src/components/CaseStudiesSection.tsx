@@ -107,46 +107,62 @@ export const CaseStudiesSection = () => {
             <div
               key={index}
               onClick={() => handleCardClick(study.link)}
-              className="bg-card/50 backdrop-blur-xl rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer transform hover:scale-[1.02] hover:-translate-y-1 border border-border/50"
+              className="group cursor-pointer"
             >
-              {/* Image Section */}
-              <div className="relative aspect-[16/11] overflow-hidden">
-                <img 
-                  src={study.image} 
-                  alt={study.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div className="relative bg-card/60 backdrop-blur-xl rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2 border border-border/30 hover:border-primary/30">
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
-                {/* Top Right Arrow */}
-                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="bg-background/80 backdrop-blur-sm p-2 rounded-full border border-border/50">
-                    <ArrowUpRight className="w-4 h-4 text-foreground" />
+                {/* Image Section */}
+                <div className="relative aspect-[16/11] overflow-hidden">
+                  <img 
+                    src={study.image} 
+                    alt={study.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                  />
+                  
+                  {/* Gradient overlay on image */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  {/* Top Right Arrow */}
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                    <div className="bg-white/90 dark:bg-background/90 backdrop-blur-md p-2.5 rounded-xl border border-white/50 shadow-lg">
+                      <ArrowUpRight className="w-5 h-5 text-foreground" />
+                    </div>
+                  </div>
+
+                  {/* Category badge */}
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 text-xs font-medium bg-white/90 dark:bg-background/90 backdrop-blur-md rounded-full border border-white/50 text-foreground shadow-sm">
+                      {study.tags[0]}
+                    </span>
                   </div>
                 </div>
-              </div>
 
-              {/* Colored Footer Section */}
-              <div className={`bg-gradient-to-r ${study.bgGradient} p-4 relative overflow-hidden`}>
-                {/* Background pattern overlay */}
-                <div className="absolute inset-0 opacity-20">
-                  <div className="absolute top-2 right-2 w-6 h-6 border-2 border-white/50 rounded-full"></div>
-                  <div className="absolute bottom-2 left-2 w-4 h-4 border-2 border-white/50 rounded-full"></div>
-                </div>
-                
-                {/* Content */}
-                <div className="relative z-10 space-y-1">
-                  <h3 className="text-base font-bold text-white leading-tight">
-                    {study.title}
-                  </h3>
-                  <p className="text-xs text-white/90 leading-relaxed">
-                    {study.subtitle}
-                  </p>
-                </div>
+                {/* Colored Footer Section */}
+                <div className={`bg-gradient-to-r ${study.bgGradient} p-5 relative overflow-hidden`}>
+                  {/* Animated background pattern */}
+                  <div className="absolute inset-0 opacity-30">
+                    <div className="absolute top-3 right-3 w-8 h-8 border-2 border-white/40 rounded-full animate-pulse" />
+                    <div className="absolute bottom-3 left-3 w-5 h-5 border-2 border-white/40 rounded-full animate-pulse [animation-delay:1s]" />
+                    <div className="absolute top-1/2 right-1/4 w-3 h-3 bg-white/20 rounded-full" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="relative z-10 pr-10">
+                    <h3 className="text-lg font-bold text-white leading-tight mb-1 group-hover:translate-x-1 transition-transform duration-300">
+                      {study.title}
+                    </h3>
+                    <p className="text-sm text-white/90 leading-relaxed">
+                      {study.subtitle}
+                    </p>
+                  </div>
 
-                {/* Arrow Icon */}
-                <div className="absolute bottom-3 right-3">
-                  <div className="w-6 h-6 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/50 transition-colors">
-                    <ArrowUpRight className="w-3 h-3 text-white" />
+                  {/* Arrow Icon */}
+                  <div className="absolute bottom-4 right-4">
+                    <div className="w-8 h-8 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/50 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                      <ArrowUpRight className="w-4 h-4 text-white group-hover:rotate-45 transition-transform duration-300" />
+                    </div>
                   </div>
                 </div>
               </div>
