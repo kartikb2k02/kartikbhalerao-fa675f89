@@ -110,11 +110,11 @@ export const CaseStudiesSection = () => {
               className="bg-card/50 backdrop-blur-xl rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer transform hover:scale-[1.02] hover:-translate-y-1 border border-border/50"
             >
               {/* Image Section */}
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-[16/10] overflow-hidden">
                 <img 
                   src={study.image} 
                   alt={study.title}
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 bg-muted/30"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 
                 {/* Top Right Arrow */}
