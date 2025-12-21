@@ -1,18 +1,23 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, ZoomIn } from "lucide-react";
 import { Header } from "@/components/Header";
 import { FooterSection } from "@/components/FooterSection";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { getCaseStudyById } from "@/data/caseStudies";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ImageLightbox } from "@/components/ImageLightbox";
 const CaseStudyDetail = () => {
-  const {
-    id
-  } = useParams<{
-    id: string;
-  }>();
+  const { id } = useParams<{ id: string }>();
   const caseStudy = id ? getCaseStudyById(id) : undefined;
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
   if (!caseStudy) {
     return <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
         <AnimatedBackground intensity="medium" />
@@ -73,19 +78,44 @@ const CaseStudyDetail = () => {
             
 
             {/* Gallery Section */}
-            {caseStudy.gallery.length > 0 && <section>
+            {caseStudy.gallery.length > 0 && (
+              <section>
                 <h2 className="text-2xl font-bold text-foreground mb-6">Gallery</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {caseStudy.gallery.map((item, index) => <div key={index} className="group">
+                  {caseStudy.gallery.map((item, index) => (
+                    <div
+                      key={index}
+                      className="group cursor-pointer"
+                      onClick={() => openLightbox(index)}
+                    >
                       <div className="relative rounded-2xl overflow-hidden border border-border bg-card/50 backdrop-blur-sm">
-                        <img src={item.src} alt={item.caption} className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <img
+                          src={item.src}
+                          alt={item.caption}
+                          className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-background/0 group-hover:bg-background/30 transition-colors duration-300 flex items-center justify-center">
+                          <ZoomIn className="w-10 h-10 text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
                       </div>
-                      {item.caption && <p className="text-sm text-muted-foreground mt-3 text-center">
+                      {item.caption && (
+                        <p className="text-sm text-muted-foreground mt-3 text-center">
                           {item.caption}
-                        </p>}
-                    </div>)}
+                        </p>
+                      )}
+                    </div>
+                  ))}
                 </div>
-              </section>}
+              </section>
+            )}
+
+            {/* Lightbox */}
+            <ImageLightbox
+              images={caseStudy.gallery}
+              initialIndex={lightboxIndex}
+              open={lightboxOpen}
+              onOpenChange={setLightboxOpen}
+            />
 
             {/* Key Features & Tools */}
             <div className="grid md:grid-cols-2 gap-8">
