@@ -103,6 +103,31 @@ const CaseStudyDetail = () => {
               </p>
             </section>
 
+            {/* Gallery Section */}
+            {caseStudy.gallery.length > 0 && (
+              <section>
+                <h2 className="text-2xl font-bold text-foreground mb-6">Gallery</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {caseStudy.gallery.map((item, index) => (
+                    <div key={index} className="group">
+                      <div className="relative rounded-2xl overflow-hidden border border-border bg-card/50 backdrop-blur-sm">
+                        <img
+                          src={item.src}
+                          alt={item.caption}
+                          className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      {item.caption && (
+                        <p className="text-sm text-muted-foreground mt-3 text-center">
+                          {item.caption}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
             {/* Key Features & Tools */}
             <div className="grid md:grid-cols-2 gap-8">
               <section className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border">
