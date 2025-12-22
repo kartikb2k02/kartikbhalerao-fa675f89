@@ -6,7 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 // Real brand icons
-import { SiFigma, SiAdobexd, SiCanva, SiSketch, SiFramer, SiJira, SiNotion, SiTrello, SiAsana, SiLinear, SiMixpanel, SiGoogleanalytics, SiTableau, SiHotjar, SiOpenai, SiAnthropic, SiZapier, SiGithub, SiPostman, SiDocker, SiAmazonwebservices, SiN8N, SiMake } from "react-icons/si";
+import { SiFigma, SiCanva, SiSketch, SiJira, SiNotion, SiTrello, SiAsana, SiLinear, SiMixpanel, SiGoogleanalytics, SiTableau, SiHotjar, SiOpenai, SiAnthropic, SiZapier, SiGithub, SiPostman, SiDocker, SiAmazonwebservices, SiN8N, SiMake, SiSlack, SiMiro, SiZoom, SiDiscord, SiSupabase, SiClickup } from "react-icons/si";
+import { MessageSquare, Users, FileText, Clipboard, Brain, Sparkles, PenTool, LayoutGrid } from "lucide-react";
 import { VscVscode } from "react-icons/vsc";
 
 // Counter animation hook
@@ -240,94 +241,49 @@ export const SkillsSection = () => {
     textColor: "text-orange-500"
   }];
   const toolCategories = {
-    design: {
-      title: "Design",
-      icon: <Palette className="w-4 h-4" />,
-      tools: [{
-        name: "Figma",
-        description: "UI/UX Design",
-        color: "from-[#F24E1E] to-[#A259FF]",
-        icon: <SiFigma className="w-5 h-5" />,
-        tooltip: "My go-to design tool for creating high-fidelity mockups and interactive prototypes",
-        whyIUse: "Figma's real-time collaboration is unmatched. I use it daily to work seamlessly with designers, iterate on user flows, and build comprehensive design systems that scale across products.",
-        useCases: ["Creating user flows and wireframes for product specs", "Collaborating with design teams on UI iterations", "Building and maintaining component libraries", "Prototyping for user testing sessions"]
-      }, {
-        name: "Adobe XD",
-        description: "Prototyping",
-        color: "from-[#FF61F6] to-[#470137]",
-        icon: <SiAdobexd className="w-5 h-5" />,
-        tooltip: "For creating quick interactive prototypes and animations",
-        whyIUse: "XD excels at creating animated prototypes quickly. I use it when I need to demonstrate complex micro-interactions or test mobile navigation patterns with stakeholders.",
-        useCases: ["Building interactive prototypes for stakeholder demos", "Testing mobile-first navigation patterns", "Creating animated transitions for dev handoff", "Quick concept validation with users"]
-      }, {
-        name: "Canva",
-        description: "Graphics",
-        color: "from-[#00C4CC] to-[#7D2AE8]",
-        icon: <SiCanva className="w-5 h-5" />,
-        tooltip: "For quick presentations and marketing visuals",
-        whyIUse: "When I need to create polished presentations or marketing materials fast, Canva is my secret weapon. It's perfect for non-design tasks that still need to look professional.",
-        useCases: ["Creating product launch presentations", "Designing social media content for product updates", "Building quick visual reports for stakeholders", "Making infographics for product documentation"]
-      }, {
-        name: "Sketch",
-        description: "Interface",
-        color: "from-[#FDB300] to-[#EA6C00]",
-        icon: <SiSketch className="w-5 h-5" />,
-        tooltip: "For detailed UI design and icon creation",
-        whyIUse: "Sketch remains powerful for pixel-perfect UI work. I use it for legacy projects and when working with teams already invested in the Sketch ecosystem.",
-        useCases: ["Maintaining design consistency in existing projects", "Creating detailed icon sets and UI elements", "Working with design teams using Sketch workflows", "Exporting assets for development"]
-      }, {
-        name: "Framer",
-        description: "Motion",
-        color: "from-[#0055FF] to-[#00AAFF]",
-        icon: <SiFramer className="w-5 h-5" />,
-        tooltip: "For creating sophisticated motion designs and animations",
-        whyIUse: "Framer lets me create production-ready animations that communicate exactly how interactions should feel. Essential for selling the vision of delightful user experiences.",
-        useCases: ["Designing micro-interactions for premium features", "Creating motion specs for developer handoff", "Prototyping gesture-based interactions", "Building animated landing pages"]
-      }]
-    },
     management: {
       title: "Management",
       icon: <Calendar className="w-4 h-4" />,
       tools: [{
-        name: "Jira",
-        description: "Agile PM",
-        color: "from-[#0052CC] to-[#2684FF]",
-        icon: <SiJira className="w-5 h-5" />,
-        tooltip: "The backbone of my sprint planning and backlog management",
-        whyIUse: "Jira is essential for managing complex product backlogs and coordinating with engineering. I use it to track epics, write detailed user stories, and monitor sprint velocity.",
-        useCases: ["Sprint planning and backlog grooming", "Writing user stories with acceptance criteria", "Tracking feature progress across teams", "Managing release cycles and version control"]
+        name: "Monday.com",
+        description: "Work OS",
+        color: "from-[#FF3D57] to-[#6161FF]",
+        icon: <LayoutGrid className="w-5 h-5" />,
+        tooltip: "For visual work management and team collaboration",
+        whyIUse: "Monday.com's visual interface makes complex project management intuitive. I use it to align cross-functional teams and track work across departments.",
+        useCases: ["Managing product portfolios", "Cross-team collaboration", "Resource planning and allocation", "Executive reporting dashboards"]
       }, {
-        name: "Notion",
-        description: "Docs",
-        color: "from-[#000000] to-[#333333]",
-        icon: <SiNotion className="w-5 h-5" />,
-        tooltip: "My second brain for all product documentation",
-        whyIUse: "Notion is where all my product knowledge lives. From PRDs to competitive research, meeting notes to OKRs—it's the central hub that keeps everything organized and searchable.",
-        useCases: ["Writing and maintaining PRDs", "Building product knowledge bases", "Organizing competitive research and insights", "Creating team wikis and runbooks"]
+        name: "Aha!",
+        description: "Roadmaps",
+        color: "from-[#0073CF] to-[#00A4E4]",
+        icon: <Layers className="w-5 h-5" />,
+        tooltip: "For strategic roadmapping and product planning",
+        whyIUse: "Aha! is my go-to for strategic product planning. It connects goals to features and helps communicate the product vision to stakeholders clearly.",
+        useCases: ["Building strategic roadmaps", "Linking features to business goals", "Stakeholder presentations", "Release planning and tracking"]
       }, {
-        name: "Trello",
-        description: "Kanban",
-        color: "from-[#0079BF] to-[#00C2E0]",
-        icon: <SiTrello className="w-5 h-5" />,
-        tooltip: "For visual project tracking with cross-functional teams",
-        whyIUse: "Trello's simplicity makes it perfect for stakeholder-facing projects. I use it when I need a visual board that non-technical team members can easily understand and update.",
-        useCases: ["Managing cross-functional project timelines", "Tracking go-to-market launch tasks", "Coordinating with marketing and sales teams", "Running lightweight discovery projects"]
+        name: "ProductBoard",
+        description: "Insights",
+        color: "from-[#3B49DF] to-[#7C3AED]",
+        icon: <Target className="w-5 h-5" />,
+        tooltip: "For customer-driven product management",
+        whyIUse: "ProductBoard helps me prioritize features based on real customer feedback. It keeps user insights at the center of every product decision.",
+        useCases: ["Customer feedback aggregation", "Feature prioritization", "User insight analysis", "Objective-based planning"]
       }, {
-        name: "Asana",
-        description: "Tasks",
-        color: "from-[#F06A6A] to-[#FC636B]",
-        icon: <SiAsana className="w-5 h-5" />,
-        tooltip: "For comprehensive task management and team workflows",
-        whyIUse: "Asana excels at complex project planning with dependencies. I rely on it for large initiatives that span multiple teams and require detailed timeline management.",
-        useCases: ["Planning multi-quarter product initiatives", "Managing dependencies across teams", "Tracking OKRs and key milestones", "Coordinating product launches"]
+        name: "Craft.io",
+        description: "Product",
+        color: "from-[#FF6B35] to-[#F7931E]",
+        icon: <FileText className="w-5 h-5" />,
+        tooltip: "For end-to-end product management",
+        whyIUse: "Craft.io provides a comprehensive product management suite. I use it to align product specs with roadmaps and collaborate with stakeholders.",
+        useCases: ["PRD creation and management", "Capacity planning", "Product specs documentation", "Stakeholder alignment"]
       }, {
-        name: "Linear",
-        description: "Issues",
-        color: "from-[#5E6AD2] to-[#8B5CF6]",
-        icon: <SiLinear className="w-5 h-5" />,
-        tooltip: "For fast-paced issue tracking with modern workflows",
-        whyIUse: "Linear's speed and keyboard-first design matches how I think. It's my choice for high-velocity teams where reducing friction in issue management directly impacts shipping speed.",
-        useCases: ["Rapid issue triage and prioritization", "Managing fast iteration cycles", "Tracking bugs and technical debt", "Coordinating with engineering teams"]
+        name: "ClickUp",
+        description: "Productivity",
+        color: "from-[#7B68EE] to-[#49CCF9]",
+        icon: <SiClickup className="w-5 h-5" />,
+        tooltip: "For all-in-one project management",
+        whyIUse: "ClickUp's flexibility allows me to customize workflows for any team or project. It's my Swiss Army knife for productivity.",
+        useCases: ["Sprint management", "Team workload tracking", "Goal and OKR tracking", "Document collaboration"]
       }]
     },
     analytics: {
@@ -350,21 +306,21 @@ export const SkillsSection = () => {
         whyIUse: "GA4 gives me the full picture of acquisition and user flow. Essential for understanding how users find us and how marketing efforts translate to product engagement.",
         useCases: ["Tracking acquisition channels and attribution", "Analyzing user flow through the product", "Measuring marketing campaign effectiveness", "Understanding cross-platform user behavior"]
       }, {
-        name: "Amplitude",
-        description: "Product",
-        color: "from-[#1F2937] to-[#374151]",
-        icon: <BarChart3 className="w-5 h-5" />,
-        tooltip: "For product intelligence and behavioral analytics",
-        whyIUse: "Amplitude's behavioral cohorts and path analysis help me uncover why users succeed or churn. It's invaluable for making product decisions backed by real user data.",
-        useCases: ["Building behavioral user segments", "Analyzing feature impact on retention", "Creating north star metric dashboards", "Running product experiments analysis"]
+        name: "Segment",
+        description: "CDP",
+        color: "from-[#52BD94] to-[#43A879]",
+        icon: <Layers className="w-5 h-5" />,
+        tooltip: "For customer data infrastructure and integration",
+        whyIUse: "Segment unifies all customer data in one place. It's essential for creating a single source of truth across analytics tools.",
+        useCases: ["Customer data unification", "Event tracking standardization", "Tool integration management", "Data governance"]
       }, {
-        name: "Tableau",
-        description: "Viz",
-        color: "from-[#E97627] to-[#C72037]",
-        icon: <SiTableau className="w-5 h-5" />,
-        tooltip: "For powerful data visualization and executive reporting",
-        whyIUse: "When I need to tell a compelling data story to executives, Tableau delivers. Its visualization capabilities turn complex data into insights that drive strategic decisions.",
-        useCases: ["Creating executive dashboards", "Visualizing complex business metrics", "Building interactive data explorations", "Presenting quarterly business reviews"]
+        name: "Heap",
+        description: "Auto-Track",
+        color: "from-[#5E4AE3] to-[#9B59B6]",
+        icon: <BarChart3 className="w-5 h-5" />,
+        tooltip: "For automatic event tracking and retroactive analysis",
+        whyIUse: "Heap's automatic event capture means I never miss important user interactions. Perfect for retroactive analysis without upfront instrumentation.",
+        useCases: ["Retroactive user analysis", "Automatic event capture", "Funnel optimization", "Conversion tracking"]
       }, {
         name: "Hotjar",
         description: "Heatmaps",
@@ -379,45 +335,148 @@ export const SkillsSection = () => {
       title: "AI Tools",
       icon: <Bot className="w-4 h-4" />,
       tools: [{
-        name: "ChatGPT",
-        description: "AI Chat",
-        color: "from-[#10A37F] to-[#1A7F64]",
-        icon: <SiOpenai className="w-5 h-5" />,
-        tooltip: "For rapid ideation and content generation",
-        whyIUse: "ChatGPT accelerates my workflow exponentially. From drafting PRDs to brainstorming solutions, it's my thinking partner for tackling complex product challenges quickly.",
-        useCases: ["Drafting product requirements and specs", "Brainstorming feature solutions", "Analyzing competitive positioning", "Creating user persona drafts"]
+        name: "Lovable",
+        description: "AI Dev",
+        color: "from-[#8B5CF6] to-[#EC4899]",
+        icon: <Sparkles className="w-5 h-5" />,
+        tooltip: "For AI-powered app development",
+        whyIUse: "Lovable transforms ideas into working applications. I use it to rapidly prototype and build full-stack apps with AI assistance.",
+        useCases: ["Rapid prototyping", "Building MVPs quickly", "Creating internal tools", "AI-assisted development"]
       }, {
-        name: "Claude",
-        description: "AI",
-        color: "from-[#D4A574] to-[#CC785C]",
-        icon: <SiAnthropic className="w-5 h-5" />,
-        tooltip: "For nuanced analysis and long-form content",
-        whyIUse: "Claude excels at nuanced reasoning and lengthy documents. I use it for deep analysis, refining strategy docs, and when I need thoughtful feedback on complex product decisions.",
-        useCases: ["Deep product strategy analysis", "Refining go-to-market documents", "Research synthesis and summarization", "Getting feedback on complex decisions"]
+        name: "Flowise",
+        description: "AI Flows",
+        color: "from-[#3B82F6] to-[#06B6D4]",
+        icon: <Brain className="w-5 h-5" />,
+        tooltip: "For building LLM apps visually",
+        whyIUse: "Flowise makes building AI workflows visual and intuitive. Perfect for creating custom AI agents and chatbots without complex coding.",
+        useCases: ["Building custom AI chatbots", "Creating RAG applications", "Designing LLM workflows", "AI automation pipelines"]
       }, {
-        name: "n8n",
-        description: "Automation",
-        color: "from-[#EA4B71] to-[#FF6D5A]",
-        icon: <SiN8N className="w-5 h-5" />,
-        tooltip: "For self-hosted workflow automation",
-        whyIUse: "n8n gives me complete control over my automations. I use it for complex workflows that require custom logic, API integrations, and data transformations.",
-        useCases: ["Automating product feedback collection", "Building custom Slack notifications", "Syncing data between tools", "Creating automated reporting pipelines"]
+        name: "Replit",
+        description: "Code AI",
+        color: "from-[#F26207] to-[#FB8C00]",
+        icon: <Code className="w-5 h-5" />,
+        tooltip: "For collaborative AI-assisted coding",
+        whyIUse: "Replit's AI features accelerate coding and prototyping. It's my go-to for quick experiments and collaborative development.",
+        useCases: ["Quick code prototypes", "Collaborative coding", "AI-assisted development", "Instant deployment"]
       }, {
-        name: "Zapier",
-        description: "Connect",
-        color: "from-[#FF4A00] to-[#FF8C00]",
-        icon: <SiZapier className="w-5 h-5" />,
-        tooltip: "For quick no-code integrations between tools",
-        whyIUse: "Zapier is my quick-win automation tool. When I need to connect tools fast without coding, it handles the heavy lifting of keeping my workflow seamless.",
-        useCases: ["Connecting PM tools automatically", "Automating user research scheduling", "Syncing customer feedback to databases", "Creating lead notification workflows"]
+        name: "Supabase",
+        description: "Backend",
+        color: "from-[#3ECF8E] to-[#10B981]",
+        icon: <SiSupabase className="w-5 h-5" />,
+        tooltip: "For instant backend and database",
+        whyIUse: "Supabase provides everything I need for a backend—database, auth, storage, and more. It accelerates product development significantly.",
+        useCases: ["Database management", "User authentication", "Real-time subscriptions", "File storage"]
+      }]
+    },
+    collaboration: {
+      title: "Collaboration",
+      icon: <Users className="w-4 h-4" />,
+      tools: [{
+        name: "Slack",
+        description: "Messaging",
+        color: "from-[#4A154B] to-[#36C5F0]",
+        icon: <SiSlack className="w-5 h-5" />,
+        tooltip: "For team communication and collaboration",
+        whyIUse: "Slack is the central hub for all team communication. I use it to coordinate with cross-functional teams and keep everyone aligned.",
+        useCases: ["Team communication", "Cross-functional coordination", "Integration with PM tools", "Quick decision making"]
       }, {
-        name: "Make",
-        description: "Visual",
-        color: "from-[#6D00CC] to-[#9B51E0]",
-        icon: <SiMake className="w-5 h-5" />,
-        tooltip: "For visual workflow building with advanced logic",
-        whyIUse: "Make handles complex automation scenarios that Zapier can't. Its visual builder makes it easy to create sophisticated multi-step workflows with conditional logic.",
-        useCases: ["Building complex multi-step workflows", "Processing and transforming data", "Creating conditional automation paths", "Integrating custom APIs"]
+        name: "Miro",
+        description: "Whiteboard",
+        color: "from-[#FFD02F] to-[#F7931E]",
+        icon: <SiMiro className="w-5 h-5" />,
+        tooltip: "For visual collaboration and brainstorming",
+        whyIUse: "Miro transforms remote collaboration. I use it for workshops, brainstorming sessions, and visualizing complex product concepts.",
+        useCases: ["Product workshops", "User journey mapping", "Brainstorming sessions", "Sprint retrospectives"]
+      }, {
+        name: "Zoom",
+        description: "Video",
+        color: "from-[#2D8CFF] to-[#0B5CFF]",
+        icon: <SiZoom className="w-5 h-5" />,
+        tooltip: "For video meetings and presentations",
+        whyIUse: "Zoom enables effective remote meetings and user research sessions. Essential for stakeholder presentations and team syncs.",
+        useCases: ["Stakeholder presentations", "User research interviews", "Team standups", "Remote workshops"]
+      }, {
+        name: "Discord",
+        description: "Community",
+        color: "from-[#5865F2] to-[#7289DA]",
+        icon: <SiDiscord className="w-5 h-5" />,
+        tooltip: "For community engagement and async communication",
+        whyIUse: "Discord helps me stay connected with product communities and gather user feedback in real-time.",
+        useCases: ["Community management", "User feedback collection", "Beta user engagement", "Real-time support"]
+      }]
+    },
+    design: {
+      title: "Design",
+      icon: <Palette className="w-4 h-4" />,
+      tools: [{
+        name: "Figma",
+        description: "UI/UX Design",
+        color: "from-[#F24E1E] to-[#A259FF]",
+        icon: <SiFigma className="w-5 h-5" />,
+        tooltip: "My go-to design tool for creating high-fidelity mockups and interactive prototypes",
+        whyIUse: "Figma's real-time collaboration is unmatched. I use it daily to work seamlessly with designers, iterate on user flows, and build comprehensive design systems that scale across products.",
+        useCases: ["Creating user flows and wireframes for product specs", "Collaborating with design teams on UI iterations", "Building and maintaining component libraries", "Prototyping for user testing sessions"]
+      }, {
+        name: "Balsamiq",
+        description: "Wireframes",
+        color: "from-[#CC0000] to-[#FF6666]",
+        icon: <PenTool className="w-5 h-5" />,
+        tooltip: "For rapid low-fidelity wireframing",
+        whyIUse: "Balsamiq's sketch-style wireframes keep focus on functionality over aesthetics. Perfect for early-stage product discovery.",
+        useCases: ["Low-fidelity wireframing", "Quick concept sketches", "Early stakeholder feedback", "Feature exploration"]
+      }, {
+        name: "Whimsical",
+        description: "Diagrams",
+        color: "from-[#7C3AED] to-[#A78BFA]",
+        icon: <Layers className="w-5 h-5" />,
+        tooltip: "For flowcharts and mind maps",
+        whyIUse: "Whimsical makes creating flowcharts and mind maps beautiful and easy. Great for documenting user flows and system architecture.",
+        useCases: ["User flow diagrams", "Mind mapping", "Information architecture", "Process documentation"]
+      }, {
+        name: "Sketch",
+        description: "Interface",
+        color: "from-[#FDB300] to-[#EA6C00]",
+        icon: <SiSketch className="w-5 h-5" />,
+        tooltip: "For detailed UI design and icon creation",
+        whyIUse: "Sketch remains powerful for pixel-perfect UI work. I use it for legacy projects and when working with teams already invested in the Sketch ecosystem.",
+        useCases: ["Maintaining design consistency in existing projects", "Creating detailed icon sets and UI elements", "Working with design teams using Sketch workflows", "Exporting assets for development"]
+      }, {
+        name: "Canva",
+        description: "Graphics",
+        color: "from-[#00C4CC] to-[#7D2AE8]",
+        icon: <SiCanva className="w-5 h-5" />,
+        tooltip: "For quick presentations and marketing visuals",
+        whyIUse: "When I need to create polished presentations or marketing materials fast, Canva is my secret weapon. It's perfect for non-design tasks that still need to look professional.",
+        useCases: ["Creating product launch presentations", "Designing social media content for product updates", "Building quick visual reports for stakeholders", "Making infographics for product documentation"]
+      }]
+    },
+    feedback: {
+      title: "Customer Feedback",
+      icon: <MessageSquare className="w-4 h-4" />,
+      tools: [{
+        name: "SurveyMonkey",
+        description: "Surveys",
+        color: "from-[#00BF6F] to-[#00A15F]",
+        icon: <Clipboard className="w-5 h-5" />,
+        tooltip: "For creating and analyzing surveys",
+        whyIUse: "SurveyMonkey helps me gather structured user feedback at scale. Essential for NPS tracking and customer satisfaction research.",
+        useCases: ["NPS surveys", "Customer satisfaction research", "Feature preference surveys", "Market research"]
+      }, {
+        name: "Typeform",
+        description: "Forms",
+        color: "from-[#262627] to-[#4B4B4B]",
+        icon: <FileText className="w-5 h-5" />,
+        tooltip: "For beautiful conversational forms",
+        whyIUse: "Typeform creates engaging survey experiences that boost response rates. Perfect for user research and feedback collection.",
+        useCases: ["User research interviews", "Onboarding feedback", "Product feedback collection", "Lead qualification"]
+      }, {
+        name: "UserTesting",
+        description: "UX Research",
+        color: "from-[#34A853] to-[#0F9D58]",
+        icon: <Users className="w-5 h-5" />,
+        tooltip: "For remote usability testing",
+        whyIUse: "UserTesting provides rapid access to real users for feedback. It accelerates the validation process significantly.",
+        useCases: ["Usability testing", "Prototype validation", "Competitor analysis", "User interview recruitment"]
       }]
     },
     development: {
