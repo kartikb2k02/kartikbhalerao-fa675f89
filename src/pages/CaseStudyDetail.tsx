@@ -32,14 +32,29 @@ const CaseStudyDetail = () => {
       </div>;
   }
   return <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-      <AnimatedBackground intensity="medium" />
+      <AnimatedBackground intensity="rich" />
+      
+      {/* Additional decorative background elements */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        {/* Radial gradient spotlight */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[60vh] bg-gradient-radial from-primary/10 via-primary/5 to-transparent" />
+        
+        {/* Side accent gradients */}
+        <div className="absolute top-1/3 -left-20 w-96 h-96 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-gradient-to-tl from-accent/20 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s' }} />
+        
+        {/* Decorative lines */}
+        <div className="absolute top-20 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+      </div>
+
       <Header />
       
       <main className="pt-24 pb-20 relative z-10">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           {/* Back Button */}
-          <Link to="/case-studies" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8">
-            <ArrowLeft className="w-4 h-4" />
+          <Link to="/case-studies" className="group inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-all duration-300 mb-8 hover:-translate-x-1">
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             Back to Case Studies
           </Link>
 
@@ -61,52 +76,64 @@ const CaseStudyDetail = () => {
             </div>
           </div>
 
-          {/* Title & Tags */}
-          <div className="mb-12">
-            <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          {/* Title & Tags with enhanced styling */}
+          <div className="mb-12 relative">
+            {/* Decorative accent */}
+            <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-primary via-primary/50 to-transparent rounded-full" />
+            
+            <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text">
               {caseStudy.title}
             </h1>
             <p className="text-xl text-muted-foreground mb-6">{caseStudy.subtitle}</p>
             <div className="flex flex-wrap gap-2">
-              {caseStudy.tags.map(tag => <Badge key={tag} variant="secondary" className="text-sm">
+              {caseStudy.tags.map((tag, index) => (
+                <Badge 
+                  key={tag} 
+                  variant="secondary" 
+                  className="text-sm animate-fade-in"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
                   {tag}
-                </Badge>)}
+                </Badge>
+              ))}
             </div>
           </div>
 
-          {/* Content Sections */}
-          <div className="grid gap-12">
-            {/* Overview */}
-            
-
-            {/* Challenge */}
-            
-
-            {/* Solution */}
-            
-
-            {/* Outcome */}
+          {/* Content Sections with visual divider */}
+          <div className="grid gap-12 relative">
+            {/* Decorative side line */}
+            <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-primary/20 via-border/30 to-transparent hidden lg:block" />
             
 
             {/* Gallery Section */}
             {caseStudy.gallery.length > 0 && (
-              <section>
-                <h2 className="text-2xl font-bold text-foreground mb-6">Gallery</h2>
-                <div className="grid gap-6 grid-cols-1">
+              <section className="relative">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center border border-primary/20">
+                    <ZoomIn className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-foreground">Gallery</h2>
+                    <p className="text-sm text-muted-foreground">Click any image to view full size</p>
+                  </div>
+                </div>
+                
+                <div className="grid gap-8 grid-cols-1">
                   {caseStudy.gallery.map((item, index) => (
                     <div
                       key={index}
-                      className="group"
+                      className="group animate-fade-in"
+                      style={{ animationDelay: `${index * 50}ms` }}
                       onClick={() => openLightbox(index)}
                     >
-                      <div className="relative rounded-2xl overflow-hidden border border-border bg-card/50 backdrop-blur-sm cursor-pointer">
+                      <div className="relative rounded-2xl overflow-hidden border border-border bg-card/50 backdrop-blur-sm cursor-pointer shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
                         <img
                           src={item.src}
                           alt={item.caption}
-                          className={`w-full object-cover group-hover:scale-105 transition-transform duration-500 ${id === 'ether-prd' ? 'aspect-[1/1.414]' : 'aspect-video'}`}
+                          className={`w-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ${id === 'ether-prd' ? 'aspect-[1/1.414]' : 'aspect-video'}`}
                         />
                         {/* Hover overlay with click prompt */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/40 to-background/20 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center gap-3">
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center gap-3">
                           <div className="w-16 h-16 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-primary/30 transform scale-75 group-hover:scale-100 transition-transform duration-300">
                             <ZoomIn className="w-7 h-7 text-primary-foreground" />
                           </div>
@@ -115,11 +142,18 @@ const CaseStudyDetail = () => {
                           </span>
                         </div>
                         {/* Glowing border effect on hover */}
-                        <div className="absolute inset-0 rounded-2xl border-2 border-primary/0 group-hover:border-primary/50 transition-colors duration-300 pointer-events-none" />
+                        <div className="absolute inset-0 rounded-2xl border-2 border-primary/0 group-hover:border-primary/40 transition-colors duration-300 pointer-events-none" />
+                        
+                        {/* Image number indicator */}
+                        <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-background/80 backdrop-blur-sm border border-border text-xs font-medium text-muted-foreground">
+                          {index + 1} / {caseStudy.gallery.length}
+                        </div>
                       </div>
                       {item.caption && (
-                        <p className="text-sm text-muted-foreground mt-3 text-center">
+                        <p className="text-sm text-muted-foreground mt-4 text-center flex items-center justify-center gap-2">
+                          <span className="w-8 h-px bg-gradient-to-r from-transparent to-border" />
                           {item.caption}
+                          <span className="w-8 h-px bg-gradient-to-l from-transparent to-border" />
                         </p>
                       )}
                     </div>
@@ -138,22 +172,53 @@ const CaseStudyDetail = () => {
 
             {/* Key Features & Tools */}
             <div className="grid md:grid-cols-2 gap-8">
-              <section className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border">
-                <h2 className="text-xl font-bold text-foreground mb-4">Key Features</h2>
-                <ul className="space-y-2">
-                  {caseStudy.keyFeatures.map(feature => <li key={feature} className="flex items-center gap-2 text-muted-foreground">
-                      <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${caseStudy.bgGradient}`} />
+              <section className="relative bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm rounded-2xl p-8 border border-border overflow-hidden group hover:border-primary/30 transition-colors duration-300">
+                {/* Decorative corner */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-3xl" />
+                
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center border border-primary/20">
+                    <span className="text-lg">✨</span>
+                  </div>
+                  <h2 className="text-xl font-bold text-foreground">Key Features</h2>
+                </div>
+                
+                <ul className="space-y-3 relative">
+                  {caseStudy.keyFeatures.map((feature, index) => (
+                    <li 
+                      key={feature} 
+                      className="flex items-center gap-3 text-muted-foreground group/item hover:text-foreground transition-colors animate-fade-in"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${caseStudy.bgGradient} group-hover/item:scale-125 transition-transform`} />
                       {feature}
-                    </li>)}
+                    </li>
+                  ))}
                 </ul>
               </section>
 
-              <section className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border">
-                <h2 className="text-xl font-bold text-foreground mb-4">Tools Used</h2>
+              <section className="relative bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm rounded-2xl p-8 border border-border overflow-hidden group hover:border-primary/30 transition-colors duration-300">
+                {/* Decorative corner */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-accent/10 to-transparent rounded-bl-3xl" />
+                
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-primary/10 flex items-center justify-center border border-accent/20">
+                    <span className="text-lg">🛠️</span>
+                  </div>
+                  <h2 className="text-xl font-bold text-foreground">Tools Used</h2>
+                </div>
+                
                 <div className="flex flex-wrap gap-2">
-                  {caseStudy.tools.map(tool => <Badge key={tool} variant="outline">
+                  {caseStudy.tools.map((tool, index) => (
+                    <Badge 
+                      key={tool} 
+                      variant="outline" 
+                      className="hover:bg-primary/10 hover:border-primary/30 transition-colors cursor-default animate-fade-in"
+                      style={{ animationDelay: `${index * 50}ms` }}
+                    >
                       {tool}
-                    </Badge>)}
+                    </Badge>
+                  ))}
                 </div>
               </section>
             </div>
