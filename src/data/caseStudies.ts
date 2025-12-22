@@ -214,50 +214,7 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Created recommendations for more accessible and user-friendly experience.",
     keyFeatures: ["Accessibility audit", "Inclusive design", "User research", "Design improvements"],
     tools: ["Figma", "Accessibility tools", "User interviews", "Heuristic evaluation"],
-    gallery: [
-      {
-        src: "/lovable-uploads/Airbnb Product Teardown-01.png",
-      },
-      {
-        src: "/lovable-uploads/Airbnb Product Teardown-02.png",
-      },
-      {
-        src: "/lovable-uploads/Airbnb Product Teardown-03.png",
-      },
-      {
-        src: "/lovable-uploads/Airbnb Product Teardown-04.png",
-      },
-      {
-        src: "/lovable-uploads/Airbnb Product Teardown-05.png",
-      },
-      {
-        src: "/lovable-uploads/Airbnb Product Teardown-06.png",
-      },
-      {
-        src: "/lovable-uploads/Airbnb Product Teardown-07.png",
-      },
-      {
-        src: "/lovable-uploads/Airbnb Product Teardown-08.png",
-      },
-      {
-        src: "/lovable-uploads/Airbnb Product Teardown-09.png",
-      },
-      {
-        src: "/lovable-uploads/Airbnb Product Teardown-10.png",
-      },
-      {
-        src: "/lovable-uploads/Airbnb Product Teardown-11.png",
-      },
-      {
-        src: "/lovable-uploads/Airbnb Product Teardown-12.png",
-      },
-      {
-        src: "/lovable-uploads/Airbnb Product Teardown-13.png",
-      },
-      {
-        src: "/lovable-uploads/Airbnb Product Teardown-14.png",
-      },
-    ],
+    gallery: [],
   },
   {
     id: "cloudeagle-ai",
@@ -289,7 +246,59 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Delivered feature improvements that increased user satisfaction.",
     keyFeatures: ["Feature redesign", "Usability improvements", "User feedback", "Iterative design"],
     tools: ["Figma", "User testing", "Analytics", "Feedback tools"],
-    gallery: [],
+    gallery: [
+      {
+        src: "/lovable-uploads/1.png",
+      },
+      {
+        src: "/lovable-uploads/2.png",
+      },
+      {
+        src: "/lovable-uploads/3.png",
+      },
+      {
+        src: "/lovable-uploads/4.png",
+      },
+      {
+        src: "/lovable-uploads/5.png",
+      },
+      {
+        src: "/lovable-uploads/6.png",
+      },
+      {
+        src: "/lovable-uploads/7.png",
+      },
+      {
+        src: "/lovable-uploads/8.png",
+      },
+      {
+        src: "/lovable-uploads/9.png",
+      },
+      {
+        src: "/lovable-uploads/10.png",
+      },
+      {
+        src: "/lovable-uploads/11.png",
+      },
+      {
+        src: "/lovable-uploads/12.png",
+      },
+      {
+        src: "/lovable-uploads/13.png",
+      },
+      {
+        src: "/lovable-uploads/14.png",
+      },
+      {
+        src: "/lovable-uploads/15.png",
+      },
+      {
+        src: "/lovable-uploads/16.png",
+      },
+      {
+        src: "/lovable-uploads/17.png",
+      },
+    ],
   },
   {
     id: "codeant-ai",
