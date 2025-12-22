@@ -114,7 +114,14 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Developed actionable recommendations for feature improvements.",
     keyFeatures: ["Feature audit", "User research", "Competitive analysis", "Roadmap planning"],
     tools: ["Figma", "Survey tools", "Data analysis", "User interviews"],
-    gallery: [],
+    gallery: [
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0001.jpg",
+      },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0002.jpg",
+      },
+    ],
   },
   {
     id: "google-pay-prd",
