@@ -320,7 +320,7 @@ export const SkillsSection = () => {
   ];
   const toolCategories = {
     management: {
-      title: "Management",
+      title: "Product Management",
       icon: <Calendar className="w-4 h-4" />,
       tools: [
         {
