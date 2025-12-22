@@ -92,7 +92,7 @@ const CaseStudyDetail = () => {
             {caseStudy.gallery.length > 0 && (
               <section>
                 <h2 className="text-2xl font-bold text-foreground mb-6">Gallery</h2>
-                <div className={`grid gap-6 ${id === 'ether-prd' ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
+                <div className="grid gap-6 grid-cols-1">
                   {caseStudy.gallery.map((item, index) => (
                     <div
                       key={index}
