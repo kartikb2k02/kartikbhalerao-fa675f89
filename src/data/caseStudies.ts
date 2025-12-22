@@ -314,7 +314,29 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Successful product positioning and launch narrative.",
     keyFeatures: ["Launch strategy", "Value proposition", "Market positioning", "Brand narrative"],
     tools: ["Strategy frameworks", "Market research", "Storytelling", "Presentation design"],
-    gallery: [],
+    gallery: [
+      {
+        src: "/lovable-uploads/Codeant1.png",
+      },
+      {
+        src: "/lovable-uploads/codeant2.png",
+      },
+      {
+        src: "/lovable-uploads/codeant3.png",
+      },
+      {
+        src: "/lovable-uploads/codeant4.png",
+      },
+      {
+        src: "/lovable-uploads/codeant5.png",
+      },
+      {
+        src: "/lovable-uploads/codeant6.png",
+      },
+      {
+        src: "/lovable-uploads/codeant7.png",
+      },
+    ],
   },
   {
     id: "ether-prd",
