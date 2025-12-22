@@ -121,6 +121,51 @@ export const caseStudies: CaseStudy[] = [
       {
         src: "/lovable-uploads/Gpay product teardown_page-0002.jpg",
       },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0003.jpg",
+      },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0004.jpg",
+      },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0005.jpg",
+      },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0006.jpg",
+      },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0007.jpg",
+      },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0008.jpg",
+      },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0009.jpg",
+      },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0010.jpg",
+      },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0011.jpg",
+      },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0012.jpg",
+      },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0013.jpg",
+      },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0014.jpg",
+      },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0015.jpg",
+      },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0016.jpg",
+      },
+      {
+        src: "/lovable-uploads/Gpay product teardown_page-0017.jpg",
+      },
     ],
   },
   {
