@@ -214,7 +214,50 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Created recommendations for more accessible and user-friendly experience.",
     keyFeatures: ["Accessibility audit", "Inclusive design", "User research", "Design improvements"],
     tools: ["Figma", "Accessibility tools", "User interviews", "Heuristic evaluation"],
-    gallery: [],
+    gallery: [
+      {
+        src: "/lovable-uploads/Airbnb Product Teardown-01.png",
+      },
+      {
+        src: "/lovable-uploads/Airbnb Product Teardown-02.png",
+      },
+      {
+        src: "/lovable-uploads/Airbnb Product Teardown-03.png",
+      },
+      {
+        src: "/lovable-uploads/Airbnb Product Teardown-04.png",
+      },
+      {
+        src: "/lovable-uploads/Airbnb Product Teardown-05.png",
+      },
+      {
+        src: "/lovable-uploads/Airbnb Product Teardown-06.png",
+      },
+      {
+        src: "/lovable-uploads/Airbnb Product Teardown-07.png",
+      },
+      {
+        src: "/lovable-uploads/Airbnb Product Teardown-08.png",
+      },
+      {
+        src: "/lovable-uploads/Airbnb Product Teardown-09.png",
+      },
+      {
+        src: "/lovable-uploads/Airbnb Product Teardown-10.png",
+      },
+      {
+        src: "/lovable-uploads/Airbnb Product Teardown-11.png",
+      },
+      {
+        src: "/lovable-uploads/Airbnb Product Teardown-12.png",
+      },
+      {
+        src: "/lovable-uploads/Airbnb Product Teardown-13.png",
+      },
+      {
+        src: "/lovable-uploads/Airbnb Product Teardown-14.png",
+      },
+    ],
   },
   {
     id: "cloudeagle-ai",
