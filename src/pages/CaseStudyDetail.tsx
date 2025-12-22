@@ -53,9 +53,18 @@ const CaseStudyDetail = () => {
       <main className="pt-24 pb-20 relative z-10">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           {/* Back Button */}
-          <Link to="/case-studies" className="group inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-all duration-300 mb-8 hover:-translate-x-1">
-            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            Back to Case Studies
+          <Link 
+            to="/case-studies" 
+            className="group inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-all duration-300 mb-10 hover:-translate-x-1"
+          >
+            <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-primary/10 to-accent/5 border border-border/50 group-hover:border-primary/30 group-hover:from-primary/20 group-hover:to-accent/10 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/10">
+              <ArrowLeft className="w-4 h-4 transition-all duration-300 group-hover:-translate-x-0.5" />
+              <div className="absolute inset-0 rounded-full bg-primary/5 scale-0 group-hover:scale-100 transition-transform duration-300" />
+            </div>
+            <span className="relative font-medium">
+              Back to Case Studies
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300 rounded-full" />
+            </span>
           </Link>
 
           {/* Hero Section */}
