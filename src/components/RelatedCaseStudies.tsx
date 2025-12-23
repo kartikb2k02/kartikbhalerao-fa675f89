@@ -24,9 +24,7 @@ export const RelatedCaseStudies = ({
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           <span className="text-sm font-medium text-primary">Explore More</span>
         </div>
-        <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
-          Related Case Studies
-        </h2>
+        
         <p className="text-muted-foreground max-w-md mx-auto">
           Discover more product work and design explorations
         </p>
