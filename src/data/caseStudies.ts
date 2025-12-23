@@ -115,57 +115,23 @@ export const caseStudies: CaseStudy[] = [
     keyFeatures: ["Feature audit", "User research", "Competitive analysis", "Roadmap planning"],
     tools: ["Figma", "Survey tools", "Data analysis", "User interviews"],
     gallery: [
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0001.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0002.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0003.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0004.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0005.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0006.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0007.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0008.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0009.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0010.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0011.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0012.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0013.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0014.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0015.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0016.jpg",
-      },
-      {
-        src: "/lovable-uploads/Gpay product teardown_page-0017.jpg",
-      },
+      { src: "/lovable-uploads/Gpay product teardown_page-0001.jpg", caption: "Cover" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0002.jpg", caption: "Introduction" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0003.jpg", caption: "Market Overview" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0004.jpg", caption: "User Research" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0005.jpg", caption: "Competitive Analysis" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0006.jpg", caption: "Feature Analysis" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0007.jpg", caption: "User Flows" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0008.jpg", caption: "Pain Points" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0009.jpg", caption: "Opportunity Areas" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0010.jpg", caption: "Solution Proposals" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0011.jpg", caption: "Wireframes" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0012.jpg", caption: "High-Fidelity Mockups" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0013.jpg", caption: "Prototyping" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0014.jpg", caption: "Success Metrics" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0015.jpg", caption: "Implementation Plan" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0016.jpg", caption: "Key Learnings" },
+      { src: "/lovable-uploads/Gpay product teardown_page-0017.jpg", caption: "Thank You" },
     ],
   },
   {
@@ -247,57 +213,16 @@ export const caseStudies: CaseStudy[] = [
     keyFeatures: ["Feature redesign", "Usability improvements", "User feedback", "Iterative design"],
     tools: ["Figma", "User testing", "Analytics", "Feedback tools"],
     gallery: [
-      {
-        src: "/lovable-uploads/1.png",
-      },
-      {
-        src: "/lovable-uploads/2.png",
-      },
-      {
-        src: "/lovable-uploads/3.png",
-      },
-      {
-        src: "/lovable-uploads/4.png",
-      },
-      {
-        src: "/lovable-uploads/5.png",
-      },
-      {
-        src: "/lovable-uploads/6.png",
-      },
-      {
-        src: "/lovable-uploads/7.png",
-      },
-      {
-        src: "/lovable-uploads/8.png",
-      },
-      {
-        src: "/lovable-uploads/9.png",
-      },
-      {
-        src: "/lovable-uploads/10.png",
-      },
-      {
-        src: "/lovable-uploads/11.png",
-      },
-      {
-        src: "/lovable-uploads/12.png",
-      },
-      {
-        src: "/lovable-uploads/13.png",
-      },
-      {
-        src: "/lovable-uploads/14.png",
-      },
-      {
-        src: "/lovable-uploads/15.png",
-      },
-      {
-        src: "/lovable-uploads/16.png",
-      },
-      {
-        src: "/lovable-uploads/17.png",
-      },
+      { src: "/lovable-uploads/8.png", caption: "Overview" },
+      { src: "/lovable-uploads/9.png", caption: "Research Insights" },
+      { src: "/lovable-uploads/10.png", caption: "User Analysis" },
+      { src: "/lovable-uploads/11.png", caption: "Feature Mapping" },
+      { src: "/lovable-uploads/12.png", caption: "Solution Design" },
+      { src: "/lovable-uploads/13.png", caption: "Wireframes" },
+      { src: "/lovable-uploads/14.png", caption: "UI Mockups" },
+      { src: "/lovable-uploads/15.png", caption: "Prototype" },
+      { src: "/lovable-uploads/16.png", caption: "Testing Results" },
+      { src: "/lovable-uploads/17.png", caption: "Conclusion" },
     ],
   },
   {
@@ -315,27 +240,13 @@ export const caseStudies: CaseStudy[] = [
     keyFeatures: ["Launch strategy", "Value proposition", "Market positioning", "Brand narrative"],
     tools: ["Strategy frameworks", "Market research", "Storytelling", "Presentation design"],
     gallery: [
-      {
-        src: "/lovable-uploads/Codeant1.png",
-      },
-      {
-        src: "/lovable-uploads/codeant2.png",
-      },
-      {
-        src: "/lovable-uploads/codeant3.png",
-      },
-      {
-        src: "/lovable-uploads/codeant4.png",
-      },
-      {
-        src: "/lovable-uploads/codeant5.png",
-      },
-      {
-        src: "/lovable-uploads/codeant6.png",
-      },
-      {
-        src: "/lovable-uploads/codeant7.png",
-      },
+      { src: "/lovable-uploads/Codeant1.png", caption: "Cover - CodeAnt AI" },
+      { src: "/lovable-uploads/codeant2.png", caption: "Product Vision" },
+      { src: "/lovable-uploads/codeant3.png", caption: "Target Audience" },
+      { src: "/lovable-uploads/codeant4.png", caption: "Core Features" },
+      { src: "/lovable-uploads/codeant5.png", caption: "Value Proposition" },
+      { src: "/lovable-uploads/codeant6.png", caption: "Go-to-Market Strategy" },
+      { src: "/lovable-uploads/codeant7.png", caption: "Roadmap" },
     ],
   },
   {

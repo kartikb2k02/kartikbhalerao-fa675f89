@@ -8,6 +8,7 @@ import { getCaseStudyById } from "@/data/caseStudies";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ImageLightbox } from "@/components/ImageLightbox";
+import { RelatedCaseStudies } from "@/components/RelatedCaseStudies";
 const CaseStudyDetail = () => {
   const { id } = useParams<{ id: string }>();
   const caseStudy = id ? getCaseStudyById(id) : undefined;
@@ -239,6 +240,9 @@ const CaseStudyDetail = () => {
                 View Full Presentation
               </Button>
             </div>
+
+            {/* Related Case Studies Carousel */}
+            <RelatedCaseStudies currentStudyId={id || ""} />
           </div>
         </div>
       </main>
