@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { CaseStudy, caseStudies } from "@/data/caseStudies";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 interface RelatedCaseStudiesProps {
@@ -41,12 +39,19 @@ export const RelatedCaseStudies = ({ currentStudyId }: RelatedCaseStudiesProps) 
         </p>
       </div>
 
-      {/* Carousel */}
+      {/* Carousel with Autoplay */}
       <Carousel
         opts={{
           align: "start",
           loop: true,
         }}
+        plugins={[
+          Autoplay({
+            delay: 3500,
+            stopOnInteraction: false,
+            stopOnMouseEnter: true,
+          }),
+        ]}
         className="w-full"
       >
         <CarouselContent className="-ml-6">
@@ -57,15 +62,14 @@ export const RelatedCaseStudies = ({ currentStudyId }: RelatedCaseStudiesProps) 
           ))}
         </CarouselContent>
         
-        {/* Custom Navigation */}
-        <div className="flex items-center justify-center gap-4 mt-8">
-          <CarouselPrevious className="relative translate-x-0 translate-y-0 h-12 w-12 rounded-full border-2 border-border bg-background/80 backdrop-blur-sm hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 shadow-lg" />
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-primary/50" />
-            <div className="w-8 h-1 rounded-full bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20" />
-            <div className="w-2 h-2 rounded-full bg-primary/50" />
-          </div>
-          <CarouselNext className="relative translate-x-0 translate-y-0 h-12 w-12 rounded-full border-2 border-border bg-background/80 backdrop-blur-sm hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 shadow-lg" />
+        {/* Progress indicator dots */}
+        <div className="flex items-center justify-center gap-2 mt-8">
+          {relatedStudies.map((_, index) => (
+            <div 
+              key={index} 
+              className="w-2 h-2 rounded-full bg-primary/30 transition-all duration-300"
+            />
+          ))}
         </div>
       </Carousel>
     </section>
@@ -88,8 +92,8 @@ const RelatedCaseStudyCard = ({ study, index }: RelatedCaseStudyCardProps) => {
         {/* Gradient overlay on hover */}
         <div className={`absolute inset-0 bg-gradient-to-br ${study.bgGradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
         
-        {/* Banner-style Image Container */}
-        <div className="relative aspect-[21/9] overflow-hidden">
+        {/* Taller Image Container for full image visibility */}
+        <div className="relative aspect-[16/10] overflow-hidden">
           <div className={`absolute inset-0 bg-gradient-to-br ${study.bgGradient} opacity-80`} />
           <img
             src={study.image}
