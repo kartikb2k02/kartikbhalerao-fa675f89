@@ -143,11 +143,11 @@ const CaseStudyDetail = () => {
                           className={`w-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ${id === 'ether-prd' ? 'aspect-[1/1.414]' : 'aspect-video'}`}
                         />
                         {/* Hover overlay with click prompt */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center gap-3">
-                          <div className="w-16 h-16 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-primary/30 transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                            <ZoomIn className="w-7 h-7 text-primary-foreground" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center gap-2">
+                          <div className="w-10 h-10 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center shadow-md shadow-primary/20 transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                            <ZoomIn className="w-4 h-4 text-primary-foreground" />
                           </div>
-                          <span className="text-sm font-medium text-foreground bg-background/80 backdrop-blur-sm px-4 py-2 rounded-full border border-border shadow-md transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                          <span className="text-xs font-medium text-foreground bg-background/70 backdrop-blur-sm px-3 py-1 rounded-full border border-border/50 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                             Click to enlarge
                           </span>
                         </div>
