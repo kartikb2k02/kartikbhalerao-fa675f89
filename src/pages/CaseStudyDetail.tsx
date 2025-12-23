@@ -10,11 +10,14 @@ import { Button } from "@/components/ui/button";
 import { ImageLightbox } from "@/components/ImageLightbox";
 import { RelatedCaseStudies } from "@/components/RelatedCaseStudies";
 const CaseStudyDetail = () => {
-  const { id } = useParams<{ id: string }>();
+  const {
+    id
+  } = useParams<{
+    id: string;
+  }>();
   const caseStudy = id ? getCaseStudyById(id) : undefined;
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
-
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
     setLightboxOpen(true);
@@ -41,8 +44,12 @@ const CaseStudyDetail = () => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[60vh] bg-gradient-radial from-primary/10 via-primary/5 to-transparent" />
         
         {/* Side accent gradients */}
-        <div className="absolute top-1/3 -left-20 w-96 h-96 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-gradient-to-tl from-accent/20 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s' }} />
+        <div className="absolute top-1/3 -left-20 w-96 h-96 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl animate-pulse" style={{
+        animationDuration: '4s'
+      }} />
+        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-gradient-to-tl from-accent/20 to-transparent rounded-full blur-3xl animate-pulse" style={{
+        animationDuration: '5s'
+      }} />
         
         {/* Decorative lines */}
         <div className="absolute top-20 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
@@ -54,10 +61,7 @@ const CaseStudyDetail = () => {
       <main className="pt-24 pb-20 relative z-10">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           {/* Back Button */}
-          <Link 
-            to="/case-studies" 
-            className="group inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-all duration-300 mb-10 hover:-translate-x-1"
-          >
+          <Link to="/case-studies" className="group inline-flex items-center gap-3 text-muted-foreground hover:text-foreground transition-all duration-300 mb-10 hover:-translate-x-1">
             <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-primary/10 to-accent/5 border border-border/50 group-hover:border-primary/30 group-hover:from-primary/20 group-hover:to-accent/10 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/10">
               <ArrowLeft className="w-4 h-4 transition-all duration-300 group-hover:-translate-x-0.5" />
               <div className="absolute inset-0 rounded-full bg-primary/5 scale-0 group-hover:scale-100 transition-transform duration-300" />
@@ -74,11 +78,7 @@ const CaseStudyDetail = () => {
             <div className={`absolute -inset-1 bg-gradient-to-r ${caseStudy.bgGradient} rounded-[1.75rem] blur-sm opacity-50 group-hover:opacity-75 transition-opacity duration-500`} />
             
             <div className={`relative aspect-[4/3] lg:aspect-[16/9] bg-gradient-to-br ${caseStudy.bgGradient}`}>
-              <img 
-                src={caseStudy.image} 
-                alt={caseStudy.title} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" 
-              />
+              <img src={caseStudy.image} alt={caseStudy.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
               
               {/* Corner accents */}
               <div className={`absolute top-4 left-4 w-16 h-16 border-l-2 border-t-2 border-primary/40 rounded-tl-xl`} />
@@ -96,16 +96,11 @@ const CaseStudyDetail = () => {
             </h1>
             <p className="text-xl text-muted-foreground mb-6">{caseStudy.subtitle}</p>
             <div className="flex flex-wrap gap-2">
-              {caseStudy.tags.map((tag, index) => (
-                <Badge 
-                  key={tag} 
-                  variant="secondary" 
-                  className="text-sm animate-fade-in"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
+              {caseStudy.tags.map((tag, index) => <Badge key={tag} variant="secondary" className="text-sm animate-fade-in" style={{
+              animationDelay: `${index * 100}ms`
+            }}>
                   {tag}
-                </Badge>
-              ))}
+                </Badge>)}
             </div>
           </div>
 
@@ -116,8 +111,7 @@ const CaseStudyDetail = () => {
             
 
             {/* Gallery Section */}
-            {caseStudy.gallery.length > 0 && (
-              <section className="relative">
+            {caseStudy.gallery.length > 0 && <section className="relative">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center border border-primary/20">
                     <ZoomIn className="w-5 h-5 text-primary" />
@@ -129,19 +123,11 @@ const CaseStudyDetail = () => {
                 </div>
                 
                 <div className="grid gap-8 grid-cols-1">
-                  {caseStudy.gallery.map((item, index) => (
-                    <div
-                      key={index}
-                      className="group animate-fade-in"
-                      style={{ animationDelay: `${index * 50}ms` }}
-                      onClick={() => openLightbox(index)}
-                    >
+                  {caseStudy.gallery.map((item, index) => <div key={index} className="group animate-fade-in" style={{
+                animationDelay: `${index * 50}ms`
+              }} onClick={() => openLightbox(index)}>
                       <div className="relative rounded-2xl overflow-hidden border border-border bg-card/50 backdrop-blur-sm cursor-pointer shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
-                        <img
-                          src={item.src}
-                          alt={item.caption}
-                          className={`w-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ${id === 'ether-prd' ? 'aspect-[1/1.414]' : 'aspect-video'}`}
-                        />
+                        <img src={item.src} alt={item.caption} className={`w-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ${id === 'ether-prd' ? 'aspect-[1/1.414]' : 'aspect-video'}`} />
                         {/* Hover overlay with click prompt */}
                         <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center gap-2">
                           <div className="w-10 h-10 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center shadow-md shadow-primary/20 transform scale-75 group-hover:scale-100 transition-transform duration-300">
@@ -159,26 +145,17 @@ const CaseStudyDetail = () => {
                           {index + 1} / {caseStudy.gallery.length}
                         </div>
                       </div>
-                      {item.caption && (
-                        <p className="text-sm text-muted-foreground mt-4 text-center flex items-center justify-center gap-2">
+                      {item.caption && <p className="text-sm text-muted-foreground mt-4 text-center flex items-center justify-center gap-2">
                           <span className="w-8 h-px bg-gradient-to-r from-transparent to-border" />
                           {item.caption}
                           <span className="w-8 h-px bg-gradient-to-l from-transparent to-border" />
-                        </p>
-                      )}
-                    </div>
-                  ))}
+                        </p>}
+                    </div>)}
                 </div>
-              </section>
-            )}
+              </section>}
 
             {/* Lightbox */}
-            <ImageLightbox
-              images={caseStudy.gallery}
-              initialIndex={lightboxIndex}
-              open={lightboxOpen}
-              onOpenChange={setLightboxOpen}
-            />
+            <ImageLightbox images={caseStudy.gallery} initialIndex={lightboxIndex} open={lightboxOpen} onOpenChange={setLightboxOpen} />
 
             {/* Key Features & Tools */}
             <div className="grid md:grid-cols-2 gap-8">
@@ -194,16 +171,12 @@ const CaseStudyDetail = () => {
                 </div>
                 
                 <ul className="space-y-3 relative">
-                  {caseStudy.keyFeatures.map((feature, index) => (
-                    <li 
-                      key={feature} 
-                      className="flex items-center gap-3 text-muted-foreground group/item hover:text-foreground transition-colors animate-fade-in"
-                      style={{ animationDelay: `${index * 100}ms` }}
-                    >
+                  {caseStudy.keyFeatures.map((feature, index) => <li key={feature} className="flex items-center gap-3 text-muted-foreground group/item hover:text-foreground transition-colors animate-fade-in" style={{
+                  animationDelay: `${index * 100}ms`
+                }}>
                       <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${caseStudy.bgGradient} group-hover/item:scale-125 transition-transform`} />
                       {feature}
-                    </li>
-                  ))}
+                    </li>)}
                 </ul>
               </section>
 
@@ -219,27 +192,17 @@ const CaseStudyDetail = () => {
                 </div>
                 
                 <div className="flex flex-wrap gap-2">
-                  {caseStudy.tools.map((tool, index) => (
-                    <Badge 
-                      key={tool} 
-                      variant="outline" 
-                      className="hover:bg-primary/10 hover:border-primary/30 transition-colors cursor-default animate-fade-in"
-                      style={{ animationDelay: `${index * 50}ms` }}
-                    >
+                  {caseStudy.tools.map((tool, index) => <Badge key={tool} variant="outline" className="hover:bg-primary/10 hover:border-primary/30 transition-colors cursor-default animate-fade-in" style={{
+                  animationDelay: `${index * 50}ms`
+                }}>
                       {tool}
-                    </Badge>
-                  ))}
+                    </Badge>)}
                 </div>
               </section>
             </div>
 
             {/* View Full Presentation */}
-            <div className="text-center pt-8">
-              <Button size="lg" className={`bg-gradient-to-r ${caseStudy.bgGradient} text-white hover:opacity-90`} onClick={() => window.open(caseStudy.externalLink, "_blank")}>
-                <ExternalLink className="w-5 h-5 mr-2" />
-                View Full Presentation
-              </Button>
-            </div>
+            
 
             {/* Related Case Studies Carousel */}
             <RelatedCaseStudies currentStudyId={id || ""} />
