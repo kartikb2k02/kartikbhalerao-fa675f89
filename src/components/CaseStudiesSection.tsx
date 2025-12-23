@@ -24,19 +24,35 @@ export const CaseStudiesSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {caseStudies.map((study) => (
             <div key={study.id} onClick={() => handleCardClick(study.id)} className="group cursor-pointer">
-              <div className="relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2 border border-border/50 hover:border-primary/30">
+                {/* Glow effect on hover */}
+                <div className={`absolute -inset-0.5 bg-gradient-to-r ${study.bgGradient} rounded-3xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500`} />
+                
                 {/* Image Section */}
                 <div className={`relative aspect-[18/10] overflow-hidden bg-gradient-to-br ${study.bgGradient}`}>
+                  {/* Enhanced image with better rendering */}
                   <img
                     src={study.image}
                     alt={study.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    style={{
+                      imageRendering: "auto",
+                      backfaceVisibility: "hidden",
+                      transform: "translateZ(0)",
+                    }}
+                    loading="lazy"
                   />
+                  
+                  {/* Subtle overlay for better contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  {/* Shine effect on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
                   {/* Top Right Arrow */}
                   <div className="absolute top-4 right-4">
-                    <div className="bg-white/80 backdrop-blur-sm p-2 rounded-full shadow-lg group-hover:bg-white transition-colors duration-300">
-                      <ArrowUpRight className="w-4 h-4 text-gray-800" />
+                    <div className="bg-background/80 backdrop-blur-md p-2.5 rounded-full shadow-lg group-hover:bg-background group-hover:shadow-xl transition-all duration-300 border border-border/50 group-hover:border-primary/30 group-hover:scale-110">
+                      <ArrowUpRight className="w-4 h-4 text-foreground group-hover:text-primary transition-colors" />
                     </div>
                   </div>
                 </div>
