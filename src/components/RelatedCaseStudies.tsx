@@ -72,26 +72,6 @@ const RelatedCaseStudyCard = ({
           
           {/* Bottom gradient fade for text readability */}
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
-          
-          {/* Content overlay on image */}
-          <div className="absolute bottom-0 left-0 right-0 p-6">
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-3">
-              {study.tags.slice(0, 3).map(tag => <Badge key={tag} variant="secondary" className="text-xs bg-background/90 backdrop-blur-sm border border-border/50">
-                  {tag}
-                </Badge>)}
-            </div>
-
-            {/* Title */}
-            <h3 className="text-xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
-              {study.title}
-            </h3>
-
-            {/* Subtitle */}
-            <p className="text-sm text-muted-foreground">
-              {study.subtitle}
-            </p>
-          </div>
         </div>
 
         {/* CTA Arrow */}
