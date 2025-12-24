@@ -45,10 +45,6 @@ export const RelatedCaseStudies = ({
             </CarouselItem>)}
         </CarouselContent>
         
-        {/* Progress indicator dots */}
-        <div className="flex items-center justify-center gap-2 mt-8">
-          {relatedStudies.map((_, index) => {})}
-        </div>
       </Carousel>
     </section>;
 };
@@ -69,19 +65,13 @@ const RelatedCaseStudyCard = ({
         
         {/* Taller Image Container for full image visibility */}
         <div className="relative aspect-[16/10] overflow-hidden">
-          <div className={`absolute inset-0 bg-gradient-to-br ${study.bgGradient} opacity-80`} />
           <img src={study.image} alt={study.title} className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700" style={{
           imageRendering: "auto",
           backfaceVisibility: "hidden"
         }} />
           
-          {/* Shine effect on hover */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -translate-x-full group-hover:translate-x-full" style={{
-          transitionDuration: '700ms'
-        }} />
-          
-          {/* Bottom gradient fade */}
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-card via-card/80 to-transparent" />
+          {/* Bottom gradient fade for text readability */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
           
           {/* Content overlay on image */}
           <div className="absolute bottom-0 left-0 right-0 p-6">
