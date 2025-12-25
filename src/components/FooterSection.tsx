@@ -1,9 +1,6 @@
-
 import { Heart, Coffee } from "lucide-react";
-
 export const FooterSection = () => {
-  return (
-    <footer className="relative bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800 text-white overflow-hidden border-t border-gray-700/50">
+  return <footer className="relative bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800 text-white overflow-hidden border-t border-gray-700/50">
       
       {/* Dark glass overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-gray-800/40 via-gray-900/20 to-gray-800/40 backdrop-blur-xl"></div>
@@ -40,7 +37,7 @@ export const FooterSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600/30 to-blue-600/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-all duration-700"></div>
                 
                 <div className="relative z-10 text-gray-300 text-sm flex items-center gap-2">
-                  <span className="font-medium">© 2025 Kartik Bhalerao. Crafted with</span>
+                  <span className="font-medium">© 2026 Kartik Bhalerao. Crafted with</span>
                   <Heart className="w-4 h-4 text-red-400 animate-pulse hover:scale-110 transition-transform duration-300" />
                   <span className="font-medium">and lots of</span>
                   <Coffee className="w-5 h-5 text-amber-400 cursor-pointer hover:text-amber-300 transition-all duration-300 hover:-rotate-12 hover:scale-110" />
@@ -53,6 +50,5 @@ export const FooterSection = () => {
       
       {/* Enhanced dark bottom border */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent"></div>
-    </footer>
-  );
+    </footer>;
 };
