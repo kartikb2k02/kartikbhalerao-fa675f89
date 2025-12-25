@@ -193,41 +193,65 @@ export const HeroSection = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6">
             <button 
               onClick={scrollToAbout}
-              className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+              className="group relative px-12 py-5 rounded-2xl font-bold text-lg transition-all duration-500 hover:scale-110 overflow-hidden"
             >
-              {/* Background with gradient and glass effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 backdrop-blur-xl rounded-2xl"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent rounded-2xl"></div>
+              {/* Animated gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-2xl transition-all duration-500 group-hover:from-blue-500 group-hover:via-indigo-500 group-hover:to-purple-500"></div>
               
-              {/* Border */}
-              <div className="absolute inset-0 rounded-2xl border border-blue-200/50 dark:border-blue-700/50 group-hover:border-blue-300/70 transition-colors duration-300"></div>
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent rounded-2xl transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
               
-              {/* Glow effect on hover */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              {/* Glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/50 via-indigo-600/50 to-purple-600/50 rounded-2xl blur-lg opacity-0 group-hover:opacity-75 transition-opacity duration-500"></div>
               
-              {/* Text */}
-              <div className="relative z-10 text-blue-700 dark:text-blue-300 group-hover:text-blue-800 dark:group-hover:text-blue-200 transition-colors duration-300">
-                About Me
+              {/* Inner highlight */}
+              <div className="absolute inset-[1px] bg-gradient-to-b from-white/20 to-transparent rounded-2xl"></div>
+              
+              {/* Floating particles on hover */}
+              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-700">
+                <div className="absolute top-2 left-4 w-1 h-1 bg-white/80 rounded-full animate-bounce"></div>
+                <div className="absolute top-3 right-6 w-1 h-1 bg-white/80 rounded-full animate-bounce [animation-delay:0.3s]"></div>
+                <div className="absolute bottom-3 left-8 w-1 h-1 bg-white/80 rounded-full animate-bounce [animation-delay:0.6s]"></div>
+              </div>
+              
+              {/* Text with icon */}
+              <div className="relative z-10 flex items-center gap-2 text-white font-semibold">
+                <span>About Me</span>
+                <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
               </div>
             </button>
 
             <button 
               onClick={scrollToCaseStudies}
-              className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+              className="group relative px-12 py-5 rounded-2xl font-bold text-lg transition-all duration-500 hover:scale-110 overflow-hidden"
             >
-              {/* Background with gradient and glass effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-cyan-500/20 backdrop-blur-xl rounded-2xl"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent rounded-2xl"></div>
+              {/* Animated gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 rounded-2xl transition-all duration-500 group-hover:from-emerald-500 group-hover:via-teal-500 group-hover:to-cyan-500"></div>
               
-              {/* Border */}
-              <div className="absolute inset-0 rounded-2xl border border-emerald-200/50 dark:border-emerald-700/50 group-hover:border-emerald-300/70 transition-colors duration-300"></div>
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent rounded-2xl transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
               
-              {/* Glow effect on hover */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              {/* Glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600/50 via-teal-600/50 to-cyan-600/50 rounded-2xl blur-lg opacity-0 group-hover:opacity-75 transition-opacity duration-500"></div>
               
-              {/* Text */}
-              <div className="relative z-10 text-emerald-700 dark:text-emerald-300 group-hover:text-emerald-800 dark:group-hover:text-emerald-200 transition-colors duration-300">
-                View My Work
+              {/* Inner highlight */}
+              <div className="absolute inset-[1px] bg-gradient-to-b from-white/20 to-transparent rounded-2xl"></div>
+              
+              {/* Floating particles on hover */}
+              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-700">
+                <div className="absolute top-2 left-4 w-1 h-1 bg-white/80 rounded-full animate-bounce"></div>
+                <div className="absolute top-3 right-6 w-1 h-1 bg-white/80 rounded-full animate-bounce [animation-delay:0.3s]"></div>
+                <div className="absolute bottom-3 left-8 w-1 h-1 bg-white/80 rounded-full animate-bounce [animation-delay:0.6s]"></div>
+              </div>
+              
+              {/* Text with icon */}
+              <div className="relative z-10 flex items-center gap-2 text-white font-semibold">
+                <span>View My Work</span>
+                <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </div>
             </button>
           </div>
