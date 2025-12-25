@@ -106,11 +106,45 @@ export default {
     				'0%': { transform: 'rotate(0deg) translateX(100px) rotate(0deg)' },
     				'100%': { transform: 'rotate(360deg) translateX(100px) rotate(-360deg)' }
     			},
-    			'shimmer': {
-    				'0%': { backgroundPosition: '-200% 0' },
-    				'100%': { backgroundPosition: '200% 0' }
-    			}
-    		},
+			'shimmer': {
+				'0%': { backgroundPosition: '-200% 0' },
+				'100%': { backgroundPosition: '200% 0' }
+			},
+			'aurora': {
+				'0%, 100%': { transform: 'translateX(-50%) translateY(-50%) rotate(0deg) scale(1)' },
+				'33%': { transform: 'translateX(-50%) translateY(-50%) rotate(120deg) scale(1.1)' },
+				'66%': { transform: 'translateX(-50%) translateY(-50%) rotate(240deg) scale(0.9)' }
+			},
+			'mesh-flow': {
+				'0%, 100%': { transform: 'translate(0%, 0%) scale(1)' },
+				'25%': { transform: 'translate(5%, -5%) scale(1.05)' },
+				'50%': { transform: 'translate(-3%, 3%) scale(0.95)' },
+				'75%': { transform: 'translate(-5%, -3%) scale(1.02)' }
+			},
+			'particle-rise': {
+				'0%': { transform: 'translateY(100%) scale(0)', opacity: '0' },
+				'10%': { opacity: '1' },
+				'90%': { opacity: '1' },
+				'100%': { transform: 'translateY(-100vh) scale(1)', opacity: '0' }
+			},
+			'ripple': {
+				'0%': { transform: 'scale(0.8)', opacity: '0.8' },
+				'100%': { transform: 'scale(2.5)', opacity: '0' }
+			},
+			'gradient-shift': {
+				'0%, 100%': { backgroundPosition: '0% 50%' },
+				'50%': { backgroundPosition: '100% 50%' }
+			},
+			'pulse-ring': {
+				'0%': { transform: 'scale(1)', opacity: '0.6' },
+				'50%': { transform: 'scale(1.5)', opacity: '0.3' },
+				'100%': { transform: 'scale(2)', opacity: '0' }
+			},
+			'constellation': {
+				'0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+				'50%': { opacity: '1', transform: 'scale(1.2)' }
+			}
+		},
     		animation: {
     			'accordion-down': 'accordion-down 0.2s ease-out',
     			'accordion-up': 'accordion-up 0.2s ease-out',
@@ -122,7 +156,14 @@ export default {
 			'glow-pulse': 'glow-pulse 4s ease-in-out infinite',
 			'orbit': 'orbit 20s linear infinite',
 			'shimmer': 'shimmer 3s linear infinite',
-			'spin-slow': 'spin 25s linear infinite'
+			'spin-slow': 'spin 25s linear infinite',
+			'aurora': 'aurora 15s ease-in-out infinite',
+			'mesh-flow': 'mesh-flow 20s ease-in-out infinite',
+			'particle-rise': 'particle-rise 8s ease-out infinite',
+			'ripple': 'ripple 4s ease-out infinite',
+			'gradient-shift': 'gradient-shift 10s ease-in-out infinite',
+			'pulse-ring': 'pulse-ring 3s ease-out infinite',
+			'constellation': 'constellation 12s ease-in-out infinite'
 		},
     		boxShadow: {
     			'2xs': 'var(--shadow-2xs)',
