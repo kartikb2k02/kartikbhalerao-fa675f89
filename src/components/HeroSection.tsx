@@ -190,45 +190,42 @@ export const HeroSection = () => {
           </div>
 
           {/* Enhanced Action Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6">
+          <div className="flex flex-col sm:flex-row justify-center gap-8 pt-6">
             <button 
               onClick={scrollToAbout}
-              className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+              className="group relative px-12 py-5 overflow-hidden"
             >
-              {/* Background with gradient and glass effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 backdrop-blur-xl rounded-2xl"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent rounded-2xl"></div>
+              {/* Animated border */}
+              <div className="absolute inset-0 rounded-full">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-spin-slow [animation-duration:3s]"></div>
+                <div className="absolute inset-[2px] rounded-full bg-white dark:bg-gray-900 transition-colors duration-300"></div>
+              </div>
               
-              {/* Border */}
-              <div className="absolute inset-0 rounded-2xl border border-blue-200/50 dark:border-blue-700/50 group-hover:border-blue-300/70 transition-colors duration-300"></div>
-              
-              {/* Glow effect on hover */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              {/* Hover fill effect */}
+              <div className="absolute inset-[2px] rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
               {/* Text */}
-              <div className="relative z-10 text-blue-700 dark:text-blue-300 group-hover:text-blue-800 dark:group-hover:text-blue-200 transition-colors duration-300">
+              <span className="relative z-10 font-bold text-lg bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:text-white transition-all duration-500">
                 About Me
-              </div>
+              </span>
             </button>
 
             <button 
               onClick={scrollToCaseStudies}
-              className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+              className="group relative px-12 py-5"
             >
-              {/* Background with gradient and glass effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-cyan-500/20 backdrop-blur-xl rounded-2xl"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent rounded-2xl"></div>
+              {/* Solid gradient background */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_0_40px_rgba(20,184,166,0.4)]"></div>
               
-              {/* Border */}
-              <div className="absolute inset-0 rounded-2xl border border-emerald-200/50 dark:border-emerald-700/50 group-hover:border-emerald-300/70 transition-colors duration-300"></div>
-              
-              {/* Glow effect on hover */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              {/* Shine effect */}
+              <div className="absolute inset-0 rounded-full overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+              </div>
               
               {/* Text */}
-              <div className="relative z-10 text-emerald-700 dark:text-emerald-300 group-hover:text-emerald-800 dark:group-hover:text-emerald-200 transition-colors duration-300">
+              <span className="relative z-10 font-bold text-lg text-white">
                 View My Work
-              </div>
+              </span>
             </button>
           </div>
         </div>
