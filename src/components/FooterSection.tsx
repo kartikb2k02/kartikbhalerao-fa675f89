@@ -2,7 +2,7 @@ import { Heart, Coffee, Sparkles } from "lucide-react";
 
 export const FooterSection = () => {
   return (
-    <footer className="relative bg-gradient-to-t from-background via-background to-transparent text-foreground overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800 text-white overflow-hidden border-t border-gray-700/50">
       
       {/* Animated wave pattern */}
       <div className="absolute inset-0 overflow-hidden">
