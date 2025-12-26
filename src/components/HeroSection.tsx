@@ -148,16 +148,21 @@ export const HeroSection = () => {
 
           {/* Enhanced Action Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6">
-            <button onClick={scrollToAbout} className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl">
+            <button onClick={scrollToAbout} className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-hidden">
               {/* Background with gradient and glass effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 backdrop-blur-xl rounded-2xl"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent rounded-2xl"></div>
               
-              {/* Border */}
-              <div className="absolute inset-0 rounded-2xl border border-blue-200/50 dark:border-blue-700/50 group-hover:border-blue-300/70 transition-colors duration-300"></div>
+              {/* Animated border glow */}
+              <div className="absolute inset-0 rounded-2xl border border-blue-200/50 dark:border-blue-700/50 group-hover:border-blue-400/80 transition-colors duration-300"></div>
               
-              {/* Glow effect on hover */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              {/* Sweeping shine effect */}
+              <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                <div className="absolute -inset-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 group-hover:translate-x-[200%] transition-transform duration-1000 ease-out"></div>
+              </div>
+              
+              {/* Pulsing outer glow */}
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-blue-400/0 via-blue-400/20 to-purple-400/0 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 animate-pulse"></div>
               
               {/* Text */}
               <div className="relative z-10 text-blue-700 dark:text-blue-300 group-hover:text-blue-800 dark:group-hover:text-blue-200 transition-colors duration-300">How I Work</div>
