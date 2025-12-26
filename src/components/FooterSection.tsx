@@ -26,11 +26,7 @@ export const FooterSection = () => {
           <div className="flex flex-col items-center gap-4">
             
             {/* Animated divider */}
-            <div className="flex items-center gap-3 mb-2">
-              <div className="h-px w-16 bg-gradient-to-r from-transparent to-primary/50" />
-              <Sparkles className="w-4 h-4 text-primary animate-pulse" />
-              <div className="h-px w-16 bg-gradient-to-l from-transparent to-primary/50" />
-            </div>
+            
 
             {/* Main content with glass card */}
             <div className="group relative px-8 py-5 bg-gray-800/80 backdrop-blur-sm transition-all duration-500 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.3)] border border-gray-600/50">
@@ -41,11 +37,11 @@ export const FooterSection = () => {
               </div>
               
               <div className="relative z-10 flex items-center gap-3 text-gray-300">
-                <span className="text-sm font-medium">© 2026 Kartik Bhalerao</span>
-                <span className="text-gray-500">•</span>
-                <span className="text-sm flex items-center gap-2">
-                  Crafted with
-                  <span className="relative group/heart cursor-pointer">
+                <span className="text-sm font-medium">© 2026 Kartik Bhalerao.</span>
+                <span className="text-gray-500">
+              </span>
+                <span className="text-sm flex items-center gap-2">Crafted with
+& lots of<span className="relative group/heart cursor-pointer">
                     <Heart className="w-4 h-4 text-red-500 animate-[heartbeat_1.2s_ease-in-out_infinite] group-hover/heart:scale-150 transition-transform" />
                     <Heart className="absolute inset-0 w-4 h-4 text-red-400/50 animate-[ping_1.5s_ease-out_infinite]" />
                   </span>
