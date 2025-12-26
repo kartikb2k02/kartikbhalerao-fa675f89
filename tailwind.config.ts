@@ -143,6 +143,18 @@ export default {
 			'constellation': {
 				'0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
 				'50%': { opacity: '1', transform: 'scale(1.2)' }
+			},
+			'heartbeat': {
+				'0%, 100%': { transform: 'scale(1)' },
+				'14%': { transform: 'scale(1.3)' },
+				'28%': { transform: 'scale(1)' },
+				'42%': { transform: 'scale(1.3)' },
+				'70%': { transform: 'scale(1)' }
+			},
+			'steam': {
+				'0%': { transform: 'translateY(0) scale(1)', opacity: '0.8' },
+				'50%': { transform: 'translateY(-8px) scale(1.2)', opacity: '0.4' },
+				'100%': { transform: 'translateY(-16px) scale(0.8)', opacity: '0' }
 			}
 		},
     		animation: {
@@ -163,7 +175,9 @@ export default {
 			'ripple': 'ripple 4s ease-out infinite',
 			'gradient-shift': 'gradient-shift 10s ease-in-out infinite',
 			'pulse-ring': 'pulse-ring 3s ease-out infinite',
-			'constellation': 'constellation 12s ease-in-out infinite'
+			'constellation': 'constellation 12s ease-in-out infinite',
+			'heartbeat': 'heartbeat 1.2s ease-in-out infinite',
+			'steam': 'steam 2s ease-out infinite'
 		},
     		boxShadow: {
     			'2xs': 'var(--shadow-2xs)',
