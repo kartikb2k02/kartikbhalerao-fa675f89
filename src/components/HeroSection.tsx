@@ -122,35 +122,27 @@ export const HeroSection = () => {
 
             {/* Social Links */}
             <div className="flex justify-center items-center gap-6">
-              {/* LinkedIn - Rotating border glow */}
-              <a href="https://linkedin.com/in/kartik-bhalerao" target="_blank" rel="noopener noreferrer" className="group relative p-4 rounded-2xl transition-all duration-500 hover:scale-110">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 animate-pulse"></div>
-                <div className="absolute inset-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl border border-blue-200/50 dark:border-blue-700/50"></div>
-                <div className="absolute inset-0 rounded-2xl overflow-hidden">
-                  <div className="absolute -inset-full bg-gradient-to-r from-transparent via-blue-400/30 to-transparent skew-x-12 group-hover:translate-x-[200%] transition-transform duration-700 ease-out"></div>
-                </div>
-                <Linkedin className="relative z-10 w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition-colors duration-300" />
+              <a href="https://linkedin.com/in/kartik-bhalerao" target="_blank" rel="noopener noreferrer" className="group relative p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:bg-blue-50/80 dark:hover:bg-blue-900/20 transition-all duration-300 hover:scale-110 hover:shadow-xl">
+                <Linkedin className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300" />
               </a>
               
-              {/* Medium - Morphing shape with pulse */}
-              <a href="https://medium.com/@kartikbhalerao948" target="_blank" rel="noopener noreferrer" className="group relative p-4 transition-all duration-500 hover:scale-110">
-                <div className="absolute inset-0 bg-gradient-to-r from-gray-600 via-gray-400 to-gray-600 rounded-2xl group-hover:rounded-3xl opacity-0 group-hover:opacity-100 blur-md transition-all duration-500"></div>
-                <div className="absolute inset-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl group-hover:rounded-3xl border border-gray-300/50 dark:border-gray-600/50 transition-all duration-500"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-100/50 to-transparent dark:from-gray-700/50 rounded-2xl group-hover:rounded-3xl transition-all duration-500"></div>
-                <div className="relative z-10 w-6 h-6 bg-gradient-to-br from-gray-900 to-gray-700 dark:from-white dark:to-gray-200 rounded-full flex items-center justify-center group-hover:rotate-[360deg] transition-transform duration-700">
+              <a href="https://medium.com/@kartikbhalerao948" target="_blank" rel="noopener noreferrer" className="group relative p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:bg-gray-50/80 dark:hover:bg-gray-700/50 transition-all duration-300 hover:scale-110 hover:shadow-xl">
+                <div className="w-6 h-6 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <span className="text-white dark:text-gray-900 text-xs font-bold">M</span>
                 </div>
               </a>
 
-              {/* GitHub - Ripple effect */}
-              <a href="https://github.com/kartikbh6614" target="_blank" rel="noopener noreferrer" className="group relative p-4 rounded-2xl transition-all duration-500 hover:scale-110">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-violet-500 to-purple-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></div>
-                <div className="absolute inset-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl border border-purple-200/50 dark:border-purple-700/50"></div>
-                <div className="absolute inset-1/2 w-0 h-0 bg-purple-400/20 rounded-full group-hover:inset-0 group-hover:w-full group-hover:h-full transition-all duration-500"></div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="relative z-10 w-6 h-6 text-gray-900 dark:text-gray-200 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
-                  <path fillRule="evenodd" d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.44c.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.23 1.84 1.23 1.07 1.84 2.8 1.31 3.48 1 .11-.77.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.23-3.23-.12-.3-.53-1.52.12-3.16 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 016 0c2.28-1.55 3.3-1.23 3.3-1.23.65 1.64.24 2.86.12 3.16.77.84 1.23 1.91 1.23 3.23 0 4.63-2.8 5.65-5.48 5.95.43.37.82 1.1.82 2.22 0 1.6-.01 2.89-.01 3.28 0 .32.22.7.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z" clipRule="evenodd" />
-                </svg>
-              </a>
+              <a href="https://github.com/kartikbh6614" target="_blank" rel="noopener noreferrer" className="group relative p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:bg-blue-50/80 dark:hover:bg-blue-900/20 transition-all duration-300 hover:scale-110 hover:shadow-xl">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6 text-gray-900 dark:text-gray-200 group-hover:scale-110 transition-transform duration-300">
+    <path fillRule="evenodd" d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.44c.6.11.82-.26.82-.58
+      0-.29-.01-1.05-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73
+      1.2.09 1.84 1.23 1.84 1.23 1.07 1.84 2.8 1.31 3.48 1 .11-.77.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.96
+      0-1.32.47-2.39 1.23-3.23-.12-.3-.53-1.52.12-3.16 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 016 0c2.28-1.55 3.3-1.23
+      3.3-1.23.65 1.64.24 2.86.12 3.16.77.84 1.23 1.91 1.23 3.23
+      0 4.63-2.8 5.65-5.48 5.95.43.37.82 1.1.82 2.22
+      0 1.6-.01 2.89-.01 3.28 0 .32.22.7.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z" clipRule="evenodd" />
+  </svg>
+            </a>
             </div>
           </div>
 
