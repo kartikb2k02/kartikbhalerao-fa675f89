@@ -1,20 +1,12 @@
 import { Heart, Coffee, Sparkles } from "lucide-react";
-
 export const FooterSection = () => {
-  return (
-    <footer className="relative bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800 text-white overflow-hidden border-t border-gray-700/50">
+  return <footer className="relative bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800 text-white overflow-hidden border-t border-gray-700/50">
       
       {/* Animated wave pattern */}
       <div className="absolute inset-0 overflow-hidden">
         <svg className="absolute bottom-0 left-0 w-full h-24 opacity-10" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path 
-            d="M0,60 C300,120 600,0 900,60 C1050,90 1150,30 1200,60 L1200,120 L0,120 Z" 
-            className="fill-primary animate-[wave_8s_ease-in-out_infinite]"
-          />
-          <path 
-            d="M0,80 C200,40 400,100 600,60 C800,20 1000,80 1200,40 L1200,120 L0,120 Z" 
-            className="fill-primary/50 animate-[wave_12s_ease-in-out_infinite_reverse]"
-          />
+          <path d="M0,60 C300,120 600,0 900,60 C1050,90 1150,30 1200,60 L1200,120 L0,120 Z" className="fill-primary animate-[wave_8s_ease-in-out_infinite]" />
+          <path d="M0,80 C200,40 400,100 600,60 C800,20 1000,80 1200,40 L1200,120 L0,120 Z" className="fill-primary/50 animate-[wave_12s_ease-in-out_infinite_reverse]" />
         </svg>
       </div>
 
@@ -41,7 +33,7 @@ export const FooterSection = () => {
             </div>
 
             {/* Main content with glass card */}
-            <div className="group relative px-8 py-5 rounded-full bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.3)]">
+            <div className="group relative px-8 py-5 rounded-full bg-card/50 backdrop-blur-sm transition-all duration-500 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.3)] border-4 border-primary border-solid">
               
               {/* Shimmer effect on hover */}
               <div className="absolute inset-0 rounded-full overflow-hidden">
@@ -63,6 +55,5 @@ export const FooterSection = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
