@@ -148,7 +148,7 @@ export const HeroSection = () => {
 
           {/* Enhanced Action Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6">
-            <button onClick={scrollToAbout} className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-hidden">
+            <button onClick={scrollToAbout} title="Click to discover my process" className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-hidden cursor-pointer">
               {/* Background with gradient and glass effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 backdrop-blur-xl rounded-2xl"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent rounded-2xl"></div>
