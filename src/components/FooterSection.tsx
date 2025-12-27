@@ -29,8 +29,8 @@ export const FooterSection = () => {
             
 
             {/* Main content with glass card */}
-            <div className="relative px-8 py-5 bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg">
-              
+            <div className="relative px-8 py-5 bg-white/10 backdrop-blur-xl border border-white/20">
+
               <div className="relative z-10 flex items-center gap-3 text-gray-300">
                 <span className="text-sm font-medium">© 2026 Kartik Bhalerao.</span>
                 <span className="text-gray-500">
