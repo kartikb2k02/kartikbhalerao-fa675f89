@@ -29,12 +29,7 @@ export const FooterSection = () => {
             
 
             {/* Main content with glass card */}
-            <div className="group relative px-8 py-5 bg-gray-800/80 backdrop-blur-sm transition-all duration-500 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.3)] border border-gray-600/50">
-              
-              {/* Shimmer effect on hover */}
-              <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-              </div>
+            <div className="relative px-8 py-5 bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg">
               
               <div className="relative z-10 flex items-center gap-3 text-gray-300">
                 <span className="text-sm font-medium">© 2026 Kartik Bhalerao.</span>
