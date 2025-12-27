@@ -148,7 +148,13 @@ export const HeroSection = () => {
 
           {/* Enhanced Action Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6">
-            <button onClick={scrollToAbout} title="✨ Discover my product journey" className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-hidden cursor-pointer">
+            <button onClick={scrollToAbout} className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-visible cursor-pointer">
+              {/* Custom tooltip */}
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-medium rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap shadow-lg pointer-events-none scale-90 group-hover:scale-100">
+                ✨ Discover my product journey
+                <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-indigo-600 rotate-45"></div>
+              </div>
+              
               {/* Background with gradient and glass effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 backdrop-blur-xl rounded-2xl"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent rounded-2xl"></div>
@@ -168,7 +174,13 @@ export const HeroSection = () => {
               <div className="relative z-10 text-blue-700 dark:text-blue-300 group-hover:text-blue-800 dark:group-hover:text-blue-200 transition-colors duration-300">How I Work</div>
             </button>
 
-            <button onClick={scrollToCaseStudies} title="🚀 See real projects I've shipped" className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl cursor-pointer">
+            <button onClick={scrollToCaseStudies} className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-visible cursor-pointer">
+              {/* Custom tooltip */}
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-sm font-medium rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap shadow-lg pointer-events-none scale-90 group-hover:scale-100">
+                🚀 See real projects I shipped
+                <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-teal-600 rotate-45"></div>
+              </div>
+              
               {/* Background with gradient and glass effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-cyan-500/20 backdrop-blur-xl rounded-2xl"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent rounded-2xl"></div>
