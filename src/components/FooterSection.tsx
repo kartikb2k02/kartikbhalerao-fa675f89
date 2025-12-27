@@ -1,23 +1,12 @@
-import { Heart, Coffee } from "lucide-react";
-
+import { Heart, Coffee, Sparkles } from "lucide-react";
 export const FooterSection = () => {
-  return (
-    <footer className="relative bg-gradient-to-br from-gray-100 via-gray-50 to-white dark:from-gray-900 dark:via-slate-900 dark:to-gray-800 text-foreground overflow-hidden border-t border-gray-200 dark:border-gray-700/50">
+  return <footer className="relative bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800 text-white overflow-hidden border-t border-gray-700/50">
+      
       {/* Animated wave pattern */}
       <div className="absolute inset-0 overflow-hidden">
-        <svg
-          className="absolute bottom-0 left-0 w-full h-24 opacity-10"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,60 C300,120 600,0 900,60 C1050,90 1150,30 1200,60 L1200,120 L0,120 Z"
-            className="fill-primary animate-[wave_8s_ease-in-out_infinite]"
-          />
-          <path
-            d="M0,80 C200,40 400,100 600,60 C800,20 1000,80 1200,40 L1200,120 L0,120 Z"
-            className="fill-primary/50 animate-[wave_12s_ease-in-out_infinite_reverse]"
-          />
+        <svg className="absolute bottom-0 left-0 w-full h-24 opacity-10" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,60 C300,120 600,0 900,60 C1050,90 1150,30 1200,60 L1200,120 L0,120 Z" className="fill-primary animate-[wave_8s_ease-in-out_infinite]" />
+          <path d="M0,80 C200,40 400,100 600,60 C800,20 1000,80 1200,40 L1200,120 L0,120 Z" className="fill-primary/50 animate-[wave_12s_ease-in-out_infinite_reverse]" />
         </svg>
       </div>
 
@@ -35,28 +24,34 @@ export const FooterSection = () => {
       <div className="relative z-10 py-10">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col items-center gap-4">
-            {/* Main content */}
+            
+            {/* Animated divider */}
+            
+
+            {/* Main content with glass card */}
             <div className="relative px-8 py-5">
-              <div className="relative z-10 flex items-center gap-3 text-gray-600 dark:text-gray-300">
+
+              <div className="relative z-10 flex items-center gap-3 text-gray-300">
                 <span className="text-sm font-medium">© 2026 Kartik Bhalerao.</span>
-                <span className="text-sm flex items-center gap-2">
-                  Crafted with & lots of
-                  <span className="relative group/heart cursor-pointer">
+                <span className="text-gray-500">
+              </span>
+                <span className="text-sm flex items-center gap-2">Crafted with
+& lots of<span className="relative group/heart cursor-pointer">
                     <Heart className="w-4 h-4 text-red-500 animate-[heartbeat_1.2s_ease-in-out_infinite] group-hover/heart:scale-150 transition-transform" />
                     <Heart className="absolute inset-0 w-4 h-4 text-red-400/50 animate-[ping_1.5s_ease-out_infinite]" />
                   </span>
                   &
                   <span className="relative group/coffee cursor-pointer">
-                    <Coffee className="w-4 h-4 text-amber-600 dark:text-amber-400 group-hover/coffee:rotate-[20deg] group-hover/coffee:scale-125 transition-all duration-300" />
-                    <span className="absolute -top-1 left-1/2 w-1 h-1 bg-amber-500/80 dark:bg-amber-300/80 rounded-full animate-[steam_2s_ease-out_infinite] opacity-0 group-hover/coffee:opacity-100" />
-                    <span className="absolute -top-1.5 left-1/3 w-0.5 h-0.5 bg-amber-400/60 dark:bg-amber-200/60 rounded-full animate-[steam_2.5s_ease-out_infinite_0.3s] opacity-0 group-hover/coffee:opacity-100" />
+                    <Coffee className="w-4 h-4 text-amber-400 group-hover/coffee:rotate-[20deg] group-hover/coffee:scale-125 transition-all duration-300" />
+                    <span className="absolute -top-1 left-1/2 w-1 h-1 bg-amber-300/80 rounded-full animate-[steam_2s_ease-out_infinite] opacity-0 group-hover/coffee:opacity-100" />
+                    <span className="absolute -top-1.5 left-1/3 w-0.5 h-0.5 bg-amber-200/60 rounded-full animate-[steam_2.5s_ease-out_infinite_0.3s] opacity-0 group-hover/coffee:opacity-100" />
                   </span>
                 </span>
               </div>
             </div>
+
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
