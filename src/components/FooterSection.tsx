@@ -1,8 +1,6 @@
 import { Heart, Coffee } from "lucide-react";
-
 export const FooterSection = () => {
-  return (
-    <footer className="relative bg-slate-950 text-white overflow-hidden">
+  return <footer className="relative bg-slate-950 text-white overflow-hidden">
       {/* Animated mesh gradient background */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-72 h-72 bg-blue-600/20 rounded-full blur-[100px] animate-pulse" />
@@ -36,7 +34,7 @@ export const FooterSection = () => {
               <span className="relative group/heart cursor-pointer">
                 <Heart className="w-4 h-4 text-red-500 animate-[heartbeat_1.2s_ease-in-out_infinite] group-hover/heart:scale-125 transition-transform" />
               </span>
-              <span>&</span>
+              <span>& lots of</span>
               <span className="relative group/coffee cursor-pointer">
                 <Coffee className="w-4 h-4 text-amber-400 group-hover/coffee:rotate-12 transition-transform" />
               </span>
@@ -44,6 +42,5 @@ export const FooterSection = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
