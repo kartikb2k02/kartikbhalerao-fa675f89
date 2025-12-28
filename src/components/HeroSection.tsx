@@ -148,7 +148,7 @@ export const HeroSection = () => {
 
           {/* Enhanced Action Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6">
-            <button onClick={scrollToAbout} className="group relative px-6 py-2.5 rounded-xl font-medium text-sm transition-all duration-500 hover:scale-105 hover:shadow-xl overflow-visible cursor-pointer">
+            <button onClick={scrollToAbout} className="group relative px-8 py-3 rounded-xl font-medium text-base transition-all duration-500 hover:scale-105 hover:shadow-xl overflow-visible cursor-pointer">
               {/* Custom tooltip */}
               <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[10px] font-medium rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap shadow-lg pointer-events-none scale-90 group-hover:scale-100">
                 ✨ Discover my journey
@@ -174,7 +174,7 @@ export const HeroSection = () => {
               <div className="relative z-10 text-blue-700 dark:text-blue-300 group-hover:text-blue-800 dark:group-hover:text-blue-200 transition-colors duration-300">About Me</div>
             </button>
 
-            <button onClick={scrollToCaseStudies} className="group relative px-6 py-2.5 rounded-xl font-medium text-sm transition-all duration-500 hover:scale-105 hover:shadow-xl overflow-visible cursor-pointer">
+            <button onClick={scrollToCaseStudies} className="group relative px-8 py-3 rounded-xl font-medium text-base transition-all duration-500 hover:scale-105 hover:shadow-xl overflow-visible cursor-pointer">
               {/* Custom tooltip */}
               <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-[10px] font-medium rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap shadow-lg pointer-events-none scale-90 group-hover:scale-100">
                 🚀 See my projects
