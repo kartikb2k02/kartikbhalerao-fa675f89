@@ -147,50 +147,49 @@ export const HeroSection = () => {
           </div>
 
           {/* Enhanced Action Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6">
-            <button onClick={scrollToAbout} className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-visible cursor-pointer">✨ Discover my product journey About Me
-✨ Discover my product journey
-About Me{/* Custom tooltip */}
-              <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-medium rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap shadow-lg pointer-events-none scale-90 group-hover:scale-100">
-                ✨ Discover my product journey
-                <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-indigo-600 rotate-45"></div>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6">
+            <button onClick={scrollToAbout} className="group relative px-6 py-2.5 rounded-xl font-medium text-sm transition-all duration-500 hover:scale-105 hover:shadow-xl overflow-visible cursor-pointer">
+              {/* Custom tooltip */}
+              <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[10px] font-medium rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap shadow-lg pointer-events-none scale-90 group-hover:scale-100">
+                ✨ Discover my journey
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-indigo-600 rotate-45"></div>
               </div>
               
               {/* Background with gradient and glass effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 backdrop-blur-xl rounded-2xl"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 backdrop-blur-xl rounded-xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent rounded-xl"></div>
               
               {/* Animated border glow */}
-              <div className="absolute inset-0 rounded-2xl border border-blue-200/50 dark:border-blue-700/50 group-hover:border-blue-400/80 transition-colors duration-300"></div>
+              <div className="absolute inset-0 rounded-xl border border-blue-200/50 dark:border-blue-700/50 group-hover:border-blue-400/80 transition-colors duration-300"></div>
               
               {/* Sweeping shine effect */}
-              <div className="absolute inset-0 rounded-2xl overflow-hidden">
+              <div className="absolute inset-0 rounded-xl overflow-hidden">
                 <div className="absolute -inset-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 group-hover:translate-x-[200%] transition-transform duration-1000 ease-out"></div>
               </div>
               
               {/* Pulsing outer glow */}
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-blue-400/0 via-blue-400/20 to-purple-400/0 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 animate-pulse"></div>
+              <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-400/0 via-blue-400/20 to-purple-400/0 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 animate-pulse"></div>
               
               {/* Text */}
-              <div className="relative z-10 text-blue-700 dark:text-blue-300 group-hover:text-blue-800 dark:group-hover:text-blue-200 transition-colors duration-300">About </div>
+              <div className="relative z-10 text-blue-700 dark:text-blue-300 group-hover:text-blue-800 dark:group-hover:text-blue-200 transition-colors duration-300">About Me</div>
             </button>
 
-            <button onClick={scrollToCaseStudies} className="group relative px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-visible cursor-pointer">
+            <button onClick={scrollToCaseStudies} className="group relative px-6 py-2.5 rounded-xl font-medium text-sm transition-all duration-500 hover:scale-105 hover:shadow-xl overflow-visible cursor-pointer">
               {/* Custom tooltip */}
-              <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-sm font-medium rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap shadow-lg pointer-events-none scale-90 group-hover:scale-100">
-                🚀 See real projects I shipped
-                <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-teal-600 rotate-45"></div>
+              <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-[10px] font-medium rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap shadow-lg pointer-events-none scale-90 group-hover:scale-100">
+                🚀 See my projects
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-teal-600 rotate-45"></div>
               </div>
               
               {/* Background with gradient and glass effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-cyan-500/20 backdrop-blur-xl rounded-2xl"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-cyan-500/20 backdrop-blur-xl rounded-xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent dark:from-white/20 dark:via-white/5 dark:to-transparent rounded-xl"></div>
               
               {/* Border */}
-              <div className="absolute inset-0 rounded-2xl border border-emerald-200/50 dark:border-emerald-700/50 group-hover:border-emerald-300/70 transition-colors duration-300"></div>
+              <div className="absolute inset-0 rounded-xl border border-emerald-200/50 dark:border-emerald-700/50 group-hover:border-emerald-300/70 transition-colors duration-300"></div>
               
               {/* Glow effect on hover */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
               {/* Text */}
               <div className="relative z-10 text-emerald-700 dark:text-emerald-300 group-hover:text-emerald-800 dark:group-hover:text-emerald-200 transition-colors duration-300">Explore My Builds</div>
