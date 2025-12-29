@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ExternalLink, ZoomIn } from "lucide-react";
+import { ArrowLeft, ExternalLink, ZoomIn, ArrowUp } from "lucide-react";
 import { Header } from "@/components/Header";
 import { FooterSection } from "@/components/FooterSection";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
@@ -9,15 +9,32 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ImageLightbox } from "@/components/ImageLightbox";
 import { RelatedCaseStudies } from "@/components/RelatedCaseStudies";
+
 const CaseStudyDetail = () => {
-  const {
-    id
-  } = useParams<{
-    id: string;
-  }>();
+  const { id } = useParams<{ id: string }>();
   const caseStudy = id ? getCaseStudyById(id) : undefined;
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setScrollProgress(Math.min(progress, 100));
+      setShowBackToTop(scrollTop > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
     setLightboxOpen(true);
@@ -36,6 +53,36 @@ const CaseStudyDetail = () => {
       </div>;
   }
   return <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+      {/* Reading Progress Bar - Enhanced */}
+      <div className="fixed top-16 left-0 right-0 z-40 h-1.5 bg-slate-200/30 dark:bg-slate-800/50 backdrop-blur-sm">
+        {/* Animated gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 via-blue-500/20 to-cyan-500/20" />
+        {/* Progress fill */}
+        <div 
+          className="h-full bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 transition-all duration-150 ease-out relative overflow-hidden"
+          style={{ width: `${scrollProgress}%` }}
+        >
+          {/* Shimmer effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-[shimmer_2s_infinite] -skew-x-12" />
+        </div>
+        {/* Progress indicator dot */}
+        <div 
+          className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white shadow-lg shadow-blue-500/50 border-2 border-blue-500 transition-all duration-150"
+          style={{ left: `calc(${scrollProgress}% - 6px)` }}
+        />
+      </div>
+
+      {/* Progress percentage indicator */}
+      <div 
+        className={`fixed top-20 right-4 z-40 px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 shadow-lg transition-all duration-300 ${
+          scrollProgress > 5 && scrollProgress < 100 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+        }`}
+      >
+        <span className="text-xs font-medium bg-gradient-to-r from-violet-600 to-blue-600 bg-clip-text text-transparent">
+          {Math.round(scrollProgress)}% viewed
+        </span>
+      </div>
+
       <AnimatedBackground intensity="rich" />
       
       {/* Additional decorative background elements */}
@@ -211,6 +258,63 @@ const CaseStudyDetail = () => {
       </main>
       
       <FooterSection />
+
+      {/* Back to Top Button - Unique Design */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-6 right-6 z-50 group transition-all duration-500 ${
+          showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'
+        }`}
+        title="Back to top"
+      >
+        {/* Outer ring with gradient */}
+        <div className="relative w-14 h-14">
+          {/* Animated rotating border */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 animate-spin-slow opacity-80 group-hover:opacity-100 transition-opacity" />
+          
+          {/* Inner background */}
+          <div className="absolute inset-[2px] rounded-full bg-white dark:bg-slate-900 flex items-center justify-center">
+            {/* Progress ring */}
+            <svg className="absolute inset-0 w-full h-full -rotate-90">
+              <circle
+                cx="50%"
+                cy="50%"
+                r="45%"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                className="text-slate-200 dark:text-slate-700"
+              />
+              <circle
+                cx="50%"
+                cy="50%"
+                r="45%"
+                fill="none"
+                stroke="url(#caseStudyProgressGradient)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeDasharray={`${scrollProgress * 1.57} 157`}
+                className="transition-all duration-150"
+              />
+              <defs>
+                <linearGradient id="caseStudyProgressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#8b5cf6" />
+                  <stop offset="50%" stopColor="#3b82f6" />
+                  <stop offset="100%" stopColor="#22d3ee" />
+                </linearGradient>
+              </defs>
+            </svg>
+            
+            {/* Arrow icon with animation */}
+            <div className="relative z-10 flex flex-col items-center">
+              <ArrowUp className="w-5 h-5 text-slate-700 dark:text-slate-300 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors group-hover:-translate-y-0.5 transition-transform duration-300" />
+            </div>
+          </div>
+          
+          {/* Glow effect on hover */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
+        </div>
+      </button>
     </div>;
 };
 export default CaseStudyDetail;
