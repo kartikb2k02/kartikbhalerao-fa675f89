@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+// Add shimmer keyframe for progress bar
+
 export default {
 	darkMode: ["class"],
 	content: [
@@ -107,8 +109,8 @@ export default {
     				'100%': { transform: 'rotate(360deg) translateX(100px) rotate(-360deg)' }
     			},
 			'shimmer': {
-				'0%': { backgroundPosition: '-200% 0' },
-				'100%': { backgroundPosition: '200% 0' }
+				'0%': { transform: 'translateX(-100%)' },
+				'100%': { transform: 'translateX(100%)' }
 			},
 			'aurora': {
 				'0%, 100%': { transform: 'translateX(-50%) translateY(-50%) rotate(0deg) scale(1)' },

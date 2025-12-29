@@ -62,12 +62,34 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
 
   return (
     <>
-      {/* Reading Progress Bar */}
-      <div className="fixed top-16 left-0 right-0 z-40 h-1 bg-slate-200/50 dark:bg-slate-700/50">
+      {/* Reading Progress Bar - Enhanced */}
+      <div className="fixed top-16 left-0 right-0 z-40 h-1.5 bg-slate-200/30 dark:bg-slate-800/50 backdrop-blur-sm">
+        {/* Animated gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 via-blue-500/20 to-cyan-500/20" />
+        {/* Progress fill */}
         <div 
-          className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-150 ease-out"
+          className="h-full bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 transition-all duration-150 ease-out relative overflow-hidden"
           style={{ width: `${scrollProgress}%` }}
+        >
+          {/* Shimmer effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-[shimmer_2s_infinite] -skew-x-12" />
+        </div>
+        {/* Progress indicator dot */}
+        <div 
+          className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white shadow-lg shadow-blue-500/50 border-2 border-blue-500 transition-all duration-150"
+          style={{ left: `calc(${scrollProgress}% - 6px)` }}
         />
+      </div>
+
+      {/* Progress percentage indicator */}
+      <div 
+        className={`fixed top-20 right-4 z-40 px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 shadow-lg transition-all duration-300 ${
+          scrollProgress > 5 && scrollProgress < 100 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+        }`}
+      >
+        <span className="text-xs font-medium bg-gradient-to-r from-violet-600 to-blue-600 bg-clip-text text-transparent">
+          {Math.round(scrollProgress)}% read
+        </span>
       </div>
 
       <div className="max-w-4xl mx-auto p-4 sm:p-8">
@@ -333,15 +355,61 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
         </div>
       </div>
 
-      {/* Back to Top Button */}
+      {/* Back to Top Button - Unique Design */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-6 right-6 z-50 p-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-1 transition-all duration-300 ${
-          showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+        className={`fixed bottom-6 right-6 z-50 group transition-all duration-500 ${
+          showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'
         }`}
         title="Back to top"
       >
-        <ArrowUp className="w-5 h-5" />
+        {/* Outer ring with gradient */}
+        <div className="relative w-14 h-14">
+          {/* Animated rotating border */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 animate-spin-slow opacity-80 group-hover:opacity-100 transition-opacity" />
+          
+          {/* Inner background */}
+          <div className="absolute inset-[2px] rounded-full bg-white dark:bg-slate-900 flex items-center justify-center">
+            {/* Progress ring */}
+            <svg className="absolute inset-0 w-full h-full -rotate-90">
+              <circle
+                cx="50%"
+                cy="50%"
+                r="45%"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                className="text-slate-200 dark:text-slate-700"
+              />
+              <circle
+                cx="50%"
+                cy="50%"
+                r="45%"
+                fill="none"
+                stroke="url(#progressGradient)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeDasharray={`${scrollProgress * 1.57} 157`}
+                className="transition-all duration-150"
+              />
+              <defs>
+                <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#8b5cf6" />
+                  <stop offset="50%" stopColor="#3b82f6" />
+                  <stop offset="100%" stopColor="#22d3ee" />
+                </linearGradient>
+              </defs>
+            </svg>
+            
+            {/* Arrow icon with animation */}
+            <div className="relative z-10 flex flex-col items-center">
+              <ArrowUp className="w-5 h-5 text-slate-700 dark:text-slate-300 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors group-hover:-translate-y-0.5 transition-transform duration-300" />
+            </div>
+          </div>
+          
+          {/* Glow effect on hover */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
+        </div>
       </button>
     </>
   );
