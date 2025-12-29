@@ -53,17 +53,17 @@ const CaseStudyDetail = () => {
       </div>;
   }
   return <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-      {/* Reading Progress Bar - Enhanced */}
+      {/* Reading Progress Bar - Theme Matched */}
       <div className="fixed top-16 left-0 right-0 z-40 h-1 bg-slate-200/30 dark:bg-slate-800/50 backdrop-blur-sm overflow-hidden">
-        {/* Progress fill */}
+        {/* Progress fill with case study theme */}
         <div 
-          className="h-full bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 transition-all duration-150 ease-out relative"
+          className={`h-full bg-gradient-to-r ${caseStudy.bgGradient} transition-all duration-150 ease-out relative`}
           style={{ width: `${scrollProgress}%` }}
         >
           {/* Shimmer effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-[shimmer_2s_infinite] -skew-x-12" />
           {/* Glow effect at the end */}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-4 bg-cyan-400 blur-md opacity-80" />
+          <div className={`absolute right-0 top-1/2 -translate-y-1/2 w-8 h-4 bg-gradient-to-r ${caseStudy.bgGradient} blur-md opacity-80`} />
         </div>
       </div>
 
