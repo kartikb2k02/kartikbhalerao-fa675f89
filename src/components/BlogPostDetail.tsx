@@ -1,6 +1,6 @@
 
-import { useState, useEffect } from "react";
-import { ArrowLeft, Calendar, Clock, ArrowRight, User, Linkedin, Link2, Check, ArrowUp } from "lucide-react";
+import { useState, useEffect, useMemo } from "react";
+import { ArrowLeft, Calendar, Clock, ArrowRight, User, Linkedin, Link2, Check, ArrowUp, BookOpen, Eye, Heart, Share2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BlogPost } from "@/data/blogPosts";
@@ -18,6 +18,19 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
   const [scrollProgress, setScrollProgress] = useState(0);
   const [copied, setCopied] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(Math.floor(Math.random() * 50) + 10);
+
+  // Calculate reading time remaining
+  const readTimeMinutes = useMemo(() => {
+    const match = post.readTime.match(/(\d+)/);
+    return match ? parseInt(match[1]) : 5;
+  }, [post.readTime]);
+
+  const timeRemaining = useMemo(() => {
+    const remaining = Math.ceil(readTimeMinutes * (1 - scrollProgress / 100));
+    return remaining > 0 ? remaining : 0;
+  }, [readTimeMinutes, scrollProgress]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,8 +49,17 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleLike = () => {
+    setLiked(!liked);
+    setLikeCount(prev => liked ? prev - 1 : prev + 1);
+    if (!liked) {
+      toast.success("Thanks for the love! 💜");
+    }
+  };
+
   const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
   const shareTitle = post.title;
+
 
   const shareOnTwitter = () => {
     const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTitle)}&url=${encodeURIComponent(shareUrl)}`;
@@ -76,15 +98,69 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
         </div>
       </div>
 
-      {/* Progress percentage indicator */}
+      {/* Enhanced Progress & Reading Stats */}
       <div 
-        className={`fixed top-20 right-4 z-40 px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 shadow-lg transition-all duration-300 ${
-          scrollProgress > 5 && scrollProgress < 100 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+        className={`fixed top-20 right-4 z-40 flex items-center gap-3 transition-all duration-300 ${
+          scrollProgress > 5 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
         }`}
       >
-        <span className="text-xs font-medium bg-gradient-to-r from-violet-600 to-blue-600 bg-clip-text text-transparent">
-          {Math.round(scrollProgress)}% read
-        </span>
+        {/* Time remaining */}
+        <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 shadow-lg">
+          <Clock className="w-3.5 h-3.5 text-violet-500" />
+          <span className="text-xs font-medium text-slate-600 dark:text-slate-300">
+            {timeRemaining > 0 ? `${timeRemaining} min left` : 'Done!'}
+          </span>
+        </div>
+        
+        {/* Progress percentage */}
+        <div className="px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 shadow-lg">
+          <span className="text-xs font-medium bg-gradient-to-r from-violet-600 to-blue-600 bg-clip-text text-transparent">
+            {Math.round(scrollProgress)}%
+          </span>
+        </div>
+      </div>
+
+      {/* Floating Action Bar */}
+      <div 
+        className={`fixed bottom-24 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ${
+          scrollProgress > 10 && scrollProgress < 95 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+        }`}
+      >
+        <div className="flex items-center gap-1 px-2 py-1.5 rounded-full bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border border-slate-200/60 dark:border-slate-700/60 shadow-2xl">
+          {/* Like Button */}
+          <button
+            onClick={handleLike}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all duration-200 ${
+              liked 
+                ? 'bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400' 
+                : 'hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400'
+            }`}
+          >
+            <Heart className={`w-4 h-4 transition-transform ${liked ? 'fill-current scale-110' : ''}`} />
+            <span className="text-xs font-medium">{likeCount}</span>
+          </button>
+          
+          {/* Divider */}
+          <div className="w-px h-5 bg-slate-200 dark:bg-slate-700" />
+          
+          {/* Share Button */}
+          <button
+            onClick={copyLink}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 transition-all duration-200"
+          >
+            {copied ? <Check className="w-4 h-4 text-green-500" /> : <Share2 className="w-4 h-4" />}
+            <span className="text-xs font-medium">{copied ? 'Copied!' : 'Share'}</span>
+          </button>
+          
+          {/* Divider */}
+          <div className="w-px h-5 bg-slate-200 dark:bg-slate-700" />
+          
+          {/* Reading indicator */}
+          <div className="flex items-center gap-1.5 px-3 py-1.5 text-slate-500 dark:text-slate-400">
+            <BookOpen className="w-4 h-4" />
+            <span className="text-xs font-medium">{post.readTime}</span>
+          </div>
+        </div>
       </div>
 
       <div className="max-w-4xl mx-auto p-4 sm:p-8">
@@ -97,30 +173,45 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
           <span>Back to posts</span>
         </button>
 
-        {/* Blog Header Card */}
-        <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-700/50 shadow-xl overflow-hidden mb-8">
+        {/* Blog Header Card - Enhanced */}
+        <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-700/50 shadow-xl overflow-hidden mb-8 group">
+          {/* Decorative corner accents */}
+          <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-violet-500/10 to-transparent rounded-br-3xl z-10" />
+          <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-blue-500/10 to-transparent rounded-tl-3xl z-10" />
+          
           {/* Banner Image */}
           {post.image && (
             <div className="relative w-full h-48 sm:h-64 lg:h-80 overflow-hidden">
               <img 
                 src={post.image} 
                 alt={post.title}
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+              
+              {/* Category badge on image */}
+              <div className="absolute top-4 left-4 z-10">
+                <Badge 
+                  className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm text-violet-700 dark:text-violet-300 border-0 shadow-lg px-3 py-1"
+                >
+                  {post.category}
+                </Badge>
+              </div>
+              
+              {/* Reading time badge on image */}
+              <div className="absolute top-4 right-4 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm shadow-lg">
+                <Eye className="w-3.5 h-3.5 text-slate-500" />
+                <span className="text-xs font-medium text-slate-600 dark:text-slate-300">{post.readTime}</span>
+              </div>
             </div>
           )}
           
           {/* Category & Meta */}
-          <div className="p-6 sm:p-8">
-            <Badge 
-              variant="secondary" 
-              className="mb-4 bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-700"
-            >
-              {post.category}
-            </Badge>
+          <div className="p-6 sm:p-8 relative">
+            {/* Decorative line */}
+            <div className="absolute left-6 sm:left-8 top-0 w-12 h-1 bg-gradient-to-r from-violet-500 to-blue-500 rounded-full" />
             
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4 leading-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4 leading-tight mt-2">
               {post.title}
             </h1>
             
@@ -128,44 +219,50 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
               {post.excerpt}
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500 dark:text-slate-400 mb-4">
-              <div className="flex items-center gap-2">
-                <User className="w-4 h-4" />
-                <span>Kartik Bhalerao</span>
+            {/* Author Card */}
+            <div className="flex items-center gap-4 p-4 rounded-xl bg-slate-50/80 dark:bg-slate-700/30 border border-slate-100 dark:border-slate-700/50 mb-6">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-violet-500/20">
+                KB
               </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                <span>{new Date(post.date).toLocaleDateString('en-US', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
-                })}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                <span>{post.readTime}</span>
+              <div className="flex-1">
+                <div className="font-semibold text-slate-900 dark:text-white">Kartik Bhalerao</div>
+                <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500 dark:text-slate-400">
+                  <div className="flex items-center gap-1">
+                    <Calendar className="w-3.5 h-3.5" />
+                    <span>{new Date(post.date).toLocaleDateString('en-US', { 
+                      year: 'numeric', 
+                      month: 'short', 
+                      day: 'numeric' 
+                    })}</span>
+                  </div>
+                  <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
+                  <div className="flex items-center gap-1">
+                    <Clock className="w-3.5 h-3.5" />
+                    <span>{post.readTime}</span>
+                  </div>
+                </div>
               </div>
             </div>
-            
+            {/* Tags & Share */}
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
+                {post.tags.map((tag, index) => (
                   <Badge 
                     key={tag} 
                     variant="outline" 
-                    className="border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50 text-xs"
+                    className="border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800/50 text-xs hover:border-violet-300 dark:hover:border-violet-500 hover:text-violet-600 dark:hover:text-violet-400 transition-colors cursor-default animate-fade-in"
+                    style={{ animationDelay: `${index * 50}ms` }}
                   >
                     #{tag}
                   </Badge>
                 ))}
               </div>
 
-              {/* Share Buttons */}
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-slate-500 dark:text-slate-400 mr-1">Share:</span>
+              {/* Share Buttons - Enhanced */}
+              <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-100/80 dark:bg-slate-700/50 border border-slate-200/50 dark:border-slate-600/50">
                 <button
                   onClick={shareOnTwitter}
-                  className="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                  className="p-2.5 rounded-lg hover:bg-white dark:hover:bg-slate-600 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all hover:shadow-sm"
                   title="Share on X"
                 >
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -174,17 +271,17 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
                 </button>
                 <button
                   onClick={shareOnLinkedIn}
-                  className="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="p-2.5 rounded-lg hover:bg-white dark:hover:bg-slate-600 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all hover:shadow-sm"
                   title="Share on LinkedIn"
                 >
                   <Linkedin className="w-4 h-4" />
                 </button>
                 <button
                   onClick={copyLink}
-                  className="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-green-100 dark:hover:bg-green-900/50 text-slate-600 dark:text-slate-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                  className="p-2.5 rounded-lg hover:bg-white dark:hover:bg-slate-600 text-slate-500 dark:text-slate-400 hover:text-green-600 dark:hover:text-green-400 transition-all hover:shadow-sm"
                   title="Copy link"
                 >
-                  {copied ? <Check className="w-4 h-4" /> : <Link2 className="w-4 h-4" />}
+                  {copied ? <Check className="w-4 h-4 text-green-500" /> : <Link2 className="w-4 h-4" />}
                 </button>
               </div>
             </div>
