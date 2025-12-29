@@ -63,22 +63,17 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
   return (
     <>
       {/* Reading Progress Bar - Enhanced */}
-      <div className="fixed top-16 left-0 right-0 z-40 h-1.5 bg-slate-200/30 dark:bg-slate-800/50 backdrop-blur-sm">
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 via-blue-500/20 to-cyan-500/20" />
+      <div className="fixed top-16 left-0 right-0 z-40 h-1 bg-slate-200/30 dark:bg-slate-800/50 backdrop-blur-sm overflow-hidden">
         {/* Progress fill */}
         <div 
-          className="h-full bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 transition-all duration-150 ease-out relative overflow-hidden"
+          className="h-full bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 transition-all duration-150 ease-out relative"
           style={{ width: `${scrollProgress}%` }}
         >
           {/* Shimmer effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-[shimmer_2s_infinite] -skew-x-12" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-[shimmer_2s_infinite] -skew-x-12" />
+          {/* Glow effect at the end */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-4 bg-cyan-400 blur-md opacity-80" />
         </div>
-        {/* Progress indicator dot */}
-        <div 
-          className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white shadow-lg shadow-blue-500/50 border-2 border-blue-500 transition-all duration-150"
-          style={{ left: `calc(${scrollProgress}% - 6px)` }}
-        />
       </div>
 
       {/* Progress percentage indicator */}
