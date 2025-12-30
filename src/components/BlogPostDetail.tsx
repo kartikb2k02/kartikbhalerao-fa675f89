@@ -72,18 +72,39 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
   };
 
   const copyLink = () => {
+    const url = `${window.location.origin}/blog/${post.id}`;
+    console.log("Copying URL:", url);
+    
+    // Try modern API first
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url).then(() => {
+        setCopied(true);
+        toast.success("Link copied to clipboard!");
+        setTimeout(() => setCopied(false), 2000);
+      }).catch(() => {
+        fallbackCopy(url);
+      });
+    } else {
+      fallbackCopy(url);
+    }
+  };
+
+  const fallbackCopy = (text: string) => {
     const textArea = document.createElement('textarea');
-    textArea.value = shareUrl;
+    textArea.value = text;
     textArea.style.position = 'fixed';
     textArea.style.left = '-9999px';
+    textArea.style.top = '0';
     document.body.appendChild(textArea);
+    textArea.focus();
     textArea.select();
     try {
       document.execCommand('copy');
       setCopied(true);
       toast.success("Link copied to clipboard!");
       setTimeout(() => setCopied(false), 2000);
-    } catch {
+    } catch (err) {
+      console.error("Copy failed:", err);
       toast.error("Failed to copy link");
     }
     document.body.removeChild(textArea);
