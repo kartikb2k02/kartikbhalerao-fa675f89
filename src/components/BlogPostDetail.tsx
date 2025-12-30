@@ -71,15 +71,22 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  const copyLink = async () => {
+  const copyLink = () => {
+    const textArea = document.createElement('textarea');
+    textArea.value = shareUrl;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-9999px';
+    document.body.appendChild(textArea);
+    textArea.select();
     try {
-      await navigator.clipboard.writeText(shareUrl);
+      document.execCommand('copy');
       setCopied(true);
       toast.success("Link copied to clipboard!");
       setTimeout(() => setCopied(false), 2000);
     } catch {
       toast.error("Failed to copy link");
     }
+    document.body.removeChild(textArea);
   };
 
   return (
