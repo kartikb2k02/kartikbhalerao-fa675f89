@@ -223,35 +223,7 @@ export const BlogSidebar = ({
         </div>
 
         {/* Sorting & View Mode */}
-        <div className="px-4 py-3 space-y-3 border-b border-slate-200/60 dark:border-slate-700/50">
-          {/* Sort Options */}
-          <div className="flex items-center gap-1">
-            {sortOptions.map(({
-            value,
-            label,
-            icon: Icon
-          }) => <button key={value} onClick={() => onSortChange(value)} className={cn("flex items-center gap-1 px-2 py-1.5 rounded-lg text-[10px] font-semibold transition-all", sortBy === value ? "bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white shadow-md" : "bg-white/60 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300 hover:bg-violet-100")}>
-                <Icon className="w-3 h-3" />
-                {label}
-              </button>)}
-          </div>
-
-          {/* View Mode Toggle */}
-          
-
-          {/* Category Pills */}
-          <div className="flex flex-wrap gap-1">
-            {categoryList.map(({
-            key,
-            label,
-            icon: Icon
-          }) => <button key={key} onClick={() => onCategoryChange(key)} className={cn("flex items-center gap-1 px-2 py-1 rounded-lg text-[10px] font-semibold transition-all", selectedCategory === key ? "bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white shadow-md" : "bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/50 hover:border-violet-300")}>
-                <Icon className="w-3 h-3" />
-                {label}
-                {key === "bookmarks" && bookmarkedPosts.length > 0 && <span className="ml-0.5 text-[8px] bg-white/30 px-1 rounded">{bookmarkedPosts.length}</span>}
-              </button>)}
-          </div>
-        </div>
+        
 
 
         {/* Posts List */}
