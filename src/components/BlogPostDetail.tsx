@@ -73,7 +73,6 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
 
   const copyLink = () => {
     const url = `${window.location.origin}/blog/${post.id}`;
-    console.log("Copying URL:", url);
     
     // Try modern API first
     if (navigator.clipboard && window.isSecureContext) {
@@ -286,11 +285,11 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
                 ))}
               </div>
 
-              {/* Share Buttons - Enhanced */}
-              <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-100/80 dark:bg-slate-700/50 border border-slate-200/50 dark:border-slate-600/50">
+              {/* Share Buttons */}
+              <div className="flex items-center gap-2">
                 <button
                   onClick={shareOnTwitter}
-                  className="p-2.5 rounded-lg hover:bg-white dark:hover:bg-slate-600 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all hover:shadow-sm"
+                  className="p-2.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:scale-110 hover:shadow-lg transition-all duration-200"
                   title="Share on X"
                 >
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -299,17 +298,21 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
                 </button>
                 <button
                   onClick={shareOnLinkedIn}
-                  className="p-2.5 rounded-lg hover:bg-white dark:hover:bg-slate-600 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all hover:shadow-sm"
+                  className="p-2.5 rounded-full bg-[#0A66C2] text-white hover:scale-110 hover:shadow-lg transition-all duration-200"
                   title="Share on LinkedIn"
                 >
                   <Linkedin className="w-4 h-4" />
                 </button>
                 <button
                   onClick={copyLink}
-                  className="p-2.5 rounded-lg hover:bg-white dark:hover:bg-slate-600 text-slate-500 dark:text-slate-400 hover:text-green-600 dark:hover:text-green-400 transition-all hover:shadow-sm"
+                  className={`p-2.5 rounded-full transition-all duration-200 hover:scale-110 hover:shadow-lg ${
+                    copied 
+                      ? 'bg-green-500 text-white' 
+                      : 'bg-violet-500 text-white'
+                  }`}
                   title="Copy link"
                 >
-                  {copied ? <Check className="w-4 h-4 text-green-500" /> : <Link2 className="w-4 h-4" />}
+                  {copied ? <Check className="w-4 h-4" /> : <Link2 className="w-4 h-4" />}
                 </button>
               </div>
             </div>
