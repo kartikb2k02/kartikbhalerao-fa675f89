@@ -57,7 +57,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
     }
   };
 
-  const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const shareUrl = typeof window !== 'undefined' ? `${window.location.origin}/blog/${post.id}` : '';
   const shareTitle = post.title;
 
 
