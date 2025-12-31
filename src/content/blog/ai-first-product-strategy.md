@@ -3,7 +3,9 @@
 ## 🧠 AI-First Product Strategy: How to Build with Intelligence at the Core
 
 ![AI Strategy](https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
-<iframe width="680" height="382" src="https://www.youtube.com/embed/g0TUfIOn_Ts" title="Adding AI to SaaS: Inside the AI Product Strategies of Figma, Cloudflare, GitHub and Ramp" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="680" height="382" src="https://www.youtube.com/embed/g0TUfIOn_Ts" title="Adding AI to SaaS: Inside the AI Product Strategies of Figma, Cloudflare, GitHub and Ramp" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
 
 The rise of generative AI, large language models (LLMs), and data-rich ecosystems has changed the way we build products. Gone are the days when AI was just a feature — today, it's a **foundation**.
 
