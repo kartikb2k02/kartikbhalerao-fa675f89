@@ -169,7 +169,7 @@ const CaseStudyDetail = () => {
                 animationDelay: `${index * 50}ms`
               }} onClick={() => openLightbox(index)}>
                       <div className="relative rounded-2xl overflow-hidden border border-border bg-card/50 backdrop-blur-sm cursor-pointer shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
-                        <img src={item.src} alt={item.caption} className={`w-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ${id === 'ether-prd' ? 'aspect-[1/1.414]' : 'aspect-video'}`} />
+                        <img src={item.src} alt={item.caption} className={`w-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ${['ether-prd', 'gullak-fintech', 'google-pay-prd', 'cloudeagle-ai', 'metis-improvement', 'codeant-ai'].includes(id || '') ? 'aspect-[1/1.414]' : 'aspect-video'}`} />
                         {/* Hover overlay with click prompt */}
                         <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center gap-2">
                           <div className="w-10 h-10 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center shadow-md shadow-primary/20 transform scale-75 group-hover:scale-100 transition-transform duration-300">
