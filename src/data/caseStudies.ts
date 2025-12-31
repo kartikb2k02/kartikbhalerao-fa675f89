@@ -211,7 +211,16 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Enhanced user productivity through smart automation.",
     keyFeatures: ["AI integration", "Workflow optimization", "Smart automation", "User efficiency"],
     tools: ["Figma", "AI tools", "User research", "Prototyping"],
-    gallery: [],
+    gallery: [
+      { src: "/lovable-uploads/Cloudeagle_assignment-1.png" },
+      { src: "/lovable-uploads/Cloudeagle_assignment-2.png" },
+      { src: "/lovable-uploads/Cloudeagle_assignment-3.png" },
+      { src: "/lovable-uploads/Cloudeagle_assignment-4.png" },
+      { src: "/lovable-uploads/Cloudeagle_assignment-5.png" },
+      { src: "/lovable-uploads/Cloudeagle_assignment-6.png" },
+      { src: "/lovable-uploads/Cloudeagle_assignment-7.png" },
+      { src: "/lovable-uploads/Cloudeagle_assignment-8.png" },
+    ],
   },
   {
     id: "metis-improvement",
