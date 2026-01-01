@@ -12,7 +12,7 @@ export const AnimatedBackground = ({
   className,
   intensity = "medium",
 }: AnimatedBackgroundProps) => {
-  const intensityMultiplier = intensity === "light" ? 0.5 : intensity === "rich" ? 1.2 : 1;
+  const intensityMultiplier = intensity === "light" ? 0.3 : intensity === "rich" ? 0.8 : 0.5;
 
   return (
     <div
@@ -25,44 +25,44 @@ export const AnimatedBackground = ({
           className="absolute top-1/2 left-1/2 w-[150vmax] h-[150vmax] animate-aurora"
           style={{
             background: `conic-gradient(from 180deg at 50% 50%, 
-              hsl(var(--primary) / ${0.15 * intensityMultiplier}) 0deg, 
-              hsl(var(--accent) / ${0.1 * intensityMultiplier}) 60deg, 
-              hsl(var(--primary) / ${0.2 * intensityMultiplier}) 120deg, 
-              hsl(var(--secondary) / ${0.08 * intensityMultiplier}) 180deg, 
-              hsl(var(--primary) / ${0.12 * intensityMultiplier}) 240deg, 
-              hsl(var(--accent) / ${0.15 * intensityMultiplier}) 300deg, 
-              hsl(var(--primary) / ${0.1 * intensityMultiplier}) 360deg)`,
-            filter: 'blur(80px)',
+              hsl(var(--primary) / ${0.06 * intensityMultiplier}) 0deg, 
+              hsl(var(--accent) / ${0.04 * intensityMultiplier}) 60deg, 
+              hsl(var(--primary) / ${0.08 * intensityMultiplier}) 120deg, 
+              hsl(var(--secondary) / ${0.03 * intensityMultiplier}) 180deg, 
+              hsl(var(--primary) / ${0.05 * intensityMultiplier}) 240deg, 
+              hsl(var(--accent) / ${0.06 * intensityMultiplier}) 300deg, 
+              hsl(var(--primary) / ${0.04 * intensityMultiplier}) 360deg)`,
+            filter: 'blur(100px)',
           }}
         />
       </div>
 
-      {/* Animated mesh gradient blobs */}
+      {/* Animated mesh gradient blobs - more subtle */}
       <div 
-        className="absolute top-[5%] left-[10%] w-[40rem] h-[40rem] rounded-full animate-mesh-flow blur-3xl"
+        className="absolute top-[5%] left-[10%] w-[35rem] h-[35rem] rounded-full animate-mesh-flow blur-[100px]"
         style={{
           background: `radial-gradient(ellipse at center, 
-            hsl(var(--primary) / ${0.25 * intensityMultiplier}) 0%, 
-            hsl(var(--primary) / ${0.1 * intensityMultiplier}) 40%, 
+            hsl(var(--primary) / ${0.08 * intensityMultiplier}) 0%, 
+            hsl(var(--primary) / ${0.03 * intensityMultiplier}) 40%, 
             transparent 70%)`,
         }}
       />
       <div 
-        className="absolute bottom-[10%] right-[5%] w-[35rem] h-[35rem] rounded-full animate-mesh-flow blur-3xl"
+        className="absolute bottom-[10%] right-[5%] w-[30rem] h-[30rem] rounded-full animate-mesh-flow blur-[100px]"
         style={{
           background: `radial-gradient(ellipse at center, 
-            hsl(var(--accent) / ${0.2 * intensityMultiplier}) 0%, 
-            hsl(var(--primary) / ${0.08 * intensityMultiplier}) 50%, 
+            hsl(var(--accent) / ${0.06 * intensityMultiplier}) 0%, 
+            hsl(var(--primary) / ${0.02 * intensityMultiplier}) 50%, 
             transparent 70%)`,
           animationDelay: '-7s',
         }}
       />
       <div 
-        className="absolute top-[40%] right-[20%] w-[30rem] h-[30rem] rounded-full animate-mesh-flow blur-3xl"
+        className="absolute top-[40%] right-[20%] w-[25rem] h-[25rem] rounded-full animate-mesh-flow blur-[100px]"
         style={{
           background: `radial-gradient(ellipse at center, 
-            hsl(var(--secondary) / ${0.15 * intensityMultiplier}) 0%, 
-            hsl(var(--accent) / ${0.1 * intensityMultiplier}) 40%, 
+            hsl(var(--secondary) / ${0.05 * intensityMultiplier}) 0%, 
+            hsl(var(--accent) / ${0.03 * intensityMultiplier}) 40%, 
             transparent 70%)`,
           animationDelay: '-14s',
         }}
