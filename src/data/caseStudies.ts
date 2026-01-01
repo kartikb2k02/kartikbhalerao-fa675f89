@@ -22,41 +22,6 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
-    id: "gullak-fintech",
-    title: "Gullak Fintech App",
-    subtitle: "Savings-Led Financial Empowerment Platform",
-    tags: ["Product Strategy", "UX Design", "Fintech"],
-    externalLink: "https://www.canva.com/design/DAGxiFuK6mo/lSD7Z6WwaqX6hDFwYuQ2gQ/view",
-    bgGradient: "from-[#fbd26c] to-[#f99e30]",
-    image: "/lovable-uploads/b1ba7330-6bbc-43d5-a1d2-56baa716c077.png",
-    overview:
-      "Gullak is a savings-led fintech platform designed to empower users with smart financial habits through gamification and goal-based savings.",
-    challenge:
-      "Many users struggle with consistent savings habits due to lack of motivation and visibility into their progress.",
-    solution:
-      "Designed an intuitive savings experience with goal tracking, reward systems, and social accountability features.",
-    outcome: "Increased user engagement by 40% and improved savings completion rates significantly.",
-    keyFeatures: ["Goal-based savings", "Gamification rewards", "Progress tracking", "Social features"],
-    tools: ["Figma", "Miro", "User Interviews", "A/B Testing"],
-    gallery: [
-      { src: "/lovable-uploads/Gullak_PRD_01.png", caption: "" },
-      { src: "/lovable-uploads/Gullak_PRD_02.png", caption: "" },
-      { src: "/lovable-uploads/Gullak_PRD_03.png", caption: "" },
-      { src: "/lovable-uploads/Gullak_PRD_04.png", caption: "" },
-      { src: "/lovable-uploads/Gullak_PRD_05.png", caption: "" },
-      { src: "/lovable-uploads/Gullak_PRD_06.png", caption: "" },
-      { src: "/lovable-uploads/Gullak_PRD_07.png", caption: "" },
-      { src: "/lovable-uploads/Gullak_PRD_08.png", caption: "" },
-      { src: "/lovable-uploads/Gullak_PRD_09.png", caption: "" },
-      { src: "/lovable-uploads/Gullak_PRD_10.png", caption: "" },
-      { src: "/lovable-uploads/Gullak_PRD_11.png", caption: "" },
-      { src: "/lovable-uploads/Gullak_PRD_12.png", caption: "" },
-      { src: "/lovable-uploads/Gullak_PRD_13.png", caption: "" },
-      { src: "/lovable-uploads/Gullak_PRD_14.png", caption: "" },
-      { src: "/lovable-uploads/Gullak_PRD_15.png", caption: "" },
-    ],
-  },
-  {
     id: "blinkit-analysis",
     title: "Blinkit Product Analysis",
     subtitle: "Order Efficiency & Conversion Optimization",
@@ -171,6 +136,41 @@ export const caseStudies: CaseStudy[] = [
       { src: "/lovable-uploads/gpay_prd_4.png", caption: "Google Pay PRD 4" },
       { src: "/lovable-uploads/gpay_prd_5.png", caption: "Google Pay PRD 5" },
       { src: "/lovable-uploads/gpay_prd_6.png", caption: "Google Pay PRD 6" },
+    ],
+  },
+  {
+    id: "gullak-fintech",
+    title: "Gullak Fintech App",
+    subtitle: "Savings-Led Financial Empowerment Platform",
+    tags: ["Product Strategy", "UX Design", "Fintech"],
+    externalLink: "https://www.canva.com/design/DAGxiFuK6mo/lSD7Z6WwaqX6hDFwYuQ2gQ/view",
+    bgGradient: "from-[#fbd26c] to-[#f99e30]",
+    image: "/lovable-uploads/b1ba7330-6bbc-43d5-a1d2-56baa716c077.png",
+    overview:
+      "Gullak is a savings-led fintech platform designed to empower users with smart financial habits through gamification and goal-based savings.",
+    challenge:
+      "Many users struggle with consistent savings habits due to lack of motivation and visibility into their progress.",
+    solution:
+      "Designed an intuitive savings experience with goal tracking, reward systems, and social accountability features.",
+    outcome: "Increased user engagement by 40% and improved savings completion rates significantly.",
+    keyFeatures: ["Goal-based savings", "Gamification rewards", "Progress tracking", "Social features"],
+    tools: ["Figma", "Miro", "User Interviews", "A/B Testing"],
+    gallery: [
+      { src: "/lovable-uploads/Gullak_PRD_01.png", caption: "" },
+      { src: "/lovable-uploads/Gullak_PRD_02.png", caption: "" },
+      { src: "/lovable-uploads/Gullak_PRD_03.png", caption: "" },
+      { src: "/lovable-uploads/Gullak_PRD_04.png", caption: "" },
+      { src: "/lovable-uploads/Gullak_PRD_05.png", caption: "" },
+      { src: "/lovable-uploads/Gullak_PRD_06.png", caption: "" },
+      { src: "/lovable-uploads/Gullak_PRD_07.png", caption: "" },
+      { src: "/lovable-uploads/Gullak_PRD_08.png", caption: "" },
+      { src: "/lovable-uploads/Gullak_PRD_09.png", caption: "" },
+      { src: "/lovable-uploads/Gullak_PRD_10.png", caption: "" },
+      { src: "/lovable-uploads/Gullak_PRD_11.png", caption: "" },
+      { src: "/lovable-uploads/Gullak_PRD_12.png", caption: "" },
+      { src: "/lovable-uploads/Gullak_PRD_13.png", caption: "" },
+      { src: "/lovable-uploads/Gullak_PRD_14.png", caption: "" },
+      { src: "/lovable-uploads/Gullak_PRD_15.png", caption: "" },
     ],
   },
   {
