@@ -164,36 +164,93 @@ const CaseStudyDetail = () => {
                   </div>
                 </div>
                 
-                <div className="grid gap-8 grid-cols-1">
-                  {caseStudy.gallery.map((item, index) => <div key={index} className="group animate-fade-in" style={{
-                animationDelay: `${index * 50}ms`
-              }} onClick={() => openLightbox(index)}>
-                      <div className="relative rounded-2xl overflow-hidden border border-border bg-card/50 backdrop-blur-sm cursor-pointer shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
-                        <img src={item.src} alt={item.caption} className={`w-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ${['ether-prd', 'gullak-fintech', 'google-pay-prd', 'cloudeagle-ai', 'metis-improvement', 'codeant-ai'].includes(id || '') ? 'aspect-[1/1.414]' : 'aspect-video'}`} />
-                        {/* Hover overlay with click prompt */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center gap-2">
-                          <div className="w-10 h-10 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center shadow-md shadow-primary/20 transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                            <ZoomIn className="w-4 h-4 text-primary-foreground" />
+                {['ether-prd', 'gullak-fintech', 'google-pay-prd', 'cloudeagle-ai', 'metis-improvement', 'codeant-ai'].includes(id || '') ? (
+                  /* A4 Style Gallery - Large Documents */
+                  <div className="flex flex-col items-center gap-12">
+                    {caseStudy.gallery.map((item, index) => (
+                      <div 
+                        key={index} 
+                        className="group animate-fade-in w-full max-w-4xl" 
+                        style={{ animationDelay: `${index * 50}ms` }} 
+                        onClick={() => openLightbox(index)}
+                      >
+                        <div className="relative rounded-3xl overflow-hidden bg-white dark:bg-slate-900 cursor-pointer transition-all duration-500 hover:scale-[1.01] shadow-[0_8px_40px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_40px_rgba(0,0,0,0.4)] hover:shadow-[0_16px_60px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_16px_60px_rgba(0,0,0,0.6)]">
+                          {/* Paper texture effect */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-black/5 pointer-events-none z-10" />
+                          
+                          {/* A4 Document Image */}
+                          <div className="p-3 md:p-5 lg:p-6 bg-gradient-to-br from-slate-100 via-slate-50 to-white dark:from-slate-800 dark:via-slate-850 dark:to-slate-900">
+                            <img 
+                              src={item.src} 
+                              alt={item.caption} 
+                              className="w-full h-auto object-contain rounded-xl shadow-inner" 
+                            />
                           </div>
-                          <span className="text-xs font-medium text-foreground bg-background/70 backdrop-blur-sm px-3 py-1 rounded-full border border-border/50 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                            Click to enlarge
-                          </span>
+                          
+                          {/* Hover overlay with click prompt */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-end pb-8 gap-2 z-20">
+                            <div className="w-14 h-14 rounded-full bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm flex items-center justify-center shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                              <ZoomIn className="w-6 h-6 text-primary" />
+                            </div>
+                            <span className="text-sm font-medium text-white bg-black/60 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                              Click to view full size
+                            </span>
+                          </div>
+                          
+                          {/* Glowing border effect on hover */}
+                          <div className={`absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-primary/50 transition-colors duration-300 pointer-events-none`} />
+                          
+                          {/* Page number indicator */}
+                          <div className="absolute top-5 right-5 px-4 py-2 rounded-full bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-slate-300 shadow-lg z-20">
+                            Page {index + 1} of {caseStudy.gallery.length}
+                          </div>
                         </div>
-                        {/* Glowing border effect on hover */}
-                        <div className="absolute inset-0 rounded-2xl border-2 border-primary/0 group-hover:border-primary/40 transition-colors duration-300 pointer-events-none" />
                         
-                        {/* Image number indicator */}
-                        <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-background/80 backdrop-blur-sm border border-border text-xs font-medium text-muted-foreground">
-                          {index + 1} / {caseStudy.gallery.length}
-                        </div>
+                        {item.caption && (
+                          <p className="text-base text-muted-foreground mt-6 text-center flex items-center justify-center gap-3 font-medium">
+                            <span className="w-12 h-px bg-gradient-to-r from-transparent via-border to-border" />
+                            {item.caption}
+                            <span className="w-12 h-px bg-gradient-to-l from-transparent via-border to-border" />
+                          </p>
+                        )}
                       </div>
-                      {item.caption && <p className="text-sm text-muted-foreground mt-4 text-center flex items-center justify-center gap-2">
-                          <span className="w-8 h-px bg-gradient-to-r from-transparent to-border" />
-                          {item.caption}
-                          <span className="w-8 h-px bg-gradient-to-l from-transparent to-border" />
-                        </p>}
-                    </div>)}
-                </div>
+                    ))}
+                  </div>
+                ) : (
+                  /* Standard Gallery Grid */
+                  <div className="grid gap-8 grid-cols-1">
+                    {caseStudy.gallery.map((item, index) => (
+                      <div key={index} className="group animate-fade-in" style={{ animationDelay: `${index * 50}ms` }} onClick={() => openLightbox(index)}>
+                        <div className="relative rounded-2xl overflow-hidden border border-border bg-card/50 backdrop-blur-sm cursor-pointer shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
+                          <img src={item.src} alt={item.caption} className="w-full aspect-video object-cover group-hover:scale-[1.02] transition-transform duration-700" />
+                          {/* Hover overlay with click prompt */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center gap-2">
+                            <div className="w-10 h-10 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center shadow-md shadow-primary/20 transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                              <ZoomIn className="w-4 h-4 text-primary-foreground" />
+                            </div>
+                            <span className="text-xs font-medium text-foreground bg-background/70 backdrop-blur-sm px-3 py-1 rounded-full border border-border/50 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                              Click to enlarge
+                            </span>
+                          </div>
+                          {/* Glowing border effect on hover */}
+                          <div className="absolute inset-0 rounded-2xl border-2 border-primary/0 group-hover:border-primary/40 transition-colors duration-300 pointer-events-none" />
+                          
+                          {/* Image number indicator */}
+                          <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-background/80 backdrop-blur-sm border border-border text-xs font-medium text-muted-foreground">
+                            {index + 1} / {caseStudy.gallery.length}
+                          </div>
+                        </div>
+                        {item.caption && (
+                          <p className="text-sm text-muted-foreground mt-4 text-center flex items-center justify-center gap-2">
+                            <span className="w-8 h-px bg-gradient-to-r from-transparent to-border" />
+                            {item.caption}
+                            <span className="w-8 h-px bg-gradient-to-l from-transparent to-border" />
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </section>}
 
             {/* Lightbox */}
