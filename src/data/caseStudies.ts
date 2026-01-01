@@ -38,7 +38,23 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Increased user engagement by 40% and improved savings completion rates significantly.",
     keyFeatures: ["Goal-based savings", "Gamification rewards", "Progress tracking", "Social features"],
     tools: ["Figma", "Miro", "User Interviews", "A/B Testing"],
-    gallery: [], // Add your images here: { src: "/path/to/image.png", caption: "Description" }
+    gallery: [
+      { src: "/lovable-uploads/Gullak_PRD_01.png"},
+      { src: "/lovable-uploads/Gullak_PRD_02.png"},
+      { src: "/lovable-uploads/Gullak_PRD_03.png"},
+      { src: "/lovable-uploads/Gullak_PRD_04.png"},
+      { src: "/lovable-uploads/Gullak_PRD_05.png"},
+      { src: "/lovable-uploads/Gullak_PRD_06.png"},
+      { src: "/lovable-uploads/Gullak_PRD_07.png"},
+      { src: "/lovable-uploads/Gullak_PRD_08.png"},
+      { src: "/lovable-uploads/Gullak_PRD_09.png"},
+      { src: "/lovable-uploads/Gullak_PRD_10.png"},
+      { src: "/lovable-uploads/Gullak_PRD_11.png"},
+      { src: "/lovable-uploads/Gullak_PRD_12.png"},
+      { src: "/lovable-uploads/Gullak_PRD_13.png"},
+      { src: "/lovable-uploads/Gullak_PRD_14.png"},
+      { src: "/lovable-uploads/Gullak_PRD_15.png"},
+    ], // Add your images here: { src: "/path/to/image.png", caption: "Description" }
   },
   {
     id: "blinkit-analysis",
