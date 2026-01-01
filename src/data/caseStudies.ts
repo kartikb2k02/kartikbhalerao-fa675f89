@@ -148,7 +148,14 @@ export const caseStudies: CaseStudy[] = [
     outcome: "Delivered complete product specification ready for development.",
     keyFeatures: ["User stories", "Acceptance criteria", "Success metrics", "Technical specs"],
     tools: ["Notion", "Figma", "JIRA", "Confluence"],
-    gallery: [],
+    gallery: [
+      { src: "/lovable-uploads/gpay_prd_1.png"},
+      { src: "/lovable-uploads/gpay_prd_2.png"},
+      { src: "/lovable-uploads/gpay_prd_3.png"},
+      { src: "/lovable-uploads/gpay_prd_4.png"},
+      { src: "/lovable-uploads/gpay_prd_5.png"},
+      { src: "/lovable-uploads/gpay_prd_6.png"},
+    ],
   },
   {
     id: "zepto-efficiency",
