@@ -6,10 +6,8 @@ import { CalComBooking } from "@/components/CalComBooking";
 import { Header } from "@/components/Header";
 import { FooterSection } from "@/components/FooterSection";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
-
 export default function Contact() {
-  return (
-    <>
+  return <>
       <Header />
       <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
         <AnimatedBackground intensity="light" />
@@ -42,96 +40,7 @@ export default function Contact() {
             {/* Main Content Grid */}
             <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
               {/* Left Column - Contact Info */}
-              <div className="lg:col-span-2 space-y-6 animate-fade-in">
-                {/* Quick Contact Cards */}
-                <div className="space-y-4">
-                  <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-4">
-                    Get in Touch
-                  </h3>
-                  
-                  <div className="group p-5 rounded-2xl bg-card/60 backdrop-blur-xl border border-border/30 hover:border-primary/30 hover:bg-card/80 transition-all duration-500 cursor-pointer">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                        <Mail className="h-5 w-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground mb-1">Email me at</p>
-                        <p className="text-foreground font-semibold">hello@kartik.dev</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="group p-5 rounded-2xl bg-card/60 backdrop-blur-xl border border-border/30 hover:border-primary/30 hover:bg-card/80 transition-all duration-500 cursor-pointer">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                        <MapPin className="h-5 w-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground mb-1">Based in</p>
-                        <p className="text-foreground font-semibold">India</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="group p-5 rounded-2xl bg-card/60 backdrop-blur-xl border border-border/30 hover:border-primary/30 hover:bg-card/80 transition-all duration-500 cursor-pointer">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                        <Clock className="h-5 w-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground mb-1">Response time</p>
-                        <p className="text-foreground font-semibold">Within 24 hours</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Social Links */}
-                <div className="pt-4">
-                  <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-4">
-                    Connect with me
-                  </h3>
-                  <div className="flex gap-3">
-                    <a 
-                      href="https://linkedin.com" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 rounded-xl bg-card/60 backdrop-blur-xl border border-border/30 flex items-center justify-center hover:border-primary/30 hover:bg-primary/10 transition-all duration-300 group"
-                    >
-                      <FaLinkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                    </a>
-                    <a 
-                      href="https://twitter.com" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 rounded-xl bg-card/60 backdrop-blur-xl border border-border/30 flex items-center justify-center hover:border-primary/30 hover:bg-primary/10 transition-all duration-300 group"
-                    >
-                      <FaTwitter className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                    </a>
-                  </div>
-                </div>
-
-                {/* Why Work With Me */}
-                <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/5 via-card/60 to-card/40 backdrop-blur-xl border border-primary/10">
-                  <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-                    <Zap className="h-5 w-5 text-primary" />
-                    Why work with me?
-                  </h3>
-                  <ul className="space-y-3">
-                    {[
-                      "User-centric product approach",
-                      "Data-driven decision making",
-                      "Agile & collaborative process",
-                      "End-to-end product expertise"
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-center gap-3 text-muted-foreground">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                        <span className="text-sm">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              
 
               {/* Right Column - Forms */}
               <div className="lg:col-span-3 space-y-8">
@@ -170,10 +79,7 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <CalComBooking
-                    calUsername="kartik-bhalerao-qqae1f"
-                    eventType="secret"
-                  />
+                  <CalComBooking calUsername="kartik-bhalerao-qqae1f" eventType="secret" />
                 </div>
               </div>
             </div>
@@ -181,6 +87,5 @@ export default function Contact() {
         </section>
       </div>
       <FooterSection />
-    </>
-  );
+    </>;
 }
