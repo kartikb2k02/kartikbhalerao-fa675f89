@@ -99,33 +99,6 @@ export const AnimatedBackground = ({
         />
       </div>
 
-      {/* Constellation points with connections */}
-      <svg className="absolute inset-0 w-full h-full" style={{ opacity: 0.3 * intensityMultiplier }}>
-        <defs>
-          <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
-            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
-            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        {/* Connection lines */}
-        <line x1="10%" y1="20%" x2="25%" y2="35%" stroke="url(#lineGradient)" strokeWidth="1" />
-        <line x1="25%" y1="35%" x2="40%" y2="25%" stroke="url(#lineGradient)" strokeWidth="1" />
-        <line x1="70%" y1="30%" x2="85%" y2="45%" stroke="url(#lineGradient)" strokeWidth="1" />
-        <line x1="60%" y1="70%" x2="75%" y2="60%" stroke="url(#lineGradient)" strokeWidth="1" />
-        <line x1="15%" y1="75%" x2="30%" y2="65%" stroke="url(#lineGradient)" strokeWidth="1" />
-        
-        {/* Constellation nodes */}
-        <circle cx="10%" cy="20%" r="2" fill="hsl(var(--primary))" className="animate-constellation" />
-        <circle cx="25%" cy="35%" r="3" fill="hsl(var(--primary))" className="animate-constellation" style={{ animationDelay: '-2s' }} />
-        <circle cx="40%" cy="25%" r="2" fill="hsl(var(--primary))" className="animate-constellation" style={{ animationDelay: '-4s' }} />
-        <circle cx="70%" cy="30%" r="2.5" fill="hsl(var(--primary))" className="animate-constellation" style={{ animationDelay: '-1s' }} />
-        <circle cx="85%" cy="45%" r="2" fill="hsl(var(--primary))" className="animate-constellation" style={{ animationDelay: '-3s' }} />
-        <circle cx="60%" cy="70%" r="3" fill="hsl(var(--primary))" className="animate-constellation" style={{ animationDelay: '-5s' }} />
-        <circle cx="75%" cy="60%" r="2" fill="hsl(var(--primary))" className="animate-constellation" style={{ animationDelay: '-6s' }} />
-        <circle cx="15%" cy="75%" r="2.5" fill="hsl(var(--primary))" className="animate-constellation" style={{ animationDelay: '-7s' }} />
-        <circle cx="30%" cy="65%" r="2" fill="hsl(var(--primary))" className="animate-constellation" style={{ animationDelay: '-8s' }} />
-      </svg>
 
       {/* Floating geometric shapes with glass effect */}
       <div
@@ -200,40 +173,6 @@ export const AnimatedBackground = ({
         }}
       />
 
-      {/* Gradient mesh grid */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `
-            linear-gradient(hsl(var(--primary) / 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, hsl(var(--primary) / 0.03) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
-          maskImage: 'radial-gradient(ellipse 80% 60% at 50% 30%, black 20%, transparent 70%)',
-        }}
-      />
-
-      {/* Soft light beams */}
-      <div 
-        className="absolute top-0 left-[15%] w-[1px] h-[70%] origin-top"
-        style={{
-          background: 'linear-gradient(to bottom, hsl(var(--primary) / 0.2), hsl(var(--primary) / 0.05) 50%, transparent)',
-          transform: 'rotate(10deg)',
-        }}
-      />
-      <div 
-        className="absolute top-0 right-[20%] w-[1px] h-[55%] origin-top"
-        style={{
-          background: 'linear-gradient(to bottom, hsl(var(--primary) / 0.15), transparent 60%)',
-          transform: 'rotate(-8deg)',
-        }}
-      />
-      <div 
-        className="absolute top-0 left-[45%] w-[1px] h-[80%] origin-top"
-        style={{
-          background: 'linear-gradient(to bottom, hsl(var(--primary) / 0.1), transparent 70%)',
-        }}
-      />
 
       {/* Bottom gradient fade */}
       <div 
