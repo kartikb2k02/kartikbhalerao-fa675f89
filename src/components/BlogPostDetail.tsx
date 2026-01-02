@@ -172,7 +172,7 @@ export const BlogPostDetail = ({
         {/* Blog Header Card - Enhanced */}
         <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-700/50 shadow-xl overflow-hidden mb-8 group">
           {/* Decorative corner accents */}
-          
+          <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-violet-500/10 to-transparent rounded-br-3xl z-10" />
           
 
           {/* Banner Image */}
