@@ -121,28 +121,25 @@ export const HeroSection = () => {
             </p>
 
             {/* Social Links */}
-            <div className="flex justify-center items-center gap-4">
+            <div className="flex justify-center items-center gap-3">
               {/* LinkedIn */}
-              <a href="https://linkedin.com/in/kartik-bhalerao" target="_blank" rel="noopener noreferrer" className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl blur-sm opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
-                <div className="relative p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg shadow-blue-500/20">
-                  <Linkedin className="w-5 h-5 text-white" />
+              <a href="https://linkedin.com/in/kartik-bhalerao" target="_blank" rel="noopener noreferrer" className="group relative p-[2px] rounded-2xl bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-shadow duration-300">
+                <div className="p-3.5 bg-white dark:bg-slate-900 rounded-[14px] group-hover:bg-blue-50 dark:group-hover:bg-blue-950/50 transition-colors duration-300">
+                  <Linkedin className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                 </div>
               </a>
               
               {/* Medium */}
-              <a href="https://medium.com/@kartikbhalerao948" target="_blank" rel="noopener noreferrer" className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 dark:from-gray-300 dark:to-white rounded-xl blur-sm opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
-                <div className="relative p-3 bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-100 dark:to-white rounded-xl shadow-lg shadow-gray-500/20">
-                  <span className="w-5 h-5 flex items-center justify-center text-white dark:text-gray-900 text-sm font-bold">M</span>
+              <a href="https://medium.com/@kartikbhalerao948" target="_blank" rel="noopener noreferrer" className="group relative p-[2px] rounded-2xl bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-500 shadow-lg shadow-teal-500/25 hover:shadow-teal-500/40 transition-shadow duration-300">
+                <div className="p-3.5 bg-white dark:bg-slate-900 rounded-[14px] group-hover:bg-teal-50 dark:group-hover:bg-teal-950/50 transition-colors duration-300 flex items-center justify-center">
+                  <span className="w-5 h-5 flex items-center justify-center text-teal-600 dark:text-teal-400 text-sm font-black">M</span>
                 </div>
               </a>
 
               {/* GitHub */}
-              <a href="https://github.com/kartikbh6614" target="_blank" rel="noopener noreferrer" className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-600 to-gray-800 rounded-xl blur-sm opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
-                <div className="relative p-3 bg-gradient-to-br from-gray-700 to-gray-900 dark:from-gray-200 dark:to-gray-400 rounded-xl shadow-lg shadow-gray-500/20">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5 text-white dark:text-gray-900">
+              <a href="https://github.com/kartikbh6614" target="_blank" rel="noopener noreferrer" className="group relative p-[2px] rounded-2xl bg-gradient-to-br from-violet-400 via-purple-500 to-fuchsia-500 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-shadow duration-300">
+                <div className="p-3.5 bg-white dark:bg-slate-900 rounded-[14px] group-hover:bg-purple-50 dark:group-hover:bg-purple-950/50 transition-colors duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5 text-purple-600 dark:text-purple-400">
                     <path fillRule="evenodd" d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.44c.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.23 1.84 1.23 1.07 1.84 2.8 1.31 3.48 1 .11-.77.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.23-3.23-.12-.3-.53-1.52.12-3.16 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 016 0c2.28-1.55 3.3-1.23 3.3-1.23.65 1.64.24 2.86.12 3.16.77.84 1.23 1.91 1.23 3.23 0 4.63-2.8 5.65-5.48 5.95.43.37.82 1.1.82 2.22 0 1.6-.01 2.89-.01 3.28 0 .32.22.7.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z" clipRule="evenodd" />
                   </svg>
                 </div>
