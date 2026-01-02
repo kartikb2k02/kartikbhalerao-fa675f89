@@ -129,7 +129,7 @@ export const HeroSection = () => {
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
                     <Linkedin className="w-4 h-4 text-white" />
                   </div>
-                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-200">LinkedIn</span>
+                  
                 </div>
               </a>
               
@@ -140,7 +140,7 @@ export const HeroSection = () => {
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
                     <span className="text-sm font-black text-white">M</span>
                   </div>
-                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-200">Medium</span>
+                  
                 </div>
               </a>
 
@@ -153,7 +153,7 @@ export const HeroSection = () => {
                       <path fillRule="evenodd" d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.44c.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.23 1.84 1.23 1.07 1.84 2.8 1.31 3.48 1 .11-.77.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.23-3.23-.12-.3-.53-1.52.12-3.16 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 016 0c2.28-1.55 3.3-1.23 3.3-1.23.65 1.64.24 2.86.12 3.16.77.84 1.23 1.91 1.23 3.23 0 4.63-2.8 5.65-5.48 5.95.43.37.82 1.1.82 2.22 0 1.6-.01 2.89-.01 3.28 0 .32.22.7.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-200">GitHub</span>
+                  
                 </div>
               </a>
             </div>
