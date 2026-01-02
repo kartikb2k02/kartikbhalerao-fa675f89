@@ -132,7 +132,7 @@ export const HeroSection = () => {
               {/* Medium */}
               <a href="https://medium.com/@kartikbhalerao948" target="_blank" rel="noopener noreferrer" className="group relative p-[2px] rounded-2xl bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-500 shadow-lg shadow-teal-500/25 hover:shadow-teal-500/40 transition-shadow duration-300">
                 <div className="p-3.5 bg-white dark:bg-slate-900 rounded-[14px] group-hover:bg-teal-50 dark:group-hover:bg-teal-950/50 transition-colors duration-300 flex items-center justify-center">
-                  <span className="w-5 h-5 flex items-center justify-center text-teal-600 dark:text-teal-400 text-sm font-black">M</span>
+                  <span className="w-5 h-5 flex items-center justify-center text-sm font-black text-black">M</span>
                 </div>
               </a>
 
