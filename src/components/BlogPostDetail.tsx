@@ -383,34 +383,10 @@ export const BlogPostDetail = ({
 
       {/* Back to Top Button - Unique Design */}
       <button onClick={scrollToTop} className={`fixed bottom-6 right-6 z-50 group transition-all duration-500 ${showBackToTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8 pointer-events-none"}`} title="Back to top">
-        {/* Outer ring with gradient */}
-        <div className="relative w-14 h-14">
-          {/* Animated rotating border */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 animate-spin-slow opacity-80 group-hover:opacity-100 transition-opacity" />
-
-          {/* Inner background */}
-          <div className="absolute inset-[2px] rounded-full bg-white dark:bg-slate-900 flex items-center justify-center">
-            {/* Progress ring */}
-            <svg className="absolute inset-0 w-full h-full -rotate-90">
-              <circle cx="50%" cy="50%" r="45%" fill="none" stroke="currentColor" strokeWidth="2" className="text-slate-200 dark:text-slate-700" />
-              <circle cx="50%" cy="50%" r="45%" fill="none" stroke="url(#progressGradient)" strokeWidth="2" strokeLinecap="round" strokeDasharray={`${scrollProgress * 1.57} 157`} className="transition-all duration-150" />
-              <defs>
-                <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#8b5cf6" />
-                  <stop offset="50%" stopColor="#3b82f6" />
-                  <stop offset="100%" stopColor="#22d3ee" />
-                </linearGradient>
-              </defs>
-            </svg>
-
-            {/* Arrow icon with animation */}
-            <div className="relative z-10 flex flex-col items-center">
-              <ArrowUp className="w-5 h-5 text-slate-700 dark:text-slate-300 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors group-hover:-translate-y-0.5 transition-transform duration-300" />
-            </div>
+        <div className="relative w-12 h-12 rounded-full bg-gradient-to-r from-violet-600 via-blue-600 to-cyan-500 p-[2px] shadow-lg shadow-violet-500/30 hover:shadow-xl hover:shadow-violet-500/50 transition-all duration-300">
+          <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center">
+            <ArrowUp className="w-5 h-5 text-white group-hover:-translate-y-0.5 transition-transform duration-300" />
           </div>
-
-          {/* Glow effect on hover */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
         </div>
       </button>
     </>;
