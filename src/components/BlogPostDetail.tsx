@@ -286,7 +286,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
               </div>
 
               {/* Share Buttons */}
-              <div className="flex items-center gap-2">
+              <div className="fixed left-6 bottom-6 flex items-center gap-2 z-50">
                 <button
                   onClick={shareOnTwitter}
                   className="p-2.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:scale-110 hover:shadow-lg transition-all duration-200"
