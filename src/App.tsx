@@ -14,6 +14,9 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import CaseStudies from "./pages/CaseStudies";
 import CaseStudyDetail from "./pages/CaseStudyDetail";
+import Certifications from "./pages/Certifications";
+import CertificationDetail from "./pages/CertificationDetail";
+import AchievementDetail from "./pages/AchievementDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -64,6 +67,9 @@ const App = () => {
                 <Route path="/skills" element={<Skills />} />
                 <Route path="/case-studies" element={<CaseStudies />} />
                 <Route path="/case-studies/:id" element={<CaseStudyDetail />} />
+                <Route path="/certifications" element={<Certifications />} />
+                <Route path="/certifications/:id" element={<CertificationDetail />} />
+                <Route path="/achievements/:id" element={<AchievementDetail />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:id" element={<BlogPost />} />
                 <Route path="/contact" element={<Contact />} />

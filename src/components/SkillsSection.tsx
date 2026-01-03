@@ -142,7 +142,7 @@ export const SkillsSection = () => {
     return () => observer.disconnect();
   }, []);
   const handleCertificationClick = () => {
-    window.open("https://www.canva.com/design/DAGrQ2ETbAE/JvZhDbPAJAXcsMx0uQ4dYA/view", "_blank");
+    window.location.href = "/certifications";
   };
   const skillCategories = [
     {
