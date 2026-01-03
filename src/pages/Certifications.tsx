@@ -101,11 +101,49 @@ const Certifications = () => {
             </div>}
 
           {/* Achievements Grid */}
-          {activeTab === "achievements" && <div className="space-y-6 animate-fade-in">
+          {activeTab === "achievements" && <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in">
               {achievements.map(achievement => {
-            const IconComponent = iconMap[achievement.icon] || Award;
-            return;
-          })}
+                const IconComponent = iconMap[achievement.icon] || Award;
+                return (
+                  <Link key={achievement.id} to={`/achievements/${achievement.id}`} className="group bg-card/90 backdrop-blur-sm border border-border/50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    {/* Achievement Header */}
+                    <div className="bg-gradient-to-r from-amber-500 to-orange-600 p-6 text-white relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+                      <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
+                      
+                      <div className="relative z-10 flex items-start justify-between">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 bg-white/20 rounded-2xl backdrop-blur-sm">
+                            <IconComponent className="w-8 h-8" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold mb-1">{achievement.title}</h3>
+                            <p className="text-white/80 text-sm">{achievement.organization} • {achievement.year}</p>
+                          </div>
+                        </div>
+                        <ArrowRight className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                      </div>
+                    </div>
+
+                    {/* Achievement Content */}
+                    <div className="p-6">
+                      <div className="mb-4">
+                        <span className="inline-block bg-amber-500/10 text-amber-600 dark:text-amber-400 px-3 py-1 rounded-full text-sm font-medium">
+                          {achievement.category}
+                        </span>
+                      </div>
+                      
+                      <p className="text-muted-foreground leading-relaxed mb-4">
+                        {achievement.description}
+                      </p>
+
+                      <div className="text-sm text-primary font-medium">
+                        {achievement.impact}
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>}
 
           {/* Summary Stats */}

@@ -44,6 +44,7 @@ export const certifications: Certification[] = [
     description: "Comprehensive product management methodology covering agile practices, stakeholder alignment, and strategic planning.",
     skills: ["Product Strategy", "Agile Methodology", "Stakeholder Management", "Strategic Planning"],
     credentialId: "PM-2024-001",
+    image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80",
     detailedDescription: "This certification validates expertise in Atlassian's product management framework, covering the complete product lifecycle from ideation to delivery. It emphasizes data-driven decision making, cross-functional collaboration, and agile product development methodologies.",
     keyLearnings: [
       "Building and prioritizing product roadmaps using Jira",
@@ -64,6 +65,7 @@ export const certifications: Certification[] = [
     description: "Advanced certification in integrating AI technologies into product development cycles and decision-making processes.",
     skills: ["AI Integration", "Machine Learning", "Product Innovation", "Data Science"],
     credentialId: "AI-PM-2024-078",
+    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
     detailedDescription: "This certification demonstrates proficiency in leveraging AI technologies to enhance product development, user experience, and decision-making. It covers practical applications of AI/ML in product management, from feature prioritization to personalization strategies.",
     keyLearnings: [
       "AI-powered product analytics and insights",
@@ -84,6 +86,7 @@ export const certifications: Certification[] = [
     description: "Deep dive into product analytics, user behavior analysis, and metrics-driven product optimization strategies.",
     skills: ["Product Analytics", "User Behavior", "A/B Testing", "Metrics Design"],
     credentialId: "PA-2024-156",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
     detailedDescription: "This master class certification covers advanced product analytics techniques, including funnel analysis, cohort tracking, and behavioral segmentation. It emphasizes turning data into actionable insights for product improvement.",
     keyLearnings: [
       "Setting up comprehensive product analytics frameworks",
@@ -104,6 +107,7 @@ export const certifications: Certification[] = [
     description: "Strategic framework for implementing product-led growth methodologies and user acquisition strategies.",
     skills: ["PLG Strategy", "User Onboarding", "Growth Metrics", "Retention Optimization"],
     credentialId: "PLG-2024-089",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
     detailedDescription: "This certification covers the fundamentals and advanced strategies of product-led growth, focusing on creating products that drive user acquisition, conversion, and expansion. It emphasizes the importance of user experience as the primary growth driver.",
     keyLearnings: [
       "Designing self-serve onboarding experiences",

@@ -86,6 +86,21 @@ const CertificationDetail = () => {
 
           {/* Content */}
           <div className="space-y-8">
+            {/* Certificate Image */}
+            {certification.image && (
+              <div className="bg-card/90 backdrop-blur-sm border border-border/50 rounded-2xl p-6 md:p-8">
+                <h2 className="text-2xl font-bold text-foreground mb-4">Certificate</h2>
+                <div className="relative rounded-xl overflow-hidden shadow-lg">
+                  <img 
+                    src={certification.image} 
+                    alt={`${certification.title} Certificate`}
+                    className="w-full h-auto object-cover"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${certification.color} opacity-10`}></div>
+                </div>
+              </div>
+            )}
+
             {/* Description */}
             <div className="bg-card/90 backdrop-blur-sm border border-border/50 rounded-2xl p-6 md:p-8">
               <h2 className="text-2xl font-bold text-foreground mb-4">About This Certification</h2>
