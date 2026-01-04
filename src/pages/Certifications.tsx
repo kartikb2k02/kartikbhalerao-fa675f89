@@ -53,7 +53,7 @@ const Certifications = () => {
           {/* Certifications Grid */}
           {activeTab === "certifications" && <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in">
           {certifications.map(cert => {
-            return <Link key={cert.id} to={`/certifications/${cert.id}`} className="group bg-card/90 backdrop-blur-sm border border-border/50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+            return <div key={cert.id} className="group bg-card/90 backdrop-blur-sm border border-border/50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                     {/* Certificate Image */}
                     <div className="relative aspect-[16/10] overflow-hidden">
                       <img 
@@ -69,9 +69,8 @@ const Certifications = () => {
                         <h3 className="text-white text-lg font-bold">{cert.title}</h3>
                         <p className="text-white/80 text-sm">{cert.issuer} • {cert.year}</p>
                       </div>
-                      <ArrowRight className="absolute top-4 right-4 w-5 h-5 text-white opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                     </div>
-                  </Link>;
+                  </div>;
           })}
             </div>}
 
