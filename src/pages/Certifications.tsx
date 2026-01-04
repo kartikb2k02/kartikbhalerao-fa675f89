@@ -63,8 +63,15 @@ const Certifications = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                       <div className="absolute bottom-4 left-4 right-4">
-                        <span className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md text-white px-3 py-1.5 rounded-lg text-xs font-semibold mb-2 border border-white/30 shadow-lg">
-                          <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                        <span className="group/badge relative inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md text-white px-3 py-1.5 rounded-lg text-xs font-semibold mb-2 border border-white/30 shadow-lg overflow-hidden">
+                          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine"></span>
+                          <span className={`w-2 h-2 rounded-full animate-pulse ${
+                            cert.category === "Product Management" ? "bg-blue-400" :
+                            cert.category === "AI & Innovation" ? "bg-purple-400" :
+                            cert.category === "Analytics" ? "bg-emerald-400" :
+                            cert.category === "Growth Strategy" ? "bg-indigo-400" :
+                            "bg-amber-400"
+                          }`}></span>
                           {cert.category}
                         </span>
                         <h3 className="text-white text-lg font-bold">{cert.title}</h3>

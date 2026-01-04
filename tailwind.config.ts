@@ -167,6 +167,10 @@ export default {
 				'50%': { transform: 'rotate(10deg)' },
 				'60%': { transform: 'rotate(0deg)' },
 				'100%': { transform: 'rotate(0deg)' }
+			},
+			'shine': {
+				'0%': { left: '-100%' },
+				'50%, 100%': { left: '100%' }
 			}
 		},
     		animation: {
@@ -190,7 +194,8 @@ export default {
 			'constellation': 'constellation 12s ease-in-out infinite',
 			'heartbeat': 'heartbeat 1.2s ease-in-out infinite',
 			'steam': 'steam 2s ease-out infinite',
-			'wave': 'wave 2s ease-in-out infinite'
+			'wave': 'wave 2s ease-in-out infinite',
+			'shine': 'shine 3s ease-in-out infinite'
 		},
     		boxShadow: {
     			'2xs': 'var(--shadow-2xs)',
