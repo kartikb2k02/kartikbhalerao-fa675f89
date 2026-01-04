@@ -1,10 +1,11 @@
 import { Header } from "@/components/Header";
 import { FooterSection } from "@/components/FooterSection";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { ImageLightbox } from "@/components/ImageLightbox";
 import { certifications, achievements } from "@/data/certifications";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Trophy, Zap, TrendingUp, Target, Users, Medal, Award, Star, ArrowRight, Sparkles, Calendar } from "lucide-react";
+import { Trophy, Zap, TrendingUp, Target, Users, Medal, Award, Star, ArrowRight, Sparkles, ZoomIn } from "lucide-react";
 const iconMap: Record<string, React.ElementType> = {
   Trophy,
   Zap,
@@ -17,6 +18,19 @@ const iconMap: Record<string, React.ElementType> = {
 };
 const Certifications = () => {
   const [activeTab, setActiveTab] = useState<"certifications" | "achievements">("certifications");
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  const certificationImages = certifications.map(cert => ({
+    src: cert.image || "",
+    caption: cert.title
+  }));
+
+  const handleImageClick = (index: number) => {
+    setSelectedImageIndex(index);
+    setLightboxOpen(true);
+  };
+
   const tabData = [{
     id: "certifications" as const,
     label: "Professional Certifications",
@@ -52,16 +66,25 @@ const Certifications = () => {
 
           {/* Certifications Grid */}
           {activeTab === "certifications" && <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in">
-          {certifications.map(cert => {
+          {certifications.map((cert, index) => {
             return <div key={cert.id} className="group bg-card/90 backdrop-blur-sm border border-border/50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                     {/* Certificate Image */}
-                    <div className="relative aspect-[16/10] overflow-hidden">
+                    <div 
+                      className="relative aspect-[16/10] overflow-hidden cursor-pointer"
+                      onClick={() => handleImageClick(index)}
+                    >
                       <img 
                         src={cert.image} 
                         alt={cert.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                      
+                      {/* Zoom Icon */}
+                      <div className="absolute top-4 right-4 p-2 bg-black/40 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                        <ZoomIn className="w-5 h-5 text-white" />
+                      </div>
+                      
                       <div className="absolute bottom-4 left-4 right-4">
                         <span className="group/badge relative inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md text-white px-3 py-1.5 rounded-lg text-xs font-semibold mb-2 border border-white/30 shadow-lg overflow-hidden">
                           <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine"></span>
@@ -132,6 +155,13 @@ const Certifications = () => {
           
         </div>
       </main>
+
+      <ImageLightbox
+        images={certificationImages}
+        initialIndex={selectedImageIndex}
+        open={lightboxOpen}
+        onOpenChange={setLightboxOpen}
+      />
 
       <FooterSection />
     </div>;
