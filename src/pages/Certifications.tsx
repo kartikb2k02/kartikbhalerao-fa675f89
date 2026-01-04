@@ -63,7 +63,8 @@ const Certifications = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                       <div className="absolute bottom-4 left-4 right-4">
-                        <span className="inline-block bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-xs font-medium mb-2">
+                        <span className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md text-white px-3 py-1.5 rounded-lg text-xs font-semibold mb-2 border border-white/30 shadow-lg">
+                          <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
                           {cert.category}
                         </span>
                         <h3 className="text-white text-lg font-bold">{cert.title}</h3>
