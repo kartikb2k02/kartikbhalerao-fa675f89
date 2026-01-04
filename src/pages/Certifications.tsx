@@ -52,49 +52,24 @@ const Certifications = () => {
 
           {/* Certifications Grid */}
           {activeTab === "certifications" && <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in">
-              {certifications.map(cert => {
-            const IconComponent = iconMap[cert.icon] || Trophy;
+          {certifications.map(cert => {
             return <Link key={cert.id} to={`/certifications/${cert.id}`} className="group bg-card/90 backdrop-blur-sm border border-border/50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                    {/* Certificate Header */}
-                    <div className={`bg-gradient-to-r ${cert.color} p-6 text-white relative overflow-hidden`}>
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
-                      <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
-                      
-                      <div className="relative z-10 flex items-start justify-between">
-                        <div className="flex items-center gap-4">
-                          <div className="p-3 bg-white/20 rounded-2xl backdrop-blur-sm">
-                            <IconComponent className="w-8 h-8" />
-                          </div>
-                          <div>
-                            <h3 className="text-xl font-bold mb-1">{cert.title}</h3>
-                            <p className="text-white/80 text-sm">{cert.issuer} • {cert.year}</p>
-                          </div>
-                        </div>
-                        <ArrowRight className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                      </div>
-                    </div>
-
-                    {/* Certificate Content */}
-                    <div className="p-6">
-                      <div className="mb-4">
-                        <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">
+                    {/* Certificate Image */}
+                    <div className="relative aspect-[16/10] overflow-hidden">
+                      <img 
+                        src={cert.image} 
+                        alt={cert.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <span className="inline-block bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-xs font-medium mb-2">
                           {cert.category}
                         </span>
+                        <h3 className="text-white text-lg font-bold">{cert.title}</h3>
+                        <p className="text-white/80 text-sm">{cert.issuer} • {cert.year}</p>
                       </div>
-                      
-                      <p className="text-muted-foreground leading-relaxed mb-4">
-                        {cert.description}
-                      </p>
-
-                      {/* Skills */}
-                      <div className="flex flex-wrap gap-2">
-                        {cert.skills.slice(0, 3).map((skill, i) => <span key={i} className="px-3 py-1 bg-muted text-muted-foreground text-xs rounded-full font-medium">
-                            {skill}
-                          </span>)}
-                        {cert.skills.length > 3 && <span className="px-3 py-1 bg-muted text-muted-foreground text-xs rounded-full font-medium">
-                            +{cert.skills.length - 3} more
-                          </span>}
-                      </div>
+                      <ArrowRight className="absolute top-4 right-4 w-5 h-5 text-white opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                     </div>
                   </Link>;
           })}
