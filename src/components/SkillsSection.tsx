@@ -980,17 +980,6 @@ export const SkillsSection = () => {
                                     >
                                       {skill.name}
                                     </span>
-                                    <AnimatedCounter
-                                      value={skill.level}
-                                      isVisible={isVisible}
-                                      delay={i * 150}
-                                      className={cn(
-                                        "text-xs font-bold transition-colors mr-2 tabular-nums",
-                                        hoveredSkill === skill.name
-                                          ? "text-white/90"
-                                          : "text-slate-500 dark:text-slate-400",
-                                      )}
-                                    />
                                     <CheckCircle2
                                       className={cn(
                                         "w-4 h-4 flex-shrink-0 transition-all",
@@ -999,27 +988,6 @@ export const SkillsSection = () => {
                                     />
                                   </div>
 
-                                  {/* Animated Progress Bar */}
-                                  <div
-                                    className={cn(
-                                      "h-2.5 rounded-full overflow-hidden transition-colors",
-                                      hoveredSkill === skill.name ? "bg-white/20" : "bg-slate-200 dark:bg-slate-700",
-                                    )}
-                                  >
-                                    <div
-                                      className={cn(
-                                        "h-full rounded-full transition-all ease-out",
-                                        hoveredSkill === skill.name
-                                          ? "bg-white"
-                                          : `bg-gradient-to-r ${currentCategory.lightColor}`,
-                                      )}
-                                      style={{
-                                        width: isVisible ? `${skill.level}%` : "0%",
-                                        transitionDuration: "1.2s",
-                                        transitionDelay: `${i * 150}ms`,
-                                      }}
-                                    />
-                                  </div>
                                 </div>
                               </div>
                             </div>
