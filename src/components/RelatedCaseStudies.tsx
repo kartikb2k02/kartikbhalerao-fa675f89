@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { CaseStudy, caseStudies } from "@/data/caseStudies";
 import { Badge } from "@/components/ui/badge";
-import Autoplay from "embla-carousel-autoplay";
+
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 interface RelatedCaseStudiesProps {
   currentStudyId: string;
@@ -34,11 +34,7 @@ export const RelatedCaseStudies = ({
       <Carousel opts={{
       align: "start",
       loop: true
-    }} plugins={[Autoplay({
-      delay: 3500,
-      stopOnInteraction: false,
-      stopOnMouseEnter: true
-    })]} className="w-full">
+}} className="w-full">
         <CarouselContent className="-ml-6">
           {relatedStudies.map((study, index) => <CarouselItem key={study.id} className="pl-6 md:basis-1/2">
               <RelatedCaseStudyCard study={study} index={index} />
