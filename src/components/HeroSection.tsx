@@ -72,7 +72,7 @@ export const HeroSection = () => {
             </h1>
             
             {/* Enhanced Product Manager Badge */}
-            <div className="flex justify-center mt-6">
+            <div className="flex flex-col items-center gap-3 mt-6">
               <div className="group relative cursor-pointer">
                 {/* Main badge */}
                 <div className="relative px-12 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105">
@@ -96,6 +96,15 @@ export const HeroSection = () => {
                 {/* Outer glow effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-purple-400/10 to-pink-400/10 rounded-xl blur-2xl opacity-0 group-hover:opacity-80 transition-all duration-700 scale-125"></div>
+              </div>
+              
+              {/* Open to Opportunity label */}
+              <div className="flex items-center gap-2 px-4 py-2 bg-emerald-500/15 dark:bg-emerald-500/20 border border-emerald-500/30 rounded-full">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                </span>
+                <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400">Open to Opportunity</span>
               </div>
             </div>
           </div>
