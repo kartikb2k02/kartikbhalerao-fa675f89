@@ -119,7 +119,7 @@ export const certifications: Certification[] = [
   },
   {
     id: "enterprise-pm-fundamentals",
-    title: "Enterprise Product Management Fundamentals",
+    title: "Microsoft AI Product Manager",
     issuer: "Coursera",
     year: "2026",
     category: "Product Management",
