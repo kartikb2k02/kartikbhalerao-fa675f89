@@ -116,6 +116,27 @@ export const certifications: Certification[] = [
       "Measuring and improving activation metrics",
       "Creating sticky features for long-term retention"
     ]
+  },
+  {
+    id: "enterprise-pm-fundamentals",
+    title: "Enterprise Product Management Fundamentals",
+    issuer: "Coursera",
+    year: "2026",
+    category: "Product Management",
+    icon: "Trophy",
+    color: "from-blue-500 to-blue-600",
+    description: "Professional certificate covering market research, cloud strategy, UX/UI design, and product lifecycle management using Azure, Power BI, and Copilot.",
+    skills: ["Market Research", "Product Strategy", "UX/UI Design", "Product Launch", "Azure", "Power BI"],
+    credentialId: "1ALKR1V4ZMLD",
+    image: "/lovable-uploads/cert-enterprise-pm.jpg",
+    detailedDescription: "This intensive program covered market research, cloud strategy, and UX/UI design, utilizing Azure, Power BI, and Copilot. Completers demonstrated the ability to manage secure, compliant, and scalable software products from concept to launch, including go-to-market strategies and post-launch analysis.",
+    keyLearnings: [
+      "Market Research and Competitive Analysis",
+      "Product Strategy and Roadmapping",
+      "Product Design and UX/UI Fundamentals",
+      "Product Launch and Post-Launch Management",
+      "AI and cloud capabilities with Azure and Copilot"
+    ]
   }
 ];
 
