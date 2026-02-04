@@ -70,7 +70,7 @@ const Certifications = () => {
             return <div key={cert.id} className="group bg-card/90 backdrop-blur-sm border border-border/50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                     {/* Certificate Image */}
                     <div 
-                      className="relative aspect-[16/10] overflow-hidden cursor-pointer"
+                      className="relative aspect-[4/3] overflow-hidden cursor-pointer"
                       onClick={() => handleImageClick(index)}
                     >
                       <img 
