@@ -65,7 +65,7 @@ const Certifications = () => {
           
 
           {/* Certifications Grid */}
-          {activeTab === "certifications" && <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in">
+          {activeTab === "certifications" && <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 animate-fade-in">
           {certifications.map((cert, index) => {
             return <div key={cert.id} className="group bg-card/90 backdrop-blur-sm border border-border/50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                     {/* Certificate Image */}
