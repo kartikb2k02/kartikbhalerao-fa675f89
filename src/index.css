@@ -11,9 +11,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-text {
+  background: linear-gradient(90deg, #22c55e, #3b82f6, #8b5cf6, #22c55e);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease infinite;
+}
+
 @layer base {
   :root {
-    --background: 209 40% 96%;
+    --background: 225 40% 98%;
     --foreground: 222 47% 11%;
     --card: 210 40% 98%;
     --card-foreground: 222 47% 11%;

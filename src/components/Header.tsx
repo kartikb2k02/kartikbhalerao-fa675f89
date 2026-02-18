@@ -47,23 +47,13 @@ export const Header = () => {
   };
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-        isScrolled 
-          ? 'bg-white/15 dark:bg-slate-900/15 backdrop-blur-3xl shadow-2xl border-b border-white/30 dark:border-white/20' 
-          : 'bg-white/8 dark:bg-slate-900/8 backdrop-blur-2xl'
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b bg-[#f8f9fc] dark:bg-gray-950 ${
+        isScrolled
+          ? 'border-gray-200 dark:border-gray-800 shadow-sm dark:shadow-gray-900'
+          : 'border-transparent'
       }`}
     >
-      {/* Enhanced multi-layer glass overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/25 via-white/15 to-white/25 dark:from-white/15 dark:via-white/8 dark:to-white/15"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 via-transparent to-purple-500/5 dark:from-blue-400/5 dark:to-purple-400/5"></div>
-      
-      {/* Enhanced top border with animated shimmer */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent"></div>
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent animate-pulse"></div>
-      
-      {/* Subtle inner glow */}
-      <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white/10 to-transparent dark:from-white/5 pointer-events-none"></div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         <div className="flex items-center justify-between h-16">
@@ -173,18 +163,8 @@ export const Header = () => {
 
         {/* Enhanced Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden relative mt-2 pb-4">
-            {/* Enhanced glass container */}
-            <div className="absolute inset-0 bg-white/15 dark:bg-slate-900/15 backdrop-blur-3xl rounded-3xl border border-white/30 dark:border-white/20 shadow-2xl"></div>
-            
-            {/* Enhanced gradient overlays */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-white/10 to-white/25 dark:from-white/15 dark:via-white/5 dark:to-white/15 rounded-3xl"></div>
-            <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 via-transparent to-purple-500/5 rounded-3xl"></div>
-            
-            {/* Subtle inner glow */}
-            <div className="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-white/15 to-transparent dark:from-white/8 rounded-t-3xl"></div>
-            
-            <div className="relative py-8 px-6">
+          <div className="md:hidden mt-1 pb-4 border-t border-gray-200 dark:border-gray-800 bg-[#f8f9fc] dark:bg-gray-950">
+            <div className="py-4 px-2">
               <nav className="flex flex-col space-y-3">
                 {/* Enhanced Mobile Skills Button */}
                 <button

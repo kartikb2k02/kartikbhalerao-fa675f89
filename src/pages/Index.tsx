@@ -2,31 +2,29 @@ import { HeroSection } from "@/components/HeroSection";
 import { FooterSection } from "@/components/FooterSection";
 import { Header } from "@/components/Header";
 import { WelcomeToast } from "@/components/WelcomeToast";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
 
 const Index = () => {
   return (
-    <div className="min-h-screen w-full bg-background text-foreground transition-colors duration-500 relative overflow-hidden">
-      {/* Header */}
-      <Header />
+    <div className="min-h-screen w-full bg-background text-foreground relative">
 
-      {/* Welcome Toast */}
-      <WelcomeToast />
+      {/* Dotted background */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgb(100 116 139 / 0.2) 1.5px, transparent 1.5px)',
+          backgroundSize: '22px 22px',
+        }}
+      />
 
-      {/* Unified Animated Background */}
-      <AnimatedBackground intensity="rich" />
-
-      {/* Main Content Container */}
       <div className="relative z-10">
-        {/* Hero Section */}
-        <div className="min-h-screen w-full flex items-center justify-center pt-16 relative">
+        <Header />
+        <WelcomeToast />
+
+        <div className="min-h-screen w-full flex items-center justify-center pt-16">
           <HeroSection />
         </div>
 
-        {/* Footer */}
-        <div className="relative">
-          <FooterSection />
-        </div>
+        <FooterSection />
       </div>
     </div>
   );

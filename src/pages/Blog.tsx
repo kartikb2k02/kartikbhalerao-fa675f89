@@ -5,7 +5,6 @@ import { getMarkdownContent } from "@/utils/blogContent";
 import { BlogLayout } from "@/components/BlogLayout";
 import { Header } from "@/components/Header";
 import { useBlogPreferences } from "@/hooks/useBlogPreferences";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
 
 export type SortOption = "date" | "readTime" | "title";
 
@@ -109,15 +108,11 @@ const Blog = () => {
 
   return (
     <div
-      className={`min-h-screen w-full bg-background text-foreground relative ${blogThemeClass}`}
+      className={`min-h-screen w-full text-foreground ${blogThemeClass}`}
+      style={{ backgroundColor: '#f8f9fc' }}
     >
-      {/* Unified Animated Background */}
-      <AnimatedBackground intensity="light" />
-
-      {/* Header - Same as home page */}
       <Header />
-
-      <div className="pt-16 relative z-10">
+      <div className="pt-16">
         <BlogLayout
           posts={filteredAndSortedPosts}
           allPosts={blogPosts}

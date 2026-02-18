@@ -155,7 +155,7 @@ export const BlogSidebar = ({
 
   // Collapsed view
   if (isCollapsed) {
-    return <div className="h-full flex flex-col items-center py-4 px-2 bg-gradient-to-b from-white via-violet-50/20 to-white dark:from-slate-900 dark:via-violet-950/20 dark:to-slate-900">
+    return <div className="h-full flex flex-col items-center py-4 px-2 bg-white dark:bg-gray-950">
         <Button variant="ghost" size="sm" onClick={onToggleCollapse} className="mb-4 p-2">
           <PanelLeft className="w-5 h-5 text-violet-500" />
         </Button>
@@ -169,16 +169,10 @@ export const BlogSidebar = ({
         </div>
       </div>;
   }
-  return <div className="h-full flex flex-col relative overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-violet-50/20 to-white dark:from-slate-900 dark:via-violet-950/20 dark:to-slate-900" />
-      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-violet-400/20 to-fuchsia-400/20 dark:from-violet-600/10 dark:to-fuchsia-600/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-blue-400/15 to-cyan-400/15 dark:from-blue-600/10 dark:to-cyan-600/10 rounded-full blur-3xl" />
-      
-      {/* Content */}
-      <div className="relative z-10 h-full flex flex-col">
+  return <div className="h-full flex flex-col bg-white dark:bg-gray-950">
+      <div className="h-full flex flex-col">
         {/* Header */}
-        <div className="p-4 border-b border-slate-200/60 dark:border-slate-700/50">
+        <div className="p-4 border-b border-gray-200 dark:border-gray-800">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3 group">
               <div className="relative">
@@ -266,7 +260,7 @@ export const BlogSidebar = ({
         </div>
 
         {/* Newsletter Footer */}
-        <div className="p-3 border-t border-slate-200/60 dark:border-slate-700/50 bg-gradient-to-r from-violet-50/50 to-fuchsia-50/50 dark:from-violet-950/30 dark:to-fuchsia-950/30">
+        <div className="p-3 border-t border-gray-200 dark:border-gray-800">
           <div className="flex items-center gap-1 mb-2 text-[10px] font-bold text-slate-500">
             <Mail className="w-3 h-3" /> Newsletter
           </div>
@@ -276,9 +270,9 @@ export const BlogSidebar = ({
               {isSubscribing ? <Sparkles className="w-3 h-3 animate-spin" /> : <Send className="w-3 h-3" />}
             </Button>
           </div>
-        </div>
       </div>
-    </div>;
+    </div>
+  </div>;
 };
 
 // Post Card Component
