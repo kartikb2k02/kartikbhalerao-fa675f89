@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, ExternalLink, ZoomIn, ArrowUp } from "lucide-react";
 import { Header } from "@/components/Header";
 import { FooterSection } from "@/components/FooterSection";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { getCaseStudyById } from "@/data/caseStudies";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -41,7 +40,7 @@ const CaseStudyDetail = () => {
   };
   if (!caseStudy) {
     return <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-        <AnimatedBackground intensity="medium" />
+        <div className="fixed inset-0 pointer-events-none z-0" style={{ backgroundImage: 'radial-gradient(circle, rgb(100 116 139 / 0.2) 1.5px, transparent 1.5px)', backgroundSize: '22px 22px' }} />
         <Header />
         <main className="pt-32 relative z-10 text-center">
           <h1 className="text-3xl font-bold mb-4">Case Study Not Found</h1>
@@ -52,7 +51,29 @@ const CaseStudyDetail = () => {
         <FooterSection />
       </div>;
   }
-  return <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+  return <div className="min-h-screen bg-background text-foreground relative">
+      {/* Dotted background — same as home page */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgb(100 116 139 / 0.2) 1.5px, transparent 1.5px)',
+          backgroundSize: '22px 22px',
+        }}
+      />
+
+      {/* Violet / Green / Blue floating blobs */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-[8%] left-[10%] w-[420px] h-[420px] rounded-full bg-violet-500/10 blur-3xl animate-float-slow" />
+        <div className="absolute top-[40%] right-[5%] w-[350px] h-[350px] rounded-full bg-blue-500/10 blur-3xl animate-float [animation-delay:-3s]" />
+        <div className="absolute bottom-[10%] left-[30%] w-[380px] h-[380px] rounded-full bg-emerald-500/10 blur-3xl animate-float-slower [animation-delay:-5s]" />
+        <div className="absolute top-[20%] right-[30%] w-[200px] h-[200px] rounded-full bg-violet-400/8 blur-2xl animate-morph [animation-delay:-2s]" />
+        <div className="absolute bottom-[30%] right-[20%] w-[180px] h-[180px] rounded-full bg-blue-400/10 blur-2xl animate-float-slow [animation-delay:-4s]" />
+        {/* Glowing orbs */}
+        <div className="absolute top-[25%] left-[50%] w-3 h-3 rounded-full bg-violet-400/60 shadow-[0_0_20px_8px_rgba(139,92,246,0.3)] animate-glow-pulse" />
+        <div className="absolute top-[60%] right-[20%] w-2.5 h-2.5 rounded-full bg-blue-400/60 shadow-[0_0_18px_7px_rgba(59,130,246,0.25)] animate-glow-pulse [animation-delay:-1.5s]" />
+        <div className="absolute bottom-[25%] left-[20%] w-2.5 h-2.5 rounded-full bg-emerald-400/60 shadow-[0_0_16px_6px_rgba(52,211,153,0.25)] animate-glow-pulse [animation-delay:-3s]" />
+      </div>
+
       {/* Reading Progress Bar - Theme Matched */}
       <div className="fixed top-16 left-0 right-0 z-40 h-1 bg-slate-200/30 dark:bg-slate-800/50 backdrop-blur-sm overflow-hidden">
         {/* Progress fill with case study theme */}
@@ -76,26 +97,6 @@ const CaseStudyDetail = () => {
         <span className="text-xs font-medium bg-gradient-to-r from-violet-600 to-blue-600 bg-clip-text text-transparent">
           {Math.round(scrollProgress)}% viewed
         </span>
-      </div>
-
-      <AnimatedBackground intensity="rich" />
-      
-      {/* Additional decorative background elements */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        {/* Radial gradient spotlight */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[60vh] bg-gradient-radial from-primary/10 via-primary/5 to-transparent" />
-        
-        {/* Side accent gradients */}
-        <div className="absolute top-1/3 -left-20 w-96 h-96 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl animate-pulse" style={{
-        animationDuration: '4s'
-      }} />
-        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-gradient-to-tl from-accent/20 to-transparent rounded-full blur-3xl animate-pulse" style={{
-        animationDuration: '5s'
-      }} />
-        
-        {/* Decorative lines */}
-        <div className="absolute top-20 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" />
       </div>
 
       <Header />

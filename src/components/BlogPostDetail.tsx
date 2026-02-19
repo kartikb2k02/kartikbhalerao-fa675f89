@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { BlogPost } from "@/data/blogPosts";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import { toast } from "sonner";
 
 interface BlogPostDetailProps {
@@ -19,14 +20,12 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
 
   const shareUrl = typeof window !== "undefined" ? `${window.location.origin}/blog/${post.id}` : "";
 
-  const shareOnTwitter = () => {
-    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(shareUrl)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
+  const goToX = () => {
+    window.open("https://x.com/kartikbhalerao", "_blank", "noopener,noreferrer");
   };
 
-  const shareOnLinkedIn = () => {
-    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
+  const goToLinkedIn = () => {
+    window.open("https://www.linkedin.com/in/kartik-bhalerao/", "_blank", "noopener,noreferrer");
   };
 
   const copyLink = () => {
@@ -79,7 +78,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
   return (
     <>
       {/* Reading Progress Bar */}
-      <div className="fixed top-16 left-0 right-0 z-40 h-0.5 bg-slate-200/40 dark:bg-slate-800/50">
+      <div className="fixed top-16 left-0 right-0 z-40 h-0.5 bg-border/40">
         <div
           className="h-full bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 transition-all duration-150 ease-out"
           style={{ width: `${scrollProgress}%` }}
@@ -92,7 +91,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
           scrollProgress > 5 ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
         }`}
       >
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 shadow-md">
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card/90 backdrop-blur-sm border border-border/50 shadow-md">
           <Clock className="w-3 h-3 text-violet-500" />
           <span className="text-xs font-medium text-slate-600 dark:text-slate-300">
             {timeRemaining > 0 ? `${timeRemaining} min left` : "Done!"}
@@ -115,7 +114,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
         </button>
 
         {/* Header Card */}
-        <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-700/50 shadow-xl overflow-hidden mb-6 group">
+        <div className="relative bg-card/90 backdrop-blur-sm rounded-2xl border border-border/50 shadow-xl overflow-hidden mb-6 group">
 
           {/* Banner Image */}
           {post.image && (
@@ -197,8 +196,8 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
               {/* Share Buttons */}
               <div className="flex items-center gap-2">
                 <button
-                  onClick={shareOnTwitter}
-                  title="Share on X"
+                  onClick={goToX}
+                  title="X (Twitter)"
                   className="p-2.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:scale-110 hover:shadow-lg transition-all duration-200"
                 >
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -206,8 +205,8 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
                   </svg>
                 </button>
                 <button
-                  onClick={shareOnLinkedIn}
-                  title="Share on LinkedIn"
+                  onClick={goToLinkedIn}
+                  title="LinkedIn"
                   className="p-2.5 rounded-full bg-[#0A66C2] text-white hover:scale-110 hover:shadow-lg transition-all duration-200"
                 >
                   <Linkedin className="w-4 h-4" />
@@ -227,9 +226,10 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
         </div>
 
         {/* Post Content */}
-        <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-700/50 shadow-xl p-6 sm:p-8 lg:p-10 mb-8">
+        <div className="bg-card/90 backdrop-blur-sm rounded-2xl border border-border/50 shadow-xl p-6 sm:p-8 lg:p-10 mb-8">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}
             components={{
               h1: ({ children }) => (
                 <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-8 mb-4 first:mt-0">
@@ -268,7 +268,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
               img: ({ src, alt }) => (
                 <figure className="my-6">
                   <div className="overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700">
-                    <img src={src} alt={alt || ""} className="w-full h-auto max-h-80 object-cover" loading="lazy" />
+                    <img src={src} alt={alt || ""} className="w-full h-auto object-contain" loading="lazy" />
                   </div>
                   {alt && alt !== "image" && (
                     <figcaption className="text-center text-sm text-slate-500 dark:text-slate-400 mt-2">{alt}</figcaption>
@@ -283,7 +283,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
                 </div>
               ),
               thead: ({ children }) => <thead className="bg-slate-100 dark:bg-slate-700">{children}</thead>,
-              tbody: ({ children }) => <tbody className="bg-white dark:bg-slate-800">{children}</tbody>,
+              tbody: ({ children }) => <tbody className="bg-card">{children}</tbody>,
               tr: ({ children }) => (
                 <tr className="border-b border-slate-200 dark:border-slate-600 last:border-b-0">{children}</tr>
               ),
@@ -327,6 +327,17 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
                   {children}
                 </pre>
               ),
+              iframe: ({ src, title, ...props }) => (
+                <div className="my-6 relative w-full" style={{ paddingBottom: '56.25%' }}>
+                  <iframe
+                    src={src}
+                    title={title || ""}
+                    className="absolute inset-0 w-full h-full rounded-lg border border-slate-200 dark:border-slate-700"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                </div>
+              ),
               hr: () => <hr className="border-slate-200 dark:border-slate-700 my-8" />,
               strong: ({ children }) => (
                 <strong className="font-semibold text-slate-900 dark:text-white">{children}</strong>
@@ -338,18 +349,6 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
           </ReactMarkdown>
         </div>
 
-        {/* Read on Medium CTA */}
-        <div className="flex justify-center mb-8">
-          <a
-            href="https://medium.com/@kartikbhalerao948"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-blue-600 text-white font-medium shadow-lg shadow-violet-500/25 hover:shadow-xl hover:shadow-violet-500/35 hover:-translate-y-0.5 transition-all duration-300"
-          >
-            Continue reading on Medium
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
-        </div>
       </div>
 
       {/* Back to Top */}

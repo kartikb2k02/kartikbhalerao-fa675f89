@@ -81,8 +81,8 @@ export const BlogLayout = ({
 
       {/* Sidebar */}
       <aside className={cn(
-        "fixed top-16 left-0 bottom-0 bg-white dark:bg-gray-950",
-        "border-r border-gray-200 dark:border-gray-800 z-50",
+        "fixed top-16 left-0 bottom-0 bg-background",
+        "border-r border-border/50 z-50",
         "transform transition-all duration-300 ease-in-out",
         sidebarOpen ? "translate-x-0" : "-translate-x-full",
         "lg:translate-x-0 lg:static lg:top-0 lg:z-30",
@@ -141,14 +141,14 @@ export const BlogLayout = ({
             variant="outline"
             size="sm"
             onClick={toggleSidebar}
-            className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border-slate-200/60 dark:border-slate-700/60 shadow-lg hover:shadow-xl transition-all duration-200"
+            className="bg-background/90 backdrop-blur-sm border-border/60 shadow-lg hover:shadow-xl transition-all duration-200"
           >
             <Menu className="w-4 h-4" />
           </Button>
         </div>
 
         {/* Content Area */}
-        <div className="min-h-screen" style={{ backgroundColor: '#f8f9fc' }}>
+        <div className="min-h-screen bg-background">
           {selectedPost ? (
             <BlogPostDetail
               post={selectedPost}
@@ -158,7 +158,7 @@ export const BlogLayout = ({
           ) : (
             <div className="flex items-center justify-center min-h-screen px-8">
               <div className="text-center max-w-md">
-                <div className="w-16 h-16 mx-auto mb-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl flex items-center justify-center shadow-sm">
+                <div className="w-16 h-16 mx-auto mb-6 bg-card border border-border rounded-2xl flex items-center justify-center shadow-sm">
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
                   </svg>

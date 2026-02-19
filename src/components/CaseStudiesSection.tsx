@@ -14,7 +14,10 @@ export const CaseStudiesSection = () => {
       <div className="max-w-[90rem] mx-auto px-6 space-y-16 relative z-10">
         {/* Header */}
         <div className="text-center space-y-6">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground">Case Studies & Projects</h2>
+          <h2 className="text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
+            <span className="text-gray-900 dark:text-white">Case Studies </span>
+            <span className="animate-gradient-text">& Projects</span>
+          </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Real-world projects showcasing product strategy, design thinking, and user-centered solutions
           </p>
@@ -89,7 +92,7 @@ export const CaseStudiesSection = () => {
             Interested in seeing more of my work or discussing a project?
           </p>
           <button
-            className="bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            className="bg-black hover:bg-gray-900 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             onClick={() => window.open("mailto:kartikbhalerao948@gmail.com", "_blank")}
           >
             Get In Touch

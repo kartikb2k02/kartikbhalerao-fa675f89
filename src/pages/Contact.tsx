@@ -4,15 +4,26 @@ import { ContactForm } from "@/components/ContactForm";
 import { CalComBooking } from "@/components/CalComBooking";
 import { Header } from "@/components/Header";
 import { FooterSection } from "@/components/FooterSection";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
 
 export default function Contact() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-        {/* Unified Animated Background */}
-        <AnimatedBackground intensity="medium" />
+      <div className="min-h-screen bg-background text-foreground relative">
+        {/* Grid background — same color as home dots, different design */}
+        <div
+          className="fixed inset-0 pointer-events-none z-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgb(100 116 139 / 0.12) 1px, transparent 1px),
+              linear-gradient(90deg, rgb(100 116 139 / 0.12) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px',
+          }}
+        />
+        {/* Subtle corner accent blobs */}
+        <div className="fixed top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-primary/8 via-transparent to-transparent pointer-events-none z-0" />
+        <div className="fixed bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-primary/6 via-transparent to-transparent pointer-events-none z-0" />
 
         {/* Hero Section */}
         <section className="relative pt-24 pb-12 px-4 sm:px-6 lg:px-8 z-10">

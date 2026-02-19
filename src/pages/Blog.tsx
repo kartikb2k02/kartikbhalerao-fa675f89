@@ -107,10 +107,7 @@ const Blog = () => {
     blogTheme === "system" ? "" : blogTheme === "dark" ? "dark" : "light-theme";
 
   return (
-    <div
-      className={`min-h-screen w-full text-foreground ${blogThemeClass}`}
-      style={{ backgroundColor: '#f8f9fc' }}
-    >
+    <div className={`min-h-screen w-full bg-background text-foreground relative ${blogThemeClass}`}>
       <Header />
       <div className="pt-16">
         <BlogLayout
