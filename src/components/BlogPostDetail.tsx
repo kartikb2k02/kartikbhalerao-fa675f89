@@ -198,28 +198,37 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
                 <button
                   onClick={goToX}
                   title="X (Twitter)"
-                  className="p-2.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:scale-110 hover:shadow-lg transition-all duration-200"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 text-xs font-semibold bg-transparent hover:bg-slate-900 hover:border-slate-900 hover:text-white dark:hover:bg-white dark:hover:border-white dark:hover:text-slate-900 active:scale-95 transition-all duration-200"
                 >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
+                  <span>Post</span>
                 </button>
                 <button
                   onClick={goToLinkedIn}
                   title="LinkedIn"
-                  className="p-2.5 rounded-full bg-[#0A66C2] text-white hover:scale-110 hover:shadow-lg transition-all duration-200"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#0A66C2] text-[#0A66C2] text-xs font-semibold bg-transparent hover:bg-[#0A66C2] hover:text-white active:scale-95 transition-all duration-200"
                 >
-                  <Linkedin className="w-4 h-4" />
+                  <Linkedin className="w-3.5 h-3.5" />
+                  <span>Share</span>
                 </button>
-                <button
-                  onClick={copyLink}
-                  title="Copy link"
-                  className={`p-2.5 rounded-full transition-all duration-200 hover:scale-110 hover:shadow-lg ${
-                    copied ? "bg-green-500 text-white" : "bg-violet-500 text-white"
-                  }`}
+                <div
+                  className="p-[1.5px] rounded-lg bg-gradient-to-r from-[#22c55e] via-[#3b82f6] to-[#8b5cf6] active:scale-95 transition-transform duration-200 cursor-pointer"
                 >
-                  {copied ? <Check className="w-4 h-4" /> : <Link2 className="w-4 h-4" />}
-                </button>
+                  <button
+                    onClick={copyLink}
+                    title="Copy link"
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-[6px] text-xs font-semibold w-full transition-colors duration-200 ${
+                      copied
+                        ? "bg-transparent text-white"
+                        : "bg-white dark:bg-card text-violet-600 dark:text-violet-400 hover:bg-transparent hover:text-white"
+                    }`}
+                  >
+                    {copied ? <Check className="w-3.5 h-3.5" /> : <Link2 className="w-3.5 h-3.5" />}
+                    <span>{copied ? "Copied!" : "Copy link"}</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>

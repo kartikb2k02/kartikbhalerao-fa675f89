@@ -5,26 +5,39 @@ import { X } from 'lucide-react';
 export const WelcomeToast = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [progress, setProgress] = useState(100);
 
   useEffect(() => {
-    // Show welcome message after a brief delay
     const timer = setTimeout(() => {
       setIsVisible(true);
       setIsAnimating(true);
     }, 800);
-
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    // Auto-hide after 4 seconds
-    if (isVisible) {
-      const hideTimer = setTimeout(() => {
-        handleClose();
-      }, 4000);
+    if (!isVisible) return;
 
-      return () => clearTimeout(hideTimer);
-    }
+    const duration = 4000;
+    const interval = 30;
+    const step = (interval / duration) * 100;
+
+    const progressTimer = setInterval(() => {
+      setProgress(prev => {
+        if (prev <= 0) {
+          clearInterval(progressTimer);
+          return 0;
+        }
+        return prev - step;
+      });
+    }, interval);
+
+    const hideTimer = setTimeout(() => handleClose(), duration);
+
+    return () => {
+      clearInterval(progressTimer);
+      clearTimeout(hideTimer);
+    };
   }, [isVisible]);
 
   const handleClose = () => {
@@ -35,67 +48,60 @@ export const WelcomeToast = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
-      {/* Backdrop */}
-      <div className={`absolute inset-0 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-500 ${isAnimating ? 'opacity-100' : 'opacity-0'}`} />
-      
-      {/* Welcome Card */}
-      <div className={`relative pointer-events-auto overflow-hidden rounded-3xl max-w-md w-full transform transition-all duration-500 ${
-        isAnimating 
-          ? 'translate-y-0 opacity-100 scale-100' 
-          : 'translate-y-8 opacity-0 scale-95'
-      }`}>
-        
-        {/* Animated gradient border */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-[spin_4s_linear_infinite] blur-sm" style={{ padding: '2px' }} />
-        
-        {/* Inner card */}
-        <div className="relative bg-white dark:bg-slate-900 m-[2px] rounded-[22px] p-8">
-          
-          {/* Decorative corner accents */}
-          <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-blue-500/20 to-transparent rounded-tl-[22px]" />
-          <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-purple-500/20 to-transparent rounded-br-[22px]" />
-          
-          {/* Close Button */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* Subtle backdrop */}
+      <div
+        className={`absolute inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-[2px] transition-opacity duration-300 ${isAnimating ? 'opacity-100' : 'opacity-0'}`}
+        onClick={handleClose}
+      />
+
+      {/* Card */}
+      <div
+        className={`relative pointer-events-auto w-full max-w-sm bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-2xl shadow-xl overflow-hidden transition-all duration-300 ${
+          isAnimating ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-2'
+        }`}
+      >
+        {/* Close */}
+        <button
+          onClick={handleClose}
+          className="absolute top-3.5 right-3.5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors z-10"
+        >
+          <X className="w-4 h-4" />
+        </button>
+
+        {/* Content */}
+        <div className="flex flex-col items-center text-center px-8 pt-8 pb-6 gap-4">
+          {/* Name */}
+          <div className="flex items-center gap-2">
+            <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">Kartik</span>
+            <span className="text-xl font-bold tracking-tight animate-gradient-text">Bhalerao</span>
+          </div>
+
+          {/* Text */}
+          <div className="space-y-1.5">
+            <p className="text-lg font-semibold text-gray-900 dark:text-white">
+              Hey there! 👋
+            </p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+              Thanks for visiting — explore my work as a Product Manager.
+            </p>
+          </div>
+
+          {/* Dismiss button */}
           <button
             onClick={handleClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors z-10"
+            className="mt-1 px-5 py-2 rounded-lg text-sm font-medium bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors"
           >
-            <X className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+            Let's go
           </button>
+        </div>
 
-          {/* Content */}
-          <div className="relative z-10 text-center space-y-6">
-            {/* Animated wave with glow */}
-            <div className="relative inline-block">
-              <span className="text-6xl inline-block animate-[wave_2s_ease-in-out_infinite]" style={{ transformOrigin: '70% 70%' }}>👋</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400/40 via-purple-400/40 to-pink-400/40 rounded-full blur-2xl scale-150 animate-pulse" />
-            </div>
-            
-            {/* Title with gradient */}
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-                Welcome!
-              </h2>
-              <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">
-                Thanks for stopping by ✨
-              </p>
-            </div>
-            
-            {/* Description */}
-            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-              Explore my portfolio and discover my journey as a Product Manager.
-            </p>
-
-            {/* Animated icons row */}
-            <div className="flex justify-center items-center gap-4 pt-2">
-              <span className="text-2xl animate-bounce [animation-delay:0s]">🚀</span>
-              <div className="w-8 h-px bg-gradient-to-r from-blue-400 to-purple-400" />
-              <span className="text-2xl animate-bounce [animation-delay:0.2s]">💡</span>
-              <div className="w-8 h-px bg-gradient-to-r from-purple-400 to-pink-400" />
-              <span className="text-2xl animate-bounce [animation-delay:0.4s]">🎯</span>
-            </div>
-          </div>
+        {/* Progress bar */}
+        <div className="h-0.5 bg-gray-100 dark:bg-slate-800">
+          <div
+            className="h-full bg-gradient-to-r from-[#22c55e] via-[#3b82f6] to-[#8b5cf6] transition-none"
+            style={{ width: `${progress}%` }}
+          />
         </div>
       </div>
     </div>
