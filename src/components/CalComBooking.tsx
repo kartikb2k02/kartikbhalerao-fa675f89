@@ -34,15 +34,27 @@ export const CalComBooking: React.FC<CalComBookingProps> = ({
   }, []);
 
   return (
-    <button 
-      data-cal-namespace="secret"
-      data-cal-link={`${calUsername}/${eventType}`}
-      data-cal-config='{"layout":"month_view"}'
-      className="inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-2xl text-lg font-bold ring-offset-background transition-all duration-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gradient-to-r from-primary via-primary/90 to-primary/80 text-primary-foreground hover:from-primary/90 hover:via-primary hover:to-primary/90 w-full max-w-sm h-14 shadow-2xl hover:shadow-3xl hover:scale-[1.05] relative overflow-hidden group mx-auto"
-    >
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-      <Calendar className="h-5 w-5 relative z-10" />
-      <span className="relative z-10">Schedule a Meeting</span>
-    </button>
+    <div className="flex justify-center">
+      {/* gradient border wrapper */}
+      <div
+        className="p-[2px] rounded-2xl"
+        style={{ background: "linear-gradient(90deg, #22c55e, #3b82f6, #8b5cf6, #22c55e)", backgroundSize: "250% auto", animation: "gradient-shift 4s ease infinite" }}
+      >
+        <button
+          data-cal-namespace="secret"
+          data-cal-link={`${calUsername}/${eventType}`}
+          data-cal-config='{"layout":"month_view"}'
+          className="relative inline-flex items-center justify-center gap-3 px-8 h-14 rounded-2xl text-lg font-bold text-white overflow-hidden group transition-all duration-300 hover:scale-[1.03] focus-visible:outline-none w-full bg-black"
+        >
+          {/* hover: gradient fill */}
+          <span
+            className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-2xl"
+            style={{ background: "linear-gradient(90deg, #22c55e, #3b82f6, #8b5cf6, #22c55e)", backgroundSize: "250% auto", animation: "gradient-shift 4s ease infinite" }}
+          />
+          <Calendar className="h-5 w-5 relative z-10" />
+          <span className="relative z-10 tracking-wide">Schedule a Meeting</span>
+        </button>
+      </div>
+    </div>
   );
 };

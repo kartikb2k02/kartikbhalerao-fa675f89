@@ -72,19 +72,29 @@ export const HeroSection = () => {
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
-          <button
-            onClick={scrollToAbout}
-            className="px-8 py-3 rounded-xl font-semibold text-base bg-slate-800 hover:bg-slate-900 dark:bg-slate-700 dark:hover:bg-slate-600 text-white shadow-sm transition-colors cursor-pointer"
-          >
-            About Me
-          </button>
 
+          {/* About Me — gradient border, black fill */}
+          <div
+            className="p-[1.5px] rounded-xl"
+            style={{ background: "linear-gradient(90deg, #22c55e, #3b82f6, #8b5cf6)" }}
+          >
+            <button
+              onClick={scrollToAbout}
+              className="w-full px-8 py-3 rounded-[10px] font-semibold text-base bg-black text-white cursor-pointer hover:bg-slate-900 transition-colors"
+            >
+              About Me
+            </button>
+          </div>
+
+          {/* Explore My Builds — solid gradient fill, no animation */}
           <button
             onClick={scrollToCaseStudies}
-            className="px-8 py-3 rounded-xl font-semibold text-base bg-violet-600 hover:bg-violet-700 text-white shadow-sm transition-colors cursor-pointer"
+            className="px-8 py-3 rounded-xl font-semibold text-base text-white cursor-pointer hover:opacity-90 hover:scale-[1.02] transition-all duration-200"
+            style={{ background: "linear-gradient(90deg, #22c55e, #3b82f6, #8b5cf6)" }}
           >
             Explore My Builds
           </button>
+
         </div>
 
       </div>

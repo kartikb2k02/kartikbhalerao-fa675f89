@@ -1,5 +1,4 @@
 import React from "react";
-import { Linkedin, Mail, Calendar } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { CalComBooking } from "@/components/CalComBooking";
 import { Header } from "@/components/Header";
@@ -9,73 +8,49 @@ export default function Contact() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-background text-foreground">
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
+      <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
 
-          {/* Heading */}
-          <div className="mb-12">
+        {/* Dotted background — same as home */}
+        <div
+          className="fixed inset-0 pointer-events-none z-0"
+          style={{
+            backgroundImage: 'radial-gradient(circle, rgb(100 116 139 / 0.2) 1.5px, transparent 1.5px)',
+            backgroundSize: '22px 22px',
+          }}
+        />
+
+        {/* Glowing orbs */}
+        <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+          <div
+            className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full opacity-20 blur-3xl"
+            style={{ background: "radial-gradient(circle, #22c55e 0%, transparent 70%)" }}
+          />
+          <div
+            className="absolute top-1/3 -right-40 w-[450px] h-[450px] rounded-full opacity-15 blur-3xl"
+            style={{ background: "radial-gradient(circle, #3b82f6 0%, transparent 70%)" }}
+          />
+          <div
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[400px] rounded-full opacity-10 blur-3xl"
+            style={{ background: "radial-gradient(circle, #8b5cf6 0%, transparent 70%)" }}
+          />
+        </div>
+
+        <section className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
+
+          {/* Heading — centered */}
+          <div className="mb-12 text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
               Get in{" "}
               <span className="animate-gradient-text">Touch</span>
             </h1>
-            <p className="mt-4 text-base text-slate-500 dark:text-slate-400 max-w-md">
+            <p className="mt-4 text-base text-slate-500 dark:text-slate-400 mx-auto max-w-md">
               Have a project in mind or just want to talk product? I'm always up for a good conversation.
             </p>
           </div>
 
-          {/* Two column layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:items-start">
-
-            {/* Left — info */}
-            <div className="lg:col-span-2 flex flex-col gap-8 lg:pt-1">
-
-              <div className="space-y-3">
-                <p className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest">
-                  Connect
-                </p>
-                <a
-                  href="https://www.linkedin.com/in/kartik-bhalerao/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors group"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center group-hover:bg-[#0A66C2] group-hover:text-white transition-all">
-                    <Linkedin className="w-4 h-4" />
-                  </div>
-                  <span className="text-sm font-medium">LinkedIn</span>
-                </a>
-                <a
-                  href="mailto:kartikbhalerao948@gmail.com"
-                  className="flex items-center gap-3 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors group"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center group-hover:bg-slate-900 dark:group-hover:bg-white group-hover:text-white dark:group-hover:text-slate-900 transition-all">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <span className="text-sm font-medium">kartikbhalerao948@gmail.com</span>
-                </a>
-              </div>
-
-              <div className="h-px bg-slate-100 dark:bg-slate-800" />
-
-              <div className="space-y-3">
-                <p className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest">
-                  Prefer a call?
-                </p>
-                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                  Book a slot directly on my calendar — no back and forth.
-                </p>
-                <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-                  <Calendar className="w-4 h-4" />
-                  <span>Usually responds within 24 hours</span>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Right — form */}
-            <div className="lg:col-span-3">
-              <ContactForm />
-            </div>
+          {/* Contact form */}
+          <div className="max-w-2xl mx-auto">
+            <ContactForm />
           </div>
 
           {/* Cal.com booking */}

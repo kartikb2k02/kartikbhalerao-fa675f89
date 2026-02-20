@@ -48,8 +48,11 @@ import {
   SiDiscord,
   SiSupabase,
   SiClickup,
+  SiReplit,
+  SiTypeform,
+  SiSurveymonkey,
 } from "react-icons/si";
-import { MessageSquare, Users, FileText, Clipboard, Brain, Sparkles, PenTool, LayoutGrid } from "lucide-react";
+import { MessageSquare, Users, FileText, Brain, Sparkles, PenTool } from "lucide-react";
 import { VscVscode } from "react-icons/vsc";
 
 // Counter animation hook
@@ -318,6 +321,16 @@ export const SkillsSection = () => {
       textColor: "text-orange-500",
     },
   ];
+  // Text-based logo for brands without an SI icon
+  const TI = ({ t }: { t: string }) => (
+    <span className="font-black text-white text-xs tracking-tighter leading-none">{t}</span>
+  );
+  // Heart icon for Lovable
+  const HeartIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-5 h-5" fill="white">
+      <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+    </svg>
+  );
   const toolCategories = {
     management: {
       title: "Product Management",
@@ -327,7 +340,13 @@ export const SkillsSection = () => {
           name: "Monday.com",
           description: "Work OS",
           color: "from-[#FF3D57] to-[#6161FF]",
-          icon: <LayoutGrid className="w-5 h-5" />,
+          icon: (
+            <svg viewBox="0 0 36 14" className="w-7 h-3.5">
+              <circle cx="5" cy="7" r="5" fill="#F62B54"/>
+              <circle cx="18" cy="7" r="5" fill="#FFCB00"/>
+              <circle cx="31" cy="7" r="5" fill="#00CA72"/>
+            </svg>
+          ),
           tooltip: "For visual work management and team collaboration",
           whyIUse:
             "Monday.com's visual interface makes complex project management intuitive. I use it to align cross-functional teams and track work across departments.",
@@ -342,7 +361,7 @@ export const SkillsSection = () => {
           name: "Aha!",
           description: "Roadmaps",
           color: "from-[#0073CF] to-[#00A4E4]",
-          icon: <Layers className="w-5 h-5" />,
+          icon: <TI t="Aha!" />,
           tooltip: "For strategic roadmapping and product planning",
           whyIUse:
             "Aha! is my go-to for strategic product planning. It connects goals to features and helps communicate the product vision to stakeholders clearly.",
@@ -357,7 +376,7 @@ export const SkillsSection = () => {
           name: "ProductBoard",
           description: "Insights",
           color: "from-[#3B49DF] to-[#7C3AED]",
-          icon: <Target className="w-5 h-5" />,
+          icon: <TI t="pb" />,
           tooltip: "For customer-driven product management",
           whyIUse:
             "ProductBoard helps me prioritize features based on real customer feedback. It keeps user insights at the center of every product decision.",
@@ -372,7 +391,7 @@ export const SkillsSection = () => {
           name: "Craft.io",
           description: "Product",
           color: "from-[#FF6B35] to-[#F7931E]",
-          icon: <FileText className="w-5 h-5" />,
+          icon: <TI t="C" />,
           tooltip: "For end-to-end product management",
           whyIUse:
             "Craft.io provides a comprehensive product management suite. I use it to align product specs with roadmaps and collaborate with stakeholders.",
@@ -433,7 +452,7 @@ export const SkillsSection = () => {
           name: "Segment",
           description: "CDP",
           color: "from-[#52BD94] to-[#43A879]",
-          icon: <Layers className="w-5 h-5" />,
+          icon: <TI t="S" />,
           tooltip: "For customer data infrastructure and integration",
           whyIUse:
             "Segment unifies all customer data in one place. It's essential for creating a single source of truth across analytics tools.",
@@ -448,7 +467,7 @@ export const SkillsSection = () => {
           name: "Heap",
           description: "Auto-Track",
           color: "from-[#5E4AE3] to-[#9B59B6]",
-          icon: <BarChart3 className="w-5 h-5" />,
+          icon: <TI t="H" />,
           tooltip: "For automatic event tracking and retroactive analysis",
           whyIUse:
             "Heap's automatic event capture means I never miss important user interactions. Perfect for retroactive analysis without upfront instrumentation.",
@@ -484,7 +503,7 @@ export const SkillsSection = () => {
           name: "Lovable",
           description: "AI Dev",
           color: "from-[#8B5CF6] to-[#EC4899]",
-          icon: <Sparkles className="w-5 h-5" />,
+          icon: <HeartIcon />,
           tooltip: "For AI-powered app development",
           whyIUse:
             "Lovable transforms ideas into working applications. I use it to rapidly prototype and build full-stack apps with AI assistance.",
@@ -499,7 +518,7 @@ export const SkillsSection = () => {
           name: "Flowise",
           description: "AI Flows",
           color: "from-[#3B82F6] to-[#06B6D4]",
-          icon: <Brain className="w-5 h-5" />,
+          icon: <TI t="F" />,
           tooltip: "For building LLM apps visually",
           whyIUse:
             "Flowise makes building AI workflows visual and intuitive. Perfect for creating custom AI agents and chatbots without complex coding.",
@@ -514,7 +533,7 @@ export const SkillsSection = () => {
           name: "Replit",
           description: "Code AI",
           color: "from-[#F26207] to-[#FB8C00]",
-          icon: <Code className="w-5 h-5" />,
+          icon: <SiReplit className="w-5 h-5" />,
           tooltip: "For collaborative AI-assisted coding",
           whyIUse:
             "Replit's AI features accelerate coding and prototyping. It's my go-to for quick experiments and collaborative development.",
@@ -605,7 +624,7 @@ export const SkillsSection = () => {
           name: "Balsamiq",
           description: "Wireframes",
           color: "from-[#CC0000] to-[#FF6666]",
-          icon: <PenTool className="w-5 h-5" />,
+          icon: <TI t="B" />,
           tooltip: "For rapid low-fidelity wireframing",
           whyIUse:
             "Balsamiq's sketch-style wireframes keep focus on functionality over aesthetics. Perfect for early-stage product discovery.",
@@ -620,7 +639,7 @@ export const SkillsSection = () => {
           name: "Whimsical",
           description: "Diagrams",
           color: "from-[#7C3AED] to-[#A78BFA]",
-          icon: <Layers className="w-5 h-5" />,
+          icon: <TI t="W" />,
           tooltip: "For flowcharts and mind maps",
           whyIUse:
             "Whimsical makes creating flowcharts and mind maps beautiful and easy. Great for documenting user flows and system architecture.",
@@ -666,7 +685,7 @@ export const SkillsSection = () => {
           name: "SurveyMonkey",
           description: "Surveys",
           color: "from-[#00BF6F] to-[#00A15F]",
-          icon: <Clipboard className="w-5 h-5" />,
+          icon: <SiSurveymonkey className="w-5 h-5" />,
           tooltip: "For creating and analyzing surveys",
           whyIUse:
             "SurveyMonkey helps me gather structured user feedback at scale. Essential for NPS tracking and customer satisfaction research.",
@@ -676,7 +695,7 @@ export const SkillsSection = () => {
           name: "Typeform",
           description: "Forms",
           color: "from-[#262627] to-[#4B4B4B]",
-          icon: <FileText className="w-5 h-5" />,
+          icon: <SiTypeform className="w-5 h-5" />,
           tooltip: "For beautiful conversational forms",
           whyIUse:
             "Typeform creates engaging survey experiences that boost response rates. Perfect for user research and feedback collection.",
@@ -691,7 +710,7 @@ export const SkillsSection = () => {
           name: "UserTesting",
           description: "UX Research",
           color: "from-[#34A853] to-[#0F9D58]",
-          icon: <Users className="w-5 h-5" />,
+          icon: <TI t="UT" />,
           tooltip: "For remote usability testing",
           whyIUse:
             "UserTesting provides rapid access to real users for feedback. It accelerates the validation process significantly.",
@@ -939,104 +958,73 @@ export const SkillsSection = () => {
           </div>
 
           {/* Tools Grid by Category */}
-          <div className="space-y-8">
+          <div className="space-y-10">
             {Object.entries(toolCategories).map(([key, category]) => (
-              <div key={key} className="relative">
+              <div key={key}>
                 {/* Category Header */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">{category.icon}</div>
-                  <h3 className="font-bold text-lg text-slate-800 dark:text-white">{category.title}</h3>
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-500 dark:text-slate-400">
+                    {category.icon}
+                  </div>
+                  <h3 className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                    {category.title}
+                  </h3>
                   <div className="flex-1 h-px bg-gradient-to-r from-slate-200 dark:from-slate-700 to-transparent" />
+                  <span className="text-xs text-slate-400 dark:text-slate-600">{category.tools.length} tools</span>
                 </div>
 
-                {/* Tools Row */}
-                <TooltipProvider delayDuration={200}>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-                    {category.tools.map((tool, index) => (
-                      <Tooltip key={index}>
-                        <TooltipTrigger asChild>
-                          <div
-                            className="group relative"
-                            onMouseEnter={() => setHoveredTool(tool.name)}
-                            onMouseLeave={() => setHoveredTool(null)}
-                            onClick={() =>
-                              setSelectedTool({
-                                ...tool,
-                                categoryTitle: category.title,
-                              })
-                            }
-                          >
-                            <div
-                              className={cn(
-                                "relative p-4 rounded-2xl transition-all duration-300 cursor-pointer overflow-hidden",
-                                hoveredTool === tool.name
-                                  ? "border-white/30 shadow-2xl scale-105 -translate-y-1"
-                                  : "border border-white/20 dark:border-white/10",
-                                // Glassy background
-                                "bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl",
-                                "hover:bg-white/80 dark:hover:bg-slate-800/80",
-                              )}
-                            >
-                              {/* Subtle gradient overlay */}
-                              <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-white/10 dark:from-white/5 dark:to-transparent rounded-2xl pointer-events-none" />
+                {/* Tools Grid — app-icon style */}
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+                  {category.tools.map((tool, index) => (
+                    <div
+                      key={index}
+                      className="group relative cursor-pointer"
+                      onMouseEnter={() => setHoveredTool(tool.name)}
+                      onMouseLeave={() => setHoveredTool(null)}
+                      onClick={() => setSelectedTool({ ...tool, categoryTitle: category.title })}
+                    >
+                      {/* Brand-colored glow behind card on hover */}
+                      <div
+                        className={cn(
+                          "absolute -inset-0.5 bg-gradient-to-br rounded-2xl blur-md transition-opacity duration-300 -z-10",
+                          tool.color,
+                          hoveredTool === tool.name ? "opacity-60" : "opacity-0",
+                        )}
+                      />
 
-                              {/* Colored glow on hover */}
-                              <div
-                                className={cn(
-                                  "absolute -inset-1 bg-gradient-to-br rounded-2xl blur-xl transition-opacity duration-300 -z-10",
-                                  tool.color,
-                                  hoveredTool === tool.name ? "opacity-40" : "opacity-0",
-                                )}
-                              />
-
-                              {/* Inner border highlight */}
-                              <div className="absolute inset-[1px] rounded-2xl bg-gradient-to-br from-white/60 to-transparent dark:from-white/10 pointer-events-none" />
-
-                              {/* Shine effect */}
-                              <div
-                                className={cn(
-                                  "absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full transition-transform duration-700",
-                                  hoveredTool === tool.name && "translate-x-full",
-                                )}
-                              />
-
-                              {/* Content */}
-                              <div className="relative z-10 gap-3 items-center justify-center flex flex-row">
-                                {/* Icon with gradient background and glow */}
-                                <div
-                                  className={cn(
-                                    "p-3 rounded-xl transition-all duration-300 shadow-lg",
-                                    "bg-gradient-to-br",
-                                    tool.color,
-                                    hoveredTool === tool.name ? "scale-110 shadow-xl" : "shadow-md",
-                                  )}
-                                >
-                                  <div className="text-white">{tool.icon}</div>
-                                </div>
-                                <div className="text-center">
-                                  <h4 className="font-bold text-sm text-slate-800 dark:text-white">{tool.name}</h4>
-                                  <p className="text-xs mt-0.5 text-slate-500 dark:text-slate-400">
-                                    {tool.description}
-                                  </p>
-                                </div>
-                                {/* Click indicator */}
-                                <div className="text-[10px] text-slate-400 dark:text-slate-500 flex items-center gap-1">
-                                  <span>​</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </TooltipTrigger>
-                        <TooltipContent
-                          side="top"
-                          className="max-w-xs bg-slate-900 dark:bg-slate-800 text-white px-3 py-2 rounded-lg shadow-xl border-0 z-50"
+                      <div
+                        className={cn(
+                          "flex flex-col items-center gap-2.5 p-4 rounded-2xl transition-all duration-300",
+                          "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800",
+                          hoveredTool === tool.name
+                            ? "border-transparent shadow-2xl -translate-y-2 scale-[1.05]"
+                            : "hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md",
+                        )}
+                      >
+                        {/* App icon */}
+                        <div
+                          className={cn(
+                            "w-12 h-12 rounded-2xl bg-gradient-to-br flex items-center justify-center shadow-md transition-all duration-300",
+                            tool.color,
+                            hoveredTool === tool.name ? "shadow-xl scale-110" : "",
+                          )}
                         >
-                          <span className="text-xs">Click to see more details</span>
-                        </TooltipContent>
-                      </Tooltip>
-                    ))}
-                  </div>
-                </TooltipProvider>
+                          <div className="text-white [&>svg]:w-6 [&>svg]:h-6">{tool.icon}</div>
+                        </div>
+
+                        {/* Name */}
+                        <p className="font-semibold text-xs text-slate-800 dark:text-white text-center leading-tight">
+                          {tool.name}
+                        </p>
+
+                        {/* Tag */}
+                        <span className="text-[10px] text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-full leading-none">
+                          {tool.description}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
