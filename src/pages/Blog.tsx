@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import { blogPosts, BlogPost } from "@/data/blogPosts";
 import { getMarkdownContent } from "@/utils/blogContent";
@@ -9,6 +10,7 @@ import { useBlogPreferences } from "@/hooks/useBlogPreferences";
 export type SortOption = "date" | "readTime" | "title";
 
 const Blog = () => {
+  const [searchParams] = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
@@ -93,6 +95,15 @@ const Blog = () => {
     setMarkdownContent(content);
   };
 
+  // Auto-open post when arriving from header dropdown (?id=X)
+  useEffect(() => {
+    const id = searchParams.get("id");
+    if (id) {
+      const post = blogPosts.find(p => p.id === parseInt(id));
+      if (post) handleBlogPostClick(post);
+    }
+  }, []);
+
   const handleBackToList = () => {
     setSelectedPost(null);
     setMarkdownContent("");
@@ -107,7 +118,7 @@ const Blog = () => {
     blogTheme === "system" ? "" : blogTheme === "dark" ? "dark" : "light-theme";
 
   return (
-    <div className={`min-h-screen w-full bg-background text-foreground relative ${blogThemeClass}`}>
+    <div className={`min-h-screen w-full text-foreground relative bg-white dark:bg-zinc-900 ${blogThemeClass}`}>
       <Header />
       <div className="pt-16">
         <BlogLayout
