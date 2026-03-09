@@ -1,24 +1,7 @@
 # AI-First Product Strategy: How to Build with Intelligence at the Core
 
-![AI Strategy](https://cdn-images-1.medium.com/max/1024/1*DZEXrRvOwDAIGygL56lQPg.png)
-
 <iframe width="680" height="382" src="https://www.youtube.com/embed/g0TUfIOn_Ts" title="Adding AI to SaaS: Inside the AI Product Strategies of Figma, Cloudflare, GitHub and Ramp" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
 </iframe>
-
----
-
-## 🧭 Table of Contents
-
-1. [What Is an AI-First Product Strategy?](#-1-what-is-an-ai-first-product-strategy)
-2. [Rethinking Product Vision: From Pain Points to Predictions](#-2-rethinking-product-vision-from-pain-points-to-predictions)
-3. [Build vs Integrate: Choosing Your AI Path](#-3-build-vs-integrate-choosing-your-ai-path)
-4. [Aligning AI with the Product Roadmap](#-4-aligning-ai-with-the-product-roadmap)
-5. [Don't Ignore Risk: Ethics, Bias & Transparency](#-5-dont-ignore-risk-ethics-bias--transparency)
-6. [Metrics That Matter in AI-First Products](#-6-metrics-that-matter-in-ai-first-products)
-7. [Implementing a Multi-Directional Strategy](#-7-implementing-a-multi-directional-strategy)
-8. [The Three Critical Elements of AI-First Strategy](#-8-the-three-critical-elements-of-ai-first-strategy)
-9. [AI-First Roadmap: From Strategy to Execution](#-9-ai-first-roadmap-from-strategy-to-execution)
-10. [Conclusion: Evolving Your PM Mindset](#-conclusion-evolving-your-pm-mindset)
 
 ---
 

@@ -1,7 +1,5 @@
 # MoSCoW: The Prioritization Method That Saves Your Sanity (and Your Sprint)
 
-![MoSCoW Prioritization](https://cdn-images-1.medium.com/max/1024/1*btUDTEw176NxZYSORFFCAQ.png)
-
 ---
 
 ## Introduction

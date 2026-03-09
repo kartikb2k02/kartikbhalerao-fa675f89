@@ -86,21 +86,27 @@ export const AboutSection = () => {
 
             <div className="space-y-10">
               {/* Decision Machine */}
-              <article className="relative pl-8" style={{ borderLeft: "2px solid transparent", borderImage: "linear-gradient(180deg, #22c55e, #3b82f6) 1" }}>
-                {/* Gradient dot */}
-                <div className="absolute -left-[7px] top-1 w-3.5 h-3.5 rounded-full shadow-md" style={{ background: "linear-gradient(135deg, #22c55e, #3b82f6)" }} />
+              <article className="relative pl-8 border-l-2 border-black dark:border-white">
+                <div className="absolute -left-[7px] top-1 w-3.5 h-3.5 rounded-full shadow-md bg-black dark:bg-white" />
 
-                <header className="space-y-1">
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">Product Analyst</h3>
-                  <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">
-                    Decision Machine · Pune, India · June 2024 – Present
-                  </p>
-                  <span className="inline-block text-xs font-semibold text-white px-3 py-0.5 rounded-full" style={{ background: "linear-gradient(90deg, #22c55e, #3b82f6)" }}>
-                    Current
-                  </span>
+                {/* Header */}
+                <header className="flex flex-wrap items-start justify-between gap-3 mb-6">
+                  <div>
+                    <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">Product Analyst</h3>
+                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-0.5">
+                      Decision Machine &nbsp;·&nbsp; Pune, India
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-end gap-1.5">
+                    <span className="text-xs font-semibold text-white px-3 py-1 rounded-full bg-black dark:bg-white dark:text-black">
+                      Current
+                    </span>
+                    <span className="text-xs text-slate-400 dark:text-slate-500 font-medium">June 2024 – Present</span>
+                  </div>
                 </header>
 
-                <div className="mt-6 space-y-7">
+                {/* Aspect cards */}
+                <div className="grid gap-3">
                   {[
                     {
                       icon: "🔍",
@@ -120,6 +126,14 @@ export const AboutSection = () => {
                         "Broke down epics into user stories with clear JTBD framing, reducing ambiguity during sprint planning.",
                         "Ran RICE-based prioritization workshops to align stakeholders on what ships in V1 vs. what gets parked in the backlog.",
                         "Defined MVP scope around three core flows: credit score explainer, savings nudge engine, and loan eligibility simulator.",
+                      ],
+                    },
+                    {
+                      icon: "🤖",
+                      label: "AI / ML",
+                      points: [
+                        "Defined product requirements and integration specs for 20+ third-party platforms — including Google Meet, Linear, HubSpot, and Stripe — translating business needs into clear API contracts for engineering.",
+                        "Owned the end-to-end product scope for AI agent workflows, writing use cases, edge case documentation, and success criteria that guided LLM feature development.",
                       ],
                     },
                     {
@@ -152,89 +166,111 @@ export const AboutSection = () => {
                         "Achieved 78% feature adoption on MVP core flows within the first month post-launch.",
                       ],
                     },
-                  ].map((aspect, idx, arr) => (
-                    <div key={aspect.label}>
-                      {/* Aspect header */}
-                      <div className="flex items-center gap-3 mb-4">
-                        <span
-                          className="w-1 h-5 rounded-full flex-shrink-0"
-                          style={{ background: "linear-gradient(180deg, #22c55e, #3b82f6)" }}
-                        />
-                        <h4 className="text-base font-bold text-slate-900 dark:text-white">
+                  ].map((aspect) => (
+                    <div
+                      key={aspect.label}
+                      className="rounded-xl border border-slate-100 dark:border-white/5 bg-slate-50/60 dark:bg-white/[0.02] px-5 py-4 hover:border-slate-200 dark:hover:border-white/10 hover:bg-slate-50 dark:hover:bg-white/[0.04] transition-all duration-200"
+                    >
+                      {/* Aspect label */}
+                      <div className="flex items-center gap-2.5 mb-3">
+                        <span className="w-[3px] h-4 rounded-full flex-shrink-0 bg-black dark:bg-white" />
+                        <span className="text-xs font-bold tracking-widest uppercase px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white text-slate-700 dark:text-black border border-slate-200 dark:border-white">
                           {aspect.label}
-                        </h4>
-                        <div className="flex-1 h-px bg-gradient-to-r from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent" />
+                        </span>
                       </div>
 
                       {/* Bullet points */}
-                      <ul className="space-y-1 pl-4">
-                        {aspect.points.map((point, i) => (
-                          <li
-                            key={i}
-                            className="group flex items-start gap-3 text-base text-slate-600 dark:text-slate-300 leading-relaxed rounded-lg px-2 py-1.5 -mx-2 transition-colors duration-150 hover:bg-slate-50 dark:hover:bg-white/5"
-                          >
-                            <span
-                              className="mt-[0.55rem] w-1.5 h-1.5 rounded-full flex-shrink-0 transition-transform duration-150 group-hover:scale-125"
-                              style={{ background: "linear-gradient(135deg, #22c55e, #3b82f6)" }}
-                            />
+                      <ul className="space-y-2">
+                        {aspect.points.map((point, i) => {
+                          const dotColors = [
+                            "bg-black dark:bg-white",
+                            "bg-black dark:bg-white",
+                            "bg-black dark:bg-white",
+                            "bg-black dark:bg-white",
+                          ];
+                          return (
+                          <li key={i} className="flex items-start gap-2.5 text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                            <span className={`mt-[0.45rem] w-1.5 h-1.5 rounded-full flex-shrink-0 ${dotColors[i % dotColors.length]}`} />
                             {point}
                           </li>
-                        ))}
+                          );
+                        })}
                       </ul>
-
-                      {idx < arr.length - 1 && (
-                        <div className="mt-6 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent dark:via-slate-700" />
-                      )}
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-8 flex flex-wrap gap-2">
+                {/* Tags */}
+                <div className="mt-6 pt-5 border-t border-slate-100 dark:border-white/5 flex flex-wrap gap-2">
                   {["Fintech", "B2C Product", "User Research", "PRD Writing", "Mixpanel", "A/B Testing", "Personal Finance", "AI Integration", "Product Analytics"].map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-50 dark:bg-zinc-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-zinc-700 hover:border-blue-400 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all duration-150 cursor-default"
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-semibold bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white hover:opacity-70 transition-opacity duration-150 cursor-default"
                     >
-                      <span className="text-slate-300 dark:text-slate-600 font-normal">#</span>
-                      {tag}
+                      <span className="opacity-50 font-normal">#</span>{tag}
                     </span>
                   ))}
                 </div>
               </article>
 
               {/* Divider */}
-              <div className="w-full h-px" style={{ background: "linear-gradient(90deg, transparent, #3b82f6 40%, #8b5cf6 60%, transparent)" }} />
+              <div className="w-full h-px bg-black dark:bg-white opacity-15" />
 
               {/* Ocius */}
-              <article className="relative pl-8" style={{ borderLeft: "2px solid transparent", borderImage: "linear-gradient(180deg, #3b82f6, #8b5cf6) 1" }}>
-                <div className="absolute -left-[7px] top-1 w-3.5 h-3.5 rounded-full shadow-md" style={{ background: "linear-gradient(135deg, #3b82f6, #8b5cf6)" }} />
+              <article className="relative pl-8 border-l-2 border-black dark:border-white">
+                <div className="absolute -left-[7px] top-1 w-3.5 h-3.5 rounded-full shadow-md bg-black dark:bg-white" />
 
-                <header className="space-y-1">
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">Product Manager</h3>
-                  <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">
-                    Ocius · Remote · Jan 2024 – May 2024
-                  </p>
-                  <span className="inline-block text-xs font-semibold text-white px-3 py-0.5 rounded-full" style={{ background: "linear-gradient(90deg, #3b82f6, #8b5cf6)" }}>
-                    Completed
-                  </span>
+                {/* Header */}
+                <header className="flex flex-wrap items-start justify-between gap-3 mb-6">
+                  <div>
+                    <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">Product Manager</h3>
+                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-0.5">
+                      Ocius &nbsp;·&nbsp; Remote
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-end gap-1.5">
+                    <span className="text-xs font-semibold text-white px-3 py-1 rounded-full bg-black dark:bg-white dark:text-black">
+                      Completed
+                    </span>
+                    <span className="text-xs text-slate-400 dark:text-slate-500 font-medium">Jan 2024 – May 2024</span>
+                  </div>
                 </header>
 
-                <ul className="mt-5 space-y-3">
-                  <Bullet>Took ownership of building an internal analytics dashboard to help sales and marketing teams track campaign performance and lead conversions.</Bullet>
-                  <Bullet>Worked closely with data and medical affairs to gather requirements and prioritize features that solved real user pain points.</Bullet>
-                  <Bullet>Translated scattered requests into clear user stories and wireframes to speed up dev collaboration.</Bullet>
-                  <Bullet>Set up a lightweight feedback loop with stakeholders to ship faster and iterate based on real usage.</Bullet>
-                  <Bullet>Automated recurring reports with SQL to replace manual Excel-heavy workflows.</Bullet>
-                </ul>
+                {/* Points card */}
+                <div className="rounded-xl border border-slate-100 dark:border-white/5 bg-slate-50/60 dark:bg-white/[0.02] px-5 py-4 hover:border-slate-200 dark:hover:border-white/10 hover:bg-slate-50 dark:hover:bg-white/[0.04] transition-all duration-200">
+                  <ul className="space-y-2">
+                    {[
+                      "Took ownership of building an internal analytics dashboard to help sales and marketing teams track campaign performance and lead conversions.",
+                      "Worked closely with data and medical affairs to gather requirements and prioritize features that solved real user pain points.",
+                      "Translated scattered requests into clear user stories and wireframes to speed up dev collaboration.",
+                      "Set up a lightweight feedback loop with stakeholders to ship faster and iterate based on real usage.",
+                      "Automated recurring reports with SQL to replace manual Excel-heavy workflows.",
+                    ].map((point, i) => {
+                      const dotColors = [
+                        "bg-black dark:bg-white",
+                        "bg-black dark:bg-white",
+                        "bg-black dark:bg-white",
+                        "bg-black dark:bg-white",
+                        "bg-black dark:bg-white",
+                      ];
+                      return (
+                      <li key={i} className="flex items-start gap-2.5 text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                        <span className={`mt-[0.45rem] w-1.5 h-1.5 rounded-full flex-shrink-0 ${dotColors[i % dotColors.length]}`} />
+                        {point}
+                      </li>
+                      );
+                    })}
+                  </ul>
+                </div>
 
-                <div className="mt-8 flex flex-wrap gap-2">
+                {/* Tags */}
+                <div className="mt-6 pt-5 border-t border-slate-100 dark:border-white/5 flex flex-wrap gap-2">
                   {["Analytics Dashboard", "Cross-functional", "Data Analytics", "User Stories", "Wireframing", "SQL", "Stakeholders", "Process Automation", "HealthTech"].map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-50 dark:bg-zinc-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-zinc-700 hover:border-blue-400 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all duration-150 cursor-default"
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-semibold bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white hover:opacity-70 transition-opacity duration-150 cursor-default"
                     >
-                      <span className="text-slate-300 dark:text-slate-600 font-normal">#</span>
-                      {tag}
+                      <span className="opacity-50 font-normal">#</span>{tag}
                     </span>
                   ))}
                 </div>

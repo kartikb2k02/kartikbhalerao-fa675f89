@@ -32,7 +32,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-07-14",
     readTime: "7 min read",
     tags: ["Prioritization", "Product Management", "Agile", "MoSCoW"],
-    image: "/lovable-uploads/89406d0e-28cd-4dbf-9e94-3244e4646a29.png",
+    image: "/lovable-uploads/moscow-banner.svg",
     slug: "moscow-prioritization-method",
     featured: true
   },
@@ -44,7 +44,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-07-01",
     readTime: "8 min read",
     tags: ["AI", "Product Management", "Decision Making", "Analytics"],
-    image: "/lovable-uploads/89406d0e-28cd-4dbf-9e94-3244e4646a29.png",
+    image: "/lovable-uploads/ai-copilot-banner.svg",
     slug: "ai-copilot-decision-making"
   },
   {
@@ -55,7 +55,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-06-05",
     readTime: "7 min read",
     tags: ["Data Analytics", "Product Strategy", "Decision Making"],
-    image: "/lovable-uploads/89406d0e-28cd-4dbf-9e94-3244e4646a29.png",
+    image: "/lovable-uploads/data-driven-banner.svg",
     slug: "data-driven-decision-making-experience"
   },
   {
@@ -66,7 +66,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-05-28",
     readTime: "10 min read",
     tags: ["MVP", "Product Strategy", "Startup"],
-    image: "/lovable-uploads/89406d0e-28cd-4dbf-9e94-3244e4646a29.png",
+    image: "/lovable-uploads/idea-to-mvp-banner.svg",
     slug: "idea-to-mvp-product-manager-journey",
     featured: true
   },
@@ -78,7 +78,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-05-20",
     readTime: "9 min read",
     tags: ["User Research", "Product Management", "Insights"],
-    image: "/lovable-uploads/89406d0e-28cd-4dbf-9e94-3244e4646a29.png",
+    image: "/lovable-uploads/user-research-banner.svg",
     slug: "user-research-that-matters"
   },
   {
@@ -89,7 +89,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-05-15",
     readTime: "12 min read",
     tags: ["Team Management", "Leadership", "Scaling"],
-    image: "/lovable-uploads/89406d0e-28cd-4dbf-9e94-3244e4646a29.png",
+    image: "/lovable-uploads/scaling-teams-banner.svg",
     slug: "scaling-product-teams-lessons"
   }
 ];

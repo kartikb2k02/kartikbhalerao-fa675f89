@@ -114,28 +114,34 @@ export const Header = () => {
 
               {/* Dropdown */}
               {skillsDropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 rounded-xl border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-xl shadow-black/10 dark:shadow-black/40 overflow-hidden z-50">
-                  <div className="px-4 py-2.5 border-b border-slate-100 dark:border-zinc-800">
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-zinc-500">Skill Areas</p>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-80 rounded-2xl border border-slate-200/80 dark:border-zinc-700/60 bg-white dark:bg-zinc-900 shadow-2xl shadow-black/10 dark:shadow-black/50 z-50 overflow-hidden">
+                  {/* Header */}
+                  <div className="px-5 py-3.5 bg-slate-50 dark:bg-zinc-800/60 border-b border-slate-100 dark:border-zinc-700/60">
+                    <p className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-400 dark:text-zinc-400">Skill Areas</p>
                   </div>
-                  <div className="py-1">
+                  {/* Items */}
+                  <div className="py-2">
                     {skillCategories.map((cat, i) => (
                       <button
                         key={i}
                         onClick={() => scrollToSection('skills')}
-                        className="w-full flex flex-col px-4 py-2.5 hover:bg-blue-50 dark:hover:bg-blue-500/10 transition-colors duration-100 text-left group/item"
+                        className="w-full flex items-center gap-3 px-5 py-2.5 text-left group/item hover:bg-slate-50 dark:hover:bg-zinc-800/60 transition-colors duration-100"
                       >
-                        <span className="text-[13px] font-medium text-slate-700 dark:text-zinc-200 group-hover/item:text-blue-600 dark:group-hover/item:text-blue-400 transition-colors">
-                          {cat.title}
-                        </span>
-                        <span className="text-[11px] text-slate-400 dark:text-zinc-500 mt-0.5">{cat.description}</span>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-[13px] font-semibold text-slate-800 dark:text-zinc-100 group-hover/item:text-slate-900 dark:group-hover/item:text-white transition-colors truncate">
+                            {cat.title}
+                          </p>
+                          <p className="text-[11px] text-slate-400 dark:text-zinc-500 mt-0.5 truncate">{cat.description}</p>
+                        </div>
+                        <span className="text-slate-300 dark:text-zinc-600 group-hover/item:text-slate-400 dark:group-hover/item:text-zinc-400 text-xs transition-colors">→</span>
                       </button>
                     ))}
                   </div>
-                  <div className="px-4 py-2.5 border-t border-slate-100 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-950">
+                  {/* Footer */}
+                  <div className="px-5 py-3 bg-slate-50 dark:bg-zinc-800/60 border-t border-slate-100 dark:border-zinc-700/60">
                     <button
                       onClick={() => scrollToSection('skills')}
-                      className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+                      className="text-[11px] font-bold text-slate-900 dark:text-white hover:opacity-70 transition-opacity tracking-wide"
                     >
                       View all skills →
                     </button>
@@ -161,28 +167,34 @@ export const Header = () => {
 
               {/* Dropdown */}
               {blogDropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 rounded-xl border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-xl shadow-black/10 dark:shadow-black/40 overflow-hidden z-50">
-                  <div className="px-4 py-2.5 border-b border-slate-100 dark:border-zinc-800">
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-zinc-500">Articles</p>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-80 rounded-2xl border border-slate-200/80 dark:border-zinc-700/60 bg-white dark:bg-zinc-900 shadow-2xl shadow-black/10 dark:shadow-black/50 z-50 overflow-hidden">
+                  {/* Header */}
+                  <div className="px-5 py-3.5 bg-slate-50 dark:bg-zinc-800/60 border-b border-slate-100 dark:border-zinc-700/60">
+                    <p className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-400 dark:text-zinc-400">Articles</p>
                   </div>
-                  <div className="py-1">
+                  {/* Items */}
+                  <div className="py-2">
                     {blogPosts.map(post => (
                       <button
                         key={post.id}
                         onClick={() => navigate(`/blog?id=${post.id}`)}
-                        className="w-full flex flex-col px-4 py-2.5 hover:bg-emerald-50 dark:hover:bg-emerald-500/10 transition-colors duration-100 text-left group/item"
+                        className="w-full flex items-center gap-3 px-5 py-2.5 text-left group/item hover:bg-slate-50 dark:hover:bg-zinc-800/60 transition-colors duration-100"
                       >
-                        <span className="text-[13px] font-medium text-slate-700 dark:text-zinc-200 group-hover/item:text-emerald-600 dark:group-hover/item:text-emerald-400 line-clamp-1 transition-colors">
-                          {post.title}
-                        </span>
-                        <span className="text-[11px] text-slate-400 dark:text-zinc-500 mt-0.5 capitalize">{post.category}</span>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-[13px] font-semibold text-slate-800 dark:text-zinc-100 group-hover/item:text-slate-900 dark:group-hover/item:text-white transition-colors line-clamp-1">
+                            {post.title}
+                          </p>
+                          <p className="text-[11px] text-slate-400 dark:text-zinc-500 mt-0.5 capitalize">{post.category}</p>
+                        </div>
+                        <span className="text-slate-300 dark:text-zinc-600 group-hover/item:text-slate-400 dark:group-hover/item:text-zinc-400 text-xs transition-colors flex-shrink-0">→</span>
                       </button>
                     ))}
                   </div>
-                  <div className="px-4 py-2.5 border-t border-slate-100 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-950">
+                  {/* Footer */}
+                  <div className="px-5 py-3 bg-slate-50 dark:bg-zinc-800/60 border-t border-slate-100 dark:border-zinc-700/60">
                     <button
                       onClick={() => navigate('/blog')}
-                      className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
+                      className="text-[11px] font-bold text-slate-900 dark:text-white hover:opacity-70 transition-opacity tracking-wide"
                     >
                       View all articles →
                     </button>

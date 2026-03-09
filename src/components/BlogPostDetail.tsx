@@ -118,14 +118,14 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
 
           {/* Banner Image */}
           {post.image && (
-            <div className="relative w-full h-52 sm:h-72 lg:h-88 overflow-hidden">
+            <div className="relative w-full overflow-hidden">
               <img
                 src={post.image}
                 alt={post.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-auto block"
               />
               {/* Dark gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/70 to-transparent pointer-events-none" />
 
               {/* Category badge */}
               <div className="absolute top-4 left-4 z-10">

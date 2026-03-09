@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF8EE"/>
+      <stop offset="100%" style="stop-color:#FFF0F5"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="125%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="rgba(0,0,0,0.10)"/>
+    </filter>
+    <filter id="shadowSm" x="-5%" y="-5%" width="115%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,0.10)"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Background blobs -->
+  <ellipse cx="100"  cy="580" rx="180" ry="130" fill="#FF6B9D" opacity="0.12" transform="rotate(-20,100,580)"/>
+  <ellipse cx="1150" cy="80"  rx="160" ry="120" fill="#FFD166" opacity="0.25" transform="rotate(15,1150,80)"/>
+  <ellipse cx="600"  cy="640" rx="300" ry="90"  fill="#06D6A0" opacity="0.07"/>
+  <ellipse cx="1100" cy="560" rx="100" ry="80"  fill="#F72585" opacity="0.08"/>
+  <ellipse cx="200"  cy="60"  rx="80"  ry="60"  fill="#4361EE" opacity="0.07"/>
+
+  <!-- Dotted pattern -->
+  <g opacity="0.18">
+    <circle cx="50"  cy="50"  r="2.5" fill="#FF6B9D"/><circle cx="110" cy="50"  r="2.5" fill="#FF6B9D"/>
+    <circle cx="170" cy="50"  r="2.5" fill="#FF6B9D"/><circle cx="50"  cy="110" r="2.5" fill="#FF6B9D"/>
+    <circle cx="110" cy="110" r="2.5" fill="#FFD166"/><circle cx="170" cy="110" r="2.5" fill="#FFD166"/>
+    <circle cx="1030" cy="520" r="2.5" fill="#06D6A0"/><circle cx="1090" cy="520" r="2.5" fill="#06D6A0"/>
+    <circle cx="1150" cy="520" r="2.5" fill="#06D6A0"/><circle cx="1030" cy="580" r="2.5" fill="#4361EE"/>
+    <circle cx="1090" cy="580" r="2.5" fill="#4361EE"/><circle cx="1150" cy="580" r="2.5" fill="#4361EE"/>
+  </g>
+
+  <!-- ── Title ── -->
+  <text x="600" y="92" text-anchor="middle" font-size="66" font-weight="900" fill="#1A1A2E" font-family="'Arial Black',sans-serif" letter-spacing="-1">From Idea to MVP</text>
+  <text x="600" y="145" text-anchor="middle" font-size="22" fill="#64748B" font-family="'Arial',sans-serif">A Product Manager's Step-by-Step Journey</text>
+
+  <!-- Connector dashed line through steps -->
+  <line x1="138" y1="360" x2="1062" y2="360" stroke="#CBD5E1" stroke-width="2.5" stroke-dasharray="8 6"/>
+
+  <!-- ── Step cards ── -->
+
+  <!-- Step 1 — Idea (orange) -->
+  <g transform="translate(48,200)">
+    <rect x="0" y="0" width="175" height="220" rx="20" fill="#FF6B35" filter="url(#shadow)"/>
+    <!-- icon area -->
+    <rect x="0" y="0" width="175" height="80" rx="20 20 0 0" fill="#FF8C42"/>
+    <text x="88" y="52" text-anchor="middle" font-size="40">💡</text>
+    <!-- step badge -->
+    <circle cx="88" cy="80" r="14" fill="white"/>
+    <text x="88" y="85" text-anchor="middle" font-size="13" font-weight="900" fill="#FF6B35" font-family="'Arial Black',sans-serif">1</text>
+    <text x="88" y="118" text-anchor="middle" font-size="15" font-weight="900" fill="white" font-family="'Arial Black',sans-serif">IDEATE</text>
+    <text x="88" y="138" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)" font-family="'Arial',sans-serif">Spot the problem.</text>
+    <text x="88" y="153" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)" font-family="'Arial',sans-serif">Define user pain</text>
+    <text x="88" y="168" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)" font-family="'Arial',sans-serif">points clearly.</text>
+    <!-- arrow -->
+    <polygon points="175,340 205,340 190,360 205,380 175,380" fill="#FF6B35" opacity="0" transform="translate(0,-200)"/>
+  </g>
+
+  <!-- Step 2 — Validate (purple) -->
+  <g transform="translate(258,200)">
+    <rect x="0" y="0" width="175" height="220" rx="20" fill="#7C3AED" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="175" height="80" rx="20 20 0 0" fill="#8B5CF6"/>
+    <text x="88" y="52" text-anchor="middle" font-size="40">🔍</text>
+    <circle cx="88" cy="80" r="14" fill="white"/>
+    <text x="88" y="85" text-anchor="middle" font-size="13" font-weight="900" fill="#7C3AED" font-family="'Arial Black',sans-serif">2</text>
+    <text x="88" y="118" text-anchor="middle" font-size="15" font-weight="900" fill="white" font-family="'Arial Black',sans-serif">VALIDATE</text>
+    <text x="88" y="138" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)" font-family="'Arial',sans-serif">Talk to 20 users.</text>
+    <text x="88" y="153" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)" font-family="'Arial',sans-serif">Kill assumptions,</text>
+    <text x="88" y="168" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)" font-family="'Arial',sans-serif">keep the truth.</text>
+  </g>
+
+  <!-- Step 3 — Build (teal) — center/hero -->
+  <g transform="translate(468,168)">
+    <rect x="0" y="0" width="190" height="254" rx="22" fill="#0BA88A" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="190" height="88" rx="22 22 0 0" fill="#06D6A0"/>
+    <text x="95" y="58" text-anchor="middle" font-size="44">🚀</text>
+    <circle cx="95" cy="88" r="16" fill="white"/>
+    <text x="95" y="94" text-anchor="middle" font-size="14" font-weight="900" fill="#0BA88A" font-family="'Arial Black',sans-serif">3</text>
+    <text x="95" y="128" text-anchor="middle" font-size="16" font-weight="900" fill="white" font-family="'Arial Black',sans-serif">BUILD</text>
+    <rect x="20" y="138" width="150" height="1" rx="1" fill="rgba(255,255,255,0.2)"/>
+    <text x="95" y="158" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.9)" font-family="'Arial',sans-serif">Core features only.</text>
+    <text x="95" y="174" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.9)" font-family="'Arial',sans-serif">Resist scope creep.</text>
+    <text x="95" y="190" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.9)" font-family="'Arial',sans-serif">Ship something real.</text>
+  </g>
+
+  <!-- Step 4 — Test (pink) -->
+  <g transform="translate(693,200)">
+    <rect x="0" y="0" width="175" height="220" rx="20" fill="#E91E8C" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="175" height="80" rx="20 20 0 0" fill="#F72585"/>
+    <text x="88" y="52" text-anchor="middle" font-size="40">🧪</text>
+    <circle cx="88" cy="80" r="14" fill="white"/>
+    <text x="88" y="85" text-anchor="middle" font-size="13" font-weight="900" fill="#E91E8C" font-family="'Arial Black',sans-serif">4</text>
+    <text x="88" y="118" text-anchor="middle" font-size="15" font-weight="900" fill="white" font-family="'Arial Black',sans-serif">TEST</text>
+    <text x="88" y="138" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)" font-family="'Arial',sans-serif">Real users, real</text>
+    <text x="88" y="153" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)" font-family="'Arial',sans-serif">feedback. Iterate</text>
+    <text x="88" y="168" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)" font-family="'Arial',sans-serif">fast and fearlessly.</text>
+  </g>
+
+  <!-- Step 5 — Launch (yellow) -->
+  <g transform="translate(903,200)">
+    <rect x="0" y="0" width="175" height="220" rx="20" fill="#F59E0B" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="175" height="80" rx="20 20 0 0" fill="#FBBF24"/>
+    <text x="88" y="52" text-anchor="middle" font-size="40">🎯</text>
+    <circle cx="88" cy="80" r="14" fill="white"/>
+    <text x="88" y="85" text-anchor="middle" font-size="13" font-weight="900" fill="#F59E0B" font-family="'Arial Black',sans-serif">5</text>
+    <text x="88" y="118" text-anchor="middle" font-size="15" font-weight="900" fill="white" font-family="'Arial Black',sans-serif">LAUNCH</text>
+    <text x="88" y="138" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.9)" font-family="'Arial',sans-serif">Go live. Measure.</text>
+    <text x="88" y="153" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.9)" font-family="'Arial',sans-serif">Learn. Repeat.</text>
+    <text x="88" y="168" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.9)" font-family="'Arial',sans-serif">That's the loop. 🔁</text>
+  </g>
+
+  <!-- Arrow connectors between cards -->
+  <g fill="#CBD5E1">
+    <polygon points="233,347 253,337 253,357"/>
+    <polygon points="443,347 463,337 463,357"/>
+    <polygon points="658,347 678,337 678,357"/>
+    <polygon points="868,347 888,337 888,357"/>
+  </g>
+
+  <!-- Bottom row -->
+  <text x="600" y="478" text-anchor="middle" font-size="14" fill="#94A3B8" font-family="'Arial',sans-serif">
+    "The best time to ship was last quarter. The second best time is now."
+  </text>
+
+  <!-- Bottom tag chips -->
+  <g transform="translate(370,498)">
+    <rect x="0"   y="0" width="76" height="26" rx="13" fill="#FF6B35" opacity="0.12" stroke="#FF6B35" stroke-width="0.8"/>
+    <text x="38"  y="17" text-anchor="middle" font-size="11" fill="#FF6B35" font-family="'Arial',sans-serif" font-weight="600">MVP</text>
+    <rect x="86"  y="0" width="120" height="26" rx="13" fill="#7C3AED" opacity="0.12" stroke="#7C3AED" stroke-width="0.8"/>
+    <text x="146" y="17" text-anchor="middle" font-size="11" fill="#7C3AED" font-family="'Arial',sans-serif" font-weight="600">Product Strategy</text>
+    <rect x="216" y="0" width="80" height="26" rx="13" fill="#0BA88A" opacity="0.12" stroke="#0BA88A" stroke-width="0.8"/>
+    <text x="256" y="17" text-anchor="middle" font-size="11" fill="#0BA88A" font-family="'Arial',sans-serif" font-weight="600">Startup</text>
+    <rect x="306" y="0" width="90" height="26" rx="13" fill="#E91E8C" opacity="0.12" stroke="#E91E8C" stroke-width="0.8"/>
+    <text x="351" y="17" text-anchor="middle" font-size="11" fill="#E91E8C" font-family="'Arial',sans-serif" font-weight="600">Ship Fast</text>
+  </g>
+
+  <!-- Byline -->
+  <text x="1152" y="614" text-anchor="end" font-size="13" font-weight="700" fill="#94A3B8" font-family="'Arial',sans-serif" letter-spacing="0.5">By Kartik Bhalerao</text>
+</svg>

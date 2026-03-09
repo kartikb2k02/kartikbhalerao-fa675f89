@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" font-family="'Arial Black', 'Impact', sans-serif">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&amp;family=Nunito:wght@700;800;900&amp;display=swap');
+      .title { font-family: 'Fredoka One', 'Arial Black', sans-serif; }
+      .body-text { font-family: 'Nunito', 'Arial Rounded MT Bold', sans-serif; }
+    </style>
+    <!-- Card drop shadow -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,0,0,0.15)" />
+    </filter>
+    <filter id="shadow-sm" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.12)" />
+    </filter>
+  </defs>
+
+  <!-- ── Background ── -->
+  <rect width="1200" height="630" fill="#FDFAF2" rx="0"/>
+
+  <!-- ── Decorative blobs ── -->
+  <!-- Pink blob bottom-left -->
+  <ellipse cx="-20" cy="570" rx="140" ry="110" fill="#F72585" opacity="0.85" transform="rotate(-15,-20,570)"/>
+  <ellipse cx="60" cy="610" rx="100" ry="80" fill="#E91E8C" opacity="0.7" transform="rotate(10,60,610)"/>
+
+  <!-- Yellow cloud top-right -->
+  <g transform="translate(1060, -20)">
+    <ellipse cx="80" cy="80" rx="80" ry="70" fill="#FFD166"/>
+    <ellipse cx="140" cy="90" rx="55" ry="50" fill="#FFD166"/>
+    <ellipse cx="50" cy="100" rx="50" ry="45" fill="#FFD166"/>
+    <ellipse cx="110" cy="60" rx="45" ry="40" fill="#FFD166"/>
+  </g>
+
+  <!-- Small teal blob top-left area -->
+  <ellipse cx="30" cy="120" rx="45" ry="35" fill="#06D6A0" opacity="0.35" transform="rotate(-20,30,120)"/>
+
+  <!-- ── Floating doodle icons above cards ── -->
+  <!-- Notebook above card 1 -->
+  <g transform="translate(188, 218) rotate(-15)">
+    <rect x="0" y="0" width="44" height="52" rx="5" fill="#FFD166" filter="url(#shadow-sm)"/>
+    <rect x="0" y="0" width="44" height="52" rx="5" fill="none" stroke="#E8B800" stroke-width="1.5"/>
+    <rect x="6" y="6" width="32" height="40" rx="3" fill="#FF6B9D"/>
+    <line x1="11" y1="14" x2="33" y2="14" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <line x1="11" y1="20" x2="33" y2="20" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <line x1="11" y1="26" x2="28" y2="26" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <line x1="11" y1="32" x2="30" y2="32" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <!-- spiral -->
+    <rect x="-3" y="8" width="6" height="36" rx="3" fill="#FFB800"/>
+    <circle cx="0" cy="12" r="3" fill="#FF8C00"/>
+    <circle cx="0" cy="20" r="3" fill="#FF8C00"/>
+    <circle cx="0" cy="28" r="3" fill="#FF8C00"/>
+    <circle cx="0" cy="36" r="3" fill="#FF8C00"/>
+  </g>
+
+  <!-- Pen above card 2 -->
+  <g transform="translate(463, 210) rotate(20)">
+    <rect x="8" y="0" width="12" height="48" rx="3" fill="#06D6A0"/>
+    <polygon points="8,48 20,48 14,62" fill="#2D8A70"/>
+    <rect x="8" y="0" width="12" height="10" rx="3" fill="#555"/>
+    <rect x="9" y="44" width="10" height="4" fill="#FFD166"/>
+  </g>
+
+  <!-- Highlighter above card 3 -->
+  <g transform="translate(730, 208) rotate(-20)">
+    <rect x="0" y="8" width="16" height="44" rx="4" fill="#FF6B9D"/>
+    <polygon points="0,8 16,8 13,0 3,0" fill="#E8336A"/>
+    <polygon points="2,52 14,52 12,64 4,64" fill="#E8336A"/>
+    <rect x="2" y="30" width="12" height="8" rx="2" fill="white" opacity="0.4"/>
+  </g>
+
+  <!-- Calculator above card 4 -->
+  <g transform="translate(990, 212) rotate(10)">
+    <rect x="0" y="0" width="46" height="54" rx="6" fill="#4361EE" filter="url(#shadow-sm)"/>
+    <rect x="4" y="4" width="38" height="14" rx="3" fill="#7209B7"/>
+    <text x="22" y="15" text-anchor="middle" font-size="9" fill="#FFD166" font-family="monospace" font-weight="bold">1234</text>
+    <rect x="6" y="22" width="10" height="8" rx="2" fill="#FFD166"/>
+    <rect x="18" y="22" width="10" height="8" rx="2" fill="#06D6A0"/>
+    <rect x="30" y="22" width="10" height="8" rx="2" fill="#FF6B9D"/>
+    <rect x="6" y="32" width="10" height="8" rx="2" fill="#06D6A0"/>
+    <rect x="18" y="32" width="10" height="8" rx="2" fill="#FFD166"/>
+    <rect x="30" y="32" width="10" height="8" rx="2" fill="#FF6B9D"/>
+    <rect x="6" y="42" width="10" height="8" rx="2" fill="#FF6B9D"/>
+    <rect x="18" y="42" width="22" height="8" rx="2" fill="#06D6A0"/>
+  </g>
+
+  <!-- ── Title ── -->
+  <text x="600" y="105" text-anchor="middle" font-size="62" font-weight="900" fill="#0B8B6E" class="title" letter-spacing="1">MoSCoW: The Prioritization</text>
+  <text x="600" y="168" text-anchor="middle" font-size="62" font-weight="900" fill="#0B8B6E" class="title" letter-spacing="1">Method That Saves Your</text>
+  <text x="600" y="228" text-anchor="middle" font-size="62" font-weight="900" fill="#0B8B6E" class="title" letter-spacing="1">Sanity (and Your Sprint)</text>
+
+  <!-- ── Card 1 — MUST-HAVE ── -->
+  <rect x="48" y="268" width="255" height="300" rx="20" fill="#1B8FCF" filter="url(#shadow)"/>
+  <text x="175" y="310" text-anchor="middle" font-size="16" font-weight="900" fill="white" class="body-text" letter-spacing="1">MUST-HAVE</text>
+  <line x1="78" y1="320" x2="273" y2="320" stroke="white" stroke-width="1" opacity="0.3"/>
+  <text x="175" y="350" text-anchor="middle" font-size="14" fill="white" class="body-text">Essential for launch –</text>
+  <text x="175" y="368" text-anchor="middle" font-size="14" fill="white" class="body-text">without it, your</text>
+  <text x="175" y="386" text-anchor="middle" font-size="14" fill="white" class="body-text">product's a potato. 🥔</text>
+  <line x1="78" y1="402" x2="273" y2="402" stroke="white" stroke-width="1" opacity="0.25"/>
+  <text x="175" y="424" text-anchor="middle" font-size="12.5" fill="white" opacity="0.9" class="body-text">Think: login, checkout, or</text>
+  <text x="175" y="441" text-anchor="middle" font-size="12.5" fill="white" opacity="0.9" class="body-text">literally anything that</text>
+  <text x="175" y="458" text-anchor="middle" font-size="12.5" fill="white" opacity="0.9" class="body-text">makes the product work.</text>
+  <!-- M pill -->
+  <rect x="143" y="510" width="64" height="28" rx="14" fill="white" opacity="0.2"/>
+  <text x="175" y="529" text-anchor="middle" font-size="17" font-weight="900" fill="white" class="title">M</text>
+
+  <!-- ── Card 2 — SHOULD-HAVE ── -->
+  <rect x="323" y="268" width="255" height="300" rx="20" fill="#0BA88A" filter="url(#shadow)"/>
+  <text x="450" y="310" text-anchor="middle" font-size="16" font-weight="900" fill="white" class="body-text" letter-spacing="1">SHOULD-HAVE</text>
+  <line x1="353" y1="320" x2="548" y2="320" stroke="white" stroke-width="1" opacity="0.3"/>
+  <text x="450" y="350" text-anchor="middle" font-size="14" fill="white" class="body-text">😎 Important, but not</text>
+  <text x="450" y="368" text-anchor="middle" font-size="14" fill="white" class="body-text">critical – we'll survive</text>
+  <text x="450" y="386" text-anchor="middle" font-size="14" fill="white" class="body-text">without it… for now.</text>
+  <line x1="353" y1="402" x2="548" y2="402" stroke="white" stroke-width="1" opacity="0.25"/>
+  <text x="450" y="424" text-anchor="middle" font-size="12.5" fill="white" opacity="0.9" class="body-text">Think: wishlist, dark mode,</text>
+  <text x="450" y="441" text-anchor="middle" font-size="12.5" fill="white" opacity="0.9" class="body-text">or that "nice-to-have"</text>
+  <text x="450" y="458" text-anchor="middle" font-size="12.5" fill="white" opacity="0.9" class="body-text">dashboard tab.</text>
+  <!-- S pill -->
+  <rect x="418" y="510" width="64" height="28" rx="14" fill="white" opacity="0.2"/>
+  <text x="450" y="529" text-anchor="middle" font-size="17" font-weight="900" fill="white" class="title">S</text>
+
+  <!-- ── Card 3 — COULD-HAVE ── -->
+  <rect x="598" y="268" width="255" height="300" rx="20" fill="#0BA88A" filter="url(#shadow)"/>
+  <text x="725" y="310" text-anchor="middle" font-size="16" font-weight="900" fill="white" class="body-text" letter-spacing="1">COULD-HAVE</text>
+  <line x1="628" y1="320" x2="823" y2="320" stroke="white" stroke-width="1" opacity="0.3"/>
+  <text x="725" y="350" text-anchor="middle" font-size="14" fill="white" class="body-text">🍺 Cool extras if there's</text>
+  <text x="725" y="368" text-anchor="middle" font-size="14" fill="white" class="body-text">time – like party</text>
+  <text x="725" y="386" text-anchor="middle" font-size="14" fill="white" class="body-text">balloons at a meeting.</text>
+  <line x1="628" y1="402" x2="823" y2="402" stroke="white" stroke-width="1" opacity="0.25"/>
+  <text x="725" y="424" text-anchor="middle" font-size="12.5" fill="white" opacity="0.9" class="body-text">Think: confetti animation</text>
+  <text x="725" y="441" text-anchor="middle" font-size="12.5" fill="white" opacity="0.9" class="body-text">or changing themes with</text>
+  <text x="725" y="458" text-anchor="middle" font-size="12.5" fill="white" opacity="0.9" class="body-text">a button.</text>
+  <!-- C pill -->
+  <rect x="693" y="510" width="64" height="28" rx="14" fill="white" opacity="0.2"/>
+  <text x="725" y="529" text-anchor="middle" font-size="17" font-weight="900" fill="white" class="title">C</text>
+
+  <!-- ── Card 4 — WON'T-HAVE ── -->
+  <rect x="873" y="268" width="280" height="300" rx="20" fill="#E91E8C" filter="url(#shadow)"/>
+  <text x="1013" y="303" text-anchor="middle" font-size="16" font-weight="900" fill="white" class="body-text" letter-spacing="1">WON'T-HAVE</text>
+  <text x="1013" y="320" text-anchor="middle" font-size="16" font-weight="900" fill="white" class="body-text" letter-spacing="1">(THIS TIME)</text>
+  <line x1="903" y1="330" x2="1123" y2="330" stroke="white" stroke-width="1" opacity="0.3"/>
+  <text x="1013" y="358" text-anchor="middle" font-size="14" fill="white" class="body-text">🚫 Not this time –</text>
+  <text x="1013" y="376" text-anchor="middle" font-size="14" fill="white" class="body-text">maybe next quarter,</text>
+  <text x="1013" y="394" text-anchor="middle" font-size="14" fill="white" class="body-text">maybe never. 💔</text>
+  <line x1="903" y1="410" x2="1123" y2="410" stroke="white" stroke-width="1" opacity="0.25"/>
+  <text x="1013" y="432" text-anchor="middle" font-size="12.5" fill="white" opacity="0.9" class="body-text">Think: AI that makes</text>
+  <text x="1013" y="449" text-anchor="middle" font-size="12.5" fill="white" opacity="0.9" class="body-text">coffee or a button that</text>
+  <text x="1013" y="466" text-anchor="middle" font-size="12.5" fill="white" opacity="0.9" class="body-text">compliments you daily.</text>
+  <!-- W pill -->
+  <rect x="981" y="510" width="64" height="28" rx="14" fill="white" opacity="0.2"/>
+  <text x="1013" y="529" text-anchor="middle" font-size="17" font-weight="900" fill="white" class="title">W</text>
+
+  <!-- ── Byline ── -->
+  <text x="1152" y="614" text-anchor="end" font-size="15" font-weight="900" fill="#0B8B6E" class="body-text" letter-spacing="0.5">By Kartik Bhalerao</text>
+</svg>

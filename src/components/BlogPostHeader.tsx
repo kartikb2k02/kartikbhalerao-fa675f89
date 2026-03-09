@@ -9,15 +9,16 @@ interface BlogPostHeaderProps {
 export const BlogPostHeader = ({ post }: BlogPostHeaderProps) => {
   return (
     <div className="mb-12">
-      <div className="relative h-64 rounded-2xl overflow-hidden mb-8">
+      <div className="relative rounded-2xl overflow-hidden mb-8 w-full">
         <img
           src={post.image}
           alt={post.title}
-          className="w-full h-full object-cover"
+          className="w-full h-auto block"
+          style={{ maxHeight: "none" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
         <div className="absolute bottom-4 left-4">
-          <Badge className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg capitalize mb-2">
+          <Badge className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg capitalize">
             {post.category}
           </Badge>
         </div>
