@@ -21,11 +21,14 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
   const shareUrl = typeof window !== "undefined" ? `${window.location.origin}/blog/${post.id}` : "";
 
   const goToX = () => {
-    window.open("https://x.com/kartikbhalerao", "_blank", "noopener,noreferrer");
+    const text = encodeURIComponent(`${post.title} by Kartik Bhalerao`);
+    const url = encodeURIComponent(shareUrl);
+    window.open(`https://x.com/intent/post?text=${text}&url=${url}`, "_blank", "noopener,noreferrer");
   };
 
   const goToLinkedIn = () => {
-    window.open("https://www.linkedin.com/in/kartik-bhalerao/", "_blank", "noopener,noreferrer");
+    const url = encodeURIComponent(shareUrl);
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, "_blank", "noopener,noreferrer");
   };
 
   const copyLink = () => {
@@ -145,90 +148,104 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
 
           {/* Post Meta */}
           <div className="p-6 sm:p-8">
-            {/* Excerpt */}
-            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6 border-l-4 border-violet-400 pl-4 italic">
-              {post.excerpt}
-            </p>
+            {/* Excerpt / Tagline */}
+            <div className="relative mb-6">
+              <div className="absolute -top-2 left-2 text-6xl leading-none text-slate-300/60 dark:text-slate-500/50 font-serif select-none z-0">"</div>
+              <p className="relative z-10 text-base sm:text-lg text-slate-700 dark:text-slate-200 leading-relaxed font-medium px-6 pt-4 pb-5 rounded-lg backdrop-blur-md bg-white/40 dark:bg-white/5 border border-white/60 dark:border-white/10 shadow-[0_4px_24px_0_rgba(0,0,0,0.06)] dark:shadow-[0_4px_24px_0_rgba(255,255,255,0.04)]">
+                {post.excerpt}
+              </p>
+              <div className="absolute -bottom-3 right-3 text-6xl leading-none text-slate-300/60 dark:text-slate-500/50 font-serif select-none z-0">"</div>
+            </div>
 
-            {/* Author Row */}
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center text-white font-bold text-base shadow-md shadow-violet-500/20 flex-shrink-0">
-                KB
-              </div>
-              <div>
-                <div className="font-semibold text-slate-900 dark:text-white text-sm">Kartik Bhalerao</div>
-                <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  <span className="flex items-center gap-1">
-                    <Calendar className="w-3.5 h-3.5" />
-                    {new Date(post.date).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </span>
-                  <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" />
-                    {post.readTime}
-                  </span>
+            {/* Author + Date + Tags row */}
+            <div className="mb-6 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50">
+              {/* Top: KB + Name + Date + ReadTime */}
+              <div className="flex items-center gap-3">
+                {/* KB Avatar */}
+                <div className="w-11 h-11 rounded-full bg-black flex-shrink-0 flex items-center justify-center text-white font-bold text-sm shadow-md">
+                  KB
                 </div>
+
+                {/* Name + meta */}
+                <div className="flex-1 min-w-0">
+                  <div className="font-semibold text-slate-900 dark:text-white text-sm leading-tight">Kartik Bhalerao</div>
+                  <div className="flex items-center gap-3 mt-1 text-xs text-slate-500 dark:text-slate-400">
+                    <span className="flex items-center gap-1">
+                      <Calendar className="w-3.5 h-3.5 flex-shrink-0" />
+                      {new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
+                    </span>
+                    <span className="w-px h-3 bg-slate-300 dark:bg-slate-600" />
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5 flex-shrink-0" />
+                      {post.readTime}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="h-px bg-slate-200 dark:bg-slate-700 my-3" />
+
+              {/* Tags row */}
+              <div className="flex items-center gap-2 flex-wrap">
+                <Tag className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 flex-shrink-0" />
+                {post.tags.map((tag) => (
+                  <Badge
+                    key={tag}
+                    variant="outline"
+                    className="border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100 bg-black/5 dark:bg-white/10 text-xs font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors cursor-default"
+                  >
+                    #{tag}
+                  </Badge>
+                ))}
               </div>
             </div>
 
             {/* Divider */}
             <div className="h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-700 to-transparent mb-5" />
 
-            {/* Tags + Share */}
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-2 flex-wrap">
-                <Tag className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
-                {post.tags.map((tag) => (
-                  <Badge
-                    key={tag}
-                    variant="outline"
-                    className="border-violet-200 dark:border-violet-700/50 text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-900/20 text-xs cursor-default hover:bg-violet-100 dark:hover:bg-violet-900/40 transition-colors"
-                  >
-                    #{tag}
-                  </Badge>
-                ))}
+            {/* Share Buttons */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-700/40">
+              <div>
+                <p className="text-sm font-semibold text-slate-800 dark:text-white">Enjoyed this article?</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Share it with your network</p>
               </div>
-
-              {/* Share Buttons */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
+                {/* X / Twitter */}
                 <button
                   onClick={goToX}
-                  title="X (Twitter)"
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 text-xs font-semibold bg-transparent hover:bg-slate-900 hover:border-slate-900 hover:text-white dark:hover:bg-white dark:hover:border-white dark:hover:text-slate-900 active:scale-95 transition-all duration-200"
+                  title="Share on X"
+                  className="group flex items-center gap-2 px-4 py-2 rounded-lg bg-black text-white text-xs font-semibold shadow-sm hover:bg-slate-800 hover:shadow-md active:scale-95 transition-all duration-200"
                 >
                   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                   <span>Post</span>
                 </button>
+
+                {/* LinkedIn */}
                 <button
                   onClick={goToLinkedIn}
-                  title="LinkedIn"
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#0A66C2] text-[#0A66C2] text-xs font-semibold bg-transparent hover:bg-[#0A66C2] hover:text-white active:scale-95 transition-all duration-200"
+                  title="Share on LinkedIn"
+                  className="group flex items-center gap-2 px-4 py-2 rounded-lg bg-[#0A66C2] text-white text-xs font-semibold shadow-sm hover:bg-[#0958a8] hover:shadow-md active:scale-95 transition-all duration-200"
                 >
                   <Linkedin className="w-3.5 h-3.5" />
-                  <span>Share</span>
+                  <span>LinkedIn</span>
                 </button>
-                <div
-                  className="p-[1.5px] rounded-lg bg-gradient-to-r from-[#22c55e] via-[#3b82f6] to-[#8b5cf6] active:scale-95 transition-transform duration-200 cursor-pointer"
+
+                {/* Copy Link */}
+                <button
+                  onClick={copyLink}
+                  title="Copy link"
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold shadow-sm border transition-all duration-200 active:scale-95 ${
+                    copied
+                      ? "bg-green-500 border-green-500 text-white hover:bg-green-600"
+                      : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-400 hover:shadow-md"
+                  }`}
                 >
-                  <button
-                    onClick={copyLink}
-                    title="Copy link"
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-[6px] text-xs font-semibold w-full transition-colors duration-200 ${
-                      copied
-                        ? "bg-transparent text-white"
-                        : "bg-white dark:bg-card text-violet-600 dark:text-violet-400 hover:bg-transparent hover:text-white"
-                    }`}
-                  >
-                    {copied ? <Check className="w-3.5 h-3.5" /> : <Link2 className="w-3.5 h-3.5" />}
-                    <span>{copied ? "Copied!" : "Copy link"}</span>
-                  </button>
-                </div>
+                  {copied ? <Check className="w-3.5 h-3.5" /> : <Link2 className="w-3.5 h-3.5" />}
+                  <span>{copied ? "Copied!" : "Copy link"}</span>
+                </button>
               </div>
             </div>
           </div>
@@ -363,14 +380,46 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
       {/* Back to Top */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-6 right-6 z-50 group transition-all duration-500 ${
-          showBackToTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8 pointer-events-none"
+        className={`fixed bottom-8 right-6 z-50 group transition-all duration-500 ${
+          showBackToTop ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-90 pointer-events-none"
         }`}
         title="Back to top"
       >
-        <div className="relative w-11 h-11 rounded-full bg-gradient-to-r from-violet-600 via-blue-600 to-cyan-500 p-[2px] shadow-lg shadow-violet-500/30 hover:shadow-xl hover:shadow-violet-500/50 transition-all duration-300">
-          <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center">
-            <ArrowUp className="w-4 h-4 text-white group-hover:-translate-y-0.5 transition-transform duration-300" />
+        {/* Circular SVG progress ring */}
+        <div className="relative w-14 h-14">
+          <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 56 56">
+            {/* Track */}
+            <circle
+              cx="28" cy="28" r="24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              className="text-slate-200 dark:text-slate-700"
+            />
+            {/* Progress */}
+            <circle
+              cx="28" cy="28" r="24"
+              fill="none"
+              stroke="url(#progressGrad)"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeDasharray={`${2 * Math.PI * 24}`}
+              strokeDashoffset={`${2 * Math.PI * 24 * (1 - scrollProgress / 100)}`}
+              className="transition-all duration-150 ease-out"
+            />
+            <defs>
+              <linearGradient id="progressGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#8b5cf6" />
+                <stop offset="50%" stopColor="#3b82f6" />
+                <stop offset="100%" stopColor="#06b6d4" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+          {/* Inner button */}
+          <div className="absolute inset-[6px] rounded-full bg-black dark:bg-slate-900 shadow-lg flex flex-col items-center justify-center gap-0.5 group-hover:bg-slate-800 dark:group-hover:bg-slate-700 transition-colors duration-200">
+            <ArrowUp className="w-3.5 h-3.5 text-white group-hover:-translate-y-0.5 transition-transform duration-300" />
+            <span className="text-[8px] font-bold text-white/70 leading-none tracking-wide uppercase">Top</span>
           </div>
         </div>
       </button>

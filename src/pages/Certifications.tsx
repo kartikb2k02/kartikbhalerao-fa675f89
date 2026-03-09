@@ -41,30 +41,25 @@ const Certifications = () => {
     count: achievements.length,
     icon: Star
   }];
-  return <div className="min-h-screen bg-background text-foreground transition-colors duration-500 relative">
-      {/* Dotted background — same as home page */}
-      <div
-        className="fixed inset-0 pointer-events-none z-0"
-        style={{
-          backgroundImage: 'radial-gradient(circle, rgb(100 116 139 / 0.2) 1.5px, transparent 1.5px)',
-          backgroundSize: '22px 22px',
-        }}
-      />
+  return <div className="min-h-screen bg-white dark:bg-zinc-900 text-foreground transition-colors duration-500 relative">
       <Header />
 
       <main className="relative z-10 pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-16">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <Sparkles className="w-8 h-8 text-blue-500 dark:text-blue-400" />
-              <h1 className="text-4xl sm:text-5xl font-bold text-foreground tracking-tight">
-                Certifications & Achievements
-              </h1>
-              <Sparkles className="w-8 h-8 text-blue-500 dark:text-blue-400" />
-            </div>
-            
-            <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 mx-auto rounded-full"></div>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white mb-4">
+              Certifications &{" "}
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent">
+                Achievements
+              </span>
+            </h1>
+            <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+              <span className="text-gray-800 dark:text-gray-200 font-medium">Credentials that validate </span>
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent font-semibold">
+                the journey
+              </span>
+            </p>
           </div>
 
           {/* Interactive Tabs */}
