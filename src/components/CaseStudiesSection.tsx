@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { caseStudies } from "@/data/caseStudies";
+import { ChatlyCardBanner } from "@/components/ChatlyCardBanner";
 
 export const CaseStudiesSection = () => {
   const navigate = useNavigate();
@@ -32,8 +33,12 @@ export const CaseStudiesSection = () => {
                 <div className={`absolute -inset-0.5 bg-gradient-to-r ${study.bgGradient} rounded-3xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500`} />
                 
                 {/* Image Section */}
-                <div className={`relative aspect-[18/10] overflow-hidden bg-gradient-to-br ${study.bgGradient}`}>
-                  {/* Enhanced image with better rendering */}
+                <div className={`relative aspect-[18/10] overflow-hidden ${study.id === "chatly-prd" ? "bg-white" : `bg-gradient-to-br ${study.bgGradient}`}`}>
+                  {study.id === "chatly-prd" ? (
+                    <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
+                      <ChatlyCardBanner />
+                    </div>
+                  ) : (
                   <img
                     src={study.image}
                     alt={study.title}
@@ -45,6 +50,7 @@ export const CaseStudiesSection = () => {
                     }}
                     loading="lazy"
                   />
+                  )}
                   
                   {/* Subtle overlay for better contrast */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -60,27 +66,52 @@ export const CaseStudiesSection = () => {
                   </div>
                 </div>
 
-                {/* Colored Footer Section */}
-                <div className={`bg-gradient-to-r ${study.bgGradient} px-5 py-4 relative`}>
-                  {/* Decorative circles */}
-                  <div className="absolute inset-0 overflow-hidden opacity-25">
-                    <div className="absolute top-2 right-3 w-6 h-6 border-2 border-white rounded-full" />
-                    <div className="absolute bottom-2 left-3 w-4 h-4 border-2 border-white rounded-full" />
-                  </div>
+                {/* Footer Section */}
+                {study.id === "chatly-prd" ? (
+                  /* Chatly — black & white footer matching banner */
+                  <div className="bg-white border-t border-slate-100 px-5 py-4 relative overflow-hidden">
+                    {/* Dot grid background */}
+                    <div className="absolute inset-0" style={{
+                      backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)",
+                      backgroundSize: "18px 18px",
+                    }}/>
+                    {/* Corner ring */}
+                    <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full border border-black/[0.07] pointer-events-none"/>
 
-                  {/* Content */}
-                  <div className="relative z-10 pr-8">
-                    <h3 className="text-lg font-bold text-white leading-tight">{study.title}</h3>
-                    <p className="text-sm text-white/90 mt-1">{study.subtitle}</p>
-                  </div>
+                    {/* Logo + title row */}
+                    <div className="relative z-10 flex items-center gap-2 pr-8">
+                      <img src="/lovable-uploads/chatly-logo.png" alt="Chatly" className="w-5 h-5 object-contain flex-shrink-0"/>
+                      <div>
+                        <h3 className="text-base font-bold text-black leading-tight">{study.title}</h3>
+                        <p className="text-xs text-slate-500 mt-0.5">{study.subtitle}</p>
+                      </div>
+                    </div>
 
-                  {/* Arrow Icon */}
-                  <div className="absolute bottom-4 right-4">
-                    <div className="w-7 h-7 bg-white/30 rounded-full flex items-center justify-center group-hover:bg-white/50 transition-colors duration-300">
-                      <ArrowUpRight className="w-4 h-4 text-white" />
+                    {/* Arrow */}
+                    <div className="absolute bottom-4 right-4">
+                      <div className="w-7 h-7 bg-black rounded-full flex items-center justify-center group-hover:bg-zinc-700 transition-colors duration-300">
+                        <ArrowUpRight className="w-4 h-4 text-white" />
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  /* All other cards — original colored footer */
+                  <div className={`bg-gradient-to-r ${study.bgGradient} px-5 py-4 relative`}>
+                    <div className="absolute inset-0 overflow-hidden opacity-25">
+                      <div className="absolute top-2 right-3 w-6 h-6 border-2 border-white rounded-full" />
+                      <div className="absolute bottom-2 left-3 w-4 h-4 border-2 border-white rounded-full" />
+                    </div>
+                    <div className="relative z-10 pr-8">
+                      <h3 className="text-lg font-bold text-white leading-tight">{study.title}</h3>
+                      <p className="text-sm text-white/90 mt-1">{study.subtitle}</p>
+                    </div>
+                    <div className="absolute bottom-4 right-4">
+                      <div className="w-7 h-7 bg-white/30 rounded-full flex items-center justify-center group-hover:bg-white/50 transition-colors duration-300">
+                        <ArrowUpRight className="w-4 h-4 text-white" />
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           ))}

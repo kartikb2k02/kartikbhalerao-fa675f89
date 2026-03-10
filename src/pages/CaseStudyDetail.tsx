@@ -7,6 +7,8 @@ import { getCaseStudyById } from "@/data/caseStudies";
 import { Badge } from "@/components/ui/badge";
 import { ImageLightbox } from "@/components/ImageLightbox";
 import { RelatedCaseStudies } from "@/components/RelatedCaseStudies";
+import { ChatlyPRDDetail } from "@/components/ChatlyPRDDetail";
+import { ChatlyBanner } from "@/components/ChatlyBanner";
 
 const A4_GALLERY_IDS = ['ether-prd', 'gullak-fintech', 'google-pay-prd', 'cloudeagle-ai', 'metis-improvement', 'codeant-ai'];
 
@@ -75,14 +77,18 @@ const CaseStudyDetail = () => {
             Back to Case Studies
           </Link>
 
-          {/* Hero Image */}
-          <div className="rounded-2xl overflow-hidden mb-8 shadow-lg shadow-black/10 dark:shadow-black/40 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800">
-            <img
-              src={caseStudy.image}
-              alt={caseStudy.title}
-              className="w-full object-cover"
-            />
-          </div>
+          {/* Hero Image / Banner */}
+          {id === "chatly-prd" ? (
+            <ChatlyBanner />
+          ) : (
+            <div className="rounded-2xl overflow-hidden mb-8 shadow-lg shadow-black/10 dark:shadow-black/40 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800">
+              <img
+                src={caseStudy.image}
+                alt={caseStudy.title}
+                className="w-full object-cover"
+              />
+            </div>
+          )}
 
           {/* Title & Tags */}
           <div className="mb-10">
@@ -99,7 +105,19 @@ const CaseStudyDetail = () => {
             <p className="text-slate-500 dark:text-zinc-400 text-lg">{caseStudy.subtitle}</p>
           </div>
 
+          {/* Chatly PRD — Full document content */}
+          {id === "chatly-prd" && (
+            <div className="mb-12 bg-white rounded-2xl border border-zinc-200 shadow-sm overflow-hidden">
+              {/* Top accent bar */}
+              <div className="h-1 w-full bg-black" />
+              <div className="p-6 sm:p-10">
+                <ChatlyPRDDetail />
+              </div>
+            </div>
+          )}
+
           {/* Key Features & Tools */}
+          {id !== "chatly-prd" && (
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             {/* Key Features */}
             <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200 dark:border-zinc-800 p-6 shadow-sm">
@@ -136,9 +154,10 @@ const CaseStudyDetail = () => {
               </div>
             </div>
           </div>
+          )}
 
           {/* Gallery */}
-          {caseStudy.gallery.length > 0 && (
+          {id !== "chatly-prd" && caseStudy.gallery.length > 0 && (
             <section className="mb-12">
               <div className="flex items-center gap-3 mb-6">
                 <ZoomIn className="w-5 h-5 text-slate-400 dark:text-zinc-500" />

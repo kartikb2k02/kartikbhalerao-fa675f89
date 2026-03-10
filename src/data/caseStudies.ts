@@ -372,6 +372,44 @@ export const caseStudies: CaseStudy[] = [
       { src: "/lovable-uploads/12.png", caption: "Target Audience (Parents) - Sources Follow" },
     ],
   },
+  {
+    id: "chatly-prd",
+    title: "Chatly PRD",
+    subtitle: "AI Conversation Operationalization Platform",
+    tags: ["Product Strategy", "AI/ML", "SaaS", "PRD"],
+    externalLink: "",
+    bgGradient: "from-[#6366f1] to-[#8b5cf6]",
+    image: "/lovable-uploads/Chatly.png",
+    overview:
+      "Chatly automatically transforms AI conversations into structured execution pipelines, bridging the gap between AI-generated insights and real-world task execution. Pre-seed SaaS targeting Q2 2026 MVP Beta.",
+    challenge:
+      "Over 65% of enterprise knowledge workers use AI assistants daily, yet 40–60% of AI-generated action items are never executed. Decisions go unrecorded, ownership is never assigned, and manual re-entry wastes 20–30 minutes per AI session.",
+    solution:
+      "A multi-stage NLP pipeline (SpaCy + fine-tuned RoBERTa + GPT-4o mini disambiguation) extracts action items, decisions, owners, deadlines, and blockers from AI conversations, then one-click syncs them into Jira, Notion, Slack, Linear, and other workflow tools.",
+    outcome:
+      "Reduces post-AI-session setup time by an estimated 70–80%. Targets 200 beta users at MVP, $75K MRR at V1 GA, and $1.5M ARR by end of Year 1.",
+    keyFeatures: [
+      "AI conversation ingestion engine (paste, upload, browser extension, API)",
+      "Multi-stage NLP extraction pipeline with confidence scoring",
+      "Extraction review & correction UI with source highlighting",
+      "Execution pipeline builder with dependency detection",
+      "One-click workflow integration sync (Jira, Notion, Slack, Linear)",
+      "Decision log & persistent knowledge base",
+      "Real-time browser extension (Chrome/Edge)",
+      "Workspace & team management with RBAC",
+    ],
+    tools: [
+      "React 18 + TypeScript",
+      "Node.js + Express",
+      "Python + FastAPI",
+      "SpaCy + HuggingFace RoBERTa",
+      "OpenAI GPT-4o mini",
+      "PostgreSQL + Redis + Pinecone",
+      "AWS ECS Fargate",
+      "Jira / Notion / Slack APIs",
+    ],
+    gallery: [],
+  },
 ];
 
 export const getCaseStudyById = (id: string): CaseStudy | undefined => {
