@@ -82,6 +82,18 @@ export const blogPosts: BlogPost[] = [
     slug: "user-research-that-matters"
   },
   {
+    id: 8,
+    title: "I Replaced My Product Manager Workflow with AI for 7 Days — Here's What Happened",
+    excerpt: "For 7 days, I replaced key parts of my PM workflow with AI tools. Here's where AI genuinely helped, where it struggled, and what it means for the future of Product Management.",
+    category: "ai",
+    date: "2026-03-12",
+    readTime: "10 min read",
+    tags: ["AI", "Product Management", "Workflow", "Productivity", "Experiment"],
+    image: "/lovable-uploads/ai-pm-7days-banner.svg",
+    slug: "ai-replaced-pm-workflow-7-days",
+    featured: true
+  },
+  {
     id: 7,
     title: "Scaling Product Teams: Lessons Learned",
     excerpt: "How to maintain product quality while growing your team",

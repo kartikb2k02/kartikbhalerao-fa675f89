@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="dots" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="14" cy="14" r="1" fill="#ffffff" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+
+  <!-- Faint vertical divider -->
+  <line x1="620" y1="60" x2="620" y2="570" stroke="#ffffff" stroke-width="1" opacity="0.07"/>
+
+  <!-- ── LEFT SIDE ── -->
+
+  <!-- Label pill -->
+  <rect x="60" y="68" width="160" height="28" rx="14" fill="#ffffff" opacity="0.08"/>
+  <text x="140" y="87" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="2" opacity="0.7">EXPERIMENT · 2026</text>
+
+  <!-- Main title -->
+  <text x="60" y="185" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="900" fill="#ffffff" letter-spacing="-1">I Replaced My</text>
+  <text x="60" y="265" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="900" fill="#ffffff" letter-spacing="-1">PM Workflow</text>
+
+  <!-- "with AI" line with accent box around "AI" -->
+  <text x="60" y="345" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="900" fill="#ffffff" letter-spacing="-1">with </text>
+  <rect x="242" y="290" width="118" height="72" rx="10" fill="#ffffff"/>
+  <text x="301" y="345" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="64" font-weight="900" fill="#0a0a0a" text-anchor="middle" letter-spacing="-1">AI</text>
+
+  <!-- Divider line -->
+  <rect x="60" y="380" width="200" height="2" rx="1" fill="#ffffff" opacity="0.2"/>
+
+  <!-- Stats row -->
+  <text x="60" y="420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" fill="#666666" letter-spacing="1">7 DAYS &#160;·&#160; 5 TOOLS &#160;·&#160; 7 PM TASKS</text>
+
+  <!-- Tagline -->
+  <text x="60" y="465" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" fill="#aaaaaa">Here's what actually happened.</text>
+
+  <!-- Author -->
+  <text x="60" y="575" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" fill="#444444" font-weight="600" letter-spacing="1">KARTIK BHALERAO</text>
+
+  <!-- ── RIGHT SIDE — Timeline ── -->
+
+  <!-- Timeline vertical line -->
+  <line x1="680" y1="90" x2="680" y2="540" stroke="#ffffff" stroke-width="1" opacity="0.15"/>
+
+  <!-- DAY 1 -->
+  <circle cx="680" cy="115" r="5" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+  <text x="700" y="111" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff" opacity="0.35" letter-spacing="2">DAY 1</text>
+  <text x="700" y="127" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff" opacity="0.6">Product Discovery</text>
+
+  <!-- DAY 2 -->
+  <circle cx="680" cy="185" r="5" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+  <text x="700" y="181" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff" opacity="0.35" letter-spacing="2">DAY 2</text>
+  <text x="700" y="197" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff" opacity="0.6">Market Research</text>
+
+  <!-- DAY 3 — HIGHLIGHTED -->
+  <circle cx="680" cy="255" r="7" fill="#ffffff"/>
+  <rect x="698" y="238" width="270" height="48" rx="8" fill="#ffffff" opacity="0.07" stroke="#ffffff" stroke-width="1" stroke-opacity="0.25"/>
+  <text x="710" y="251" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff" opacity="0.5" letter-spacing="2">DAY 3</text>
+  <text x="710" y="270" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#ffffff">Writing PRD</text>
+  <text x="950" y="264" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#ffffff" opacity="0.4">← real example</text>
+
+  <!-- DAY 4 -->
+  <circle cx="680" cy="335" r="5" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+  <text x="700" y="331" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff" opacity="0.35" letter-spacing="2">DAY 4</text>
+  <text x="700" y="347" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff" opacity="0.6">User Stories</text>
+
+  <!-- DAY 5 -->
+  <circle cx="680" cy="395" r="5" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+  <text x="700" y="391" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff" opacity="0.35" letter-spacing="2">DAY 5</text>
+  <text x="700" y="407" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff" opacity="0.6">Rapid Prototyping</text>
+
+  <!-- DAY 6 -->
+  <circle cx="680" cy="455" r="5" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+  <text x="700" y="451" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff" opacity="0.35" letter-spacing="2">DAY 6</text>
+  <text x="700" y="467" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff" opacity="0.6">Feedback Analysis</text>
+
+  <!-- DAY 7 — HIGHLIGHTED -->
+  <circle cx="680" cy="515" r="7" fill="#ffffff"/>
+  <text x="700" y="511" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff" opacity="0.5" letter-spacing="2">DAY 7</text>
+  <text x="700" y="527" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#ffffff">Roadmap Planning</text>
+
+  <!-- Bottom caption right -->
+  <text x="1140" y="575" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" fill="#333333" text-anchor="end" letter-spacing="1">kartikbhalerao.com</text>
+</svg>

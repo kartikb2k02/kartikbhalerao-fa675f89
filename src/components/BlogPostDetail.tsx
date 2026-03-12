@@ -252,80 +252,86 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
         </div>
 
         {/* Post Content */}
-        <div className="bg-card/90 backdrop-blur-sm rounded-2xl border border-border/50 shadow-xl p-6 sm:p-8 lg:p-10 mb-8">
+        <div className="bg-card/90 backdrop-blur-sm rounded-2xl border border-border/50 shadow-xl p-6 sm:p-10 lg:p-12 mb-8">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
             components={{
               h1: ({ children }) => (
-                <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-8 mb-4 first:mt-0">
+                <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-10 mb-5 first:mt-0 tracking-tight leading-tight">
                   {children}
                 </h1>
               ),
               h2: ({ children }) => (
-                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-10 mb-4 pb-2 border-b border-slate-200 dark:border-slate-700">
+                <h2 className="flex items-center gap-3 text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mt-12 mb-5 tracking-tight">
+                  <span className="inline-block w-1 h-6 rounded-full bg-black dark:bg-white flex-shrink-0" />
                   {children}
                 </h2>
               ),
               h3: ({ children }) => (
-                <h3 className="text-lg sm:text-xl font-semibold text-slate-800 dark:text-slate-100 mt-6 mb-3">
+                <h3 className="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100 mt-8 mb-3 uppercase tracking-widest">
                   {children}
                 </h3>
               ),
               h4: ({ children }) => (
-                <h4 className="text-base sm:text-lg font-semibold text-slate-800 dark:text-slate-200 mt-4 mb-2">
+                <h4 className="text-base font-semibold text-slate-800 dark:text-slate-200 mt-5 mb-2">
                   {children}
                 </h4>
               ),
               p: ({ children }) => (
-                <p className="text-base text-slate-700 dark:text-slate-300 leading-7 mb-4">{children}</p>
+                <p className="text-[16px] text-slate-600 dark:text-slate-300 leading-[1.85] mb-5">{children}</p>
               ),
               ul: ({ children }) => (
-                <ul className="list-disc list-outside ml-6 my-4 space-y-2 text-slate-700 dark:text-slate-300">
+                <ul className="my-5 space-y-2.5 ml-1">
                   {children}
                 </ul>
               ),
               ol: ({ children }) => (
-                <ol className="list-decimal list-outside ml-6 my-4 space-y-2 text-slate-700 dark:text-slate-300">
+                <ol className="my-5 space-y-2.5 ml-1 list-decimal list-outside pl-5 text-slate-600 dark:text-slate-300">
                   {children}
                 </ol>
               ),
-              li: ({ children }) => <li className="text-base leading-7 pl-1">{children}</li>,
+              li: ({ children }) => (
+                <li className="flex items-start gap-3 text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-black dark:bg-white flex-shrink-0" />
+                  <span>{children}</span>
+                </li>
+              ),
               img: ({ src, alt }) => (
-                <figure className="my-6">
-                  <div className="overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700">
+                <figure className="my-8">
+                  <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 shadow-md">
                     <img src={src} alt={alt || ""} className="w-full h-auto object-contain" loading="lazy" />
                   </div>
                   {alt && alt !== "image" && (
-                    <figcaption className="text-center text-sm text-slate-500 dark:text-slate-400 mt-2">{alt}</figcaption>
+                    <figcaption className="text-center text-xs text-slate-400 dark:text-slate-500 mt-3 font-medium tracking-wide uppercase">{alt}</figcaption>
                   )}
                 </figure>
               ),
               table: ({ children }) => (
-                <div className="my-6 overflow-x-auto">
-                  <table className="w-full text-sm border-collapse border border-slate-300 dark:border-slate-600 rounded-lg overflow-hidden">
+                <div className="my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                  <table className="w-full text-sm border-collapse">
                     {children}
                   </table>
                 </div>
               ),
-              thead: ({ children }) => <thead className="bg-slate-100 dark:bg-slate-700">{children}</thead>,
-              tbody: ({ children }) => <tbody className="bg-card">{children}</tbody>,
+              thead: ({ children }) => <thead className="bg-black dark:bg-white">{children}</thead>,
+              tbody: ({ children }) => <tbody className="bg-card divide-y divide-slate-100 dark:divide-slate-800">{children}</tbody>,
               tr: ({ children }) => (
-                <tr className="border-b border-slate-200 dark:border-slate-600 last:border-b-0">{children}</tr>
+                <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">{children}</tr>
               ),
               th: ({ children }) => (
-                <th className="px-4 py-3 text-left text-sm font-semibold text-slate-900 dark:text-white border-r border-slate-200 dark:border-slate-600 last:border-r-0">
+                <th className="px-5 py-3 text-left text-xs font-bold text-white dark:text-black uppercase tracking-widest border-r border-white/20 dark:border-black/20 last:border-r-0">
                   {children}
                 </th>
               ),
               td: ({ children }) => (
-                <td className="px-4 py-3 text-sm text-slate-700 dark:text-slate-300 border-r border-slate-200 dark:border-slate-600 last:border-r-0">
+                <td className="px-5 py-3.5 text-sm text-slate-700 dark:text-slate-300 border-r border-slate-100 dark:border-slate-800 last:border-r-0">
                   {children}
                 </td>
               ),
               blockquote: ({ children }) => (
-                <blockquote className="border-l-4 border-violet-400 bg-violet-50/50 dark:bg-violet-900/20 pl-4 py-3 my-6 rounded-r-lg">
-                  <div className="text-slate-700 dark:text-slate-300 italic">{children}</div>
+                <blockquote className="relative border-l-[3px] border-black dark:border-white bg-slate-50 dark:bg-white/5 pl-5 pr-4 py-4 my-6 rounded-r-xl">
+                  <div className="text-slate-700 dark:text-slate-200 text-[15px] leading-relaxed font-medium not-italic">{children}</div>
                 </blockquote>
               ),
               a: ({ href, children }) => (
@@ -333,7 +339,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
                   href={href}
                   target={href?.startsWith("http") ? "_blank" : undefined}
                   rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="text-violet-600 dark:text-violet-400 hover:underline"
+                  className="text-slate-900 dark:text-white font-semibold underline underline-offset-2 decoration-slate-300 dark:decoration-slate-600 hover:decoration-black dark:hover:decoration-white transition-all"
                 >
                   {children}
                 </a>
@@ -341,34 +347,52 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
               code: ({ children, className }) => {
                 const isInline = !className;
                 return isInline ? (
-                  <code className="bg-slate-100 dark:bg-slate-700 px-1.5 py-0.5 rounded text-sm text-slate-800 dark:text-slate-200">
+                  <code className="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded-md text-[13px] font-mono text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
                     {children}
                   </code>
                 ) : (
-                  <code className={className}>{children}</code>
+                  <code className={`${className} text-slate-200 text-[13px] font-mono`}>{children}</code>
                 );
               },
               pre: ({ children }) => (
-                <pre className="bg-slate-900 dark:bg-slate-950 p-4 rounded-lg overflow-x-auto my-4 text-sm">
-                  {children}
-                </pre>
+                <div className="relative my-6 group">
+                  <div className="flex items-center gap-1.5 px-4 py-2.5 bg-zinc-800 dark:bg-zinc-900 rounded-t-xl border-b border-white/10">
+                    <span className="w-3 h-3 rounded-full bg-red-500/70" />
+                    <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
+                    <span className="w-3 h-3 rounded-full bg-green-500/70" />
+                    <span className="ml-2 text-xs text-zinc-400 font-mono">prompt</span>
+                  </div>
+                  <pre className="bg-zinc-900 dark:bg-zinc-950 px-5 py-4 rounded-b-xl overflow-x-auto text-[13px] leading-relaxed">
+                    {children}
+                  </pre>
+                </div>
               ),
               iframe: ({ src, title, ...props }) => (
-                <div className="my-6 relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <div className="my-8 relative w-full rounded-xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700" style={{ paddingBottom: '56.25%' }}>
                   <iframe
                     src={src}
                     title={title || ""}
-                    className="absolute inset-0 w-full h-full rounded-lg border border-slate-200 dark:border-slate-700"
+                    className="absolute inset-0 w-full h-full"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   />
                 </div>
               ),
-              hr: () => <hr className="border-slate-200 dark:border-slate-700 my-8" />,
-              strong: ({ children }) => (
-                <strong className="font-semibold text-slate-900 dark:text-white">{children}</strong>
+              hr: () => (
+                <div className="flex items-center gap-4 my-10">
+                  <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
+                  <div className="flex gap-1">
+                    <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
+                    <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
+                    <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
+                  </div>
+                  <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
+                </div>
               ),
-              em: ({ children }) => <em className="italic text-slate-600 dark:text-slate-400">{children}</em>,
+              strong: ({ children }) => (
+                <strong className="font-bold text-slate-900 dark:text-white">{children}</strong>
+              ),
+              em: ({ children }) => <em className="italic text-slate-500 dark:text-slate-400">{children}</em>,
             }}
           >
             {content}

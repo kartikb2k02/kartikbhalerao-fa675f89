@@ -96,6 +96,9 @@ export const AboutSection = () => {
                     <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-0.5">
                       Decision Machine &nbsp;·&nbsp; Pune, India
                     </p>
+                    <span className="inline-flex items-center mt-2 text-xs font-bold px-3 py-1 rounded-md bg-black text-white dark:bg-white dark:text-black shadow-sm border border-black dark:border-white">
+                      Fintech SaaS Product
+                    </span>
                   </div>
                   <div className="flex flex-col items-end gap-1.5">
                     <span className="text-xs font-semibold text-white px-3 py-1 rounded-full bg-black dark:bg-white dark:text-black">
@@ -227,6 +230,9 @@ export const AboutSection = () => {
                     <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-0.5">
                       Ocius &nbsp;·&nbsp; Remote
                     </p>
+                    <span className="inline-flex items-center mt-2 text-xs font-bold px-3 py-1 rounded-md bg-black text-white dark:bg-white dark:text-black shadow-sm border border-black dark:border-white">
+                      HealthTech Product
+                    </span>
                   </div>
                   <div className="flex flex-col items-end gap-1.5">
                     <span className="text-xs font-semibold text-white px-3 py-1 rounded-full bg-black dark:bg-white dark:text-black">
