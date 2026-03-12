@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Header } from "@/components/Header";
 import { BlogPostDetail } from "@/components/BlogPostDetail";
 import { blogPosts } from "@/data/blogPosts";
@@ -36,7 +37,26 @@ const BlogPost = () => {
     );
   }
 
+  const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://kartikbhalerao.com";
+  const ogImage = post.image?.startsWith("http") ? post.image : `${baseUrl}${post.image}`;
+  const ogUrl = `${baseUrl}/blog/${post.id}`;
+
   return (
+    <>
+    <Helmet>
+      <title>{post.title} | Kartik Bhalerao</title>
+      <meta name="description" content={post.excerpt} />
+      <meta property="og:title" content={post.title} />
+      <meta property="og:description" content={post.excerpt} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:url" content={ogUrl} />
+      <meta property="og:type" content="article" />
+      <meta property="og:site_name" content="Productfolio | Kartik Bhalerao" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={post.title} />
+      <meta name="twitter:description" content={post.excerpt} />
+      <meta name="twitter:image" content={ogImage} />
+    </Helmet>
     <div className="min-h-screen bg-background text-foreground relative">
       {/* Dotted background — same as home/skills page */}
       <div
@@ -58,6 +78,7 @@ const BlogPost = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

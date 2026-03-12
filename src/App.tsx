@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ErrorBoundary } from "react-error-boundary";
+import { HelmetProvider } from "react-helmet-async";
 
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -53,6 +54,7 @@ const App = () => {
   console.log("QueryClient instance:", queryClient);
   
   return (
+    <HelmetProvider>
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
@@ -78,6 +80,7 @@ const App = () => {
         </ThemeProvider>
       </QueryClientProvider>
     </ErrorBoundary>
+    </HelmetProvider>
   );
 };
 

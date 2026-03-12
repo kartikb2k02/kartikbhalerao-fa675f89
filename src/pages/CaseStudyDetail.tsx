@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft, ZoomIn, ArrowUp } from "lucide-react";
 import { Header } from "@/components/Header";
 import { FooterSection } from "@/components/FooterSection";
@@ -52,7 +53,27 @@ const CaseStudyDetail = () => {
     );
   }
 
+  const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://kartikbhalerao.com";
+  const ogImage = caseStudy.image?.startsWith("http") ? caseStudy.image : `${baseUrl}${caseStudy.image}`;
+  const ogUrl = `${baseUrl}/case-studies/${caseStudy.id}`;
+  const ogDescription = caseStudy.subtitle || caseStudy.overview?.slice(0, 160) || "A product case study by Kartik Bhalerao";
+
   return (
+    <>
+    <Helmet>
+      <title>{caseStudy.title} | Kartik Bhalerao</title>
+      <meta name="description" content={ogDescription} />
+      <meta property="og:title" content={caseStudy.title} />
+      <meta property="og:description" content={ogDescription} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:url" content={ogUrl} />
+      <meta property="og:type" content="article" />
+      <meta property="og:site_name" content="Productfolio | Kartik Bhalerao" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={caseStudy.title} />
+      <meta name="twitter:description" content={ogDescription} />
+      <meta name="twitter:image" content={ogImage} />
+    </Helmet>
     <div className="min-h-screen w-full text-foreground relative bg-white dark:bg-zinc-900">
 
       {/* Reading Progress Bar */}
@@ -272,6 +293,7 @@ const CaseStudyDetail = () => {
         </svg>
       </button>
     </div>
+    </>
   );
 };
 
