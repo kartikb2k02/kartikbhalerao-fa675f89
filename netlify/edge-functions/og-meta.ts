@@ -1,5 +1,3 @@
-import type { Context } from "https://edge.netlify.com";
-
 const BASE = "https://kartikbhalerao.com";
 
 const BLOG: Record<number, { title: string; desc: string; img: string }> = {
@@ -27,30 +25,7 @@ const CASES: Record<string, { title: string; desc: string; img: string }> = {
   "chatly-prd":          { title: "Chatly PRD", desc: "AI Conversation Operationalization Platform", img: "/lovable-uploads/Chatly.png" },
 };
 
-function esc(s: string) {
-  return s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
-
-function inject(html: string, d: { title: string; desc: string; img: string }, pageUrl: string) {
-  const t = esc(`${d.title} | Kartik Bhalerao`);
-  const de = esc(d.desc);
-  const img = d.img.startsWith("http") ? d.img : `${BASE}${d.img}`;
-  const u = esc(pageUrl);
-
-  return html
-    .replace(/<title>[^<]*<\/title>/i, `<title>${t}</title>`)
-    .replace(/<meta name="description"[^>]*>/i, `<meta name="description" content="${de}" />`)
-    .replace(/<meta property="og:title"[^>]*>/i, `<meta property="og:title" content="${t}" />`)
-    .replace(/<meta property="og:description"[^>]*>/i, `<meta property="og:description" content="${de}" />`)
-    .replace(/<meta property="og:image"[^>]*>/i, `<meta property="og:image" content="${img}" />`)
-    .replace(/<meta property="og:url"[^>]*>/i, `<meta property="og:url" content="${u}" />`)
-    .replace(/<meta property="og:type"[^>]*>/i, `<meta property="og:type" content="article" />`)
-    .replace(/<meta name="twitter:title"[^>]*>/i, `<meta name="twitter:title" content="${t}" />`)
-    .replace(/<meta name="twitter:description"[^>]*>/i, `<meta name="twitter:description" content="${de}" />`)
-    .replace(/<meta name="twitter:image"[^>]*>/i, `<meta name="twitter:image" content="${img}" />`);
-}
-
-export default async (request: Request, context: Context) => {
+export default async (request: Request, context: { next: () => Promise<Response> }) => {
   const path = new URL(request.url).pathname;
 
   let data: { title: string; desc: string; img: string } | undefined;
@@ -61,19 +36,32 @@ export default async (request: Request, context: Context) => {
   if (blogMatch) data = BLOG[parseInt(blogMatch[1])];
   else if (caseMatch) data = CASES[caseMatch[1]];
 
+  // No matching data — serve normally
   if (!data) return context.next();
 
   const response = await context.next();
-  const ct = response.headers.get("content-type") ?? "";
-  if (!ct.includes("text/html")) return response;
-
   const html = await response.text();
-  const modified = inject(html, data, request.url);
 
-  return new Response(modified, {
-    status: response.status,
-    headers: response.headers,
-  });
+  const title = `${data.title} | Kartik Bhalerao`;
+  const img = data.img.startsWith("http") ? data.img : `${BASE}${data.img}`;
+  const pageUrl = request.url;
+  const desc = data.desc;
+
+  const modified = html
+    .replace(/<title>[^<]*<\/title>/i, `<title>${title}</title>`)
+    .replace(/<meta name="description"[^>]*>/i, `<meta name="description" content="${desc.replace(/"/g, '&quot;')}" />`)
+    .replace(/<meta property="og:title"[^>]*>/i, `<meta property="og:title" content="${title.replace(/"/g, '&quot;')}" />`)
+    .replace(/<meta property="og:description"[^>]*>/i, `<meta property="og:description" content="${desc.replace(/"/g, '&quot;')}" />`)
+    .replace(/<meta property="og:image"[^>]*>/i, `<meta property="og:image" content="${img}" />`)
+    .replace(/<meta property="og:url"[^>]*>/i, `<meta property="og:url" content="${pageUrl}" />`)
+    .replace(/<meta property="og:type"[^>]*>/i, `<meta property="og:type" content="article" />`)
+    .replace(/<meta name="twitter:title"[^>]*>/i, `<meta name="twitter:title" content="${title.replace(/"/g, '&quot;')}" />`)
+    .replace(/<meta name="twitter:description"[^>]*>/i, `<meta name="twitter:description" content="${desc.replace(/"/g, '&quot;')}" />`)
+    .replace(/<meta name="twitter:image"[^>]*>/i, `<meta name="twitter:image" content="${img}" />`);
+
+  const headers = new Headers(response.headers);
+  headers.set("content-type", "text/html; charset=utf-8");
+  headers.set("cache-control", "no-store");
+
+  return new Response(modified, { status: response.status, headers });
 };
-
-export const config = { path: ["/blog/*", "/case-studies/*"] };
