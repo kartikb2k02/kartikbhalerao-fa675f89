@@ -1,8 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 import { blogPosts, BlogPost } from "@/data/blogPosts";
-import { getMarkdownContent } from "@/utils/blogContent";
 import { BlogLayout } from "@/components/BlogLayout";
 import { Header } from "@/components/Header";
 import { useBlogPreferences } from "@/hooks/useBlogPreferences";
@@ -11,10 +10,11 @@ export type SortOption = "date" | "readTime" | "title";
 
 const Blog = () => {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
-  const [markdownContent, setMarkdownContent] = useState<string>("");
+  const [selectedPost] = useState<BlogPost | null>(null);
+  const [markdownContent] = useState<string>("");
   const [sortBy, setSortBy] = useState<SortOption>("date");
   const [blogTheme, setBlogTheme] = useState<"light" | "dark" | "system">("system");
 
@@ -88,25 +88,21 @@ const Blog = () => {
     return posts;
   }, [selectedCategory, searchTerm, sortBy, bookmarkedPosts]);
 
-  const handleBlogPostClick = async (post: BlogPost) => {
-    setSelectedPost(post);
-    markAsRead(post.id); // Mark as read when clicked
-    const content = await getMarkdownContent(post.slug, post);
-    setMarkdownContent(content);
+  const handleBlogPostClick = (post: BlogPost) => {
+    markAsRead(post.id);
+    navigate(`/blog/${post.slug}`);
   };
 
   // Auto-open post when arriving from header dropdown (?slug=X)
   useEffect(() => {
     const slug = searchParams.get("slug");
     if (slug) {
-      const post = blogPosts.find(p => p.slug === slug);
-      if (post) handleBlogPostClick(post);
+      navigate(`/blog/${slug}`, { replace: true });
     }
   }, []);
 
   const handleBackToList = () => {
-    setSelectedPost(null);
-    setMarkdownContent("");
+    navigate("/blog");
   };
 
   const handleSearchChange = (term: string) => {
