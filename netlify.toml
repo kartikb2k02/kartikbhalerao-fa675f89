@@ -2,14 +2,6 @@
   command = "npm run build"
   publish = "dist"
 
-[[edge_functions]]
-  path = "/blog/*"
-  function = "og-meta"
-
-[[edge_functions]]
-  path = "/case-studies/*"
-  function = "og-meta"
-
 # Redirect old numeric blog IDs to slug-based URLs (301 = permanent, preserves SEO)
 [[redirects]]
   from = "/blog/1"

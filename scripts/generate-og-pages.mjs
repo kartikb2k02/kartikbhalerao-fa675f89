@@ -119,10 +119,9 @@ function injectOgTags(html, { title, description, image, url, type = 'website' }
 // ── Main ─────────────────────────────────────────────────────────────────────
 const distIndexHtml = fs.readFileSync('dist/index.html', 'utf-8');
 
-// Blog posts
+// Blog posts — flat .html files so Netlify serves /blog/slug directly as 200 (no redirect)
+fs.mkdirSync('dist/blog', { recursive: true });
 for (const post of blogPosts) {
-  const dir = `dist/blog/${post.slug}`;
-  fs.mkdirSync(dir, { recursive: true });
   const html = injectOgTags(distIndexHtml, {
     title: `${post.title} | Kartik Bhalerao`,
     description: post.excerpt,
@@ -130,21 +129,20 @@ for (const post of blogPosts) {
     url: `${BASE_URL}/blog/${post.slug}`,
     type: 'article',
   });
-  fs.writeFileSync(path.join(dir, 'index.html'), html);
+  fs.writeFileSync(`dist/blog/${post.slug}.html`, html);
   console.log(`✓ /blog/${post.slug}`);
 }
 
-// Case studies
+// Case studies — flat .html files
+fs.mkdirSync('dist/case-studies', { recursive: true });
 for (const cs of caseStudies) {
-  const dir = `dist/case-studies/${cs.id}`;
-  fs.mkdirSync(dir, { recursive: true });
   const html = injectOgTags(distIndexHtml, {
     title: `${cs.title} | Kartik Bhalerao`,
     description: cs.subtitle,
     image: cs.image,
     url: `${BASE_URL}/case-studies/${cs.id}`,
   });
-  fs.writeFileSync(path.join(dir, 'index.html'), html);
+  fs.writeFileSync(`dist/case-studies/${cs.id}.html`, html);
   console.log(`✓ /case-studies/${cs.id}`);
 }
 
