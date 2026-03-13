@@ -3,55 +3,60 @@ import path from 'path';
 
 const BASE_URL = 'https://kartikbhalerao.com';
 
+// NOTE: og:image must be PNG or JPG — SVG is rejected by LinkedIn and Twitter/X.
+// For posts whose banner is SVG, ogImage points to a PNG alternative.
+const FALLBACK_OG_IMG = '/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.png';
+const ogImg = (p) => p.endsWith('.svg') ? FALLBACK_OG_IMG : p;
+
 // ── Blog post data (mirrors src/data/blogPosts.ts) ──────────────────────────
 const blogPosts = [
   {
     id: 1,
     title: "AI-First Product Strategy: How to Build with Intelligence at the Core",
     excerpt: "The rise of generative AI has changed how we build products. AI is no longer just a feature — it's the foundation.",
-    image: "/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.png",
+    image: ogImg("/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.png"),
   },
   {
     id: 2,
     title: "MoSCoW: The Prioritization Method That Saves Your Sanity (and Your Sprint)",
     excerpt: "As a PM, it often feels like you're building a rocket ship with IKEA instructions. MoSCoW is the framework that brings clarity to chaos.",
-    image: "/lovable-uploads/moscow-banner.svg",
+    image: ogImg("/lovable-uploads/moscow-banner.svg"),
   },
   {
     id: 3,
     title: "AI as Your Co-Pilot: How Product Managers Can Supercharge Decision-Making with AI",
     excerpt: "AI is revolutionizing product management by providing deep insights, automating processes, and enhancing forecasting accuracy.",
-    image: "/lovable-uploads/ai-copilot-banner.svg",
+    image: ogImg("/lovable-uploads/ai-copilot-banner.svg"),
   },
   {
     id: 4,
     title: "Data-Driven Decision Making: My Experience at Decision Machine",
     excerpt: "How to balance quantitative insights with qualitative user feedback",
-    image: "/lovable-uploads/data-driven-banner.svg",
+    image: ogImg("/lovable-uploads/data-driven-banner.svg"),
   },
   {
     id: 5,
     title: "From Idea to MVP: A Product Manager's Journey",
     excerpt: "Step-by-step guide to building your first product from concept to launch",
-    image: "/lovable-uploads/idea-to-mvp-banner.svg",
+    image: ogImg("/lovable-uploads/idea-to-mvp-banner.svg"),
   },
   {
     id: 6,
     title: "User Research That Actually Matters",
     excerpt: "Moving beyond vanity metrics to insights that drive product decisions",
-    image: "/lovable-uploads/user-research-banner.svg",
+    image: ogImg("/lovable-uploads/user-research-banner.svg"),
   },
   {
     id: 7,
     title: "Scaling Product Teams: Lessons Learned",
     excerpt: "How to maintain product quality while growing your team",
-    image: "/lovable-uploads/scaling-teams-banner.svg",
+    image: ogImg("/lovable-uploads/scaling-teams-banner.svg"),
   },
   {
     id: 8,
     title: "I Replaced My Product Manager Workflow with AI for 7 Days — Here's What Happened",
     excerpt: "For 7 days, I replaced key parts of my PM workflow with AI tools. Here's where AI genuinely helped, where it struggled, and what it means for the future of Product Management.",
-    image: "/lovable-uploads/ai-pm-7days-banner.svg",
+    image: ogImg("/lovable-uploads/ai-pm-7days-banner.svg"),
   },
 ];
 
@@ -134,7 +139,7 @@ function escape(str) {
     .replace(/>/g, '&gt;');
 }
 
-function injectOgTags(html, { title, description, image, url }) {
+function injectOgTags(html, { title, description, image, url, type = 'website' }) {
   const t = escape(title);
   const d = escape(description);
   const i = image.startsWith('http') ? image : `${BASE_URL}${image}`;
@@ -147,6 +152,7 @@ function injectOgTags(html, { title, description, image, url }) {
     .replace(/<meta property="og:description"[^>]*>/, `<meta property="og:description" content="${d}" />`)
     .replace(/<meta property="og:image"[^>]*>/, `<meta property="og:image" content="${i}" />`)
     .replace(/<meta property="og:url"[^>]*>/, `<meta property="og:url" content="${u}" />`)
+    .replace(/<meta property="og:type"[^>]*>/, `<meta property="og:type" content="${type}" />`)
     .replace(/<meta name="twitter:title"[^>]*>/, `<meta name="twitter:title" content="${t}" />`)
     .replace(/<meta name="twitter:description"[^>]*>/, `<meta name="twitter:description" content="${d}" />`)
     .replace(/<meta name="twitter:image"[^>]*>/, `<meta name="twitter:image" content="${i}" />`);
@@ -164,6 +170,7 @@ for (const post of blogPosts) {
     description: post.excerpt,
     image: post.image,
     url: `${BASE_URL}/blog/${post.id}`,
+    type: 'article',
   });
   fs.writeFileSync(path.join(dir, 'index.html'), html);
   console.log(`✓ /blog/${post.id}`);
