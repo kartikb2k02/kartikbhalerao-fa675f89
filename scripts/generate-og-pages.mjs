@@ -8,54 +8,14 @@ const BASE_URL = 'https://kartikbhalerao.com';
 
 // ── Blog post data (mirrors src/data/blogPosts.ts) ──────────────────────────
 const blogPosts = [
-  {
-    id: 1,
-    title: "AI-First Product Strategy: How to Build with Intelligence at the Core",
-    excerpt: "The rise of generative AI has changed how we build products. AI is no longer just a feature — it's the foundation.",
-    image: "/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.png",
-  },
-  {
-    id: 2,
-    title: "MoSCoW: The Prioritization Method That Saves Your Sanity (and Your Sprint)",
-    excerpt: "As a PM, it often feels like you're building a rocket ship with IKEA instructions. MoSCoW is the framework that brings clarity to chaos.",
-    image: "/lovable-uploads/product-development-workflow.png",
-  },
-  {
-    id: 3,
-    title: "AI as Your Co-Pilot: How Product Managers Can Supercharge Decision-Making with AI",
-    excerpt: "AI is revolutionizing product management by providing deep insights, automating processes, and enhancing forecasting accuracy.",
-    image: "/lovable-uploads/ai-product-discovery-workflow.png",
-  },
-  {
-    id: 4,
-    title: "Data-Driven Decision Making: My Experience at Decision Machine",
-    excerpt: "How to balance quantitative insights with qualitative user feedback",
-    image: "/lovable-uploads/ai-feedback-pipeline.png",
-  },
-  {
-    id: 5,
-    title: "From Idea to MVP: A Product Manager's Journey",
-    excerpt: "Step-by-step guide to building your first product from concept to launch",
-    image: "/lovable-uploads/product-development-workflow.png",
-  },
-  {
-    id: 6,
-    title: "User Research That Actually Matters",
-    excerpt: "Moving beyond vanity metrics to insights that drive product decisions",
-    image: "/lovable-uploads/ai-feedback-pipeline.png",
-  },
-  {
-    id: 7,
-    title: "Scaling Product Teams: Lessons Learned",
-    excerpt: "How to maintain product quality while growing your team",
-    image: "/lovable-uploads/ai-product-discovery-workflow.png",
-  },
-  {
-    id: 8,
-    title: "I Replaced My Product Manager Workflow with AI for 7 Days — Here's What Happened",
-    excerpt: "For 7 days, I replaced key parts of my PM workflow with AI tools. Here's where AI genuinely helped, where it struggled, and what it means for the future of Product Management.",
-    image: "/lovable-uploads/traditional-vs-ai-workflow.png",
-  },
+  { slug: "ai-first-product-strategy",              title: "AI-First Product Strategy: How to Build with Intelligence at the Core",              excerpt: "The rise of generative AI has changed how we build products. AI is no longer just a feature — it's the foundation.",                                                               image: "/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.png" },
+  { slug: "moscow-prioritization-method",           title: "MoSCoW: The Prioritization Method That Saves Your Sanity (and Your Sprint)",         excerpt: "As a PM, it often feels like you're building a rocket ship with IKEA instructions. MoSCoW is the framework that brings clarity to chaos.",                                       image: "/lovable-uploads/product-development-workflow.png" },
+  { slug: "ai-copilot-decision-making",             title: "AI as Your Co-Pilot: How Product Managers Can Supercharge Decision-Making with AI",  excerpt: "AI is revolutionizing product management by providing deep insights, automating processes, and enhancing forecasting accuracy.",                                               image: "/lovable-uploads/ai-product-discovery-workflow.png" },
+  { slug: "data-driven-decision-making-experience", title: "Data-Driven Decision Making: My Experience at Decision Machine",                     excerpt: "How to balance quantitative insights with qualitative user feedback",                                                                                                    image: "/lovable-uploads/ai-feedback-pipeline.png" },
+  { slug: "idea-to-mvp-product-manager-journey",    title: "From Idea to MVP: A Product Manager's Journey",                                     excerpt: "Step-by-step guide to building your first product from concept to launch",                                                                                               image: "/lovable-uploads/product-development-workflow.png" },
+  { slug: "user-research-that-matters",             title: "User Research That Actually Matters",                                                excerpt: "Moving beyond vanity metrics to insights that drive product decisions",                                                                                             image: "/lovable-uploads/ai-feedback-pipeline.png" },
+  { slug: "scaling-product-teams-lessons",          title: "Scaling Product Teams: Lessons Learned",                                            excerpt: "How to maintain product quality while growing your team",                                                                                                         image: "/lovable-uploads/ai-product-discovery-workflow.png" },
+  { slug: "ai-replaced-pm-workflow-7-days",         title: "I Replaced My Product Manager Workflow with AI for 7 Days — Here's What Happened",  excerpt: "For 7 days, I replaced key parts of my PM workflow with AI tools. Here's where AI genuinely helped, where it struggled, and what it means for the future of Product Management.", image: "/lovable-uploads/traditional-vs-ai-workflow.png" },
 ];
 
 // ── Case study data (mirrors src/data/caseStudies.ts) ────────────────────────
@@ -161,17 +121,17 @@ const distIndexHtml = fs.readFileSync('dist/index.html', 'utf-8');
 
 // Blog posts
 for (const post of blogPosts) {
-  const dir = `dist/blog/${post.id}`;
+  const dir = `dist/blog/${post.slug}`;
   fs.mkdirSync(dir, { recursive: true });
   const html = injectOgTags(distIndexHtml, {
     title: `${post.title} | Kartik Bhalerao`,
     description: post.excerpt,
     image: post.image,
-    url: `${BASE_URL}/blog/${post.id}`,
+    url: `${BASE_URL}/blog/${post.slug}`,
     type: 'article',
   });
   fs.writeFileSync(path.join(dir, 'index.html'), html);
-  console.log(`✓ /blog/${post.id}`);
+  console.log(`✓ /blog/${post.slug}`);
 }
 
 // Case studies

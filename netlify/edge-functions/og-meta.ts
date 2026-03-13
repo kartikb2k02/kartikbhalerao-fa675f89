@@ -1,16 +1,16 @@
 const BASE = "https://kartikbhalerao.com";
 
 // NOTE: og:image must be PNG or JPG — SVG is not supported by LinkedIn or Twitter/X.
-// Each post has its own PNG fallback. Replace these with proper blog banner PNGs when available.
-const BLOG: Record<number, { title: string; desc: string; img: string }> = {
-  1: { title: "AI-First Product Strategy: How to Build with Intelligence at the Core",          desc: "The rise of generative AI has changed how we build products. AI is no longer just a feature — it's the foundation.",                                                                                   img: "/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.png" },
-  2: { title: "MoSCoW: The Prioritization Method That Saves Your Sanity (and Your Sprint)",    desc: "As a PM, it often feels like you're building a rocket ship with IKEA instructions. MoSCoW is the framework that brings clarity to chaos.",                                                           img: "/lovable-uploads/product-development-workflow.png" },
-  3: { title: "AI as Your Co-Pilot: How Product Managers Can Supercharge Decision-Making with AI", desc: "AI is revolutionizing product management by providing deep insights, automating processes, and enhancing forecasting accuracy.",                                                                   img: "/lovable-uploads/ai-product-discovery-workflow.png" },
-  4: { title: "Data-Driven Decision Making: My Experience at Decision Machine",                desc: "How to balance quantitative insights with qualitative user feedback",                                                                                                                                img: "/lovable-uploads/ai-feedback-pipeline.png" },
-  5: { title: "From Idea to MVP: A Product Manager's Journey",                                 desc: "Step-by-step guide to building your first product from concept to launch",                                                                                                                          img: "/lovable-uploads/product-development-workflow.png" },
-  6: { title: "User Research That Actually Matters",                                           desc: "Moving beyond vanity metrics to insights that drive product decisions",                                                                                                                              img: "/lovable-uploads/ai-feedback-pipeline.png" },
-  7: { title: "Scaling Product Teams: Lessons Learned",                                        desc: "How to maintain product quality while growing your team",                                                                                                                                           img: "/lovable-uploads/ai-product-discovery-workflow.png" },
-  8: { title: "I Replaced My Product Manager Workflow with AI for 7 Days — Here's What Happened", desc: "For 7 days, I replaced key parts of my PM workflow with AI tools. Here's where AI genuinely helped, where it struggled, and what it means for the future of Product Management.",             img: "/lovable-uploads/traditional-vs-ai-workflow.png" },
+// Each post has its own PNG. Replace with proper blog banner PNGs when available.
+const BLOG: Record<string, { title: string; desc: string; img: string }> = {
+  "ai-first-product-strategy":             { title: "AI-First Product Strategy: How to Build with Intelligence at the Core",              desc: "The rise of generative AI has changed how we build products. AI is no longer just a feature — it's the foundation.",                                                               img: "/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.png" },
+  "moscow-prioritization-method":          { title: "MoSCoW: The Prioritization Method That Saves Your Sanity (and Your Sprint)",         desc: "As a PM, it often feels like you're building a rocket ship with IKEA instructions. MoSCoW is the framework that brings clarity to chaos.",                                       img: "/lovable-uploads/product-development-workflow.png" },
+  "ai-copilot-decision-making":            { title: "AI as Your Co-Pilot: How Product Managers Can Supercharge Decision-Making with AI",  desc: "AI is revolutionizing product management by providing deep insights, automating processes, and enhancing forecasting accuracy.",                                               img: "/lovable-uploads/ai-product-discovery-workflow.png" },
+  "data-driven-decision-making-experience":{ title: "Data-Driven Decision Making: My Experience at Decision Machine",                    desc: "How to balance quantitative insights with qualitative user feedback",                                                                                                    img: "/lovable-uploads/ai-feedback-pipeline.png" },
+  "idea-to-mvp-product-manager-journey":   { title: "From Idea to MVP: A Product Manager's Journey",                                    desc: "Step-by-step guide to building your first product from concept to launch",                                                                                               img: "/lovable-uploads/product-development-workflow.png" },
+  "user-research-that-matters":            { title: "User Research That Actually Matters",                                               desc: "Moving beyond vanity metrics to insights that drive product decisions",                                                                                             img: "/lovable-uploads/ai-feedback-pipeline.png" },
+  "scaling-product-teams-lessons":         { title: "Scaling Product Teams: Lessons Learned",                                           desc: "How to maintain product quality while growing your team",                                                                                                         img: "/lovable-uploads/ai-product-discovery-workflow.png" },
+  "ai-replaced-pm-workflow-7-days":        { title: "I Replaced My Product Manager Workflow with AI for 7 Days — Here's What Happened", desc: "For 7 days, I replaced key parts of my PM workflow with AI tools. Here's where AI genuinely helped, where it struggled, and what it means for the future of Product Management.", img: "/lovable-uploads/traditional-vs-ai-workflow.png" },
 };
 
 const CASES: Record<string, { title: string; desc: string; img: string }> = {
@@ -34,10 +34,10 @@ export default async (request: Request, context: { next: () => Promise<Response>
 
   let data: { title: string; desc: string; img: string } | undefined;
 
-  const blogMatch = path.match(/^\/blog\/(\d+)$/);
+  const blogMatch = path.match(/^\/blog\/([^/]+)$/);
   const caseMatch = path.match(/^\/case-studies\/([^/]+)$/);
 
-  if (blogMatch) data = BLOG[parseInt(blogMatch[1])];
+  if (blogMatch) data = BLOG[blogMatch[1]];
   else if (caseMatch) data = CASES[caseMatch[1]];
 
   // No matching data — serve normally

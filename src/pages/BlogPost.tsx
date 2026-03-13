@@ -8,17 +8,17 @@ import { getMarkdownContent } from "@/utils/blogContent";
 import { ArrowLeft } from "lucide-react";
 
 const BlogPost = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const [markdownContent, setMarkdownContent] = useState<string>("");
 
-  const post = blogPosts.find(p => p.id === parseInt(id || ""));
+  const post = blogPosts.find(p => p.slug === slug);
 
   useEffect(() => {
     if (post) {
       getMarkdownContent(post.slug, post).then(setMarkdownContent);
     }
-  }, [id]);
+  }, [slug]);
 
   if (!post) {
     return (
@@ -39,7 +39,7 @@ const BlogPost = () => {
 
   const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://kartikbhalerao.com";
   const ogImage = post.image?.startsWith("http") ? post.image : `${baseUrl}${post.image}`;
-  const ogUrl = `${baseUrl}/blog/${post.id}`;
+  const ogUrl = `${baseUrl}/blog/${post.slug}`;
 
   return (
     <>

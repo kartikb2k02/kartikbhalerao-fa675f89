@@ -18,7 +18,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const shareUrl = typeof window !== "undefined" ? `${window.location.origin}/blog/${post.id}` : "";
+  const shareUrl = typeof window !== "undefined" ? `${window.location.origin}/blog/${post.slug}` : "";
 
   const goToX = () => {
     const text = encodeURIComponent(`${post.title} by Kartik Bhalerao`);

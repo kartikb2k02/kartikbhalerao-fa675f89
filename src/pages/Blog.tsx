@@ -95,11 +95,11 @@ const Blog = () => {
     setMarkdownContent(content);
   };
 
-  // Auto-open post when arriving from header dropdown (?id=X)
+  // Auto-open post when arriving from header dropdown (?slug=X)
   useEffect(() => {
-    const id = searchParams.get("id");
-    if (id) {
-      const post = blogPosts.find(p => p.id === parseInt(id));
+    const slug = searchParams.get("slug");
+    if (slug) {
+      const post = blogPosts.find(p => p.slug === slug);
       if (post) handleBlogPostClick(post);
     }
   }, []);
