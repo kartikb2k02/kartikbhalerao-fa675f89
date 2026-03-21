@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 const GlassCard = ({
@@ -71,9 +72,60 @@ export const AboutSection = () => {
 
               <p className="text-lg text-muted-foreground leading-relaxed">
                 If you're equally obsessed with building meaningful products or just
-                want to talk product, let's connect—I'm always up for great
+                want to talk product, let's <Link to="/contact" className="text-blue-500 font-bold underline hover:text-blue-400 transition-colors">connect</Link>—I'm always up for great
                 conversations!
               </p>
+            </div>
+          </GlassCard>
+
+          {/* What I'm Currently Exploring */}
+          <GlassCard className="p-10 sm:p-12">
+            <h2 className="text-3xl font-black tracking-tight mb-2">
+              <span className="text-slate-900 dark:text-white">What I'm </span>
+              <span className="animate-gradient-text">Currently Exploring</span>
+            </h2>
+            <p className="text-muted-foreground mt-2 mb-8">
+              Focused on AI-powered products, No-Code platforms & PM tooling.{" "}
+              <Link to="/case-studies" className="text-blue-500 font-semibold underline hover:text-blue-400 transition-colors">
+                Check out my work
+              </Link>{" "}
+              — or just explore below.
+            </p>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                {
+                  label: "Building",
+                  title: "No-Code PM Platform with AI Agents",
+                  desc: "PMs can generate PRDs, roadmaps & competitive analysis using LLMs — no engineering required.",
+                },
+                {
+                  label: "Learning",
+                  title: "AI Agent Orchestration & LLM Workflows",
+                  desc: "Chaining AI agents and building reliable multi-step LLM pipelines for real PM artifacts.",
+                },
+                {
+                  label: "Thinking About",
+                  title: "The Future PM Stack",
+                  desc: "Which PM skills — taste, judgment, synthesis — become more valuable as AI takes over the grunt work.",
+                },
+                {
+                  label: "Experimenting With",
+                  title: "Figma + Notion as AI Context Sources",
+                  desc: "Wiring design files and docs directly into LLM prompts to generate richer, more accurate product specs.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="group relative rounded-xl border border-slate-200 dark:border-zinc-700 bg-transparent px-6 py-5 hover:border-blue-400 dark:hover:border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.12)] hover:-translate-y-1 transition-all duration-300 overflow-hidden cursor-default"
+                >
+                  {/* subtle blue glow sweep on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
+                  <p className="relative text-[11px] font-semibold tracking-widest uppercase text-slate-400 dark:text-slate-500 group-hover:text-blue-500 transition-colors duration-300 mb-2">{item.label}</p>
+                  <h3 className="relative font-bold text-slate-900 dark:text-white text-[15px] mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">{item.title}</h3>
+                  <p className="relative text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </GlassCard>
 
@@ -284,7 +336,6 @@ export const AboutSection = () => {
             </div>
           </GlassCard>
         </div>
-
 
         {/* Call to Action */}
         <div className="text-center mt-16">

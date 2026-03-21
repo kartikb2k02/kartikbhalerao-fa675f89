@@ -92,9 +92,9 @@ const CaseStudyDetail = () => {
           {/* Back Button */}
           <Link
             to="/case-studies"
-            className="inline-flex items-center gap-2 text-sm text-slate-500 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white transition-colors mb-8 group"
+            className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/40 dark:border-white/20 text-slate-600 dark:text-slate-300 text-sm font-medium shadow hover:bg-white/80 dark:hover:bg-white/20 hover:scale-[1.02] active:scale-95 transition-all duration-200 group"
           >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
             Back to Case Studies
           </Link>
 
