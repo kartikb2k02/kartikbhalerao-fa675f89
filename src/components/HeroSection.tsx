@@ -4,7 +4,7 @@ export const HeroSection = () => {
     window.location.href = '/about';
   };
   const scrollToCaseStudies = () => {
-    window.location.href = '/case-studies';
+    window.location.href = '/builds';
   };
 
   return (

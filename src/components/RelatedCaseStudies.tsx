@@ -52,7 +52,7 @@ const RelatedCaseStudyCard = ({
   study,
   index
 }: RelatedCaseStudyCardProps) => {
-  return <Link to={`/case-studies/${study.id}`} className="group block h-full animate-fade-in" style={{
+  return <Link to={`/builds/${study.id}`} className="group block h-full animate-fade-in" style={{
     animationDelay: `${index * 100}ms`
   }}>
       <div className="relative h-full rounded-2xl overflow-hidden border border-border bg-card/50 backdrop-blur-sm transition-all duration-500 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1">

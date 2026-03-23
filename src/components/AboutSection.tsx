@@ -86,7 +86,7 @@ export const AboutSection = () => {
             </h2>
             <p className="text-muted-foreground mt-2 mb-8">
               Focused on AI-powered products, No-Code platforms & PM tooling.{" "}
-              <Link to="/case-studies" className="text-blue-500 font-semibold underline hover:text-blue-400 transition-colors">
+              <Link to="/builds" className="text-blue-500 font-semibold underline hover:text-blue-400 transition-colors">
                 Check out my work
               </Link>{" "}
               — or just explore below.

@@ -7,7 +7,7 @@ export const CaseStudiesSection = () => {
   const navigate = useNavigate();
 
   const handleCardClick = (id: string) => {
-    navigate(`/case-studies/${id}`);
+    navigate(`/builds/${id}`);
   };
 
   return (
