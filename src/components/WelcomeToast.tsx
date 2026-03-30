@@ -17,27 +17,17 @@ export const WelcomeToast = () => {
 
   useEffect(() => {
     if (!isVisible) return;
-
     const duration = 4000;
     const interval = 30;
     const step = (interval / duration) * 100;
-
     const progressTimer = setInterval(() => {
       setProgress(prev => {
-        if (prev <= 0) {
-          clearInterval(progressTimer);
-          return 0;
-        }
+        if (prev <= 0) { clearInterval(progressTimer); return 0; }
         return prev - step;
       });
     }, interval);
-
     const hideTimer = setTimeout(() => handleClose(), duration);
-
-    return () => {
-      clearInterval(progressTimer);
-      clearTimeout(hideTimer);
-    };
+    return () => { clearInterval(progressTimer); clearTimeout(hideTimer); };
   }, [isVisible]);
 
   const handleClose = () => {
@@ -49,57 +39,64 @@ export const WelcomeToast = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Subtle backdrop */}
+      {/* Backdrop */}
       <div
-        className={`absolute inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-[2px] transition-opacity duration-300 ${isAnimating ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 bg-black/25 dark:bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${isAnimating ? 'opacity-100' : 'opacity-0'}`}
         onClick={handleClose}
       />
 
       {/* Card */}
       <div
-        className={`relative pointer-events-auto w-full max-w-sm bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-2xl shadow-xl overflow-hidden transition-all duration-300 ${
-          isAnimating ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-2'
+        className={`relative pointer-events-auto w-full max-w-[360px] bg-white dark:bg-[#1c1c1c] rounded-3xl shadow-2xl overflow-hidden transition-all duration-400 ${
+          isAnimating ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-3'
         }`}
       >
         {/* Close */}
         <button
           onClick={handleClose}
-          className="absolute top-3.5 right-3.5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors z-10"
+          className="absolute top-4 right-4 w-7 h-7 rounded-full bg-black/5 dark:bg-white/8 flex items-center justify-center text-black/40 dark:text-white/40 hover:text-black/70 dark:hover:text-white/70 hover:bg-black/10 dark:hover:bg-white/15 transition-all duration-200 z-10"
         >
-          <X className="w-4 h-4" />
+          <X className="w-3.5 h-3.5" />
         </button>
 
         {/* Content */}
-        <div className="flex flex-col items-center text-center px-8 pt-8 pb-6 gap-4">
-          {/* Name */}
-          <div className="flex items-center gap-2">
-            <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">Kartik</span>
-            <span className="text-xl font-bold tracking-tight animate-gradient-text">Bhalerao</span>
+        <div className="px-8 pt-8 pb-7 flex flex-col items-center text-center gap-5">
+
+          {/* Wave emoji */}
+          <div className="w-14 h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center text-2xl shadow-sm">
+            👋
           </div>
 
           {/* Text */}
-          <div className="space-y-1.5">
-            <p className="text-lg font-semibold text-gray-900 dark:text-white">
-              Hey there! 👋
-            </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-              Thanks for visiting — explore my work as a Product Manager.
+          <div className="space-y-2">
+            <h2 className="text-[22px] font-black tracking-tight text-black dark:text-white leading-tight">
+              Hey, welcome!
+            </h2>
+            <p className="text-[14px] text-black/45 dark:text-white/45 leading-relaxed max-w-[260px] mx-auto">
+              I'm <span className="text-black/80 dark:text-white/80 font-semibold">Kartik</span> — a Product Manager who turns user problems into products people actually use.
             </p>
           </div>
 
-          {/* Dismiss button */}
+          {/* Divider with label */}
+          <div className="flex items-center gap-3 w-full">
+            <div className="flex-1 h-px bg-black/8 dark:bg-white/8" />
+            <span className="text-[11px] font-medium tracking-widest uppercase text-black/25 dark:text-white/25">explore</span>
+            <div className="flex-1 h-px bg-black/8 dark:bg-white/8" />
+          </div>
+
+          {/* Button */}
           <button
             onClick={handleClose}
-            className="mt-1 px-5 py-2 rounded-lg text-sm font-medium bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors"
+            className="w-full py-3 rounded-xl text-[14px] font-semibold bg-black dark:bg-white text-white dark:text-black hover:opacity-75 transition-opacity duration-200"
           >
-            Let's go
+            Let's go →
           </button>
         </div>
 
         {/* Progress bar */}
-        <div className="h-0.5 bg-gray-100 dark:bg-slate-800">
+        <div className="h-[3px] bg-black/6 dark:bg-white/6">
           <div
-            className="h-full bg-gradient-to-r from-[#22c55e] via-[#3b82f6] to-[#8b5cf6] transition-none"
+            className="h-full bg-black/20 dark:bg-white/20 transition-none"
             style={{ width: `${progress}%` }}
           />
         </div>

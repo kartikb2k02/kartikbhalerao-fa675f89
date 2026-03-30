@@ -4,7 +4,7 @@ import { CaseStudiesSection } from "@/components/CaseStudiesSection";
 
 const CaseStudies = () => {
   return (
-    <div className="min-h-screen w-full text-foreground relative bg-white dark:bg-zinc-900">
+    <div className="min-h-screen w-full text-foreground relative bg-[#EFEFEF] dark:bg-[#111111]">
 
       <div className="relative z-10">
         <Header />

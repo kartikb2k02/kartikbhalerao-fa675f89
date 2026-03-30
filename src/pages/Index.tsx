@@ -2,10 +2,11 @@ import { HeroSection } from "@/components/HeroSection";
 import { FooterSection } from "@/components/FooterSection";
 import { Header } from "@/components/Header";
 import { WelcomeToast } from "@/components/WelcomeToast";
+import { SocialDock } from "@/components/SocialDock";
 
 const Index = () => {
   return (
-    <div className="min-h-screen w-full text-foreground relative bg-white dark:bg-zinc-900">
+    <div className="min-h-screen w-full text-foreground relative bg-[#EFEFEF] dark:bg-[#111111]">
 
 
       <div className="relative z-10">
@@ -18,6 +19,8 @@ const Index = () => {
 
         <FooterSection />
       </div>
+
+      <SocialDock />
     </div>
   );
 };

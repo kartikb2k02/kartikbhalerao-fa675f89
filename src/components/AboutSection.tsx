@@ -43,10 +43,10 @@ export const AboutSection = () => {
               <p className="text-2xl text-foreground leading-relaxed font-medium">
                 Hi there! 👋 I'm{" "}
                 <span className="relative inline-block">
-                  <span className="animate-gradient-text font-bold">
+                  <span className="font-bold text-black dark:text-white">
                     Kartik Bhalerao
                   </span>
-                  <span className="absolute -bottom-1 left-0 right-0 h-1 rounded-full" style={{ background: "linear-gradient(90deg, #22c55e, #3b82f6, #8b5cf6)" }} />
+                  <span className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full bg-black/20 dark:bg-white/20" />
                 </span>
                 , a Product Manager passionate about building user-centric products that
                 drive real business impact. With a background in data analytics and
@@ -72,7 +72,14 @@ export const AboutSection = () => {
 
               <p className="text-lg text-muted-foreground leading-relaxed">
                 If you're equally obsessed with building meaningful products or just
-                want to talk product, let's <Link to="/contact" className="text-blue-500 font-bold underline hover:text-blue-400 transition-colors">connect</Link>—I'm always up for great
+                want to talk product, let's{' '}
+                <Link
+                  to="/contact"
+                  className="relative inline-block font-bold text-black dark:text-white after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-black dark:after:bg-white after:scale-x-100 hover:after:scale-x-0 after:transition-transform after:duration-200 after:origin-right hover:opacity-60 transition-opacity duration-200"
+                >
+                  connect
+                </Link>
+                —I'm always up for great
                 conversations!
               </p>
             </div>
@@ -80,13 +87,12 @@ export const AboutSection = () => {
 
           {/* What I'm Currently Exploring */}
           <GlassCard className="p-10 sm:p-12">
-            <h2 className="text-3xl font-black tracking-tight mb-2">
-              <span className="text-slate-900 dark:text-white">What I'm </span>
-              <span className="animate-gradient-text">Currently Exploring</span>
+            <h2 className="text-3xl font-black tracking-tight mb-2 text-slate-900 dark:text-white">
+              What I'm Currently Exploring
             </h2>
-            <p className="text-muted-foreground mt-2 mb-8">
+            <p className="text-black/40 dark:text-white/40 mt-2 mb-8">
               Focused on AI-powered products, No-Code platforms & PM tooling.{" "}
-              <Link to="/builds" className="text-blue-500 font-semibold underline hover:text-blue-400 transition-colors">
+              <Link to="/builds" className="text-black/70 dark:text-white/70 font-semibold underline underline-offset-2 hover:text-black dark:hover:text-white transition-colors">
                 Check out my work
               </Link>{" "}
               — or just explore below.
@@ -117,13 +123,12 @@ export const AboutSection = () => {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="group relative rounded-xl border border-slate-200 dark:border-zinc-700 bg-transparent px-6 py-5 hover:border-blue-400 dark:hover:border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.12)] hover:-translate-y-1 transition-all duration-300 overflow-hidden cursor-default"
+                  className="group relative rounded-xl border border-black/8 dark:border-white/8 bg-transparent px-6 py-5 hover:border-black/20 dark:hover:border-white/20 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 overflow-hidden cursor-default"
                 >
-                  {/* subtle blue glow sweep on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
-                  <p className="relative text-[11px] font-semibold tracking-widest uppercase text-slate-400 dark:text-slate-500 group-hover:text-blue-500 transition-colors duration-300 mb-2">{item.label}</p>
-                  <h3 className="relative font-bold text-slate-900 dark:text-white text-[15px] mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">{item.title}</h3>
-                  <p className="relative text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{item.desc}</p>
+                  <div className="absolute inset-0 bg-black/[0.02] dark:bg-white/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-xl" />
+                  <p className="relative text-[11px] font-semibold tracking-widest uppercase text-black/35 dark:text-white/35 group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors duration-200 mb-2">{item.label}</p>
+                  <h3 className="relative font-bold text-slate-900 dark:text-white text-[15px] mb-1">{item.title}</h3>
+                  <p className="relative text-sm text-black/45 dark:text-white/45 leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -131,9 +136,8 @@ export const AboutSection = () => {
 
           {/* Experience Section */}
           <GlassCard className="p-10 sm:p-12">
-            <h2 className="text-3xl font-black tracking-tight mb-10">
-              <span className="text-slate-900 dark:text-white">Work </span>
-              <span className="animate-gradient-text">Experience</span>
+            <h2 className="text-3xl font-black tracking-tight mb-10 text-slate-900 dark:text-white">
+              Work Experience
             </h2>
 
             <div className="space-y-10">
@@ -338,27 +342,16 @@ export const AboutSection = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
-          <GlassCard className="p-8">
-            <h2 className="text-2xl font-bold text-foreground mb-4">
-              Want to see more of my work?
-            </h2>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              These case studies represent just a glimpse of my product management
-              approach. Let's discuss how I can help drive your product's success.
-            </p>
-            <button
-              className="inline-flex items-center justify-center rounded-xl px-8 py-3 font-semibold bg-black text-white hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-100 shadow-sm hover:scale-[1.02] transition-all duration-200"
-              onClick={() =>
-                window.open(
-                  "https://www.linkedin.com/in/kartik-bhalerao/",
-                  "_blank"
-                )
-              }
-            >
-              Let's Talk
-            </button>
-          </GlassCard>
+        <div className="text-center mt-16 space-y-5">
+          <p className="text-[15px] text-black/40 dark:text-white/40">
+            Want to discuss product, ideas, or opportunities?
+          </p>
+          <button
+            className="px-7 py-3 text-[14px] font-semibold rounded-xl bg-black dark:bg-white text-white dark:text-black shadow-sm hover:shadow-md hover:opacity-80 transition-all duration-200"
+            onClick={() => window.open("https://www.linkedin.com/in/kartik-bhalerao/", "_blank")}
+          >
+            Let's Talk
+          </button>
         </div>
       </div>
     </section>
