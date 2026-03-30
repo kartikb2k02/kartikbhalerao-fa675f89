@@ -69,7 +69,7 @@ export const ChatlyBanner = () => {
         {/* Logo + name */}
         <div className="flex items-center gap-2.5">
           <img
-            src="/lovable-uploads/chatly-logo.png"
+            src="/lovable-uploads/chatly-logo.webp"
             alt="Chatly"
             className="w-8 h-8 object-contain"
           />
@@ -179,7 +179,7 @@ export const ChatlyBanner = () => {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-20 h-20 rounded-2xl bg-black shadow-2xl flex flex-col items-center justify-center gap-1.5 z-10">
               <img
-                src="/lovable-uploads/chatly-logo.png"
+                src="/lovable-uploads/chatly-logo.webp"
                 alt="Chatly"
                 className="w-10 h-10 object-contain invert"
               />

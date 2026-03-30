@@ -1,0 +1,12 @@
+# Redirect old numeric blog IDs to slug-based URLs (301 = permanent, preserves SEO)
+/blog/1  /blog/ai-first-product-strategy        301
+/blog/2  /blog/moscow-prioritization-method      301
+/blog/3  /blog/ai-copilot-decision-making        301
+/blog/4  /blog/data-driven-decision-making-experience 301
+/blog/5  /blog/idea-to-mvp-product-manager-journey   301
+/blog/6  /blog/user-research-that-matters        301
+/blog/7  /blog/scaling-product-teams-lessons     301
+/blog/8  /blog/ai-replaced-pm-workflow-7-days    301
+
+# SPA fallback — must be last
+/*  /index.html  200

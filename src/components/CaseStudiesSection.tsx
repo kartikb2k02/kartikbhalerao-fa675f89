@@ -80,7 +80,7 @@ export const CaseStudiesSection = () => {
 
                     {/* Logo + title row */}
                     <div className="relative z-10 flex items-center gap-2 pr-8">
-                      <img src="/lovable-uploads/chatly-logo.png" alt="Chatly" className="w-5 h-5 object-contain flex-shrink-0"/>
+                      <img src="/lovable-uploads/chatly-logo.webp" alt="Chatly" className="w-5 h-5 object-contain flex-shrink-0"/>
                       <div>
                         <h3 className="text-base font-bold text-black leading-tight">{study.title}</h3>
                         <p className="text-xs text-slate-500 mt-0.5">{study.subtitle}</p>

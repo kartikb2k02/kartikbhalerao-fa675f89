@@ -92,7 +92,7 @@ export const ChatlyCardBanner = () => {
         <div className="relative z-10 flex flex-col gap-2">
           {/* Logo row */}
           <div className="flex items-center gap-2">
-            <img src="/lovable-uploads/chatly-logo.png" alt="Chatly" className="w-6 h-6 object-contain"/>
+            <img src="/lovable-uploads/chatly-logo.webp" alt="Chatly" className="w-6 h-6 object-contain"/>
             <span className="font-bold text-black text-sm tracking-tight">Chatly</span>
             <span className="text-[10px] font-semibold text-white bg-black px-1.5 py-0.5 rounded-full">PRD</span>
           </div>
@@ -154,7 +154,7 @@ export const ChatlyCardBanner = () => {
         {/* Centre node */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-12 h-12 rounded-xl bg-black shadow-xl flex flex-col items-center justify-center gap-1 z-10">
-            <img src="/lovable-uploads/chatly-logo.png" alt="Chatly"
+            <img src="/lovable-uploads/chatly-logo.webp" alt="Chatly"
               className="w-6 h-6 object-contain invert"/>
             <span className="text-white text-[7px] font-bold tracking-widest uppercase">Chatly</span>
           </div>

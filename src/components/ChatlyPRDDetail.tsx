@@ -15,7 +15,7 @@ export const ChatlyPRDDetail = () => {
           h1: ({ children }) => (
             <div className="mb-10 pb-6 border-b-2 border-black">
               <div className="flex items-center gap-2 mb-2">
-                <img src="/lovable-uploads/chatly-logo.png" alt="Chatly" className="w-5 h-5 object-contain opacity-70" />
+                <img src="/lovable-uploads/chatly-logo.webp" alt="Chatly" className="w-5 h-5 object-contain opacity-70" />
                 <span className="text-[10px] font-black uppercase tracking-[0.25em] text-zinc-400">Chatly · Product Requirements Document</span>
               </div>
               <h1 className="text-4xl font-black text-black leading-tight tracking-tight">{children}</h1>

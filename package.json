@@ -8,7 +8,9 @@
     "build": "vite build && node scripts/generate-og-pages.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "images:check": "node scripts/compress-images.mjs",
+    "images:convert": "node scripts/compress-images.mjs --write"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",
@@ -83,6 +85,7 @@
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
     "postcss": "^8.4.47",
+    "sharp": "^0.34.5",
     "tailwindcss": "^3.4.11",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",

@@ -77,7 +77,7 @@ export const Header = () => {
             <div className="relative">
               <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-2xl group-hover:shadow-blue-500/40 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
                 <img
-                  src="/lovable-uploads/profile-header.jpg"
+                  src="/lovable-uploads/profile-header.webp"
                   alt="Kartik Bhalerao"
                   className="w-full h-full rounded-xl object-cover"
                 />

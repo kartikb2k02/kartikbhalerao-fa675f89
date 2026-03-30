@@ -44,7 +44,7 @@ export const certifications: Certification[] = [
     description: "Comprehensive product management methodology covering agile practices, stakeholder alignment, and strategic planning.",
     skills: ["Product Strategy", "Agile Methodology", "Stakeholder Management", "Strategic Planning"],
     credentialId: "PM-2024-001",
-    image: "/lovable-uploads/cert-atlassian.png",
+    image: "/lovable-uploads/cert-atlassian.webp",
     detailedDescription: "This certification validates expertise in Atlassian's product management framework, covering the complete product lifecycle from ideation to delivery. It emphasizes data-driven decision making, cross-functional collaboration, and agile product development methodologies.",
     keyLearnings: [
       "Building and prioritizing product roadmaps using Jira",
@@ -65,7 +65,7 @@ export const certifications: Certification[] = [
     description: "Advanced certification in integrating AI technologies into product development cycles and decision-making processes.",
     skills: ["AI Integration", "Machine Learning", "Product Innovation", "Data Science"],
     credentialId: "AI-PM-2024-078",
-    image: "/lovable-uploads/cert-ai-pm.png",
+    image: "/lovable-uploads/cert-ai-pm.webp",
     detailedDescription: "This certification demonstrates proficiency in leveraging AI technologies to enhance product development, user experience, and decision-making. It covers practical applications of AI/ML in product management, from feature prioritization to personalization strategies.",
     keyLearnings: [
       "AI-powered product analytics and insights",
@@ -86,7 +86,7 @@ export const certifications: Certification[] = [
     description: "Deep dive into product analytics, user behavior analysis, and metrics-driven product optimization strategies.",
     skills: ["Product Analytics", "User Behavior", "A/B Testing", "Metrics Design"],
     credentialId: "PA-2024-156",
-    image: "/lovable-uploads/cert-product-analytics.png",
+    image: "/lovable-uploads/cert-product-analytics.webp",
     detailedDescription: "This master class certification covers advanced product analytics techniques, including funnel analysis, cohort tracking, and behavioral segmentation. It emphasizes turning data into actionable insights for product improvement.",
     keyLearnings: [
       "Setting up comprehensive product analytics frameworks",
@@ -107,7 +107,7 @@ export const certifications: Certification[] = [
     description: "Strategic framework for implementing product-led growth methodologies and user acquisition strategies.",
     skills: ["PLG Strategy", "User Onboarding", "Growth Metrics", "Retention Optimization"],
     credentialId: "PLG-2024-089",
-    image: "/lovable-uploads/cert-product-led.png",
+    image: "/lovable-uploads/cert-product-led.webp",
     detailedDescription: "This certification covers the fundamentals and advanced strategies of product-led growth, focusing on creating products that drive user acquisition, conversion, and expansion. It emphasizes the importance of user experience as the primary growth driver.",
     keyLearnings: [
       "Designing self-serve onboarding experiences",
@@ -128,7 +128,7 @@ export const certifications: Certification[] = [
     description: "Professional certificate covering market research, cloud strategy, UX/UI design, and product lifecycle management using Azure, Power BI, and Copilot.",
     skills: ["Market Research", "Product Strategy", "UX/UI Design", "Product Launch", "Azure", "Power BI"],
     credentialId: "1ALKR1V4ZMLD",
-    image: "/lovable-uploads/cert-enterprise-pm.jpg",
+    image: "/lovable-uploads/cert-enterprise-pm.webp",
     detailedDescription: "This intensive program covered market research, cloud strategy, and UX/UI design, utilizing Azure, Power BI, and Copilot. Completers demonstrated the ability to manage secure, compliant, and scalable software products from concept to launch, including go-to-market strategies and post-launch analysis.",
     keyLearnings: [
       "Market Research and Competitive Analysis",

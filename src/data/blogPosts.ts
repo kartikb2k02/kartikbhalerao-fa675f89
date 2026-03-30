@@ -20,7 +20,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-06-20",
     readTime: "12 min read",
     tags: ["AI Strategy", "Product Management", "Innovation", "Future Tech"],
-    image: "/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.png",
+    image: "/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.webp",
     slug: "ai-first-product-strategy",
     featured: true
   },
