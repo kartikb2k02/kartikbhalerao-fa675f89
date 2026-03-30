@@ -1,23 +1,16 @@
 import { Header } from "@/components/Header";
 import { SkillsSection } from "@/components/SkillsSection";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { FooterSection } from "@/components/FooterSection";
 
 const Skills = () => {
   return (
-    <div className="min-h-screen w-full text-foreground relative bg-white dark:bg-zinc-900">
-
-      {/* Interactive Header */}
+    <div className="min-h-screen w-full text-foreground relative bg-[#EFEFEF] dark:bg-[#111111]">
       <div className="relative z-10">
         <Header />
-
-        {/* Main Content */}
-        <div className="min-h-screen pt-20">
-          <ScrollArea className="h-full">
-            <div className="px-4 sm:px-6 lg:px-8 py-8">
-              <SkillsSection />
-            </div>
-          </ScrollArea>
-        </div>
+        <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+          <SkillsSection />
+        </main>
+        <FooterSection />
       </div>
     </div>
   );

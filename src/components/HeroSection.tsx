@@ -22,7 +22,7 @@ export const HeroSection = () => {
 
   return (
     <section className="min-h-[88vh] w-full flex flex-col justify-center items-center text-center px-6 lg:px-12">
-      <div className="max-w-3xl mx-auto w-full flex flex-col items-center gap-7 -mt-20">
+      <div className="max-w-3xl mx-auto w-full flex flex-col items-center gap-10 -mt-20">
 
         {/* Name */}
         <h1 className="text-[48px] sm:text-[64px] lg:text-[80px] font-black leading-none tracking-tight text-black dark:text-white whitespace-nowrap">
@@ -64,6 +64,7 @@ export const HeroSection = () => {
             View My Builds
           </button>
         </div>
+
 
       </div>
     </section>

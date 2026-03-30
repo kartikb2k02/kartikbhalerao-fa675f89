@@ -79,12 +79,10 @@ export const SocialDock = () => {
         title="Socials"
       >
         {open ? (
-          /* X icon */
           <svg width="13" height="13" viewBox="0 0 14 14" fill="none" className="text-white dark:text-black" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
             <path d="M1 1l12 12M13 1L1 13"/>
           </svg>
         ) : (
-          /* Share / social icon */
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" className="text-white dark:text-black" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="18" cy="5" r="3"/>
             <circle cx="6" cy="12" r="3"/>

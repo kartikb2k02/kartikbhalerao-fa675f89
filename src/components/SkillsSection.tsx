@@ -106,6 +106,8 @@ const AnimatedCounter = ({
 export const SkillsSection = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState("strategy");
+  const [capsuleStyle, setCapsuleStyle] = useState({ left: 0, width: 0 });
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [hoveredTool, setHoveredTool] = useState<string | null>(null);
   const [selectedTool, setSelectedTool] = useState<{
     name: string;
@@ -125,6 +127,21 @@ export const SkillsSection = () => {
     setIsVisible(false);
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
+  }, [activeCategory]);
+
+  // Measure capsule position on active category change + initial mount
+  useEffect(() => {
+    const measure = () => {
+      const idx = skillCategories.findIndex((c) => c.id === activeCategory);
+      const btn = tabRefs.current[idx];
+      if (btn) {
+        setCapsuleStyle({ left: btn.offsetLeft, width: btn.offsetWidth });
+      }
+    };
+    measure();
+    // Re-measure after fonts/layout settle
+    const t = setTimeout(measure, 50);
+    return () => clearTimeout(t);
   }, [activeCategory]);
 
   // Intersection Observer for skill bars animation
@@ -803,140 +820,123 @@ export const SkillsSection = () => {
   const currentCategory = skillCategories.find((c) => c.id === activeCategory);
   return (
     <div className="w-full">
-      <section className="max-w-6xl mx-auto relative pb-16">
-        {/* Decorative Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Gradient Mesh */}
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-blue-500/10 via-purple-500/5 to-transparent rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-gradient-to-tl from-emerald-500/10 via-teal-500/5 to-transparent rounded-full blur-3xl" />
-
-          {/* Floating Elements */}
-          <div className="absolute top-20 right-20 w-3 h-3 bg-blue-500 rounded-full animate-ping opacity-30" />
-          <div className="absolute top-40 left-16 w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
-          <div className="absolute bottom-40 right-32 w-2 h-2 bg-emerald-500 rounded-full animate-bounce [animation-duration:3s]" />
-        </div>
+      <section className="relative pb-16">
 
         {/* Hero Section */}
-        <div className="text-center mb-16 relative">
-          {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white mb-6 tracking-tight leading-[1.1]">
-            PM{" "}
-            <span className="animate-gradient-text">Excellence</span>
+        <div className="text-center mb-16">
+
+          {/* Eyebrow label — mirrors homepage role tag */}
+          <div className="inline-flex items-center gap-5 mb-7">
+            <span className="w-14 h-[1.5px] bg-gradient-to-r from-transparent to-black/25 dark:to-white/25" />
+            <span className="text-[13px] font-semibold tracking-[0.3em] uppercase text-black/45 dark:text-white/45">
+              PM Toolkit
+            </span>
+            <span className="w-14 h-[1.5px] bg-gradient-to-l from-transparent to-black/25 dark:to-white/25" />
+          </div>
+
+          {/* Title */}
+          <h1 className="text-[52px] sm:text-[68px] lg:text-[82px] font-black leading-[0.92] tracking-tight text-black dark:text-white mb-6">
+            Skills &amp; Expertise
           </h1>
 
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto mb-10">
-            Transforming ideas into impactful products with data-driven strategies
+          {/* Tagline */}
+          <p className="text-[17px] text-black/42 dark:text-white/42 max-w-[420px] mx-auto leading-[1.9] tracking-[-0.01em] mb-8">
+            Product thinking across the full lifecycle —{" "}
+            <span className="text-black/75 dark:text-white/75 font-semibold italic">discovery</span> to{" "}
+            <span className="text-black/75 dark:text-white/75 font-semibold italic">delivery</span>.
           </p>
 
-          {/* Certification Button - Glass Effect */}
+          {/* Certifications CTA */}
           <button
             onClick={handleCertificationClick}
-            className="group relative inline-flex items-center gap-4 px-8 py-4 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 active:scale-100"
+            className="inline-flex items-center gap-2.5 px-6 py-3 text-[14px] font-semibold rounded-xl bg-black dark:bg-white text-white dark:text-black shadow-sm hover:shadow-md hover:opacity-80 transition-all duration-200"
           >
-            {/* Background layers */}
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-cyan-500 opacity-10 group-hover:opacity-20 transition-opacity" />
-            <div className="absolute inset-0 border-2 border-emerald-500/30 group-hover:border-emerald-500/50 rounded-2xl transition-colors" />
-            <div className="absolute inset-[2px] bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-[14px]" />
-
-            {/* Enhanced Shine effect - Multi-layer */}
-            <div className="absolute inset-0 overflow-hidden rounded-2xl">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-300/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 delay-100 ease-out" />
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute top-0 left-1/4 w-1 h-full bg-gradient-to-b from-transparent via-white/50 to-transparent blur-sm animate-pulse" />
-                <div className="absolute top-0 right-1/3 w-0.5 h-full bg-gradient-to-b from-transparent via-emerald-400/40 to-transparent blur-sm animate-pulse [animation-delay:300ms]" />
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="relative flex items-center gap-3">
-              <div className="p-3 bg-gradient-to-br from-emerald-500 to-cyan-600 rounded-xl text-white shadow-lg shadow-emerald-500/30 group-hover:shadow-emerald-500/50 group-hover:scale-110 transition-all">
-                <Award className="w-5 h-5" />
-              </div>
-              <div className="text-left">
-                <span className="block text-lg font-bold text-slate-800 dark:text-white">View Certifications</span>
-                <span className="block text-xs text-slate-500 dark:text-slate-400">Professional credentials</span>
-              </div>
-              <ArrowRight className="w-5 h-5 text-emerald-500 group-hover:translate-x-2 transition-transform" />
-            </div>
+            <Award className="w-4 h-4" />
+            View Certifications
+            <ArrowRight className="w-4 h-4" />
           </button>
         </div>
 
         {/* Skills Section */}
         <div className="mb-20">
-          {/* Category Selector - Pill Style */}
-          <div className="flex justify-center mb-8">
-            <div className="inline-flex items-center p-1.5 bg-white dark:bg-slate-800 rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-slate-900/50 border border-slate-200/50 dark:border-slate-700/50">
-              {skillCategories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setActiveCategory(category.id)}
-                  className={cn(
-                    "relative px-5 py-3 rounded-xl font-semibold text-sm transition-all duration-300",
-                    activeCategory === category.id
-                      ? "text-white"
-                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white",
-                  )}
-                >
-                  {activeCategory === category.id && (
-                    <div className={cn("absolute inset-0 bg-gradient-to-r rounded-xl shadow-lg", category.color)} />
-                  )}
-                  <span className="relative flex items-center gap-2">
-                    {category.icon}
-                    <span className="hidden sm:inline">{category.shortTitle}</span>
-                  </span>
-                </button>
-              ))}
-            </div>
+
+          {/* Category Selector */}
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {skillCategories.map((category, idx) => (
+              <button
+                key={category.id}
+                ref={(el) => { tabRefs.current[idx] = el; }}
+                onClick={() => setActiveCategory(category.id)}
+                className={cn(
+                  "flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-[13px] font-semibold transition-all duration-200",
+                  activeCategory === category.id
+                    ? "bg-black dark:bg-white text-white dark:text-black shadow-sm scale-[1.03]"
+                    : "bg-white dark:bg-white/5 border border-black/8 dark:border-white/10 text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white hover:border-black/20 dark:hover:border-white/20",
+                )}
+              >
+                <span className={cn(
+                  "transition-colors duration-200",
+                  activeCategory === category.id ? "text-white dark:text-black" : "text-black/40 dark:text-white/40"
+                )}>
+                  {category.icon}
+                </span>
+                {category.shortTitle}
+              </button>
+            ))}
           </div>
 
           {/* Active Category Content */}
           {currentCategory && (
-            <div className="animate-fade-in" ref={skillsRef}>
-
-              {/* Header */}
-              <div className="flex items-center gap-3 mb-5">
-                <div className={cn("p-2.5 rounded-xl bg-gradient-to-br text-white shadow-sm", currentCategory.color)}>
+            <div ref={skillsRef}>
+              {/* Category label */}
+              <div className="flex items-center gap-3 mb-6">
+                <div className={cn("p-2 rounded-lg bg-gradient-to-br text-white", currentCategory.color)}>
                   {currentCategory.icon}
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 dark:text-white text-lg leading-tight">
-                    {currentCategory.title}
-                  </h3>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">
-                    {currentCategory.description}
-                  </p>
+                  <p className="font-bold text-black dark:text-white text-base leading-tight">{currentCategory.title}</p>
+                  <p className="text-xs text-black/40 dark:text-white/40">{currentCategory.description}</p>
                 </div>
               </div>
 
-              {/* Skills Grid */}
-              <TooltipProvider delayDuration={200}>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {currentCategory.skills.map((skill, i) => (
-                    <Tooltip key={i}>
-                      <TooltipTrigger asChild>
-                        <div
-                          className="group p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-500 hover:shadow-sm transition-all duration-200 cursor-default"
-                          style={{
-                            opacity: isVisible ? 1 : 0,
-                            transform: isVisible ? "translateY(0)" : "translateY(12px)",
-                            transition: `opacity 0.4s ease ${i * 70}ms, transform 0.4s ease ${i * 70}ms`,
-                          }}
-                        >
-                          <div className={cn("w-6 h-0.5 rounded-full bg-gradient-to-r mb-3", currentCategory.color)} />
-                          <p className="text-sm font-semibold text-slate-800 dark:text-white leading-snug">
-                            {skill.name}
-                          </p>
-                        </div>
-                      </TooltipTrigger>
-                      <TooltipContent
-                        side="top"
-                        className="max-w-xs bg-slate-900 text-white px-3 py-2 rounded-lg shadow-lg border-0 text-xs leading-relaxed"
-                      >
-                        {skill.tooltip}
-                      </TooltipContent>
-                    </Tooltip>
-                  ))}
+              {/* Cards Grid */}
+              <TooltipProvider delayDuration={150}>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  {currentCategory.skills.map((skill, i) => {
+                    return (
+                      <Tooltip key={i}>
+                        <TooltipTrigger asChild>
+                          <div
+                            className="group relative flex flex-col justify-between rounded-xl bg-white dark:bg-white/5 p-6 cursor-default overflow-hidden"
+                            style={{
+                              boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)",
+                              opacity: isVisible ? 1 : 0,
+                              transform: isVisible ? "translateY(0)" : "translateY(14px)",
+                              transition: `opacity 0.35s ease ${i * 55}ms, transform 0.35s ease ${i * 55}ms, box-shadow 0.3s ease`,
+                            }}
+                            onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06)")}
+                            onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)")}
+                          >
+                            {/* Gradient wash — top-right corner */}
+                            <div className={cn(
+                              "absolute -top-8 -right-8 w-28 h-28 rounded-full bg-gradient-to-br blur-2xl opacity-20 group-hover:opacity-35 transition-opacity duration-300",
+                              currentCategory.color,
+                            )} />
+
+                            {/* Skill name + description */}
+                            <div className="relative">
+                              <p className="text-[17px] font-black text-black dark:text-white leading-tight tracking-tight mb-2">
+                                {skill.name}
+                              </p>
+                              <p className="text-[12px] text-black/38 dark:text-white/38 leading-relaxed line-clamp-2">
+                                {skill.tooltip}
+                              </p>
+                            </div>
+                          </div>
+                        </TooltipTrigger>
+                      </Tooltip>
+                    );
+                  })}
                 </div>
               </TooltipProvider>
             </div>
@@ -973,54 +973,49 @@ export const SkillsSection = () => {
                   <span className="text-xs text-slate-400 dark:text-slate-600">{category.tools.length} tools</span>
                 </div>
 
-                {/* Tools Grid — app-icon style */}
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+                {/* Tools Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
                   {category.tools.map((tool, index) => (
                     <div
                       key={index}
-                      className="group relative cursor-pointer"
-                      onMouseEnter={() => setHoveredTool(tool.name)}
-                      onMouseLeave={() => setHoveredTool(null)}
+                      className="group relative flex flex-col items-center text-center gap-3 bg-white dark:bg-white/5 rounded-xl p-5 cursor-pointer overflow-hidden transition-all duration-250"
+                      style={{
+                        boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
+                      }}
+                      onMouseEnter={e => {
+                        setHoveredTool(tool.name);
+                        e.currentTarget.style.boxShadow = "0 8px 30px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06)";
+                        e.currentTarget.style.transform = "translateY(-3px)";
+                      }}
+                      onMouseLeave={e => {
+                        setHoveredTool(null);
+                        e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.06)";
+                        e.currentTarget.style.transform = "translateY(0)";
+                      }}
                       onClick={() => setSelectedTool({ ...tool, categoryTitle: category.title })}
                     >
-                      {/* Brand-colored glow behind card on hover */}
-                      <div
-                        className={cn(
-                          "absolute -inset-0.5 bg-gradient-to-br rounded-2xl blur-md transition-opacity duration-300 -z-10",
-                          tool.color,
-                          hoveredTool === tool.name ? "opacity-60" : "opacity-0",
-                        )}
-                      />
+                      {/* Brand glow on hover */}
+                      <div className={cn(
+                        "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none",
+                        `bg-gradient-to-br ${tool.color}`,
+                      )} style={{ opacity: hoveredTool === tool.name ? 0.05 : 0 }} />
 
-                      <div
-                        className={cn(
-                          "flex flex-col items-center gap-2.5 p-4 rounded-2xl transition-all duration-300",
-                          "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800",
-                          hoveredTool === tool.name
-                            ? "border-transparent shadow-2xl -translate-y-2 scale-[1.05]"
-                            : "hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md",
-                        )}
-                      >
-                        {/* App icon */}
-                        <div
-                          className={cn(
-                            "w-12 h-12 rounded-2xl bg-gradient-to-br flex items-center justify-center shadow-md transition-all duration-300",
-                            tool.color,
-                            hoveredTool === tool.name ? "shadow-xl scale-110" : "",
-                          )}
-                        >
-                          <div className="text-white [&>svg]:w-6 [&>svg]:h-6">{tool.icon}</div>
-                        </div>
+                      {/* Icon */}
+                      <div className={cn(
+                        "w-14 h-14 rounded-2xl bg-gradient-to-br flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg",
+                        tool.color,
+                      )}>
+                        <div className="text-white [&>svg]:w-6 [&>svg]:h-6">{tool.icon}</div>
+                      </div>
 
-                        {/* Name */}
-                        <p className="font-semibold text-xs text-slate-800 dark:text-white text-center leading-tight">
+                      {/* Name */}
+                      <div>
+                        <p className="text-[13px] font-bold text-black dark:text-white leading-tight">
                           {tool.name}
                         </p>
-
-                        {/* Tag */}
-                        <span className="text-[10px] text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-full leading-none">
+                        <p className="text-[11px] text-black/35 dark:text-white/35 mt-0.5">
                           {tool.description}
-                        </span>
+                        </p>
                       </div>
                     </div>
                   ))}
