@@ -21,7 +21,7 @@ export const CaseStudiesSection = () => {
             <span className="w-16 h-[1.5px] bg-gradient-to-l from-transparent to-black/30 dark:to-white/30" />
           </div>
           <h2 className="text-[42px] lg:text-[56px] font-black leading-none tracking-tight text-black dark:text-white">
-            Case Studies & Projects
+            Real Products, Real Impact
           </h2>
           <p className="text-[16px] text-black/40 dark:text-white/40 max-w-lg mx-auto leading-relaxed">
             Real-world products built from discovery to launch — strategy, design, and execution.

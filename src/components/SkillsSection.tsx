@@ -835,8 +835,8 @@ export const SkillsSection = () => {
           </div>
 
           {/* Title */}
-          <h1 className="text-[52px] sm:text-[68px] lg:text-[82px] font-black leading-[0.92] tracking-tight text-black dark:text-white mb-6">
-            Skills &amp; Expertise
+          <h1 className="text-[36px] sm:text-[48px] lg:text-[58px] font-black leading-[0.95] tracking-tight text-black dark:text-white mb-6">
+            What I Bring to the Table
           </h1>
 
           {/* Tagline */}

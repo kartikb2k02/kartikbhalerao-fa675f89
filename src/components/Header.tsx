@@ -37,7 +37,7 @@ export const Header = () => {
     }
     
     if (sectionId === 'skills') {
-      navigate('/skills');
+      navigate('/capabilities');
       return;
     }
 
@@ -80,7 +80,7 @@ export const Header = () => {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-12">
-            <button onClick={() => scrollToSection('skills')} className="text-[17px] font-medium text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-black dark:after:bg-white after:transition-all after:duration-200 hover:after:w-full pb-0.5 transition-colors duration-150">Skills</button>
+            <button onClick={() => scrollToSection('skills')} className="text-[17px] font-medium text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-black dark:after:bg-white after:transition-all after:duration-200 hover:after:w-full pb-0.5 transition-colors duration-150">Capabilities</button>
             <button onClick={() => scrollToSection('blog')} className="text-[17px] font-medium text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-black dark:after:bg-white after:transition-all after:duration-200 hover:after:w-full pb-0.5 transition-colors duration-150">Blog</button>
             <button onClick={() => scrollToSection('contact')} className="text-[17px] font-medium text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-black dark:after:bg-white after:transition-all after:duration-200 hover:after:w-full pb-0.5 transition-colors duration-150">Contact</button>
             <ThemeToggle />
@@ -99,7 +99,7 @@ export const Header = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden pb-4 border-t border-black/10 dark:border-white/10">
             <nav className="flex flex-col gap-1 pt-3">
-              <button onClick={() => scrollToSection('skills')} className="text-left px-2 py-2 text-[15px] text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors">Skills</button>
+              <button onClick={() => scrollToSection('skills')} className="text-left px-2 py-2 text-[15px] text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors">Capabilities</button>
               <button onClick={() => scrollToSection('blog')} className="text-left px-2 py-2 text-[15px] text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors">Blog</button>
               <button onClick={() => scrollToSection('contact')} className="text-left px-2 py-2 text-[15px] text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors">Contact</button>
             </nav>

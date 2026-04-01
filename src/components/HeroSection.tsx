@@ -2,7 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-const roles = ['Product Manager', 'Problem Solver', 'Builder', 'PM & Strategist'];
+const roles = ['Builder'];
 
 export const HeroSection = () => {
   const navigate = useNavigate();
@@ -22,32 +22,29 @@ export const HeroSection = () => {
 
   return (
     <section className="min-h-[88vh] w-full flex flex-col justify-center items-center text-center px-6 lg:px-12">
-      <div className="max-w-3xl mx-auto w-full flex flex-col items-center gap-10 -mt-20">
+      <div className="max-w-3xl mx-auto w-full flex flex-col items-center gap-10 -mt-32">
 
-        {/* Name */}
-        <h1 className="text-[48px] sm:text-[64px] lg:text-[80px] font-black leading-none tracking-tight text-black dark:text-white whitespace-nowrap">
-          Kartik Bhalerao
+        {/* Headline */}
+        <h1 className="text-[40px] sm:text-[56px] lg:text-[68px] font-black leading-[1.1] tracking-tight text-center max-w-[700px]">
+          <span className="block text-black dark:text-white whitespace-nowrap">Building Products That</span>
+          <span className="block bg-gradient-to-r from-black to-gray-400 dark:from-white dark:to-gray-500 bg-clip-text text-transparent">
+            Solve Real Problems
+          </span>
         </h1>
 
-        {/* Rotating Role Tag */}
-        <div className="inline-flex items-center gap-5">
-          <span className="w-20 h-[1.5px] bg-gradient-to-r from-transparent to-black/30 dark:to-white/30" />
-          <span
-            className="text-[15px] font-semibold tracking-[0.3em] uppercase text-black/50 dark:text-white/50 transition-all duration-300 min-w-[220px] text-center"
-            style={{ opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(6px)' }}
-          >
-            {roles[roleIndex]}
-          </span>
-          <span className="w-20 h-[1.5px] bg-gradient-to-l from-transparent to-black/30 dark:to-white/30" />
-        </div>
-
         {/* Tagline */}
-        <p className="text-[17px] text-black/42 dark:text-white/42 max-w-[460px] leading-[1.9] text-center tracking-[-0.01em]">
-          From discovery to launch — turning user problems into products that are{' '}
-          <span className="text-black/85 dark:text-white/85 font-semibold italic">simple</span>,{' '}
-          <span className="text-black/85 dark:text-white/85 font-semibold italic">scalable</span>, and{' '}
-          <span className="text-black/85 dark:text-white/85 font-semibold italic">actually used</span>.
-        </p>
+        <div className="flex flex-col items-center gap-4">
+          <div className="flex items-center gap-2 flex-wrap justify-center">
+            {['AI Products', 'Solo-built Tools', 'Startup Advisory'].map((tag) => (
+              <span key={tag} className="px-4 py-1.5 text-[13px] font-medium rounded-md border border-black/25 dark:border-white/25 text-black/60 dark:text-white/60 tracking-wide hover:border-black/60 dark:hover:border-white/60 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 hover:scale-105 transition-all duration-200 cursor-default">
+                {tag}
+              </span>
+            ))}
+          </div>
+          <p className="text-[15px] font-semibold text-black/70 dark:text-white/70 tracking-wide">
+            PM with a builder mentality.
+          </p>
+        </div>
 
         {/* Buttons */}
         <div className="flex gap-3 mt-1">
@@ -59,12 +56,26 @@ export const HeroSection = () => {
           </button>
           <button
             onClick={() => navigate('/builds')}
-            className="px-7 py-3 text-[14px] font-semibold rounded-xl border border-black/20 dark:border-white/20 text-black/70 dark:text-white/70 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black hover:border-transparent transition-all duration-200"
+            className="px-7 py-3 text-[14px] font-semibold rounded-xl border border-black/70 dark:border-white/70 text-black/70 dark:text-white/70 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black hover:border-transparent transition-all duration-200"
           >
             View My Builds
           </button>
         </div>
 
+        {/* Highlight Cards */}
+        <div className="flex items-start justify-center gap-0 w-full max-w-[620px] mt-2 divide-x divide-black/10 dark:divide-white/10">
+          {[
+            { title: 'AI Products', desc: 'Built & shipped end-to-end' },
+            { title: 'Enterprise', desc: 'Scaled B2B solutions' },
+            { title: 'Startup Advisory', desc: '0→1 strategy & guidance' },
+          ].map((card) => (
+            <div key={card.title} className="group flex flex-col items-center gap-1.5 px-8 text-center cursor-default">
+              <span className="w-4 h-[2px] rounded-full bg-black/20 dark:bg-white/20 group-hover:w-7 group-hover:bg-black/60 dark:group-hover:bg-white/60 transition-all duration-300" />
+              <span className="text-[18px] font-extrabold tracking-tight text-black dark:text-white group-hover:opacity-80 transition-opacity duration-200">{card.title}</span>
+              <span className="text-[13px] font-medium text-black/38 dark:text-white/38 leading-snug group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors duration-200">{card.desc}</span>
+            </div>
+          ))}
+        </div>
 
       </div>
     </section>
