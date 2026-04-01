@@ -35,7 +35,7 @@ export const HeroSection = () => {
         {/* Tagline */}
         <div className="flex flex-col items-center gap-4">
           <div className="flex items-center gap-2 flex-wrap justify-center">
-            {['AI Products', 'Solo-built Tools', 'Startup Advisory'].map((tag) => (
+            {['AI Products', 'Solo-built Tools', 'Growth Strategy'].map((tag) => (
               <span key={tag} className="px-4 py-1.5 text-[13px] font-medium rounded-md border border-black/25 dark:border-white/25 text-black/60 dark:text-white/60 tracking-wide hover:border-black/60 dark:hover:border-white/60 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 hover:scale-105 transition-all duration-200 cursor-default">
                 {tag}
               </span>
@@ -67,7 +67,7 @@ export const HeroSection = () => {
           {[
             { title: 'AI Products', desc: 'Built & shipped end-to-end' },
             { title: 'Enterprise', desc: 'Scaled B2B solutions' },
-            { title: 'Startup Advisory', desc: '0→1 strategy & guidance' },
+            { title: 'Growth Strategy', desc: '0→1 strategy & guidance' },
           ].map((card) => (
             <div key={card.title} className="group flex flex-col items-center gap-1.5 px-8 text-center cursor-default">
               <span className="w-4 h-[2px] rounded-full bg-black/20 dark:bg-white/20 group-hover:w-7 group-hover:bg-black/60 dark:group-hover:bg-white/60 transition-all duration-300" />
