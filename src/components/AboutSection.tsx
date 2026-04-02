@@ -228,7 +228,7 @@ export const AboutSection = () => {
                   ].map((aspect) => (
                     <div
                       key={aspect.label}
-                      className="rounded-xl border border-slate-100 dark:border-white/5 bg-slate-50/60 dark:bg-white/[0.02] px-5 py-4 hover:border-slate-200 dark:hover:border-white/10 hover:bg-slate-50 dark:hover:bg-white/[0.04] transition-all duration-200"
+                      className="rounded-xl border border-slate-200 dark:border-white/8 bg-slate-100 dark:bg-zinc-800/60 px-5 py-4 hover:border-slate-300 dark:hover:border-white/15 hover:bg-slate-100/80 dark:hover:bg-zinc-700/50 transition-all duration-200"
                     >
                       {/* Aspect label */}
                       <div className="flex items-center gap-2.5 mb-3">
@@ -299,7 +299,7 @@ export const AboutSection = () => {
                 </header>
 
                 {/* Points card */}
-                <div className="rounded-xl border border-slate-100 dark:border-white/5 bg-slate-50/60 dark:bg-white/[0.02] px-5 py-4 hover:border-slate-200 dark:hover:border-white/10 hover:bg-slate-50 dark:hover:bg-white/[0.04] transition-all duration-200">
+                <div className="rounded-xl border border-slate-200 dark:border-white/8 bg-slate-100 dark:bg-zinc-800/60 px-5 py-4 hover:border-slate-300 dark:hover:border-white/15 hover:bg-slate-100/80 dark:hover:bg-zinc-700/50 transition-all duration-200">
                   <ul className="space-y-2">
                     {[
                       "Took ownership of building an internal analytics dashboard to help sales and marketing teams track campaign performance and lead conversions.",
