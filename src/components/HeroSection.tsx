@@ -1,24 +1,9 @@
 
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-
-const roles = ['Builder'];
+import { Cpu, Building2, Compass } from 'lucide-react';
 
 export const HeroSection = () => {
   const navigate = useNavigate();
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => {
-        setRoleIndex(i => (i + 1) % roles.length);
-        setVisible(true);
-      }, 300);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section className="w-full flex flex-col justify-center items-center text-center px-6 lg:px-12 py-8 sm:py-10">
@@ -35,19 +20,38 @@ export const HeroSection = () => {
           </span>
         </h1>
 
-        {/* Tagline */}
-        <div className="flex flex-col items-center gap-3">
-          <div className="flex items-center gap-2 flex-wrap justify-center">
-            {['User Research', 'Solo-built Tools', 'Growth Strategy'].map((tag) => (
-              <span key={tag} className="px-3 py-1 sm:px-4 sm:py-1.5 text-[12px] sm:text-[13px] font-medium rounded-md border border-black/25 dark:border-white/25 text-black/60 dark:text-white/60 tracking-wide hover:border-black/60 dark:hover:border-white/60 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 hover:scale-105 transition-all duration-200 cursor-default">
-                {tag}
-              </span>
-            ))}
-          </div>
-          <p className="text-[14px] sm:text-[15px] font-semibold text-black/70 dark:text-white/70 tracking-wide">
-            PM with a builder mentality.
-          </p>
+        {/* Highlight Cards */}
+        <div className="grid grid-cols-3 gap-3 w-full max-w-[620px]">
+          {[
+            { title: 'AI Products', desc: 'Built & shipped end-to-end', icon: Cpu },
+            { title: 'Enterprise', desc: 'Scaled B2B solutions', icon: Building2 },
+            { title: 'Product Discovery', desc: 'Research · Insights · Clarity', icon: Compass },
+          ].map(({ title, desc, icon: Icon }) => (
+            <div
+              key={title}
+              className="group relative flex flex-col items-center gap-3 px-3 py-5 sm:py-6 rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/[0.03] overflow-hidden hover:-translate-y-1.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_8px_30px_rgba(255,255,255,0.05)] hover:border-black/20 dark:hover:border-white/20 transition-all duration-300 cursor-default"
+            >
+              {/* top accent line */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-black/20 dark:via-white/20 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
+
+              {/* icon */}
+              <div className="w-10 h-10 rounded-2xl border border-black/8 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.06] flex items-center justify-center group-hover:border-black/15 dark:group-hover:border-white/20 group-hover:bg-black/[0.06] dark:group-hover:bg-white/[0.1] transition-all duration-300">
+                <Icon size={17} strokeWidth={1.8} className="text-black/50 dark:text-white/50 group-hover:text-black dark:group-hover:text-white transition-colors duration-300" />
+              </div>
+
+              {/* text */}
+              <div className="flex flex-col items-center gap-1.5">
+                <span className="text-[12px] sm:text-[13px] lg:text-[14px] font-bold tracking-tight text-black dark:text-white leading-tight">{title}</span>
+                <span className="text-[10px] sm:text-[11px] font-medium text-black/35 dark:text-white/35 leading-snug group-hover:text-black/55 dark:group-hover:text-white/55 transition-colors duration-300">{desc}</span>
+              </div>
+            </div>
+          ))}
         </div>
+
+        {/* Tagline */}
+        <p className="text-[14px] sm:text-[15px] font-semibold text-black/70 dark:text-white/70 tracking-wide">
+          PM with a builder mentality.
+        </p>
 
         {/* Buttons */}
         <div className="flex gap-3">
@@ -63,21 +67,6 @@ export const HeroSection = () => {
           >
             View My Builds
           </button>
-        </div>
-
-        {/* Highlight Cards */}
-        <div className="flex items-start justify-center gap-0 w-full max-w-[620px] divide-x divide-black/10 dark:divide-white/10">
-          {[
-            { title: 'AI Products', desc: 'Built & shipped end-to-end' },
-            { title: 'Enterprise', desc: 'Scaled B2B solutions' },
-            { title: 'Product Discovery', desc: 'Research · Insights · Clarity' },
-          ].map((card) => (
-            <div key={card.title} className="group flex flex-col items-center gap-1.5 px-4 sm:px-6 lg:px-8 text-center cursor-default">
-              <span className="w-4 h-[2px] rounded-full bg-black/20 dark:bg-white/20 group-hover:w-7 group-hover:bg-black/60 dark:group-hover:bg-white/60 transition-all duration-300" />
-              <span className="text-[13px] sm:text-[15px] lg:text-[18px] font-extrabold tracking-tight text-black dark:text-white group-hover:opacity-80 transition-opacity duration-200 whitespace-nowrap">{card.title}</span>
-              <span className="text-[11px] sm:text-[12px] lg:text-[13px] font-medium text-black/38 dark:text-white/38 leading-snug group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors duration-200">{card.desc}</span>
-            </div>
-          ))}
         </div>
 
       </div>
