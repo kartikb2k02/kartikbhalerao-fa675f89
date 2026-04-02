@@ -13,7 +13,7 @@ const Index = () => {
         <Header />
         <WelcomeToast />
 
-        <div className="min-h-screen w-full flex items-center justify-center pt-16">
+        <div className="min-h-[calc(100vh-5rem)] w-full flex items-center justify-center">
           <HeroSection />
         </div>
 

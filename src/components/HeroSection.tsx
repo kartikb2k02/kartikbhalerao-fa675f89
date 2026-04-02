@@ -21,8 +21,8 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="min-h-[88vh] w-full flex flex-col justify-center items-center text-center px-6 lg:px-12">
-      <div className="max-w-3xl mx-auto w-full flex flex-col items-center gap-6 lg:gap-10 -mt-10 sm:-mt-16 lg:-mt-32">
+    <section className="w-full flex flex-col justify-center items-center text-center px-6 lg:px-12 py-10">
+      <div className="max-w-3xl mx-auto w-full flex flex-col items-center gap-6 lg:gap-10">
 
         {/* Headline */}
         <h1 className="text-[36px] sm:text-[52px] lg:text-[68px] font-black leading-[1.1] tracking-tight text-center max-w-[700px]">
