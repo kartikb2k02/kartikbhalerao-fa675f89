@@ -22,7 +22,7 @@ export const HeroSection = () => {
 
   return (
     <section className="w-full flex flex-col justify-center items-center text-center px-6 lg:px-12 py-8 sm:py-10">
-      <div className="max-w-3xl mx-auto w-full flex flex-col items-center gap-5 sm:gap-7 lg:gap-10 mt-12 sm:mt-16">
+      <div className="max-w-3xl mx-auto w-full flex flex-col items-center gap-5 sm:gap-7 lg:gap-10 mt-20 sm:mt-24">
 
         {/* Headline */}
         <h1
