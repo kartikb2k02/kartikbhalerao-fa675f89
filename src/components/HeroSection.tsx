@@ -26,10 +26,10 @@ export const HeroSection = () => {
 
         {/* Headline */}
         <h1
-          className="font-black leading-[1.15] tracking-tight text-center w-full max-w-[780px]"
-          style={{ fontSize: 'clamp(28px, 3.8vw, 64px)' }}
+          className="font-black leading-[1.15] tracking-tight text-center w-full"
+          style={{ fontSize: 'clamp(22px, 3.5vw, 50px)' }}
         >
-          <span className="block text-black dark:text-white">Building Products That</span>
+          <span className="block text-black dark:text-white whitespace-nowrap">Building Products That</span>
           <span className="block bg-gradient-to-r from-black to-gray-400 dark:from-white dark:to-gray-500 bg-clip-text text-transparent">
             Solve Real Problems
           </span>
