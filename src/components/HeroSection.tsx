@@ -22,11 +22,11 @@ export const HeroSection = () => {
 
   return (
     <section className="min-h-[88vh] w-full flex flex-col justify-center items-center text-center px-6 lg:px-12">
-      <div className="max-w-3xl mx-auto w-full flex flex-col items-center gap-10 -mt-32">
+      <div className="max-w-3xl mx-auto w-full flex flex-col items-center gap-6 lg:gap-10 -mt-10 sm:-mt-16 lg:-mt-32">
 
         {/* Headline */}
-        <h1 className="text-[40px] sm:text-[56px] lg:text-[68px] font-black leading-[1.1] tracking-tight text-center max-w-[700px]">
-          <span className="block text-black dark:text-white whitespace-nowrap">Building Products That</span>
+        <h1 className="text-[36px] sm:text-[52px] lg:text-[68px] font-black leading-[1.1] tracking-tight text-center max-w-[700px]">
+          <span className="block text-black dark:text-white">Building Products That</span>
           <span className="block bg-gradient-to-r from-black to-gray-400 dark:from-white dark:to-gray-500 bg-clip-text text-transparent">
             Solve Real Problems
           </span>
@@ -69,10 +69,10 @@ export const HeroSection = () => {
             { title: 'Enterprise', desc: 'Scaled B2B solutions' },
             { title: 'Growth Strategy', desc: '0→1 strategy & guidance' },
           ].map((card) => (
-            <div key={card.title} className="group flex flex-col items-center gap-1.5 px-8 text-center cursor-default">
+            <div key={card.title} className="group flex flex-col items-center gap-1.5 px-4 sm:px-6 lg:px-8 text-center cursor-default">
               <span className="w-4 h-[2px] rounded-full bg-black/20 dark:bg-white/20 group-hover:w-7 group-hover:bg-black/60 dark:group-hover:bg-white/60 transition-all duration-300" />
-              <span className="text-[18px] font-extrabold tracking-tight text-black dark:text-white group-hover:opacity-80 transition-opacity duration-200">{card.title}</span>
-              <span className="text-[13px] font-medium text-black/38 dark:text-white/38 leading-snug group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors duration-200">{card.desc}</span>
+              <span className="text-[14px] sm:text-[16px] lg:text-[18px] font-extrabold tracking-tight text-black dark:text-white group-hover:opacity-80 transition-opacity duration-200">{card.title}</span>
+              <span className="text-[11px] sm:text-[12px] lg:text-[13px] font-medium text-black/38 dark:text-white/38 leading-snug group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors duration-200">{card.desc}</span>
             </div>
           ))}
         </div>
