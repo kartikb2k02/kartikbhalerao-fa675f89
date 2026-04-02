@@ -26,8 +26,8 @@ export const HeroSection = () => {
 
         {/* Headline */}
         <h1
-          className="font-black leading-[1.1] tracking-tight text-center max-w-[700px]"
-          style={{ fontSize: 'clamp(30px, 5vw, 68px)' }}
+          className="font-black leading-[1.15] tracking-tight text-center w-full max-w-[780px]"
+          style={{ fontSize: 'clamp(28px, 3.8vw, 64px)' }}
         >
           <span className="block text-black dark:text-white">Building Products That</span>
           <span className="block bg-gradient-to-r from-black to-gray-400 dark:from-white dark:to-gray-500 bg-clip-text text-transparent">
