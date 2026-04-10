@@ -228,7 +228,7 @@ export const AboutSection = () => {
                   ].map((aspect) => (
                     <div
                       key={aspect.label}
-                      className="rounded-xl border border-slate-200 dark:border-white/8 bg-slate-100 dark:bg-zinc-800/60 px-5 py-4 hover:border-slate-300 dark:hover:border-white/15 hover:bg-slate-100/80 dark:hover:bg-zinc-700/50 transition-all duration-200"
+                      className="rounded-xl border border-slate-200 dark:border-white/8 bg-[#F5F5F9] dark:bg-zinc-800/60 px-5 py-4 hover:border-slate-300 dark:hover:border-white/15 hover:bg-[#EDEDF3] dark:hover:bg-zinc-700/50 transition-all duration-200"
                     >
                       {/* Aspect label */}
                       <div className="flex items-center gap-2.5 mb-3">
@@ -248,7 +248,7 @@ export const AboutSection = () => {
                             "bg-black dark:bg-white",
                           ];
                           return (
-                          <li key={i} className="flex items-start gap-2.5 text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                          <li key={i} className="flex items-start gap-2.5 text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed bg-white/70 dark:bg-white/5 rounded-lg px-3 py-2">
                             <span className={`mt-[0.45rem] w-1.5 h-1.5 rounded-full flex-shrink-0 ${dotColors[i % dotColors.length]}`} />
                             {point}
                           </li>
@@ -299,7 +299,7 @@ export const AboutSection = () => {
                 </header>
 
                 {/* Points card */}
-                <div className="rounded-xl border border-slate-200 dark:border-white/8 bg-slate-100 dark:bg-zinc-800/60 px-5 py-4 hover:border-slate-300 dark:hover:border-white/15 hover:bg-slate-100/80 dark:hover:bg-zinc-700/50 transition-all duration-200">
+                <div className="rounded-xl border border-slate-200 dark:border-white/8 bg-[#F5F5F9] dark:bg-zinc-800/60 px-5 py-4 hover:border-slate-300 dark:hover:border-white/15 hover:bg-[#EDEDF3] dark:hover:bg-zinc-700/50 transition-all duration-200">
                   <ul className="space-y-2">
                     {[
                       "Took ownership of building an internal analytics dashboard to help sales and marketing teams track campaign performance and lead conversions.",
@@ -316,7 +316,7 @@ export const AboutSection = () => {
                         "bg-black dark:bg-white",
                       ];
                       return (
-                      <li key={i} className="flex items-start gap-2.5 text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                      <li key={i} className="flex items-start gap-2.5 text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed bg-white/70 dark:bg-white/5 rounded-lg px-3 py-2">
                         <span className={`mt-[0.45rem] w-1.5 h-1.5 rounded-full flex-shrink-0 ${dotColors[i % dotColors.length]}`} />
                         {point}
                       </li>

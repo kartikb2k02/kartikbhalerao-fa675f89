@@ -117,7 +117,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
         </button>
 
         {/* Header Card */}
-        <div className="relative bg-card/90 backdrop-blur-sm rounded-2xl border border-border/50 shadow-xl overflow-hidden mb-6 group">
+        <div className="relative bg-white dark:bg-zinc-800/80 rounded-2xl border border-border/50 shadow-xl overflow-hidden mb-6 group">
 
           {/* Banner Image */}
           {post.image && (
@@ -252,7 +252,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
         </div>
 
         {/* Post Content */}
-        <div className="bg-card/90 backdrop-blur-sm rounded-2xl border border-border/50 shadow-xl p-6 sm:p-10 lg:p-12 mb-8">
+        <div className="bg-white dark:bg-zinc-800/80 rounded-2xl border border-border/50 shadow-xl p-6 sm:p-10 lg:p-12 mb-8">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
