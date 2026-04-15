@@ -1,0 +1,504 @@
+{
+  "name": "CI Pipeline — Apify + Claude + Notion + Slack",
+  "nodes": [
+    {
+      "id": "node-schedule",
+      "name": "Every Monday 7am",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [-700, 200],
+      "typeVersion": 1.2,
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [1],
+              "triggerAtHour": 7,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "node-config",
+      "name": "Configuration Settings",
+      "type": "n8n-nodes-base.set",
+      "position": [-480, 200],
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            { "id": "apify_token", "name": "apify_token", "value": "PASTE_YOUR_APIFY_TOKEN_HERE", "type": "string" },
+            { "id": "claude_key", "name": "claude_api_key", "value": "PASTE_YOUR_CLAUDE_API_KEY_HERE", "type": "string" },
+            { "id": "comp1", "name": "competitor_1_url", "value": "https://competitor-one.com/pricing", "type": "string" },
+            { "id": "comp2", "name": "competitor_2_url", "value": "https://competitor-two.com/pricing", "type": "string" },
+            { "id": "g2_1", "name": "g2_slug_1", "value": "competitor-one", "type": "string" },
+            { "id": "g2_2", "name": "g2_slug_2", "value": "competitor-two", "type": "string" },
+            { "id": "appstore_1", "name": "appstore_id_1", "value": "123456789", "type": "string" },
+            { "id": "notion_db", "name": "notion_database_id", "value": "PASTE_YOUR_NOTION_DB_ID_HERE", "type": "string" },
+            { "id": "slack_ch", "name": "slack_channel", "value": "competitive-intel", "type": "string" }
+          ]
+        }
+      }
+    },
+    {
+      "id": "node-apify-pricing",
+      "name": "Apify: Trigger Pricing Scraper",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [-240, 60],
+      "typeVersion": 4.2,
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apify.com/v2/acts/apify~website-content-crawler/runs",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "token",
+              "value": "={{ $('Configuration Settings').first().json.apify_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "body": "={\n  \"startUrls\": [\n    { \"url\": \"{{ $('Configuration Settings').first().json.competitor_1_url }}\" },\n    { \"url\": \"{{ $('Configuration Settings').first().json.competitor_2_url }}\" }\n  ],\n  \"maxCrawlPages\": 1,\n  \"outputFormats\": [\"text\"],\n  \"maxCrawlDepth\": 0\n}",
+        "options": { "timeout": 30000 }
+      }
+    },
+    {
+      "id": "node-apify-g2",
+      "name": "Apify: Trigger G2 Scraper",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [-240, 200],
+      "typeVersion": 4.2,
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apify.com/v2/acts/apify~g2-scraper/runs",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "token",
+              "value": "={{ $('Configuration Settings').first().json.apify_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "body": "={\n  \"productSlugs\": [\n    \"{{ $('Configuration Settings').first().json.g2_slug_1 }}\",\n    \"{{ $('Configuration Settings').first().json.g2_slug_2 }}\"\n  ],\n  \"maxReviews\": 5,\n  \"sortBy\": \"most_recent\"\n}",
+        "options": { "timeout": 30000 }
+      }
+    },
+    {
+      "id": "node-apify-appstore",
+      "name": "Apify: Trigger App Store Scraper",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [-240, 340],
+      "typeVersion": 4.2,
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apify.com/v2/acts/apify~app-store-scraper/runs",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "token",
+              "value": "={{ $('Configuration Settings').first().json.apify_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "body": "={\n  \"appIds\": [\"{{ $('Configuration Settings').first().json.appstore_id_1 }}\"],\n  \"country\": \"us\",\n  \"maxReviews\": 10\n}",
+        "options": { "timeout": 30000 }
+      }
+    },
+    {
+      "id": "node-wait",
+      "name": "Wait 5 Minutes",
+      "type": "n8n-nodes-base.wait",
+      "position": [40, 200],
+      "typeVersion": 1.1,
+      "parameters": {
+        "resume": "timeInterval",
+        "unit": "minutes",
+        "amount": 5
+      }
+    },
+    {
+      "id": "node-fetch-pricing",
+      "name": "Apify: Fetch Pricing Results",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [280, 60],
+      "typeVersion": 4.2,
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.apify.com/v2/acts/apify~website-content-crawler/runs/last/dataset/items",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "token", "value": "={{ $('Configuration Settings').first().json.apify_token }}" },
+            { "name": "format", "value": "json" },
+            { "name": "limit", "value": "10" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "node-fetch-g2",
+      "name": "Apify: Fetch G2 Results",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [280, 200],
+      "typeVersion": 4.2,
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.apify.com/v2/acts/apify~g2-scraper/runs/last/dataset/items",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "token", "value": "={{ $('Configuration Settings').first().json.apify_token }}" },
+            { "name": "format", "value": "json" },
+            { "name": "limit", "value": "10" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "node-fetch-appstore",
+      "name": "Apify: Fetch App Store Results",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [280, 340],
+      "typeVersion": 4.2,
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.apify.com/v2/acts/apify~app-store-scraper/runs/last/dataset/items",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "token", "value": "={{ $('Configuration Settings').first().json.apify_token }}" },
+            { "name": "format", "value": "json" },
+            { "name": "limit", "value": "10" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "node-notion-read",
+      "name": "Notion: Read Competitor Row",
+      "type": "n8n-nodes-base.notion",
+      "position": [540, 200],
+      "typeVersion": 2.2,
+      "parameters": {
+        "operation": "getAll",
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Configuration Settings').first().json.notion_database_id }}"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "credentials": {
+        "notionApi": { "id": "notion-cred", "name": "Notion API" }
+      }
+    },
+    {
+      "id": "node-code-diff",
+      "name": "Build Diff + Claude Prompt",
+      "type": "n8n-nodes-base.code",
+      "position": [800, 200],
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "// Pull data from all upstream Apify fetch nodes\nconst pricingData = $('Apify: Fetch Pricing Results').all();\nconst g2Data = $('Apify: Fetch G2 Results').all();\nconst appData = $('Apify: Fetch App Store Results').all();\nconst notionRows = $('Notion: Read Competitor Row').all();\n\n// Build current pricing snapshot (max 2000 chars)\nconst currentPricing = pricingData\n  .map(i => i.json?.text || i.json?.content || '')\n  .join('\\n---\\n')\n  .substring(0, 2000);\n\n// G2 current rating\nconst currentG2Rating = g2Data[0]?.json?.rating || g2Data[0]?.json?.overallRating || 'N/A';\n\n// Build recent reviews string\nconst recentReviews = g2Data\n  .slice(0, 5)\n  .map(i => {\n    const rating = i.json?.rating || '?';\n    const title = i.json?.title || i.json?.reviewTitle || '';\n    const pros = i.json?.pros || i.json?.positiveReview || '';\n    const cons = i.json?.cons || i.json?.negativeReview || '';\n    return `[${rating}★] ${title} — Pros: ${pros} | Cons: ${cons}`;\n  })\n  .join('\\n');\n\n// App store rating\nconst appStoreRating = appData[0]?.json?.score || appData[0]?.json?.rating || 'N/A';\n\n// Get previous snapshot from Notion\nconst prevProps = notionRows[0]?.json?.properties || {};\nconst previousPricing = prevProps['Pricing Snapshot']?.rich_text?.[0]?.text?.content\n  || prevProps['Pricing Snapshot']?.rich_text?.[0]?.plain_text\n  || 'No previous snapshot found';\nconst previousG2 = prevProps['G2 Rating']?.number || 'N/A';\nconst notionPageId = notionRows[0]?.json?.id || '';\n\n// Build structured Claude prompt\nconst claudePrompt = [\n  '## Competitor Analysis Request',\n  '',\n  '### Previous Pricing Page (last week):',\n  previousPricing,\n  '',\n  '### Current Pricing Page (this week):',\n  currentPricing,\n  '',\n  '### G2 Rating Change:',\n  `${previousG2} → ${currentG2Rating}`,\n  '',\n  '### Recent Customer Reviews (latest 5):',\n  recentReviews || 'No reviews found',\n  '',\n  '### App Store Rating:',\n  String(appStoreRating)\n].join('\\n');\n\nreturn [{\n  json: {\n    claudePrompt,\n    currentPricing,\n    currentG2Rating: String(currentG2Rating),\n    recentReviews,\n    appStoreRating: String(appStoreRating),\n    previousPricing,\n    previousG2: String(previousG2),\n    notionPageId,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      }
+    },
+    {
+      "id": "node-claude",
+      "name": "Claude API: Analyse Competitor",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [1060, 200],
+      "typeVersion": 4.2,
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "x-api-key", "value": "={{ $('Configuration Settings').first().json.claude_api_key }}" },
+            { "name": "anthropic-version", "value": "2023-06-01" },
+            { "name": "content-type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"claude-sonnet-4-20250514\",\n  \"max_tokens\": 600,\n  \"system\": \"You are a competitive intelligence analyst for a B2B SaaS product manager.\\nAnalyse weekly scraped competitor data and identify strategically significant changes.\\n\\nReturn your analysis in EXACTLY this format with no extra text before or after:\\nSIGNAL_LEVEL: HIGH|MEDIUM|LOW\\nKEY_CHANGES:\\n- change 1\\n- change 2\\n- change 3\\nSTRATEGIC_IMPLICATION: 2-3 sentence summary of what this means for our product\\nSUGGESTED_ACTION: One specific action the PM team should take this week\\n\\nRules:\\n- Be concise. Skip anything that did not change.\\n- If pricing, features or ratings changed significantly: HIGH\\n- If minor wording or small review changes: MEDIUM\\n- If nothing meaningful changed: LOW\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": {{ JSON.stringify($json.claudePrompt) }}\n    }\n  ]\n}",
+        "options": { "timeout": 60000 }
+      }
+    },
+    {
+      "id": "node-parse-claude",
+      "name": "Parse Claude Response",
+      "type": "n8n-nodes-base.code",
+      "position": [1320, 200],
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const content = $input.first().json;\nconst responseText = content?.content?.[0]?.text || '';\n\nif (!responseText) {\n  return [{ json: { error: 'Empty Claude response', signalLevel: 'LOW', signalEmoji: '🟢', keyChanges: 'No data', implication: '', suggestedAction: '', fullAnalysis: '', shouldAlert: false, timestamp: new Date().toISOString() } }];\n}\n\n// Parse signal level\nconst signalMatch = responseText.match(/SIGNAL_LEVEL:\\s*(HIGH|MEDIUM|LOW)/i);\nconst signalLevel = signalMatch ? signalMatch[1].toUpperCase() : 'LOW';\n\n// Parse key changes block\nconst changesMatch = responseText.match(/KEY_CHANGES:([\\s\\S]*?)(?=STRATEGIC_IMPLICATION:|$)/i);\nconst keyChanges = changesMatch\n  ? changesMatch[1].trim()\n  : 'No significant changes detected';\n\n// Parse strategic implication\nconst implMatch = responseText.match(/STRATEGIC_IMPLICATION:([\\s\\S]*?)(?=SUGGESTED_ACTION:|$)/i);\nconst implication = implMatch ? implMatch[1].trim() : '';\n\n// Parse suggested action\nconst actionMatch = responseText.match(/SUGGESTED_ACTION:([\\s\\S]*)$/i);\nconst suggestedAction = actionMatch ? actionMatch[1].trim() : '';\n\n// Emoji map\nconst emojiMap = { HIGH: '🔴', MEDIUM: '🟡', LOW: '🟢' };\n\n// Pull values from diff node\nconst diffData = $('Build Diff + Claude Prompt').first().json;\n\nreturn [{\n  json: {\n    signalLevel,\n    signalEmoji: emojiMap[signalLevel] || '🟢',\n    keyChanges,\n    implication,\n    suggestedAction,\n    fullAnalysis: responseText,\n    shouldAlert: ['HIGH', 'MEDIUM'].includes(signalLevel),\n    notionPageId: diffData.notionPageId,\n    currentPricing: diffData.currentPricing,\n    currentG2Rating: diffData.currentG2Rating,\n    appStoreRating: diffData.appStoreRating,\n    recentReviews: diffData.recentReviews,\n    timestamp: diffData.timestamp\n  }\n}];"
+      }
+    },
+    {
+      "id": "node-notion-update",
+      "name": "Notion: Update Competitor Row",
+      "type": "n8n-nodes-base.notion",
+      "position": [1580, 200],
+      "typeVersion": 2.2,
+      "parameters": {
+        "operation": "update",
+        "resource": "databasePage",
+        "pageId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $json.notionPageId }}"
+        },
+        "properties": {
+          "Pricing Snapshot": {
+            "type": "rich_text",
+            "value": "={{ $json.currentPricing.substring(0, 2000) }}"
+          },
+          "G2 Rating": {
+            "type": "number",
+            "value": "={{ parseFloat($json.currentG2Rating) || 0 }}"
+          },
+          "App Store Rating": {
+            "type": "number",
+            "value": "={{ parseFloat($json.appStoreRating) || 0 }}"
+          },
+          "Recent Reviews": {
+            "type": "rich_text",
+            "value": "={{ $json.recentReviews.substring(0, 2000) }}"
+          },
+          "Claude Analysis": {
+            "type": "rich_text",
+            "value": "={{ $json.fullAnalysis.substring(0, 2000) }}"
+          },
+          "Signal Flag": {
+            "type": "select",
+            "value": "={{ $json.signalLevel }}"
+          },
+          "Last Updated": {
+            "type": "date",
+            "value": "={{ $json.timestamp }}"
+          }
+        }
+      },
+      "credentials": {
+        "notionApi": { "id": "notion-cred", "name": "Notion API" }
+      }
+    },
+    {
+      "id": "node-if",
+      "name": "Signal = HIGH or MEDIUM?",
+      "type": "n8n-nodes-base.if",
+      "position": [1840, 200],
+      "typeVersion": 2,
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "combinator": "or",
+          "conditions": [
+            {
+              "id": "cond-high",
+              "operator": { "type": "string", "operation": "equals" },
+              "leftValue": "={{ $json.signalLevel }}",
+              "rightValue": "HIGH"
+            },
+            {
+              "id": "cond-medium",
+              "operator": { "type": "string", "operation": "equals" },
+              "leftValue": "={{ $json.signalLevel }}",
+              "rightValue": "MEDIUM"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "node-slack",
+      "name": "Slack: Post to #competitive-intel",
+      "type": "n8n-nodes-base.slack",
+      "position": [2100, 80],
+      "typeVersion": 2.2,
+      "parameters": {
+        "operation": "post",
+        "resource": "message",
+        "channel": {
+          "__rl": true,
+          "mode": "name",
+          "value": "={{ $('Configuration Settings').first().json.slack_channel }}"
+        },
+        "text": "={{ $json.signalEmoji }} *Weekly Competitive Brief — {{ $json.signalLevel }} Signal*\n\n*Key Changes:*\n{{ $json.keyChanges }}\n\n*Strategic Implication:*\n{{ $json.implication }}\n\n*Action This Week:*\n{{ $json.suggestedAction }}\n\n_G2: {{ $json.currentG2Rating }} | App Store: {{ $json.appStoreRating }} | {{ $json.timestamp }}_",
+        "otherOptions": {
+          "mrkdwn": true,
+          "unfurl_links": false
+        }
+      },
+      "credentials": {
+        "slackOAuth2Api": { "id": "slack-cred", "name": "Slack OAuth" }
+      }
+    },
+    {
+      "id": "node-log",
+      "name": "Log: LOW Signal — No Alert",
+      "type": "n8n-nodes-base.set",
+      "position": [2100, 340],
+      "typeVersion": 3.4,
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            { "id": "l1", "name": "status", "value": "LOW signal — Slack alert skipped", "type": "string" },
+            { "id": "l2", "name": "signalLevel", "value": "={{ $json.signalLevel }}", "type": "string" },
+            { "id": "l3", "name": "timestamp", "value": "={{ $json.timestamp }}", "type": "string" },
+            { "id": "l4", "name": "summary", "value": "={{ $json.fullAnalysis }}", "type": "string" }
+          ]
+        }
+      }
+    },
+    {
+      "id": "node-merge",
+      "name": "Merge All Outputs",
+      "type": "n8n-nodes-base.merge",
+      "position": [2360, 200],
+      "typeVersion": 3,
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      }
+    },
+    {
+      "id": "node-notion-log",
+      "name": "Notion: Append Weekly Run Log",
+      "type": "n8n-nodes-base.notion",
+      "position": [2620, 200],
+      "typeVersion": 2.2,
+      "parameters": {
+        "operation": "create",
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Configuration Settings').first().json.notion_database_id }}"
+        },
+        "title": "=Run Log — {{ $('Parse Claude Response').first().json.timestamp.split('T')[0] }}",
+        "properties": {
+          "Signal Flag": {
+            "type": "select",
+            "value": "={{ $('Parse Claude Response').first().json.signalLevel }}"
+          },
+          "Claude Analysis": {
+            "type": "rich_text",
+            "value": "=Run completed: {{ $('Parse Claude Response').first().json.timestamp }} | Signal: {{ $('Parse Claude Response').first().json.signalLevel }} | Action: {{ $('Parse Claude Response').first().json.suggestedAction }}"
+          },
+          "Last Updated": {
+            "type": "date",
+            "value": "={{ $('Parse Claude Response').first().json.timestamp }}"
+          }
+        }
+      },
+      "credentials": {
+        "notionApi": { "id": "notion-cred", "name": "Notion API" }
+      }
+    }
+  ],
+  "connections": {
+    "Every Monday 7am": {
+      "main": [[{ "node": "Configuration Settings", "type": "main", "index": 0 }]]
+    },
+    "Configuration Settings": {
+      "main": [[
+        { "node": "Apify: Trigger Pricing Scraper", "type": "main", "index": 0 },
+        { "node": "Apify: Trigger G2 Scraper", "type": "main", "index": 0 },
+        { "node": "Apify: Trigger App Store Scraper", "type": "main", "index": 0 }
+      ]]
+    },
+    "Apify: Trigger Pricing Scraper": {
+      "main": [[{ "node": "Wait 5 Minutes", "type": "main", "index": 0 }]]
+    },
+    "Apify: Trigger G2 Scraper": {
+      "main": [[{ "node": "Wait 5 Minutes", "type": "main", "index": 0 }]]
+    },
+    "Apify: Trigger App Store Scraper": {
+      "main": [[{ "node": "Wait 5 Minutes", "type": "main", "index": 0 }]]
+    },
+    "Wait 5 Minutes": {
+      "main": [[
+        { "node": "Apify: Fetch Pricing Results", "type": "main", "index": 0 },
+        { "node": "Apify: Fetch G2 Results", "type": "main", "index": 0 },
+        { "node": "Apify: Fetch App Store Results", "type": "main", "index": 0 }
+      ]]
+    },
+    "Apify: Fetch Pricing Results": {
+      "main": [[{ "node": "Notion: Read Competitor Row", "type": "main", "index": 0 }]]
+    },
+    "Apify: Fetch G2 Results": {
+      "main": [[{ "node": "Notion: Read Competitor Row", "type": "main", "index": 0 }]]
+    },
+    "Apify: Fetch App Store Results": {
+      "main": [[{ "node": "Notion: Read Competitor Row", "type": "main", "index": 0 }]]
+    },
+    "Notion: Read Competitor Row": {
+      "main": [[{ "node": "Build Diff + Claude Prompt", "type": "main", "index": 0 }]]
+    },
+    "Build Diff + Claude Prompt": {
+      "main": [[{ "node": "Claude API: Analyse Competitor", "type": "main", "index": 0 }]]
+    },
+    "Claude API: Analyse Competitor": {
+      "main": [[{ "node": "Parse Claude Response", "type": "main", "index": 0 }]]
+    },
+    "Parse Claude Response": {
+      "main": [[{ "node": "Notion: Update Competitor Row", "type": "main", "index": 0 }]]
+    },
+    "Notion: Update Competitor Row": {
+      "main": [[{ "node": "Signal = HIGH or MEDIUM?", "type": "main", "index": 0 }]]
+    },
+    "Signal = HIGH or MEDIUM?": {
+      "main": [
+        [{ "node": "Slack: Post to #competitive-intel", "type": "main", "index": 0 }],
+        [{ "node": "Log: LOW Signal — No Alert", "type": "main", "index": 0 }]
+      ]
+    },
+    "Slack: Post to #competitive-intel": {
+      "main": [[{ "node": "Merge All Outputs", "type": "main", "index": 0 }]]
+    },
+    "Log: LOW Signal — No Alert": {
+      "main": [[{ "node": "Merge All Outputs", "type": "main", "index": 0 }]]
+    },
+    "Merge All Outputs": {
+      "main": [[{ "node": "Notion: Append Weekly Run Log", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "meta": { "instanceId": "kartikbhalerao-ci-pipeline-v1" },
+  "pinData": {},
+  "tags": [
+    { "name": "competitive-intelligence" },
+    { "name": "apify" },
+    { "name": "claude" },
+    { "name": "notion" },
+    { "name": "slack" }
+  ]
+}

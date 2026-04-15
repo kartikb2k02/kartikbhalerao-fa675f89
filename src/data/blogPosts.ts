@@ -82,6 +82,18 @@ export const blogPosts: BlogPost[] = [
     slug: "user-research-that-matters"
   },
   {
+    id: 9,
+    title: "Build a Competitive Intelligence System That Updates Itself",
+    excerpt: "Stop manually checking G2, pricing pages, and app store reviews every week. Here's how I built a system using Apify, Notion, Claude, and Slack that delivers competitor signals automatically — with AI analysis included.",
+    category: "ai",
+    date: "2026-04-14",
+    readTime: "8 min read",
+    tags: ["Product Management", "Automation", "AI", "Tools"],
+    image: "/lovable-uploads/competitive-intel-banner.svg",
+    slug: "build-competitive-intelligence-system",
+    featured: true
+  },
+  {
     id: 8,
     title: "I Replaced My Product Manager Workflow with AI for 7 Days — Here's What Happened",
     excerpt: "For 7 days, I replaced key parts of my PM workflow with AI tools. Here's where AI genuinely helped, where it struggled, and what it means for the future of Product Management.",

@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 510" width="740" height="510">
+  <defs>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="740" height="510" fill="#ffffff" rx="12"/>
+
+  <!-- Title -->
+  <text x="370" y="28" text-anchor="middle" font-size="17" font-weight="700" fill="#1e293b">Notion Competitor Database Schema</text>
+
+  <!-- ── Column Headers ── -->
+  <rect x="20" y="38" width="195" height="34" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="117" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="#475569">Field</text>
+
+  <rect x="215" y="38" width="130" height="34" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="280" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="#475569">Type</text>
+
+  <rect x="345" y="38" width="375" height="34" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="532" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="#475569">Purpose</text>
+
+  <!-- ── IDENTITY Section ── -->
+  <rect x="20" y="72" width="700" height="34" fill="#a5d8ff" stroke="#4a9eed" stroke-width="1" rx="3"/>
+  <text x="370" y="94" text-anchor="middle" font-size="13" font-weight="700" fill="#1e40af">IDENTITY</text>
+
+  <!-- Row 1 -->
+  <rect x="20" y="106" width="195" height="36" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="28" y="129" font-size="13" fill="#334155" font-weight="500">Competitor Name</text>
+
+  <rect x="215" y="106" width="130" height="36" fill="#bfdbfe" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="280" y="129" text-anchor="middle" font-size="12" font-weight="600" fill="#1e40af">TITLE</text>
+
+  <rect x="345" y="106" width="375" height="36" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="353" y="129" font-size="13" fill="#475569">Primary key / row label</text>
+
+  <!-- ── WEEKLY SCRAPED DATA Section ── -->
+  <rect x="20" y="150" width="700" height="34" fill="#fff3bf" stroke="#f59e0b" stroke-width="1" rx="3"/>
+  <text x="370" y="172" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">WEEKLY SCRAPED DATA  —  auto-populated by Apify + n8n</text>
+
+  <!-- Row 1 -->
+  <rect x="20" y="184" width="195" height="36" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="28" y="207" font-size="13" fill="#334155" font-weight="500">Pricing Snapshot</text>
+  <rect x="215" y="184" width="130" height="36" fill="#c3fae8" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="280" y="207" text-anchor="middle" font-size="12" font-weight="600" fill="#065f46">RICH_TEXT</text>
+  <rect x="345" y="184" width="375" height="36" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="353" y="207" font-size="13" fill="#475569">Latest pricing page snapshot (2000c)</text>
+
+  <!-- Row 2 -->
+  <rect x="20" y="220" width="195" height="36" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="28" y="243" font-size="13" fill="#334155" font-weight="500">Previous Pricing</text>
+  <rect x="215" y="220" width="130" height="36" fill="#c3fae8" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="280" y="243" text-anchor="middle" font-size="12" font-weight="600" fill="#065f46">RICH_TEXT</text>
+  <rect x="345" y="220" width="375" height="36" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="353" y="243" font-size="13" fill="#475569">Last week's snapshot — used to diff</text>
+
+  <!-- Row 3 -->
+  <rect x="20" y="256" width="195" height="36" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="28" y="279" font-size="13" fill="#334155" font-weight="500">G2 Rating</text>
+  <rect x="215" y="256" width="130" height="36" fill="#ffd8a8" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="280" y="279" text-anchor="middle" font-size="12" font-weight="600" fill="#92400e">NUMBER</text>
+  <rect x="345" y="256" width="375" height="36" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="353" y="279" font-size="13" fill="#475569">Current average star rating on G2</text>
+
+  <!-- Row 4 -->
+  <rect x="20" y="292" width="195" height="36" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="28" y="315" font-size="13" fill="#334155" font-weight="500">Recent Reviews</text>
+  <rect x="215" y="292" width="130" height="36" fill="#c3fae8" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="280" y="315" text-anchor="middle" font-size="12" font-weight="600" fill="#065f46">RICH_TEXT</text>
+  <rect x="345" y="292" width="375" height="36" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="353" y="315" font-size="13" fill="#475569">Latest 5 reviews (pros + cons text)</text>
+
+  <!-- Row 5 -->
+  <rect x="20" y="328" width="195" height="36" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="28" y="351" font-size="13" fill="#334155" font-weight="500">App Store Rating</text>
+  <rect x="215" y="328" width="130" height="36" fill="#ffd8a8" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="280" y="351" text-anchor="middle" font-size="12" font-weight="600" fill="#92400e">NUMBER</text>
+  <rect x="345" y="328" width="375" height="36" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="353" y="351" font-size="13" fill="#475569">Current app store rating (if applicable)</text>
+
+  <!-- Row 6 -->
+  <rect x="20" y="364" width="195" height="36" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="28" y="387" font-size="13" fill="#334155" font-weight="500">Last Updated</text>
+  <rect x="215" y="364" width="130" height="36" fill="#b2f2bb" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="280" y="387" text-anchor="middle" font-size="12" font-weight="600" fill="#166534">DATE</text>
+  <rect x="345" y="364" width="375" height="36" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="353" y="387" font-size="13" fill="#475569">Timestamp of last automation run</text>
+
+  <!-- ── AI ANALYSIS Section ── -->
+  <rect x="20" y="408" width="700" height="34" fill="#d0bfff" stroke="#8b5cf6" stroke-width="1" rx="3"/>
+  <text x="370" y="430" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">AI ANALYSIS OUTPUT  —  generated by Claude</text>
+
+  <!-- Row 1 -->
+  <rect x="20" y="442" width="195" height="36" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="28" y="465" font-size="13" fill="#334155" font-weight="500">Claude Analysis</text>
+  <rect x="215" y="442" width="130" height="36" fill="#c3fae8" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="280" y="465" text-anchor="middle" font-size="12" font-weight="600" fill="#065f46">RICH_TEXT</text>
+  <rect x="345" y="442" width="375" height="36" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="353" y="465" font-size="13" fill="#475569">Output stored for historical reference</text>
+
+  <!-- Row 2 -->
+  <rect x="20" y="478" width="195" height="36" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="28" y="501" font-size="13" fill="#334155" font-weight="500">Signal Flag</text>
+  <rect x="215" y="478" width="130" height="36" fill="#d0bfff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="280" y="501" text-anchor="middle" font-size="12" font-weight="600" fill="#4c1d95">SELECT</text>
+  <rect x="345" y="478" width="375" height="36" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="353" y="501" font-size="13" fill="#475569">HIGH / MED / LOW — set by Claude</text>
+
+  <!-- Outer border -->
+  <rect x="20" y="38" width="700" height="476" fill="none" stroke="#cbd5e1" stroke-width="1.5" rx="4"/>
+</svg>
