@@ -40,7 +40,6 @@ import {
   SiPostman,
   SiDocker,
   SiAmazonwebservices,
-  SiN8N,
   SiMake,
   SiSlack,
   SiMiro,
@@ -118,6 +117,7 @@ export const SkillsSection = () => {
     categoryTitle: string;
     whyIUse: string;
     useCases: string[];
+    whiteBg?: boolean;
   } | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const skillsRef = useRef<HTMLDivElement>(null);
@@ -566,6 +566,28 @@ export const SkillsSection = () => {
             "Supabase provides everything I need for a backend—database, auth, storage, and more. It accelerates product development significantly.",
           useCases: ["Database management", "User authentication", "Real-time subscriptions", "File storage"],
         },
+        {
+          name: "n8n",
+          description: "Automation",
+          color: "from-[#EA4B71] to-[#FF6D3B]",
+          whiteBg: true,
+          icon: <img src="/logos/n8n.svg" alt="n8n" className="w-5 h-5 object-contain" />,
+          tooltip: "For powerful workflow automation",
+          whyIUse:
+            "n8n lets me build powerful automated workflows connecting any tool or API. I use it to automate repetitive PM tasks and build AI-powered pipelines without writing heavy code.",
+          useCases: ["Workflow automation", "AI agent pipelines", "API integrations", "Data sync between tools"],
+        },
+        {
+          name: "Apify",
+          description: "Web Scraping",
+          color: "from-[#1A7F4B] to-[#34D399]",
+          whiteBg: true,
+          icon: <img src="/logos/apify.png" alt="Apify" className="w-5 h-5 object-contain" />,
+          tooltip: "For web scraping and data extraction",
+          whyIUse:
+            "Apify is my go-to for extracting structured data from the web at scale. I use it for competitive research, market analysis, and feeding real data into AI workflows.",
+          useCases: ["Competitor research", "Market data extraction", "Automated web monitoring", "AI data pipelines"],
+        },
       ],
     },
     collaboration: {
@@ -1002,10 +1024,12 @@ export const SkillsSection = () => {
 
                       {/* Icon */}
                       <div className={cn(
-                        "w-14 h-14 rounded-2xl bg-gradient-to-br flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg",
-                        tool.color,
+                        "w-14 h-14 rounded-2xl flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg",
+                        tool.whiteBg
+                          ? "bg-white border border-gray-100"
+                          : `bg-gradient-to-br ${tool.color}`,
                       )}>
-                        <div className="text-white [&>svg]:w-6 [&>svg]:h-6">{tool.icon}</div>
+                        <div className={cn("[&>svg]:w-6 [&>svg]:h-6", tool.whiteBg ? "" : "text-white")}>{tool.icon}</div>
                       </div>
 
                       {/* Name */}

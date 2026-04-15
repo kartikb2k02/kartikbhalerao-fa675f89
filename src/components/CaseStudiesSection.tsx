@@ -2,11 +2,17 @@ import { ArrowUpRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { caseStudies } from "@/data/caseStudies";
 import { ChatlyCardBanner } from "@/components/ChatlyCardBanner";
+import { PMCopilotCardBanner } from "@/components/PMCopilotCardBanner";
 
 export const CaseStudiesSection = () => {
   const navigate = useNavigate();
 
   const handleCardClick = (id: string) => {
+    const study = caseStudies.find((s) => s.id === id);
+    if (study?.id === "pm-copilot" && study.externalLink) {
+      window.open(study.externalLink, "_blank", "noopener,noreferrer");
+      return;
+    }
     navigate(`/builds/${id}`);
   };
 
@@ -37,10 +43,15 @@ export const CaseStudiesSection = () => {
                 <div className={`absolute -inset-0.5 bg-gradient-to-r ${study.bgGradient} rounded-3xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500`} />
 
                 {/* Image Section */}
-                <div className={`relative aspect-[18/10] overflow-hidden ${study.id === "chatly-prd" ? "bg-white" : `bg-gradient-to-br ${study.bgGradient}`}`}>
+                <div className={`relative aspect-[18/10] overflow-hidden ${study.id === "chatly-prd" || study.id === "pm-copilot" ? "" : `bg-gradient-to-br ${study.bgGradient}`}`}
+                  style={study.id === "pm-copilot" ? { background: "#fff5f9" } : study.id === "chatly-prd" ? { background: "white" } : {}}>
                   {study.id === "chatly-prd" ? (
                     <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
                       <ChatlyCardBanner />
+                    </div>
+                  ) : study.id === "pm-copilot" ? (
+                    <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
+                      <PMCopilotCardBanner />
                     </div>
                   ) : (
                     <img
@@ -64,7 +75,25 @@ export const CaseStudiesSection = () => {
                 </div>
 
                 {/* Footer Section */}
-                {study.id === "chatly-prd" ? (
+                {study.id === "pm-copilot" ? (
+                  <div style={{ background: "#fff5f9", borderTop: "1px solid rgba(255,59,141,0.12)" }} className="px-5 py-4 relative overflow-hidden">
+                    <div className="absolute inset-0" style={{ backgroundImage: "repeating-linear-gradient(45deg, rgba(255,59,141,0.06) 0px, rgba(255,59,141,0.06) 1px, transparent 1px, transparent 12px)" }}/>
+                    <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(255,59,141,0.1) 0%, transparent 70%)" }}/>
+                    <div className="relative z-10 flex items-center gap-2 pr-8">
+                      <div style={{ width: 20, height: 20, borderRadius: 6, background: "#ff3b8d", boxShadow: "0 2px 8px rgba(255,59,141,0.35)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 900, color: "#fff", flexShrink: 0 }}>✦</div>
+                      <div>
+                        <h3 className="text-base font-black leading-tight" style={{ color: "#1a0a10", letterSpacing: "-0.02em" }}>{study.title}</h3>
+                        <p className="text-xs mt-0.5" style={{ color: "rgba(26,10,16,0.45)" }}>{study.subtitle}</p>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-4 right-4">
+                      <div style={{ width: 28, height: 28, background: "#ff3b8d", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(255,59,141,0.35)" }}
+                        className="group-hover:scale-110 transition-all duration-300">
+                        <ArrowUpRight className="w-4 h-4 text-white" />
+                      </div>
+                    </div>
+                  </div>
+                ) : study.id === "chatly-prd" ? (
                   <div className="bg-white border-t border-slate-100 px-5 py-4 relative overflow-hidden">
                     <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)", backgroundSize: "18px 18px" }}/>
                     <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full border border-black/[0.07] pointer-events-none"/>

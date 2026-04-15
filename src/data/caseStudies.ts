@@ -22,6 +22,82 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    id: "pm-copilot",
+    title: "PM Co-Pilot",
+    subtitle: "AI-Powered PM Workspace",
+    tags: ["SaaS", "AI/ML", "Product Strategy", "Full-Stack Build"],
+    externalLink: "https://pmcopliot.pages.dev/",
+    bgGradient: "from-[#ff3b8d] to-[#f7f3eb]",
+    image: "",
+    overview:
+      "PM Co-Pilot is a web-based AI workspace where product managers connect Figma, Notion, and URLs as context — then generate PRDs, roadmaps, competitive analyses, feature briefs, and more using Claude AI. Built from scratch as a full SaaS product.",
+    challenge:
+      "PMs spend hours context-switching between tools and manually drafting artifacts. There was no single place to pull design context, planning docs, and web research together and generate structured PM output instantly.",
+    solution:
+      "Built a connector-based PM workspace: plug in Figma PAT, Notion token, or any URL — then pick an artifact type. Claude ingests the connected context and streams a fully structured output (PRD, roadmap, competitive brief, etc.) in seconds.",
+    outcome:
+      "Full SaaS product with 13 artifact types, streaming output, multi-turn co-pilot chat, Notion/Jira/Linear write-back, auth + persistence, and Netlify deployment. Went from zero to deployed product in under 2 weeks.",
+    keyFeatures: [
+      "Figma, Notion, URL connectors (session-only token storage)",
+      "13 artifact types: PRD, Roadmap, Competitive Analysis, OKRs, Sprint Brief, and more",
+      "Streaming output via SSE — text appears token-by-token",
+      "Multi-turn co-pilot chat for refinement below every artifact",
+      "Write-back: push artifacts to Notion pages or Jira/Linear tickets",
+      "Model selector: Haiku / Sonnet / Opus per task",
+      "JWT auth + Supabase persistence across sessions",
+      "Netlify deployment with serverless Express backend",
+    ],
+    tools: [
+      "React 18 + Vite",
+      "Express (Netlify Functions)",
+      "Anthropic Claude API (Sonnet / Opus / Haiku)",
+      "Supabase (PostgreSQL)",
+      "Figma API (proxied)",
+      "Notion API",
+      "JWT Auth",
+      "Tailwind CSS",
+    ],
+    gallery: [],
+  },
+  {
+    id: "chatly-prd",
+    title: "Chatly PRD",
+    subtitle: "AI Conversation Operationalization Platform",
+    tags: ["Product Strategy", "AI/ML", "SaaS", "PRD"],
+    externalLink: "",
+    bgGradient: "from-[#6366f1] to-[#8b5cf6]",
+    image: "/lovable-uploads/Chatly.webp",
+    overview:
+      "Chatly automatically transforms AI conversations into structured execution pipelines, bridging the gap between AI-generated insights and real-world task execution. Pre-seed SaaS targeting Q2 2026 MVP Beta.",
+    challenge:
+      "Over 65% of enterprise knowledge workers use AI assistants daily, yet 40–60% of AI-generated action items are never executed. Decisions go unrecorded, ownership is never assigned, and manual re-entry wastes 20–30 minutes per AI session.",
+    solution:
+      "A multi-stage NLP pipeline (SpaCy + fine-tuned RoBERTa + GPT-4o mini disambiguation) extracts action items, decisions, owners, deadlines, and blockers from AI conversations, then one-click syncs them into Jira, Notion, Slack, Linear, and other workflow tools.",
+    outcome:
+      "Reduces post-AI-session setup time by an estimated 70–80%. Targets 200 beta users at MVP, $75K MRR at V1 GA, and $1.5M ARR by end of Year 1.",
+    keyFeatures: [
+      "AI conversation ingestion engine (paste, upload, browser extension, API)",
+      "Multi-stage NLP extraction pipeline with confidence scoring",
+      "Extraction review & correction UI with source highlighting",
+      "Execution pipeline builder with dependency detection",
+      "One-click workflow integration sync (Jira, Notion, Slack, Linear)",
+      "Decision log & persistent knowledge base",
+      "Real-time browser extension (Chrome/Edge)",
+      "Workspace & team management with RBAC",
+    ],
+    tools: [
+      "React 18 + TypeScript",
+      "Node.js + Express",
+      "Python + FastAPI",
+      "SpaCy + HuggingFace RoBERTa",
+      "OpenAI GPT-4o mini",
+      "PostgreSQL + Redis + Pinecone",
+      "AWS ECS Fargate",
+      "Jira / Notion / Slack APIs",
+    ],
+    gallery: [],
+  },
+  {
     id: "blinkit-analysis",
     title: "Blinkit Product Analysis",
     subtitle: "Order Efficiency & Conversion Optimization",
@@ -371,44 +447,6 @@ export const caseStudies: CaseStudy[] = [
       { src: "/lovable-uploads/12.webp", caption: "Target Audience (Parents) - Launch Readniness and Risk" },
       { src: "/lovable-uploads/12.webp", caption: "Target Audience (Parents) - Sources Follow" },
     ],
-  },
-  {
-    id: "chatly-prd",
-    title: "Chatly PRD",
-    subtitle: "AI Conversation Operationalization Platform",
-    tags: ["Product Strategy", "AI/ML", "SaaS", "PRD"],
-    externalLink: "",
-    bgGradient: "from-[#6366f1] to-[#8b5cf6]",
-    image: "/lovable-uploads/Chatly.webp",
-    overview:
-      "Chatly automatically transforms AI conversations into structured execution pipelines, bridging the gap between AI-generated insights and real-world task execution. Pre-seed SaaS targeting Q2 2026 MVP Beta.",
-    challenge:
-      "Over 65% of enterprise knowledge workers use AI assistants daily, yet 40–60% of AI-generated action items are never executed. Decisions go unrecorded, ownership is never assigned, and manual re-entry wastes 20–30 minutes per AI session.",
-    solution:
-      "A multi-stage NLP pipeline (SpaCy + fine-tuned RoBERTa + GPT-4o mini disambiguation) extracts action items, decisions, owners, deadlines, and blockers from AI conversations, then one-click syncs them into Jira, Notion, Slack, Linear, and other workflow tools.",
-    outcome:
-      "Reduces post-AI-session setup time by an estimated 70–80%. Targets 200 beta users at MVP, $75K MRR at V1 GA, and $1.5M ARR by end of Year 1.",
-    keyFeatures: [
-      "AI conversation ingestion engine (paste, upload, browser extension, API)",
-      "Multi-stage NLP extraction pipeline with confidence scoring",
-      "Extraction review & correction UI with source highlighting",
-      "Execution pipeline builder with dependency detection",
-      "One-click workflow integration sync (Jira, Notion, Slack, Linear)",
-      "Decision log & persistent knowledge base",
-      "Real-time browser extension (Chrome/Edge)",
-      "Workspace & team management with RBAC",
-    ],
-    tools: [
-      "React 18 + TypeScript",
-      "Node.js + Express",
-      "Python + FastAPI",
-      "SpaCy + HuggingFace RoBERTa",
-      "OpenAI GPT-4o mini",
-      "PostgreSQL + Redis + Pinecone",
-      "AWS ECS Fargate",
-      "Jira / Notion / Slack APIs",
-    ],
-    gallery: [],
   },
 ];
 
