@@ -55,7 +55,7 @@ const BLOG = {
   'build-competitive-intelligence-system': {
     title: 'Build a Competitive Intelligence System That Updates Itself',
     desc: 'Stop manually checking G2, pricing pages, and app store reviews every week. Here\'s how I built a system using Apify, Notion, Claude, and Slack that delivers competitor signals automatically — with AI analysis included.',
-    img: '/lovable-uploads/competitive-intel-architecture.png',
+    img: '/lovable-uploads/competitive-intel-banner.png',
   },
 };
 
