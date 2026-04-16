@@ -1,0 +1,134 @@
+/**
+ * Netlify Edge Function: og-inject
+ *
+ * Social crawlers (LinkedIn, Twitter/X, Facebook, Slack, etc.) don't execute
+ * JavaScript, so client-side OG tag updates are invisible to them. This edge
+ * function intercepts bot requests and injects the correct per-page meta tags
+ * directly into the HTML before it is sent.
+ *
+ * Regular visitors pass through unchanged — zero impact on UX or performance.
+ */
+
+const BASE = 'https://kartikbhalerao.com';
+
+const BLOG = {
+  'ai-first-product-strategy': {
+    title: 'AI-First Product Strategy: How to Build with Intelligence at the Core',
+    desc: 'The rise of generative AI has changed how we build products. AI is no longer just a feature — it\'s the foundation.',
+    img: '/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.png',
+  },
+  'moscow-prioritization-method': {
+    title: 'MoSCoW: The Prioritization Method That Saves Your Sanity (and Your Sprint)',
+    desc: 'As a PM, it often feels like you\'re building a rocket ship with IKEA instructions. MoSCoW is the framework that brings clarity to chaos.',
+    img: '/lovable-uploads/product-development-workflow.png',
+  },
+  'ai-copilot-decision-making': {
+    title: 'AI as Your Co-Pilot: How Product Managers Can Supercharge Decision-Making with AI',
+    desc: 'AI is revolutionizing product management by providing deep insights, automating processes, and enhancing forecasting accuracy.',
+    img: '/lovable-uploads/ai-product-discovery-workflow.png',
+  },
+  'data-driven-decision-making-experience': {
+    title: 'Data-Driven Decision Making: My Experience at Decision Machine',
+    desc: 'How to balance quantitative insights with qualitative user feedback',
+    img: '/lovable-uploads/ai-feedback-pipeline.png',
+  },
+  'idea-to-mvp-product-manager-journey': {
+    title: 'From Idea to MVP: A Product Manager\'s Journey',
+    desc: 'Step-by-step guide to building your first product from concept to launch',
+    img: '/lovable-uploads/product-development-workflow.png',
+  },
+  'user-research-that-matters': {
+    title: 'User Research That Actually Matters',
+    desc: 'Moving beyond vanity metrics to insights that drive product decisions',
+    img: '/lovable-uploads/ai-feedback-pipeline.png',
+  },
+  'scaling-product-teams-lessons': {
+    title: 'Scaling Product Teams: Lessons Learned',
+    desc: 'How to maintain product quality while growing your team',
+    img: '/lovable-uploads/ai-product-discovery-workflow.png',
+  },
+  'ai-replaced-pm-workflow-7-days': {
+    title: 'I Replaced My Product Manager Workflow with AI for 7 Days — Here\'s What Happened',
+    desc: 'For 7 days, I replaced key parts of my PM workflow with AI tools. Here\'s where AI genuinely helped, where it struggled, and what it means for the future of Product Management.',
+    img: '/lovable-uploads/traditional-vs-ai-workflow.png',
+  },
+  'build-competitive-intelligence-system': {
+    title: 'Build a Competitive Intelligence System That Updates Itself',
+    desc: 'Stop manually checking G2, pricing pages, and app store reviews every week. Here\'s how I built a system using Apify, Notion, Claude, and Slack that delivers competitor signals automatically — with AI analysis included.',
+    img: '/lovable-uploads/competitive-intel-architecture.png',
+  },
+};
+
+const CASES = {
+  'blinkit-analysis':    { title: 'Blinkit Product Analysis',          desc: 'Order Efficiency & Conversion Optimization',           img: '/lovable-uploads/3d4a8070-20bc-4613-becb-61b277c2c14e.png' },
+  'google-pay-analysis': { title: 'Google Pay Feature Analysis',       desc: 'Strategic Product Improvement Study',                  img: '/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png' },
+  'google-pay-prd':      { title: 'Google Pay PRD',                    desc: 'Strategic Product Improvement Study',                  img: '/lovable-uploads/9b4dd787-aeb2-4969-8fc0-a1dd907efea8.png' },
+  'gullak-fintech':      { title: 'Gullak Fintech App',                desc: 'Savings-Led Financial Empowerment Platform',           img: '/lovable-uploads/b1ba7330-6bbc-43d5-a1d2-56baa716c077.png' },
+  'zepto-efficiency':    { title: 'Zepto Order Efficiency',            desc: 'User Experience Optimization',                        img: '/lovable-uploads/zepto.png' },
+  'airbnb-ux':           { title: 'Airbnb UX',                         desc: 'Patient-Centered Design Approach',                    img: '/lovable-uploads/b6681943-085f-4f56-ad98-ba1fac93c64a.png' },
+  'cloudeagle-ai':       { title: 'Cloudeagle AI Efficiency',          desc: 'User Experience Optimization',                        img: '/lovable-uploads/Cloudeagle.png' },
+  'metis-improvement':   { title: 'Metis Feature Improvement',         desc: 'User Experience Optimization',                        img: '/lovable-uploads/Metis.png' },
+  'codeant-ai':          { title: 'CodeAnt AI',                        desc: 'Product Launch Narrative',                           img: '/lovable-uploads/Codeant.png' },
+  'ether-prd':           { title: 'Ether Feature PRD',                 desc: 'Product Improvement',                                img: '/lovable-uploads/Ether.png' },
+  'chatly-prd':          { title: 'Chatly PRD',                        desc: 'AI Conversation Operationalization Platform',         img: '/lovable-uploads/Chatly.png' },
+};
+
+// Social crawlers that don't execute JavaScript
+const BOT_UA_PATTERN = /LinkedInBot|Twitterbot|facebookexternalhit|Slackbot|WhatsApp|TelegramBot|Discordbot|Pinterest|Googlebot|bingbot|Applebot|Embedly|outbrain|quora link preview|rogerbot|showyoubot|SkypeUriPreview|vkShare/i;
+
+export default async function handler(request, context) {
+  const ua = request.headers.get('user-agent') || '';
+
+  // Let non-bot traffic pass through without any processing
+  if (!BOT_UA_PATTERN.test(ua)) {
+    return context.next();
+  }
+
+  const url = new URL(request.url);
+  const path = url.pathname;
+
+  let data = null;
+  let pageUrl = BASE + path;
+
+  const blogMatch = path.match(/^\/blog\/([^/]+)/);
+  const caseMatch = path.match(/^\/case-studies\/([^/]+)/);
+
+  if (blogMatch)      data = BLOG[blogMatch[1]];
+  else if (caseMatch) data = CASES[caseMatch[1]];
+
+  // No matching entry — serve the page as-is (default site-level OG tags)
+  if (!data) return context.next();
+
+  // Fetch the built index.html
+  const response = await context.next();
+  const html = await response.text();
+
+  const fullTitle = `${data.title} | Kartik Bhalerao`;
+  const fullImg   = data.img.startsWith('http') ? data.img : `${BASE}${data.img}`;
+
+  // Replace every static OG tag with per-page values
+  const patched = html
+    .replace(/<title>[^<]*<\/title>/, `<title>${escHtml(fullTitle)}</title>`)
+    .replace(/(<meta\s+name="description"\s+content=")[^"]*(")/,   `$1${escHtml(data.desc)}$2`)
+    .replace(/(<meta\s+property="og:title"\s+content=")[^"]*(")/,       `$1${escHtml(fullTitle)}$2`)
+    .replace(/(<meta\s+property="og:description"\s+content=")[^"]*(")/,  `$1${escHtml(data.desc)}$2`)
+    .replace(/(<meta\s+property="og:url"\s+content=")[^"]*(")/,          `$1${escHtml(pageUrl)}$2`)
+    .replace(/(<meta\s+property="og:type"\s+content=")[^"]*(")/,         `$1article$2`)
+    .replace(/(<meta\s+property="og:image"\s+content=")[^"]*(")/,        `$1${escHtml(fullImg)}$2`)
+    .replace(/(<meta\s+name="twitter:title"\s+content=")[^"]*(")/,       `$1${escHtml(fullTitle)}$2`)
+    .replace(/(<meta\s+name="twitter:description"\s+content=")[^"]*(")/,  `$1${escHtml(data.desc)}$2`)
+    .replace(/(<meta\s+name="twitter:image"\s+content=")[^"]*(")/,       `$1${escHtml(fullImg)}$2`);
+
+  return new Response(patched, {
+    status:  response.status,
+    headers: response.headers,
+  });
+}
+
+function escHtml(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}

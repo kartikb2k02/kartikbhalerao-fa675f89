@@ -2,6 +2,16 @@
   command = "npm run build"
   publish = "dist"
 
+# Edge function: inject per-page OG meta tags for social crawlers (LinkedIn, Twitter, etc.)
+# Bots don't execute JS, so client-side OG updates are invisible to them.
+[[edge_functions]]
+  path = "/blog/*"
+  function = "og-inject"
+
+[[edge_functions]]
+  path = "/case-studies/*"
+  function = "og-inject"
+
 # Redirect old numeric blog IDs to slug-based URLs (301 = permanent, preserves SEO)
 [[redirects]]
   from = "/blog/1"
