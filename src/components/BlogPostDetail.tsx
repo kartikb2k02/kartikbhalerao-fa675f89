@@ -159,65 +159,92 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
           {/* Banner Image */}
           {post.image && (
             <div className="relative w-full overflow-hidden">
-              <img src={post.image} alt={post.title} className="w-full h-auto block" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none" />
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-auto block"
+                style={{ imageRendering: "auto", backfaceVisibility: "hidden", transform: "translateZ(0)" }}
+              />
               {/* Category pill */}
               <div className="absolute top-4 left-4 z-10">
                 <span className="px-2.5 py-1 rounded-md bg-white/15 backdrop-blur-sm border border-white/25 text-white text-[11px] font-bold tracking-widest uppercase">
                   {post.category === 'ai' ? 'AI' : post.category}
                 </span>
               </div>
-              {/* Title on image */}
-              <div className="absolute bottom-0 left-0 right-0 px-6 pt-8 pb-5">
-                <h1 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight tracking-tight drop-shadow-lg">
-                  {post.title}
-                </h1>
-              </div>
             </div>
           )}
 
-          {/* Author + meta + share — unified bottom bar */}
-          <div className="bg-white dark:bg-zinc-900 px-5 py-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          {/* Author bar — title + meta + share */}
+          <div className="bg-white dark:bg-zinc-900 px-5 pt-5 pb-4">
+
+            {/* Category chip */}
+            <div className="mb-3">
+              <span className="inline-flex items-center gap-2 pl-1.5 pr-3 py-1 rounded-md border border-blue-200 dark:border-blue-800/60 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/20 shadow-sm">
+                <span className="w-5 h-5 rounded-sm bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
+                    <path d="M5 1.5L6.2 4H9L6.9 5.8L7.6 8.5L5 7L2.4 8.5L3.1 5.8L1 4H3.8L5 1.5Z" fill="white"/>
+                  </svg>
+                </span>
+                <span className="text-[10.5px] font-bold tracking-widest uppercase text-blue-600 dark:text-blue-400">
+                  {post.category === 'ai' ? 'AI' : post.category}
+                </span>
+              </span>
+            </div>
+
+            {/* Title */}
+            <h1
+              className="text-2xl sm:text-[1.75rem] font-black text-slate-900 dark:text-white leading-[1.2] mb-4"
+              style={{ letterSpacing: "-0.035em" }}
+            >
+              {post.title}
+            </h1>
+
+            {/* Gradient accent line */}
+            <div className="flex items-center gap-2 mb-4">
+              <div className="h-[2px] flex-1 rounded-full" style={{ background: "linear-gradient(to right, #111 0%, #6366f1 40%, transparent 100%)" }} />
+              <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-slate-400 dark:text-slate-500 flex-shrink-0">Article</span>
+            </div>
+
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               {/* Author + date + read time */}
               <div className="flex items-center gap-3">
                 <div className="relative flex-shrink-0">
-                  <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center text-white font-extrabold text-sm shadow-md">
+                  <div className="w-9 h-9 rounded-xl bg-black dark:bg-white flex items-center justify-center text-white dark:text-black font-extrabold text-sm shadow-md">
                     KB
                   </div>
-                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 rounded-full border-2 border-white dark:border-zinc-900" />
+                  <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-400 rounded-full border-2 border-white dark:border-zinc-900" />
                 </div>
                 <div>
-                  <div className="text-[14px] font-bold text-slate-900 dark:text-white leading-tight">Kartik Bhalerao</div>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700">
-                      <Calendar className="w-3 h-3 text-slate-400 dark:text-slate-500" />
-                      <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                  <div className="text-[13px] font-bold text-slate-900 dark:text-white leading-tight">Kartik Bhalerao</div>
+                  <div className="flex items-center gap-1.5 mt-1">
+                    <span className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700">
+                      <Calendar className="w-2.5 h-2.5 text-slate-400" />
+                      <span className="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">
                         {new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
                       </span>
                     </span>
-                    <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700">
-                      <BookOpen className="w-3 h-3 text-slate-400 dark:text-slate-500" />
-                      <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">{post.readTime}</span>
+                    <span className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700">
+                      <BookOpen className="w-2.5 h-2.5 text-slate-400" />
+                      <span className="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">{post.readTime}</span>
                     </span>
                   </div>
                 </div>
               </div>
 
               {/* Share buttons */}
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-[11px] text-slate-400 dark:text-slate-500 font-medium mr-1">Share</span>
-                <button onClick={goToX} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black text-white text-[12px] font-bold hover:bg-slate-800 active:scale-95 transition-all duration-200">
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="text-[10.5px] text-slate-400 dark:text-slate-500 font-semibold uppercase tracking-wider mr-0.5">Share</span>
+                <button onClick={goToX} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black text-white text-[11.5px] font-bold hover:bg-slate-800 active:scale-95 transition-all duration-200">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
-                  Post on X
+                  Post
                 </button>
-                <button onClick={goToLinkedIn} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0A66C2] text-white text-[12px] font-bold hover:bg-[#0958a8] active:scale-95 transition-all duration-200">
+                <button onClick={goToLinkedIn} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0A66C2] text-white text-[11.5px] font-bold hover:bg-[#0958a8] active:scale-95 transition-all duration-200">
                   <Linkedin className="w-3 h-3" />
                   LinkedIn
                 </button>
-                <button onClick={copyLink} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-bold border active:scale-95 transition-all duration-200 ${copied ? "bg-green-500 border-green-500 text-white" : "bg-white dark:bg-zinc-800 border-black/10 dark:border-white/10 text-slate-600 dark:text-slate-300 hover:border-black/25"}`}>
+                <button onClick={copyLink} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11.5px] font-bold border active:scale-95 transition-all duration-200 ${copied ? "bg-green-500 border-green-500 text-white" : "bg-white dark:bg-zinc-800 border-black/10 dark:border-white/10 text-slate-600 dark:text-slate-300 hover:border-black/25"}`}>
                   {copied ? <Check className="w-3 h-3" /> : <Link2 className="w-3 h-3" />}
                   {copied ? "Copied!" : "Copy link"}
                 </button>
