@@ -159,28 +159,47 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
   return (
     <>
       {/* Reading Progress Bar */}
-      <div className="fixed top-16 left-0 right-0 z-40 h-0.5 bg-border/40">
+      <div className="fixed top-16 left-0 right-0 z-40 h-[3px] bg-slate-100/60 dark:bg-white/5">
         <div
-          className="h-full bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 transition-all duration-150 ease-out"
-          style={{ width: `${scrollProgress}%` }}
+          className="h-full bg-gradient-to-r from-blue-500 via-violet-500 to-cyan-400 transition-all duration-150 ease-out"
+          style={{ width: `${scrollProgress}%`, boxShadow: scrollProgress > 0 ? '0 0 8px rgba(99,102,241,0.6)' : 'none' }}
         />
       </div>
 
       {/* Reading progress pill */}
       <div
-        className={`fixed top-20 right-4 z-40 flex items-center gap-2 transition-all duration-300 ${
-          scrollProgress > 5 ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
+        className={`fixed top-20 right-5 z-40 transition-all duration-300 ${
+          scrollProgress > 5 ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
       >
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card/90 backdrop-blur-sm border border-border/50 shadow-md">
-          <Clock className="w-3 h-3 text-violet-500" />
-          <span className="text-xs font-medium text-slate-600 dark:text-slate-300">
-            {timeRemaining > 0 ? `${timeRemaining} min left` : "Done!"}
-          </span>
-          <span className="w-px h-3 bg-slate-200 dark:bg-slate-600" />
-          <span className="text-xs font-semibold bg-gradient-to-r from-violet-600 to-blue-600 bg-clip-text text-transparent">
-            {Math.round(scrollProgress)}%
-          </span>
+        <div className="flex items-center gap-3 pl-2 pr-4 py-2 rounded-2xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border border-black/8 dark:border-white/8 shadow-lg shadow-black/10">
+          {/* Mini ring */}
+          <div className="relative w-8 h-8 flex-shrink-0">
+            <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 32 32">
+              <circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-slate-100 dark:text-zinc-700" />
+              <circle cx="16" cy="16" r="12" fill="none" stroke="url(#pillRingGrad)" strokeWidth="2.5" strokeLinecap="round"
+                strokeDasharray={`${2 * Math.PI * 12}`}
+                strokeDashoffset={`${2 * Math.PI * 12 * (1 - scrollProgress / 100)}`}
+                className="transition-all duration-150 ease-out"
+              />
+              <defs>
+                <linearGradient id="pillRingGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#3b82f6" />
+                  <stop offset="100%" stopColor="#8b5cf6" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <Clock className="absolute inset-0 m-auto w-3 h-3 text-slate-400 dark:text-slate-500" />
+          </div>
+          {/* Text */}
+          <div>
+            <p className="text-[12px] font-bold text-slate-800 dark:text-white leading-tight">
+              {timeRemaining > 0 ? `${timeRemaining} min left` : "Finished!"}
+            </p>
+            <p className="text-[10px] font-black leading-tight bg-gradient-to-r from-blue-500 to-violet-500 bg-clip-text text-transparent">
+              {Math.round(scrollProgress)}% read
+            </p>
+          </div>
         </div>
       </div>
 
@@ -886,41 +905,31 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
         }`}
         title="Back to top"
       >
-        {/* Circular SVG progress ring */}
         <div className="relative w-14 h-14">
+          {/* Glow */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 to-violet-500 opacity-20 blur-md group-hover:opacity-40 transition-opacity duration-300" />
+          {/* Ring SVG */}
           <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 56 56">
-            {/* Track */}
+            <circle cx="28" cy="28" r="24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-slate-200 dark:text-slate-700" />
             <circle
-              cx="28" cy="28" r="24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              className="text-slate-200 dark:text-slate-700"
-            />
-            {/* Progress */}
-            <circle
-              cx="28" cy="28" r="24"
-              fill="none"
-              stroke="url(#progressGrad)"
-              strokeWidth="2.5"
-              strokeLinecap="round"
+              cx="28" cy="28" r="24" fill="none"
+              stroke="url(#backTopGrad)" strokeWidth="2.5" strokeLinecap="round"
               strokeDasharray={`${2 * Math.PI * 24}`}
               strokeDashoffset={`${2 * Math.PI * 24 * (1 - scrollProgress / 100)}`}
               className="transition-all duration-150 ease-out"
             />
             <defs>
-              <linearGradient id="progressGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#8b5cf6" />
-                <stop offset="50%" stopColor="#3b82f6" />
+              <linearGradient id="backTopGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#3b82f6" />
+                <stop offset="50%" stopColor="#8b5cf6" />
                 <stop offset="100%" stopColor="#06b6d4" />
               </linearGradient>
             </defs>
           </svg>
-
-          {/* Inner button */}
-          <div className="absolute inset-[6px] rounded-full bg-black dark:bg-slate-900 shadow-lg flex flex-col items-center justify-center gap-0.5 group-hover:bg-slate-800 dark:group-hover:bg-slate-700 transition-colors duration-200">
-            <ArrowUp className="w-3.5 h-3.5 text-white group-hover:-translate-y-0.5 transition-transform duration-300" />
-            <span className="text-[8px] font-bold text-white/70 leading-none tracking-wide uppercase">Top</span>
+          {/* Inner */}
+          <div className="absolute inset-[5px] rounded-full bg-white dark:bg-zinc-900 shadow-md border border-black/5 dark:border-white/5 flex flex-col items-center justify-center gap-0.5 group-hover:bg-slate-50 dark:group-hover:bg-zinc-800 transition-colors duration-200">
+            <ArrowUp className="w-4 h-4 text-slate-700 dark:text-slate-200 group-hover:-translate-y-0.5 transition-transform duration-300" />
+            <span className="text-[8px] font-black text-slate-400 dark:text-slate-500 leading-none tracking-wide uppercase">Top</span>
           </div>
         </div>
       </button>
