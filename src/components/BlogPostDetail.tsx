@@ -17,6 +17,9 @@ const extractText = (node: React.ReactNode): string => {
   return '';
 };
 
+const slugify = (text: string) =>
+  text.toLowerCase().replace(/[^a-z0-9\s]+/g, '').trim().replace(/\s+/g, '-');
+
 // Recursively find the first href in a React tree
 const extractLinkHref = (node: React.ReactNode): string => {
   if (!node) return '';
@@ -55,6 +58,24 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
   const [copied, setCopied] = useState(false);
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
   const [lightboxAlt, setLightboxAlt] = useState<string>('');
+  const [activeId, setActiveId] = useState<string>('');
+
+  const tocItems = useMemo(() => {
+    const lines = content.split('\n');
+    const items: { level: number; text: string; id: string }[] = [];
+    for (const line of lines) {
+      const h2 = line.match(/^## (.+)/);
+      const h3 = line.match(/^### (.+)/);
+      if (h2) {
+        const text = h2[1].trim();
+        items.push({ level: 2, text, id: slugify(text) });
+      } else if (h3) {
+        const text = h3[1].trim();
+        items.push({ level: 3, text, id: slugify(text) });
+      }
+    }
+    return items;
+  }, [content]);
 
   const shareUrl = typeof window !== "undefined" ? `${window.location.origin}/blog/${post.slug}` : "";
 
@@ -116,6 +137,25 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
+  useEffect(() => {
+    if (tocItems.length === 0) return;
+    const h2Ids = tocItems.filter(i => i.level === 2).map(i => i.id);
+    const updateActive = () => {
+      const offset = 120;
+      let current = h2Ids[0] ?? '';
+      for (const id of h2Ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top - offset <= 0) {
+          current = id;
+        }
+      }
+      setActiveId(current);
+    };
+    updateActive();
+    window.addEventListener('scroll', updateActive, { passive: true });
+    return () => window.removeEventListener('scroll', updateActive);
+  }, [tocItems]);
+
   return (
     <>
       {/* Reading Progress Bar */}
@@ -144,7 +184,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto p-4 sm:p-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
         {/* Back Button */}
         <button
           onClick={onBack}
@@ -154,8 +194,8 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
           All posts
         </button>
 
-        {/* Unified Hero Card */}
-        <div className="mb-6 rounded-2xl overflow-hidden border border-black/8 dark:border-white/8 shadow-xl">
+        {/* Hero Card */}
+        <div className="mb-8 rounded-2xl overflow-hidden border border-black/8 dark:border-white/8 shadow-lg max-w-5xl">
           {/* Banner Image */}
           {post.image && (
             <div className="relative w-full overflow-hidden">
@@ -165,104 +205,89 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
                 className="w-full h-auto block"
                 style={{ imageRendering: "auto", backfaceVisibility: "hidden", transform: "translateZ(0)" }}
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               {/* Category pill */}
               <div className="absolute top-4 left-4 z-10">
-                <span className="px-2.5 py-1 rounded-md bg-white/15 backdrop-blur-sm border border-white/25 text-white text-[11px] font-bold tracking-widest uppercase">
+                <span className="px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-black tracking-[0.2em] uppercase">
                   {post.category === 'ai' ? 'AI' : post.category}
                 </span>
               </div>
             </div>
           )}
 
-          {/* Author bar — title + meta + share */}
-          <div className="bg-white dark:bg-zinc-900 px-5 pt-5 pb-4">
-
-            {/* Category chip */}
-            <div className="mb-3">
-              <span className="inline-flex items-center gap-2 pl-1.5 pr-3 py-1 rounded-md border border-blue-200 dark:border-blue-800/60 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/20 shadow-sm">
-                <span className="w-5 h-5 rounded-sm bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center flex-shrink-0 shadow-sm">
-                  <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
-                    <path d="M5 1.5L6.2 4H9L6.9 5.8L7.6 8.5L5 7L2.4 8.5L3.1 5.8L1 4H3.8L5 1.5Z" fill="white"/>
-                  </svg>
-                </span>
-                <span className="text-[10.5px] font-bold tracking-widest uppercase text-blue-600 dark:text-blue-400">
-                  {post.category === 'ai' ? 'AI' : post.category}
-                </span>
-              </span>
-            </div>
-
+          {/* Meta section */}
+          <div className="bg-white dark:bg-zinc-900 px-6 pt-5 pb-5">
             {/* Title */}
             <h1
-              className="text-2xl sm:text-[1.75rem] font-black text-slate-900 dark:text-white leading-[1.2] mb-4"
-              style={{ letterSpacing: "-0.035em" }}
+              className="text-2xl sm:text-[1.85rem] font-black text-slate-900 dark:text-white leading-[1.15] mb-5"
+              style={{ letterSpacing: "-0.03em" }}
             >
               {post.title}
             </h1>
 
-            {/* Gradient accent line */}
-            <div className="flex items-center gap-2 mb-4">
-              <div className="h-[2px] flex-1 rounded-full" style={{ background: "linear-gradient(to right, #111 0%, #6366f1 40%, transparent 100%)" }} />
-              <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-slate-400 dark:text-slate-500 flex-shrink-0">Article</span>
-            </div>
-
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              {/* Author + date + read time */}
+            {/* Author row + share */}
+            <div className="flex items-center justify-between gap-4 flex-wrap">
               <div className="flex items-center gap-3">
                 <div className="relative flex-shrink-0">
-                  <div className="w-9 h-9 rounded-xl bg-black dark:bg-white flex items-center justify-center text-white dark:text-black font-extrabold text-sm shadow-md">
+                  <div className="w-9 h-9 rounded-xl bg-black dark:bg-white flex items-center justify-center text-white dark:text-black font-extrabold text-sm shadow-sm">
                     KB
                   </div>
-                  <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-400 rounded-full border-2 border-white dark:border-zinc-900" />
+                  <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-white dark:border-zinc-900" />
                 </div>
                 <div>
-                  <div className="text-[13px] font-bold text-slate-900 dark:text-white leading-tight">Kartik Bhalerao</div>
-                  <div className="flex items-center gap-1.5 mt-1">
-                    <span className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700">
-                      <Calendar className="w-2.5 h-2.5 text-slate-400" />
-                      <span className="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">
-                        {new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
-                      </span>
-                    </span>
-                    <span className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700">
-                      <BookOpen className="w-2.5 h-2.5 text-slate-400" />
-                      <span className="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">{post.readTime}</span>
-                    </span>
+                  <p className="text-[13px] font-bold text-slate-900 dark:text-white leading-tight">Kartik Bhalerao</p>
+                  <div className="flex items-center gap-1.5 mt-0.5 text-[11px] text-slate-400 dark:text-slate-500 font-medium">
+                    <Calendar className="w-3 h-3" />
+                    <span>{new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                    <span className="opacity-40">·</span>
+                    <BookOpen className="w-3 h-3" />
+                    <span>{post.readTime}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Share buttons */}
-              <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="text-[10.5px] text-slate-400 dark:text-slate-500 font-semibold uppercase tracking-wider mr-0.5">Share</span>
-                <button onClick={goToX} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black text-white text-[11.5px] font-bold hover:bg-slate-800 active:scale-95 transition-all duration-200">
-                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+              {/* Share buttons — icon + label compact */}
+              <div className="flex items-center gap-1.5">
+                <button onClick={goToX} title="Share on X" className="w-8 h-8 rounded-full bg-black hover:bg-slate-800 flex items-center justify-center active:scale-95 transition-all duration-150">
+                  <svg className="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
-                  Post
                 </button>
-                <button onClick={goToLinkedIn} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0A66C2] text-white text-[11.5px] font-bold hover:bg-[#0958a8] active:scale-95 transition-all duration-200">
-                  <Linkedin className="w-3 h-3" />
-                  LinkedIn
+                <button onClick={goToLinkedIn} title="Share on LinkedIn" className="w-8 h-8 rounded-full bg-[#0A66C2] hover:bg-[#0958a8] flex items-center justify-center active:scale-95 transition-all duration-150">
+                  <Linkedin className="w-3.5 h-3.5 text-white" />
                 </button>
-                <button onClick={copyLink} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11.5px] font-bold border active:scale-95 transition-all duration-200 ${copied ? "bg-green-500 border-green-500 text-white" : "bg-white dark:bg-zinc-800 border-black/10 dark:border-white/10 text-slate-600 dark:text-slate-300 hover:border-black/25"}`}>
-                  {copied ? <Check className="w-3 h-3" /> : <Link2 className="w-3 h-3" />}
-                  {copied ? "Copied!" : "Copy link"}
+                <button onClick={copyLink} title="Copy link" className={`w-8 h-8 rounded-full flex items-center justify-center border active:scale-95 transition-all duration-150 ${copied ? "bg-emerald-500 border-emerald-500" : "bg-white dark:bg-zinc-800 border-black/10 dark:border-white/10 hover:border-black/30"}`}>
+                  {copied ? <Check className="w-3.5 h-3.5 text-white" /> : <Link2 className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />}
                 </button>
               </div>
             </div>
+
+            {/* Tags */}
+            {post.tags && post.tags.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 mt-4 pt-4 border-t border-slate-100 dark:border-zinc-800">
+                {post.tags.map(tag => (
+                  <span key={tag} className="px-2.5 py-0.5 rounded-full text-[10.5px] font-semibold bg-slate-100 dark:bg-zinc-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-zinc-700">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Excerpt */}
-        <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6 border-l-2 border-black/20 dark:border-white/20 pl-4 italic">
+        {/* Excerpt / lede */}
+        <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8 font-medium px-1">
           {post.excerpt}
         </p>
 
-        {/* Thin divider */}
-        <div className="h-px bg-black/8 dark:bg-white/8 mb-6" />
+        {/* Section divider */}
+        <div className="h-px bg-black/8 dark:bg-white/8 mb-8" />
 
-        {/* Post Content */}
-        <div className="bg-white dark:bg-zinc-800/80 rounded-2xl border border-black/8 dark:border-white/8 shadow-sm p-6 sm:p-10 mb-6">
+        {/* 2-column: content + TOC */}
+        <div className="flex gap-10 items-start">
+          <div className="flex-1 min-w-0">
+            {/* Post Content */}
+            <div className="bg-white dark:bg-zinc-800/80 rounded-2xl border-2 border-dashed border-black/10 dark:border-white/10 shadow-sm p-6 sm:p-10 mb-6">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
@@ -276,17 +301,23 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
                   </h1>
                 );
               },
-              h2: ({ children }) => (
-                <h2 className="flex items-center gap-3 text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mt-12 mb-5 tracking-tight">
-                  <span className="inline-block w-1 h-6 rounded-full bg-black dark:bg-white flex-shrink-0" />
-                  {children}
-                </h2>
-              ),
-              h3: ({ children }) => (
-                <h3 className="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100 mt-8 mb-3 tracking-tight">
-                  {children}
-                </h3>
-              ),
+              h2: ({ children }) => {
+                const id = slugify(extractText(children as React.ReactNode));
+                return (
+                  <h2 id={id} className="flex items-center gap-3 text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mt-12 mb-5 tracking-tight">
+                    <span className="inline-block w-1 h-6 rounded-full bg-black dark:bg-white flex-shrink-0" />
+                    {children}
+                  </h2>
+                );
+              },
+              h3: ({ children }) => {
+                const id = slugify(extractText(children as React.ReactNode));
+                return (
+                  <h3 id={id} className="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100 mt-8 mb-3 tracking-tight">
+                    {children}
+                  </h3>
+                );
+              },
               h4: ({ children }) => (
                 <h4 className="text-base font-semibold text-slate-800 dark:text-slate-200 mt-5 mb-2">
                   {children}
@@ -779,9 +810,45 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
           >
             {content}
           </ReactMarkdown>
+            </div>
+          </div>
+
+          {/* TOC Sidebar */}
+          {tocItems.filter(i => i.level === 2).length > 0 && (() => {
+            const h2Items = tocItems.filter(i => i.level === 2);
+            return (
+              <aside className="hidden lg:block w-56 flex-shrink-0 sticky top-20 self-start max-h-[calc(100vh-6rem)] overflow-y-auto">
+                <nav>
+                  {h2Items.map(({ id, text }, idx) => {
+                    const isActive = activeId === id;
+                    return (
+                      <button
+                        key={id}
+                        onClick={() => {
+                          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          setActiveId(id);
+                        }}
+                        className={`w-full text-left border-l-2 px-4 py-2.5 transition-all duration-150 group ${
+                          isActive
+                            ? 'border-blue-500'
+                            : 'border-transparent hover:border-slate-200 dark:hover:border-slate-700'
+                        }`}
+                      >
+                        <span className={`text-[13px] leading-snug font-semibold transition-colors duration-150 ${
+                          isActive
+                            ? 'text-blue-600 dark:text-blue-400'
+                            : 'text-slate-500 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-200'
+                        }`}>
+                          {idx + 1}. {text}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </nav>
+              </aside>
+            );
+          })()}
         </div>
-
-
       </div>
 
       {/* Lightbox */}
