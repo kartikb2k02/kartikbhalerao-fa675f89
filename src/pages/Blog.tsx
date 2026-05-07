@@ -29,13 +29,13 @@ const SpotlightCard = ({ children, onClick }: { children: React.ReactNode; onCli
         setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top, opacity: 1 });
       }}
       onMouseLeave={() => setPos(p => ({ ...p, opacity: 0 }))}
-      className="group relative rounded-2xl border border-black/8 dark:border-white/8 bg-white dark:bg-white/[0.03] hover:border-black/20 dark:hover:border-white/20 hover:shadow-md transition-all duration-300 overflow-hidden cursor-pointer flex flex-col"
+      className="glass-card group relative rounded-2xl overflow-hidden cursor-pointer flex flex-col hover:-translate-y-1"
     >
       <div
         className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-300"
         style={{
           opacity: pos.opacity,
-          background: `radial-gradient(280px circle at ${pos.x}px ${pos.y}px, rgba(0,0,0,0.05) 0%, transparent 70%)`,
+          background: `radial-gradient(280px circle at ${pos.x}px ${pos.y}px, rgba(0,0,0,0.04) 0%, transparent 70%)`,
         }}
       />
       {children}
@@ -55,7 +55,7 @@ const Blog = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#EFEFEF] dark:bg-[#111111] text-foreground">
+    <div className="min-h-screen bg-[#FEFDF9] dark:bg-[#111111] text-foreground">
       <Header />
 
       <main className="max-w-5xl mx-auto px-6 pt-32 pb-28 space-y-14">
@@ -84,10 +84,10 @@ const Blog = () => {
         {/* Hero featured post */}
         <div
           onClick={() => navigate(`/blog/${hero.slug}`)}
-          className="group relative rounded-3xl border border-black/8 dark:border-white/8 bg-white dark:bg-white/[0.03] hover:border-black/20 dark:hover:border-white/20 hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer"
+          className="glass-card-lg group relative rounded-3xl overflow-hidden cursor-pointer hover:-translate-y-1 transition-transform duration-300"
         >
           {/* Top accent line */}
-          <div className="h-[3px] w-full bg-black/5 dark:bg-white/5 group-hover:bg-black/15 dark:group-hover:bg-white/15 transition-colors duration-300" />
+          <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-black/12 to-transparent group-hover:via-black/25 transition-colors duration-300" />
 
           {/* New Blog badge — top right */}
           {isNew(hero.date) && (

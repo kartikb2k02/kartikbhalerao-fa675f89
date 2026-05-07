@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 
 const About = () => {
   return (
-    <div className="min-h-screen w-full text-foreground relative bg-[#EFEFEF] dark:bg-[#111111]">
+    <div className="min-h-screen w-full text-foreground relative bg-[#FEFDF9] dark:bg-[#111111]">
 
       {/* Header */}
       <Header />

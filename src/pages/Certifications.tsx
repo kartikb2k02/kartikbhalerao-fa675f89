@@ -29,7 +29,7 @@ const Certifications = () => {
     setLightboxOpen(true);
   };
 
-  return <div className="min-h-screen bg-[#EFEFEF] dark:bg-[#111111] text-foreground relative">
+  return <div className="min-h-screen bg-[#FEFDF9] dark:bg-[#111111] text-foreground relative">
       <Header />
 
       <main className="relative z-10 pt-24 pb-16">

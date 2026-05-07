@@ -21,7 +21,7 @@ export const HeroSection = () => {
         </h1>
 
         {/* Highlight Cards */}
-        <div className="grid grid-cols-3 gap-3 w-full max-w-[620px]">
+        <div className="grid grid-cols-3 gap-4 w-full max-w-[640px]">
           {[
             { title: 'AI Products', desc: 'Built & shipped end-to-end', icon: Cpu },
             { title: 'Enterprise', desc: 'Scaled B2B solutions', icon: Building2 },
@@ -29,20 +29,20 @@ export const HeroSection = () => {
           ].map(({ title, desc, icon: Icon }) => (
             <div
               key={title}
-              className="group relative flex flex-col items-center gap-3 px-3 py-5 sm:py-6 rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/[0.03] overflow-hidden hover:-translate-y-1.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_8px_30px_rgba(255,255,255,0.05)] hover:border-black/20 dark:hover:border-white/20 transition-all duration-300 cursor-default"
+              className="glass-sm group relative flex flex-col items-center gap-3 px-3 py-6 rounded-2xl overflow-hidden hover:-translate-y-1.5 cursor-default"
             >
-              {/* top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-black/20 dark:via-white/20 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
+              {/* top shimmer on hover */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-black/25 dark:via-white/25 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
 
               {/* icon */}
-              <div className="w-10 h-10 rounded-2xl border border-black/8 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.06] flex items-center justify-center group-hover:border-black/15 dark:group-hover:border-white/20 group-hover:bg-black/[0.06] dark:group-hover:bg-white/[0.1] transition-all duration-300">
-                <Icon size={17} strokeWidth={1.8} className="text-black/50 dark:text-white/50 group-hover:text-black dark:group-hover:text-white transition-colors duration-300" />
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 bg-white/60 dark:bg-white/10 border border-black/8 dark:border-white/10">
+                <Icon size={18} strokeWidth={1.8} className="text-black/60 dark:text-white/60 group-hover:text-black dark:group-hover:text-white transition-colors duration-300" />
               </div>
 
               {/* text */}
-              <div className="flex flex-col items-center gap-1.5">
-                <span className="text-[12px] sm:text-[13px] lg:text-[14px] font-bold tracking-tight text-black dark:text-white leading-tight">{title}</span>
-                <span className="text-[10px] sm:text-[11px] font-medium text-black/35 dark:text-white/35 leading-snug group-hover:text-black/55 dark:group-hover:text-white/55 transition-colors duration-300">{desc}</span>
+              <div className="flex flex-col items-center gap-1">
+                <span className="text-[13px] sm:text-[14px] font-bold tracking-tight text-black/90 dark:text-white/90 leading-tight">{title}</span>
+                <span className="text-[10px] sm:text-[11px] font-medium text-black/40 dark:text-white/50 leading-snug group-hover:text-black/60 dark:group-hover:text-white/70 transition-colors duration-300 text-center">{desc}</span>
               </div>
             </div>
           ))}

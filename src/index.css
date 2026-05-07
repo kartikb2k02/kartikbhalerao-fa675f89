@@ -13,6 +13,71 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Glass card system ───────────────────────────────────── */
+.glass-card {
+  background: linear-gradient(160deg, rgba(255,255,255,0.88) 0%, rgba(255,253,249,0.58) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(200,196,188,0.65);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,1), inset 0 -1px 0 rgba(0,0,0,0.03);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.dark .glass-card {
+  background: linear-gradient(160deg, rgba(35,35,42,0.85) 0%, rgba(22,22,28,0.72) 100%);
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(0,0,0,0.25);
+}
+
+.glass-card-lg {
+  background: linear-gradient(160deg, rgba(255,255,255,0.92) 0%, rgba(255,253,249,0.65) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(200,196,188,0.7);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,1), inset 0 -1px 0 rgba(0,0,0,0.03);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.dark .glass-card-lg {
+  background: linear-gradient(160deg, rgba(38,38,46,0.90) 0%, rgba(24,24,30,0.75) 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.07), inset 0 -1px 0 rgba(0,0,0,0.3);
+}
+
+.glass-pill {
+  background: linear-gradient(160deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.75) 100%);
+  backdrop-filter: blur(32px) saturate(1.8);
+  -webkit-backdrop-filter: blur(32px) saturate(1.8);
+  border: 1px solid rgba(255,255,255,1);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.10), inset 0 2px 0 rgba(255,255,255,1), inset 0 -1px 0 rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.06), inset 0 1px 20px rgba(255,255,255,0.6);
+}
+.dark .glass-pill {
+  background: linear-gradient(160deg, rgba(38,38,46,0.92) 0%, rgba(24,24,30,0.68) 50%, rgba(32,32,40,0.82) 100%);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.09), inset 0 -1px 0 rgba(0,0,0,0.35);
+}
+
+.glass-sm {
+  background: linear-gradient(145deg, rgba(255,255,255,0.82) 0%, rgba(255,253,249,0.55) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(200,196,188,0.7);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.dark .glass-sm {
+  background: linear-gradient(145deg, rgba(35,35,42,0.82) 0%, rgba(22,22,28,0.65) 100%);
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.glass-bullet {
+  background: linear-gradient(135deg, rgba(245,241,233,0.7) 0%, rgba(238,234,224,0.5) 100%);
+  border: 1px solid rgba(220,215,205,0.4);
+}
+.dark .glass-bullet {
+  background: linear-gradient(135deg, rgba(42,42,50,0.7) 0%, rgba(30,30,38,0.5) 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
 @keyframes marquee {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }

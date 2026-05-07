@@ -893,7 +893,7 @@ export const SkillsSection = () => {
                   "flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-[13px] font-semibold transition-all duration-200",
                   activeCategory === category.id
                     ? "bg-black dark:bg-white text-white dark:text-black shadow-sm scale-[1.03]"
-                    : "bg-white dark:bg-white/5 border border-black/8 dark:border-white/10 text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white hover:border-black/20 dark:hover:border-white/20",
+                    : "glass-sm text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white",
                 )}
               >
                 <span className={cn(
@@ -929,15 +929,12 @@ export const SkillsSection = () => {
                       <Tooltip key={i}>
                         <TooltipTrigger asChild>
                           <div
-                            className="group relative flex flex-col justify-between rounded-xl bg-white dark:bg-white/5 p-6 cursor-default overflow-hidden"
+                            className="glass-card group relative flex flex-col justify-between rounded-xl p-6 cursor-default overflow-hidden"
                             style={{
-                              boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)",
                               opacity: isVisible ? 1 : 0,
                               transform: isVisible ? "translateY(0)" : "translateY(14px)",
-                              transition: `opacity 0.35s ease ${i * 55}ms, transform 0.35s ease ${i * 55}ms, box-shadow 0.3s ease`,
+                              transition: `opacity 0.35s ease ${i * 55}ms, transform 0.35s ease ${i * 55}ms`,
                             }}
-                            onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06)")}
-                            onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)")}
                           >
                             {/* Gradient wash — top-right corner */}
                             <div className={cn(
@@ -1000,20 +997,9 @@ export const SkillsSection = () => {
                   {category.tools.map((tool, index) => (
                     <div
                       key={index}
-                      className="group relative flex flex-col items-center text-center gap-3 bg-white dark:bg-white/5 rounded-xl p-5 cursor-pointer overflow-hidden transition-all duration-250"
-                      style={{
-                        boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
-                      }}
-                      onMouseEnter={e => {
-                        setHoveredTool(tool.name);
-                        e.currentTarget.style.boxShadow = "0 8px 30px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06)";
-                        e.currentTarget.style.transform = "translateY(-3px)";
-                      }}
-                      onMouseLeave={e => {
-                        setHoveredTool(null);
-                        e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.06)";
-                        e.currentTarget.style.transform = "translateY(0)";
-                      }}
+                      className="glass-card group relative flex flex-col items-center text-center gap-3 rounded-xl p-5 cursor-pointer overflow-hidden transition-all duration-250 hover:-translate-y-1"
+                      onMouseEnter={() => setHoveredTool(tool.name)}
+                      onMouseLeave={() => setHoveredTool(null)}
                       onClick={() => setSelectedTool({ ...tool, categoryTitle: category.title })}
                     >
                       {/* Brand glow on hover */}

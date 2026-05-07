@@ -57,7 +57,7 @@ const BlogPost = () => {
       <meta name="twitter:description" content={post.excerpt} />
       <meta name="twitter:image" content={ogImage} />
     </Helmet>
-    <div className="min-h-screen w-full text-foreground relative bg-[#EFEFEF] dark:bg-[#111111]">
+    <div className="min-h-screen w-full text-foreground relative bg-[#FEFDF9] dark:bg-[#111111]">
       <div className="relative z-10">
         <Header />
         <div className="pt-16">
