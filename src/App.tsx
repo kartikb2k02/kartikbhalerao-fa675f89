@@ -19,6 +19,7 @@ import Certifications from "./pages/Certifications";
 import AchievementDetail from "./pages/AchievementDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import { CustomCursor } from "@/components/CustomCursor";
 
 // Create a single instance of QueryClient with proper configuration
 const queryClient = new QueryClient({
@@ -59,6 +60,7 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
           <TooltipProvider>
+            <CustomCursor />
             <Toaster />
             <Sonner />
             <BrowserRouter>

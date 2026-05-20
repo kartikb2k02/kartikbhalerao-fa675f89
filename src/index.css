@@ -13,6 +13,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom cursor — hide OS default everywhere */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
 /* ── Glass card system ───────────────────────────────────── */
 .glass-card {
   background: linear-gradient(160deg, rgba(255,255,255,0.88) 0%, rgba(255,253,249,0.58) 100%);

@@ -1,7 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
 import React from "react";
-import { ArrowLeft, Clock, ArrowUp, Linkedin, Link2, Check, Calendar, BookOpen } from "lucide-react";
-import { BlogPost } from "@/data/blogPosts";
+import { ArrowLeft, Clock, ArrowUp, Linkedin, Link2, Check } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { BlogPost, blogPosts } from "@/data/blogPosts";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -53,6 +54,7 @@ interface BlogPostDetailProps {
 }
 
 export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) => {
+  const navigate = useNavigate();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -117,6 +119,12 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
     const match = post.readTime.match(/(\d+)/);
     return match ? parseInt(match[1]) : 5;
   }, [post.readTime]);
+
+  const relatedPosts = useMemo(() => {
+    const sameCategory = blogPosts.filter(p => p.id !== post.id && p.category === post.category);
+    const others = blogPosts.filter(p => p.id !== post.id && p.category !== post.category);
+    return [...sameCategory, ...others].slice(0, 3);
+  }, [post.id, post.category]);
 
   const timeRemaining = useMemo(() => {
     const remaining = Math.ceil(readTimeMinutes * (1 - scrollProgress / 100));
@@ -234,63 +242,14 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
             </div>
           )}
 
-          {/* Meta section */}
+          {/* Meta section — title only */}
           <div className="bg-white dark:bg-zinc-900 px-6 pt-5 pb-5">
-            {/* Title */}
             <h1
-              className="text-2xl sm:text-[1.85rem] font-black text-slate-900 dark:text-white leading-[1.15] mb-5"
+              className="text-2xl sm:text-[1.85rem] font-black text-slate-900 dark:text-white leading-[1.15]"
               style={{ letterSpacing: "-0.03em" }}
             >
               {post.title}
             </h1>
-
-            {/* Author row + share */}
-            <div className="flex items-center justify-between gap-4 flex-wrap">
-              <div className="flex items-center gap-3">
-                <div className="relative flex-shrink-0">
-                  <div className="w-9 h-9 rounded-xl bg-black dark:bg-white flex items-center justify-center text-white dark:text-black font-extrabold text-sm shadow-sm">
-                    KB
-                  </div>
-                  <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-white dark:border-zinc-900" />
-                </div>
-                <div>
-                  <p className="text-[13px] font-bold text-slate-900 dark:text-white leading-tight">Kartik Bhalerao</p>
-                  <div className="flex items-center gap-1.5 mt-0.5 text-[11px] text-slate-400 dark:text-slate-500 font-medium">
-                    <Calendar className="w-3 h-3" />
-                    <span>{new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
-                    <span className="opacity-40">·</span>
-                    <BookOpen className="w-3 h-3" />
-                    <span>{post.readTime}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Share buttons — icon + label compact */}
-              <div className="flex items-center gap-1.5">
-                <button onClick={goToX} title="Share on X" className="w-8 h-8 rounded-full bg-black hover:bg-slate-800 flex items-center justify-center active:scale-95 transition-all duration-150">
-                  <svg className="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
-                </button>
-                <button onClick={goToLinkedIn} title="Share on LinkedIn" className="w-8 h-8 rounded-full bg-[#0A66C2] hover:bg-[#0958a8] flex items-center justify-center active:scale-95 transition-all duration-150">
-                  <Linkedin className="w-3.5 h-3.5 text-white" />
-                </button>
-                <button onClick={copyLink} title="Copy link" className={`w-8 h-8 rounded-full flex items-center justify-center border active:scale-95 transition-all duration-150 ${copied ? "bg-emerald-500 border-emerald-500" : "bg-white dark:bg-zinc-800 border-black/10 dark:border-white/10 hover:border-black/30"}`}>
-                  {copied ? <Check className="w-3.5 h-3.5 text-white" /> : <Link2 className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />}
-                </button>
-              </div>
-            </div>
-
-            {/* Tags */}
-            {post.tags && post.tags.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 mt-4 pt-4 border-t border-slate-100 dark:border-zinc-800">
-                {post.tags.map(tag => (
-                  <span key={tag} className="px-2.5 py-0.5 rounded-full text-[10.5px] font-semibold bg-slate-100 dark:bg-zinc-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-zinc-700">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
           </div>
         </div>
 
@@ -832,41 +791,125 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
             </div>
           </div>
 
-          {/* TOC Sidebar */}
-          {tocItems.filter(i => i.level === 2).length > 0 && (() => {
-            const h2Items = tocItems.filter(i => i.level === 2);
-            return (
-              <aside className="hidden lg:block w-56 flex-shrink-0 sticky top-20 self-start max-h-[calc(100vh-6rem)] overflow-y-auto">
-                <nav>
-                  {h2Items.map(({ id, text }, idx) => {
-                    const isActive = activeId === id;
-                    return (
-                      <button
-                        key={id}
-                        onClick={() => {
-                          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                          setActiveId(id);
-                        }}
-                        className={`w-full text-left border-l-2 px-4 py-2.5 transition-all duration-150 group ${
-                          isActive
-                            ? 'border-blue-500'
-                            : 'border-transparent hover:border-slate-200 dark:hover:border-slate-700'
-                        }`}
-                      >
-                        <span className={`text-[13px] leading-snug font-semibold transition-colors duration-150 ${
-                          isActive
-                            ? 'text-blue-600 dark:text-blue-400'
-                            : 'text-slate-500 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-200'
-                        }`}>
-                          {idx + 1}. {text}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </nav>
-              </aside>
-            );
-          })()}
+          {/* Bold Editorial Sidebar */}
+          <aside className="hidden lg:block w-64 flex-shrink-0 sticky top-20 self-start max-h-[calc(100vh-6rem)] overflow-y-auto">
+
+            {/* Thick top accent line */}
+            <div className="h-[3px] w-full bg-gradient-to-r from-slate-900 via-slate-600 to-slate-300 dark:from-white dark:via-slate-400 dark:to-slate-700 rounded-full mb-5" />
+
+            {/* Author block */}
+            <div className="mb-5">
+              <div className="flex items-start gap-3 mb-3">
+                <div className="relative flex-shrink-0">
+                  <div className="w-11 h-11 rounded-xl bg-black dark:bg-white flex items-center justify-center text-white dark:text-black font-extrabold text-sm shadow-md ring-2 ring-black/10 dark:ring-white/10">
+                    KB
+                  </div>
+                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full border-2 border-white dark:border-zinc-900" />
+                </div>
+                <div>
+                  <p className="text-[14px] font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">Kartik Bhalerao</p>
+                  <p className="text-[11px] text-slate-400 dark:text-slate-500 font-medium mt-0.5">Product Manager</p>
+                </div>
+              </div>
+              {/* Date + Read time as info boxes */}
+              <div className="grid grid-cols-2 gap-2">
+                <div className="rounded-lg bg-slate-50 dark:bg-zinc-800/70 border border-slate-200 dark:border-zinc-700 px-3 py-2.5">
+                  <p className="text-[9.5px] font-bold tracking-[0.15em] text-slate-400 dark:text-slate-500 uppercase mb-1">Published</p>
+                  <p className="text-[12px] font-semibold text-slate-800 dark:text-slate-200 leading-tight">
+                    {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                  </p>
+                </div>
+                <div className="rounded-lg bg-slate-50 dark:bg-zinc-800/70 border border-slate-200 dark:border-zinc-700 px-3 py-2.5">
+                  <p className="text-[9.5px] font-bold tracking-[0.15em] text-slate-400 dark:text-slate-500 uppercase mb-1">Reading</p>
+                  <p className="text-[12px] font-semibold text-blue-500 dark:text-blue-400 leading-tight">{post.readTime}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="h-[3px] w-full bg-gradient-to-r from-slate-900 via-slate-600 to-slate-300 dark:from-white dark:via-slate-400 dark:to-slate-700 rounded-full mb-5" />
+
+            {/* Topics */}
+            {post.tags && post.tags.length > 0 && (
+              <div className="mb-5">
+                <p className="text-[11px] font-black tracking-[0.22em] text-slate-900 dark:text-white uppercase mb-3">Topics</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {post.tags.map(tag => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-1 rounded-md text-[11.5px] font-semibold border border-slate-200 dark:border-zinc-700 bg-slate-50 dark:bg-zinc-800/70 text-slate-600 dark:text-slate-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Divider */}
+            <div className="h-[3px] w-full bg-gradient-to-r from-slate-900 via-slate-600 to-slate-300 dark:from-white dark:via-slate-400 dark:to-slate-700 rounded-full mb-5" />
+
+            {/* Share */}
+            <div className="mb-5">
+              <p className="text-[11px] font-black tracking-[0.22em] text-slate-900 dark:text-white uppercase mb-3">Share This Post</p>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={goToX}
+                  title="Share on X"
+                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-black hover:bg-slate-800 active:scale-95 transition-all duration-150"
+                >
+                  <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </button>
+                <button
+                  onClick={goToLinkedIn}
+                  title="Share on LinkedIn"
+                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-[#0A66C2] hover:bg-[#0958a8] active:scale-95 transition-all duration-150"
+                >
+                  <Linkedin className="w-4 h-4 text-white" />
+                </button>
+                <button
+                  onClick={copyLink}
+                  title={copied ? "Copied!" : "Copy link"}
+                  className={`w-10 h-10 flex items-center justify-center rounded-xl border-2 active:scale-95 transition-all duration-150 ${
+                    copied
+                      ? "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-500"
+                      : "border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/60 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-zinc-500"
+                  }`}
+                >
+                  {copied ? <Check className="w-4 h-4" /> : <Link2 className="w-4 h-4" />}
+                </button>
+              </div>
+            </div>
+
+            {/* Divider */}
+            {relatedPosts.length > 0 && (
+              <div className="h-[3px] w-full bg-gradient-to-r from-slate-900 via-slate-600 to-slate-300 dark:from-white dark:via-slate-400 dark:to-slate-700 rounded-full mb-5" />
+            )}
+
+            {/* Related Posts */}
+            {relatedPosts.length > 0 && (
+              <div>
+                <p className="text-[11px] font-black tracking-[0.22em] text-slate-900 dark:text-white uppercase mb-3">Related</p>
+                <div className="space-y-3.5">
+                  {relatedPosts.map(p => (
+                    <button
+                      key={p.id}
+                      onClick={() => navigate(`/blog/${p.slug}`)}
+                      className="group block text-left w-full"
+                    >
+                      <p className="relative inline-block text-[13px] font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 leading-snug transition-colors duration-200
+                        after:content-[''] after:absolute after:left-0 after:bottom-[-1px] after:h-[1.5px] after:w-0 after:bg-blue-600 dark:after:bg-blue-400 after:transition-all after:duration-300 group-hover:after:w-full">
+                        {p.title}
+                      </p>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+          </aside>
         </div>
       </div>
 
