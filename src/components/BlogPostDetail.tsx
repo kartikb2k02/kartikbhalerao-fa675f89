@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import React from "react";
-import { ArrowLeft, Clock, ArrowUp, Linkedin, Link2, Check } from "lucide-react";
+import { ArrowLeft, Clock, ArrowUp, Linkedin, Link2, Check, Tag, BookOpen, Share2, CalendarDays } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { BlogPost, blogPosts } from "@/data/blogPosts";
 import ReactMarkdown from "react-markdown";
@@ -794,117 +794,145 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
           {/* Bold Editorial Sidebar */}
           <aside className="hidden lg:block w-64 flex-shrink-0 sticky top-20 self-start max-h-[calc(100vh-6rem)] overflow-y-auto">
 
-            {/* Thick top accent line */}
-            <div className="h-[3px] w-full bg-gradient-to-r from-slate-900 via-slate-600 to-slate-300 dark:from-white dark:via-slate-400 dark:to-slate-700 rounded-full mb-5" />
-
-            {/* Author block */}
-            <div className="mb-5">
-              <div className="flex items-start gap-3 mb-3">
+            {/* ── Author widget ── */}
+            <div className="mb-3 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-800/90 p-4">
+              {/* Avatar + name row */}
+              <div className="flex items-center gap-3">
                 <div className="relative flex-shrink-0">
-                  <div className="w-11 h-11 rounded-xl bg-black dark:bg-white flex items-center justify-center text-white dark:text-black font-extrabold text-sm shadow-md ring-2 ring-black/10 dark:ring-white/10">
+                  <div className="w-11 h-11 rounded-full bg-black dark:bg-white flex items-center justify-center text-white dark:text-black font-black text-sm shadow-md">
                     KB
                   </div>
-                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full border-2 border-white dark:border-zinc-900" />
+                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full border-2 border-white dark:border-slate-800" />
                 </div>
-                <div>
-                  <p className="text-[14px] font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">Kartik Bhalerao</p>
-                  <p className="text-[11px] text-slate-400 dark:text-slate-500 font-medium mt-0.5">Product Manager</p>
+                <div className="min-w-0">
+                  <p className="text-[13.5px] font-bold text-slate-900 dark:text-white leading-tight">Kartik Bhalerao</p>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Product Manager</p>
                 </div>
               </div>
-              {/* Date + Read time as info boxes */}
-              <div className="grid grid-cols-2 gap-2">
-                <div className="rounded-lg bg-slate-50 dark:bg-zinc-800/70 border border-slate-200 dark:border-zinc-700 px-3 py-2.5">
-                  <p className="text-[9.5px] font-bold tracking-[0.15em] text-slate-400 dark:text-slate-500 uppercase mb-1">Published</p>
-                  <p className="text-[12px] font-semibold text-slate-800 dark:text-slate-200 leading-tight">
-                    {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                  </p>
+
+              {/* Divider */}
+              <div className="my-3 h-px bg-slate-100 dark:bg-slate-700" />
+
+              {/* Published + Read time as icon rows */}
+              <div className="space-y-2">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-700 flex items-center justify-center flex-shrink-0">
+                    <CalendarDays className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
+                  </div>
+                  <div>
+                    <p className="text-[9.5px] font-semibold tracking-widest text-slate-400 dark:text-slate-500 uppercase leading-none mb-0.5">Published</p>
+                    <p className="text-[12.5px] font-semibold text-slate-800 dark:text-slate-200 leading-none">
+                      {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                    </p>
+                  </div>
                 </div>
-                <div className="rounded-lg bg-slate-50 dark:bg-zinc-800/70 border border-slate-200 dark:border-zinc-700 px-3 py-2.5">
-                  <p className="text-[9.5px] font-bold tracking-[0.15em] text-slate-400 dark:text-slate-500 uppercase mb-1">Reading</p>
-                  <p className="text-[12px] font-semibold text-blue-500 dark:text-blue-400 leading-tight">{post.readTime}</p>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400" />
+                  </div>
+                  <div>
+                    <p className="text-[9.5px] font-semibold tracking-widest text-slate-400 dark:text-slate-500 uppercase leading-none mb-0.5">Read Time</p>
+                    <p className="text-[12.5px] font-semibold text-blue-600 dark:text-blue-400 leading-none">{post.readTime}</p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Divider */}
-            <div className="h-[3px] w-full bg-gradient-to-r from-slate-900 via-slate-600 to-slate-300 dark:from-white dark:via-slate-400 dark:to-slate-700 rounded-full mb-5" />
-
-            {/* Topics */}
+            {/* ── Topics widget ── */}
             {post.tags && post.tags.length > 0 && (
-              <div className="mb-5">
-                <p className="text-[11px] font-black tracking-[0.22em] text-slate-900 dark:text-white uppercase mb-3">Topics</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {post.tags.map(tag => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 rounded-md text-[11.5px] font-semibold border border-slate-200 dark:border-zinc-700 bg-slate-50 dark:bg-zinc-800/70 text-slate-600 dark:text-slate-300"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+              <div className="mb-3 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-800/90">
+                <div className="p-4">
+                  <p className="flex items-center gap-1.5 text-[10px] font-bold tracking-[0.18em] text-slate-400 dark:text-slate-500 uppercase mb-2.5">
+                    <Tag className="w-3 h-3" /> Topics
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {post.tags.map(tag => (
+                      <span
+                        key={tag}
+                        className="text-xs font-bold tracking-widest uppercase px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white text-slate-700 dark:text-black border border-slate-200 dark:border-white"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
 
-            {/* Divider */}
-            <div className="h-[3px] w-full bg-gradient-to-r from-slate-900 via-slate-600 to-slate-300 dark:from-white dark:via-slate-400 dark:to-slate-700 rounded-full mb-5" />
-
-            {/* Share */}
-            <div className="mb-5">
-              <p className="text-[11px] font-black tracking-[0.22em] text-slate-900 dark:text-white uppercase mb-3">Share This Post</p>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={goToX}
-                  title="Share on X"
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-black hover:bg-slate-800 active:scale-95 transition-all duration-150"
-                >
-                  <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
-                </button>
-                <button
-                  onClick={goToLinkedIn}
-                  title="Share on LinkedIn"
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-[#0A66C2] hover:bg-[#0958a8] active:scale-95 transition-all duration-150"
-                >
-                  <Linkedin className="w-4 h-4 text-white" />
-                </button>
-                <button
-                  onClick={copyLink}
-                  title={copied ? "Copied!" : "Copy link"}
-                  className={`w-10 h-10 flex items-center justify-center rounded-xl border-2 active:scale-95 transition-all duration-150 ${
-                    copied
-                      ? "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-500"
-                      : "border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/60 text-slate-600 dark:text-slate-300 hover:border-slate-400 dark:hover:border-zinc-500"
-                  }`}
-                >
-                  {copied ? <Check className="w-4 h-4" /> : <Link2 className="w-4 h-4" />}
-                </button>
+            {/* ── Share widget ── */}
+            <div className="mb-3 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-800/90">
+              <div className="p-4">
+                <p className="flex items-center gap-1.5 text-[10px] font-bold tracking-[0.18em] text-slate-400 dark:text-slate-500 uppercase mb-2.5">
+                  <Share2 className="w-3 h-3" /> Share
+                </p>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={goToX}
+                    title="Share on X"
+                    className="w-10 h-10 flex items-center justify-center rounded-xl bg-black hover:bg-slate-800 active:scale-95 transition-all duration-150"
+                  >
+                    <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={goToLinkedIn}
+                    title="Share on LinkedIn"
+                    className="w-10 h-10 flex items-center justify-center rounded-xl bg-[#0A66C2] hover:bg-[#0958a8] active:scale-95 transition-all duration-150"
+                  >
+                    <Linkedin className="w-4 h-4 text-white" />
+                  </button>
+                  <button
+                    onClick={copyLink}
+                    title={copied ? "Copied!" : "Copy link"}
+                    className={`w-10 h-10 flex items-center justify-center rounded-xl border-2 active:scale-95 transition-all duration-150 ${
+                      copied
+                        ? "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-500"
+                        : "border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
+                    }`}
+                  >
+                    {copied ? <Check className="w-4 h-4" /> : <Link2 className="w-4 h-4" />}
+                  </button>
+                </div>
               </div>
             </div>
 
-            {/* Divider */}
+            {/* ── Related widget ── */}
             {relatedPosts.length > 0 && (
-              <div className="h-[3px] w-full bg-gradient-to-r from-slate-900 via-slate-600 to-slate-300 dark:from-white dark:via-slate-400 dark:to-slate-700 rounded-full mb-5" />
-            )}
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-800/90">
+                <div className="p-4">
+                  <p className="flex items-center gap-1.5 text-[10px] font-bold tracking-[0.18em] text-slate-400 dark:text-slate-500 uppercase mb-2.5">
+                    <BookOpen className="w-3 h-3" /> Related
+                  </p>
+                  <div className="space-y-1.5">
+                    {relatedPosts.map(p => (
+                      <button
+                        key={p.id}
+                        onClick={() => navigate(`/blog/${p.slug}`)}
+                        className="group flex items-start gap-2.5 w-full text-left rounded-xl p-2 hover:bg-slate-50 dark:hover:bg-slate-700/40 transition-colors duration-150"
+                      >
+                        {p.image && (
+                          <img
+                            src={p.image}
+                            alt={p.title}
+                            className="w-14 h-11 flex-shrink-0 rounded-lg object-cover border border-slate-200 dark:border-slate-700"
+                          />
+                        )}
+                        <p className="text-[12px] font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 leading-snug line-clamp-2 transition-colors duration-150 pt-0.5">
+                          {p.title}
+                        </p>
+                      </button>
+                    ))}
+                  </div>
 
-            {/* Related Posts */}
-            {relatedPosts.length > 0 && (
-              <div>
-                <p className="text-[11px] font-black tracking-[0.22em] text-slate-900 dark:text-white uppercase mb-3">Related</p>
-                <div className="space-y-3.5">
-                  {relatedPosts.map(p => (
-                    <button
-                      key={p.id}
-                      onClick={() => navigate(`/blog/${p.slug}`)}
-                      className="group block text-left w-full"
-                    >
-                      <p className="relative inline-block text-[13px] font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 leading-snug transition-colors duration-200
-                        after:content-[''] after:absolute after:left-0 after:bottom-[-1px] after:h-[1.5px] after:w-0 after:bg-blue-600 dark:after:bg-blue-400 after:transition-all after:duration-300 group-hover:after:w-full">
-                        {p.title}
-                      </p>
-                    </button>
-                  ))}
+                  {/* See All */}
+                  <button
+                    onClick={() => navigate("/blog")}
+                    className="mt-3 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-black dark:bg-white text-white dark:text-black text-[12px] font-semibold tracking-wide hover:opacity-75 active:scale-[0.98] transition-all duration-150"
+                  >
+                    See all posts
+                    <ArrowLeft className="w-3.5 h-3.5 rotate-180" />
+                  </button>
                 </div>
               </div>
             )}

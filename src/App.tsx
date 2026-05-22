@@ -60,7 +60,6 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
           <TooltipProvider>
-            <CustomCursor />
             <Toaster />
             <Sonner />
             <BrowserRouter>

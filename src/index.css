@@ -13,10 +13,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom cursor — hide OS default everywhere */
-*, *::before, *::after {
-  cursor: none !important;
-}
 
 /* ── Glass card system ───────────────────────────────────── */
 .glass-card {
