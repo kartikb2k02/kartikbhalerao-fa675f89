@@ -166,13 +166,6 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
 
   return (
     <>
-      {/* Reading Progress Bar */}
-      <div className="fixed top-16 left-0 right-0 z-40 h-[3px] bg-slate-100/60 dark:bg-white/5">
-        <div
-          className="h-full bg-gradient-to-r from-blue-500 via-violet-500 to-cyan-400 transition-all duration-150 ease-out"
-          style={{ width: `${scrollProgress}%`, boxShadow: scrollProgress > 0 ? '0 0 8px rgba(99,102,241,0.6)' : 'none' }}
-        />
-      </div>
 
       {/* Reading progress pill */}
       <div

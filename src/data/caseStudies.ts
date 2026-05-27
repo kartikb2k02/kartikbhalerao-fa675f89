@@ -22,6 +22,38 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    id: "figprd",
+    title: "figprd",
+    subtitle: "Figma → PRD Generator",
+    tags: ["AI Agent", "MCP", "Figma", "PM Tool"],
+    externalLink: "https://github.com/kartikbh6614/Pm_agent-",
+    bgGradient: "from-[#1e40af] to-[#7c3aed]",
+    image: "",
+    overview:
+      "figprd is an AI-powered PM agent that reads Figma design files via MCP (Model Context Protocol) and automatically generates a full Product Requirements Document — no copy-paste, no manual translation.",
+    challenge:
+      "PMs spend hours translating Figma screens into PRDs, manually describing layouts, flows, and edge cases. Context is always lost in translation between design and requirements.",
+    solution:
+      "Built a Claude-powered agent that connects directly to Figma via MCP, reads the full design tree, and streams a structured PRD (user stories, acceptance criteria, flows, edge cases) in seconds from the terminal.",
+    outcome:
+      "End-to-end pipeline from Figma file URL to formatted PRD, running entirely from the CLI. Eliminates manual transcription and keeps design intent intact.",
+    keyFeatures: [
+      "Figma MCP integration — reads live design files, no screenshots",
+      "Full PRD generation: user stories, acceptance criteria, edge cases",
+      "Streaming output via Claude Sonnet — token-by-token in terminal",
+      "GitHub-hosted, runs locally with a single command",
+      "Zero UI required — pure agent pipeline",
+    ],
+    tools: [
+      "Claude API (Sonnet)",
+      "Model Context Protocol (MCP)",
+      "Figma API",
+      "Node.js / TypeScript",
+      "GitHub",
+    ],
+    gallery: [],
+  },
+  {
     id: "pm-copilot",
     title: "PM Co-Pilot",
     subtitle: "AI-Powered PM Workspace",

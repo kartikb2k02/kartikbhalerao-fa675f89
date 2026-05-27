@@ -76,15 +76,7 @@ const CaseStudyDetail = () => {
     </Helmet>
     <div className="min-h-screen w-full text-foreground relative bg-white dark:bg-zinc-900">
 
-      {/* Reading Progress Bar */}
-      <div className="fixed top-16 left-0 right-0 z-40 h-0.5 bg-slate-200 dark:bg-zinc-800 overflow-hidden">
-        <div
-          className={`h-full bg-gradient-to-r ${caseStudy.bgGradient} transition-all duration-150 ease-out`}
-          style={{ width: `${scrollProgress}%` }}
-        />
-      </div>
-
-      <Header />
+      <Header scrollProgress={scrollProgress} />
 
       <main className="pt-24 pb-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -11,6 +11,17 @@ const BlogPost = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [markdownContent, setMarkdownContent] = useState<string>("");
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const post = blogPosts.find(p => p.slug === slug);
 
@@ -59,7 +70,7 @@ const BlogPost = () => {
     </Helmet>
     <div className="min-h-screen w-full text-foreground relative bg-[#FEFDF9] dark:bg-[#111111]">
       <div className="relative z-10">
-        <Header />
+        <Header scrollProgress={scrollProgress} />
         <div className="pt-16">
           <BlogPostDetail
             post={post}

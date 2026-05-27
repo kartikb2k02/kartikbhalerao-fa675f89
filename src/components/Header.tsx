@@ -1,12 +1,36 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
-export const Header = () => {
+interface HeaderProps {
+  scrollProgress?: number;
+}
+
+export const Header = ({ scrollProgress }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const pillRef = useRef<HTMLDivElement>(null);
+  const [pillWidth, setPillWidth] = useState(900);
+
+  useEffect(() => {
+    const measure = () => {
+      if (pillRef.current) setPillWidth(pillRef.current.offsetWidth);
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, []);
+
+  // Rounded-2xl = 16px radius, pill height = 64px
+  const r = 16;
+  const h = 64;
+  const w = pillWidth;
+  const perimeter = 2 * (w - 2 * r) + 2 * (h - 2 * r) + 2 * Math.PI * r;
+  const dashOffset = scrollProgress !== undefined
+    ? perimeter * (1 - scrollProgress / 100)
+    : perimeter;
 
   const scrollToSection = (sectionId: string) => {
     if (sectionId === 'blog') { navigate('/blog'); return; }
@@ -24,7 +48,35 @@ export const Header = () => {
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
       {/* Floating pill */}
-      <div className="glass-pill w-full max-w-5xl rounded-2xl px-6 py-0 flex items-center justify-between h-[64px]">
+      <div
+        ref={pillRef}
+        className="glass-pill relative w-full max-w-5xl rounded-2xl px-6 py-0 flex items-center justify-between h-[64px]"
+      >
+        {/* SVG border progress — traces the full pill border */}
+        {scrollProgress !== undefined && (
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none"
+            style={{ zIndex: 10, overflow: 'visible' }}
+          >
+            <rect
+              x="1"
+              y="1"
+              width={Math.max(w - 2, 0)}
+              height={h - 2}
+              rx={r}
+              ry={r}
+              fill="none"
+              stroke="black"
+              strokeWidth="1.5"
+              className="dark:stroke-white"
+              style={{
+                strokeDasharray: perimeter,
+                strokeDashoffset: dashOffset,
+                transition: 'stroke-dashoffset 150ms ease-out',
+              }}
+            />
+          </svg>
+        )}
 
         {/* Logo */}
         <button

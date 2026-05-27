@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { caseStudies } from "@/data/caseStudies";
 import { ChatlyCardBanner } from "@/components/ChatlyCardBanner";
 import { PMCopilotCardBanner } from "@/components/PMCopilotCardBanner";
+import { FigPRDCardBanner } from "@/components/FigPRDCardBanner";
 
 export const CaseStudiesSection = () => {
   const navigate = useNavigate();
 
   const handleCardClick = (id: string) => {
     const study = caseStudies.find((s) => s.id === id);
-    if (study?.id === "pm-copilot" && study.externalLink) {
+    if ((study?.id === "pm-copilot" || study?.id === "figprd") && study.externalLink) {
       window.open(study.externalLink, "_blank", "noopener,noreferrer");
       return;
     }
@@ -37,14 +38,22 @@ export const CaseStudiesSection = () => {
         {/* Case Studies Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {caseStudies.map((study) => (
-            <div key={study.id} onClick={() => handleCardClick(study.id)} className="group cursor-pointer">
-              <div className="relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2 border border-border/50 hover:border-primary/30">
+            <div key={study.id} onClick={() => handleCardClick(study.id)} className="group cursor-pointer relative">
+              {/* figprd: outer glow outside overflow-hidden so it's actually visible on dark bg */}
+              {study.id === "figprd" && (
+                <div className="absolute -inset-1 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{
+                  background: "linear-gradient(135deg, rgba(37,99,235,0.45) 0%, rgba(109,40,217,0.35) 100%)",
+                  filter: "blur(18px)",
+                  zIndex: 0,
+                }} />
+              )}
+              <div className="relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2 border border-border/50 hover:border-primary/30" style={{ zIndex: 1 }}>
                 {/* Glow effect on hover */}
                 <div className={`absolute -inset-0.5 bg-gradient-to-r ${study.bgGradient} rounded-3xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500`} />
 
                 {/* Image Section */}
-                <div className={`relative aspect-[18/10] overflow-hidden ${study.id === "chatly-prd" || study.id === "pm-copilot" ? "" : `bg-gradient-to-br ${study.bgGradient}`}`}
-                  style={study.id === "pm-copilot" ? { background: "linear-gradient(135deg, rgba(59,130,246,0.05) 0%, #ffffff 60%)" } : study.id === "chatly-prd" ? { background: "white" } : {}}>
+                <div className={`relative aspect-[18/10] overflow-hidden ${study.id === "chatly-prd" || study.id === "pm-copilot" || study.id === "figprd" ? "" : `bg-gradient-to-br ${study.bgGradient}`}`}
+                  style={study.id === "pm-copilot" ? { background: "linear-gradient(135deg, rgba(59,130,246,0.05) 0%, #ffffff 60%)" } : study.id === "chatly-prd" ? { background: "white" } : study.id === "figprd" ? { background: "#0b1730" } : {}}>
                   {study.id === "chatly-prd" ? (
                     <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
                       <ChatlyCardBanner />
@@ -52,6 +61,16 @@ export const CaseStudiesSection = () => {
                   ) : study.id === "pm-copilot" ? (
                     <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
                       <PMCopilotCardBanner />
+                    </div>
+                  ) : study.id === "figprd" ? (
+                    <div className="relative w-full h-full">
+                      <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
+                        <FigPRDCardBanner />
+                      </div>
+                      {/* Blue glow overlay on hover — makes effect visible on dark bg */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{
+                        background: "linear-gradient(135deg, rgba(37,99,235,0.18) 0%, rgba(109,40,217,0.12) 100%)",
+                      }}/>
                     </div>
                   ) : (
                     <img
@@ -88,6 +107,24 @@ export const CaseStudiesSection = () => {
                     </div>
                     <div className="absolute bottom-4 right-4">
                       <div style={{ width: 28, height: 28, background: "#111", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center" }}
+                        className="group-hover:scale-110 transition-all duration-300">
+                        <ArrowUpRight className="w-4 h-4 text-white" />
+                      </div>
+                    </div>
+                  </div>
+                ) : study.id === "figprd" ? (
+                  <div style={{ background: "#0b1730", borderTop: "1px solid rgba(255,255,255,0.08)" }} className="px-5 py-4 relative overflow-hidden">
+                    <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "16px 16px" }}/>
+                    <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, #F24E1E, #A259FF, #1ABCFE, #0ACF83)" }}/>
+                    <div className="relative z-10 flex items-center gap-2 pr-8">
+                      <div style={{ width: 20, height: 20, borderRadius: 6, background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.18)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 900, color: "#fff", flexShrink: 0 }}>⌘</div>
+                      <div>
+                        <h3 className="text-base font-black leading-tight" style={{ color: "#fff", letterSpacing: "-0.02em" }}>{study.title}</h3>
+                        <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.38)" }}>{study.subtitle}</p>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-4 right-4">
+                      <div style={{ width: 28, height: 28, background: "rgba(37,99,235,0.7)", border: "1px solid rgba(96,165,250,0.4)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center" }}
                         className="group-hover:scale-110 transition-all duration-300">
                         <ArrowUpRight className="w-4 h-4 text-white" />
                       </div>
