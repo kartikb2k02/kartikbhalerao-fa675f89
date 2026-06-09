@@ -49,7 +49,7 @@ const BLOG = {
   'forward-deployed-ai-pms': {
     title: 'Forward-Deployed AI PMs Are Changing How Products Get Built',
     desc: "A new breed of product manager is emerging — one who doesn't just spec features, but deploys AI directly into workflows, decisions, and customer interactions. Here's what that shift means for the future of product.",
-    img: '/lovable-uploads/ai-pm-forward-deployed-banner.svg',
+    img: '/lovable-uploads/ai-pm-forward-deployed-banner.png',
   },
   'ai-user-personas-experiment': {
     title: "I Tried Replacing Traditional User Personas with AI — Here's What I Learned",
