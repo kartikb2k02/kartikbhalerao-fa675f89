@@ -9,6 +9,7 @@ export interface BlogPost {
   image: string;
   slug: string;
   featured?: boolean;
+  comingSoon?: boolean;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -115,5 +116,29 @@ export const blogPosts: BlogPost[] = [
     tags: ["Team Management", "Leadership", "Scaling"],
     image: "/lovable-uploads/scaling-teams-banner.svg",
     slug: "scaling-product-teams-lessons"
+  },
+  {
+    id: 11,
+    title: "Forward-Deployed AI PMs Are Changing How Products Get Built",
+    excerpt: "A new breed of product manager is emerging — one who doesn't just spec features, but deploys AI directly into workflows, decisions, and customer interactions. Here's what that shift means for the future of product.",
+    category: "ai",
+    date: "2026-06-09",
+    readTime: "8 min read",
+    tags: ["AI", "Product Management", "Future of Work", "Forward Deployment"],
+    image: "/lovable-uploads/ai-pm-forward-deployed-banner.svg",
+    slug: "forward-deployed-ai-pms",
+    featured: true
+  },
+  {
+    id: 10,
+    title: "I Tried Replacing Traditional User Personas with AI — Here's What I Learned",
+    excerpt: "Most personas describe users. Very few help teams understand them. I replaced traditional personas with AI-generated behavioral archetypes — and it permanently changed how I think about user research.",
+    category: "ai",
+    date: "2026-05-28",
+    readTime: "9 min read",
+    tags: ["AI", "User Research", "Product Management", "Personas", "Behavioral Design"],
+    image: "/lovable-uploads/ai-personas-banner.svg",
+    slug: "ai-user-personas-experiment",
+    comingSoon: true
   }
 ];

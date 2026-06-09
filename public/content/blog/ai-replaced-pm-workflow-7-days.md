@@ -1,4 +1,4 @@
-# I Replaced My Product Manager Workflow with AI for 7 Days — Here's What Happened
+# I Replaced My Product Manager Workflow with AI for 7 Days, Here's What Happened
 
 ## Introduction
 
@@ -92,7 +92,7 @@ Suggested timestamps to reference:
 
 ---
 
-## Day 1 — Product Discovery with AI
+## Day 1, Product Discovery with AI
 
 The first step in building any product is identifying the **right problem to solve**.
 
@@ -117,7 +117,7 @@ AI is excellent for **idea generation and brainstorming**, but validating those 
 
 ---
 
-## Day 2 — Market Research in Minutes
+## Day 2, Market Research in Minutes
 
 Market research normally requires hours of analyzing competitors and reading reports.
 
@@ -144,7 +144,7 @@ However, I still verified the insights manually.
 
 ---
 
-## Day 3 — Writing a PRD with AI
+## Day 3, Writing a PRD with AI
 
 Writing **Product Requirement Documents (PRDs)** is one of the most time-consuming tasks for Product Managers.
 
@@ -181,7 +181,7 @@ Want to see what a real AI-assisted PRD looks like in practice? I wrote a full P
 
 ---
 
-## Day 4 — Generating User Stories
+## Day 4, Generating User Stories
 
 User stories are another repetitive but essential part of product documentation.
 
@@ -199,7 +199,7 @@ This significantly reduced the time spent writing documentation.
 
 ---
 
-## Day 5 — Rapid Prototyping with AI
+## Day 5, Rapid Prototyping with AI
 
 One of the most interesting discoveries during this experiment was how AI helps with **rapid prototyping**.
 
@@ -217,7 +217,7 @@ This significantly reduced the gap between:
 
 ---
 
-## Day 6 — Analyzing User Feedback
+## Day 6, Analyzing User Feedback
 
 AI was also extremely useful for analyzing large amounts of user feedback.
 
@@ -239,7 +239,7 @@ This normally requires manual tagging and analysis. AI dramatically reduced the 
 
 ---
 
-## Day 7 — Roadmap Planning
+## Day 7, Roadmap Planning
 
 Finally, I used AI to generate a product roadmap.
 

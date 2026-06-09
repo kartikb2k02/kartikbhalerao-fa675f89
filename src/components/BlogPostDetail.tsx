@@ -468,7 +468,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
               img: ({ src, alt }) => (
                 <figure className="my-8">
                   <div
-                    className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 shadow-md cursor-zoom-in relative group"
+                    className="overflow-hidden rounded-xl cursor-zoom-in relative group"
                     onClick={() => { setLightboxSrc(src || ''); setLightboxAlt(alt || ''); }}
                   >
                     <img src={src} alt={alt || ""} className="w-full h-auto object-contain" loading="lazy" />
@@ -484,24 +484,26 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
                 </figure>
               ),
               table: ({ children }) => (
-                <div className="my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-                  <table className="w-full text-sm border-collapse">
-                    {children}
-                  </table>
+                <div className="my-6 overflow-x-auto rounded-xl">
+                  <table className="w-full text-sm border-collapse m-0">{children}</table>
                 </div>
               ),
-              thead: ({ children }) => <thead className="bg-black dark:bg-white">{children}</thead>,
-              tbody: ({ children }) => <tbody className="bg-card divide-y divide-slate-100 dark:divide-slate-800">{children}</tbody>,
+              thead: ({ children }) => (
+                <thead className="bg-black">{children}</thead>
+              ),
+              tbody: ({ children }) => (
+                <tbody className="divide-y divide-zinc-100">{children}</tbody>
+              ),
               tr: ({ children }) => (
-                <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">{children}</tr>
+                <tr className="hover:bg-zinc-50 transition-colors even:bg-zinc-50/50">{children}</tr>
               ),
               th: ({ children }) => (
-                <th className="px-5 py-3 text-left text-xs font-bold text-white dark:text-black uppercase tracking-widest border-r border-white/20 dark:border-black/20 last:border-r-0">
+                <th className="text-left text-[11px] font-bold text-white uppercase tracking-wider px-4 py-3 border-r border-zinc-700 last:border-r-0 whitespace-nowrap">
                   {children}
                 </th>
               ),
               td: ({ children }) => (
-                <td className="px-5 py-3.5 text-sm text-slate-700 dark:text-slate-300 border-r border-slate-100 dark:border-slate-800 last:border-r-0">
+                <td className="px-4 py-3 text-sm text-zinc-700 border-r border-zinc-100 last:border-r-0 align-top leading-relaxed">
                   {children}
                 </td>
               ),

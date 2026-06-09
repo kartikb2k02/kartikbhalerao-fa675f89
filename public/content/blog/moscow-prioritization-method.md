@@ -4,11 +4,11 @@
 
 ## Introduction
 
-As a product manager, it often feels like you're trying to build a rocket ship with IKEA instructions — and everyone's yelling in different languages.
+As a product manager, it often feels like you're trying to build a rocket ship with IKEA instructions, and everyone's yelling in different languages.
 
 Your backlog is bursting, stakeholders have urgent requests, and your deadline was yesterday. Sound familiar?
 
-Enter the **MoSCoW Method** — a simple, battle-tested prioritization framework that helps teams separate what truly matters from the noise.
+Enter the **MoSCoW Method**, a simple, battle-tested prioritization framework that helps teams separate what truly matters from the noise.
 
 ---
 
@@ -16,12 +16,12 @@ Enter the **MoSCoW Method** — a simple, battle-tested prioritization framework
 
 The MoSCoW technique was developed in the 1990s by **Dai Clegg** while working at Oracle. The acronym stands for:
 
-- **M** — Must Have
-- **S** — Should Have
-- **C** — Could Have
-- **W** — Won't Have (this time)
+- **M**, Must Have
+- **S**, Should Have
+- **C**, Could Have
+- **W**, Won't Have (this time)
 
-It originated from the **DSDM agile framework** — a lesser-known cousin of Scrum and Kanban — and has since been widely adopted across tech teams worldwide.
+It originated from the **DSDM agile framework**, a lesser-known cousin of Scrum and Kanban, and has since been widely adopted across tech teams worldwide.
 
 ---
 
@@ -41,23 +41,23 @@ Think of it like setting ground rules at the beginning of a road trip so you don
 
 ### MoSCoW Rules to Follow
 
-1. **Every requirement must be categorized** — No grey areas. Each item belongs in Must, Should, Could, or Won't.
-2. **Must-Have items are non-negotiable** — If any Must is missing, the release fails.
-3. **Limit Must-Haves to 60% or less of total scope** — Keep it realistic and focused.
-4. **Prioritize collaboratively** — Involve stakeholders, product owners, and developers.
-5. **Won't-Haves are just as important** — They clarify what stays out of scope.
-6. **Use it early and often** — Apply during planning, refinement, MVP definition, and retrospectives.
+1. **Every requirement must be categorized**, No grey areas. Each item belongs in Must, Should, Could, or Won't.
+2. **Must-Have items are non-negotiable**, If any Must is missing, the release fails.
+3. **Limit Must-Haves to 60% or less of total scope**, Keep it realistic and focused.
+4. **Prioritize collaboratively**, Involve stakeholders, product owners, and developers.
+5. **Won't-Haves are just as important**, They clarify what stays out of scope.
+6. **Use it early and often**, Apply during planning, refinement, MVP definition, and retrospectives.
 
 ### Category Breakdown
 
 | Category | Meaning |
 |---|---|
-| **Must Have** | Essential — release cannot proceed without this |
+| **Must Have** | Essential, release cannot proceed without this |
 | **Should Have** | Valuable but not a blocker |
 | **Could Have** | Desirable additions that won't harm if removed |
 | **Won't Have (this time)** | Deliberately excluded from this cycle |
 
-This gives your team the power to say "no" to requests — guilt-free — with a strategic framework backing you up.
+This gives your team the power to say "no" to requests, guilt-free, with a strategic framework backing you up.
 
 ![MoSCoW Cheat Sheet](https://cdn-images-1.medium.com/max/783/1*LiJWGEO5iJpZftHcSSmN6w.png)
 
@@ -65,13 +65,13 @@ This gives your team the power to say "no" to requests — guilt-free — with a
 
 ## 📖 How Development Teams Can Use MoSCoW
 
-The framework isn't purely theoretical — it's actionable. Teams integrate MoSCoW into:
+The framework isn't purely theoretical, it's actionable. Teams integrate MoSCoW into:
 
-1. **Sprint Planning & Backlog Grooming** — Align the team on what ships in the next cycle
-2. **Stakeholder Alignment** — Set realistic expectations before commitments are made
-3. **MVP Scoping** — Define the leanest version of the product that delivers value
-4. **Capacity Planning** — Match workload to available bandwidth
-5. **Retrospectives & Scope Adjustments** — Reflect and re-prioritize based on learnings
+1. **Sprint Planning & Backlog Grooming**, Align the team on what ships in the next cycle
+2. **Stakeholder Alignment**, Set realistic expectations before commitments are made
+3. **MVP Scoping**, Define the leanest version of the product that delivers value
+4. **Capacity Planning**, Match workload to available bandwidth
+5. **Retrospectives & Scope Adjustments**, Reflect and re-prioritize based on learnings
 
 ---
 
@@ -103,9 +103,9 @@ The framework isn't purely theoretical — it's actionable. Teams integrate MoSC
 
 ## ⚠️ Watch Out For…
 
-- **Overloading Must-Haves** — If everything is critical, nothing is
-- **Excluding team members or users** — Prioritization must be collaborative
-- **Treating it as permanent** — Lists should evolve as you learn more
+- **Overloading Must-Haves**, If everything is critical, nothing is
+- **Excluding team members or users**, Prioritization must be collaborative
+- **Treating it as permanent**, Lists should evolve as you learn more
 
 ---
 
@@ -113,14 +113,14 @@ The framework isn't purely theoretical — it's actionable. Teams integrate MoSC
 
 > "If your backlog looks like a wish list from Santa, MoSCoW is your North Star."
 
-Keep your product lean, your team focused, and your stakeholders aligned. Don't try to do everything — do the right things.
+Keep your product lean, your team focused, and your stakeholders aligned. Don't try to do everything, do the right things.
 
 ---
 
 ## 🛠️ Templates & Tools
 
-- **Miro MoSCoW Template** — Great for real-time collaboration with remote teams
-- **Figma Prioritization Boards** — Design-integrated planning for product teams
+- **Miro MoSCoW Template**, Great for real-time collaboration with remote teams
+- **Figma Prioritization Boards**, Design-integrated planning for product teams
 
 ---
 

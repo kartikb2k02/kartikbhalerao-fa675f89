@@ -15,7 +15,7 @@ const formatDate = (dateStr: string) =>
 const isNew = (dateStr: string) =>
   Date.now() - new Date(dateStr).getTime() < 1000 * 60 * 60 * 24 * 30;
 
-const SpotlightCard = ({ children, onClick }: { children: React.ReactNode; onClick: () => void }) => {
+const SpotlightCard = ({ children, onClick, disabled }: { children: React.ReactNode; onClick: () => void; disabled?: boolean }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0, opacity: 0 });
 
@@ -29,7 +29,7 @@ const SpotlightCard = ({ children, onClick }: { children: React.ReactNode; onCli
         setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top, opacity: 1 });
       }}
       onMouseLeave={() => setPos(p => ({ ...p, opacity: 0 }))}
-      className="glass-card group relative rounded-2xl overflow-hidden cursor-pointer flex flex-col hover:-translate-y-1"
+      className={`glass-card group relative rounded-2xl overflow-hidden flex flex-col ${disabled ? 'cursor-default' : 'cursor-pointer hover:-translate-y-1'}`}
     >
       <div
         className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-300"
@@ -142,21 +142,27 @@ const Blog = () => {
         {/* Rest of posts */}
         <div className="grid gap-5 sm:grid-cols-2">
           {rest.map((post, index) => (
-            <SpotlightCard key={post.id} onClick={() => navigate(`/blog/${post.slug}`)}>
+            <SpotlightCard key={post.id} onClick={() => !post.comingSoon && navigate(`/blog/${post.slug}`)} disabled={post.comingSoon}>
+              {/* Coming Soon badge */}
+              {post.comingSoon && (
+                <span className="absolute top-4 right-4 z-20 px-2.5 py-1 rounded-md border border-violet-400/40 bg-violet-50 dark:bg-violet-500/10 text-[10px] font-bold tracking-widest uppercase text-violet-600 dark:text-violet-400">
+                  Coming Soon
+                </span>
+              )}
               {/* New Blog badge — top right */}
-              {isNew(post.date) && (
+              {!post.comingSoon && isNew(post.date) && (
                 <span className="absolute top-4 right-4 z-20 px-2 py-1 rounded-md border border-green-500/40 bg-green-50 dark:bg-green-500/10 text-[10px] font-bold tracking-widest uppercase text-green-600 dark:text-green-400">
                   New Blog
                 </span>
               )}
-              <div className="px-6 py-5 flex flex-col flex-1 gap-3">
+              <div className={`px-6 py-5 flex flex-col flex-1 gap-3 ${post.comingSoon ? 'opacity-70' : ''}`}>
 
                 {/* Top row */}
                 <div className="flex items-center justify-between">
                   <span className="px-2.5 py-1 rounded-md bg-black/5 dark:bg-white/6 text-[10px] font-bold tracking-widest uppercase text-black/45 dark:text-white/45">
                     {post.category === 'ai' ? 'AI' : post.category.charAt(0).toUpperCase() + post.category.slice(1)}
                   </span>
-                  {!isNew(post.date) && (
+                  {!isNew(post.date) && !post.comingSoon && (
                     <span className="text-[11px] font-bold text-black/10 dark:text-white/10 tabular-nums">
                       {String(index + 2).padStart(2, '0')}
                     </span>
@@ -190,11 +196,17 @@ const Blog = () => {
                     <Clock className="w-3 h-3" />
                     <span>{post.readTime}</span>
                     <span className="w-1 h-1 rounded-full bg-black/15 dark:bg-white/15" />
-                    <span>{formatDate(post.date)}</span>
+                    <span>{post.comingSoon ? 'Coming soon' : formatDate(post.date)}</span>
                   </div>
-                  <div className="w-6 h-6 rounded-full bg-black/5 dark:bg-white/5 group-hover:bg-black dark:group-hover:bg-white flex items-center justify-center transition-all duration-200">
-                    <ArrowRight className="w-3 h-3 text-black/35 dark:text-white/35 group-hover:text-white dark:group-hover:text-black transition-colors duration-200" />
-                  </div>
+                  {post.comingSoon ? (
+                    <div className="w-6 h-6 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center">
+                      <ArrowRight className="w-3 h-3 text-black/15 dark:text-white/15" />
+                    </div>
+                  ) : (
+                    <div className="w-6 h-6 rounded-full bg-black/5 dark:bg-white/5 group-hover:bg-black dark:group-hover:bg-white flex items-center justify-center transition-all duration-200">
+                      <ArrowRight className="w-3 h-3 text-black/35 dark:text-white/35 group-hover:text-white dark:group-hover:text-black transition-colors duration-200" />
+                    </div>
+                  )}
                 </div>
               </div>
             </SpotlightCard>

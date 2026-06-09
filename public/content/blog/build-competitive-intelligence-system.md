@@ -8,13 +8,13 @@
 > **⏱ At a glance**
 > **Build time:** 4–6 hrs (first time) · **Weekly maintenance:** ~0 hrs · **Weekly cost:** $0.05–$0.15
 
-I spent about a weekend building a lightweight system that now runs every Monday morning and drops a clean summary into our team's Slack channel — automatically. It tracks pricing page changes, scrapes new G2/Capterra reviews, monitors app store ratings, and uses Claude to synthesize everything into actionable signals.
+I spent about a weekend building a lightweight system that now runs every Monday morning and drops a clean summary into our team's Slack channel, automatically. It tracks pricing page changes, scrapes new G2/Capterra reviews, monitors app store ratings, and uses Claude to synthesize everything into actionable signals.
 
 Here's exactly how to build it, step by step.
 
 ---
 
-## This Isn't Theoretical — People Are Already Building It
+## This Isn't Theoretical, People Are Already Building It
 
 <div style="display:flex;flex-direction:column;gap:10px;margin:28px 0;">
 
@@ -76,7 +76,7 @@ Here's exactly how to build it, step by step.
     <div style="flex-shrink:0;width:36px;height:36px;border-radius:10px;background:#fef08a;display:flex;align-items:center;justify-content:center;font-size:18px;margin-top:1px;">💡</div>
     <div>
       <div style="font-size:12px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#d97706;margin-bottom:5px;">Why This Matters</div>
-      <div style="font-size:14px;color:#78350f;line-height:1.65;">All three examples above were built and published in the last 2 weeks — which means the demand for this kind of system is <strong style="color:#92400e;">real and growing fast</strong>. The approach below combines the best patterns from all three.</div>
+      <div style="font-size:14px;color:#78350f;line-height:1.65;">All three examples above were built and published in the last 2 weeks, which means the demand for this kind of system is <strong style="color:#92400e;">real and growing fast</strong>. The approach below combines the best patterns from all three.</div>
     </div>
   </div>
 </div>
@@ -93,13 +93,13 @@ Before diving into the setup, here's the full flow at a glance:
 
 ---
 
-## Step 1 — Set Up Your Apify Scrapers
+## Step 1, Set Up Your Apify Scrapers
 
 Apify has a marketplace of pre-built actors, so you don't need to write scrapers from scratch. For competitive intelligence, I use three:
 
-- **Website Content Crawler** — for competitor pricing and features pages (URL snapshots weekly)
-- **G2 Reviews Scraper** — pulls latest reviews, star ratings, and "pros/cons" text for any G2-listed product
-- **Google Play / App Store Scraper** — grabs new reviews and monitors rating changes
+- **Website Content Crawler**, for competitor pricing and features pages (URL snapshots weekly)
+- **G2 Reviews Scraper**, pulls latest reviews, star ratings, and "pros/cons" text for any G2-listed product
+- **Google Play / App Store Scraper**, grabs new reviews and monitors rating changes
 
 Configure each actor with your list of competitor URLs and set the schedule to weekly (every Monday at 7am, so the data is ready before your Slack post at 9am). In the actor output settings, enable **Dataset export as JSON**.
 
@@ -127,7 +127,7 @@ GET https://api.apify.com/v2/acts/{actorId}/runs/last/dataset/items
 
 ---
 
-## Step 2 — Design Your Notion Database
+## Step 2, Design Your Notion Database
 
 Notion serves as the long-term memory of your system. Each row = one competitor. Each week, the automation updates the row with the latest scraped data, which lets you diff against last week's values.
 
@@ -152,7 +152,7 @@ In your n8n workflow, after fetching from Apify, use the Notion node to read eac
 
 ---
 
-## Step 3 — Build the Claude Analysis Layer
+## Step 3, Build the Claude Analysis Layer
 
 This is where the system gets genuinely useful. Instead of dumping raw scraped text into Slack, you send Claude a structured prompt with the before/after data and ask it to identify what actually matters.
 
@@ -237,19 +237,19 @@ Be concise. Skip anything that didn't change. If nothing meaningful changed, say
 
 ---
 
-## Step 4 — Format & Post to Slack
+## Step 4, Format & Post to Slack
 
 Claude's output gets assembled into a clean Slack message using Block Kit. Here's what the Slack Block Kit payload looks like:
 
 ```json
 {
-  "text": "🔴 Weekly Competitive Brief — 3 signals detected",
+  "text": "🔴 Weekly Competitive Brief, 3 signals detected",
   "blocks": [
     {
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "🏢 *Competitor:* Rival SaaS Co.\n📊 *Change:* Dropped Starter plan price by 20% · Added AI Summaries to free tier\n⚡ *Significance:* High\n💡 *Action:* Review our free tier value prop — especially features we gate behind paid that they now offer free"
+        "text": "🏢 *Competitor:* Rival SaaS Co.\n📊 *Change:* Dropped Starter plan price by 20% · Added AI Summaries to free tier\n⚡ *Significance:* High\n💡 *Action:* Review our free tier value prop, especially features we gate behind paid that they now offer free"
       }
     }
   ]
@@ -261,7 +261,7 @@ Claude's output gets assembled into a clean Slack message using Block Kit. Here'
 ```
 CompeteBot [APP]  Monday 9:00 AM
 ─────────────────────────────────────────────
-🔴 Weekly Competitive Brief — 3 signals detected
+🔴 Weekly Competitive Brief, 3 signals detected
 
 │ Competitor: Rival SaaS Co.
 │ Signal Level: 🔴 HIGH
@@ -290,15 +290,15 @@ In n8n, use the Slack node with a `chat.postMessage` action. Map Claude's `SIGNA
 
 ## The Full n8n Workflow (Node by Node)
 
-1. **Cron Trigger** — Every Monday at 7:00am
-2. **HTTP Request (Apify)** — Trigger actor runs for all 3 scraper types
-3. **Wait** — 5 minute delay (let scrapes complete)
-4. **HTTP Request (Apify)** — Fetch completed dataset JSONs
-5. **Notion (Read)** — Pull each competitor's existing row (for previous snapshot)
-6. **Code node** — Diff current vs previous, build Claude prompt strings
-7. **HTTP Request (Claude API)** — One call per competitor
-8. **Notion (Update)** — Write Claude's analysis + new snapshots back to Notion
-9. **Slack** — Post formatted message to #competitive-intel
+1. **Cron Trigger**, Every Monday at 7:00am
+2. **HTTP Request (Apify)**, Trigger actor runs for all 3 scraper types
+3. **Wait**, 5 minute delay (let scrapes complete)
+4. **HTTP Request (Apify)**, Fetch completed dataset JSONs
+5. **Notion (Read)**, Pull each competitor's existing row (for previous snapshot)
+6. **Code node**, Diff current vs previous, build Claude prompt strings
+7. **HTTP Request (Claude API)**, One call per competitor
+8. **Notion (Update)**, Write Claude's analysis + new snapshots back to Notion
+9. **Slack**, Post formatted message to #competitive-intel
 
 Total build time: about 4–6 hours the first time. Once it's running, it's zero maintenance unless a competitor site changes its HTML structure significantly (which Apify usually handles automatically anyway).
 
@@ -309,7 +309,7 @@ Total build time: about 4–6 hours the first time. Once it's running, it's zero
     <div style="flex-shrink:0;width:36px;height:36px;border-radius:10px;background:#e0e7ff;display:flex;align-items:center;justify-content:center;font-size:18px;">📦</div>
     <div style="flex:1;min-width:0;">
       <div style="font-size:12px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#4f46e5;margin-bottom:4px;">Resource: n8n Workflow Template</div>
-      <div style="font-size:14px;color:#3730a3;line-height:1.55;">Skip the manual build — import the pre-built workflow JSON directly into n8n.</div>
+      <div style="font-size:14px;color:#3730a3;line-height:1.55;">Skip the manual build, import the pre-built workflow JSON directly into n8n.</div>
     </div>
     <a href="/downloads/ci-pipeline-n8n-workflow.json" download="ci-pipeline-n8n-workflow.json" style="flex-shrink:0;display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:8px;background:#4f46e5;color:#ffffff;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;transition:background 0.15s;" onmouseover="this.style.background='#4338ca'" onmouseout="this.style.background='#4f46e5'">Download JSON <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
   </div>
@@ -350,10 +350,10 @@ More importantly, it changes *how* your team thinks about competition. When inte
 
 ## Extensions Worth Adding Later
 
-- **LinkedIn job postings scraper** — What a competitor is hiring for tells you what they're building next. Apify has a LinkedIn Jobs actor.
-- **Product Hunt / Twitter mentions** — Track when competitors launch something new or get a spike in mentions.
-- **Claude memory across weeks** — Pass the last 4 weeks of Claude analyses back into the prompt to detect longer-term trends, not just weekly deltas.
-- **Urgency routing** — If Claude returns HIGH signal, trigger a separate Slack DM to the Head of Product, not just the channel post.
+- **LinkedIn job postings scraper**, What a competitor is hiring for tells you what they're building next. Apify has a LinkedIn Jobs actor.
+- **Product Hunt / Twitter mentions**, Track when competitors launch something new or get a spike in mentions.
+- **Claude memory across weeks**, Pass the last 4 weeks of Claude analyses back into the prompt to detect longer-term trends, not just weekly deltas.
+- **Urgency routing**, If Claude returns HIGH signal, trigger a separate Slack DM to the Head of Product, not just the channel post.
 
 <div style="margin:24px 0;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#f0fdf4 0%,#f7fef9 100%);border:1px solid #bbf7d0;">
   <div style="padding:18px 22px;display:flex;gap:16px;align-items:flex-start;">
@@ -369,7 +369,7 @@ More importantly, it changes *how* your team thinks about competition. When inte
 
 ## Final Thought
 
-The best competitive intelligence systems aren't the most comprehensive ones — they're the ones that actually get read. A crisp, weekly Slack briefing that takes 90 seconds to consume will always beat a 40-page competitive deck that gets opened once a quarter.
+The best competitive intelligence systems aren't the most comprehensive ones, they're the ones that actually get read. A crisp, weekly Slack briefing that takes 90 seconds to consume will always beat a 40-page competitive deck that gets opened once a quarter.
 
 Build the system that makes it *easy* to stay informed, and your team's competitive awareness will compound over time without anyone having to make a conscious effort to maintain it.
 
