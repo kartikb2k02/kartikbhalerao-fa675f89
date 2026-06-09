@@ -57,6 +57,16 @@ const BLOG = {
     desc: 'Stop manually checking G2, pricing pages, and app store reviews every week. Here\'s how I built a system using Apify, Notion, Claude, and Slack that delivers competitor signals automatically — with AI analysis included.',
     img: '/lovable-uploads/competitive-intel-banner.png',
   },
+  'forward-deployed-ai-pms': {
+    title: 'Forward-Deployed AI PMs Are Changing How Products Get Built',
+    desc: "A new breed of product manager is emerging — one who doesn't just spec features, but deploys AI directly into workflows, decisions, and customer interactions. Here's what that shift means for the future of product.",
+    img: '/lovable-uploads/ai-pm-forward-deployed-banner.svg',
+  },
+  'ai-user-personas-experiment': {
+    title: "I Tried Replacing Traditional User Personas with AI — Here's What I Learned",
+    desc: 'Most personas describe users. Very few help teams understand them. I replaced traditional personas with AI-generated behavioral archetypes — and it permanently changed how I think about user research.',
+    img: '/lovable-uploads/ai-personas-banner.svg',
+  },
 };
 
 const CASES = {
