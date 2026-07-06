@@ -141,7 +141,7 @@ export const AboutSection = () => {
                 {/* Header */}
                 <header className="flex flex-wrap items-start justify-between gap-3 mb-6">
                   <div>
-                    <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">Product Analyst</h3>
+                    <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">Associate Product Manager</h3>
                     <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-0.5">
                       Decision Machine &nbsp;·&nbsp; Pune, India
                     </p>

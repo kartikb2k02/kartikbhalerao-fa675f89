@@ -84,7 +84,7 @@ export const WelcomeToast = () => {
           {/* Stats row — matches hero highlight cards style */}
           <div className="flex w-full divide-x divide-black/10 dark:divide-white/10 border border-black/8 dark:border-white/8 rounded-xl overflow-hidden">
             {[
-              { value: '2+', label: 'Years PM' },
+              { value: '2.5+', label: 'Years PM' },
               { value: '3×', label: 'Avg ROI' },
               { value: '20+', label: 'Interviews' },
             ].map((stat, i) => (
