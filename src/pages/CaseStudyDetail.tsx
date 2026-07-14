@@ -10,8 +10,9 @@ import { ImageLightbox } from "@/components/ImageLightbox";
 import { RelatedCaseStudies } from "@/components/RelatedCaseStudies";
 import { ChatlyPRDDetail } from "@/components/ChatlyPRDDetail";
 import { ChatlyBanner } from "@/components/ChatlyBanner";
+import { TenzoCardBanner } from "@/components/TenzoCardBanner";
 
-const A4_GALLERY_IDS = ['ether-prd', 'gullak-fintech', 'google-pay-prd', 'cloudeagle-ai', 'metis-improvement', 'codeant-ai'];
+const A4_GALLERY_IDS = ['ether-prd', 'gullak-fintech', 'google-pay-prd', 'cloudeagle-ai', 'metis-improvement', 'codeant-ai', 'tenzo-product-discovery'];
 
 const CaseStudyDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -93,6 +94,10 @@ const CaseStudyDetail = () => {
           {/* Hero Image / Banner */}
           {id === "chatly-prd" ? (
             <ChatlyBanner />
+          ) : id === "tenzo-product-discovery" ? (
+            <div className="rounded-2xl overflow-hidden mb-8 shadow-lg shadow-black/10 dark:shadow-black/40 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 aspect-[18/10]">
+              <TenzoCardBanner />
+            </div>
           ) : (
             <div className="rounded-2xl overflow-hidden mb-8 shadow-lg shadow-black/10 dark:shadow-black/40 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800">
               <img

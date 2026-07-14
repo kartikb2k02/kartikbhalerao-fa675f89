@@ -4,6 +4,7 @@ import { caseStudies } from "@/data/caseStudies";
 import { ChatlyCardBanner } from "@/components/ChatlyCardBanner";
 import { PMCopilotCardBanner } from "@/components/PMCopilotCardBanner";
 import { FigPRDCardBanner } from "@/components/FigPRDCardBanner";
+import { TenzoCardBanner } from "@/components/TenzoCardBanner";
 
 export const CaseStudiesSection = () => {
   const navigate = useNavigate();
@@ -52,8 +53,8 @@ export const CaseStudiesSection = () => {
                 <div className={`absolute -inset-0.5 bg-gradient-to-r ${study.bgGradient} rounded-3xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500`} />
 
                 {/* Image Section */}
-                <div className={`relative aspect-[18/10] overflow-hidden ${study.id === "chatly-prd" || study.id === "pm-copilot" || study.id === "figprd" ? "" : `bg-gradient-to-br ${study.bgGradient}`}`}
-                  style={study.id === "pm-copilot" ? { background: "linear-gradient(135deg, rgba(59,130,246,0.05) 0%, #ffffff 60%)" } : study.id === "chatly-prd" ? { background: "white" } : study.id === "figprd" ? { background: "#0b1730" } : {}}>
+                <div className={`relative aspect-[18/10] overflow-hidden ${study.id === "chatly-prd" || study.id === "pm-copilot" || study.id === "figprd" || study.id === "tenzo-product-discovery" ? "" : `bg-gradient-to-br ${study.bgGradient}`}`}
+                  style={study.id === "pm-copilot" ? { background: "linear-gradient(135deg, rgba(59,130,246,0.05) 0%, #ffffff 60%)" } : study.id === "chatly-prd" ? { background: "white" } : study.id === "figprd" ? { background: "#0b1730" } : study.id === "tenzo-product-discovery" ? { background: "#ffffff" } : {}}>
                   {study.id === "chatly-prd" ? (
                     <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
                       <ChatlyCardBanner />
@@ -61,6 +62,10 @@ export const CaseStudiesSection = () => {
                   ) : study.id === "pm-copilot" ? (
                     <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
                       <PMCopilotCardBanner />
+                    </div>
+                  ) : study.id === "tenzo-product-discovery" ? (
+                    <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
+                      <TenzoCardBanner />
                     </div>
                   ) : study.id === "figprd" ? (
                     <div className="relative w-full h-full">
@@ -136,6 +141,23 @@ export const CaseStudiesSection = () => {
                     <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full border border-black/[0.07] pointer-events-none"/>
                     <div className="relative z-10 flex items-center gap-2 pr-8">
                       <img src="/lovable-uploads/chatly-logo.webp" alt="Chatly" className="w-5 h-5 object-contain flex-shrink-0"/>
+                      <div>
+                        <h3 className="text-base font-bold text-black leading-tight">{study.title}</h3>
+                        <p className="text-xs text-slate-500 mt-0.5">{study.subtitle}</p>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-4 right-4">
+                      <div className="w-7 h-7 bg-black rounded-full flex items-center justify-center group-hover:bg-zinc-700 transition-colors duration-300">
+                        <ArrowUpRight className="w-4 h-4 text-white" />
+                      </div>
+                    </div>
+                  </div>
+                ) : study.id === "tenzo-product-discovery" ? (
+                  <div className="bg-white border-t border-slate-100 px-5 py-4 relative overflow-hidden">
+                    <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)", backgroundSize: "18px 18px" }}/>
+                    <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full border border-black/[0.07] pointer-events-none"/>
+                    <div className="relative z-10 flex items-center gap-2 pr-8">
+                      <div style={{ width: 20, height: 20, borderRadius: 6, background: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 900, color: "#fff", flexShrink: 0 }}>T</div>
                       <div>
                         <h3 className="text-base font-bold text-black leading-tight">{study.title}</h3>
                         <p className="text-xs text-slate-500 mt-0.5">{study.subtitle}</p>
