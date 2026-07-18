@@ -1,12 +1,10 @@
 import { useState, useEffect, useMemo } from "react";
 import React from "react";
-import { ArrowLeft, Clock, ArrowUp, Linkedin, Link2, Check, Tag, BookOpen, Share2, CalendarDays } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import { BlogPost, blogPosts } from "@/data/blogPosts";
+import { ArrowLeft, Clock, ArrowUp } from "lucide-react";
+import { BlogPost } from "@/data/blogPosts";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import { toast } from "sonner";
 
 // Recursively extract plain text from React children
 const extractText = (node: React.ReactNode): string => {
@@ -54,10 +52,8 @@ interface BlogPostDetailProps {
 }
 
 export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) => {
-  const navigate = useNavigate();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const [copied, setCopied] = useState(false);
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
   const [lightboxAlt, setLightboxAlt] = useState<string>('');
   const [activeId, setActiveId] = useState<string>('');
@@ -79,52 +75,10 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
     return items;
   }, [content]);
 
-  const shareUrl = typeof window !== "undefined" ? `${window.location.origin}/blog/${post.slug}` : "";
-
-  const goToX = () => {
-    const text = encodeURIComponent(`${post.title} by Kartik Bhalerao`);
-    const url = encodeURIComponent(shareUrl);
-    window.open(`https://x.com/intent/post?text=${text}&url=${url}`, "_blank", "noopener,noreferrer");
-  };
-
-  const goToLinkedIn = () => {
-    const url = encodeURIComponent(shareUrl);
-    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, "_blank", "noopener,noreferrer");
-  };
-
-  const copyLink = () => {
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(shareUrl).then(() => {
-        setCopied(true);
-        toast.success("Link copied to clipboard!");
-        setTimeout(() => setCopied(false), 2000);
-      });
-    } else {
-      const el = document.createElement("textarea");
-      el.value = shareUrl;
-      el.style.position = "fixed";
-      el.style.left = "-9999px";
-      document.body.appendChild(el);
-      el.focus();
-      el.select();
-      document.execCommand("copy");
-      document.body.removeChild(el);
-      setCopied(true);
-      toast.success("Link copied to clipboard!");
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
   const readTimeMinutes = useMemo(() => {
     const match = post.readTime.match(/(\d+)/);
     return match ? parseInt(match[1]) : 5;
   }, [post.readTime]);
-
-  const relatedPosts = useMemo(() => {
-    const sameCategory = blogPosts.filter(p => p.id !== post.id && p.category === post.category);
-    const others = blogPosts.filter(p => p.id !== post.id && p.category !== post.category);
-    return [...sameCategory, ...others].slice(0, 3);
-  }, [post.id, post.category]);
 
   const timeRemaining = useMemo(() => {
     const remaining = Math.ceil(readTimeMinutes * (1 - scrollProgress / 100));
@@ -234,31 +188,55 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
               </div>
             </div>
           )}
-
-          {/* Meta section — title only */}
-          <div className="bg-white dark:bg-zinc-900 px-6 pt-5 pb-5">
-            <h1
-              className="text-2xl sm:text-[1.85rem] font-black text-slate-900 dark:text-white leading-[1.15]"
-              style={{ letterSpacing: "-0.03em" }}
-            >
-              {post.title}
-            </h1>
-          </div>
         </div>
 
-        {/* Excerpt / lede */}
-        <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8 font-medium px-1">
-          {post.excerpt}
-        </p>
+        {/* Article body — Aspekta to match reference typography; hero banner above is untouched */}
+        <div style={{ fontFamily: "'Aspekta Variable Variable', Aspekta, ui-sans-serif, system-ui, sans-serif" }}>
 
-        {/* Section divider */}
-        <div className="h-px bg-black/8 dark:bg-white/8 mb-8" />
+        {/* Title block */}
+        <div className="mb-8 px-1">
+          <span className="inline-flex items-center px-3 py-1 rounded-full border border-slate-300 dark:border-slate-600 text-[11px] font-mono font-medium tracking-wider text-slate-500 dark:text-slate-400 uppercase mb-5">
+            {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }).toUpperCase()}
+          </span>
+          <h1
+            className="text-slate-900 dark:text-white mb-4"
+            style={{
+              fontFamily: "'Aspekta Variable Variable', Aspekta, sans-serif",
+              fontSize: "clamp(28px, 3vw, 40px)",
+              fontWeight: 1000,
+              fontVariationSettings: '"wght" 430',
+              fontFeatureSettings: '"ss05" on',
+              letterSpacing: "-0.02em",
+              lineHeight: 1.15,
+            }}
+          >
+            {post.title}
+          </h1>
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-5">
+            {post.excerpt}
+          </p>
+          {post.tags && post.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map(tag => (
+                <span
+                  key={tag}
+                  className="inline-flex items-center px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 text-[11px] font-mono font-semibold tracking-wider text-slate-500 dark:text-slate-400 uppercase"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Line after keywords */}
+          <div className="h-px bg-black/8 dark:bg-white/8 mt-6" />
+        </div>
 
         {/* 2-column: content + TOC */}
         <div className="flex gap-10 items-start">
-          <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0 max-w-2xl">
             {/* Post Content */}
-            <div className="bg-white dark:bg-zinc-800/80 rounded-2xl border-2 border-dashed border-black/10 dark:border-white/10 shadow-sm p-6 sm:p-10 mb-6">
+            <div className="mb-6">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
@@ -275,8 +253,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
               h2: ({ children }) => {
                 const id = slugify(extractText(children as React.ReactNode));
                 return (
-                  <h2 id={id} className="flex items-center gap-3 text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mt-12 mb-5 tracking-tight">
-                    <span className="inline-block w-1 h-6 rounded-full bg-black dark:bg-white flex-shrink-0" />
+                  <h2 id={id} className="scroll-mt-28 text-2xl sm:text-[28px] font-bold text-slate-900 dark:text-white mt-14 mb-4 tracking-tight leading-snug">
                     {children}
                   </h2>
                 );
@@ -284,7 +261,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
               h3: ({ children }) => {
                 const id = slugify(extractText(children as React.ReactNode));
                 return (
-                  <h3 id={id} className="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100 mt-8 mb-3 tracking-tight">
+                  <h3 id={id} className="scroll-mt-28 text-lg sm:text-xl font-bold text-slate-800 dark:text-slate-100 mt-8 mb-3 tracking-tight">
                     {children}
                   </h3>
                 );
@@ -786,153 +763,37 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
             </div>
           </div>
 
-          {/* Bold Editorial Sidebar */}
-          <aside className="hidden lg:block w-64 flex-shrink-0 sticky top-20 self-start max-h-[calc(100vh-6rem)] overflow-y-auto">
-
-            {/* ── Author widget ── */}
-            <div className="mb-3 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-800/90 p-4">
-              {/* Avatar + name row */}
-              <div className="flex items-center gap-3">
-                <div className="relative flex-shrink-0">
-                  <div className="w-11 h-11 rounded-full bg-black dark:bg-white flex items-center justify-center text-white dark:text-black font-black text-sm shadow-md">
-                    KB
-                  </div>
-                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full border-2 border-white dark:border-slate-800" />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-[13.5px] font-bold text-slate-900 dark:text-white leading-tight">Kartik Bhalerao</p>
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Product Manager</p>
-                </div>
-              </div>
-
-              {/* Divider */}
-              <div className="my-3 h-px bg-slate-100 dark:bg-slate-700" />
-
-              {/* Published + Read time as icon rows */}
-              <div className="space-y-2">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-700 flex items-center justify-center flex-shrink-0">
-                    <CalendarDays className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
-                  </div>
-                  <div>
-                    <p className="text-[9.5px] font-semibold tracking-widest text-slate-400 dark:text-slate-500 uppercase leading-none mb-0.5">Published</p>
-                    <p className="text-[12.5px] font-semibold text-slate-800 dark:text-slate-200 leading-none">
-                      {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400" />
-                  </div>
-                  <div>
-                    <p className="text-[9.5px] font-semibold tracking-widest text-slate-400 dark:text-slate-500 uppercase leading-none mb-0.5">Read Time</p>
-                    <p className="text-[12.5px] font-semibold text-blue-600 dark:text-blue-400 leading-none">{post.readTime}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* ── Topics widget ── */}
-            {post.tags && post.tags.length > 0 && (
-              <div className="mb-3 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-800/90">
-                <div className="p-4">
-                  <p className="flex items-center gap-1.5 text-[10px] font-bold tracking-[0.18em] text-slate-400 dark:text-slate-500 uppercase mb-2.5">
-                    <Tag className="w-3 h-3" /> Topics
-                  </p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {post.tags.map(tag => (
-                      <span
-                        key={tag}
-                        className="text-xs font-bold tracking-widest uppercase px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white text-slate-700 dark:text-black border border-slate-200 dark:border-white"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* ── Share widget ── */}
-            <div className="mb-3 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-800/90">
-              <div className="p-4">
-                <p className="flex items-center gap-1.5 text-[10px] font-bold tracking-[0.18em] text-slate-400 dark:text-slate-500 uppercase mb-2.5">
-                  <Share2 className="w-3 h-3" /> Share
-                </p>
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={goToX}
-                    title="Share on X"
-                    className="w-10 h-10 flex items-center justify-center rounded-xl bg-black hover:bg-slate-800 active:scale-95 transition-all duration-150"
-                  >
-                    <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                    </svg>
-                  </button>
-                  <button
-                    onClick={goToLinkedIn}
-                    title="Share on LinkedIn"
-                    className="w-10 h-10 flex items-center justify-center rounded-xl bg-[#0A66C2] hover:bg-[#0958a8] active:scale-95 transition-all duration-150"
-                  >
-                    <Linkedin className="w-4 h-4 text-white" />
-                  </button>
-                  <button
-                    onClick={copyLink}
-                    title={copied ? "Copied!" : "Copy link"}
-                    className={`w-10 h-10 flex items-center justify-center rounded-xl border-2 active:scale-95 transition-all duration-150 ${
-                      copied
-                        ? "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-500"
-                        : "border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
+          {/* On this page — plain TOC */}
+          {tocItems.length > 0 && (
+            <aside className="hidden lg:block w-56 flex-shrink-0 ml-auto sticky top-24 self-start max-h-[calc(100vh-8rem)] overflow-y-auto">
+              <p className="text-[11px] font-semibold tracking-[0.15em] text-slate-400 dark:text-slate-500 uppercase mb-3">
+                On this page
+              </p>
+              <nav className="flex flex-col">
+                {tocItems.map(item => (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }}
+                    className={`border-l-2 py-1.5 text-[13px] leading-snug transition-colors ${
+                      item.level === 3 ? "pl-7" : "pl-4"
+                    } ${
+                      activeId === item.id
+                        ? "border-black dark:border-white text-black dark:text-white font-semibold"
+                        : "border-transparent text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300"
                     }`}
                   >
-                    {copied ? <Check className="w-4 h-4" /> : <Link2 className="w-4 h-4" />}
-                  </button>
-                </div>
-              </div>
-            </div>
+                    {item.text}
+                  </a>
+                ))}
+              </nav>
+            </aside>
+          )}
+        </div>
 
-            {/* ── Related widget ── */}
-            {relatedPosts.length > 0 && (
-              <div className="rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm bg-white dark:bg-slate-800/90">
-                <div className="p-4">
-                  <p className="flex items-center gap-1.5 text-[10px] font-bold tracking-[0.18em] text-slate-400 dark:text-slate-500 uppercase mb-2.5">
-                    <BookOpen className="w-3 h-3" /> Related
-                  </p>
-                  <div className="space-y-1.5">
-                    {relatedPosts.map(p => (
-                      <button
-                        key={p.id}
-                        onClick={() => navigate(`/blog/${p.slug}`)}
-                        className="group flex items-start gap-2.5 w-full text-left rounded-xl p-2 hover:bg-slate-50 dark:hover:bg-slate-700/40 transition-colors duration-150"
-                      >
-                        {p.image && (
-                          <img
-                            src={p.image}
-                            alt={p.title}
-                            className="w-14 h-11 flex-shrink-0 rounded-lg object-cover border border-slate-200 dark:border-slate-700"
-                          />
-                        )}
-                        <p className="text-[12px] font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 leading-snug line-clamp-2 transition-colors duration-150 pt-0.5">
-                          {p.title}
-                        </p>
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* See All */}
-                  <button
-                    onClick={() => navigate("/blog")}
-                    className="mt-3 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-black dark:bg-white text-white dark:text-black text-[12px] font-semibold tracking-wide hover:opacity-75 active:scale-[0.98] transition-all duration-150"
-                  >
-                    See all posts
-                    <ArrowLeft className="w-3.5 h-3.5 rotate-180" />
-                  </button>
-                </div>
-              </div>
-            )}
-
-          </aside>
         </div>
       </div>
 
