@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowLeft, ArrowUpRight, ZoomIn, ArrowUp } from "lucide-react";
+import { ArrowLeft, ZoomIn, ArrowUp } from "lucide-react";
 import { Header } from "@/components/Header";
 import { FooterSection } from "@/components/FooterSection";
 import { getCaseStudyById } from "@/data/caseStudies";
@@ -98,37 +98,6 @@ const CaseStudyDetail = () => {
             {caseStudy.title}
           </h1>
           <p className="text-slate-500 dark:text-zinc-400 text-lg max-w-2xl mb-8">{caseStudy.subtitle}</p>
-
-          {/* Meta row */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 border-y border-black/10 dark:border-white/10 py-6 mb-10">
-            <div>
-              <p className="label-mono text-[10px] text-black/35 dark:text-white/35 mb-1.5">Focus</p>
-              <p className="text-[14px] font-semibold text-slate-900 dark:text-white">{caseStudy.tags[0]}</p>
-            </div>
-            <div>
-              <p className="label-mono text-[10px] text-black/35 dark:text-white/35 mb-1.5">Type</p>
-              <p className="text-[14px] font-semibold text-slate-900 dark:text-white">{caseStudy.tags[1] ?? caseStudy.tags[0]}</p>
-            </div>
-            <div>
-              <p className="label-mono text-[10px] text-black/35 dark:text-white/35 mb-1.5">Tools</p>
-              <p className="text-[14px] font-semibold text-slate-900 dark:text-white">{caseStudy.tools.length} used</p>
-            </div>
-            <div>
-              <p className="label-mono text-[10px] text-black/35 dark:text-white/35 mb-1.5">Live</p>
-              {caseStudy.externalLink ? (
-                <a
-                  href={caseStudy.externalLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[14px] font-semibold text-slate-900 dark:text-white hover:opacity-70 transition-opacity"
-                >
-                  View <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
-              ) : (
-                <p className="text-[14px] font-semibold text-slate-400 dark:text-zinc-500">Internal</p>
-              )}
-            </div>
-          </div>
 
           {/* Hero Image / Banner */}
           {id === "chatly-prd" ? (
