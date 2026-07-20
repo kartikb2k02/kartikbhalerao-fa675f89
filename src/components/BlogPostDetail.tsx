@@ -1,10 +1,14 @@
 import { useState, useEffect, useMemo } from "react";
 import React from "react";
-import { ArrowLeft, Clock, ArrowUp } from "lucide-react";
-import { BlogPost } from "@/data/blogPosts";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft, Clock, ArrowUp, ArrowRight } from "lucide-react";
+import { BlogPost, blogPosts } from "@/data/blogPosts";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+
+const formatDate = (dateStr: string) =>
+  new Date(dateStr).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 
 // Recursively extract plain text from React children
 const extractText = (node: React.ReactNode): string => {
@@ -52,11 +56,29 @@ interface BlogPostDetailProps {
 }
 
 export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) => {
+  const navigate = useNavigate();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
   const [lightboxAlt, setLightboxAlt] = useState<string>('');
   const [activeId, setActiveId] = useState<string>('');
+
+  // Related posts — same category first (by shared tag count), then recent posts to fill up to 3
+  const relatedPosts = useMemo(() => {
+    const others = blogPosts.filter(p => p.id !== post.id);
+    const sameCategory = others
+      .filter(p => p.category === post.category)
+      .sort((a, b) => {
+        const sharedA = a.tags.filter(t => post.tags.includes(t)).length;
+        const sharedB = b.tags.filter(t => post.tags.includes(t)).length;
+        if (sharedB !== sharedA) return sharedB - sharedA;
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      });
+    const rest = others
+      .filter(p => p.category !== post.category)
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    return [...sameCategory, ...rest].slice(0, 3);
+  }, [post]);
 
   const tocItems = useMemo(() => {
     const lines = content.split('\n');
@@ -132,17 +154,11 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
           <div className="relative w-8 h-8 flex-shrink-0">
             <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 32 32">
               <circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-slate-100 dark:text-zinc-700" />
-              <circle cx="16" cy="16" r="12" fill="none" stroke="url(#pillRingGrad)" strokeWidth="2.5" strokeLinecap="round"
+              <circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
                 strokeDasharray={`${2 * Math.PI * 12}`}
                 strokeDashoffset={`${2 * Math.PI * 12 * (1 - scrollProgress / 100)}`}
-                className="transition-all duration-150 ease-out"
+                className="text-black dark:text-white transition-all duration-150 ease-out"
               />
-              <defs>
-                <linearGradient id="pillRingGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#3b82f6" />
-                  <stop offset="100%" stopColor="#8b5cf6" />
-                </linearGradient>
-              </defs>
             </svg>
             <Clock className="absolute inset-0 m-auto w-3 h-3 text-slate-400 dark:text-slate-500" />
           </div>
@@ -151,7 +167,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
             <p className="text-[12px] font-bold text-slate-800 dark:text-white leading-tight">
               {timeRemaining > 0 ? `${timeRemaining} min left` : "Finished!"}
             </p>
-            <p className="text-[10px] font-black leading-tight bg-gradient-to-r from-blue-500 to-violet-500 bg-clip-text text-transparent">
+            <p className="text-[10px] font-black leading-tight text-black dark:text-white">
               {Math.round(scrollProgress)}% read
             </p>
           </div>
@@ -795,6 +811,45 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
         </div>
 
         </div>
+
+        {/* Related articles — same category first, then most recent */}
+        {relatedPosts.length > 0 && (
+          <div className="mt-16 max-w-2xl">
+            <div className="flex items-center gap-3 mb-6">
+              <p className="label-mono text-[11px] text-slate-400 dark:text-slate-500 whitespace-nowrap">
+                Similar Topics
+              </p>
+              <div className="h-px flex-1 bg-black/8 dark:bg-white/8" />
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {relatedPosts.map(related => (
+                <article
+                  key={related.id}
+                  onClick={() => navigate(`/blog/${related.slug}`)}
+                  className="group cursor-pointer border border-black/10 dark:border-white/10 hover:-translate-y-1 transition-transform duration-200 flex flex-col"
+                >
+                  <div className="px-4 py-4 flex flex-col flex-1 gap-2.5">
+                    <span className="label-mono self-start px-2 py-0.5 bg-black/5 dark:bg-white/6 text-[9px] text-black/45 dark:text-white/45">
+                      {related.category === 'ai' ? 'AI' : related.category.charAt(0).toUpperCase() + related.category.slice(1)}
+                    </span>
+                    <h3 className="font-bold text-slate-900 dark:text-white text-[14px] leading-snug line-clamp-2 group-hover:opacity-75 transition-opacity duration-200">
+                      {related.title}
+                    </h3>
+                    <div className="flex items-center justify-between mt-auto pt-2 border-t border-black/6 dark:border-white/6">
+                      <div className="label-mono flex items-center gap-1.5 text-[10px] text-black/30 dark:text-white/30">
+                        <Clock className="w-3 h-3" />
+                        <span>{related.readTime}</span>
+                        <span className="w-1 h-1 rounded-full bg-black/15 dark:bg-white/15" />
+                        <span>{formatDate(related.date)}</span>
+                      </div>
+                      <ArrowRight className="w-3.5 h-3.5 text-black/25 dark:text-white/25 group-hover:translate-x-0.5 group-hover:text-black dark:group-hover:text-white transition-all duration-200" />
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Lightbox */}
@@ -827,36 +882,27 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
       {/* Back to Top */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-6 z-50 group transition-all duration-500 ${
+        className={`fixed bottom-8 right-6 z-50 group transition-all duration-500 hover:scale-105 active:scale-95 ${
           showBackToTop ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-90 pointer-events-none"
         }`}
         title="Back to top"
       >
         <div className="relative w-14 h-14">
-          {/* Glow */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 to-violet-500 opacity-20 blur-md group-hover:opacity-40 transition-opacity duration-300" />
-          {/* Ring SVG */}
+          {/* Progress ring */}
           <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 56 56">
             <circle cx="28" cy="28" r="24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-slate-200 dark:text-slate-700" />
             <circle
               cx="28" cy="28" r="24" fill="none"
-              stroke="url(#backTopGrad)" strokeWidth="2.5" strokeLinecap="round"
+              stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
               strokeDasharray={`${2 * Math.PI * 24}`}
               strokeDashoffset={`${2 * Math.PI * 24 * (1 - scrollProgress / 100)}`}
-              className="transition-all duration-150 ease-out"
+              className="text-black dark:text-white transition-all duration-150 ease-out"
             />
-            <defs>
-              <linearGradient id="backTopGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#3b82f6" />
-                <stop offset="50%" stopColor="#8b5cf6" />
-                <stop offset="100%" stopColor="#06b6d4" />
-              </linearGradient>
-            </defs>
           </svg>
-          {/* Inner */}
-          <div className="absolute inset-[5px] rounded-full bg-white dark:bg-zinc-900 shadow-md border border-black/5 dark:border-white/5 flex flex-col items-center justify-center gap-0.5 group-hover:bg-slate-50 dark:group-hover:bg-zinc-800 transition-colors duration-200">
-            <ArrowUp className="w-4 h-4 text-slate-700 dark:text-slate-200 group-hover:-translate-y-0.5 transition-transform duration-300" />
-            <span className="text-[8px] font-black text-slate-400 dark:text-slate-500 leading-none tracking-wide uppercase">Top</span>
+          {/* Inner — solid fill so the button reads as clickable at a glance */}
+          <div className="absolute inset-[5px] rounded-full bg-black dark:bg-white shadow-lg flex flex-col items-center justify-center gap-0.5 group-hover:opacity-80 transition-opacity duration-200">
+            <ArrowUp className="w-4 h-4 text-white dark:text-black group-hover:-translate-y-0.5 transition-transform duration-300" />
+            <span className="text-[8px] font-black text-white/70 dark:text-black/70 leading-none tracking-wide uppercase">Top</span>
           </div>
         </div>
       </button>
