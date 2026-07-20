@@ -11,11 +11,11 @@ export const HeroSection = () => {
 
         {/* Headline */}
         <h1
-          className="font-black leading-[1.15] tracking-tight text-center w-full"
-          style={{ fontSize: 'clamp(26px, 4.2vw, 60px)' }}
+          className="heading-display leading-[1.05] text-center w-full"
+          style={{ fontSize: 'clamp(28px, 4.6vw, 64px)' }}
         >
-          <span className="block text-black dark:text-white whitespace-nowrap">Building Products That</span>
-          <span className="block bg-gradient-to-r from-black to-gray-400 dark:from-white dark:to-gray-500 bg-clip-text text-transparent">
+          <span className="block text-black/40 dark:text-white/40 whitespace-nowrap">Building Products That</span>
+          <span className="block text-black dark:text-white">
             Solve Real Problems
           </span>
         </h1>
@@ -48,22 +48,17 @@ export const HeroSection = () => {
           ))}
         </div>
 
-        {/* Tagline */}
-        <p className="text-[14px] sm:text-[15px] font-semibold text-black/70 dark:text-white/70 tracking-wide">
-          PM with a builder mentality.
-        </p>
-
         {/* Buttons */}
         <div className="flex gap-3">
           <button
             onClick={() => navigate('/about')}
-            className="px-6 py-2.5 sm:px-7 sm:py-3 text-[13px] sm:text-[14px] font-semibold rounded-xl bg-black dark:bg-white text-white dark:text-black shadow-sm hover:shadow-md hover:opacity-80 transition-all duration-200"
+            className="label-mono px-6 py-2.5 sm:px-7 sm:py-3 text-[12px] sm:text-[13px] bg-black dark:bg-white text-white dark:text-black hover:opacity-80 transition-all duration-200"
           >
             About Me
           </button>
           <button
             onClick={() => navigate('/builds')}
-            className="px-6 py-2.5 sm:px-7 sm:py-3 text-[13px] sm:text-[14px] font-semibold rounded-xl border border-black/70 dark:border-white/70 text-black/70 dark:text-white/70 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black hover:border-transparent transition-all duration-200"
+            className="label-mono px-6 py-2.5 sm:px-7 sm:py-3 text-[12px] sm:text-[13px] border border-black/70 dark:border-white/70 text-black/70 dark:text-white/70 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black hover:border-transparent transition-all duration-200"
           >
             View My Builds
           </button>

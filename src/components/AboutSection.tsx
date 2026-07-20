@@ -9,22 +9,11 @@ const GlassCard = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className={cn("glass-card-lg rounded-2xl transition-all duration-300", className)}>
+    <div className={cn("border border-black/10 dark:border-white/10 bg-white dark:bg-black transition-colors duration-300", className)}>
       {children}
     </div>
   );
 };
-
-const Bullet = ({ children }: { children: React.ReactNode }) => (
-  <li className="flex items-start gap-3">
-    <span
-      className="mt-[0.55rem] h-2 w-2 rounded-full flex-none"
-      style={{ background: "linear-gradient(135deg, #22c55e, #3b82f6)" }}
-      aria-hidden="true"
-    />
-    <span className="text-slate-600 dark:text-slate-300 leading-relaxed">{children}</span>
-  </li>
-);
 
 export const AboutSection = () => {
   return (
@@ -81,7 +70,7 @@ export const AboutSection = () => {
 
           {/* What I'm Currently Exploring */}
           <GlassCard className="p-10 sm:p-12">
-            <h2 className="text-3xl font-black tracking-tight mb-2 text-slate-900 dark:text-white">
+            <h2 className="heading-display text-3xl mb-2 text-slate-900 dark:text-white">
               What I'm Currently Exploring
             </h2>
             <p className="text-black/40 dark:text-white/40 mt-2 mb-8">
@@ -117,9 +106,9 @@ export const AboutSection = () => {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="glass-sm group relative rounded-xl px-6 py-5 hover:-translate-y-1 overflow-hidden cursor-default"
+                  className="group relative border border-black/10 dark:border-white/10 px-6 py-5 hover:-translate-y-1 transition-transform duration-200 overflow-hidden cursor-default"
                 >
-                  <p className="relative text-[11px] font-semibold tracking-widest uppercase text-black/35 dark:text-white/35 group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors duration-200 mb-2">{item.label}</p>
+                  <p className="label-mono relative text-[11px] text-black/35 dark:text-white/35 group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors duration-200 mb-2">{item.label}</p>
                   <h3 className="relative font-bold text-slate-900 dark:text-white text-[15px] mb-1">{item.title}</h3>
                   <p className="relative text-sm text-black/45 dark:text-white/45 leading-relaxed">{item.desc}</p>
                 </div>
@@ -129,7 +118,7 @@ export const AboutSection = () => {
 
           {/* Experience Section */}
           <GlassCard className="p-10 sm:p-12">
-            <h2 className="text-3xl font-black tracking-tight mb-10 text-slate-900 dark:text-white">
+            <h2 className="heading-display text-3xl mb-10 text-slate-900 dark:text-white">
               Work Experience
             </h2>
 
@@ -141,16 +130,16 @@ export const AboutSection = () => {
                 {/* Header */}
                 <header className="flex flex-wrap items-start justify-between gap-3 mb-6">
                   <div>
-                    <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">Associate Product Manager</h3>
+                    <h3 className="heading-display text-2xl text-slate-900 dark:text-white">Associate Product Manager</h3>
                     <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-0.5">
                       Decision Machine &nbsp;·&nbsp; Pune, India
                     </p>
-                    <span className="inline-flex items-center mt-2 text-xs font-bold px-3 py-1 rounded-md bg-black text-white dark:bg-white dark:text-black shadow-sm border border-black dark:border-white">
+                    <span className="label-mono inline-flex items-center mt-2 text-[11px] px-3 py-1 bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white">
                       Fintech SaaS Product
                     </span>
                   </div>
                   <div className="flex flex-col items-end gap-1.5">
-                    <span className="text-xs font-semibold text-white px-3 py-1 rounded-full bg-black dark:bg-white dark:text-black">
+                    <span className="label-mono text-[11px] text-white px-3 py-1 bg-black dark:bg-white dark:text-black">
                       Current
                     </span>
                     <span className="text-xs text-slate-400 dark:text-slate-500 font-medium">June 2024 – Present</span>
@@ -221,32 +210,24 @@ export const AboutSection = () => {
                   ].map((aspect) => (
                     <div
                       key={aspect.label}
-                      className="glass-sm rounded-xl px-5 py-4 transition-all duration-200 hover:-translate-y-0.5"
+                      className="border border-black/10 dark:border-white/10 px-5 py-4 transition-transform duration-200 hover:-translate-y-0.5"
                     >
                       {/* Aspect label */}
                       <div className="flex items-center gap-2.5 mb-3">
-                        <span className="w-[3px] h-4 rounded-full flex-shrink-0 bg-black dark:bg-white" />
-                        <span className="text-xs font-bold tracking-widest uppercase px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white text-slate-700 dark:text-black border border-slate-200 dark:border-white">
+                        <span className="w-[3px] h-4 flex-shrink-0 bg-black dark:bg-white" />
+                        <span className="label-mono text-[11px] px-2.5 py-1 bg-slate-100 dark:bg-white text-slate-700 dark:text-black border border-slate-200 dark:border-white">
                           {aspect.label}
                         </span>
                       </div>
 
                       {/* Bullet points */}
                       <ul className="space-y-2">
-                        {aspect.points.map((point, i) => {
-                          const dotColors = [
-                            "bg-black dark:bg-white",
-                            "bg-black dark:bg-white",
-                            "bg-black dark:bg-white",
-                            "bg-black dark:bg-white",
-                          ];
-                          return (
-                          <li key={i} className="glass-bullet flex items-start gap-2.5 text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed rounded-lg px-3 py-2">
-                            <span className={`mt-[0.45rem] w-1.5 h-1.5 rounded-full flex-shrink-0 ${dotColors[i % dotColors.length]}`} />
+                        {aspect.points.map((point, i) => (
+                          <li key={i} className="flex items-start gap-2.5 text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed px-3 py-2">
+                            <span className="mt-[0.45rem] w-1.5 h-1.5 flex-shrink-0 bg-black dark:bg-white" />
                             {point}
                           </li>
-                          );
-                        })}
+                        ))}
                       </ul>
                     </div>
                   ))}
@@ -257,9 +238,9 @@ export const AboutSection = () => {
                   {["Fintech", "B2C Product", "User Research", "PRD Writing", "Mixpanel", "A/B Testing", "Personal Finance", "AI Integration", "Product Analytics"].map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-semibold bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white hover:opacity-70 transition-opacity duration-150 cursor-default"
+                      className="label-mono inline-flex items-center gap-1 px-3 py-1.5 text-[11px] bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white hover:opacity-70 transition-opacity duration-150 cursor-default"
                     >
-                      <span className="opacity-50 font-normal">#</span>{tag}
+                      <span className="opacity-50 normal-case">#</span>{tag}
                     </span>
                   ))}
                 </div>
@@ -275,16 +256,16 @@ export const AboutSection = () => {
                 {/* Header */}
                 <header className="flex flex-wrap items-start justify-between gap-3 mb-6">
                   <div>
-                    <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">Product Manager</h3>
+                    <h3 className="heading-display text-2xl text-slate-900 dark:text-white">Product Manager</h3>
                     <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-0.5">
                       Ocius &nbsp;·&nbsp; Remote
                     </p>
-                    <span className="inline-flex items-center mt-2 text-xs font-bold px-3 py-1 rounded-md bg-black text-white dark:bg-white dark:text-black shadow-sm border border-black dark:border-white">
+                    <span className="label-mono inline-flex items-center mt-2 text-[11px] px-3 py-1 bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white">
                       HealthTech Product
                     </span>
                   </div>
                   <div className="flex flex-col items-end gap-1.5">
-                    <span className="text-xs font-semibold text-white px-3 py-1 rounded-full bg-black dark:bg-white dark:text-black">
+                    <span className="label-mono text-[11px] text-white px-3 py-1 bg-black dark:bg-white dark:text-black">
                       Completed
                     </span>
                     <span className="text-xs text-slate-400 dark:text-slate-500 font-medium">Jan 2024 – May 2024</span>
@@ -292,7 +273,7 @@ export const AboutSection = () => {
                 </header>
 
                 {/* Points card */}
-                <div className="glass-sm rounded-xl px-5 py-4 transition-all duration-200">
+                <div className="border border-black/10 dark:border-white/10 px-5 py-4">
                   <ul className="space-y-2">
                     {[
                       "Took ownership of building an internal analytics dashboard to help sales and marketing teams track campaign performance and lead conversions.",
@@ -300,21 +281,12 @@ export const AboutSection = () => {
                       "Translated scattered requests into clear user stories and wireframes to speed up dev collaboration.",
                       "Set up a lightweight feedback loop with stakeholders to ship faster and iterate based on real usage.",
                       "Automated recurring reports with SQL to replace manual Excel-heavy workflows.",
-                    ].map((point, i) => {
-                      const dotColors = [
-                        "bg-black dark:bg-white",
-                        "bg-black dark:bg-white",
-                        "bg-black dark:bg-white",
-                        "bg-black dark:bg-white",
-                        "bg-black dark:bg-white",
-                      ];
-                      return (
-                      <li key={i} className="glass-bullet flex items-start gap-2.5 text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed rounded-lg px-3 py-2">
-                        <span className={`mt-[0.45rem] w-1.5 h-1.5 rounded-full flex-shrink-0 ${dotColors[i % dotColors.length]}`} />
+                    ].map((point, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed px-3 py-2">
+                        <span className="mt-[0.45rem] w-1.5 h-1.5 flex-shrink-0 bg-black dark:bg-white" />
                         {point}
                       </li>
-                      );
-                    })}
+                    ))}
                   </ul>
                 </div>
 
@@ -323,9 +295,9 @@ export const AboutSection = () => {
                   {["Analytics Dashboard", "Cross-functional", "Data Analytics", "User Stories", "Wireframing", "SQL", "Stakeholders", "Process Automation", "HealthTech"].map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-semibold bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white hover:opacity-70 transition-opacity duration-150 cursor-default"
+                      className="label-mono inline-flex items-center gap-1 px-3 py-1.5 text-[11px] bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white hover:opacity-70 transition-opacity duration-150 cursor-default"
                     >
-                      <span className="opacity-50 font-normal">#</span>{tag}
+                      <span className="opacity-50 normal-case">#</span>{tag}
                     </span>
                   ))}
                 </div>
@@ -340,7 +312,7 @@ export const AboutSection = () => {
             Want to discuss product, ideas, or opportunities?
           </p>
           <button
-            className="px-7 py-3 text-[14px] font-semibold rounded-xl bg-black dark:bg-white text-white dark:text-black shadow-sm hover:shadow-md hover:opacity-80 transition-all duration-200"
+            className="label-mono px-7 py-3 text-[13px] bg-black dark:bg-white text-white dark:text-black hover:opacity-80 transition-opacity duration-200"
             onClick={() => window.open("https://www.linkedin.com/in/kartik-bhalerao/", "_blank")}
           >
             Let's Talk

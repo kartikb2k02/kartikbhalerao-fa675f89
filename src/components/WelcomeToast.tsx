@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { X } from 'lucide-react';
+import { X, ArrowRight, Briefcase, TrendingUp, Users } from 'lucide-react';
 
 export const WelcomeToast = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -47,8 +47,8 @@ export const WelcomeToast = () => {
 
       {/* Card */}
       <div
-        className={`relative pointer-events-auto w-full max-w-[360px] bg-white dark:bg-[#1a1a1a] border border-black/8 dark:border-white/8 rounded-2xl shadow-xl overflow-hidden transition-all duration-400 ${
-          isAnimating ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-4'
+        className={`relative pointer-events-auto w-full max-w-[380px] bg-white dark:bg-[#161616] border border-black/8 dark:border-white/10 rounded-3xl shadow-2xl shadow-black/10 dark:shadow-black/40 overflow-hidden transition-all duration-500 ease-out ${
+          isAnimating ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-6'
         }`}
       >
         {/* Close */}
@@ -60,56 +60,69 @@ export const WelcomeToast = () => {
         </button>
 
         {/* Content */}
-        <div className="px-7 pt-8 pb-7 flex flex-col items-center text-center gap-5">
+        <div className="relative px-7 pt-9 pb-7 flex flex-col items-center text-center gap-5">
 
-          {/* Emoji icon */}
-          <div className="w-14 h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center text-2xl shadow-sm">
-            👋
+          {/* Avatar with status badge */}
+          <div className="relative">
+            <div className="w-[72px] h-[72px] rounded-full p-[2.5px] bg-black/10 dark:bg-white/15 shadow-sm">
+              <img
+                src="/lovable-uploads/profile-header.webp"
+                alt="Kartik Bhalerao"
+                className="w-full h-full rounded-full object-cover border-2 border-white dark:border-[#161616]"
+              />
+            </div>
+            {/* Wave badge */}
+            <span className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-white dark:bg-[#1f1f1f] border-2 border-white dark:border-[#161616] shadow-md flex items-center justify-center text-[15px]">
+              👋
+            </span>
           </div>
 
           {/* Text */}
           <div className="space-y-2">
-            <h2 className="text-[21px] font-black tracking-tight text-black dark:text-white leading-tight">
+            <h2 className="text-[22px] font-black tracking-tight text-black dark:text-white leading-tight">
               Hey, welcome!
             </h2>
-            <p className="text-[13.5px] text-black/45 dark:text-white/45 leading-relaxed max-w-[260px] mx-auto">
+            <p className="text-[13.5px] text-black/45 dark:text-white/45 leading-relaxed max-w-[270px] mx-auto">
               I'm{' '}
-              <span className="font-bold bg-gradient-to-r from-black to-gray-500 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
+              <span className="font-bold text-black dark:text-white">
                 Kartik
               </span>
               {' '}— a Product Manager who turns user problems into products people actually use.
             </p>
           </div>
 
-          {/* Stats row — matches hero highlight cards style */}
-          <div className="flex w-full divide-x divide-black/10 dark:divide-white/10 border border-black/8 dark:border-white/8 rounded-xl overflow-hidden">
+          {/* Stats row — icon-led for extra polish */}
+          <div className="flex w-full divide-x divide-black/8 dark:divide-white/10 border border-black/8 dark:border-white/10 rounded-2xl overflow-hidden">
             {[
-              { value: '2.5+', label: 'Years PM' },
-              { value: '3×', label: 'Avg ROI' },
-              { value: '20+', label: 'Interviews' },
-            ].map((stat, i) => (
-              <div key={i} className="flex-1 flex flex-col items-center gap-0.5 py-3 bg-black/[0.02] dark:bg-white/[0.03]">
-                <span className="text-[16px] font-black text-black dark:text-white leading-none">{stat.value}</span>
-                <span className="text-[10.5px] text-black/35 dark:text-white/35 font-medium">{stat.label}</span>
+              { icon: Briefcase, value: '2.5+', label: 'Years PM' },
+              { icon: TrendingUp, value: '3×', label: 'Avg ROI' },
+              { icon: Users, value: '20+', label: 'Interviews' },
+            ].map(({ icon: Icon, value, label }, i) => (
+              <div key={i} className="flex-1 flex flex-col items-center gap-1 py-3.5 bg-black/[0.02] dark:bg-white/[0.03]">
+                <Icon className="w-3.5 h-3.5 text-black/30 dark:text-white/30" strokeWidth={2} />
+                <span className="text-[16px] font-black text-black dark:text-white leading-none">{value}</span>
+                <span className="text-[10.5px] text-black/35 dark:text-white/35 font-medium">{label}</span>
               </div>
             ))}
           </div>
 
-          {/* Tags — matches hero tag pill style */}
+          {/* Tags */}
           <div className="flex items-center gap-2 flex-wrap justify-center">
-            {['AI Products', 'Solo-built Tools', 'Growth Strategy'].map((tag) => (
-              <span key={tag} className="px-3 py-1 text-[11px] font-medium rounded-md border border-black/20 dark:border-white/20 text-black/55 dark:text-white/55 tracking-wide">
-                {tag}
+            {['AI Products', 'Solo-built Tools', 'Growth Strategy'].map((label) => (
+              <span key={label} className="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-medium rounded-full border border-black/12 dark:border-white/15 text-black/55 dark:text-white/55 tracking-wide">
+                <span className="w-1.5 h-1.5 rounded-full bg-black/30 dark:bg-white/40" />
+                {label}
               </span>
             ))}
           </div>
 
-          {/* CTA — matches hero primary button */}
+          {/* CTA */}
           <button
             onClick={handleClose}
-            className="w-full py-3 rounded-xl text-[13.5px] font-semibold bg-black dark:bg-white text-white dark:text-black hover:opacity-75 transition-opacity duration-200"
+            className="group w-full flex items-center justify-center gap-2 py-3 rounded-xl text-[13.5px] font-semibold bg-black dark:bg-white text-white dark:text-black hover:opacity-80 active:scale-[0.99] transition-all duration-200"
           >
-            Let's go →
+            Let's go
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
           </button>
         </div>
 

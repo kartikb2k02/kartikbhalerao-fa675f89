@@ -162,7 +162,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="mb-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-white/70 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/15 text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-900 dark:hover:text-white hover:border-black/20 dark:hover:border-white/30 active:scale-95 transition-all duration-200 group"
+          className="label-mono mb-6 inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/70 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/15 text-slate-500 dark:text-slate-400 text-[12px] hover:text-slate-900 dark:hover:text-white hover:border-black/20 dark:hover:border-white/30 active:scale-95 transition-all duration-200 group"
         >
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform duration-200" />
           All posts
@@ -182,7 +182,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               {/* Category pill */}
               <div className="absolute top-4 left-4 z-10">
-                <span className="px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-black tracking-[0.2em] uppercase">
+                <span className="label-mono px-2.5 py-1 bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px]">
                   {post.category === 'ai' ? 'AI' : post.category}
                 </span>
               </div>
@@ -195,7 +195,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
 
         {/* Title block */}
         <div className="mb-8 px-1">
-          <span className="inline-flex items-center px-3 py-1 rounded-full border border-slate-300 dark:border-slate-600 text-[11px] font-mono font-medium tracking-wider text-slate-500 dark:text-slate-400 uppercase mb-5">
+          <span className="label-mono inline-flex items-center px-3 py-1 border border-slate-300 dark:border-slate-600 text-[11px] text-slate-500 dark:text-slate-400 mb-5">
             {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }).toUpperCase()}
           </span>
           <h1
@@ -220,7 +220,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
               {post.tags.map(tag => (
                 <span
                   key={tag}
-                  className="inline-flex items-center px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 text-[11px] font-mono font-semibold tracking-wider text-slate-500 dark:text-slate-400 uppercase"
+                  className="label-mono inline-flex items-center px-3 py-1.5 border border-slate-200 dark:border-slate-700 text-[11px] text-slate-500 dark:text-slate-400"
                 >
                   {tag}
                 </span>
@@ -765,8 +765,8 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
 
           {/* On this page — plain TOC */}
           {tocItems.length > 0 && (
-            <aside className="hidden lg:block w-56 flex-shrink-0 ml-auto sticky top-24 self-start max-h-[calc(100vh-8rem)] overflow-y-auto">
-              <p className="text-[11px] font-semibold tracking-[0.15em] text-slate-400 dark:text-slate-500 uppercase mb-3">
+            <aside className="no-scrollbar hidden lg:block w-56 flex-shrink-0 ml-auto sticky top-24 self-start max-h-[calc(100vh-8rem)] overflow-y-auto">
+              <p className="label-mono text-[11px] text-slate-400 dark:text-slate-500 mb-3">
                 On this page
               </p>
               <nav className="flex flex-col">

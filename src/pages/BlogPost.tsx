@@ -68,7 +68,7 @@ const BlogPost = () => {
       <meta name="twitter:description" content={post.excerpt} />
       <meta name="twitter:image" content={ogImage} />
     </Helmet>
-    <div className="min-h-screen w-full text-foreground relative bg-[#FEFDF9] dark:bg-[#111111]">
+    <div className="min-h-screen w-full text-foreground relative bg-white dark:bg-black">
       <div className="relative z-10">
         <Header scrollProgress={scrollProgress} />
         <div className="pt-16">

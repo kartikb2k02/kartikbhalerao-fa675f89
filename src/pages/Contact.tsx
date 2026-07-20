@@ -7,15 +7,15 @@ export default function Contact() {
   return (
     <>
       <Header />
-      <div className="min-h-screen w-full bg-[#FEFDF9] dark:bg-[#111111]">
+      <div className="min-h-screen w-full bg-white dark:bg-black">
         <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
 
           {/* Page header */}
           <div className="text-center mb-10">
-            <h1
-              className="text-[40px] sm:text-[52px] font-black text-black dark:text-white leading-[0.95] tracking-tight"
-              style={{ fontFamily: "'Fraunces', serif" }}
-            >
+            <span className="label-mono text-[13px] text-black/50 dark:text-white/50 mb-2 block">
+              Contact
+            </span>
+            <h1 className="heading-display text-[40px] sm:text-[52px] text-black dark:text-white leading-[0.95]">
               Get in touch
             </h1>
             <p className="text-[14px] text-black/42 dark:text-white/42 mt-3 leading-[1.75]">

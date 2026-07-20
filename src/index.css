@@ -10,6 +10,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -105,7 +106,7 @@
 
 @layer base {
   :root {
-    --background: 225 40% 98%;
+    --background: 0 0% 100%;
     --foreground: 222 47% 11%;
     --card: 210 40% 98%;
     --card-foreground: 222 47% 11%;
@@ -207,6 +208,27 @@
 }
 
 @layer utilities {
+  /* ── Agnost-style system: mono labels + tight display headlines ── */
+  .label-mono {
+    font-family: "Chivo Mono", ui-monospace, monospace;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .heading-display {
+    font-family: "Aspekta", "Inter", sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   .animate-float {
     animation: float 8s ease-in-out infinite;
   }

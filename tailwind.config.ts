@@ -239,6 +239,18 @@ export default {
     				'Liberation Mono',
     				'Courier New',
     				'monospace'
+    			],
+    			label: [
+    				'Chivo Mono',
+    				'ui-monospace',
+    				'SFMono-Regular',
+    				'Menlo',
+    				'monospace'
+    			],
+    			display: [
+    				'Aspekta',
+    				'Inter',
+    				'sans-serif'
     			]
     		}
     	}
