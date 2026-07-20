@@ -238,9 +238,9 @@ export const AboutSection = () => {
                   {["Fintech", "B2C Product", "User Research", "PRD Writing", "Mixpanel", "A/B Testing", "Personal Finance", "AI Integration", "Product Analytics"].map((tag) => (
                     <span
                       key={tag}
-                      className="label-mono inline-flex items-center gap-1 px-3 py-1.5 text-[11px] bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white hover:opacity-70 transition-opacity duration-150 cursor-default"
+                      className="label-mono inline-flex items-center text-[12px] text-black/70 dark:text-white/70 border border-black/25 dark:border-white/25 px-2.5 py-1"
                     >
-                      <span className="opacity-50 normal-case">#</span>{tag}
+                      #{tag.replace(/\s+/g, '')}
                     </span>
                   ))}
                 </div>
@@ -295,9 +295,9 @@ export const AboutSection = () => {
                   {["Analytics Dashboard", "Cross-functional", "Data Analytics", "User Stories", "Wireframing", "SQL", "Stakeholders", "Process Automation", "HealthTech"].map((tag) => (
                     <span
                       key={tag}
-                      className="label-mono inline-flex items-center gap-1 px-3 py-1.5 text-[11px] bg-black text-white dark:bg-white dark:text-black border border-black dark:border-white hover:opacity-70 transition-opacity duration-150 cursor-default"
+                      className="label-mono inline-flex items-center text-[12px] text-black/70 dark:text-white/70 border border-black/25 dark:border-white/25 px-2.5 py-1"
                     >
-                      <span className="opacity-50 normal-case">#</span>{tag}
+                      #{tag.replace(/\s+/g, '')}
                     </span>
                   ))}
                 </div>

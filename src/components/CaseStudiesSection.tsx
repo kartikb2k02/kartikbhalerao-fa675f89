@@ -23,6 +23,7 @@ const shortNames: Record<string, string> = {
   "ether-prd": "Ether",
 };
 
+
 export const CaseStudiesSection = () => {
   const navigate = useNavigate();
 
@@ -93,23 +94,23 @@ export const CaseStudiesSection = () => {
               {/* Content below image — exact reference rhythm: 16px pt, 16px after title row, 32px before tag */}
               <div className="pt-4">
                 <div className="flex items-center justify-between gap-4 mb-4">
-                  <h3 className="text-[36px] font-normal leading-[1.2] text-black dark:text-white truncate transition-colors duration-300 group-hover:text-blue-600">
+                  <h3 className="heading-display text-[30px] leading-[1.15] text-black dark:text-white truncate transition-colors duration-300 group-hover:text-blue-600">
                     {shortNames[study.id] ?? study.title}
                   </h3>
                   <a
                     onClick={(e) => { e.preventDefault(); handleCardClick(study.id); }}
                     href={`/builds/${study.id}`}
-                    className="shrink-0 inline-flex items-center rounded-lg bg-black dark:bg-white text-white dark:text-black text-[18px] font-normal px-[18px] py-[10px] hover:opacity-80 transition-opacity cursor-pointer"
+                    className="label-mono shrink-0 inline-flex items-center px-6 py-2.5 text-[12px] border border-black/70 dark:border-white/70 text-black/70 dark:text-white/70 group-hover:bg-black dark:group-hover:bg-white group-hover:text-white dark:group-hover:text-black group-hover:border-transparent transition-all duration-200 cursor-pointer"
                   >
                     View Case Study
                   </a>
                 </div>
 
-                <p className="text-[18px] font-normal leading-[1.5] text-[#575757] dark:text-white/50 max-w-2xl line-clamp-2">
+                <p className="text-[18px] font-normal leading-[1.5] text-[#575757] dark:text-white/50 max-w-2xl line-clamp-2 mb-5">
                   {study.overview}
                 </p>
 
-                <span className="text-[16px] font-normal mt-8 block text-blue-600 dark:text-blue-400">
+                <span className="label-mono inline-flex items-center text-[12px] text-blue-600 dark:text-blue-400 border border-blue-600/25 dark:border-blue-400/25 px-2.5 py-1">
                   #{study.tags[0].replace(/\s+/g, '')}
                 </span>
               </div>

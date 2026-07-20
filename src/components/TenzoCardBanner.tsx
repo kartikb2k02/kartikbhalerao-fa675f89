@@ -73,6 +73,20 @@ export const TenzoCardBanner = () => (
           background: "#f5f5f5",
         }}>PRODUCT ASSIGNMENT</span>
       </div>
+
+      {/* Hero stat callout — the case study's headline proof point */}
+      <div className="flex items-center gap-1.5" style={{
+        background: "#f0fdf4",
+        border: "1px solid rgba(22,163,74,0.22)",
+        borderRadius: 20,
+        padding: "3px 9px 3px 8px",
+        boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+      }}>
+        <span style={{ fontSize: 9.5, fontWeight: 800, color: "#166534", letterSpacing: "-0.01em" }}>18%→&lt;5%</span>
+        <span style={{ fontSize: 6.5, fontWeight: 700, color: "rgba(22,101,52,0.55)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+          Cancellations
+        </span>
+      </div>
     </div>
 
     {/* ── HEADLINE ── */}
@@ -119,14 +133,23 @@ export const TenzoCardBanner = () => (
           <path d="M12 2.5l4 2.5-4 2.5" stroke="rgba(0,0,0,0.25)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
 
-        <div style={{
-          width: 32, height: 32, borderRadius: 9,
-          background: "#111111",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: 13, fontWeight: 900, color: "#ffffff",
-          boxShadow: "0 2px 12px rgba(0,0,0,0.18)",
-          flexShrink: 0,
-        }}>T</div>
+        <div className="relative flex items-center justify-center" style={{ width: 32, height: 32, flexShrink: 0 }}>
+          {/* Orbit ring — echoes the T-30/T-20/T-10 escalation timeline */}
+          <div className="absolute rounded-full pointer-events-none" style={{
+            width: 44, height: 44,
+            top: "50%", left: "50%",
+            transform: "translate(-50%, -50%)",
+            border: "1px dashed rgba(0,0,0,0.16)",
+          }} />
+          <div style={{
+            position: "relative", zIndex: 1,
+            width: 32, height: 32, borderRadius: 9,
+            background: "#111111",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: 13, fontWeight: 900, color: "#ffffff",
+            boxShadow: "0 2px 12px rgba(0,0,0,0.18)",
+          }}>T</div>
+        </div>
 
         <svg width="18" height="10" viewBox="0 0 22 10" fill="none">
           <line x1="0" y1="5" x2="14" y2="5" stroke="rgba(0,0,0,0.18)" strokeWidth="1" strokeDasharray="3 2" />
