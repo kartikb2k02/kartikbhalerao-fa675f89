@@ -1,10 +1,27 @@
-import { ArrowUpRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { caseStudies } from "@/data/caseStudies";
 import { ChatlyCardBanner } from "@/components/ChatlyCardBanner";
 import { PMCopilotCardBanner } from "@/components/PMCopilotCardBanner";
 import { FigPRDCardBanner } from "@/components/FigPRDCardBanner";
 import { TenzoCardBanner } from "@/components/TenzoCardBanner";
+
+// Short display names for the card grid — full titles live on the detail page
+const shortNames: Record<string, string> = {
+  "figprd": "figprd",
+  "tenzo-product-discovery": "Tenzo",
+  "pm-copilot": "PM Co-Pilot",
+  "chatly-prd": "Chatly PRD",
+  "blinkit-analysis": "Blinkit",
+  "google-pay-analysis": "Google Pay",
+  "google-pay-prd": "Google Pay PRD",
+  "gullak-fintech": "Gullak",
+  "zepto-efficiency": "Zepto",
+  "airbnb-ux": "Airbnb UX",
+  "cloudeagle-ai": "Cloudeagle",
+  "metis-improvement": "Metis",
+  "codeant-ai": "CodeAnt AI",
+  "ether-prd": "Ether",
+};
 
 export const CaseStudiesSection = () => {
   const navigate = useNavigate();
@@ -20,175 +37,86 @@ export const CaseStudiesSection = () => {
 
   return (
     <section className="py-20 relative">
-      <div className="max-w-[90rem] mx-auto px-6 space-y-16 relative z-10 -mt-10">
-        {/* Header */}
-        <div className="text-center space-y-4 pb-4">
-          <div className="inline-flex items-center gap-5">
-            <span className="w-16 h-[1.5px] bg-gradient-to-r from-transparent to-black/30 dark:to-white/30" />
-            <span className="text-[13px] font-semibold tracking-[0.3em] uppercase text-black/45 dark:text-white/45">Builds</span>
-            <span className="w-16 h-[1.5px] bg-gradient-to-l from-transparent to-black/30 dark:to-white/30" />
+      <div className="max-w-[106rem] mx-auto px-8 space-y-16 relative z-10 -mt-10">
+        {/* Outer frame — header and grid live in the same connected box, joined by a divider */}
+        <div className="border" style={{ borderColor: "rgba(128,128,128,0.4)" }}>
+          {/* Header */}
+          <div className="text-center space-y-3 py-16 px-6 border-b" style={{ borderColor: "rgba(128,128,128,0.4)" }}>
+            <span className="label-mono text-[13px] text-black/50 dark:text-white/50">Builds</span>
+            <h2 className="heading-display text-[42px] lg:text-[56px] leading-none text-black dark:text-white">
+              Real Products, Real Impact
+            </h2>
+            <p className="text-[16px] text-black/40 dark:text-white/40 max-w-lg mx-auto leading-relaxed">
+              Real-world products built from discovery to launch — strategy, design, and execution.
+            </p>
           </div>
-          <h2 className="text-[42px] lg:text-[56px] font-black leading-none tracking-tight text-black dark:text-white">
-            Real Products, Real Impact
-          </h2>
-          <p className="text-[16px] text-black/40 dark:text-white/40 max-w-lg mx-auto leading-relaxed">
-            Real-world products built from discovery to launch — strategy, design, and execution.
-          </p>
-        </div>
 
-        {/* Case Studies Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {/* Grid wrapper — same padding treatment as before, still inside the connected outer frame */}
+          <div className="p-8 sm:p-20">
+        {/* Case Studies Grid — grid-line border pattern (Missing Piece Studio portfolio spec) */}
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 gap-0 border"
+          style={{ borderColor: "rgba(128,128,128,0.4)" }}
+        >
           {caseStudies.map((study) => (
-            <div key={study.id} onClick={() => handleCardClick(study.id)} className="group cursor-pointer relative">
-              {/* figprd: outer glow outside overflow-hidden so it's actually visible on dark bg */}
-              {study.id === "figprd" && (
-                <div className="absolute -inset-1 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{
-                  background: "linear-gradient(135deg, rgba(37,99,235,0.45) 0%, rgba(109,40,217,0.35) 100%)",
-                  filter: "blur(18px)",
-                  zIndex: 0,
-                }} />
-              )}
-              <div className="relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2 border border-border/50 hover:border-primary/30" style={{ zIndex: 1 }}>
-                {/* Glow effect on hover */}
-                <div className={`absolute -inset-0.5 bg-gradient-to-r ${study.bgGradient} rounded-3xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500`} />
-
-                {/* Image Section */}
-                <div className={`relative aspect-[18/10] overflow-hidden ${study.id === "chatly-prd" || study.id === "pm-copilot" || study.id === "figprd" || study.id === "tenzo-product-discovery" ? "" : `bg-gradient-to-br ${study.bgGradient}`}`}
-                  style={study.id === "pm-copilot" ? { background: "linear-gradient(135deg, rgba(59,130,246,0.05) 0%, #ffffff 60%)" } : study.id === "chatly-prd" ? { background: "white" } : study.id === "figprd" ? { background: "#0b1730" } : study.id === "tenzo-product-discovery" ? { background: "#ffffff" } : {}}>
+            <div
+              key={study.id}
+              className="group border-r border-b p-6 overflow-hidden transition-colors duration-300 hover:bg-blue-50 dark:hover:bg-blue-500/[0.06]"
+              style={{ borderColor: "rgba(128,128,128,0.4)", fontFamily: "Switzer, Arial, sans-serif" }}
+            >
+              {/* Image Section — every card gets the identical frame, same aspect ratio */}
+              <div className="border border-black/10 dark:border-white/10 overflow-hidden">
+                {/* Content area — fixed aspect ratio, full-bleed so custom banners keep their native layout */}
+                <div
+                  onClick={() => handleCardClick(study.id)}
+                  className="relative aspect-[18/10] overflow-hidden cursor-pointer"
+                >
                   {study.id === "chatly-prd" ? (
-                    <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
-                      <ChatlyCardBanner />
-                    </div>
+                    <ChatlyCardBanner />
                   ) : study.id === "pm-copilot" ? (
-                    <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
-                      <PMCopilotCardBanner />
-                    </div>
+                    <PMCopilotCardBanner />
                   ) : study.id === "tenzo-product-discovery" ? (
-                    <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
-                      <TenzoCardBanner />
-                    </div>
+                    <TenzoCardBanner />
                   ) : study.id === "figprd" ? (
-                    <div className="relative w-full h-full">
-                      <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
-                        <FigPRDCardBanner />
-                      </div>
-                      {/* Blue glow overlay on hover — makes effect visible on dark bg */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{
-                        background: "linear-gradient(135deg, rgba(37,99,235,0.18) 0%, rgba(109,40,217,0.12) 100%)",
-                      }}/>
-                    </div>
+                    <FigPRDCardBanner />
                   ) : (
                     <img
                       src={study.image}
                       alt={study.title}
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                      style={{ imageRendering: "auto", backfaceVisibility: "hidden", transform: "translateZ(0)" }}
+                      className="w-full h-full object-cover object-center"
                       loading="lazy"
                     />
                   )}
-                  {/* Subtle overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  {/* Shine effect */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                  {/* Top Right Arrow */}
-                  <div className="absolute top-4 right-4">
-                    <div className="bg-background/80 backdrop-blur-md p-2.5 rounded-full shadow-lg group-hover:bg-background group-hover:shadow-xl transition-all duration-300 border border-border/50 group-hover:border-primary/30 group-hover:scale-110">
-                      <ArrowUpRight className="w-4 h-4 text-foreground group-hover:text-primary transition-colors" />
-                    </div>
-                  </div>
+                </div>
+              </div>
+
+              {/* Content below image — exact reference rhythm: 16px pt, 16px after title row, 32px before tag */}
+              <div className="pt-4">
+                <div className="flex items-center justify-between gap-4 mb-4">
+                  <h3 className="text-[36px] font-normal leading-[1.2] text-black dark:text-white truncate transition-colors duration-300 group-hover:text-blue-600">
+                    {shortNames[study.id] ?? study.title}
+                  </h3>
+                  <a
+                    onClick={(e) => { e.preventDefault(); handleCardClick(study.id); }}
+                    href={`/builds/${study.id}`}
+                    className="shrink-0 inline-flex items-center rounded-lg bg-black dark:bg-white text-white dark:text-black text-[18px] font-normal px-[18px] py-[10px] hover:opacity-80 transition-opacity cursor-pointer"
+                  >
+                    View Case Study
+                  </a>
                 </div>
 
-                {/* Footer Section */}
-                {study.id === "pm-copilot" ? (
-                  <div style={{ background: "#ffffff", borderTop: "1px solid rgba(0,0,0,0.07)" }} className="px-5 py-4 relative overflow-hidden">
-                    <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)", backgroundSize: "16px 16px" }}/>
-                    <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 70%)" }}/>
-                    <div className="relative z-10 flex items-center gap-2 pr-8">
-                      <div style={{ width: 20, height: 20, borderRadius: 6, background: "#f0f0f0", border: "1px solid rgba(0,0,0,0.1)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 900, color: "#111", flexShrink: 0 }}>✦</div>
-                      <div>
-                        <h3 className="text-base font-black leading-tight" style={{ color: "#111", letterSpacing: "-0.02em" }}>{study.title}</h3>
-                        <p className="text-xs mt-0.5" style={{ color: "rgba(0,0,0,0.4)" }}>{study.subtitle}</p>
-                      </div>
-                    </div>
-                    <div className="absolute bottom-4 right-4">
-                      <div style={{ width: 28, height: 28, background: "#111", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center" }}
-                        className="group-hover:scale-110 transition-all duration-300">
-                        <ArrowUpRight className="w-4 h-4 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                ) : study.id === "figprd" ? (
-                  <div style={{ background: "#0b1730", borderTop: "1px solid rgba(255,255,255,0.08)" }} className="px-5 py-4 relative overflow-hidden">
-                    <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "16px 16px" }}/>
-                    <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, #F24E1E, #A259FF, #1ABCFE, #0ACF83)" }}/>
-                    <div className="relative z-10 flex items-center gap-2 pr-8">
-                      <div style={{ width: 20, height: 20, borderRadius: 6, background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.18)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 900, color: "#fff", flexShrink: 0 }}>⌘</div>
-                      <div>
-                        <h3 className="text-base font-black leading-tight" style={{ color: "#fff", letterSpacing: "-0.02em" }}>{study.title}</h3>
-                        <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.38)" }}>{study.subtitle}</p>
-                      </div>
-                    </div>
-                    <div className="absolute bottom-4 right-4">
-                      <div style={{ width: 28, height: 28, background: "rgba(37,99,235,0.7)", border: "1px solid rgba(96,165,250,0.4)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center" }}
-                        className="group-hover:scale-110 transition-all duration-300">
-                        <ArrowUpRight className="w-4 h-4 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                ) : study.id === "chatly-prd" ? (
-                  <div className="bg-white border-t border-slate-100 px-5 py-4 relative overflow-hidden">
-                    <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)", backgroundSize: "18px 18px" }}/>
-                    <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full border border-black/[0.07] pointer-events-none"/>
-                    <div className="relative z-10 flex items-center gap-2 pr-8">
-                      <img src="/lovable-uploads/chatly-logo.webp" alt="Chatly" className="w-5 h-5 object-contain flex-shrink-0"/>
-                      <div>
-                        <h3 className="text-base font-bold text-black leading-tight">{study.title}</h3>
-                        <p className="text-xs text-slate-500 mt-0.5">{study.subtitle}</p>
-                      </div>
-                    </div>
-                    <div className="absolute bottom-4 right-4">
-                      <div className="w-7 h-7 bg-black rounded-full flex items-center justify-center group-hover:bg-zinc-700 transition-colors duration-300">
-                        <ArrowUpRight className="w-4 h-4 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                ) : study.id === "tenzo-product-discovery" ? (
-                  <div className="bg-white border-t border-slate-100 px-5 py-4 relative overflow-hidden">
-                    <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)", backgroundSize: "18px 18px" }}/>
-                    <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full border border-black/[0.07] pointer-events-none"/>
-                    <div className="relative z-10 flex items-center gap-2 pr-8">
-                      <div style={{ width: 20, height: 20, borderRadius: 6, background: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 900, color: "#fff", flexShrink: 0 }}>T</div>
-                      <div>
-                        <h3 className="text-base font-bold text-black leading-tight">{study.title}</h3>
-                        <p className="text-xs text-slate-500 mt-0.5">{study.subtitle}</p>
-                      </div>
-                    </div>
-                    <div className="absolute bottom-4 right-4">
-                      <div className="w-7 h-7 bg-black rounded-full flex items-center justify-center group-hover:bg-zinc-700 transition-colors duration-300">
-                        <ArrowUpRight className="w-4 h-4 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className={`bg-gradient-to-r ${study.bgGradient} px-5 py-4 relative`}>
-                    <div className="absolute inset-0 overflow-hidden opacity-25">
-                      <div className="absolute top-2 right-3 w-6 h-6 border-2 border-white rounded-full" />
-                      <div className="absolute bottom-2 left-3 w-4 h-4 border-2 border-white rounded-full" />
-                    </div>
-                    <div className="relative z-10 pr-8">
-                      <h3 className="text-lg font-bold text-white leading-tight">{study.title}</h3>
-                      <p className="text-sm text-white/90 mt-1">{study.subtitle}</p>
-                    </div>
-                    <div className="absolute bottom-4 right-4">
-                      <div className="w-7 h-7 bg-white/30 rounded-full flex items-center justify-center group-hover:bg-white/50 transition-colors duration-300">
-                        <ArrowUpRight className="w-4 h-4 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                )}
+                <p className="text-[18px] font-normal leading-[1.5] text-[#575757] dark:text-white/50 max-w-2xl line-clamp-2">
+                  {study.overview}
+                </p>
+
+                <span className="text-[16px] font-normal mt-8 block text-blue-600 dark:text-blue-400">
+                  #{study.tags[0].replace(/\s+/g, '')}
+                </span>
               </div>
             </div>
           ))}
+        </div>
+          </div>
         </div>
 
         {/* Call to Action */}
@@ -197,7 +125,7 @@ export const CaseStudiesSection = () => {
             Interested in seeing more or discussing a project?
           </p>
           <button
-            className="px-7 py-3 text-[14px] font-semibold rounded-xl bg-black dark:bg-white text-white dark:text-black shadow-sm hover:shadow-md hover:opacity-80 transition-all duration-200"
+            className="label-mono px-7 py-3 text-[13px] bg-black dark:bg-white text-white dark:text-black hover:opacity-80 transition-opacity duration-200"
             onClick={() => window.open("mailto:kartikbhalerao948@gmail.com", "_blank")}
           >
             Get In Touch

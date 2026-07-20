@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowLeft, ZoomIn, ArrowUp } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ZoomIn, ArrowUp } from "lucide-react";
 import { Header } from "@/components/Header";
 import { FooterSection } from "@/components/FooterSection";
 import { getCaseStudyById } from "@/data/caseStudies";
-import { Badge } from "@/components/ui/badge";
 import { ImageLightbox } from "@/components/ImageLightbox";
 import { RelatedCaseStudies } from "@/components/RelatedCaseStudies";
 import { ChatlyPRDDetail } from "@/components/ChatlyPRDDetail";
@@ -43,7 +42,7 @@ const CaseStudyDetail = () => {
 
   if (!caseStudy) {
     return (
-      <div className="min-h-screen w-full text-foreground relative bg-white dark:bg-zinc-900">
+      <div className="min-h-screen w-full text-foreground relative bg-white dark:bg-black">
         <Header />
         <main className="pt-32 text-center">
           <h1 className="text-3xl font-bold mb-4">Case Study Not Found</h1>
@@ -58,6 +57,9 @@ const CaseStudyDetail = () => {
   const ogImage = caseStudy.image?.startsWith("http") ? caseStudy.image : `${baseUrl}${caseStudy.image}`;
   const ogUrl = `${baseUrl}/builds/${caseStudy.id}`;
   const ogDescription = caseStudy.subtitle || caseStudy.overview?.slice(0, 160) || "A product case study by Kartik Bhalerao";
+
+  // First sentence of the challenge, used as a pull-quote
+  const challengeQuote = caseStudy.challenge.match(/[^.!?]+[.!?]+/)?.[0]?.trim() || caseStudy.challenge;
 
   return (
     <>
@@ -75,7 +77,7 @@ const CaseStudyDetail = () => {
       <meta name="twitter:description" content={ogDescription} />
       <meta name="twitter:image" content={ogImage} />
     </Helmet>
-    <div className="min-h-screen w-full text-foreground relative bg-white dark:bg-zinc-900">
+    <div className="min-h-screen w-full text-foreground relative bg-white dark:bg-black">
 
       <Header scrollProgress={scrollProgress} />
 
@@ -85,21 +87,58 @@ const CaseStudyDetail = () => {
           {/* Back Button */}
           <Link
             to="/builds"
-            className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/40 dark:border-white/20 text-slate-600 dark:text-slate-300 text-sm font-medium shadow hover:bg-white/80 dark:hover:bg-white/20 hover:scale-[1.02] active:scale-95 transition-all duration-200 group"
+            className="label-mono mb-8 inline-flex items-center gap-2 px-3.5 py-1.5 border border-black/10 dark:border-white/15 text-slate-500 dark:text-slate-400 text-[12px] hover:text-slate-900 dark:hover:text-white hover:border-black/20 dark:hover:border-white/30 transition-all duration-200 group"
           >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
-            Back to Builds
+            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform duration-200" />
+            All Builds
           </Link>
+
+          {/* Title & Subtitle */}
+          <h1 className="heading-display text-[32px] sm:text-[44px] leading-[1.05] text-slate-900 dark:text-white mb-3 max-w-3xl">
+            {caseStudy.title}
+          </h1>
+          <p className="text-slate-500 dark:text-zinc-400 text-lg max-w-2xl mb-8">{caseStudy.subtitle}</p>
+
+          {/* Meta row */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 border-y border-black/10 dark:border-white/10 py-6 mb-10">
+            <div>
+              <p className="label-mono text-[10px] text-black/35 dark:text-white/35 mb-1.5">Focus</p>
+              <p className="text-[14px] font-semibold text-slate-900 dark:text-white">{caseStudy.tags[0]}</p>
+            </div>
+            <div>
+              <p className="label-mono text-[10px] text-black/35 dark:text-white/35 mb-1.5">Type</p>
+              <p className="text-[14px] font-semibold text-slate-900 dark:text-white">{caseStudy.tags[1] ?? caseStudy.tags[0]}</p>
+            </div>
+            <div>
+              <p className="label-mono text-[10px] text-black/35 dark:text-white/35 mb-1.5">Tools</p>
+              <p className="text-[14px] font-semibold text-slate-900 dark:text-white">{caseStudy.tools.length} used</p>
+            </div>
+            <div>
+              <p className="label-mono text-[10px] text-black/35 dark:text-white/35 mb-1.5">Live</p>
+              {caseStudy.externalLink ? (
+                <a
+                  href={caseStudy.externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-[14px] font-semibold text-slate-900 dark:text-white hover:opacity-70 transition-opacity"
+                >
+                  View <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              ) : (
+                <p className="text-[14px] font-semibold text-slate-400 dark:text-zinc-500">Internal</p>
+              )}
+            </div>
+          </div>
 
           {/* Hero Image / Banner */}
           {id === "chatly-prd" ? (
             <ChatlyBanner />
           ) : id === "tenzo-product-discovery" ? (
-            <div className="rounded-2xl overflow-hidden mb-8 shadow-lg shadow-black/10 dark:shadow-black/40 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 aspect-[18/10]">
+            <div className="overflow-hidden mb-12 border border-black/10 dark:border-white/10 bg-white dark:bg-black aspect-[18/10]">
               <TenzoCardBanner />
             </div>
           ) : (
-            <div className="rounded-2xl overflow-hidden mb-8 shadow-lg shadow-black/10 dark:shadow-black/40 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800">
+            <div className="overflow-hidden mb-12 border border-black/10 dark:border-white/10 bg-white dark:bg-black">
               <img
                 src={caseStudy.image}
                 alt={caseStudy.title}
@@ -108,24 +147,9 @@ const CaseStudyDetail = () => {
             </div>
           )}
 
-          {/* Title & Tags */}
-          <div className="mb-10">
-            <div className="flex flex-wrap gap-2 mb-3">
-              {caseStudy.tags.map(tag => (
-                <Badge key={tag} variant="secondary" className="text-xs">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-2">
-              {caseStudy.title}
-            </h1>
-            <p className="text-slate-500 dark:text-zinc-400 text-lg">{caseStudy.subtitle}</p>
-          </div>
-
           {/* Chatly PRD — Full document content */}
           {id === "chatly-prd" && (
-            <div className="mb-12 bg-white rounded-2xl border border-zinc-200 shadow-sm overflow-hidden">
+            <div className="mb-12 bg-white border border-black/10 overflow-hidden">
               {/* Top accent bar */}
               <div className="h-1 w-full bg-black" />
               <div className="p-6 sm:p-10">
@@ -134,43 +158,86 @@ const CaseStudyDetail = () => {
             </div>
           )}
 
-          {/* Key Features & Tools */}
+          {/* Narrative — Overview / Challenge / Solution / Outcome */}
           {id !== "chatly-prd" && (
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            {/* Key Features */}
-            <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200 dark:border-zinc-800 p-6 shadow-sm">
-              <h2 className="text-base font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                <span className={`w-1 h-5 rounded-full bg-gradient-to-b ${caseStudy.bgGradient} inline-block`} />
-                Key Features
+          <div className="space-y-14 mb-14">
+
+            {/* Overview */}
+            <section>
+              <span className="label-mono text-[12px] text-black/40 dark:text-white/40 mb-2 block">Overview</span>
+              <h2 className="heading-display text-2xl sm:text-[28px] text-slate-900 dark:text-white mb-4">
+                The Background
               </h2>
-              <ul className="space-y-2.5">
+              <p className="text-slate-600 dark:text-zinc-300 text-[16px] leading-[1.8] max-w-3xl">
+                {caseStudy.overview}
+              </p>
+            </section>
+
+            {/* Challenge */}
+            <section>
+              <span className="label-mono text-[12px] text-black/40 dark:text-white/40 mb-2 block">Problem</span>
+              <h2 className="heading-display text-2xl sm:text-[28px] text-slate-900 dark:text-white mb-4">
+                The Challenge
+              </h2>
+              <blockquote className="border-l-2 border-black dark:border-white pl-5 py-1 mb-5 max-w-3xl">
+                <p className="text-[17px] sm:text-[19px] italic font-medium text-slate-800 dark:text-zinc-100 leading-snug">
+                  {challengeQuote}
+                </p>
+              </blockquote>
+              <p className="text-slate-600 dark:text-zinc-300 text-[16px] leading-[1.8] max-w-3xl">
+                {caseStudy.challenge}
+              </p>
+            </section>
+
+            {/* Solution */}
+            <section>
+              <span className="label-mono text-[12px] text-black/40 dark:text-white/40 mb-2 block">Approach</span>
+              <h2 className="heading-display text-2xl sm:text-[28px] text-slate-900 dark:text-white mb-4">
+                The Solution
+              </h2>
+              <p className="text-slate-600 dark:text-zinc-300 text-[16px] leading-[1.8] max-w-3xl mb-6">
+                {caseStudy.solution}
+              </p>
+              <ul className="space-y-3 max-w-3xl">
                 {caseStudy.keyFeatures.map(feature => (
-                  <li key={feature} className="flex items-start gap-3 text-sm text-slate-600 dark:text-zinc-400">
-                    <span className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 bg-gradient-to-br ${caseStudy.bgGradient}`} />
+                  <li key={feature} className="flex items-start gap-3 text-[15px] text-slate-600 dark:text-zinc-300 leading-relaxed">
+                    <span className="mt-[0.5rem] w-1.5 h-1.5 bg-black dark:bg-white flex-shrink-0" />
                     {feature}
                   </li>
                 ))}
               </ul>
-            </div>
+            </section>
 
-            {/* Tools */}
-            <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200 dark:border-zinc-800 p-6 shadow-sm">
-              <h2 className="text-base font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                <span className={`w-1 h-5 rounded-full bg-gradient-to-b ${caseStudy.bgGradient} inline-block`} />
+            {/* Outcome */}
+            <section>
+              <span className="label-mono text-[12px] text-black/40 dark:text-white/40 mb-2 block">Impact</span>
+              <h2 className="heading-display text-2xl sm:text-[28px] text-slate-900 dark:text-white mb-4">
+                The Outcome
+              </h2>
+              <div className="border-l-2 border-black dark:border-white pl-5 py-1 max-w-3xl">
+                <p className="text-[16px] sm:text-[17px] font-medium text-slate-800 dark:text-zinc-100 leading-[1.8]">
+                  {caseStudy.outcome}
+                </p>
+              </div>
+            </section>
+
+            {/* Tools Used */}
+            <section>
+              <span className="label-mono text-[12px] text-black/40 dark:text-white/40 mb-3 block">Stack</span>
+              <h2 className="heading-display text-2xl sm:text-[28px] text-slate-900 dark:text-white mb-5">
                 Tools Used
               </h2>
               <div className="flex flex-wrap gap-2">
                 {caseStudy.tools.map(tool => (
-                  <Badge
+                  <span
                     key={tool}
-                    variant="secondary"
-                    className="text-xs bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 border-0 hover:bg-slate-200 dark:hover:bg-zinc-700 transition-colors"
+                    className="label-mono px-3 py-1.5 text-[11px] border border-black/12 dark:border-white/15 text-black/55 dark:text-white/55"
                   >
                     {tool}
-                  </Badge>
+                  </span>
                 ))}
               </div>
-            </div>
+            </section>
           </div>
           )}
 
@@ -180,7 +247,7 @@ const CaseStudyDetail = () => {
               <div className="flex items-center gap-3 mb-6">
                 <ZoomIn className="w-5 h-5 text-slate-400 dark:text-zinc-500" />
                 <div>
-                  <h2 className="text-lg font-semibold text-slate-900 dark:text-white">Gallery</h2>
+                  <h2 className="label-mono text-[13px] text-slate-900 dark:text-white">Gallery</h2>
                   <p className="text-xs text-slate-500 dark:text-zinc-500">Click any image to view full size</p>
                 </div>
               </div>
@@ -194,12 +261,12 @@ const CaseStudyDetail = () => {
                       className="group w-full max-w-4xl cursor-pointer"
                       onClick={() => openLightbox(index)}
                     >
-                      <div className="relative rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.005]">
+                      <div className="relative overflow-hidden bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10 hover:shadow-xl transition-all duration-300">
                         <div className="p-4 md:p-6 bg-gradient-to-br from-slate-50 to-white dark:from-zinc-900 dark:to-zinc-900">
                           <img
                             src={item.src}
                             alt={item.caption}
-                            className="w-full h-auto object-contain rounded-lg"
+                            className="w-full h-auto object-contain"
                           />
                         </div>
                         {/* Hover overlay */}
@@ -209,7 +276,7 @@ const CaseStudyDetail = () => {
                           </div>
                         </div>
                         {/* Page badge */}
-                        <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-white/90 dark:bg-zinc-900/90 border border-slate-200 dark:border-zinc-700 text-xs font-medium text-slate-600 dark:text-zinc-400 shadow-sm">
+                        <div className="label-mono absolute top-4 right-4 px-3 py-1 bg-white/90 dark:bg-zinc-900/90 border border-black/10 dark:border-white/10 text-[10px] text-slate-600 dark:text-zinc-400">
                           {index + 1} / {caseStudy.gallery.length}
                         </div>
                       </div>
@@ -224,7 +291,7 @@ const CaseStudyDetail = () => {
                 <div className="flex flex-col gap-6">
                   {caseStudy.gallery.map((item, index) => (
                     <div key={index} className="group cursor-pointer" onClick={() => openLightbox(index)}>
-                      <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm hover:shadow-lg transition-all duration-300">
+                      <div className="relative overflow-hidden border border-black/10 dark:border-white/10 bg-white dark:bg-zinc-900 hover:shadow-lg transition-all duration-300">
                         <img
                           src={item.src}
                           alt={item.caption}
@@ -235,7 +302,7 @@ const CaseStudyDetail = () => {
                             <ZoomIn className="w-5 h-5 text-slate-700 dark:text-zinc-200" />
                           </div>
                         </div>
-                        <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-white/90 dark:bg-zinc-900/90 border border-slate-200 dark:border-zinc-700 text-xs font-medium text-slate-600 dark:text-zinc-400">
+                        <div className="label-mono absolute top-4 right-4 px-3 py-1 bg-white/90 dark:bg-zinc-900/90 border border-black/10 dark:border-white/10 text-[10px] text-slate-600 dark:text-zinc-400">
                           {index + 1} / {caseStudy.gallery.length}
                         </div>
                       </div>
