@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { Header } from "@/components/Header";
 import { BlogPostDetail } from "@/components/BlogPostDetail";
 import { blogPosts } from "@/data/blogPosts";
 import { getMarkdownContent } from "@/utils/blogContent";
 import { ArrowLeft } from "lucide-react";
+import { SEO, BASE_URL } from "@/components/SEO";
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -34,6 +34,12 @@ const BlogPost = () => {
   if (!post) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
+        <SEO
+          title="Post Not Found"
+          description="The blog post you're looking for doesn't exist."
+          path={`/blog/${slug ?? ""}`}
+          noindex
+        />
         <div className="text-center">
           <p className="text-slate-500 mb-4">Post not found</p>
           <button
@@ -48,26 +54,41 @@ const BlogPost = () => {
     );
   }
 
-  const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://kartikbhalerao.com";
-  const ogImage = post.image?.startsWith("http") ? post.image : `${baseUrl}${post.image}`;
-  const ogUrl = `${baseUrl}/blog/${post.slug}`;
+  const ogImage = post.image?.startsWith("http") ? post.image : `${BASE_URL}${post.image}`;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: ogImage,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: "Kartik Bhalerao",
+      url: BASE_URL,
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Kartik Bhalerao",
+      url: BASE_URL,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${BASE_URL}/blog/${post.slug}`,
+    },
+  };
 
   return (
     <>
-    <Helmet>
-      <title>{post.title} | Kartik Bhalerao</title>
-      <meta name="description" content={post.excerpt} />
-      <meta property="og:title" content={post.title} />
-      <meta property="og:description" content={post.excerpt} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:url" content={ogUrl} />
-      <meta property="og:type" content="article" />
-      <meta property="og:site_name" content="Productfolio | Kartik Bhalerao" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={post.title} />
-      <meta name="twitter:description" content={post.excerpt} />
-      <meta name="twitter:image" content={ogImage} />
-    </Helmet>
+    <SEO
+      title={post.title}
+      description={post.excerpt}
+      path={`/blog/${post.slug}`}
+      image={post.image}
+      type="article"
+      jsonLd={jsonLd}
+    />
     <div className="min-h-screen w-full text-foreground relative bg-white dark:bg-black">
       <div className="relative z-10">
         <Header scrollProgress={scrollProgress} />

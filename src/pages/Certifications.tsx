@@ -5,6 +5,7 @@ import { certifications, achievements } from "@/data/certifications";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Trophy, Zap, TrendingUp, Target, Users, Medal, Award, Star, ArrowRight, Sparkles, ZoomIn } from "lucide-react";
+import { SEO } from "@/components/SEO";
 const iconMap: Record<string, React.ElementType> = {
   Trophy,
   Zap,
@@ -30,6 +31,11 @@ const Certifications = () => {
   };
 
   return <div className="min-h-screen bg-[#FEFDF9] dark:bg-[#111111] text-foreground relative">
+      <SEO
+        title="Certifications & Achievements"
+        description="Professional certifications in product management, AI integration, analytics, and product-led growth earned by Kartik Bhalerao."
+        path="/certifications"
+      />
       <Header />
 
       <main className="relative z-10 pt-24 pb-16">

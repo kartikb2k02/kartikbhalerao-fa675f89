@@ -5,6 +5,7 @@ import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { getAchievementById } from "@/data/certifications";
 import { ArrowLeft, Trophy, Zap, TrendingUp, Target, Users, Medal, Award, Star, CheckCircle, Calendar, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { SEO } from "@/components/SEO";
 
 const iconMap: Record<string, React.ElementType> = {
   Trophy,
@@ -25,6 +26,12 @@ const AchievementDetail = () => {
   if (!achievement) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
+        <SEO
+          title="Achievement Not Found"
+          description="The achievement you're looking for doesn't exist."
+          path={`/achievements/${id ?? ""}`}
+          noindex
+        />
         <div className="text-center">
           <h1 className="text-4xl font-bold text-foreground mb-4">Achievement Not Found</h1>
           <p className="text-muted-foreground mb-8">The achievement you're looking for doesn't exist.</p>
@@ -40,6 +47,13 @@ const AchievementDetail = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500 relative overflow-hidden">
+      <SEO
+        title={achievement.title}
+        description={achievement.description}
+        path={`/achievements/${achievement.id}`}
+        image={achievement.image}
+        type="article"
+      />
       <Header />
       <AnimatedBackground intensity="light" />
 

@@ -24,6 +24,24 @@ const blogPosts = [
 // ── Case study data (mirrors src/data/caseStudies.ts) ────────────────────────
 const caseStudies = [
   {
+    id: "figprd",
+    title: "figprd",
+    subtitle: "Figma → PRD Generator",
+    image: "/favicon.png",
+  },
+  {
+    id: "tenzo-product-discovery",
+    title: "Tenzo Product Discovery and Problem Ideation",
+    subtitle: "Instant + Scheduled Order Assignment Engine",
+    image: "/lovable-uploads/tenzo-prd-01.webp",
+  },
+  {
+    id: "pm-copilot",
+    title: "PM Co-Pilot",
+    subtitle: "AI-Powered PM Workspace",
+    image: "/favicon.png",
+  },
+  {
     id: "blinkit-analysis",
     title: "Blinkit Product Analysis",
     subtitle: "Order Efficiency & Conversion Optimization",
@@ -136,17 +154,37 @@ for (const post of blogPosts) {
   console.log(`✓ /blog/${post.slug}`);
 }
 
-// Case studies — flat .html files
-fs.mkdirSync('dist/case-studies', { recursive: true });
+// Case studies — flat .html files, served at /builds/:id (matches the React route)
+fs.mkdirSync('dist/builds', { recursive: true });
 for (const cs of caseStudies) {
   const html = injectOgTags(distIndexHtml, {
     title: `${cs.title} | Kartik Bhalerao`,
     description: cs.subtitle,
     image: cs.image,
-    url: `${BASE_URL}/case-studies/${cs.id}`,
+    url: `${BASE_URL}/builds/${cs.id}`,
+    type: 'article',
   });
-  fs.writeFileSync(`dist/case-studies/${cs.id}.html`, html);
-  console.log(`✓ /case-studies/${cs.id}`);
+  fs.writeFileSync(`dist/builds/${cs.id}.html`, html);
+  console.log(`✓ /builds/${cs.id}`);
 }
 
 console.log('\n✅ OG pre-render complete.');
+
+// ── Sitemap ──────────────────────────────────────────────────────────────────
+// Generated from the same post/case-study lists above so it can't drift out of sync.
+const staticRoutes = ['/', '/about', '/capabilities', '/builds', '/certifications', '/blog', '/contact'];
+
+const urls = [
+  ...staticRoutes.map(path => ({ loc: `${BASE_URL}${path}` })),
+  ...blogPosts.map(post => ({ loc: `${BASE_URL}/blog/${post.slug}` })),
+  ...caseStudies.map(cs => ({ loc: `${BASE_URL}/builds/${cs.id}` })),
+];
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map(u => `  <url>\n    <loc>${escape(u.loc)}</loc>\n  </url>`).join('\n')}
+</urlset>
+`;
+
+fs.writeFileSync('dist/sitemap.xml', sitemap);
+console.log(`✅ sitemap.xml written (${urls.length} URLs)`);

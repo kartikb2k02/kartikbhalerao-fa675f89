@@ -1,10 +1,16 @@
 import { AboutSection } from "@/components/AboutSection";
 import { FooterSection } from "@/components/FooterSection";
 import { Header } from "@/components/Header";
+import { SEO } from "@/components/SEO";
 
 const About = () => {
   return (
     <div className="min-h-screen w-full text-foreground relative bg-white dark:bg-black">
+      <SEO
+        title="About"
+        description="About Kartik Bhalerao — a Product Manager focused on building customer-centric products, driving growth through data-driven decisions, and crafting AI-powered product strategies."
+        path="/about"
+      />
 
       {/* Header */}
       <Header />

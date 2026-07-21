@@ -2,10 +2,16 @@ import { ContactForm } from "@/components/ContactForm";
 import { CalComBooking } from "@/components/CalComBooking";
 import { Header } from "@/components/Header";
 import { FooterSection } from "@/components/FooterSection";
+import { SEO } from "@/components/SEO";
 
 export default function Contact() {
   return (
     <>
+      <SEO
+        title="Contact"
+        description="Get in touch with Kartik Bhalerao — Product Manager. Send a message or book a call."
+        path="/contact"
+      />
       <Header />
       <div className="min-h-screen w-full bg-white dark:bg-black">
         <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">

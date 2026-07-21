@@ -4,6 +4,7 @@ import { Clock, ArrowRight } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
 import { Header } from "@/components/Header";
 import { FooterSection } from "@/components/FooterSection";
+import { SEO } from "@/components/SEO";
 
 const formatDate = (dateStr: string) =>
   new Date(dateStr).toLocaleDateString("en-US", {
@@ -56,6 +57,11 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black text-foreground">
+      <SEO
+        title="Blog"
+        description="Essays on AI-first product strategy, prioritization, user research, and lessons from building products — written by Product Manager Kartik Bhalerao."
+        path="/blog"
+      />
       <Header />
 
       <main className="max-w-5xl mx-auto px-6 pt-32 pb-28 space-y-14">

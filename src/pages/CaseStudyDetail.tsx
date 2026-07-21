@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { ArrowLeft, ZoomIn, ArrowUp } from "lucide-react";
 import { Header } from "@/components/Header";
 import { FooterSection } from "@/components/FooterSection";
@@ -10,6 +9,7 @@ import { RelatedCaseStudies } from "@/components/RelatedCaseStudies";
 import { ChatlyPRDDetail } from "@/components/ChatlyPRDDetail";
 import { ChatlyBanner } from "@/components/ChatlyBanner";
 import { TenzoCardBanner } from "@/components/TenzoCardBanner";
+import { SEO, BASE_URL } from "@/components/SEO";
 
 const A4_GALLERY_IDS = ['ether-prd', 'gullak-fintech', 'google-pay-prd', 'cloudeagle-ai', 'metis-improvement', 'codeant-ai', 'tenzo-product-discovery'];
 
@@ -43,6 +43,12 @@ const CaseStudyDetail = () => {
   if (!caseStudy) {
     return (
       <div className="min-h-screen w-full text-foreground relative bg-white dark:bg-black">
+        <SEO
+          title="Case Study Not Found"
+          description="The case study you're looking for doesn't exist."
+          path={`/builds/${id ?? ""}`}
+          noindex
+        />
         <Header />
         <main className="pt-32 text-center">
           <h1 className="text-3xl font-bold mb-4">Case Study Not Found</h1>
@@ -53,30 +59,42 @@ const CaseStudyDetail = () => {
     );
   }
 
-  const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://kartikbhalerao.com";
-  const ogImage = caseStudy.image?.startsWith("http") ? caseStudy.image : `${baseUrl}${caseStudy.image}`;
-  const ogUrl = `${baseUrl}/builds/${caseStudy.id}`;
+  const ogImage = caseStudy.image?.startsWith("http")
+    ? caseStudy.image
+    : `${BASE_URL}${caseStudy.image || "/favicon.png"}`;
   const ogDescription = caseStudy.subtitle || caseStudy.overview?.slice(0, 160) || "A product case study by Kartik Bhalerao";
 
   // First sentence of the challenge, used as a pull-quote
   const challengeQuote = caseStudy.challenge.match(/[^.!?]+[.!?]+/)?.[0]?.trim() || caseStudy.challenge;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: caseStudy.title,
+    description: ogDescription,
+    image: ogImage,
+    creator: {
+      "@type": "Person",
+      name: "Kartik Bhalerao",
+      url: BASE_URL,
+    },
+    keywords: caseStudy.tags.join(", "),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${BASE_URL}/builds/${caseStudy.id}`,
+    },
+  };
+
   return (
     <>
-    <Helmet>
-      <title>{caseStudy.title} | Kartik Bhalerao</title>
-      <meta name="description" content={ogDescription} />
-      <meta property="og:title" content={caseStudy.title} />
-      <meta property="og:description" content={ogDescription} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:url" content={ogUrl} />
-      <meta property="og:type" content="article" />
-      <meta property="og:site_name" content="Productfolio | Kartik Bhalerao" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={caseStudy.title} />
-      <meta name="twitter:description" content={ogDescription} />
-      <meta name="twitter:image" content={ogImage} />
-    </Helmet>
+    <SEO
+      title={caseStudy.title}
+      description={ogDescription}
+      path={`/builds/${caseStudy.id}`}
+      image={caseStudy.image || "/favicon.png"}
+      type="article"
+      jsonLd={jsonLd}
+    />
     <div className="min-h-screen w-full text-foreground relative bg-white dark:bg-black">
 
       <Header scrollProgress={scrollProgress} />

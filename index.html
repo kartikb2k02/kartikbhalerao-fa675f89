@@ -20,6 +20,25 @@
     <meta name="twitter:description" content="Kartik Bhalerao is a Product Manager focused on building customer-centric products, driving growth through data-driven decisions, and crafting AI-powered product strategies." />
     <meta name="twitter:image" content="https://kartikbhalerao.com/favicon.png" />
 
+    <link rel="canonical" href="https://kartikbhalerao.com/" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Kartik Bhalerao",
+        "url": "https://kartikbhalerao.com",
+        "image": "https://kartikbhalerao.com/favicon.png",
+        "jobTitle": "Product Manager",
+        "description": "Product Manager focused on building customer-centric products, driving growth through data-driven decisions, and crafting AI-powered product strategies.",
+        "sameAs": [
+          "https://linkedin.com/in/kartik-bhalerao",
+          "https://github.com/kartikbh6614",
+          "https://medium.com/@kartikbhalerao"
+        ]
+      }
+    </script>
+
     <!-- OG injection: updates tags based on URL for JS crawlers. Script is AFTER meta tags. -->
     <!-- NOTE: og:image must be PNG/JPG — LinkedIn and Twitter/X do not support SVG. -->
     <script>
@@ -41,6 +60,9 @@
         };
 
         var CASES = {
+          'figprd':                 { title: 'figprd', desc: 'Figma → PRD Generator', img: '/favicon.png' },
+          'tenzo-product-discovery':{ title: 'Tenzo Product Discovery and Problem Ideation', desc: 'Instant + Scheduled Order Assignment Engine', img: '/lovable-uploads/tenzo-prd-01.webp' },
+          'pm-copilot':             { title: 'PM Co-Pilot', desc: 'AI-Powered PM Workspace', img: '/favicon.png' },
           'blinkit-analysis':    { title: 'Blinkit Product Analysis', desc: 'Order Efficiency & Conversion Optimization', img: '/lovable-uploads/3d4a8070-20bc-4613-becb-61b277c2c14e.png' },
           'google-pay-analysis': { title: 'Google Pay Feature Analysis', desc: 'Strategic Product Improvement Study', img: '/lovable-uploads/23a9f14a-acce-474f-b09e-c3714972d90d.png' },
           'google-pay-prd':      { title: 'Google Pay PRD', desc: 'Strategic Product Improvement Study', img: '/lovable-uploads/9b4dd787-aeb2-4969-8fc0-a1dd907efea8.png' },
@@ -59,7 +81,7 @@
         var pageUrl = BASE + path;
 
         var blogMatch = path.match(/^\/blog\/([^\/]+)/);
-        var caseMatch = path.match(/^\/case-studies\/([^\/]+)/);
+        var caseMatch = path.match(/^\/builds\/([^\/]+)/);
 
         if (blogMatch) data = BLOG[blogMatch[1]];
         else if (caseMatch) data = CASES[caseMatch[1]];
