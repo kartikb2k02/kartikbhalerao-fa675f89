@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Clock, ArrowUp, ArrowRight } from "lucide-react";
@@ -62,6 +62,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
   const [lightboxAlt, setLightboxAlt] = useState<string>('');
   const [activeId, setActiveId] = useState<string>('');
+  const contentRef = useRef<HTMLDivElement>(null);
 
   // Related posts — same category first (by shared tag count), then recent posts to fill up to 3
   const relatedPosts = useMemo(() => {
@@ -139,6 +140,29 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
     window.addEventListener('scroll', updateActive, { passive: true });
     return () => window.removeEventListener('scroll', updateActive);
   }, [tocItems]);
+
+  // Replay embedded SVG animations (marked data-replay-on-scroll) each time they scroll into view
+  useEffect(() => {
+    const container = contentRef.current;
+    if (!container) return;
+    const svgs = container.querySelectorAll<SVGSVGElement>('svg[data-replay-on-scroll]');
+    if (svgs.length === 0) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const svg = entry.target as SVGSVGElement;
+            if (typeof svg.setCurrentTime === 'function') {
+              svg.setCurrentTime(0);
+            }
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    svgs.forEach((svg) => observer.observe(svg));
+    return () => observer.disconnect();
+  }, [content]);
 
   return (
     <>
@@ -252,7 +276,7 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
         <div className="flex gap-10 items-start">
           <div className="flex-1 min-w-0 max-w-2xl">
             {/* Post Content */}
-            <div className="mb-6">
+            <div className="mb-6" ref={contentRef}>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}

@@ -91,7 +91,7 @@ Instead of answering the instant you ask, the system gathers, reasons, and refin
 In plain terms: an <a href="https://youtu.be/4biXYSNkn9Y?si=XzKhnlhC6yXji7C" style="color:#3b82f6;font-weight:700;text-decoration:underline;text-underline-offset:2px;">LLM loop</a> is the repeatable cycle a product runs every time it needs to answer something, take the input, gather whatever context or tools are needed, let the model reason, check the result, and only then respond, going around again if the check fails. It's used in pretty much every serious AI product, from a chatbot to a coding agent, because it's what turns a single guess into a checked, grounded answer. Here's the shape to keep in your head. Not every product runs all of these steps, and the good ones skip the steps a given request doesn't need.
 
 <div style="margin:32px 0;">
-<svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;font-family:'Segoe Print','Bradley Hand','Comic Sans MS',cursive;">
+<svg data-replay-on-scroll="true" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;font-family:'Segoe Print','Bradley Hand','Comic Sans MS',cursive;">
 <defs>
 <radialGradient id="llGlow" cx="50%" cy="50%"><stop offset="0%" stop-color="#7c3aed" stop-opacity="0.35"/><stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/></radialGradient>
 <marker id="llArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#a78bfa"/></marker>
@@ -100,7 +100,7 @@ In plain terms: an <a href="https://youtu.be/4biXYSNkn9Y?si=XzKhnlhC6yXji7C" sty
 <filter id="dotBlur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="2.2"/></filter>
 </defs>
 <rect x="10" y="10" width="880" height="480" rx="20" fill="#0b0b14" stroke="#3b2a6b" stroke-width="1.5"/>
-<text x="40" y="42" font-size="11" font-weight="700" letter-spacing="2" fill="#a78bfa" font-family="Inter,sans-serif">THE LOOP, ANIMATED</text>
+<text x="40" y="42" font-size="11" font-weight="700" letter-spacing="2" fill="#a78bfa" font-family="Inter,sans-serif">The Loop</text>
 <text x="40" y="60" font-size="10.5" fill="#6b6485" font-family="Inter,sans-serif">Follow the numbers 1 → 4. It repeats until step 2 says stop.</text>
 <circle cx="700" cy="160" r="130" fill="url(#llGlow)"/>
 <circle cx="110" cy="150" r="16" fill="none" stroke="#a78bfa" stroke-width="2"/>
