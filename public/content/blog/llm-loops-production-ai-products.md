@@ -25,7 +25,6 @@
 .llmc-banner{background:#ffffff;border:1.5px solid #e2e8f0;box-shadow:0 4px 18px rgba(0,0,0,0.05);}
 .llmc-banner .llmc-label{color:#64748b;}
 .llmc-banner .llmc-value{color:#0f172a;}
-.llmc-note{border:1px solid #e2e8f0;background:#f8fafc;color:#475569;}
 @media (max-width:640px){.llmc-vs-badge{display:none;}}
 @media (prefers-color-scheme: dark){
 .llmc-card-blue{border-color:#3730a3;background:#181825;}
@@ -51,7 +50,6 @@
 .llmc-banner{background:#181825;border-color:#3f3f52;box-shadow:none;}
 .llmc-banner .llmc-label{color:#94a3b8;}
 .llmc-banner .llmc-value{color:#f1f5f9;}
-.llmc-note{border-color:#334155;background:#181825;color:#94a3b8;}
 }
 </style>
 
@@ -272,7 +270,7 @@ Now the part that matters, the same user request run two ways.
 
 None of that came from a smarter model or a magic trick. It came from routing the easy part to a cheap model, sending less context, and caching the stuff that never changes.
 
-<div class="llmc-note" style="margin:20px 0;border-radius:12px;padding:16px 20px;font-size:13.5px;line-height:1.6;">Rates above are current as of mid-2026 and are illustrative round numbers. Check your provider's live pricing before you quote figures.</div>
+> ⚠️ Rates above are current as of mid-2026 and are illustrative round numbers. Check your provider's live pricing before you quote figures.
 
 ## 5. Loops by company stage
 
