@@ -15,7 +15,7 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: 12,
-    title: "LLM Loops for Product Development: How to Increase AI Efficiency",
+    title: "Loops Engineering for Product Development: How to Increase AI Efficiency",
     excerpt: "The best AI products aren't the ones that make the most LLM calls, they're the ones that make the fewest calls needed to get the job done. A breakdown of the loop patterns behind production AI products, what they actually cost in tokens, and how to keep them efficient at scale.",
     category: "ai",
     date: "2026-07-26",

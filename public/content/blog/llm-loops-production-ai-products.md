@@ -1,4 +1,4 @@
-# LLM Loops for Product Development: How to Increase AI Efficiency
+# Loops Engineering for Product Development: How to Increase AI Efficiency
 
 <style>
 .llmc-card{border-radius:16px;padding:22px 24px;}
@@ -187,6 +187,57 @@ Here's the same set of trade-offs broken out in full, what each loop does and wh
 <div style="border:1px solid #dbeafe;border-radius:16px;background:#ffffff;padding:22px 24px;"><div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;"><span style="background:#2563eb;color:#ffffff;font-size:11px;font-weight:800;padding:4px 9px;border-radius:6px;">07</span><span style="font-size:15px;font-weight:800;color:#000000;">Human-in-the-Loop</span></div><div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:10px;"><span style="color:#2563eb;font-weight:700;">→</span><div style="font-size:13.5px;color:#000000;line-height:1.6;"><span style="font-weight:800;color:#000000;">What it does</span> — a person signs off before anything ships.</div></div><div style="display:flex;gap:8px;align-items:flex-start;"><span style="color:#2563eb;font-weight:700;">→</span><div style="font-size:13.5px;color:#000000;line-height:1.6;"><span style="font-weight:800;color:#000000;">Trade-off</span> — buys trust in finance, health, and legal, costs time, not tokens.</div></div></div>
 <div style="border:1px solid #dbeafe;border-radius:16px;background:#ffffff;padding:22px 24px;"><div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;"><span style="background:#2563eb;color:#ffffff;font-size:11px;font-weight:800;padding:4px 9px;border-radius:6px;">08</span><span style="font-size:15px;font-weight:800;color:#000000;">Memory Loop</span></div><div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:10px;"><span style="color:#2563eb;font-weight:700;">→</span><div style="font-size:13.5px;color:#000000;line-height:1.6;"><span style="font-weight:800;color:#000000;">What it does</span> — remembers what matters across sessions instead of asking twice.</div></div><div style="display:flex;gap:8px;align-items:flex-start;"><span style="color:#2563eb;font-weight:700;">→</span><div style="font-size:13.5px;color:#000000;line-height:1.6;"><span style="font-weight:800;color:#000000;">Trade-off</span> — feels personal, gets expensive if you store everything.</div></div></div>
 </div>
+
+### Two LLMs in one loop
+
+The multi-agent loop is the one people picture least clearly, so here's what "several agents hand work off to each other" actually looks like when it's two LLMs: one drafts, the other checks. They keep trading until the second one is satisfied.
+
+<div style="margin:32px 0;">
+<svg data-replay-on-scroll="true" viewBox="0 0 900 540" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;font-family:'Segoe Print','Bradley Hand','Comic Sans MS',cursive;">
+<defs>
+<radialGradient id="maGlow" cx="50%" cy="50%"><stop offset="0%" stop-color="#7c3aed" stop-opacity="0.3"/><stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/></radialGradient>
+<marker id="maArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#a78bfa"/></marker>
+<marker id="maArrRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#f87171"/></marker>
+<marker id="maArrGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4ade80"/></marker>
+<filter id="maDotBlur" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="2.2"/></filter>
+</defs>
+<rect x="10" y="10" width="880" height="510" rx="20" fill="#0b0b14" stroke="#3b2a6b" stroke-width="1.5"/>
+<text x="40" y="42" font-size="11" font-weight="700" letter-spacing="2" fill="#a78bfa" font-family="Inter,sans-serif">MULTI-AGENT LOOP</text>
+<text x="40" y="60" font-size="10.5" fill="#6b6485" font-family="Inter,sans-serif">Two LLMs trade drafts and checks. Follow 1 → 4.</text>
+<circle cx="450" cy="230" r="190" fill="url(#maGlow)"/>
+<text x="450" y="80" text-anchor="middle" font-size="16" fill="#a78bfa"><animateTransform attributeName="transform" type="rotate" from="0 450 76" to="360 450 76" dur="3s" repeatCount="indefinite"/>↻</text>
+<rect x="60" y="90" width="250" height="120" rx="16" fill="#150f24" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="76" cy="106" r="13" fill="#7c3aed" stroke="#0b0b14" stroke-width="1.5"/><text x="76" y="110" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff" font-family="Inter,sans-serif">A</text>
+<text x="185" y="145" text-anchor="middle" font-size="15" font-weight="800" fill="#ede9fe" font-family="Inter,sans-serif">AGENT A</text>
+<text x="185" y="168" text-anchor="middle" font-size="10.5" fill="#a78bfa" font-family="Inter,sans-serif">writer — drafts the answer</text>
+<rect x="590" y="90" width="250" height="120" rx="16" fill="#150f24" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="606" cy="106" r="13" fill="#7c3aed" stroke="#0b0b14" stroke-width="1.5"/><text x="606" y="110" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff" font-family="Inter,sans-serif">B</text>
+<text x="715" y="145" text-anchor="middle" font-size="15" font-weight="800" fill="#ede9fe" font-family="Inter,sans-serif">AGENT B</text>
+<text x="715" y="168" text-anchor="middle" font-size="10.5" fill="#a78bfa" font-family="Inter,sans-serif">critic — checks the draft</text>
+<circle r="7" fill="#7c3aed" opacity="0" filter="url(#maDotBlur)"><animate attributeName="opacity" values="0;0.6;0.6;0" keyTimes="0;0.05;0.9;1" dur="5s" begin="2.5s" repeatCount="indefinite"/><animateMotion dur="5s" begin="2.5s" repeatCount="indefinite" path="M 310,130 L 590,130 L 590,190 L 310,190 Z"/></circle>
+<circle r="3.5" fill="#e9d5ff" opacity="0"><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.9;1" dur="5s" begin="2.5s" repeatCount="indefinite"/><animateMotion dur="5s" begin="2.5s" repeatCount="indefinite" path="M 310,130 L 590,130 L 590,190 L 310,190 Z"/></circle>
+<line x1="312" y1="130" x2="580" y2="130" stroke="#a78bfa" stroke-width="2" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" marker-end="url(#maArr)"><animate attributeName="stroke-dashoffset" from="100" to="0" dur="0.9s" begin="0.2s" fill="freeze"/></line>
+<text x="446" y="118" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ddd6fe" font-family="Inter,sans-serif" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="0.2s" fill="freeze"/>1 · A sends a draft to B</text>
+<line x1="580" y1="190" x2="312" y2="190" stroke="#a78bfa" stroke-width="2" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" marker-end="url(#maArr)"><animate attributeName="stroke-dashoffset" from="100" to="0" dur="0.9s" begin="1.3s" fill="freeze"/></line>
+<text x="446" y="207" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ddd6fe" font-family="Inter,sans-serif" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="1.3s" fill="freeze"/>2 · B sends feedback to A</text>
+<path d="M 130 215 C 60 280, 60 45, 155 125" fill="none" stroke="#f87171" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#maArrRed)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="2.2s" fill="freeze"/><animate attributeName="stroke-dashoffset" values="0;-22" dur="1s" begin="2.4s" repeatCount="indefinite"/></path>
+<text x="30" y="245" font-size="11.5" font-weight="700" fill="#f87171" font-family="Inter,sans-serif" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="2.2s" fill="freeze"/>3 · not solid yet</text>
+<text x="30" y="261" font-size="10.5" fill="#f87171" font-family="Inter,sans-serif" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="2.2s" fill="freeze"/>↻ A revises, back to step 1</text>
+<line x1="450" y1="216" x2="450" y2="290" stroke="#4ade80" stroke-width="2" marker-end="url(#maArrGreen)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="2.0s" fill="freeze"/></line>
+<text x="450" y="312" text-anchor="middle" font-size="12.5" font-weight="700" fill="#4ade80" font-family="Inter,sans-serif" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="2.0s" fill="freeze"/>4 · B approves → ship it</text>
+<rect x="350" y="330" width="200" height="50" rx="12" fill="#1e1b3a" stroke="#4c1d95" stroke-width="1"><animate attributeName="fill" values="#1e1b3a;#14532d;#1e1b3a" keyTimes="0;0.1;1" dur="5s" begin="2.0s" repeatCount="indefinite"/><animate attributeName="stroke" values="#4c1d95;#4ade80;#4c1d95" keyTimes="0;0.1;1" dur="5s" begin="2.0s" repeatCount="indefinite"/></rect>
+<text x="450" y="360" text-anchor="middle" font-size="12" font-weight="700" fill="#c4b5fd" font-family="Inter,sans-serif"><animate attributeName="fill" values="#c4b5fd;#ffffff;#c4b5fd" keyTimes="0;0.1;1" dur="5s" begin="2.0s" repeatCount="indefinite"/>FINAL ANSWER</text>
+<text x="450" y="422" text-anchor="middle" font-size="12.5" font-style="italic" fill="#94a3b8" font-family="Inter,sans-serif" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.6s" begin="2.8s" fill="freeze"/>the two agents keep trading drafts until the critic says stop</text>
+<g font-family="Inter,sans-serif" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.6s" begin="3.0s" fill="freeze"/>
+<line x1="60" y1="452" x2="840" y2="452" stroke="#2a2440" stroke-width="1"/>
+<circle cx="230" cy="472" r="4" fill="#a78bfa"/><text x="240" y="475.5" font-size="10" fill="#c4b5fd">trading a draft</text>
+<circle cx="420" cy="472" r="4" fill="#f87171"/><text x="430" y="475.5" font-size="10" fill="#f87171">needs another pass</text>
+<circle cx="640" cy="472" r="4" fill="#4ade80"/><text x="650" y="475.5" font-size="10" fill="#4ade80">approved, shipped</text>
+</g>
+</svg>
+</div>
+
+Notice there's no orchestrator handing out instructions here, agent A doesn't know or care that B exists as a "manager." B just reads A's output and responds with either more work or a pass. That's the whole pattern: two separate model calls, a shared piece of context passed between them, and a stop condition. Scale that to five specialized agents and you have the same loop, just with more handoffs and more tokens per request, which is exactly why section 3 called this the most expensive pattern on the list.
 
 One more thing worth planning for: **what happens when a step fails.** Tool calls time out. Retrieval comes back with junk. A good loop has a fallback for each step, retry once, fall back to a cheaper path, or hand off to a human, instead of crashing or hallucinating its way forward. If you haven't decided what happens on failure, you haven't finished designing the loop.
 
