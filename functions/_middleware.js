@@ -1,4 +1,4 @@
-const BASE = 'https://kartikbhalerao.com';
+const BASE = 'https://kartikbhalerao.in';
 
 const BLOG = {
   'ai-first-product-strategy': {

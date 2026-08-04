@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const BASE_URL = 'https://kartikbhalerao.com';
+const BASE_URL = 'https://kartikbhalerao.in';
 
 // NOTE: og:image must be PNG or JPG — LinkedIn and Twitter/X do not support SVG.
 // Each post has its own PNG for OG sharing. Replace with proper blog banner PNGs when available.

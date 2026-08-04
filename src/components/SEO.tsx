@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
-export const BASE_URL = "https://kartikbhalerao.com";
+export const BASE_URL = "https://kartikbhalerao.in";
 const SITE_NAME = "Kartik Bhalerao";
 const DEFAULT_IMAGE = "/favicon.png";
 

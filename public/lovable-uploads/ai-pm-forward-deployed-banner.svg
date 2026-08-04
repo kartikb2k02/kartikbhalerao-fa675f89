@@ -70,7 +70,7 @@
     <text x="373" y="430" text-anchor="middle" font-size="9"   font-weight="600" letter-spacing="0.05em" fill="white" fill-opacity="0.75">AI ECONOMY</text>
 
     <!-- domain -->
-    <text x="44" y="588" font-size="11" fill="#9ca3af">kartikbhalerao.com</text>
+    <text x="44" y="588" font-size="11" fill="#9ca3af">kartikbhalerao.in</text>
 
 
     <!-- ═══════════════ RIGHT PANEL ═══════════════ -->
@@ -191,7 +191,7 @@
     <text x="453" y="550" text-anchor="middle" font-size="9.5" font-weight="600" fill="white">Future of PM →</text>
 
     <!-- right side of bottom bar -->
-    <text x="1140" y="550" text-anchor="end" font-size="12" fill="#2563eb" font-weight="600">kartikbhalerao.com</text>
+    <text x="1140" y="550" text-anchor="end" font-size="12" fill="#2563eb" font-weight="600">kartikbhalerao.in</text>
 
   </g>
 

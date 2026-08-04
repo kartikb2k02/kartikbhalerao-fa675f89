@@ -1,4 +1,4 @@
 # Welcome to Kartik Bhalerao
 
-**URL**: http://kartikbhalerao.com/
+**URL**: http://kartikbhalerao.in/
 

@@ -275,4 +275,4 @@ Build the system that makes it *easy* to stay informed, and your team's competit
 
 ---
 
-*Written by **Kartik Bhalerao** — Product Analyst · AI & B2B SaaS · [kartikbhalerao.com](https://kartikbhalerao.com)*
+*Written by **Kartik Bhalerao** — Product Analyst · AI & B2B SaaS · [kartikbhalerao.in](https://kartikbhalerao.in)*
