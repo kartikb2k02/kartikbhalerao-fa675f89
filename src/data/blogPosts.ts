@@ -7,6 +7,12 @@ export interface BlogPost {
   readTime: string;
   tags: string[];
   image: string;
+  /**
+   * Override for social-preview crawlers (LinkedIn/Twitter reject SVG and can
+   * mishandle WebP). Only needed when `image` is an SVG with no same-name PNG
+   * in public/lovable-uploads — otherwise the OG generator derives the PNG itself.
+   */
+  ogImage?: string;
   slug: string;
   featured?: boolean;
   comingSoon?: boolean;
@@ -46,6 +52,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "7 min read",
     tags: ["Prioritization", "Product Management", "Agile", "MoSCoW"],
     image: "/lovable-uploads/moscow-banner.svg",
+    ogImage: "/lovable-uploads/product-development-workflow.png",
     slug: "moscow-prioritization-method",
     featured: true
   },
@@ -58,6 +65,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 min read",
     tags: ["AI", "Product Management", "Decision Making", "Analytics"],
     image: "/lovable-uploads/ai-copilot-banner.svg",
+    ogImage: "/lovable-uploads/ai-product-discovery-workflow.png",
     slug: "ai-copilot-decision-making"
   },
   {
@@ -69,6 +77,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "7 min read",
     tags: ["Data Analytics", "Product Strategy", "Decision Making"],
     image: "/lovable-uploads/data-driven-banner.svg",
+    ogImage: "/lovable-uploads/ai-feedback-pipeline.png",
     slug: "data-driven-decision-making-experience"
   },
   {
@@ -80,6 +89,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "10 min read",
     tags: ["MVP", "Product Strategy", "Startup"],
     image: "/lovable-uploads/idea-to-mvp-banner.svg",
+    ogImage: "/lovable-uploads/product-development-workflow.png",
     slug: "idea-to-mvp-product-manager-journey",
     featured: true
   },
@@ -92,6 +102,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "9 min read",
     tags: ["User Research", "Product Management", "Insights"],
     image: "/lovable-uploads/user-research-banner.svg",
+    ogImage: "/lovable-uploads/ai-feedback-pipeline.png",
     slug: "user-research-that-matters"
   },
   {
@@ -115,6 +126,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "10 min read",
     tags: ["AI", "Product Management", "Workflow", "Productivity", "Experiment"],
     image: "/lovable-uploads/ai-pm-7days-banner.svg",
+    ogImage: "/lovable-uploads/traditional-vs-ai-workflow.png",
     slug: "ai-replaced-pm-workflow-7-days",
     featured: true
   },
@@ -127,6 +139,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "12 min read",
     tags: ["Team Management", "Leadership", "Scaling"],
     image: "/lovable-uploads/scaling-teams-banner.svg",
+    ogImage: "/lovable-uploads/ai-product-discovery-workflow.png",
     slug: "scaling-product-teams-lessons"
   },
   {
