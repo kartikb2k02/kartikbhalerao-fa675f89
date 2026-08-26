@@ -103,14 +103,23 @@ function readPostMarkdown(post: BlogPost): string {
   return `# ${post.title}\n\n${post.excerpt}`;
 }
 
+function renderFaqHtml(post: BlogPost): string {
+  if (!post.faq?.length) return '';
+  const items = post.faq
+    .map((item) => `<h3>${escape(item.question)}</h3><p>${escape(item.answer)}</p>`)
+    .join('');
+  return `<section><h2>Frequently Asked Questions</h2>${items}</section>`;
+}
+
 function renderBlogArticle(post: BlogPost): string {
   const bodyHtml = renderMarkdownToHtml(readPostMarkdown(post));
   const meta = [post.category, post.date, post.readTime].filter(Boolean).map(escape).join(' &middot; ');
   const tags = post.tags?.length
     ? `<ul>${post.tags.map((tag) => `<li>${escape(tag)}</li>`).join('')}</ul>`
     : '';
+  const faqHtml = renderFaqHtml(post);
 
-  return `<article><p>${meta}</p>${tags}${bodyHtml}</article>`;
+  return `<article><p>${meta}</p>${tags}${bodyHtml}${faqHtml}</article>`;
 }
 
 function renderCaseStudyArticle(cs: CaseStudy): string {
@@ -161,6 +170,17 @@ for (const post of publishedPosts) {
     publisher: { '@type': 'Person', name: 'Kartik Bhalerao', url: BASE_URL },
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
   });
+  if (post.faq?.length) {
+    html = injectJsonLd(html, {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: post.faq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
+    });
+  }
   fs.writeFileSync(`dist/blog/${post.slug}.html`, html);
   console.log(`✓ /blog/${post.slug}`);
 }

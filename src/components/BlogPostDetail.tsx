@@ -800,6 +800,26 @@ export const BlogPostDetail = ({ post, content, onBack }: BlogPostDetailProps) =
           >
             {content}
           </ReactMarkdown>
+
+          {post.faq && post.faq.length > 0 && (
+            <section className="mt-14 pt-10 border-t border-black/8 dark:border-white/8">
+              <h2 className="text-2xl sm:text-[28px] font-bold text-slate-900 dark:text-white mb-6 tracking-tight">
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-6">
+                {post.faq.map((item, i) => (
+                  <div key={i}>
+                    <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1.5">
+                      {item.question}
+                    </h3>
+                    <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                      {item.answer}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
             </div>
           </div>
 

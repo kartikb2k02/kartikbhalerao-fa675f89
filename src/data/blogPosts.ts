@@ -16,6 +16,12 @@ export interface BlogPost {
   slug: string;
   featured?: boolean;
   comingSoon?: boolean;
+  /**
+   * Optional FAQ block, rendered at the end of the post and emitted as
+   * FAQPage JSON-LD (both client-side and in the prerendered static HTML).
+   * Answers should be directly grounded in the post's own content.
+   */
+  faq?: { question: string; answer: string }[];
 }
 
 export const blogPosts: BlogPost[] = [
@@ -29,7 +35,29 @@ export const blogPosts: BlogPost[] = [
     tags: ["AI", "Loop Engineering", "Agents", "Product Management", "System Design"],
     image: "/lovable-uploads/llm-loops-banner.svg",
     slug: "llm-loops-production-ai-products",
-    featured: true
+    featured: true,
+    faq: [
+      {
+        question: "What is an LLM loop?",
+        answer: "An LLM loop is the repeatable cycle a product runs every time it needs to answer something: take the input, gather whatever context or tools are needed, let the model reason, check the result, and only then respond — going around again if the check fails. It's what turns a single guess into a checked, grounded answer."
+      },
+      {
+        question: "What's the cheapest type of LLM loop?",
+        answer: "A think loop — the model reasons and answers immediately with no retrieval and no tools. It's basically free and fine for FAQs and writing help. Most products should start here, and a lot should stay here."
+      },
+      {
+        question: "Why does loop design matter more than the model you pick?",
+        answer: "The model rarely makes or breaks an AI product — the loop around it does, and that loop is where the cost lives too. At a hundred requests you'll never notice the difference; at a million, loop design is your infra bill."
+      },
+      {
+        question: "How much can optimizing an LLM loop actually save?",
+        answer: "In the worked example in this post, routing the easy part to a cheap model, trimming context, and caching the stable system prompt took a four-call naive loop from about $0.26 per request down to about $0.03 — roughly 9x cheaper for the same output."
+      },
+      {
+        question: "What metric should I track to know if a loop is working?",
+        answer: "Cost per successful outcome, not cost per call. A cheap call that returns a wrong answer and forces a retry is more expensive than one good call that costs three times as much."
+      }
+    ]
   },
   {
     id: 1,
@@ -41,7 +69,25 @@ export const blogPosts: BlogPost[] = [
     tags: ["AI Strategy", "Product Management", "Innovation", "Future Tech"],
     image: "/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.webp",
     slug: "ai-first-product-strategy",
-    featured: true
+    featured: true,
+    faq: [
+      {
+        question: "What is an AI-first product strategy?",
+        answer: "An AI-first product strategy designs the product so AI is core to the user experience rather than a bolted-on feature — starting with what data is available and what insights can be derived from it, and building feedback loops for continuous learning."
+      },
+      {
+        question: "Should we build our own AI or integrate a third-party solution?",
+        answer: "Building gives you customization, IP ownership, and long-term differentiation, but demands specialized talent and extensive data. Integrating gets you to market faster and suits MVPs and early validation. Many successful companies start by integrating and gradually build proprietary systems as their AI strategy matures."
+      },
+      {
+        question: "What metrics matter for an AI-first product?",
+        answer: "Alongside traditional KPIs, track model accuracy/confidence, prediction value (did it reduce time, effort, or cost), user trust and override rates, and adoption of the AI-based features themselves."
+      },
+      {
+        question: "What are the biggest risks in an AI-first strategy?",
+        answer: "Bias in training data, opaque decision-making, and over-reliance on automation without human oversight. Responsible practice means adding explainability layers, fallback modes if primary systems fail, and human-in-the-loop review for high-consequence decisions."
+      }
+    ]
   },
   {
     id: 2,
@@ -54,7 +100,25 @@ export const blogPosts: BlogPost[] = [
     image: "/lovable-uploads/moscow-banner.svg",
     ogImage: "/lovable-uploads/product-development-workflow.png",
     slug: "moscow-prioritization-method",
-    featured: true
+    featured: true,
+    faq: [
+      {
+        question: "What does MoSCoW stand for?",
+        answer: "Must Have, Should Have, Could Have, and Won't Have (this time). Every requirement gets sorted into exactly one of these four buckets — no grey areas."
+      },
+      {
+        question: "Where did the MoSCoW method come from?",
+        answer: "It was developed in the 1990s by Dai Clegg while working at Oracle, and originated from the DSDM agile framework, a lesser-known cousin of Scrum and Kanban."
+      },
+      {
+        question: "How many items should be Must Haves?",
+        answer: "Keep Must-Haves to 60% or less of total scope. If a Must-Have is missing, the release fails — so overloading the Must category defeats the point of prioritizing at all."
+      },
+      {
+        question: "When should a team use MoSCoW?",
+        answer: "Early and often — during sprint planning and backlog grooming, stakeholder alignment, MVP scoping, capacity planning, and retrospectives, not just once at project kickoff."
+      }
+    ]
   },
   {
     id: 3,

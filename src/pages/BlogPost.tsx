@@ -79,6 +79,18 @@ const BlogPost = () => {
     },
   };
 
+  const faqJsonLd = post.faq && post.faq.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: post.faq.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
+      }
+    : null;
+
   return (
     <>
     <SEO
@@ -87,7 +99,7 @@ const BlogPost = () => {
       path={`/blog/${post.slug}`}
       image={post.image}
       type="article"
-      jsonLd={jsonLd}
+      jsonLd={faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd}
     />
     <div className="min-h-screen w-full text-foreground relative bg-white dark:bg-black">
       <div className="relative z-10">
