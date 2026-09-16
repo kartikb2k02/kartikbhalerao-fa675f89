@@ -7,6 +7,3 @@
 /blog/6  /blog/user-research-that-matters        301
 /blog/7  /blog/scaling-product-teams-lessons     301
 /blog/8  /blog/ai-replaced-pm-workflow-7-days    301
-
-# SPA fallback — must be last
-/*  /index.html  200

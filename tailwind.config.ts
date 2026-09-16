@@ -5,10 +5,8 @@ import type { Config } from "tailwindcss";
 export default {
 	darkMode: ["class"],
 	content: [
-		"./pages/**/*.{ts,tsx}",
-		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
+		"./components/**/*.{ts,tsx}",
 	],
 	prefix: "",
 	theme: {
@@ -208,7 +206,7 @@ export default {
     		},
     		fontFamily: {
     			sans: [
-    				'Inter',
+    				'Switzer',
     				'ui-sans-serif',
     				'system-ui',
     				'-apple-system',
@@ -248,8 +246,8 @@ export default {
     				'monospace'
     			],
     			display: [
-    				'Aspekta',
-    				'Inter',
+    				'Jost',
+    				'Futura',
     				'sans-serif'
     			]
     		}
