@@ -26,6 +26,40 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 13,
+    title: "Prompt vs. Context vs. Harness Engineering: The Difference That Actually Matters",
+    excerpt: "A well-instructed agent with great context still deleted a developer's home directory. Here's why that failure sits at the harness layer, not the prompt, and what that actually means to build.",
+    category: "ai",
+    date: "2026-09-30",
+    readTime: "9 min read",
+    tags: ["AI Engineering", "Agentic AI", "Harness Engineering", "AI Agent Reliability", "Context Engineering"],
+    image: "/lovable-uploads/harness-engineering-banner.svg",
+    slug: "prompt-context-harness-engineering",
+    featured: true,
+    faq: [
+      {
+        question: "What is harness engineering?",
+        answer: "Harness engineering is the discipline of building the system that runs around a model across an entire task: executing tool calls, deciding what's allowed to run without asking, checking results before they reach the next step, retrying failures, enforcing limits, and giving the loop a way to stop. It governs what happens after the model decides what it wants to do."
+      },
+      {
+        question: "How is harness engineering different from prompt and context engineering?",
+        answer: "Prompt engineering controls the wording of one request and operates on a single model call. Context engineering controls what information the model sees and operates across a session. Harness engineering controls what the agent is allowed to do and operates across the full execution loop \u2014 so it's the only one of the three that can stop a destructive action."
+      },
+      {
+        question: "Why does the harness affect benchmark scores so much?",
+        answer: "Holding the model fixed and changing only the harness moves scores by a wide margin. Claude Opus 4.5 scores 45.9% on SWE-bench Pro under the SEAL scaffold and 55.4% under the Claude Code harness \u2014 a 9.5 point swing on identical weights. The Holistic Agent Leaderboard has reported single-model swings of up to nearly 48 percentage points on SWE-bench Verified Mini from scaffold choice alone."
+      },
+      {
+        question: "What was actually missing in the rm -rf incident?",
+        answer: "A harness boundary, not a better prompt. There was no architectural check stopping a recursive delete from resolving to a real home directory, and no sandbox isolation strong enough to keep the test filesystem genuinely separate from the host's. The command was syntactically valid and executed exactly as written."
+      },
+      {
+        question: "What is a harness actually made of?",
+        answer: "Four concrete responsibilities: permissions (what runs without asking, and what never runs), tool execution plus a separate step that verifies results instead of trusting them, state that survives across the task rather than one call, and a bounded loop with a real exit condition instead of trusting the model to know when to stop."
+      }
+    ]
+  },
+  {
     id: 12,
     title: "Loops Engineering for Product Development: How to Increase AI Efficiency",
     excerpt: "The best AI products aren't the ones that make the most LLM calls, they're the ones that make the fewest calls needed to get the job done. A breakdown of the loop patterns behind production AI products, what they actually cost in tokens, and how to keep them efficient at scale.",

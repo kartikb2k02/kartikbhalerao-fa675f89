@@ -1,0 +1,130 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <defs>
+    <clipPath id="hclip"><rect width="1200" height="630" rx="20"/></clipPath>
+    <marker id="harr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#111827"/>
+    </marker>
+    <marker id="harrMuted" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#cbd5e1"/>
+    </marker>
+  </defs>
+
+  <g clip-path="url(#hclip)">
+
+    <!-- BASE -->
+    <rect width="1200" height="630" fill="#ffffff"/>
+
+    <!-- dot grid left panel -->
+    <g opacity="0.5">
+      <g fill="#e5e7eb">
+        <circle cx="44"  cy="44"  r="1.4"/><circle cx="88"  cy="44"  r="1.4"/><circle cx="132" cy="44"  r="1.4"/><circle cx="176" cy="44"  r="1.4"/><circle cx="220" cy="44"  r="1.4"/><circle cx="264" cy="44"  r="1.4"/><circle cx="308" cy="44"  r="1.4"/><circle cx="352" cy="44"  r="1.4"/><circle cx="396" cy="44"  r="1.4"/><circle cx="440" cy="44"  r="1.4"/>
+        <circle cx="44"  cy="88"  r="1.4"/><circle cx="88"  cy="88"  r="1.4"/><circle cx="132" cy="88"  r="1.4"/><circle cx="176" cy="88"  r="1.4"/><circle cx="220" cy="88"  r="1.4"/><circle cx="264" cy="88"  r="1.4"/><circle cx="308" cy="88"  r="1.4"/><circle cx="352" cy="88"  r="1.4"/><circle cx="396" cy="88"  r="1.4"/><circle cx="440" cy="88"  r="1.4"/>
+        <circle cx="44"  cy="132" r="1.4"/><circle cx="88"  cy="132" r="1.4"/><circle cx="132" cy="132" r="1.4"/><circle cx="176" cy="132" r="1.4"/><circle cx="220" cy="132" r="1.4"/><circle cx="264" cy="132" r="1.4"/><circle cx="308" cy="132" r="1.4"/><circle cx="352" cy="132" r="1.4"/><circle cx="396" cy="132" r="1.4"/><circle cx="440" cy="132" r="1.4"/>
+        <circle cx="44"  cy="176" r="1.4"/><circle cx="88"  cy="176" r="1.4"/><circle cx="132" cy="176" r="1.4"/><circle cx="176" cy="176" r="1.4"/><circle cx="220" cy="176" r="1.4"/><circle cx="264" cy="176" r="1.4"/><circle cx="308" cy="176" r="1.4"/><circle cx="352" cy="176" r="1.4"/><circle cx="396" cy="176" r="1.4"/><circle cx="440" cy="176" r="1.4"/>
+        <circle cx="44"  cy="220" r="1.4"/><circle cx="88"  cy="220" r="1.4"/><circle cx="132" cy="220" r="1.4"/><circle cx="176" cy="220" r="1.4"/><circle cx="220" cy="220" r="1.4"/><circle cx="264" cy="220" r="1.4"/><circle cx="308" cy="220" r="1.4"/><circle cx="352" cy="220" r="1.4"/><circle cx="396" cy="220" r="1.4"/><circle cx="440" cy="220" r="1.4"/>
+      </g>
+    </g>
+
+    <line x1="460" y1="36" x2="460" y2="440" stroke="#e5e7eb" stroke-width="1.5"/>
+
+    <!-- ═══ LEFT PANEL ═══ -->
+    <rect x="44" y="48" width="196" height="27" rx="13.5" fill="#ffffff" stroke="#111827" stroke-width="1.3"/>
+    <text x="142" y="66.5" text-anchor="middle" font-size="10.5" font-weight="700" letter-spacing="0.13em" fill="#111827">AI ENGINEERING</text>
+
+    <text x="44" y="146" font-size="52" font-weight="800" fill="#111827" letter-spacing="-0.03em">Harness</text>
+    <text x="44" y="206" font-size="52" font-weight="800" fill="#111827" letter-spacing="-0.035em">Engineering</text>
+
+    <rect x="44" y="222" width="80" height="3.5" rx="2" fill="#111827"/>
+
+    <text x="44" y="258" font-size="14.5" fill="#4b5563" letter-spacing="-0.01em">The layer that decides what your</text>
+    <text x="44" y="278" font-size="14.5" fill="#4b5563" letter-spacing="-0.01em">agent is actually allowed to do.</text>
+
+    <!-- stat chips -->
+    <rect x="44"  y="312" width="122" height="68" rx="12" fill="#ffffff" stroke="#d1d5db" stroke-width="1.3"/>
+    <text x="105" y="341" text-anchor="middle" font-size="26" font-weight="800" fill="#111827" letter-spacing="-0.03em">3</text>
+    <text x="105" y="360" text-anchor="middle" font-size="9" font-weight="600" letter-spacing="0.05em" fill="#6b7280">DISTINCT LAYERS</text>
+
+    <rect x="178" y="312" width="122" height="68" rx="12" fill="#ffffff" stroke="#d1d5db" stroke-width="1.3"/>
+    <text x="239" y="341" text-anchor="middle" font-size="26" font-weight="800" fill="#111827" letter-spacing="-0.03em">9.5pt</text>
+    <text x="239" y="360" text-anchor="middle" font-size="9" font-weight="600" letter-spacing="0.05em" fill="#6b7280">SAME MODEL, SWING</text>
+
+    <rect x="312" y="312" width="122" height="68" rx="12" fill="#111827"/>
+    <text x="373" y="341" text-anchor="middle" font-size="26" font-weight="800" fill="white" letter-spacing="-0.03em">700GB</text>
+    <text x="373" y="360" text-anchor="middle" font-size="9" font-weight="600" letter-spacing="0.05em" fill="white" fill-opacity="0.85">ONE MISSING GUARD</text>
+
+    <!-- mini contrast flow -->
+    <text x="44" y="412" font-size="9.5" font-weight="700" letter-spacing="0.1em" fill="#9ca3af">A PROMPT INSTRUCTS</text>
+    <text x="44" y="434" font-size="9.5" font-weight="700" letter-spacing="0.1em" fill="#111827">A HARNESS ENFORCES</text>
+
+    <!-- ═══ RIGHT PANEL ═══ -->
+    <text x="500" y="58" font-size="10.5" font-weight="700" letter-spacing="0.14em" fill="#111827">THREE LAYERS, THREE JOBS</text>
+
+    <text x="500" y="93"  font-size="23" font-weight="800" fill="#111827" letter-spacing="-0.025em">A perfectly prompted, perfectly</text>
+    <text x="500" y="120" font-size="23" font-weight="800" fill="#111827" letter-spacing="-0.025em">informed agent can still wreck things</text>
+
+    <!-- Layer 1: Prompt -->
+    <rect x="500" y="148" width="640" height="84" rx="12" fill="#ffffff" stroke="#d1d5db" stroke-width="1.4"/>
+    <rect x="518" y="164" width="20" height="20" rx="10" fill="#9ca3af"/>
+    <text x="528" y="178" text-anchor="middle" font-size="9.5" font-weight="700" fill="white">01</text>
+    <text x="550" y="179" font-size="15" font-weight="800" fill="#111827" letter-spacing="-0.02em">Prompt engineering</text>
+    <text x="518" y="208" font-size="11" fill="#4b5563">Controls the wording of one request.</text>
+    <text x="518" y="223" font-size="11" fill="#4b5563">Scope: a single model call.</text>
+    <line x1="868" y1="164" x2="868" y2="216" stroke="#e5e7eb" stroke-width="1"/>
+    <text x="888" y="176" font-size="8.5" font-weight="700" letter-spacing="0.1em" fill="#9ca3af">FAILURE LOOKS LIKE</text>
+    <text x="888" y="196" font-size="10.5" fill="#4b5563">The model misreads a clear</text>
+    <text x="888" y="211" font-size="10.5" fill="#4b5563">instruction. Obvious instantly.</text>
+
+    <line x1="820" y1="232" x2="820" y2="248" stroke="#cbd5e1" stroke-width="1.6" marker-end="url(#harrMuted)"/>
+
+    <!-- Layer 2: Context -->
+    <rect x="500" y="250" width="640" height="84" rx="12" fill="#ffffff" stroke="#d1d5db" stroke-width="1.4"/>
+    <rect x="518" y="266" width="20" height="20" rx="10" fill="#9ca3af"/>
+    <text x="528" y="280" text-anchor="middle" font-size="9.5" font-weight="700" fill="white">02</text>
+    <text x="550" y="281" font-size="15" font-weight="800" fill="#111827" letter-spacing="-0.02em">Context engineering</text>
+    <text x="518" y="310" font-size="11" fill="#4b5563">Controls what information the model sees.</text>
+    <text x="518" y="325" font-size="11" fill="#4b5563">Scope: a session or task.</text>
+    <line x1="868" y1="266" x2="868" y2="318" stroke="#e5e7eb" stroke-width="1"/>
+    <text x="888" y="278" font-size="8.5" font-weight="700" letter-spacing="0.1em" fill="#9ca3af">FAILURE LOOKS LIKE</text>
+    <text x="888" y="298" font-size="10.5" fill="#4b5563">Confident reasoning over the</text>
+    <text x="888" y="313" font-size="10.5" fill="#4b5563">wrong information. Noticed late.</text>
+
+    <line x1="820" y1="334" x2="820" y2="350" stroke="#111827" stroke-width="1.8" marker-end="url(#harr)"/>
+
+    <!-- Layer 3: Harness (hero) -->
+    <rect x="500" y="352" width="640" height="88" rx="12" fill="#111827"/>
+    <rect x="518" y="368" width="20" height="20" rx="10" fill="white" fill-opacity="0.25"/>
+    <text x="528" y="382" text-anchor="middle" font-size="9.5" font-weight="700" fill="white">03</text>
+    <text x="550" y="383" font-size="15" font-weight="800" fill="white" letter-spacing="-0.02em">Harness engineering</text>
+    <text x="518" y="412" font-size="11" fill="white" fill-opacity="0.8">Controls what the agent is allowed to do.</text>
+    <text x="518" y="427" font-size="11" fill="white" fill-opacity="0.8">Scope: the full execution loop.</text>
+    <line x1="868" y1="370" x2="868" y2="422" stroke="white" stroke-opacity="0.25" stroke-width="1"/>
+    <text x="888" y="382" font-size="8.5" font-weight="700" letter-spacing="0.1em" fill="white" fill-opacity="0.6">FAILURE LOOKS LIKE</text>
+    <text x="888" y="402" font-size="10.5" fill="white" fill-opacity="0.85">Something destructive and</text>
+    <text x="888" y="417" font-size="10.5" fill="white" fill-opacity="0.85">unrecoverable. Noticed never.</text>
+
+    <!-- bottom bar -->
+    <rect x="0" y="462" width="1200" height="168" fill="#f9fafb"/>
+    <line x1="0" y1="462" x2="1200" y2="462" stroke="#e5e7eb" stroke-width="1.5"/>
+
+    <text x="60" y="497" font-size="13" fill="#374151" font-style="italic" letter-spacing="-0.01em">"A good harness doesn't make the model smarter. It makes the system survive the model being wrong."</text>
+
+    <line x1="60" y1="516" x2="1140" y2="516" stroke="#e5e7eb" stroke-width="1"/>
+
+    <rect x="60"  y="534" width="100" height="24" rx="12" fill="white" stroke="#d1d5db" stroke-width="1"/>
+    <text x="110" y="550" text-anchor="middle" font-size="9.5" font-weight="600" fill="#111827">Permissions</text>
+
+    <rect x="170" y="534" width="94"  height="24" rx="12" fill="white" stroke="#d1d5db" stroke-width="1"/>
+    <text x="217" y="550" text-anchor="middle" font-size="9.5" font-weight="600" fill="#111827">Sandboxing</text>
+
+    <rect x="274" y="534" width="100" height="24" rx="12" fill="white" stroke="#d1d5db" stroke-width="1"/>
+    <text x="324" y="550" text-anchor="middle" font-size="9.5" font-weight="600" fill="#111827">Verification</text>
+
+    <rect x="384" y="534" width="134" height="24" rx="12" fill="#111827"/>
+    <text x="451" y="550" text-anchor="middle" font-size="9.5" font-weight="600" fill="white">Agent Reliability →</text>
+
+    <text x="1140" y="550" text-anchor="end" font-size="12" fill="#111827" font-weight="600">kartikbhalerao.in</text>
+
+  </g>
+
+  <rect width="1200" height="630" rx="20" fill="none" stroke="#e5e7eb" stroke-width="2"/>
+</svg>
