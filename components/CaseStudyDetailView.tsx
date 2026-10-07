@@ -53,13 +53,13 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/builds"
-            className="label-mono mb-8 inline-flex items-center gap-2 px-3.5 py-1.5 border border-black/10 dark:border-white/15 text-slate-500 dark:text-slate-400 text-[12px] hover:text-slate-900 dark:hover:text-white hover:border-black/20 dark:hover:border-white/30 transition-all duration-200 group"
+            className="label-mono mb-8 inline-flex items-center gap-2 px-3.5 py-1.5 border border-foreground/10 text-muted-foreground text-[12px] hover:text-slate-900 dark:hover:text-white hover:border-foreground/20 transition-all duration-200 group"
           >
             <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform duration-200" />
             All Builds
           </Link>
 
-          <h1 className="heading-display text-[32px] sm:text-[44px] leading-[1.05] text-slate-900 dark:text-white mb-3 max-w-3xl">
+          <h1 className="heading-display text-[32px] sm:text-[44px] leading-[1.05] text-foreground mb-3 max-w-3xl">
             {caseStudy.title}
           </h1>
           <p className="text-slate-500 dark:text-zinc-400 text-lg max-w-2xl mb-8">{caseStudy.subtitle}</p>
@@ -67,19 +67,19 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
           {id === "chatly-prd" ? (
             <ChatlyBanner />
           ) : id === "tenzo-product-discovery" ? (
-            <div className="overflow-hidden mb-12 border border-black/10 dark:border-white/10 bg-background aspect-[18/10]">
+            <div className="overflow-hidden mb-12 border border-foreground/10 bg-background aspect-[18/10]">
               <TenzoCardBanner />
             </div>
           ) : id === "figprd" ? (
-            <div className="overflow-hidden mb-12 border border-black/10 dark:border-white/10 bg-background aspect-[18/10]">
+            <div className="overflow-hidden mb-12 border border-foreground/10 bg-background aspect-[18/10]">
               <FigPRDCardBanner />
             </div>
           ) : id === "pm-copilot" ? (
-            <div className="overflow-hidden mb-12 border border-black/10 dark:border-white/10 bg-background aspect-[18/10]">
+            <div className="overflow-hidden mb-12 border border-foreground/10 bg-background aspect-[18/10]">
               <PMCopilotCardBanner />
             </div>
           ) : caseStudy.image ? (
-            <div className="overflow-hidden mb-12 border border-black/10 dark:border-white/10 bg-background">
+            <div className="overflow-hidden mb-12 border border-foreground/10 bg-background">
               <img
                 src={caseStudy.image}
                 alt={caseStudy.title}
@@ -100,8 +100,8 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
           {id !== "chatly-prd" && (
           <div className="space-y-14 mb-14">
             <section>
-              <span className="label-mono text-[12px] text-black/40 dark:text-white/40 mb-2 block">Overview</span>
-              <h2 className="heading-display text-2xl sm:text-[28px] text-slate-900 dark:text-white mb-4">
+              <span className="label-mono text-[12px] text-foreground/40 mb-2 block">Overview</span>
+              <h2 className="heading-display text-2xl sm:text-[28px] text-foreground mb-4">
                 The Background
               </h2>
               <p className="text-slate-600 dark:text-zinc-300 text-[16px] leading-[1.8] max-w-3xl">
@@ -110,11 +110,11 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
             </section>
 
             <section>
-              <span className="label-mono text-[12px] text-black/40 dark:text-white/40 mb-2 block">Problem</span>
-              <h2 className="heading-display text-2xl sm:text-[28px] text-slate-900 dark:text-white mb-4">
+              <span className="label-mono text-[12px] text-foreground/40 mb-2 block">Problem</span>
+              <h2 className="heading-display text-2xl sm:text-[28px] text-foreground mb-4">
                 The Challenge
               </h2>
-              <blockquote className="border-l-2 border-black dark:border-white pl-5 py-1 mb-5 max-w-3xl">
+              <blockquote className="border-l-2 border-foreground pl-5 py-1 mb-5 max-w-3xl">
                 <p className="text-[17px] sm:text-[19px] italic font-medium text-slate-800 dark:text-zinc-100 leading-snug">
                   {challengeQuote}
                 </p>
@@ -125,8 +125,8 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
             </section>
 
             <section>
-              <span className="label-mono text-[12px] text-black/40 dark:text-white/40 mb-2 block">Approach</span>
-              <h2 className="heading-display text-2xl sm:text-[28px] text-slate-900 dark:text-white mb-4">
+              <span className="label-mono text-[12px] text-foreground/40 mb-2 block">Approach</span>
+              <h2 className="heading-display text-2xl sm:text-[28px] text-foreground mb-4">
                 The Solution
               </h2>
               <p className="text-slate-600 dark:text-zinc-300 text-[16px] leading-[1.8] max-w-3xl mb-6">
@@ -143,11 +143,11 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
             </section>
 
             <section>
-              <span className="label-mono text-[12px] text-black/40 dark:text-white/40 mb-2 block">Impact</span>
-              <h2 className="heading-display text-2xl sm:text-[28px] text-slate-900 dark:text-white mb-4">
+              <span className="label-mono text-[12px] text-foreground/40 mb-2 block">Impact</span>
+              <h2 className="heading-display text-2xl sm:text-[28px] text-foreground mb-4">
                 The Outcome
               </h2>
-              <div className="border-l-2 border-black dark:border-white pl-5 py-1 max-w-3xl">
+              <div className="border-l-2 border-foreground pl-5 py-1 max-w-3xl">
                 <p className="text-[16px] sm:text-[17px] font-medium text-slate-800 dark:text-zinc-100 leading-[1.8]">
                   {caseStudy.outcome}
                 </p>
@@ -155,15 +155,15 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
             </section>
 
             <section>
-              <span className="label-mono text-[12px] text-black/40 dark:text-white/40 mb-3 block">Stack</span>
-              <h2 className="heading-display text-2xl sm:text-[28px] text-slate-900 dark:text-white mb-5">
+              <span className="label-mono text-[12px] text-foreground/40 mb-3 block">Stack</span>
+              <h2 className="heading-display text-2xl sm:text-[28px] text-foreground mb-5">
                 Tools Used
               </h2>
               <div className="flex flex-wrap gap-2">
                 {caseStudy.tools.map(tool => (
                   <span
                     key={tool}
-                    className="label-mono px-3 py-1.5 text-[11px] border border-black/12 dark:border-white/15 text-black/55 dark:text-white/55"
+                    className="label-mono px-3 py-1.5 text-[11px] border border-foreground/12 text-foreground/55"
                   >
                     {tool}
                   </span>
@@ -178,7 +178,7 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
               <div className="flex items-center gap-3 mb-6">
                 <ZoomIn className="w-5 h-5 text-slate-400 dark:text-zinc-500" />
                 <div>
-                  <h2 className="label-mono text-[13px] text-slate-900 dark:text-white">Gallery</h2>
+                  <h2 className="label-mono text-[13px] text-foreground">Gallery</h2>
                   <p className="text-xs text-slate-500 dark:text-zinc-500">Click any image to view full size</p>
                 </div>
               </div>
@@ -191,7 +191,7 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
                       className="group w-full max-w-4xl cursor-pointer"
                       onClick={() => openLightbox(index)}
                     >
-                      <div className="relative overflow-hidden bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10 hover:shadow-xl transition-all duration-300">
+                      <div className="relative overflow-hidden bg-card border border-foreground/10 hover:shadow-xl transition-all duration-300">
                         <div className="p-4 md:p-6 bg-gradient-to-br from-slate-50 to-white dark:from-zinc-900 dark:to-zinc-900">
                           <img
                             src={item.src}
@@ -204,7 +204,7 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
                             <ZoomIn className="w-5 h-5 text-slate-700 dark:text-zinc-200" />
                           </div>
                         </div>
-                        <div className="label-mono absolute top-4 right-4 px-3 py-1 bg-white/90 dark:bg-zinc-900/90 border border-black/10 dark:border-white/10 text-[10px] text-slate-600 dark:text-zinc-400">
+                        <div className="label-mono absolute top-4 right-4 px-3 py-1 bg-white/90 dark:bg-zinc-900/90 border border-foreground/10 text-[10px] text-slate-600 dark:text-zinc-400">
                           {index + 1} / {caseStudy.gallery.length}
                         </div>
                       </div>
@@ -218,7 +218,7 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
                 <div className="flex flex-col gap-6">
                   {caseStudy.gallery.map((item, index) => (
                     <div key={index} className="group cursor-pointer" onClick={() => openLightbox(index)}>
-                      <div className="relative overflow-hidden border border-black/10 dark:border-white/10 bg-white dark:bg-zinc-900 hover:shadow-lg transition-all duration-300">
+                      <div className="relative overflow-hidden border border-foreground/10 bg-card hover:shadow-lg transition-all duration-300">
                         <img
                           src={item.src}
                           alt={item.caption}
@@ -229,7 +229,7 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
                             <ZoomIn className="w-5 h-5 text-slate-700 dark:text-zinc-200" />
                           </div>
                         </div>
-                        <div className="label-mono absolute top-4 right-4 px-3 py-1 bg-white/90 dark:bg-zinc-900/90 border border-black/10 dark:border-white/10 text-[10px] text-slate-600 dark:text-zinc-400">
+                        <div className="label-mono absolute top-4 right-4 px-3 py-1 bg-white/90 dark:bg-zinc-900/90 border border-foreground/10 text-[10px] text-slate-600 dark:text-zinc-400">
                           {index + 1} / {caseStudy.gallery.length}
                         </div>
                       </div>
@@ -259,7 +259,7 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
       <button
         onClick={scrollToTop}
         title="Back to top"
-        className={`fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-700 shadow-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 hover:border-blue-500 hover:text-blue-600 dark:hover:border-blue-500 dark:hover:text-blue-400 transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-card border border-slate-200 dark:border-zinc-700 shadow-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 hover:border-blue-500 hover:text-blue-600 dark:hover:border-blue-500 dark:hover:text-blue-400 transition-all duration-300 ${
           showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
         }`}
       >

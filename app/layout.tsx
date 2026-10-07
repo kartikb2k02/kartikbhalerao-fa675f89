@@ -65,9 +65,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <div className="accent-rule" aria-hidden="true" />
-        <div className="vignette-overlay" aria-hidden="true" />
-        <div className="grain-overlay" aria-hidden="true" />
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -9,6 +9,7 @@ import { Header } from "@/components/Header";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import { MermaidDiagram } from "@/components/MermaidDiagram";
 
 const formatDate = (dateStr: string) =>
   new Date(dateStr).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
@@ -47,7 +48,7 @@ const CALLOUT_MAP: { emoji: string; config: CalloutType }[] = [
   { emoji: '✅', config: { border: 'border-green-400', bg: 'bg-green-50 dark:bg-green-950/25', pill: 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300', label: '✅ Pro Tip' } },
   { emoji: '💰', config: { border: 'border-emerald-400', bg: 'bg-emerald-50 dark:bg-emerald-950/25', pill: 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300', label: '💰 Cost' } },
   { emoji: '🎬', config: { border: 'border-violet-400', bg: 'bg-violet-50 dark:bg-violet-950/25', pill: 'bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300', label: '🎬 Watch' } },
-  { emoji: '📸', config: { border: 'border-slate-300 border-dashed', bg: 'bg-slate-50 dark:bg-slate-800/40', pill: 'bg-slate-100 dark:bg-slate-700/60 text-slate-500 dark:text-slate-400', label: '📸 Screenshot' } },
+  { emoji: '📸', config: { border: 'border-slate-300 border-dashed', bg: 'bg-muted/40', pill: 'bg-slate-100 dark:bg-slate-700/60 text-muted-foreground', label: '📸 Screenshot' } },
   { emoji: '⏱', config: { border: 'border-cyan-400', bg: 'bg-cyan-50 dark:bg-cyan-950/25', pill: 'bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300', label: '⏱ At a glance' } },
   { emoji: '📦', config: { border: 'border-orange-400', bg: 'bg-orange-50 dark:bg-orange-950/25', pill: 'bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300', label: '📦 Resource' } },
 ];
@@ -177,7 +178,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
           scrollProgress > 5 ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
       >
-        <div className="flex items-center gap-3 pl-2 pr-4 py-2 rounded-none bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border border-black/8 dark:border-white/8 shadow-lg shadow-black/10">
+        <div className="flex items-center gap-3 pl-2 pr-4 py-2 rounded-none bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border border-foreground/8 shadow-lg shadow-black/10">
           {/* Mini ring */}
           <div className="relative w-8 h-8 flex-shrink-0">
             <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 32 32">
@@ -185,17 +186,17 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
               <circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
                 strokeDasharray={`${2 * Math.PI * 12}`}
                 strokeDashoffset={`${2 * Math.PI * 12 * (1 - scrollProgress / 100)}`}
-                className="text-black dark:text-white transition-all duration-150 ease-out"
+                className="text-foreground transition-all duration-150 ease-out"
               />
             </svg>
-            <Clock className="absolute inset-0 m-auto w-3 h-3 text-slate-400 dark:text-slate-500" />
+            <Clock className="absolute inset-0 m-auto w-3 h-3 text-muted-foreground" />
           </div>
           {/* Text */}
           <div>
-            <p className="text-[12px] font-bold text-slate-800 dark:text-white leading-tight">
+            <p className="text-[12px] font-bold text-foreground/90 leading-tight">
               {timeRemaining > 0 ? `${timeRemaining} min left` : "Finished!"}
             </p>
-            <p className="text-[10px] font-black leading-tight text-black dark:text-white">
+            <p className="text-[10px] font-black leading-tight text-foreground">
               {Math.round(scrollProgress)}% read
             </p>
           </div>
@@ -206,44 +207,22 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="label-mono mb-6 inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/70 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/15 text-slate-500 dark:text-slate-400 text-[12px] hover:text-slate-900 dark:hover:text-white hover:border-black/20 dark:hover:border-white/30 active:scale-95 transition-all duration-200 group"
+          className="label-mono mb-6 inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/70 dark:bg-white/10 backdrop-blur-md border border-foreground/10 text-muted-foreground text-[12px] hover:text-slate-900 dark:hover:text-white hover:border-foreground/20 active:scale-95 transition-all duration-200 group"
         >
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform duration-200" />
           All posts
         </button>
-
-        {/* Hero Card */}
-        <div className="mb-8 rounded-none overflow-hidden border border-black/8 dark:border-white/8 shadow-lg max-w-5xl">
-          {/* Banner Image */}
-          {post.image && (
-            <div className="relative w-full overflow-hidden">
-              <img
-                src={post.image}
-                alt={post.title}
-                className="w-full h-auto block"
-                style={{ imageRendering: "auto", backfaceVisibility: "hidden", transform: "translateZ(0)" }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              {/* Category pill */}
-              <div className="absolute top-4 left-4 z-10">
-                <span className="label-mono px-2.5 py-1 bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px]">
-                  {post.category === 'ai' ? 'AI' : post.category}
-                </span>
-              </div>
-            </div>
-          )}
-        </div>
 
         {/* Article body — Aspekta to match reference typography; hero banner above is untouched */}
         <div style={{ fontFamily: "'Aspekta Variable Variable', Aspekta, ui-sans-serif, system-ui, sans-serif" }}>
 
         {/* Title block */}
         <div className="mb-8 px-1">
-          <span className="label-mono inline-flex items-center px-3 py-1 border border-slate-300 dark:border-slate-600 text-[11px] text-slate-500 dark:text-slate-400 mb-5">
+          <span className="label-mono inline-flex items-center px-3 py-1 border border-slate-300 dark:border-slate-600 text-[11px] text-muted-foreground mb-5">
             {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }).toUpperCase()}
           </span>
           <h1
-            className="text-slate-900 dark:text-white mb-4"
+            className="text-foreground mb-4"
             style={{
               fontFamily: "'Aspekta Variable Variable', Aspekta, sans-serif",
               fontSize: "clamp(28px, 3vw, 40px)",
@@ -256,7 +235,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
           >
             {post.title}
           </h1>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-5">
+          <p className="text-base sm:text-lg text-foreground/75 leading-relaxed mb-5">
             {post.excerpt}
           </p>
           {post.tags && post.tags.length > 0 && (
@@ -264,7 +243,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
               {post.tags.map(tag => (
                 <span
                   key={tag}
-                  className="label-mono inline-flex items-center px-3 py-1.5 border border-slate-200 dark:border-slate-700 text-[11px] text-slate-500 dark:text-slate-400"
+                  className="label-mono inline-flex items-center px-3 py-1.5 border border-border text-[11px] text-muted-foreground"
                 >
                   {tag}
                 </span>
@@ -273,7 +252,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
           )}
 
           {/* Line after keywords */}
-          <div className="h-px bg-black/8 dark:bg-white/8 mt-6" />
+          <div className="h-px bg-foreground/8 mt-6" />
         </div>
 
         {/* 2-column: content + TOC */}
@@ -289,7 +268,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                 // Skip duplicate title already shown on banner
                 if (extractText(children as React.ReactNode).trim() === post.title.trim()) return null;
                 return (
-                  <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-10 mb-5 first:mt-0 tracking-tight leading-tight">
+                  <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground mt-10 mb-5 first:mt-0 tracking-tight leading-tight">
                     {children}
                   </h1>
                 );
@@ -297,7 +276,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
               h2: ({ children }) => {
                 const id = slugify(extractText(children as React.ReactNode));
                 return (
-                  <h2 id={id} className="scroll-mt-28 text-2xl sm:text-[28px] font-bold text-slate-900 dark:text-white mt-14 mb-4 tracking-tight leading-snug">
+                  <h2 id={id} className="scroll-mt-28 text-2xl sm:text-[28px] font-bold text-foreground mt-14 mb-4 tracking-tight leading-snug">
                     {children}
                   </h2>
                 );
@@ -305,13 +284,13 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
               h3: ({ children }) => {
                 const id = slugify(extractText(children as React.ReactNode));
                 return (
-                  <h3 id={id} className="scroll-mt-28 text-lg sm:text-xl font-bold text-slate-800 dark:text-slate-100 mt-8 mb-3 tracking-tight">
+                  <h3 id={id} className="scroll-mt-28 text-lg sm:text-xl font-bold text-foreground/90 mt-8 mb-3 tracking-tight">
                     {children}
                   </h3>
                 );
               },
               h4: ({ children }) => (
-                <h4 className="text-base font-semibold text-slate-800 dark:text-slate-200 mt-5 mb-2">
+                <h4 className="text-base font-semibold text-foreground/90 mt-5 mb-2">
                   {children}
                 </h4>
               ),
@@ -327,16 +306,16 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                   const SelectIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/></svg>;
 
                   return (
-                    <div className="my-8 rounded-none overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm text-sm">
+                    <div className="my-8 rounded-none overflow-hidden border border-border shadow-sm text-sm">
                       {/* Notion DB title bar */}
-                      <div className="flex items-center gap-2 px-4 py-2.5 bg-slate-50 dark:bg-zinc-900 border-b border-slate-200 dark:border-slate-700">
+                      <div className="flex items-center gap-2 px-4 py-2.5 bg-slate-50 dark:bg-zinc-900 border-b border-border">
                         <span className="text-base">🗃️</span>
-                        <span className="font-semibold text-slate-700 dark:text-slate-200 text-[13px]">Competitor Intelligence DB</span>
+                        <span className="font-semibold text-foreground/80 text-[13px]">Competitor Intelligence DB</span>
                         <span className="ml-auto text-[11px] text-slate-400 bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded-md font-medium">Notion Database</span>
                       </div>
 
                       {/* Column headers */}
-                      <div className="flex items-center px-4 py-2 bg-slate-50 dark:bg-zinc-900 border-b border-slate-200 dark:border-slate-700">
+                      <div className="flex items-center px-4 py-2 bg-slate-50 dark:bg-zinc-900 border-b border-border">
                         <div className="w-5 mr-3" />
                         <div className="flex-1 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Property</div>
                         <div className="w-28 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Type</div>
@@ -344,21 +323,21 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                       </div>
 
                       {/* ── Section: Identity ── */}
-                      <div className="flex items-center gap-2 px-4 py-1.5 bg-blue-50 dark:bg-blue-950/20 border-b border-slate-200 dark:border-slate-700">
+                      <div className="flex items-center gap-2 px-4 py-1.5 bg-blue-50 dark:bg-blue-950/20 border-b border-border">
                         <span className="w-2 h-2 rounded-sm bg-blue-400 inline-block"/>
                         <span className="text-[11px] font-bold text-blue-500 dark:text-blue-400 uppercase tracking-widest">Identity</span>
                       </div>
-                      <div className="flex items-center px-4 py-3 border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-zinc-800/50 transition-colors">
+                      <div className="flex items-center px-4 py-3 border-b border-border hover:bg-muted transition-colors">
                         <div className="w-5 mr-3 text-slate-400"><TitleIcon /></div>
-                        <div className="flex-1 font-medium text-slate-800 dark:text-slate-100 text-[13px]">Competitor Name</div>
+                        <div className="flex-1 font-medium text-foreground/90 text-[13px]">Competitor Name</div>
                         <div className="w-28 flex items-center gap-1.5">
-                          <span className="text-[11px] text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">Title</span>
+                          <span className="text-[11px] text-muted-foreground bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">Title</span>
                         </div>
                         <div className="w-48 text-[11px] text-slate-400 hidden sm:block">Primary key / row label</div>
                       </div>
 
                       {/* ── Section: Weekly Scraped Data ── */}
-                      <div className="flex items-center gap-2 px-4 py-1.5 bg-amber-50 dark:bg-amber-950/20 border-b border-slate-200 dark:border-slate-700">
+                      <div className="flex items-center gap-2 px-4 py-1.5 bg-amber-50 dark:bg-amber-950/20 border-b border-border">
                         <span className="w-2 h-2 rounded-sm bg-amber-400 inline-block"/>
                         <span className="text-[11px] font-bold text-amber-500 dark:text-amber-400 uppercase tracking-widest">Weekly Scraped Data</span>
                         <span className="text-[10px] text-amber-500 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/30 px-2 py-0.5 rounded-full font-semibold ml-1">via Apify + n8n</span>
@@ -371,35 +350,35 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                         { name: 'App Store Rating',  type: 'Number', icon: <NumberIcon />, purpose: 'Current app store rating' },
                         { name: 'Last Updated',      type: 'Date',   icon: <DateIcon />,   purpose: 'Timestamp of last automation run' },
                       ].map((row, i, arr) => (
-                        <div key={row.name} className={`flex items-center px-4 py-3 hover:bg-slate-50 dark:hover:bg-zinc-800/50 transition-colors ${i < arr.length - 1 ? 'border-b border-slate-100 dark:border-slate-800' : ''}`}>
+                        <div key={row.name} className={`flex items-center px-4 py-3 hover:bg-muted transition-colors ${i < arr.length - 1 ? 'border-b border-border' : ''}`}>
                           <div className="w-5 mr-3 text-slate-400">{row.icon}</div>
-                          <div className="flex-1 font-medium text-slate-800 dark:text-slate-100 text-[13px]">{row.name}</div>
+                          <div className="flex-1 font-medium text-foreground/90 text-[13px]">{row.name}</div>
                           <div className="w-28">
-                            <span className="text-[11px] text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">{row.type}</span>
+                            <span className="text-[11px] text-muted-foreground bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">{row.type}</span>
                           </div>
                           <div className="w-48 text-[11px] text-slate-400 hidden sm:block">{row.purpose}</div>
                         </div>
                       ))}
 
                       {/* ── Section: AI Analysis ── */}
-                      <div className="flex items-center gap-2 px-4 py-1.5 bg-purple-50 dark:bg-purple-950/20 border-b border-slate-200 dark:border-slate-700 border-t border-t-slate-200 dark:border-t-slate-700">
+                      <div className="flex items-center gap-2 px-4 py-1.5 bg-purple-50 dark:bg-purple-950/20 border-b border-border border-t border-t-slate-200 dark:border-t-slate-700">
                         <span className="w-2 h-2 rounded-sm bg-purple-400 inline-block"/>
                         <span className="text-[11px] font-bold text-purple-500 dark:text-purple-400 uppercase tracking-widest">AI Analysis</span>
                         <span className="text-[10px] text-purple-500 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/30 px-2 py-0.5 rounded-full font-semibold ml-1">via Claude</span>
                       </div>
-                      <div className="flex items-center px-4 py-3 border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-zinc-800/50 transition-colors">
+                      <div className="flex items-center px-4 py-3 border-b border-border hover:bg-muted transition-colors">
                         <div className="w-5 mr-3 text-slate-400"><TextIcon /></div>
-                        <div className="flex-1 font-medium text-slate-800 dark:text-slate-100 text-[13px]">Claude Analysis</div>
+                        <div className="flex-1 font-medium text-foreground/90 text-[13px]">Claude Analysis</div>
                         <div className="w-28">
-                          <span className="text-[11px] text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">Text</span>
+                          <span className="text-[11px] text-muted-foreground bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">Text</span>
                         </div>
                         <div className="w-48 text-[11px] text-slate-400 hidden sm:block">Output stored for historical reference</div>
                       </div>
-                      <div className="flex items-center px-4 py-3 hover:bg-slate-50 dark:hover:bg-zinc-800/50 transition-colors">
+                      <div className="flex items-center px-4 py-3 hover:bg-muted transition-colors">
                         <div className="w-5 mr-3 text-slate-400"><SelectIcon /></div>
-                        <div className="flex-1 font-medium text-slate-800 dark:text-slate-100 text-[13px]">Signal Flag</div>
+                        <div className="flex-1 font-medium text-foreground/90 text-[13px]">Signal Flag</div>
                         <div className="w-28">
-                          <span className="text-[11px] text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">Select</span>
+                          <span className="text-[11px] text-muted-foreground bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">Select</span>
                         </div>
                         <div className="w-48 hidden sm:flex items-center gap-1.5">
                           <span className="text-[10px] font-semibold bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400 px-2 py-0.5 rounded-full">🔴 HIGH</span>
@@ -422,18 +401,18 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                   );
                   const toolMeta: Record<string, { logoEl?: React.ReactNode; logoUrl?: string; category: string; iconBg: string; border: string }> = {
                     'Apify':        { logoEl: <ApifyLogo />,                                     category: 'Web Scraping',  iconBg: 'bg-orange-50 dark:bg-orange-900/20',  border: 'border-orange-200 dark:border-orange-800/40' },
-                    'Notion':       { logoUrl: 'https://cdn.simpleicons.org/notion/000000',       category: 'Database',      iconBg: 'bg-slate-100 dark:bg-slate-800',      border: 'border-slate-200 dark:border-slate-700' },
+                    'Notion':       { logoUrl: 'https://cdn.simpleicons.org/notion/000000',       category: 'Database',      iconBg: 'bg-muted',      border: 'border-border' },
                     'Claude API':   { logoUrl: 'https://cdn.simpleicons.org/anthropic/7C3AED',    category: 'AI Analysis',   iconBg: 'bg-violet-50 dark:bg-violet-900/20',  border: 'border-violet-200 dark:border-violet-800/40' },
-                    'Slack':        { logoEl: <SlackLogo />,                                      category: 'Notifications', iconBg: 'bg-slate-50 dark:bg-slate-800',       border: 'border-slate-200 dark:border-slate-700' },
+                    'Slack':        { logoEl: <SlackLogo />,                                      category: 'Notifications', iconBg: 'bg-muted',       border: 'border-border' },
                     'n8n / Zapier': { logoUrl: 'https://cdn.simpleicons.org/n8n/EA4B71',          category: 'Automation',    iconBg: 'bg-rose-50 dark:bg-rose-900/20',      border: 'border-rose-200 dark:border-rose-800/40' },
                   };
-                  const fallbackMeta: { logoEl?: React.ReactNode; logoUrl?: string; category: string; iconBg: string; border: string } = { category: 'Tool', iconBg: 'bg-slate-100 dark:bg-slate-800', border: 'border-slate-200 dark:border-slate-700' };
+                  const fallbackMeta: { logoEl?: React.ReactNode; logoUrl?: string; category: string; iconBg: string; border: string } = { category: 'Tool', iconBg: 'bg-muted', border: 'border-border' };
                   return (
                     <div className="my-8">
                       <div className="flex items-center gap-3 mb-5">
-                        <div className="h-px flex-1 bg-black/8 dark:bg-white/8" />
-                        <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.25em]">Built with</span>
-                        <div className="h-px flex-1 bg-black/8 dark:bg-white/8" />
+                        <div className="h-px flex-1 bg-foreground/8" />
+                        <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.25em]">Built with</span>
+                        <div className="h-px flex-1 bg-foreground/8" />
                       </div>
                       <div className="flex flex-wrap gap-3 justify-center">
                         {tools.map(tool => {
@@ -441,7 +420,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                           return (
                             <div
                               key={tool}
-                              className={`flex items-center gap-3 px-4 py-3 rounded-none border ${m.border} bg-white dark:bg-zinc-900 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 min-w-[130px]`}
+                              className={`flex items-center gap-3 px-4 py-3 rounded-none border ${m.border} bg-card shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 min-w-[130px]`}
                             >
                               <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${m.iconBg}`}>
                                 {m.logoEl
@@ -452,8 +431,8 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                                 }
                               </div>
                               <div>
-                                <p className="text-[13px] font-bold text-slate-800 dark:text-slate-100 leading-tight">{tool}</p>
-                                <p className="text-[11px] text-slate-400 dark:text-slate-500 leading-tight mt-0.5">{m.category}</p>
+                                <p className="text-[13px] font-bold text-foreground/90 leading-tight">{tool}</p>
+                                <p className="text-[11px] text-muted-foreground leading-tight mt-0.5">{m.category}</p>
                               </div>
                             </div>
                           );
@@ -462,7 +441,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                     </div>
                   );
                 }
-                return <p className="text-[16px] text-slate-600 dark:text-slate-300 leading-[1.85] mb-5">{children}</p>;
+                return <p className="text-[16px] text-foreground/75 leading-[1.85] mb-5">{children}</p>;
               },
               ul: ({ children }) => (
                 <ul className="my-5 space-y-2.5 ml-1">
@@ -470,17 +449,17 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                 </ul>
               ),
               ol: ({ children }) => (
-                <ol className="my-5 space-y-2.5 ml-1 list-decimal list-outside pl-5 text-slate-600 dark:text-slate-300">
+                <ol className="my-5 space-y-2.5 ml-1 list-decimal list-outside pl-5 text-foreground/75">
                   {children}
                 </ol>
               ),
               li: ({ children, ordered }: any) => (
                 ordered ? (
-                  <li className="text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed pl-1">
+                  <li className="text-[15px] text-foreground/75 leading-relaxed pl-1">
                     {children}
                   </li>
                 ) : (
-                  <li className="flex items-start gap-3 text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                  <li className="flex items-start gap-3 text-[15px] text-foreground/75 leading-relaxed">
                     <span className="mt-2 w-1.5 h-1.5 rounded-full bg-foreground flex-shrink-0" />
                     <span>{children}</span>
                   </li>
@@ -500,7 +479,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                     </div>
                   </div>
                   {alt && alt !== "image" && (
-                    <figcaption className="text-center text-xs text-slate-400 dark:text-slate-500 mt-3 font-medium tracking-wide uppercase">{alt}</figcaption>
+                    <figcaption className="text-center text-xs text-muted-foreground mt-3 font-medium tracking-wide uppercase">{alt}</figcaption>
                   )}
                 </figure>
               ),
@@ -554,7 +533,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                       </div>
                       {/* Content */}
                       <div className="bg-gradient-to-b from-red-50 to-white dark:from-red-950/20 dark:to-zinc-900 px-6 py-6">
-                        <p className="text-[15px] sm:text-[16px] text-slate-600 dark:text-slate-300 leading-[1.85] mb-5">
+                        <p className="text-[15px] sm:text-[16px] text-foreground/75 leading-[1.85] mb-5">
                           {mainText}
                         </p>
                         {impactLine && (
@@ -586,7 +565,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                   ];
                   return (
                     <div className="my-7">
-                      <p className="text-[10px] font-black tracking-[0.35em] text-slate-400 dark:text-slate-500 uppercase mb-3">At a glance</p>
+                      <p className="text-[10px] font-black tracking-[0.35em] text-muted-foreground uppercase mb-3">At a glance</p>
                       <div className="flex flex-col sm:flex-row gap-3">
                         {stats.map((s, i) => {
                           const a = accents[i] ?? accents[0];
@@ -622,7 +601,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                   return (
                     <div
                       onClick={() => href && window.open(href, '_blank', 'noopener,noreferrer')}
-                      className={`group my-3 flex items-center gap-4 px-5 py-4 rounded-none border ${c.border} bg-white dark:bg-zinc-900 cursor-pointer hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200`}
+                      className={`group my-3 flex items-center gap-4 px-5 py-4 rounded-none border ${c.border} bg-card cursor-pointer hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200`}
                     >
                       {/* Colored dot */}
                       <span className={`w-2 h-2 rounded-full flex-shrink-0 ${c.dot}`} />
@@ -633,14 +612,14 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                           <span className={`text-[10px] font-black px-2 py-0.5 rounded-full tracking-wide ${c.labelBg} ${c.labelText}`}>
                             {label}
                           </span>
-                          <span className="text-[11px] text-slate-400 dark:text-slate-500 font-mono">{source}</span>
+                          <span className="text-[11px] text-muted-foreground font-mono">{source}</span>
                         </div>
-                        <p className="text-[14px] sm:text-[15px] font-semibold text-slate-900 dark:text-white leading-snug line-clamp-2 mb-2">
+                        <p className="text-[14px] sm:text-[15px] font-semibold text-foreground leading-snug line-clamp-2 mb-2">
                           {title}
                         </p>
                         <div className="flex flex-wrap gap-1">
                           {stackItems.map(s => (
-                            <span key={s} className="text-[10px] px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 font-medium">
+                            <span key={s} className="text-[10px] px-2 py-0.5 rounded-md bg-muted text-muted-foreground font-medium">
                               {s}
                             </span>
                           ))}
@@ -664,7 +643,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                       <span className={`inline-flex items-center text-xs font-bold px-2.5 py-1 rounded-full mb-3 ${pill}`}>
                         {label}
                       </span>
-                      <div className="text-slate-700 dark:text-slate-200 text-[15px] leading-relaxed [&_p]:mb-1.5 [&_p:last-child]:mb-0 [&_strong]:font-bold [&_strong]:text-slate-900 dark:[&_strong]:text-white">
+                      <div className="text-foreground/80 text-[15px] leading-relaxed [&_p]:mb-1.5 [&_p:last-child]:mb-0 [&_strong]:font-bold [&_strong]:text-slate-900 dark:[&_strong]:text-white">
                         {children}
                       </div>
                     </div>
@@ -673,8 +652,8 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
 
                 // ── Default — pull quote style ────────────────────────────────
                 return (
-                  <blockquote className="my-8 pl-6 border-l-[3px] border-black dark:border-white">
-                    <div className="text-lg sm:text-xl text-slate-700 dark:text-slate-200 italic leading-relaxed font-medium [&_p]:mb-0">
+                  <blockquote className="my-8 pl-6 border-l-[3px] border-foreground">
+                    <div className="text-lg sm:text-xl text-foreground/80 italic leading-relaxed font-medium [&_p]:mb-0">
                       {children}
                     </div>
                   </blockquote>
@@ -693,7 +672,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                     href={href}
                     target={href?.startsWith("http") ? "_blank" : undefined}
                     rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="text-slate-900 dark:text-white font-semibold underline underline-offset-2 decoration-slate-300 dark:decoration-slate-600 hover:decoration-black dark:hover:decoration-white transition-all"
+                    className="text-foreground font-semibold underline underline-offset-2 decoration-slate-300 dark:decoration-slate-600 hover:decoration-black dark:hover:decoration-white transition-all"
                   >
                     {children}
                   </a>
@@ -702,7 +681,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
               code: ({ children, className }) => {
                 const isInline = !className;
                 return isInline ? (
-                  <code className="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded-md text-[13px] font-mono text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
+                  <code className="bg-muted px-1.5 py-0.5 rounded-md text-[13px] font-mono text-foreground/90 border border-border">
                     {children}
                   </code>
                 ) : (
@@ -710,6 +689,27 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                 );
               },
               pre: ({ children }) => {
+                // A ```mermaid fence becomes a diagram, not a code window.
+                let mermaidSource: string | null = null;
+                React.Children.forEach(children as React.ReactNode, (child) => {
+                  if (React.isValidElement(child)) {
+                    const cls = (child.props as any).className || '';
+                    if (/language-mermaid/.test(cls)) {
+                      const getText = (node: React.ReactNode): string => {
+                        if (!node) return '';
+                        if (typeof node === 'string') return node;
+                        if (Array.isArray(node)) return node.map(getText).join('');
+                        if (React.isValidElement(node)) return getText((node.props as any).children);
+                        return '';
+                      };
+                      mermaidSource = getText((child.props as any).children);
+                    }
+                  }
+                });
+                if (mermaidSource) {
+                  return <MermaidDiagram chart={mermaidSource.trim()} />;
+                }
+
                 let language = '';
                 React.Children.forEach(children as React.ReactNode, (child) => {
                   if (React.isValidElement(child)) {
@@ -775,7 +775,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                 );
               },
               iframe: ({ src, title, ...props }) => (
-                <div className="my-8 relative w-full rounded-none overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700" style={{ paddingBottom: '56.25%' }}>
+                <div className="my-8 relative w-full rounded-none overflow-hidden shadow-lg border border-border" style={{ paddingBottom: '56.25%' }}>
                   <iframe
                     src={src}
                     title={title || ""}
@@ -797,26 +797,26 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                 </div>
               ),
               strong: ({ children }) => (
-                <strong className="font-bold text-slate-900 dark:text-white">{children}</strong>
+                <strong className="font-bold text-foreground">{children}</strong>
               ),
-              em: ({ children }) => <em className="italic text-slate-500 dark:text-slate-400">{children}</em>,
+              em: ({ children }) => <em className="italic text-muted-foreground">{children}</em>,
             }}
           >
             {content}
           </ReactMarkdown>
 
           {post.faq && post.faq.length > 0 && (
-            <section className="mt-14 pt-10 border-t border-black/8 dark:border-white/8">
-              <h2 className="text-2xl sm:text-[28px] font-bold text-slate-900 dark:text-white mb-6 tracking-tight">
+            <section className="mt-14 pt-10 border-t border-foreground/8">
+              <h2 className="text-2xl sm:text-[28px] font-bold text-foreground mb-6 tracking-tight">
                 Frequently Asked Questions
               </h2>
               <div className="space-y-6">
                 {post.faq.map((item, i) => (
                   <div key={i}>
-                    <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1.5">
+                    <h3 className="text-base font-semibold text-foreground mb-1.5">
                       {item.question}
                     </h3>
-                    <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <p className="text-foreground/75 leading-relaxed">
                       {item.answer}
                     </p>
                   </div>
@@ -830,7 +830,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
           {/* On this page — plain TOC */}
           {tocItems.length > 0 && (
             <aside className="no-scrollbar hidden lg:block w-56 flex-shrink-0 ml-auto sticky top-24 self-start max-h-[calc(100vh-8rem)] overflow-y-auto">
-              <p className="label-mono text-[11px] text-slate-400 dark:text-slate-500 mb-3">
+              <p className="label-mono text-[11px] text-muted-foreground mb-3">
                 On this page
               </p>
               <nav className="flex flex-col">
@@ -846,8 +846,8 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                       item.level === 3 ? "pl-7" : "pl-4"
                     } ${
                       activeId === item.id
-                        ? "border-black dark:border-white text-black dark:text-white font-semibold"
-                        : "border-transparent text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300"
+                        ? "border-foreground text-foreground font-semibold"
+                        : "border-transparent text-muted-foreground hover:text-slate-600 dark:hover:text-slate-300"
                     }`}
                   >
                     {item.text}
@@ -864,33 +864,33 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
         {relatedPosts.length > 0 && (
           <div className="mt-16 max-w-2xl">
             <div className="flex items-center gap-3 mb-6">
-              <p className="label-mono text-[11px] text-slate-400 dark:text-slate-500 whitespace-nowrap">
+              <p className="label-mono text-[11px] text-muted-foreground whitespace-nowrap">
                 Similar Topics
               </p>
-              <div className="h-px flex-1 bg-black/8 dark:bg-white/8" />
+              <div className="h-px flex-1 bg-foreground/8" />
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
               {relatedPosts.map(related => (
                 <article
                   key={related.id}
                   onClick={() => router.push(`/blog/${related.slug}`)}
-                  className="group cursor-pointer border border-black/10 dark:border-white/10 hover:-translate-y-1 transition-transform duration-200 flex flex-col"
+                  className="group cursor-pointer border border-foreground/10 hover:-translate-y-1 transition-transform duration-200 flex flex-col"
                 >
                   <div className="px-4 py-4 flex flex-col flex-1 gap-2.5">
-                    <span className="label-mono self-start px-2 py-0.5 bg-black/5 dark:bg-white/6 text-[9px] text-black/45 dark:text-white/45">
+                    <span className="label-mono self-start px-2 py-0.5 bg-foreground/5 text-[9px] text-foreground/45">
                       {related.category === 'ai' ? 'AI' : related.category.charAt(0).toUpperCase() + related.category.slice(1)}
                     </span>
-                    <h3 className="font-bold text-slate-900 dark:text-white text-[14px] leading-snug line-clamp-2 group-hover:opacity-75 transition-opacity duration-200">
+                    <h3 className="font-bold text-foreground text-[14px] leading-snug line-clamp-2 group-hover:opacity-75 transition-opacity duration-200">
                       {related.title}
                     </h3>
-                    <div className="flex items-center justify-between mt-auto pt-2 border-t border-black/6 dark:border-white/6">
-                      <div className="label-mono flex items-center gap-1.5 text-[10px] text-black/30 dark:text-white/30">
+                    <div className="flex items-center justify-between mt-auto pt-2 border-t border-foreground/6">
+                      <div className="label-mono flex items-center gap-1.5 text-[10px] text-foreground/30">
                         <Clock className="w-3 h-3" />
                         <span>{related.readTime}</span>
-                        <span className="w-1 h-1 rounded-full bg-black/15 dark:bg-white/15" />
+                        <span className="w-1 h-1 rounded-full bg-foreground/15" />
                         <span>{formatDate(related.date)}</span>
                       </div>
-                      <ArrowRight className="w-3.5 h-3.5 text-black/25 dark:text-white/25 group-hover:translate-x-0.5 group-hover:text-black dark:group-hover:text-white transition-all duration-200" />
+                      <ArrowRight className="w-3.5 h-3.5 text-foreground/25 group-hover:translate-x-0.5 group-hover:text-foreground transition-all duration-200" />
                     </div>
                   </div>
                 </article>
@@ -944,13 +944,13 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
               stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
               strokeDasharray={`${2 * Math.PI * 24}`}
               strokeDashoffset={`${2 * Math.PI * 24 * (1 - scrollProgress / 100)}`}
-              className="text-black dark:text-white transition-all duration-150 ease-out"
+              className="text-foreground transition-all duration-150 ease-out"
             />
           </svg>
           {/* Inner — solid fill so the button reads as clickable at a glance */}
           <div className="absolute inset-[5px] rounded-full bg-foreground shadow-lg flex flex-col items-center justify-center gap-0.5 group-hover:opacity-80 transition-opacity duration-200">
-            <ArrowUp className="w-4 h-4 text-white dark:text-black group-hover:-translate-y-0.5 transition-transform duration-300" />
-            <span className="text-[8px] font-black text-white/70 dark:text-black/70 leading-none tracking-wide uppercase">Top</span>
+            <ArrowUp className="w-4 h-4 text-background group-hover:-translate-y-0.5 transition-transform duration-300" />
+            <span className="text-[8px] font-black text-background/70 leading-none tracking-wide uppercase">Top</span>
           </div>
         </div>
       </button>

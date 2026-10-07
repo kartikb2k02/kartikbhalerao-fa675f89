@@ -36,10 +36,10 @@ export const RelatedCaseStudies = ({ currentStudyId }: RelatedCaseStudiesProps) 
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-5 mb-3">
           <span className="w-16 h-[1.5px] bg-gradient-to-r from-transparent to-black/30 dark:to-white/30" />
-          <span className="text-[13px] font-semibold tracking-[0.3em] uppercase text-black/45 dark:text-white/45">Explore More</span>
+          <span className="text-[13px] font-semibold tracking-[0.3em] uppercase text-foreground/45">Explore More</span>
           <span className="w-16 h-[1.5px] bg-gradient-to-l from-transparent to-black/30 dark:to-white/30" />
         </div>
-        <p className="text-[15px] text-black/40 dark:text-white/40 max-w-sm mx-auto">
+        <p className="text-[15px] text-foreground/40 max-w-sm mx-auto">
           More product work and design explorations
         </p>
       </div>

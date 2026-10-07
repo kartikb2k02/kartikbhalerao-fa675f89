@@ -1,13 +1,15 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { caseStudies } from "@/data/caseStudies";
+import { PageHeader } from "@/components/PageHeader";
 import { ChatlyCardBanner } from "@/components/ChatlyCardBanner";
 import { PMCopilotCardBanner } from "@/components/PMCopilotCardBanner";
 import { FigPRDCardBanner } from "@/components/FigPRDCardBanner";
 import { TenzoCardBanner } from "@/components/TenzoCardBanner";
 
-// Short display names for the card grid — full titles live on the detail page
+// Short display names for the grid. Full titles live on the detail page.
 const shortNames: Record<string, string> = {
   "figprd": "figprd",
   "tenzo-product-discovery": "Tenzo",
@@ -25,113 +27,124 @@ const shortNames: Record<string, string> = {
   "ether-prd": "Ether",
 };
 
+// These two are live products, so the card goes to the real thing.
+const livePr0ducts = new Set(["pm-copilot", "figprd"]);
+
+function Banner({ id, image, title }: { id: string; image: string; title: string }) {
+  if (id === "chatly-prd") return <ChatlyCardBanner />;
+  if (id === "pm-copilot") return <PMCopilotCardBanner />;
+  if (id === "tenzo-product-discovery") return <TenzoCardBanner />;
+  if (id === "figprd") return <FigPRDCardBanner />;
+  return (
+    <img
+      src={image}
+      alt={title}
+      className="w-full h-full object-cover object-center"
+      loading="lazy"
+    />
+  );
+}
 
 export const CaseStudiesSection = () => {
-  const router = useRouter();
-
-  const handleCardClick = (id: string) => {
-    const study = caseStudies.find((s) => s.id === id);
-    if ((study?.id === "pm-copilot" || study?.id === "figprd") && study.externalLink) {
-      window.open(study.externalLink, "_blank", "noopener,noreferrer");
-      return;
-    }
-    router.push(`/builds/${id}`);
-  };
-
   return (
-    <section className="py-20 relative">
-      <div className="max-w-[106rem] mx-auto px-8 space-y-16 relative z-10 -mt-10">
-        <div>
-          {/* Header */}
-          <div className="text-center space-y-3 py-16 px-6">
-            <span className="label-mono text-[13px] text-black/50 dark:text-white/50">Builds</span>
-            <h2 className="heading-display text-[42px] lg:text-[56px] leading-none text-black dark:text-white">
-              Real Products, Real Impact
-            </h2>
-            <p className="text-[16px] text-black/40 dark:text-white/40 max-w-lg mx-auto leading-relaxed">
-              Real-world products built from discovery to launch — strategy, design, and execution.
-            </p>
-          </div>
+    <section>
+      <PageHeader
+        label="Builds"
+        title={<>Things I&apos;ve made<span className="text-primary">.</span></>}
+        lede="Products shipped, specs written, and teardowns of products worth studying, from discovery through launch."
+        meta={`${caseStudies.length} builds`}
+        container="max-w-[94rem]"
+      />
 
-          {/* Grid wrapper */}
-          <div className="p-8 sm:p-20">
-        {/* Case Studies Grid — grid-line border pattern (Missing Piece Studio portfolio spec) */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 gap-0 border"
-          style={{ borderColor: "rgba(128,128,128,0.4)" }}
-        >
-          {caseStudies.map((study) => (
-            <div
-              key={study.id}
-              className="group border-r border-b p-6 overflow-hidden transition-colors duration-300 hover:bg-primary/5 dark:hover:bg-primary/[0.08]"
-              style={{ borderColor: "rgba(128,128,128,0.4)", fontFamily: "Switzer, Arial, sans-serif" }}
-            >
-              {/* Image Section — every card gets the identical frame, same aspect ratio */}
-              <div className="border border-black/10 dark:border-white/10 overflow-hidden">
-                {/* Content area — fixed aspect ratio, full-bleed so custom banners keep their native layout */}
-                <div
-                  onClick={() => handleCardClick(study.id)}
-                  className="relative aspect-[18/10] overflow-hidden cursor-pointer"
-                >
-                  {study.id === "chatly-prd" ? (
-                    <ChatlyCardBanner />
-                  ) : study.id === "pm-copilot" ? (
-                    <PMCopilotCardBanner />
-                  ) : study.id === "tenzo-product-discovery" ? (
-                    <TenzoCardBanner />
-                  ) : study.id === "figprd" ? (
-                    <FigPRDCardBanner />
-                  ) : (
-                    <img
-                      src={study.image}
-                      alt={study.title}
-                      className="w-full h-full object-cover object-center"
-                      loading="lazy"
-                    />
-                  )}
-                </div>
-              </div>
+      <div className="max-w-[94rem] mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-px bg-border border border-border">
+          {caseStudies.map((study, i) => {
+            const isLive = livePr0ducts.has(study.id);
+            const href = isLive ? study.externalLink : `/builds/${study.id}`;
+            const name = shortNames[study.id] ?? study.title;
 
-              {/* Content below image — exact reference rhythm: 16px pt, 16px after title row, 32px before tag */}
-              <div className="pt-4">
-                <div className="flex items-center justify-between gap-4 mb-4">
-                  <h3 className="heading-display text-[30px] leading-[1.15] text-black dark:text-white truncate transition-colors duration-300 group-hover:text-primary">
-                    {shortNames[study.id] ?? study.title}
-                  </h3>
-                  <a
-                    onClick={(e) => { e.preventDefault(); handleCardClick(study.id); }}
-                    href={`/builds/${study.id}`}
-                    className="label-mono shrink-0 inline-flex items-center px-6 py-2.5 text-[12px] border border-black/70 dark:border-white/70 text-black/70 dark:text-white/70 group-hover:bg-black dark:group-hover:bg-white group-hover:text-white dark:group-hover:text-black group-hover:border-transparent transition-all duration-200 cursor-pointer"
-                  >
-                    View Case Study
-                  </a>
+            const inner = (
+              <>
+                {/* Banner */}
+                <div className="relative aspect-[18/10] overflow-hidden border border-border">
+                  <Banner id={study.id} image={study.image} title={study.title} />
                 </div>
 
-                <p className="text-[18px] font-normal leading-[1.5] text-[#575757] dark:text-white/50 max-w-2xl line-clamp-2 mb-5">
-                  {study.overview}
-                </p>
+                {/* Meta */}
+                <div className="pt-5 flex-1 flex flex-col">
+                  <div className="flex items-start justify-between gap-4 mb-3">
+                    <div className="flex items-baseline gap-3 min-w-0">
+                      <span className="data-mono text-[11px] text-muted-foreground/60 shrink-0">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <h3 className="heading-display text-[25px] sm:text-[28px] leading-[1.1] text-foreground truncate transition-colors duration-200 group-hover:text-primary">
+                        {name}
+                      </h3>
+                    </div>
+                    <ArrowUpRight className="w-4 h-4 mt-1.5 shrink-0 text-muted-foreground/50 group-hover:text-primary transition-colors" />
+                  </div>
 
-                <span className="label-mono inline-flex items-center text-[12px] text-primary border border-primary/25 px-2.5 py-1">
-                  #{study.tags[0].replace(/\s+/g, '')}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-          </div>
+                  <p className="label-mono text-[10px] text-primary mb-3">
+                    {study.subtitle}
+                  </p>
+
+                  <p className="text-[14.5px] text-muted-foreground leading-relaxed line-clamp-3 mb-5">
+                    {study.overview}
+                  </p>
+
+                  <div className="mt-auto flex flex-wrap gap-1.5">
+                    {study.tags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className="label-mono text-[9px] text-muted-foreground border border-border px-2 py-1"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                    {isLive && (
+                      <span className="label-mono text-[9px] text-primary border border-primary/40 px-2 py-1">
+                        Live
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </>
+            );
+
+            const className =
+              "group flex flex-col bg-background p-5 sm:p-6 hover:bg-primary/[0.035] transition-colors duration-200";
+
+            return isLive ? (
+              <a
+                key={study.id}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={className}
+              >
+                {inner}
+              </a>
+            ) : (
+              <Link key={study.id} href={href} className={className}>
+                {inner}
+              </Link>
+            );
+          })}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center space-y-5">
-          <p className="text-[15px] text-black/40 dark:text-white/40">
-            Interested in seeing more or discussing a project?
-          </p>
-          <button
-            className="label-mono px-7 py-3 text-[13px] bg-foreground text-white dark:text-black hover:opacity-80 transition-opacity duration-200"
-            onClick={() => window.open("mailto:kartikbhalerao948@gmail.com", "_blank")}
+        {/* Close */}
+        <div className="mt-16 pt-12 border-t border-border">
+          <p className="label-mono text-[10px] text-muted-foreground mb-4">Next</p>
+          <h2 className="heading-display text-[30px] sm:text-[38px] text-foreground leading-[1.05] mb-6">
+            Want to see more<span className="text-primary">?</span>
+          </h2>
+          <Link
+            href="/contact"
+            className="label-mono inline-flex items-center gap-2 px-6 py-3.5 text-[11px] bg-foreground text-background hover:bg-primary transition-colors duration-200"
           >
-            Get In Touch
-          </button>
+            Get in touch
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
       </div>
     </section>

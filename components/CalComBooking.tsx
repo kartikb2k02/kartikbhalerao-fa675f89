@@ -39,15 +39,15 @@ export const CalComBooking: React.FC<CalComBookingProps> = ({
   }, []);
 
   return (
-    <div className="bg-white dark:bg-white/[0.03] border border-black/10 dark:border-white/10 flex flex-col">
+    <div className="bg-white dark:bg-white/[0.03] border border-foreground/10 flex flex-col">
 
       {/* Header */}
       <div className="px-8 pt-7 pb-5 border-b border-black/[0.06] dark:border-white/[0.06] flex items-start justify-between">
         <div>
-          <h3 className="heading-display text-[17px] text-black dark:text-white">
+          <h3 className="heading-display text-[17px] text-foreground">
             Schedule a call
           </h3>
-          <p className="text-[13px] text-black/40 dark:text-white/40 mt-0.5">Pick a time that works for you.</p>
+          <p className="text-[13px] text-foreground/40 mt-0.5">Pick a time that works for you.</p>
         </div>
         <div className="label-mono flex items-center gap-1.5 mt-0.5 px-2.5 py-1 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200/60 dark:border-emerald-500/20 shrink-0">
           <span className="relative flex h-1.5 w-1.5">
@@ -69,26 +69,26 @@ export const CalComBooking: React.FC<CalComBookingProps> = ({
             { icon: CalendarCheck, label: "Free"   },
           ].map(({ icon: Icon, label }) => (
             <div key={label}
-              className="label-mono flex items-center gap-1.5 px-3 py-1.5 bg-black/[0.03] dark:bg-white/[0.04] border border-black/7 dark:border-white/7"
+              className="label-mono flex items-center gap-1.5 px-3 py-1.5 bg-black/[0.03] dark:bg-white/[0.04] border border-foreground/7"
             >
-              <Icon size={11} className="text-black/40 dark:text-white/40" />
-              <span className="text-[11px] text-black/55 dark:text-white/55">{label}</span>
+              <Icon size={11} className="text-foreground/40" />
+              <span className="text-[11px] text-foreground/55">{label}</span>
             </div>
           ))}
         </div>
 
         {/* What we can cover */}
         <div className="flex flex-col gap-3">
-          <span className="label-mono text-[9px] text-black/28 dark:text-white/28">What we can cover</span>
+          <span className="label-mono text-[9px] text-foreground/28">What we can cover</span>
           <div className="grid grid-cols-2 gap-2">
             {callTopics.map(({ label, icon: Icon }) => (
               <div key={label}
-                className="flex items-center gap-2.5 px-3 py-2.5 border bg-black/[0.02] dark:bg-white/[0.03] border-black/8 dark:border-white/8 hover:border-black/16 dark:hover:border-white/16 hover:bg-black/[0.05] dark:hover:bg-white/[0.06] transition-all duration-200 group cursor-default"
+                className="flex items-center gap-2.5 px-3 py-2.5 border bg-black/[0.02] dark:bg-white/[0.03] border-foreground/8 hover:border-foreground/16 hover:bg-black/[0.05] dark:hover:bg-white/[0.06] transition-all duration-200 group cursor-default"
               >
                 <div className="w-6 h-6 bg-black/[0.05] dark:bg-white/[0.06] flex items-center justify-center shrink-0 group-hover:bg-black/[0.09] dark:group-hover:bg-white/[0.11] transition-colors duration-200">
-                  <Icon size={12} className="text-black/45 dark:text-white/45" />
+                  <Icon size={12} className="text-foreground/45" />
                 </div>
-                <span className="text-[11px] font-semibold text-black/55 dark:text-white/55 leading-tight">{label}</span>
+                <span className="text-[11px] font-semibold text-foreground/55 leading-tight">{label}</span>
               </div>
             ))}
           </div>
@@ -110,13 +110,13 @@ export const CalComBooking: React.FC<CalComBookingProps> = ({
 
           <div className="label-mono flex items-center justify-center gap-3">
             <div className="flex items-center gap-1.5">
-              <CalendarCheck size={10} className="text-black/22 dark:text-white/22" />
-              <span className="text-[10px] text-black/28 dark:text-white/28">Instant confirmation</span>
+              <CalendarCheck size={10} className="text-foreground/22" />
+              <span className="text-[10px] text-foreground/28">Instant confirmation</span>
             </div>
-            <span className="w-px h-3 bg-black/10 dark:bg-white/10" />
+            <span className="w-px h-3 bg-foreground/10" />
             <div className="flex items-center gap-1.5">
-              <Clock size={10} className="text-black/22 dark:text-white/22" />
-              <span className="text-[10px] text-black/28 dark:text-white/28">No prep needed</span>
+              <Clock size={10} className="text-foreground/22" />
+              <span className="text-[10px] text-foreground/28">No prep needed</span>
             </div>
           </div>
         </div>

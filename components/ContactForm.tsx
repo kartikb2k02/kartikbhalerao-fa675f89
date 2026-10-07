@@ -107,30 +107,30 @@ export const ContactForm = () => {
   };
 
   const charCount    = formData.message.length;
-  const counterColor = charCount > 450 ? "text-red-500" : "text-black/30 dark:text-white/30";
+  const counterColor = charCount > 450 ? "text-red-500" : "text-foreground/30";
 
   if (submitted) {
     return (
-      <div className="bg-white dark:bg-white/[0.03] border border-black/10 dark:border-white/10">
+      <div className="bg-white dark:bg-white/[0.03] border border-foreground/10">
         <div className="px-8 py-16 flex flex-col items-center text-center gap-5">
           <div className="w-14 h-14 border border-primary/30 bg-primary/5 flex items-center justify-center">
             <CheckCircle2 size={26} className="text-primary" />
           </div>
           <div>
-            <h3 className="heading-display text-[20px] text-black dark:text-white">
+            <h3 className="heading-display text-[20px] text-foreground">
               Message received!
             </h3>
-            <p className="text-[13px] text-black/45 dark:text-white/45 mt-2.5 leading-[1.75] max-w-[240px]">
+            <p className="text-[13px] text-foreground/45 mt-2.5 leading-[1.75] max-w-[240px]">
               I'll read it within 24h and reply. For anything urgent, ping me on{" "}
               <a href="https://linkedin.com/in/kartik-bhalerao" target="_blank" rel="noopener noreferrer"
-                className="text-black dark:text-white font-semibold underline underline-offset-2 hover:opacity-70 transition-opacity">
+                className="text-foreground font-semibold underline underline-offset-2 hover:opacity-70 transition-opacity">
                 LinkedIn
               </a>.
             </p>
           </div>
           <button
             onClick={() => { setSubmitted(false); setFormData({ fullName:'', email:'', message:'' }); setSelectedTopics([]); setTouched({}); setErrors({}); }}
-            className="label-mono text-[11px] text-black/35 dark:text-white/35 hover:text-black/70 dark:hover:text-white/70 transition-colors duration-150"
+            className="label-mono text-[11px] text-foreground/35 hover:text-foreground/70 transition-colors duration-150"
           >
             Send another →
           </button>
@@ -140,15 +140,15 @@ export const ContactForm = () => {
   }
 
   return (
-    <div className="bg-white dark:bg-white/[0.03] border border-black/10 dark:border-white/10 flex flex-col">
+    <div className="bg-white dark:bg-white/[0.03] border border-foreground/10 flex flex-col">
 
       {/* Header */}
       <div className="px-8 pt-7 pb-5 border-b border-black/[0.06] dark:border-white/[0.06] flex items-start justify-between">
         <div>
-          <h3 className="heading-display text-[17px] text-black dark:text-white">
+          <h3 className="heading-display text-[17px] text-foreground">
             Send a message
           </h3>
-          <p className="text-[13px] text-black/40 dark:text-white/40 mt-0.5">Drop me a note — I read everything.</p>
+          <p className="text-[13px] text-foreground/40 mt-0.5">Drop me a note — I read everything.</p>
         </div>
         <div className="label-mono flex items-center gap-1.5 mt-0.5 px-2.5 py-1 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200/60 dark:border-emerald-500/20 shrink-0">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
@@ -165,12 +165,12 @@ export const ContactForm = () => {
           <div className="space-y-1.5">
             <label className={cn(
               "label-mono text-[10px] transition-colors duration-200",
-              focused === 'fullName' ? "text-primary" : "text-black/35 dark:text-white/35"
+              focused === 'fullName' ? "text-primary" : "text-foreground/35"
             )}>Name</label>
             <div className="relative group/name">
               <User size={14} className={cn(
                 "absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none transition-colors duration-200",
-                focused === 'fullName' || isValid('fullName') ? "text-primary" : "text-black/25 dark:text-white/25"
+                focused === 'fullName' || isValid('fullName') ? "text-primary" : "text-foreground/25"
               )} />
               <input type="text" placeholder="Your name"
                 value={formData.fullName}
@@ -178,13 +178,13 @@ export const ContactForm = () => {
                 onFocus={() => setFocused('fullName')}
                 onBlur={() => handleBlur('fullName')}
                 className={cn(
-                  "w-full pl-11 pr-10 py-4 text-[14px] border-2 text-black dark:text-white",
+                  "w-full pl-11 pr-10 py-4 text-[14px] border-2 text-foreground",
                   "placeholder:text-black/20 dark:placeholder:text-white/20 outline-none transition-all duration-200",
                   errors.fullName && touched.fullName
                     ? "border-red-400/70 bg-red-500/[0.03]"
                     : focused === 'fullName' || isValid('fullName')
                     ? "border-primary bg-primary/[0.03]"
-                    : "border-black/[0.08] dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.03] hover:border-black/20 dark:hover:border-white/20"
+                    : "border-black/[0.08] dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.03] hover:border-foreground/20"
                 )}
               />
               {isValid('fullName') && (
@@ -202,12 +202,12 @@ export const ContactForm = () => {
           <div className="space-y-1.5">
             <label className={cn(
               "label-mono text-[10px] transition-colors duration-200",
-              focused === 'email' ? "text-primary" : "text-black/35 dark:text-white/35"
+              focused === 'email' ? "text-primary" : "text-foreground/35"
             )}>Email</label>
             <div className="relative">
               <Mail size={14} className={cn(
                 "absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none transition-colors duration-200",
-                focused === 'email' || isValid('email') ? "text-primary" : "text-black/25 dark:text-white/25"
+                focused === 'email' || isValid('email') ? "text-primary" : "text-foreground/25"
               )} />
               <input type="email" placeholder="your@email.com"
                 value={formData.email}
@@ -215,13 +215,13 @@ export const ContactForm = () => {
                 onFocus={() => setFocused('email')}
                 onBlur={() => handleBlur('email')}
                 className={cn(
-                  "w-full pl-11 pr-10 py-4 text-[14px] border-2 text-black dark:text-white",
+                  "w-full pl-11 pr-10 py-4 text-[14px] border-2 text-foreground",
                   "placeholder:text-black/20 dark:placeholder:text-white/20 outline-none transition-all duration-200",
                   errors.email && touched.email
                     ? "border-red-400/70 bg-red-500/[0.03]"
                     : focused === 'email' || isValid('email')
                     ? "border-primary bg-primary/[0.03]"
-                    : "border-black/[0.08] dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.03] hover:border-black/20 dark:hover:border-white/20"
+                    : "border-black/[0.08] dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.03] hover:border-foreground/20"
                 )}
               />
               {isValid('email') && (
@@ -241,13 +241,13 @@ export const ContactForm = () => {
           <div className="flex items-center justify-between">
             <label className={cn(
               "label-mono text-[10px] transition-colors duration-200 flex items-center gap-1.5",
-              focused === 'message' ? "text-primary" : "text-black/35 dark:text-white/35"
+              focused === 'message' ? "text-primary" : "text-foreground/35"
             )}>
-              <MessageSquare size={11} className={focused === 'message' ? "text-primary" : "text-black/25 dark:text-white/25"} />
+              <MessageSquare size={11} className={focused === 'message' ? "text-primary" : "text-foreground/25"} />
               Message
             </label>
             <div className="flex items-center gap-2">
-              <div className="w-20 h-1 bg-black/8 dark:bg-white/8 overflow-hidden">
+              <div className="w-20 h-1 bg-foreground/8 overflow-hidden">
                 <div
                   className={cn("h-full transition-all duration-300", charCount > 450 ? "bg-red-400" : "bg-primary")}
                   style={{ width: `${(charCount / MAX_CHARS) * 100}%` }}
@@ -262,8 +262,8 @@ export const ContactForm = () => {
           {/* Topic picker */}
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <span className="label-mono text-[9px] text-black/28 dark:text-white/28">What's this about?</span>
-              <span className="flex-1 h-px bg-black/6 dark:bg-white/6" />
+              <span className="label-mono text-[9px] text-foreground/28">What's this about?</span>
+              <span className="flex-1 h-px bg-foreground/6" />
             </div>
             <div className="grid grid-cols-2 gap-2">
               {formTopics.map(({ label, sub, icon: Icon, starter }) => {
@@ -274,26 +274,26 @@ export const ContactForm = () => {
                     className={cn(
                       "flex items-center gap-3 px-3.5 py-3 border text-left transition-all duration-200",
                       active
-                        ? "bg-foreground border-black dark:border-white scale-[0.985]"
-                        : "bg-black/[0.02] dark:bg-white/[0.03] border-black/8 dark:border-white/8 hover:border-black/18 dark:hover:border-white/18 hover:bg-black/[0.05] dark:hover:bg-white/[0.07] active:scale-[0.985]"
+                        ? "bg-foreground border-foreground scale-[0.985]"
+                        : "bg-black/[0.02] dark:bg-white/[0.03] border-foreground/8 hover:border-foreground/18 hover:bg-black/[0.05] dark:hover:bg-white/[0.07] active:scale-[0.985]"
                     )}
                   >
                     <div className={cn(
                       "w-7 h-7 flex items-center justify-center shrink-0 transition-colors duration-200",
-                      active ? "bg-white/15 dark:bg-black/15" : "bg-black/[0.06] dark:bg-white/[0.07]"
+                      active ? "bg-background/15" : "bg-black/[0.06] dark:bg-white/[0.07]"
                     )}>
-                      <Icon size={13} className={active ? "text-white dark:text-black" : "text-black/45 dark:text-white/45"} />
+                      <Icon size={13} className={active ? "text-background" : "text-foreground/45"} />
                     </div>
                     <div className="flex flex-col min-w-0">
                       <span className={cn(
                         "text-[12px] font-semibold leading-tight transition-colors duration-200",
-                        active ? "text-white dark:text-black" : "text-black/70 dark:text-white/70"
+                        active ? "text-background" : "text-foreground/70"
                       )}>
                         {label}
                       </span>
                       <span className={cn(
                         "text-[10px] leading-tight mt-0.5 transition-colors duration-200 truncate",
-                        active ? "text-white/60 dark:text-black/55" : "text-black/35 dark:text-white/35"
+                        active ? "text-background/60" : "text-foreground/35"
                       )}>
                         {sub}
                       </span>
@@ -313,14 +313,14 @@ export const ContactForm = () => {
             rows={5}
             maxLength={MAX_CHARS}
             className={cn(
-              "w-full px-4 py-4 text-[14px] border-2 text-black dark:text-white",
+              "w-full px-4 py-4 text-[14px] border-2 text-foreground",
               "placeholder:text-black/20 dark:placeholder:text-white/20 outline-none transition-all duration-200",
               "resize-none leading-relaxed",
               errors.message && touched.message
                 ? "border-red-400/70 bg-red-500/[0.03]"
                 : focused === 'message' || isValid('message')
                 ? "border-primary bg-primary/[0.03]"
-                : "border-black/[0.08] dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.03] hover:border-black/20 dark:hover:border-white/20"
+                : "border-black/[0.08] dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.03] hover:border-foreground/20"
             )}
           />
           {errors.message && touched.message && (
@@ -337,20 +337,20 @@ export const ContactForm = () => {
           >
             {isSubmitting ? "Sending..." : "Send Message"}
             {isSubmitting
-              ? <div className="w-4 h-4 border-2 border-white/30 dark:border-black/30 border-t-white dark:border-t-black rounded-full animate-spin" />
+              ? <div className="w-4 h-4 border-2 border-background/30 border-t-white dark:border-t-black rounded-full animate-spin" />
               : <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-150" />
             }
           </button>
 
           <div className="label-mono flex items-center justify-center gap-3">
             <div className="flex items-center gap-1.5">
-              <Lock size={10} className="text-black/22 dark:text-white/22" />
-              <span className="text-[10px] text-black/28 dark:text-white/28">Private</span>
+              <Lock size={10} className="text-foreground/22" />
+              <span className="text-[10px] text-foreground/28">Private</span>
             </div>
-            <span className="w-px h-3 bg-black/10 dark:bg-white/10" />
+            <span className="w-px h-3 bg-foreground/10" />
             <div className="flex items-center gap-1.5">
-              <Clock size={10} className="text-black/22 dark:text-white/22" />
-              <span className="text-[10px] text-black/28 dark:text-white/28">Replies within 24h</span>
+              <Clock size={10} className="text-foreground/22" />
+              <span className="text-[10px] text-foreground/28">Replies within 24h</span>
             </div>
           </div>
         </div>

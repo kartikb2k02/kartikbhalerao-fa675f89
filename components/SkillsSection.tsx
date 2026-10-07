@@ -601,52 +601,66 @@ export const SkillsSection = () => {
       ],
     },
   };
+  const categories = Object.entries(toolCategories);
+  const totalTools = categories.reduce((n, [, c]) => n + c.tools.length, 0);
+
   return (
     <div className="w-full">
-      <section className="relative pb-16">
-
-        {/* Tools & Platforms Section */}
-        <div className="relative">
-          {/* Section Header */}
-          <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
-            <h2 className="heading-display text-3xl text-slate-900 dark:text-white">The tools I work with most</h2>
-            <button
-              onClick={handleCertificationClick}
-              className="label-mono inline-flex items-center gap-2 text-[12px] text-foreground hover:text-primary transition-colors duration-200"
-            >
-              <Award className="w-3.5 h-3.5" />
-              View Certifications
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          {/* Tools list by category — label left, tools inline right */}
-          <div className="divide-y divide-black/10 dark:divide-white/10 border-t border-black/10 dark:border-white/10">
-            {Object.entries(toolCategories).map(([key, category]) => (
-              <div key={key} className="flex flex-col sm:flex-row sm:items-baseline gap-3 sm:gap-8 py-6">
-                {/* Category label */}
-                <p className="label-mono text-[11px] text-black/40 dark:text-white/40 sm:w-56 flex-shrink-0 leading-relaxed">
-                  {category.title}
-                </p>
-
-                {/* Tools inline */}
-                <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
-                  {category.tools.map((tool, index) => (
-                    <div key={index} className="flex items-center gap-2.5">
-                      <div className="w-5 h-5 flex-shrink-0 flex items-center justify-center [&>svg]:w-5 [&>svg]:h-5 [&>img]:w-5 [&>img]:h-5">
-                        {tool.icon}
-                      </div>
-                      <span className="text-[14px] text-black/75 dark:text-white/75">
-                        {tool.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* Header */}
+      <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
+        <h2
+          className="heading-display text-foreground leading-[1.04]"
+          style={{ fontSize: "clamp(28px, 4.2vw, 50px)" }}
+        >
+          What I reach for
+        </h2>
+        <div className="flex items-center gap-6">
+          <span className="data-mono text-[11px] text-muted-foreground">
+            {totalTools} tools
+          </span>
+          <button
+            onClick={handleCertificationClick}
+            className="label-mono inline-flex items-center gap-2 text-[10px] text-foreground hover:text-primary transition-colors duration-200 border-b border-primary pb-1"
+          >
+            <Award className="w-3 h-3" />
+            Certifications
+            <ArrowRight className="w-3 h-3" />
+          </button>
         </div>
-      </section>
+      </div>
+
+      {/* A wall of tools — icon tiles in a hairline grid, grouped by what for */}
+      <div className="space-y-10">
+        {categories.map(([key, category]) => (
+          <div key={key}>
+            <div className="flex items-baseline justify-between gap-4 mb-3.5">
+              <p className="label-mono text-[10px] text-muted-foreground flex items-center gap-2.5">
+                <span className="w-1.5 h-1.5 bg-primary" aria-hidden="true" />
+                {category.title}
+              </p>
+              <span className="data-mono text-[11px] text-muted-foreground/50">
+                {String(category.tools.length).padStart(2, "0")}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-px bg-border border border-border">
+              {category.tools.map((tool, index) => (
+                <div
+                  key={index}
+                  className="group bg-background flex flex-col items-center justify-center gap-2.5 px-2 py-5 hover:bg-primary/[0.05] transition-colors duration-200"
+                >
+                  <span className="w-7 h-7 flex items-center justify-center [&>svg]:w-7 [&>svg]:h-7 [&>img]:w-7 [&>img]:h-7 group-hover:scale-110 transition-transform duration-200">
+                    {tool.icon}
+                  </span>
+                  <span className="text-[11.5px] text-foreground/70 text-center leading-tight group-hover:text-foreground transition-colors">
+                    {tool.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

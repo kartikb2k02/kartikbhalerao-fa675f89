@@ -26,6 +26,58 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 14,
+    title: "The Evolution of Gemma: From Gemma 2 to Gemma 4",
+    excerpt:
+      "Gemma 2 had an 8K window, text only, and a custom license. Gemma 4 has up to 256K context, vision and audio, a thinking mode, and Apache 2.0. Here is what changed, and what product teams should decide before building on it.",
+    category: "ai",
+    date: "2026-10-07",
+    readTime: "16 min read",
+    tags: [
+      "AI Engineering",
+      "Open Models",
+      "Gemma 4",
+      "LLM Inference",
+      "Private AI",
+      "Product Development",
+    ],
+    image: "/lovable-uploads/blog/gemma-2-vs-3-vs-4.webp",
+    slug: "gemma-2-vs-3-vs-4",
+    featured: true,
+    faq: [
+      {
+        question: "Is Gemma 2 still worth using?",
+        answer:
+          "For new work I would start from Gemma 4, mainly for the Apache 2.0 license, the much longer context and the agent features. Keeping Gemma 2 makes sense mostly if you have an existing fine-tune that works and a good reason not to migrate yet."
+      },
+      {
+        question: "Can I use Gemma 4 commercially?",
+        answer:
+          "Apache 2.0 is a permissive license that allows commercial use, but read the license text and the model card for the exact checkpoint you plan to deploy, and take legal advice if the stakes are high."
+      },
+      {
+        question: "Which Gemma 4 size should I pick?",
+        answer:
+          "Use E2B or E4B for phones and edge devices, the 12B for a 16GB laptop, the 26B mixture of experts when latency matters, and the 31B when quality or fine-tuning matters most."
+      },
+      {
+        question: "Do the multi-token prediction drafters change the output?",
+        answer:
+          "Google says they do not. The large model still checks every proposed token, so the drafter only changes how fast you get the same answer."
+      },
+      {
+        question: "Does Gemma 4 handle audio?",
+        answer:
+          "Yes on the E2B, E4B and 12B models. The 26B and 31B models take text, images and video but not audio."
+      },
+      {
+        question: "What should a product manager ask before approving Gemma 4 for a feature?",
+        answer:
+          "Four questions: which license and checkpoint exactly, what the tool-call and task success rates are on your own examples, what the cost per successful task looks like at your volume, and how quickly you could swap the model if a better one arrives."
+      }
+    ],
+  },
+  {
     id: 13,
     title: "Prompt vs. Context vs. Harness Engineering: The Difference That Actually Matters",
     excerpt: "A well-instructed agent with great context still deleted a developer's home directory. Here's why that failure sits at the harness layer, not the prompt, and what that actually means to build.",
@@ -33,7 +85,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-09-30",
     readTime: "9 min read",
     tags: ["AI Engineering", "Agentic AI", "Harness Engineering", "AI Agent Reliability", "Context Engineering"],
-    image: "/lovable-uploads/harness-engineering-banner.svg",
+    image: "/lovable-uploads/blog/prompt-context-harness-engineering.webp",
     slug: "prompt-context-harness-engineering",
     featured: true,
     faq: [
@@ -67,7 +119,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-07-26",
     readTime: "13 min read",
     tags: ["AI", "Loop Engineering", "Agents", "Product Management", "System Design"],
-    image: "/lovable-uploads/llm-loops-banner.svg",
+    image: "/lovable-uploads/blog/llm-loops-production-ai-products.webp",
     slug: "llm-loops-production-ai-products",
     featured: true,
     faq: [
@@ -101,7 +153,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-06-20",
     readTime: "12 min read",
     tags: ["AI Strategy", "Product Management", "Innovation", "Future Tech"],
-    image: "/lovable-uploads/e6ca466e-cd66-436d-b1a7-cffb0445e7c4.webp",
+    image: "/lovable-uploads/blog/ai-first-product-strategy.webp",
     slug: "ai-first-product-strategy",
     featured: true,
     faq: [
@@ -131,8 +183,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-07-14",
     readTime: "7 min read",
     tags: ["Prioritization", "Product Management", "Agile", "MoSCoW"],
-    image: "/lovable-uploads/moscow-banner.svg",
-    ogImage: "/lovable-uploads/product-development-workflow.png",
+    image: "/lovable-uploads/blog/moscow-prioritization-method.webp",
     slug: "moscow-prioritization-method",
     featured: true,
     faq: [
@@ -162,8 +213,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-07-01",
     readTime: "8 min read",
     tags: ["AI", "Product Management", "Decision Making", "Analytics"],
-    image: "/lovable-uploads/ai-copilot-banner.svg",
-    ogImage: "/lovable-uploads/ai-product-discovery-workflow.png",
+    image: "/lovable-uploads/blog/ai-copilot-decision-making.webp",
     slug: "ai-copilot-decision-making"
   },
   {
@@ -174,8 +224,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-06-05",
     readTime: "7 min read",
     tags: ["Data Analytics", "Product Strategy", "Decision Making"],
-    image: "/lovable-uploads/data-driven-banner.svg",
-    ogImage: "/lovable-uploads/ai-feedback-pipeline.png",
+    image: "/lovable-uploads/blog/data-driven-decision-making-experience.webp",
     slug: "data-driven-decision-making-experience"
   },
   {
@@ -186,8 +235,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-05-28",
     readTime: "10 min read",
     tags: ["MVP", "Product Strategy", "Startup"],
-    image: "/lovable-uploads/idea-to-mvp-banner.svg",
-    ogImage: "/lovable-uploads/product-development-workflow.png",
+    image: "/lovable-uploads/blog/idea-to-mvp-product-manager-journey.webp",
     slug: "idea-to-mvp-product-manager-journey",
     featured: true
   },
@@ -199,8 +247,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-05-20",
     readTime: "9 min read",
     tags: ["User Research", "Product Management", "Insights"],
-    image: "/lovable-uploads/user-research-banner.svg",
-    ogImage: "/lovable-uploads/ai-feedback-pipeline.png",
+    image: "/lovable-uploads/blog/user-research-that-matters.webp",
     slug: "user-research-that-matters"
   },
   {
@@ -211,7 +258,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-04-14",
     readTime: "8 min read",
     tags: ["Product Management", "Automation", "AI", "Tools"],
-    image: "/lovable-uploads/competitive-intel-banner.svg",
+    image: "/lovable-uploads/blog/build-competitive-intelligence-system.webp",
     slug: "build-competitive-intelligence-system",
     featured: true
   },
@@ -223,8 +270,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-03-12",
     readTime: "10 min read",
     tags: ["AI", "Product Management", "Workflow", "Productivity", "Experiment"],
-    image: "/lovable-uploads/ai-pm-7days-banner.svg",
-    ogImage: "/lovable-uploads/traditional-vs-ai-workflow.png",
+    image: "/lovable-uploads/blog/ai-replaced-pm-workflow-7-days.webp",
     slug: "ai-replaced-pm-workflow-7-days",
     featured: true
   },
@@ -236,8 +282,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-05-15",
     readTime: "12 min read",
     tags: ["Team Management", "Leadership", "Scaling"],
-    image: "/lovable-uploads/scaling-teams-banner.svg",
-    ogImage: "/lovable-uploads/ai-product-discovery-workflow.png",
+    image: "/lovable-uploads/blog/scaling-product-teams-lessons.webp",
     slug: "scaling-product-teams-lessons"
   },
   {
@@ -248,20 +293,8 @@ export const blogPosts: BlogPost[] = [
     date: "2026-06-09",
     readTime: "8 min read",
     tags: ["AI", "Product Management", "Future of Work", "Forward Deployment"],
-    image: "/lovable-uploads/ai-pm-forward-deployed-banner.svg",
+    image: "/lovable-uploads/blog/forward-deployed-ai-pms.webp",
     slug: "forward-deployed-ai-pms",
     featured: true
   },
-  {
-    id: 10,
-    title: "I Tried Replacing Traditional User Personas with AI — Here's What I Learned",
-    excerpt: "Most personas describe users. Very few help teams understand them. I replaced traditional personas with AI-generated behavioral archetypes — and it permanently changed how I think about user research.",
-    category: "ai",
-    date: "2026-05-28",
-    readTime: "9 min read",
-    tags: ["AI", "User Research", "Product Management", "Personas", "Behavioral Design"],
-    image: "/lovable-uploads/ai-personas-banner.svg",
-    slug: "ai-user-personas-experiment",
-    comingSoon: true
-  }
 ];

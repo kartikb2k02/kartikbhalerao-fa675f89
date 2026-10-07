@@ -7,20 +7,24 @@ import { ErrorBoundary } from "react-error-boundary";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { AskProvider } from "@/components/AskConsole";
 
 function ErrorFallback({ error }: { error: Error }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center p-8">
-        <h2 className="text-2xl font-bold text-red-600 mb-4">Something went wrong</h2>
-        <pre className="text-sm text-gray-600 bg-gray-50 p-4 rounded overflow-auto">
+    <div className="min-h-screen flex items-center justify-center bg-background px-6">
+      <div className="max-w-md w-full">
+        <p className="label-mono text-[11px] text-primary mb-3">Error</p>
+        <h2 className="heading-display text-[28px] text-foreground mb-4">
+          Something broke.
+        </h2>
+        <pre className="data-mono text-[12px] text-muted-foreground bg-muted border border-border p-4 overflow-auto mb-6">
           {error.message}
         </pre>
         <button
           onClick={() => window.location.reload()}
-          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          className="label-mono px-5 py-3 text-[11px] bg-foreground text-background hover:bg-primary transition-colors"
         >
-          Reload page
+          Reload
         </button>
       </div>
     </div>
@@ -47,7 +51,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
           <TooltipProvider>
             <Toaster />
             <Sonner />
-            {children}
+            <AskProvider>{children}</AskProvider>
           </TooltipProvider>
         </ThemeProvider>
       </QueryClientProvider>

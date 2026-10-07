@@ -228,7 +228,7 @@ export default {
     				'serif'
     			],
     			mono: [
-    				'Space Mono',
+    				'JetBrains Mono',
     				'ui-monospace',
     				'SFMono-Regular',
     				'Menlo',
@@ -239,15 +239,17 @@ export default {
     				'monospace'
     			],
     			label: [
-    				'Chivo Mono',
+    				'JetBrains Mono',
     				'ui-monospace',
     				'SFMono-Regular',
     				'Menlo',
     				'monospace'
     			],
     			display: [
-    				'Jost',
-    				'Futura',
+    				'Bricolage Grotesque',
+    				'Switzer',
+    				'Helvetica Neue',
+    				'Arial',
     				'sans-serif'
     			]
     		}

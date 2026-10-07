@@ -1,33 +1,52 @@
-import Link from "next/link";
+"use client";
+
+import { useEffect, useState } from "react";
+
+const VERBS = ["BUILD", "SHIP", "SCALE", "FIX", "RETHINK"];
+
+/**
+ * Each line gets its own size so both optically fill the viewport width.
+ * "Kartik" is six characters, "Bhalerao" is eight, so a single font size
+ * would leave one line short. Tuned against Bricolage Grotesque 800.
+ */
+const LINE_ONE = "clamp(58px, 23vw, 420px)";
+const LINE_TWO = "clamp(43px, 17.2vw, 314px)";
 
 export const HeroSection = () => {
-  return (
-    <section className="w-full flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-      <div className="max-w-6xl mx-auto w-full flex flex-col items-start gap-5 sm:gap-7">
+  const [verb, setVerb] = useState(0);
 
-        {/* Headline */}
-        <h1
-          className="heading-display leading-[1.05] text-left"
-          style={{ fontSize: 'clamp(44px, 10.5vw, 140px)' }}
-        >
-          <span className="block text-foreground">I&apos;m Kartik</span>
-          <span className="block text-foreground">Bhalerao<span className="text-primary">.</span></span>
+  useEffect(() => {
+    const id = setInterval(() => setVerb((v) => (v + 1) % VERBS.length), 2200);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <section className="relative w-full min-h-[calc(100vh-4rem)] flex flex-col justify-center overflow-hidden px-3 sm:px-5 lg:px-6 py-16">
+      <div className="relative w-full">
+        <h1 className="display-mega text-foreground select-none">
+          <span className="mega-line">
+            <span style={{ fontSize: LINE_ONE }}>Kartik</span>
+          </span>
+          <span className="mega-line">
+            <span
+              className="text-stroke"
+              style={{ fontSize: LINE_TWO, animationDelay: "130ms" }}
+            >
+              Bhalerao
+            </span>
+          </span>
         </h1>
 
-        <p className="text-left text-muted-foreground text-[18px] sm:text-[22px] max-w-2xl leading-relaxed">
-          I&apos;m building products for B2B, B2C, and more — turning user problems into products people actually use.
+        <p
+          className="display-mega text-foreground/80 fade-up mt-6 sm:mt-8 px-1"
+          style={{ fontSize: "clamp(16px, 3.1vw, 44px)", animationDelay: "420ms" }}
+        >
+          I{" "}
+          <span key={verb} className="word-swap text-primary">
+            {VERBS[verb]}
+          </span>{" "}
+          products people actually use
         </p>
-
-        <p className="text-left text-muted-foreground text-[15px] sm:text-[16px] mt-2">
-          I work with different kinds of startups.{" "}
-          <Link
-            href="/about"
-            className="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity"
-          >
-            Want to know more?
-          </Link>
-        </p>
-
       </div>
     </section>
   );

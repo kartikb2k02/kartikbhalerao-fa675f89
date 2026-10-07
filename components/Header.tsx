@@ -1,67 +1,96 @@
 "use client";
 
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { useAsk } from "@/components/AskConsole";
 
 interface HeaderProps {
   scrollProgress?: number;
 }
 
+const NAV = [
+  { label: "About", href: "/about" },
+  { label: "Builds", href: "/builds" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+];
+
 export const Header = ({ scrollProgress }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const router = useRouter();
+  const [isMac, setIsMac] = useState(true);
+  const pathname = usePathname();
+  const { open } = useAsk();
 
-  const scrollToSection = (sectionId: string) => {
-    if (sectionId === 'blog') { router.push('/blog'); return; }
-    if (sectionId === 'about') { router.push('/about'); return; }
-    if (sectionId === 'builds') { router.push('/builds'); return; }
-    if (sectionId === 'contact') { router.push('/contact'); return; }
-    const element = document.getElementById(sectionId);
-    if (element) { element.scrollIntoView({ behavior: 'smooth' }); setIsMobileMenuOpen(false); }
-  };
+  useEffect(() => {
+    setIsMac(/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent));
+  }, []);
 
-  const handleTitleClick = () => {
-    router.push('/');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <div className="w-full h-16 flex items-center justify-between pl-[clamp(20px,6vw,56px)] pr-4 sm:pr-6 lg:pr-8">
-        {/* Logo */}
-        <button
-          onClick={handleTitleClick}
-          className="heading-display hover:opacity-70 transition-opacity duration-200 text-foreground text-[19px] tracking-tight"
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/85 backdrop-blur-md border-b border-border">
+      <div className="max-w-6xl mx-auto h-16 flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        {/* Name */}
+        <Link
+          href="/"
+          className="heading-display text-[17px] text-foreground hover:text-primary transition-colors duration-200 shrink-0"
         >
           Kartik Bhalerao<span className="text-primary">.</span>
-        </button>
+        </Link>
 
-        {/* Desktop Nav */}
+        {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-7">
-          <button onClick={handleTitleClick} className="label-mono text-[13px] text-foreground/70 hover:text-primary transition-colors duration-150">Home</button>
-          <button onClick={() => scrollToSection('about')} className="label-mono text-[13px] text-foreground/70 hover:text-primary transition-colors duration-150">About</button>
-          <button onClick={() => scrollToSection('builds')} className="label-mono text-[13px] text-foreground/70 hover:text-primary transition-colors duration-150">Builds</button>
-          <button onClick={() => scrollToSection('blog')} className="label-mono text-[13px] text-foreground/70 hover:text-primary transition-colors duration-150">Blog</button>
-          <button onClick={() => scrollToSection('contact')} className="label-mono text-[13px] text-foreground/70 hover:text-primary transition-colors duration-150">Contact</button>
+          {NAV.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`label-mono text-[11px] transition-colors duration-150 ${
+                isActive(item.href)
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
-        {/* Right: Theme */}
-        <div className="hidden md:flex items-center gap-3">
-          <ThemeToggle />
-        </div>
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Ask trigger — the console is the one new thing in the nav */}
+          <button
+            onClick={() => open()}
+            className="group flex items-center gap-2 h-8 pl-3 pr-2 border border-border hover:border-primary/50 transition-colors"
+            aria-label="Ask about Kartik's work"
+          >
+            <span className="label-mono text-[10px] text-muted-foreground group-hover:text-primary transition-colors">
+              Ask
+            </span>
+            <kbd className="data-mono hidden sm:block text-[10px] text-muted-foreground/70 border border-border px-1 leading-[15px]">
+              {isMac ? "⌘K" : "^K"}
+            </kbd>
+          </button>
 
-        {/* Mobile */}
-        <div className="md:hidden flex items-center gap-3">
           <ThemeToggle />
-          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-foreground">
-            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden text-foreground"
+            aria-label="Menu"
+          >
+            {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
 
-      {/* Scroll progress — thin accent bar under the nav */}
+      {/* Reading progress, where a page passes one in */}
       {scrollProgress !== undefined && (
         <div className="h-[2px] bg-border">
           <div
@@ -71,17 +100,29 @@ export const Header = ({ scrollProgress }: HeaderProps) => {
         </div>
       )}
 
-      {/* Mobile dropdown */}
+      {/* Mobile */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-border bg-background">
-          <nav className="flex flex-col p-2">
-            <button onClick={handleTitleClick} className="text-left px-4 py-3 label-mono text-[13px] text-foreground/70 hover:text-primary transition-colors">Home</button>
-            <button onClick={() => scrollToSection('about')} className="text-left px-4 py-3 label-mono text-[13px] text-foreground/70 hover:text-primary transition-colors">About</button>
-            <button onClick={() => scrollToSection('builds')} className="text-left px-4 py-3 label-mono text-[13px] text-foreground/70 hover:text-primary transition-colors">Builds</button>
-            <button onClick={() => scrollToSection('blog')} className="text-left px-4 py-3 label-mono text-[13px] text-foreground/70 hover:text-primary transition-colors">Blog</button>
-            <button onClick={() => scrollToSection('contact')} className="text-left px-4 py-3 label-mono text-[13px] text-foreground/70 hover:text-primary transition-colors">Contact</button>
-          </nav>
-        </div>
+        <nav className="md:hidden border-t border-border bg-background">
+          {NAV.map((item, i) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-baseline gap-4 px-5 py-4 border-b border-border last:border-b-0"
+            >
+              <span className="data-mono text-[11px] text-muted-foreground/60">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span
+                className={`label-mono text-[12px] ${
+                  isActive(item.href) ? "text-primary" : "text-foreground"
+                }`}
+              >
+                {item.label}
+              </span>
+            </Link>
+          ))}
+        </nav>
       )}
     </header>
   );
