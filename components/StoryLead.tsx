@@ -97,10 +97,8 @@ export function StoryLead() {
         <div className="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           {/* ── The story ───────────────────────────────────── */}
           <Reveal className="lg:pr-12">
-            <div className="flex items-center gap-3 mb-4">
+            <div className="mb-4">
               <span className="kicker">About me</span>
-              <span className="h-px flex-1 bg-border" aria-hidden="true" />
-              <span className="dateline">Pune, India</span>
             </div>
 
             {/* The page shows no display heading here, so this carries the
@@ -150,9 +148,8 @@ export function StoryLead() {
                 way. Deliberately names no project: the rail already links to
                 them, and naming one here says it twice. */}
             <div className="mt-10 pt-8 border-t border-border">
-              <div className="flex items-center gap-3 mb-6">
+              <div className="mb-6">
                 <span className="kicker">What I&rsquo;m working on</span>
-                <span className="h-px flex-1 bg-border" aria-hidden="true" />
               </div>
 
               <ol className="space-y-5">
@@ -201,9 +198,8 @@ export function StoryLead() {
 
           {/* ── Right rail ──────────────────────────────────── */}
           <Reveal delay={120} className="lg:col-rule lg:pl-12 mt-14 lg:mt-0">
-            <div className="flex items-center gap-3 mb-5">
+            <div className="mb-5">
               <span className="kicker">Most read</span>
-              <span className="h-px flex-1 bg-border" aria-hidden="true" />
             </div>
 
             <ol>
@@ -235,9 +231,8 @@ export function StoryLead() {
             {/* Selected builds. The desk grid moved to /builds, so this rail
                 is the homepage's only route into the work. */}
             <div className="mt-10">
-              <div className="flex items-center gap-3 mb-5">
+              <div className="mb-5">
                 <span className="kicker">Builds</span>
-                <span className="h-px flex-1 bg-border" aria-hidden="true" />
               </div>
 
               <ul>
