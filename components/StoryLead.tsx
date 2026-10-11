@@ -10,7 +10,7 @@ import { Reveal } from "@/components/Reveal";
  * no dashes.
  */
 const focus = [
-  "I build AI agents to handle repetitive work, like turning design files into product specs and collecting competitor updates in one place.",
+  "I’m building AI agents to handle repetitive work, like turning design files into product specs and collecting competitor updates in one place.",
   "I work with MCP to connect AI agents to different tools so they can actually use them to get work done.",
   "I work on AI workflows, deciding which model to use, what it can access, and how to handle things when a step fails.",
   "I explore different AI models, compare what they can do, and figure out which ones are worth using based on performance and cost.",
