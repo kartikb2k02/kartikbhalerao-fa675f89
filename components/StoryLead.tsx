@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Rss } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
 import { caseStudies } from "@/data/caseStudies";
-import { shortNames } from "@/data/buildMeta";
+import { desk, shortNames, liveProducts } from "@/data/buildMeta";
 import { Reveal } from "@/components/Reveal";
 
 /**
@@ -17,17 +17,33 @@ const focus = [
 ];
 
 /**
- * Three builds worth a look from the front page; the rest are on /builds.
- * Names and descriptions are read from the case studies rather than retyped,
- * so the rail cannot drift from the detail pages it links to.
+ * The rail is the homepage's only index of the work, so it carries one build
+ * from each desk plus both live products rather than a token three. Names and
+ * descriptions are read from the case studies rather than retyped, so the rail
+ * cannot drift from the pages it links to.
  */
-const railBuilds = ["blinkit-analysis", "zepto-efficiency", "chatly-prd"]
+const railBuilds = [
+  "figprd",
+  "pm-copilot",
+  "tenzo-product-discovery",
+  "blinkit-analysis",
+  "zepto-efficiency",
+  "chatly-prd",
+]
   .map((id) => {
     const study = caseStudies.find((s) => s.id === id);
     if (!study) return null;
-    return { id, name: shortNames[id] ?? study.title, subtitle: study.subtitle };
+    const isLive = liveProducts.has(id);
+    return {
+      id,
+      name: shortNames[id] ?? study.title,
+      subtitle: study.subtitle,
+      deskName: desk[id],
+      isLive,
+      href: isLive ? study.externalLink : `/builds/${id}`,
+    };
   })
-  .filter((b): b is { id: string; name: string; subtitle: string } => b !== null);
+  .filter((b): b is NonNullable<typeof b> => b !== null);
 
 const mostRead = blogPosts
   .filter((post) => !post.comingSoon)
@@ -233,27 +249,51 @@ export function StoryLead() {
               </div>
 
               <ul>
-                {railBuilds.map((build) => (
-                  <li
-                    key={build.id}
-                    className="border-t border-border first:border-t-0"
-                  >
-                    <Link
-                      href={`/builds/${build.id}`}
-                      className="group flex items-start justify-between gap-4 py-4"
-                    >
-                      <span className="min-w-0">
-                        <span className="headline block text-foreground text-[18px] sm:text-[20px] leading-[1.2] group-hover:text-primary transition-colors duration-200">
-                          {build.name}
-                        </span>
-                        <span className="dateline block mt-2">
-                          {build.subtitle}
-                        </span>
+                {railBuilds.map((build) => {
+                  const row = (
+                    <>
+                      <span className="flex items-center gap-2 mb-1.5">
+                        <span className="kicker">{build.deskName}</span>
+                        {build.isLive && (
+                          <span className="kicker kicker-muted">· Live</span>
+                        )}
                       </span>
-                      <ArrowUpRight className="w-4 h-4 mt-1 shrink-0 text-foreground/40 group-hover:text-primary transition-colors duration-200" />
-                    </Link>
-                  </li>
-                ))}
+                      <span className="flex items-start justify-between gap-4">
+                        <span className="min-w-0">
+                          <span className="headline block text-foreground text-[18px] sm:text-[20px] leading-[1.2] group-hover:text-primary transition-colors duration-200">
+                            {build.name}
+                          </span>
+                          <span className="dateline block mt-1.5">
+                            {build.subtitle}
+                          </span>
+                        </span>
+                        <ArrowUpRight className="w-4 h-4 mt-0.5 shrink-0 text-foreground/40 group-hover:text-primary transition-colors duration-200" />
+                      </span>
+                    </>
+                  );
+
+                  return (
+                    <li
+                      key={build.id}
+                      className="border-t border-border first:border-t-0"
+                    >
+                      {build.isLive ? (
+                        <a
+                          href={build.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group block py-4"
+                        >
+                          {row}
+                        </a>
+                      ) : (
+                        <Link href={build.href} className="group block py-4">
+                          {row}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
 
               <Link
