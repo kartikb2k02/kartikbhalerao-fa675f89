@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Rss } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
+import { caseStudies } from "@/data/caseStudies";
 import { shortNames } from "@/data/buildMeta";
 import { Reveal } from "@/components/Reveal";
 
@@ -17,8 +18,18 @@ const focus = [
   "And I spend time on the models themselves. Which open ones are worth building on, what really changed between one version and the next, and what a job costs in tokens once it’s running every day and not just in a demo.",
 ];
 
-/** Three builds worth a look from the front page; the rest are on /builds. */
-const railBuilds = ["blinkit-analysis", "zepto-efficiency", "chatly-prd"];
+/**
+ * Three builds worth a look from the front page; the rest are on /builds.
+ * Names and descriptions are read from the case studies rather than retyped,
+ * so the rail cannot drift from the detail pages it links to.
+ */
+const railBuilds = ["blinkit-analysis", "zepto-efficiency", "chatly-prd"]
+  .map((id) => {
+    const study = caseStudies.find((s) => s.id === id);
+    if (!study) return null;
+    return { id, name: shortNames[id] ?? study.title, subtitle: study.subtitle };
+  })
+  .filter((b): b is { id: string; name: string; subtitle: string } => b !== null);
 
 const mostRead = blogPosts
   .filter((post) => !post.comingSoon)
@@ -226,19 +237,24 @@ export function StoryLead() {
               </div>
 
               <ul>
-                {railBuilds.map((id) => (
+                {railBuilds.map((build) => (
                   <li
-                    key={id}
+                    key={build.id}
                     className="border-t border-border first:border-t-0"
                   >
                     <Link
-                      href={`/builds/${id}`}
-                      className="group flex items-center justify-between gap-4 py-4"
+                      href={`/builds/${build.id}`}
+                      className="group flex items-start justify-between gap-4 py-4"
                     >
-                      <span className="headline text-foreground text-[18px] sm:text-[20px] leading-[1.2] group-hover:text-primary transition-colors duration-200">
-                        {shortNames[id]}
+                      <span className="min-w-0">
+                        <span className="headline block text-foreground text-[18px] sm:text-[20px] leading-[1.2] group-hover:text-primary transition-colors duration-200">
+                          {build.name}
+                        </span>
+                        <span className="dateline block mt-2">
+                          {build.subtitle}
+                        </span>
                       </span>
-                      <ArrowUpRight className="w-4 h-4 shrink-0 text-foreground/40 group-hover:text-primary transition-colors duration-200" />
+                      <ArrowUpRight className="w-4 h-4 mt-1 shrink-0 text-foreground/40 group-hover:text-primary transition-colors duration-200" />
                     </Link>
                   </li>
                 ))}
