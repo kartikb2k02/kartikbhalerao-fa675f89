@@ -3,6 +3,16 @@ import { ArrowUpRight, Rss } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
 import { Reveal } from "@/components/Reveal";
 
+/**
+ * One sentence each, no bolded lead-in. Names no project on purpose — the
+ * builds are listed in The Desk directly below.
+ */
+const focus = [
+  "I’m building agents that take over the manual parts of product work. Reading design files, drafting specs and acceptance criteria, keeping track of what competitors ship. The judgment stays with me. The typing around it does not.",
+  "I’m working out where agents actually break. It is rarely the prompt. Most failures sit in the harness around the model: the tools it can reach, the context it gets handed, and what happens when a step fails halfway through.",
+  "I’m making them cheap enough to ship. A good agent makes the fewest calls needed to finish the job, not the most, and that gap is the difference between a demo and something a team can afford to run every day.",
+];
+
 const mostRead = blogPosts
   .filter((post) => !post.comingSoon)
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -72,7 +82,7 @@ export function StoryLead() {
             {/* The page shows no display heading here, so this carries the
                 document's h1 for crawlers and screen-reader navigation. */}
             <h1 className="sr-only">
-              Kartik Bhalerao — Product Manager, AI products
+              Kartik Bhalerao, Product Manager building AI products
             </h1>
 
             {/* Two columns only once the lead column is wide enough to split
@@ -113,12 +123,29 @@ export function StoryLead() {
               </p>
             </div>
 
-            {/* The closing line, set as a magazine sets an "out" */}
-            <p className="headline text-foreground text-[21px] sm:text-[27px] leading-[1.3] mt-8 border-l-2 border-primary pl-6">
-              I don&rsquo;t have everything figured out, and I think that&rsquo;s
-              fine. I just like learning new things, working on problems that
-              interest me, and seeing what comes out of it.
-            </p>
+            {/* What's current, as a numbered standfirst. The numerals reuse
+                `.rank` from the Most Read rail so the page counts things one
+                way. Deliberately names no project: the builds are listed in
+                The Desk directly below, and naming one here says it twice. */}
+            <div className="mt-10 pt-8 border-t border-border">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="kicker">What I&rsquo;m working on</span>
+                <span className="h-px flex-1 bg-border" aria-hidden="true" />
+              </div>
+
+              <ol className="space-y-5">
+                {focus.map((item, i) => (
+                  <li key={item} className="flex gap-5">
+                    <span className="rank shrink-0 pt-0.5">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="min-w-0 text-[17px] sm:text-[18px] leading-[1.6] text-foreground/85">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
 
             <div className="flex flex-wrap items-center gap-3 mt-9 pt-8 border-t border-border">
               <Link
@@ -193,7 +220,7 @@ export function StoryLead() {
                 <span className="kicker">Now</span>
               </div>
               <p className="text-[15px] leading-[1.55] text-foreground/80 mb-4">
-                Open to product roles — AI product work especially. Also happy
+                Open to product roles, AI product work especially. Also happy
                 to argue about what to cut from your roadmap.
               </p>
               <Link
