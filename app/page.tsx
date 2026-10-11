@@ -2,7 +2,7 @@ import { Masthead } from "@/components/Masthead";
 import { FeaturedStory } from "@/components/FeaturedStory";
 import { WorkDesk } from "@/components/WorkDesk";
 import { NotebookSection } from "@/components/NotebookSection";
-import { ConnectCTASection } from "@/components/ConnectCTASection";
+import { AboutStorySection } from "@/components/AboutStorySection";
 import { FooterSection } from "@/components/FooterSection";
 import { Header } from "@/components/Header";
 
@@ -16,7 +16,7 @@ export default function Index() {
         <FeaturedStory />
         <WorkDesk />
         <NotebookSection />
-        <ConnectCTASection />
+        <AboutStorySection />
       </main>
 
       <FooterSection />
