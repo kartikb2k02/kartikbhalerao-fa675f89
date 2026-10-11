@@ -1,3 +1,4 @@
+import { CareerFlow } from "@/components/CareerFlow";
 import { StickyNote } from "@/components/StickyNote";
 import { Reveal } from "@/components/Reveal";
 import { ContributionCards } from "@/components/ContributionCards";
@@ -19,39 +20,6 @@ const TIMELINE = [
   { when: "2025", what: "Founding PM, consumer tech app", where: "Side projects for enterprise" },
   { when: "2026", what: "AI agents and products", where: "Now" },
 ];
-
-function Timeline() {
-  return (
-    <div className="border-t border-border">
-      {TIMELINE.map((row, i) => {
-        const isCurrent = i === TIMELINE.length - 1;
-        return (
-          <Reveal key={row.what} delay={i * 70}>
-            <div className="index-row grid sm:grid-cols-[132px_1fr_auto] gap-1 sm:gap-8 py-5">
-              <span className="data-mono text-[12px] text-primary flex items-center gap-2.5">
-                {isCurrent && (
-                  <span className="w-1.5 h-1.5 bg-primary shrink-0" aria-hidden="true" />
-                )}
-                {row.when}
-              </span>
-              <span
-                className={`text-[16px] ${
-                  isCurrent ? "text-foreground font-medium" : "text-foreground/85"
-                }`}
-              >
-                {row.what}
-              </span>
-              <span className="data-mono text-[12px] text-muted-foreground">
-                {row.where}
-              </span>
-            </div>
-          </Reveal>
-        );
-      })}
-      <div className="border-t border-border" />
-    </div>
-  );
-}
 
 function Act({
   index,
@@ -109,7 +77,7 @@ function Act({
 export const AboutSection = () => {
   return (
     <div>
-      <Timeline />
+      <CareerFlow />
 
       <Act
         index="01"
