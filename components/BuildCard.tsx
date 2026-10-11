@@ -16,13 +16,37 @@ const customBanners: Record<string, React.ComponentType> = {
 };
 
 /**
- * Cover art. Four builds ship a hand-made banner; the rest get a typographic
- * plate rather than a stock image, so a filtered row never mixes rich cards
- * with empty grey boxes.
+ * Cover art, in order of preference: the hand-made banner four builds ship,
+ * then the case study's own image, then a typographic plate for anything with
+ * neither. Every build currently has one of the first two.
  */
-function Cover({ id, index }: { id: string; index: number }) {
+function Cover({
+  id,
+  index,
+  image,
+  title,
+}: {
+  id: string;
+  index: number;
+  image: string;
+  title: string;
+}) {
   const Custom = customBanners[id];
   if (Custom) return <Custom />;
+
+  if (image) {
+    return (
+      // Plain <img>: the site is a static export with `images.unoptimized`
+      // set, so next/image would add a wrapper and no optimisation.
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-full object-cover object-center"
+        loading="lazy"
+      />
+    );
+  }
 
   return (
     <div className="w-full h-full bg-muted flex flex-col justify-between p-5">
@@ -55,7 +79,12 @@ export function BuildCard({
   const inner = (
     <>
       <div className="relative aspect-[18/10] overflow-hidden border-b-2 border-foreground">
-        <Cover id={study.id} index={index} />
+        <Cover
+          id={study.id}
+          index={index}
+          image={study.image}
+          title={study.title}
+        />
       </div>
 
       <div className="p-5 flex-1 flex flex-col">
