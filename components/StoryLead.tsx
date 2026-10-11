@@ -228,6 +228,14 @@ export function StoryLead() {
               ))}
             </ol>
 
+            <Link
+              href="/blog"
+              className="label-mono inline-flex items-center gap-2 mt-6 text-[10px] text-foreground border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-200"
+            >
+              Read all writeups
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+
             {/* Selected builds. The desk grid moved to /builds, so this rail
                 is the homepage's only route into the work. The rule above
                 matches the one dividing the story from the focus list, so both
