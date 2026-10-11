@@ -835,3 +835,14 @@
     }
   }
 }
+
+@layer utilities {
+  /* Hard card that is read, not clicked — same flat fill, rule and offset
+     shadow as `.hard-card`, without the hover lift, which on a static card
+     promises an interaction that is not there. */
+  .hard-card-static {
+    background: hsl(var(--card));
+    border: 2px solid hsl(var(--foreground));
+    box-shadow: 5px 5px 0 0 hsl(var(--foreground));
+  }
+}

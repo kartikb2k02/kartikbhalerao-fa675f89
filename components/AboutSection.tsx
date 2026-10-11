@@ -1,6 +1,6 @@
 import { StickyNote } from "@/components/StickyNote";
 import { Reveal } from "@/components/Reveal";
-import { ContributionNotes } from "@/components/ContributionNotes";
+import { ContributionCards } from "@/components/ContributionCards";
 import { Highlighter } from "@/components/magicui/highlighter";
 import {
   DECISION_MACHINE,
@@ -101,7 +101,7 @@ function Act({
         </div>
       </div>
 
-      <ContributionNotes items={items} />
+      <ContributionCards items={items} />
     </section>
   );
 }
@@ -116,7 +116,7 @@ export const AboutSection = () => {
         role="Associate Product Manager"
         period="Decision Machine"
         title="Decision Machine"
-        lede="Product KPIs, roadmap and AI product work with leadership and enterprise clients. Open any card for what I worked on and what I found."
+        lede="Product KPIs, roadmap and AI product work with leadership and enterprise clients. Each card below says what I worked on and what I found."
         items={DECISION_MACHINE}
         note={
           <StickyNote tilt={1.5} title="What I found">
