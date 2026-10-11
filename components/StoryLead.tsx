@@ -144,6 +144,16 @@ export function StoryLead() {
               </p>
             </div>
 
+            {/* The career itself lives on /about; the front page points at
+                it rather than reprinting it under the same story. */}
+            <Link
+              href="/about"
+              className="label-mono inline-flex items-center gap-2 mt-7 text-[10px] text-foreground border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-200"
+            >
+              Work &amp; experience
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+
             {/* What's current, as a numbered standfirst. The numerals reuse
                 `.rank` from the Most Read rail so the page counts things one
                 way. Deliberately names no project: the rail already links to
