@@ -137,9 +137,10 @@ export function StoryLead() {
               </p>
 
               <p className="text-[17px] sm:text-[18px] leading-[1.7] text-foreground/80 mb-5">
-                I&rsquo;m interested in how AI can solve real problems and help
-                products grow. I like exploring new markets, testing ideas, and
-                understanding what users actually need.
+                I&rsquo;m currently building AI solutions using the latest
+                tools and technologies, working with MCP and AI gateways to
+                connect models with real-world workflows and make AI more
+                useful.
               </p>
             </div>
 

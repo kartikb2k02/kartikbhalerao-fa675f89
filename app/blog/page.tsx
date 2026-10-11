@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { blogPosts } from "@/data/blogPosts";
 import { Header } from "@/components/Header";
 import { FooterSection } from "@/components/FooterSection";
-import { BlogGrid } from "@/components/BlogGrid";
+import { BlogIndex } from "@/components/BlogIndex";
 import { PageHeader } from "@/components/PageHeader";
 import { pageMetadata } from "@/lib/seo";
 
@@ -26,11 +26,11 @@ export default function Blog() {
           title={<>What I&apos;ve figured out<span className="text-primary">.</span></>}
           lede="Notes on building products: AI, prioritisation, user research, and the things that went wrong on the way."
           meta={`${published} posts`}
-          container="max-w-[94rem]"
+          container="max-w-[100rem]"
         />
 
-        <div className="max-w-[94rem] mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-          <BlogGrid posts={blogPosts} />
+        <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+          <BlogIndex posts={blogPosts} />
         </div>
       </main>
 
