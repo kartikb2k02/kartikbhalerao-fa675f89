@@ -110,34 +110,32 @@ export function StoryLead() {
                 leaves the raised capital standing alone with an orphaned
                 apostrophe beside it.
 
-                Paragraphs are allowed to break across the gutter. Holding
-                them whole leaves the first column a third full, because the
-                three paragraphs do not divide evenly in two — newspapers set
-                continuous columns for exactly this reason. */}
+                Paragraphs are allowed to break across the gutter rather than
+                held whole, so the two columns balance however many there are.
+                Newspapers set continuous columns for exactly this reason. */}
             <div className="lg:columns-2 lg:gap-12">
               <p className="text-[17px] sm:text-[18px] leading-[1.7] text-foreground/80 mb-5">
-                I&rsquo;m Kartik, a Product Manager who likes getting into new
-                problems and figuring things out. Over the last 3 years,
-                I&rsquo;ve worked across B2B, B2C, fintech, and AI products. My
-                work has taken me from market research and talking to users to
-                building products, testing ideas, and figuring out what can be
-                improved.
+                I&rsquo;m Kartik, a Product Manager working on fintech products
+                and solving business problems. I enjoy understanding user needs
+                and finding ways to improve products.
               </p>
 
               <p className="text-[17px] sm:text-[18px] leading-[1.7] text-foreground/80 mb-5">
-                I started with a technical background, so I&rsquo;ve always been
-                curious about how things work behind the scenes too. Over time,
-                I got more interested in why people use certain products, what
-                problems they face, and what we can do to solve them. I also
-                contribute to open source, including Rocket.Chat, where I got to
-                learn from real product discussions and share ideas.
+                Before this, I worked with a consulting firm across 5 domains
+                worldwide. This helped me understand different industries,
+                business challenges, and customer needs.
               </p>
 
               <p className="text-[17px] sm:text-[18px] leading-[1.7] text-foreground/80 mb-5">
-                I enjoy working remotely because I like having the freedom to
-                explore a problem, try things out, and take ownership of the
-                solution. These days, I&rsquo;m spending more time exploring AI
-                and finding ways to use it to build useful things.
+                Currently, I&rsquo;m working across product strategy, GTM, AI,
+                and growth. I focus on market research, identifying
+                opportunities, and finding ways to make products better.
+              </p>
+
+              <p className="text-[17px] sm:text-[18px] leading-[1.7] text-foreground/80 mb-5">
+                I&rsquo;m interested in how AI can solve real problems and help
+                products grow. I like exploring new markets, testing ideas, and
+                understanding what users actually need.
               </p>
             </div>
 
