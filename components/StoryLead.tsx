@@ -4,13 +4,16 @@ import { blogPosts } from "@/data/blogPosts";
 import { Reveal } from "@/components/Reveal";
 
 /**
- * One sentence each, no bolded lead-in. Names no project on purpose — the
- * builds are listed in The Desk directly below.
+ * Written plain, in Kartik's own voice, and naming no project: the builds are
+ * listed in The Desk directly below. The specifics ("ten tabs every Monday",
+ * "step four fails and the first three already ran") are the point — the
+ * earlier draft's balanced flourishes read as machine-written.
  */
 const focus = [
-  "I’m building agents that take over the manual parts of product work. Reading design files, drafting specs and acceptance criteria, keeping track of what competitors ship. The judgment stays with me. The typing around it does not.",
-  "I’m working out where agents actually break. It is rarely the prompt. Most failures sit in the harness around the model: the tools it can reach, the context it gets handed, and what happens when a step fails halfway through.",
-  "I’m making them cheap enough to ship. A good agent makes the fewest calls needed to finish the job, not the most, and that gap is the difference between a demo and something a team can afford to run every day.",
+  "I’m building agents that take over the boring parts of my job. Reading a design file and writing the first draft of a spec. Pulling competitor updates into one place so I’m not checking ten tabs every Monday.",
+  "A lot of my time goes into MCP, which is just the standard that lets an agent actually use your tools instead of describing them. I wire those connections up, then find out what falls over when real work hits them.",
+  "I also work on gateways and workflows. Which model handles a request, what it’s allowed to touch, what happens when step four fails and the first three already ran. That’s where agents break, not in the prompt.",
+  "And I spend time on the models themselves. Which open ones are worth building on, what really changed between one version and the next, and what a job costs in tokens once it’s running every day and not just in a demo.",
 ];
 
 const mostRead = blogPosts
