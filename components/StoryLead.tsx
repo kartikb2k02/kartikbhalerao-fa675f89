@@ -229,8 +229,10 @@ export function StoryLead() {
             </ol>
 
             {/* Selected builds. The desk grid moved to /builds, so this rail
-                is the homepage's only route into the work. */}
-            <div className="mt-10">
+                is the homepage's only route into the work. The rule above
+                matches the one dividing the story from the focus list, so both
+                columns break their sections the same way. */}
+            <div className="mt-10 pt-8 border-t border-border">
               <div className="mb-5">
                 <span className="kicker">Builds</span>
               </div>
