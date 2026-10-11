@@ -6,16 +6,14 @@ import { shortNames } from "@/data/buildMeta";
 import { Reveal } from "@/components/Reveal";
 
 /**
- * Written plain, in Kartik's own voice, and naming no project: the builds are
- * linked from the rail and live in full on /builds. The specifics ("ten tabs
- * every Monday", "step four fails and the first three already ran") are the
- * point; the earlier draft's balanced flourishes read as machine-written.
+ * Kartik's own words. Each point is one sentence, names no project, and uses
+ * no dashes.
  */
 const focus = [
-  "I’m building agents that take over the boring parts of my job. Reading a design file and writing the first draft of a spec. Pulling competitor updates into one place so I’m not checking ten tabs every Monday.",
-  "A lot of my time goes into MCP, which is just the standard that lets an agent actually use your tools instead of describing them. I wire those connections up, then find out what falls over when real work hits them.",
-  "I also work on gateways and workflows. Which model handles a request, what it’s allowed to touch, what happens when step four fails and the first three already ran. That’s where agents break, not in the prompt.",
-  "And I spend time on the models themselves. Which open ones are worth building on, what really changed between one version and the next, and what a job costs in tokens once it’s running every day and not just in a demo.",
+  "I build AI agents to handle repetitive work, like turning design files into product specs and collecting competitor updates in one place.",
+  "I work with MCP to connect AI agents to different tools so they can actually use them to get work done.",
+  "I work on AI workflows, deciding which model to use, what it can access, and how to handle things when a step fails.",
+  "I explore different AI models, compare what they can do, and figure out which ones are worth using based on performance and cost.",
 ];
 
 /**
