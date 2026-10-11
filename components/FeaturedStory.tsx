@@ -24,7 +24,7 @@ export function FeaturedStory() {
   if (!featured) return null;
 
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 pb-14 sm:pb-20">
+    <section className="w-full px-4 sm:px-6 lg:px-8 pt-10 sm:pt-16 pb-14 sm:pb-20">
       <div className="max-w-[100rem] mx-auto">
         <div className="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           {/* ── Lead story ──────────────────────────────────── */}
