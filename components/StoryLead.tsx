@@ -17,19 +17,11 @@ const focus = [
 ];
 
 /**
- * The rail is the homepage's only index of the work, so it carries one build
- * from each desk plus both live products rather than a token three. Names and
+ * Three builds on the front page; the rest are on /builds. Names and
  * descriptions are read from the case studies rather than retyped, so the rail
  * cannot drift from the pages it links to.
  */
-const railBuilds = [
-  "figprd",
-  "pm-copilot",
-  "tenzo-product-discovery",
-  "blinkit-analysis",
-  "zepto-efficiency",
-  "chatly-prd",
-]
+const railBuilds = ["blinkit-analysis", "zepto-efficiency", "chatly-prd"]
   .map((id) => {
     const study = caseStudies.find((s) => s.id === id);
     if (!study) return null;
