@@ -31,5 +31,8 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "*", allow: "/" },
     ],
     sitemap: `${BASE_URL}/sitemap.xml`,
+    // Names the canonical origin so a crawler that reaches the site on
+    // another host does not index it twice.
+    host: BASE_URL,
   };
 }
