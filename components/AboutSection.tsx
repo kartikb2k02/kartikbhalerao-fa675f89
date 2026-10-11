@@ -1,3 +1,4 @@
+import { TIMELINE } from "@/data/timeline";
 import { StickyNote } from "@/components/StickyNote";
 import { Reveal } from "@/components/Reveal";
 import { ContributionCards } from "@/components/ContributionCards";
@@ -11,14 +12,6 @@ import {
   type Contribution,
 } from "@/data/contributions";
 
-const TIMELINE = [
-  { when: "2022", what: "Open source contributor", where: "Rocket.Chat" },
-  { when: "2023", what: "Moved into product management", where: "The switch" },
-  { when: "2024", what: "Product Manager Intern", where: "Ocius · Remote" },
-  { when: "Mid 2024", what: "Associate Product Manager", where: "Decision Machine · Pune" },
-  { when: "2025", what: "Founding PM, consumer tech app", where: "Side projects for enterprise" },
-  { when: "2026", what: "AI agents and products", where: "Now" },
-];
 
 function Timeline() {
   return (

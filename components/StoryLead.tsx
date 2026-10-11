@@ -3,6 +3,7 @@ import { ArrowRight, ArrowUpRight, Rss } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
 import { caseStudies } from "@/data/caseStudies";
 import { desk, shortNames, liveProducts } from "@/data/buildMeta";
+import { TIMELINE } from "@/data/timeline";
 import { Reveal } from "@/components/Reveal";
 
 /**
@@ -142,6 +143,46 @@ export function StoryLead() {
                 connect models with real-world workflows and make AI more
                 useful.
               </p>
+            </div>
+
+            {/* Work and experience. Reversed against the About page's
+                chronological telling: on a front page the role he holds now
+                is the one that matters, so it reads top-down from current. */}
+            <div className="mt-10 pt-8 border-t border-border">
+              <div className="mb-3">
+                <span className="kicker">Work &amp; experience</span>
+              </div>
+
+              <ol className="[&>li:first-child>div]:pt-0">
+                {[...TIMELINE].reverse().map((row, i) => (
+                  <li
+                    key={row.what}
+                    className="border-t border-border first:border-t-0"
+                  >
+                    <div className="grid sm:grid-cols-[104px_1fr_auto] gap-1 sm:gap-6 items-baseline py-4">
+                      <span className="dateline flex items-center gap-2 text-primary">
+                        {i === 0 && (
+                          <span
+                            className="w-1.5 h-1.5 bg-primary shrink-0"
+                            aria-hidden="true"
+                          />
+                        )}
+                        {row.when}
+                      </span>
+                      <span
+                        className={`text-[16px] sm:text-[17px] leading-[1.4] ${
+                          i === 0
+                            ? "text-foreground font-medium"
+                            : "text-foreground/85"
+                        }`}
+                      >
+                        {row.what}
+                      </span>
+                      <span className="dateline sm:text-right">{row.where}</span>
+                    </div>
+                  </li>
+                ))}
+              </ol>
             </div>
 
             {/* What's current, as a numbered standfirst. The numerals reuse
