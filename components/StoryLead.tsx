@@ -1,13 +1,14 @@
 import Link from "next/link";
-import { ArrowUpRight, Rss } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Rss } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
+import { shortNames } from "@/data/buildMeta";
 import { Reveal } from "@/components/Reveal";
 
 /**
  * Written plain, in Kartik's own voice, and naming no project: the builds are
- * listed in The Desk directly below. The specifics ("ten tabs every Monday",
- * "step four fails and the first three already ran") are the point — the
- * earlier draft's balanced flourishes read as machine-written.
+ * linked from the rail and live in full on /builds. The specifics ("ten tabs
+ * every Monday", "step four fails and the first three already ran") are the
+ * point; the earlier draft's balanced flourishes read as machine-written.
  */
 const focus = [
   "I’m building agents that take over the boring parts of my job. Reading a design file and writing the first draft of a spec. Pulling competitor updates into one place so I’m not checking ten tabs every Monday.",
@@ -15,6 +16,9 @@ const focus = [
   "I also work on gateways and workflows. Which model handles a request, what it’s allowed to touch, what happens when step four fails and the first three already ran. That’s where agents break, not in the prompt.",
   "And I spend time on the models themselves. Which open ones are worth building on, what really changed between one version and the next, and what a job costs in tokens once it’s running every day and not just in a demo.",
 ];
+
+/** Three builds worth a look from the front page; the rest are on /builds. */
+const railBuilds = ["blinkit-analysis", "zepto-efficiency", "chatly-prd"];
 
 const mostRead = blogPosts
   .filter((post) => !post.comingSoon)
@@ -128,8 +132,8 @@ export function StoryLead() {
 
             {/* What's current, as a numbered standfirst. The numerals reuse
                 `.rank` from the Most Read rail so the page counts things one
-                way. Deliberately names no project: the builds are listed in
-                The Desk directly below, and naming one here says it twice. */}
+                way. Deliberately names no project: the rail already links to
+                them, and naming one here says it twice. */}
             <div className="mt-10 pt-8 border-t border-border">
               <div className="flex items-center gap-3 mb-6">
                 <span className="kicker">What I&rsquo;m working on</span>
@@ -213,25 +217,39 @@ export function StoryLead() {
               ))}
             </ol>
 
-            {/* Standing "Now" box — the stop-press corner */}
-            <div className="hard-card mt-8 p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <span
-                  className="w-2 h-2 bg-primary shrink-0"
-                  aria-hidden="true"
-                />
-                <span className="kicker">Now</span>
+            {/* Selected builds. The desk grid moved to /builds, so this rail
+                is the homepage's only route into the work. */}
+            <div className="mt-10">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="kicker">Builds</span>
+                <span className="h-px flex-1 bg-border" aria-hidden="true" />
               </div>
-              <p className="text-[15px] leading-[1.55] text-foreground/80 mb-4">
-                Open to product roles, AI product work especially. Also happy
-                to argue about what to cut from your roadmap.
-              </p>
+
+              <ul>
+                {railBuilds.map((id) => (
+                  <li
+                    key={id}
+                    className="border-t border-border first:border-t-0"
+                  >
+                    <Link
+                      href={`/builds/${id}`}
+                      className="group flex items-center justify-between gap-4 py-4"
+                    >
+                      <span className="headline text-foreground text-[18px] sm:text-[20px] leading-[1.2] group-hover:text-primary transition-colors duration-200">
+                        {shortNames[id]}
+                      </span>
+                      <ArrowUpRight className="w-4 h-4 shrink-0 text-foreground/40 group-hover:text-primary transition-colors duration-200" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
               <Link
-                href="/contact"
-                className="label-mono inline-flex items-center gap-1.5 text-[10px] text-foreground border-b-2 border-primary pb-0.5 hover:text-primary transition-colors duration-200"
+                href="/builds"
+                className="label-mono inline-flex items-center gap-2 mt-6 text-[10px] text-foreground border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-200"
               >
-                Get in touch
-                <ArrowUpRight className="w-3 h-3" />
+                More builds
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </Reveal>
