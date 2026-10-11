@@ -198,11 +198,11 @@ export function StoryLead() {
 
           {/* ── Right rail ──────────────────────────────────── */}
           <Reveal delay={120} className="lg:col-rule lg:pl-12 mt-14 lg:mt-0">
-            <div className="mb-5">
+            <div className="mb-3">
               <span className="kicker">Most read</span>
             </div>
 
-            <ol>
+            <ol className="[&>li:first-child>a]:pt-0">
               {mostRead.map((post, i) => (
                 <li
                   key={post.slug}
@@ -241,11 +241,11 @@ export function StoryLead() {
                 matches the one dividing the story from the focus list, so both
                 columns break their sections the same way. */}
             <div className="mt-10 pt-8 border-t border-border">
-              <div className="mb-5">
+              <div className="mb-3">
                 <span className="kicker">Builds</span>
               </div>
 
-              <ul>
+              <ul className="[&>li:first-child>a]:pt-0">
                 {railBuilds.map((build) => {
                   const row = (
                     <>
