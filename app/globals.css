@@ -432,6 +432,16 @@
     to { opacity: 1; transform: translateY(0) rotate(0deg); }
   }
 
+  /* Each "now" line rises into the row as the last one leaves */
+  .now-in {
+    animation: now-in 460ms cubic-bezier(0.2, 0, 0, 1) both;
+  }
+
+  @keyframes now-in {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   /* Big-type answer streaming in the hero */
   .answer-mega {
     font-family: var(--font-display);
@@ -442,7 +452,8 @@
 
   @media (prefers-reduced-motion: reduce) {
     .marquee,
-    .word-swap {
+    .word-swap,
+    .now-in {
       animation: none !important;
     }
     .marquee {
@@ -450,6 +461,23 @@
     }
   }
 
+
+  /* ── Theme change: new theme is wiped in as a circle ───── */
+  /* Without this the browser cross-fades both snapshots, which greys out the
+     whole page mid-transition and fights the clip-path animation. */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  ::view-transition-old(root) {
+    z-index: 1;
+  }
+
+  ::view-transition-new(root) {
+    z-index: 2147483646;
+  }
 
   /* ── Entrance: the wordmark arrives, it doesn't just appear ─ */
   .mega-line {

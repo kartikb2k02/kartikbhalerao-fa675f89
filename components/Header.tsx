@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { useAsk } from "@/components/AskConsole";
+import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
 
 interface HeaderProps {
   scrollProgress?: number;
@@ -20,13 +19,7 @@ const NAV = [
 
 export const Header = ({ scrollProgress }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMac, setIsMac] = useState(true);
   const pathname = usePathname();
-  const { open } = useAsk();
-
-  useEffect(() => {
-    setIsMac(/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent));
-  }, []);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -37,7 +30,7 @@ export const Header = ({ scrollProgress }: HeaderProps) => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/85 backdrop-blur-md border-b border-border">
-      <div className="max-w-6xl mx-auto h-16 flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[100rem] mx-auto h-16 flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         {/* Name */}
         <Link
           href="/"
@@ -64,21 +57,7 @@ export const Header = ({ scrollProgress }: HeaderProps) => {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Ask trigger — the console is the one new thing in the nav */}
-          <button
-            onClick={() => open()}
-            className="group flex items-center gap-2 h-8 pl-3 pr-2 border border-border hover:border-primary/50 transition-colors"
-            aria-label="Ask about Kartik's work"
-          >
-            <span className="label-mono text-[10px] text-muted-foreground group-hover:text-primary transition-colors">
-              Ask
-            </span>
-            <kbd className="data-mono hidden sm:block text-[10px] text-muted-foreground/70 border border-border px-1 leading-[15px]">
-              {isMac ? "⌘K" : "^K"}
-            </kbd>
-          </button>
-
-          <ThemeToggle />
+          <AnimatedThemeToggler />
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

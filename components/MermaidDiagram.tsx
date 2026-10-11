@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { memo, useEffect, useId, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import { preloadMermaid, renderDiagram } from "@/lib/mermaid";
 
@@ -13,7 +13,7 @@ type Status = "waiting" | "rendering" | "done" | "error";
  * it is close to the viewport, so a post with five diagrams does not pay for
  * all five before the reader has scrolled to any of them.
  */
-export function MermaidDiagram({ chart }: { chart: string }) {
+function MermaidDiagramImpl({ chart }: { chart: string }) {
   const reactId = useId();
   const id = `mermaid-${reactId.replace(/[^a-zA-Z0-9]/g, "")}`;
   const hostRef = useRef<HTMLDivElement>(null);
@@ -109,10 +109,16 @@ export function MermaidDiagram({ chart }: { chart: string }) {
       )}
       <div
         ref={svgRef}
-        className={`justify-center p-5 [&_svg]:max-w-full [&_svg]:h-auto ${
-          status === "done" ? "flex animate-rise" : "hidden"
+        className={`justify-center p-5 [&_svg]:w-full [&_svg]:max-w-full [&_svg]:h-auto ${
+          status === "done" ? "block animate-rise" : "hidden"
         }`}
       />
     </div>
   );
 }
+
+/**
+ * Re-rendering a diagram costs a full mermaid parse and redraw, so the same
+ * chart text must never cause one.
+ */
+export const MermaidDiagram = memo(MermaidDiagramImpl);

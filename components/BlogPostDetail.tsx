@@ -113,15 +113,31 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
   }, [readTimeMinutes, scrollProgress]);
 
   useEffect(() => {
-    const handleScroll = () => {
+    // Coalesced into one frame, and only committed when the whole-number
+    // percentage actually changes — a setState per scroll event re-rendered the
+    // article (and everything mermaid had drawn) dozens of times a second.
+    let frame = 0;
+    const read = () => {
+      frame = 0;
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setScrollProgress(Math.min(progress, 100));
-      setShowBackToTop(scrollTop > 400);
+      const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+      setScrollProgress((prev) => (Math.round(prev) === Math.round(progress) ? prev : progress));
+      setShowBackToTop((prev) => {
+        const next = scrollTop > 400;
+        return prev === next ? prev : next;
+      });
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(read);
+    };
+    read();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, []);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -167,6 +183,552 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
     svgs.forEach((svg) => observer.observe(svg));
     return () => observer.disconnect();
   }, [content]);
+
+  // Memoised: ReactMarkdown remounts its whole subtree whenever this object's
+  // component identities change, and scroll updates re-render this component many
+  // times a second — that remount is what made mermaid diagrams flash while scrolling.
+  const markdownComponents = useMemo(
+    () => ({
+                h1: ({ children }) => {
+                  // Skip duplicate title already shown on banner
+                  if (extractText(children as React.ReactNode).trim() === post.title.trim()) return null;
+                  return (
+                    <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground mt-10 mb-5 first:mt-0 tracking-tight leading-tight">
+                      {children}
+                    </h1>
+                  );
+                },
+                h2: ({ children }) => {
+                  const id = slugify(extractText(children as React.ReactNode));
+                  return (
+                    <h2 id={id} className="scroll-mt-28 text-2xl sm:text-[28px] font-bold text-foreground mt-14 mb-4 tracking-tight leading-snug">
+                      {children}
+                    </h2>
+                  );
+                },
+                h3: ({ children }) => {
+                  const id = slugify(extractText(children as React.ReactNode));
+                  return (
+                    <h3 id={id} className="scroll-mt-28 text-lg sm:text-xl font-bold text-foreground/90 mt-8 mb-3 tracking-tight">
+                      {children}
+                    </h3>
+                  );
+                },
+                h4: ({ children }) => (
+                  <h4 className="text-base font-semibold text-foreground/90 mt-5 mb-2">
+                    {children}
+                  </h4>
+                ),
+                p: ({ children }) => {
+                  const text = extractText(children as React.ReactNode);
+
+                  // ── Notion DB Schema diagram ──────────────────────────────────
+                  if (text.trim() === '{{notion-db-schema}}') {
+                    const TitleIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>;
+                    const TextIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>;
+                    const NumberIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>;
+                    const DateIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>;
+                    const SelectIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/></svg>;
+
+                    return (
+                      <div className="my-8 rounded-none overflow-hidden border border-border shadow-sm text-sm">
+                        {/* Notion DB title bar */}
+                        <div className="flex items-center gap-2 px-4 py-2.5 bg-slate-50 dark:bg-zinc-900 border-b border-border">
+                          <span className="text-base">🗃️</span>
+                          <span className="font-semibold text-foreground/80 text-[13px]">Competitor Intelligence DB</span>
+                          <span className="ml-auto text-[11px] text-slate-400 bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded-md font-medium">Notion Database</span>
+                        </div>
+
+                        {/* Column headers */}
+                        <div className="flex items-center px-4 py-2 bg-slate-50 dark:bg-zinc-900 border-b border-border">
+                          <div className="w-5 mr-3" />
+                          <div className="flex-1 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Property</div>
+                          <div className="w-28 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Type</div>
+                          <div className="w-48 text-[11px] font-semibold text-slate-400 uppercase tracking-wider hidden sm:block">Purpose</div>
+                        </div>
+
+                        {/* ── Section: Identity ── */}
+                        <div className="flex items-center gap-2 px-4 py-1.5 bg-blue-50 dark:bg-blue-950/20 border-b border-border">
+                          <span className="w-2 h-2 rounded-sm bg-blue-400 inline-block"/>
+                          <span className="text-[11px] font-bold text-blue-500 dark:text-blue-400 uppercase tracking-widest">Identity</span>
+                        </div>
+                        <div className="flex items-center px-4 py-3 border-b border-border hover:bg-muted transition-colors">
+                          <div className="w-5 mr-3 text-slate-400"><TitleIcon /></div>
+                          <div className="flex-1 font-medium text-foreground/90 text-[13px]">Competitor Name</div>
+                          <div className="w-28 flex items-center gap-1.5">
+                            <span className="text-[11px] text-muted-foreground bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">Title</span>
+                          </div>
+                          <div className="w-48 text-[11px] text-slate-400 hidden sm:block">Primary key / row label</div>
+                        </div>
+
+                        {/* ── Section: Weekly Scraped Data ── */}
+                        <div className="flex items-center gap-2 px-4 py-1.5 bg-amber-50 dark:bg-amber-950/20 border-b border-border">
+                          <span className="w-2 h-2 rounded-sm bg-amber-400 inline-block"/>
+                          <span className="text-[11px] font-bold text-amber-500 dark:text-amber-400 uppercase tracking-widest">Weekly Scraped Data</span>
+                          <span className="text-[10px] text-amber-500 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/30 px-2 py-0.5 rounded-full font-semibold ml-1">via Apify + n8n</span>
+                        </div>
+                        {[
+                          { name: 'Pricing Snapshot',  type: 'Text',   icon: <TextIcon />,   purpose: 'Latest scraped pricing page (2000 chars)' },
+                          { name: 'Previous Pricing',  type: 'Text',   icon: <TextIcon />,   purpose: "Last week's snapshot for diffing" },
+                          { name: 'G2 Rating',         type: 'Number', icon: <NumberIcon />, purpose: 'Current avg star rating on G2' },
+                          { name: 'Recent Reviews',    type: 'Text',   icon: <TextIcon />,   purpose: 'Latest 5 reviews (pros + cons)' },
+                          { name: 'App Store Rating',  type: 'Number', icon: <NumberIcon />, purpose: 'Current app store rating' },
+                          { name: 'Last Updated',      type: 'Date',   icon: <DateIcon />,   purpose: 'Timestamp of last automation run' },
+                        ].map((row, i, arr) => (
+                          <div key={row.name} className={`flex items-center px-4 py-3 hover:bg-muted transition-colors ${i < arr.length - 1 ? 'border-b border-border' : ''}`}>
+                            <div className="w-5 mr-3 text-slate-400">{row.icon}</div>
+                            <div className="flex-1 font-medium text-foreground/90 text-[13px]">{row.name}</div>
+                            <div className="w-28">
+                              <span className="text-[11px] text-muted-foreground bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">{row.type}</span>
+                            </div>
+                            <div className="w-48 text-[11px] text-slate-400 hidden sm:block">{row.purpose}</div>
+                          </div>
+                        ))}
+
+                        {/* ── Section: AI Analysis ── */}
+                        <div className="flex items-center gap-2 px-4 py-1.5 bg-purple-50 dark:bg-purple-950/20 border-b border-border border-t border-t-slate-200 dark:border-t-slate-700">
+                          <span className="w-2 h-2 rounded-sm bg-purple-400 inline-block"/>
+                          <span className="text-[11px] font-bold text-purple-500 dark:text-purple-400 uppercase tracking-widest">AI Analysis</span>
+                          <span className="text-[10px] text-purple-500 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/30 px-2 py-0.5 rounded-full font-semibold ml-1">via Claude</span>
+                        </div>
+                        <div className="flex items-center px-4 py-3 border-b border-border hover:bg-muted transition-colors">
+                          <div className="w-5 mr-3 text-slate-400"><TextIcon /></div>
+                          <div className="flex-1 font-medium text-foreground/90 text-[13px]">Claude Analysis</div>
+                          <div className="w-28">
+                            <span className="text-[11px] text-muted-foreground bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">Text</span>
+                          </div>
+                          <div className="w-48 text-[11px] text-slate-400 hidden sm:block">Output stored for historical reference</div>
+                        </div>
+                        <div className="flex items-center px-4 py-3 hover:bg-muted transition-colors">
+                          <div className="w-5 mr-3 text-slate-400"><SelectIcon /></div>
+                          <div className="flex-1 font-medium text-foreground/90 text-[13px]">Signal Flag</div>
+                          <div className="w-28">
+                            <span className="text-[11px] text-muted-foreground bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">Select</span>
+                          </div>
+                          <div className="w-48 hidden sm:flex items-center gap-1.5">
+                            <span className="text-[10px] font-semibold bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400 px-2 py-0.5 rounded-full">🔴 HIGH</span>
+                            <span className="text-[10px] font-semibold bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-400 px-2 py-0.5 rounded-full">🟡 MED</span>
+                            <span className="text-[10px] font-semibold bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 px-2 py-0.5 rounded-full">🟢 LOW</span>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  // Style "Tools used:" line as a floating badge strip
+                  if (text.startsWith('Tools used:')) {
+                    const tools = text.replace('Tools used:', '').split('·').map(t => t.trim()).filter(Boolean);
+                    const ApifyLogo = () => (
+                      <img src="/logos/apify.png" alt="Apify" className="w-5 h-5 object-contain" />
+                    );
+                    const SlackLogo = () => (
+                      <img src="/logos/slack.png" alt="Slack" className="w-5 h-5 object-contain" />
+                    );
+                    const toolMeta: Record<string, { logoEl?: React.ReactNode; logoUrl?: string; category: string; iconBg: string; border: string }> = {
+                      'Apify':        { logoEl: <ApifyLogo />,                                     category: 'Web Scraping',  iconBg: 'bg-orange-50 dark:bg-orange-900/20',  border: 'border-orange-200 dark:border-orange-800/40' },
+                      'Notion':       { logoUrl: 'https://cdn.simpleicons.org/notion/000000',       category: 'Database',      iconBg: 'bg-muted',      border: 'border-border' },
+                      'Claude API':   { logoUrl: 'https://cdn.simpleicons.org/anthropic/7C3AED',    category: 'AI Analysis',   iconBg: 'bg-violet-50 dark:bg-violet-900/20',  border: 'border-violet-200 dark:border-violet-800/40' },
+                      'Slack':        { logoEl: <SlackLogo />,                                      category: 'Notifications', iconBg: 'bg-muted',       border: 'border-border' },
+                      'n8n / Zapier': { logoUrl: 'https://cdn.simpleicons.org/n8n/EA4B71',          category: 'Automation',    iconBg: 'bg-rose-50 dark:bg-rose-900/20',      border: 'border-rose-200 dark:border-rose-800/40' },
+                    };
+                    const fallbackMeta: { logoEl?: React.ReactNode; logoUrl?: string; category: string; iconBg: string; border: string } = { category: 'Tool', iconBg: 'bg-muted', border: 'border-border' };
+                    return (
+                      <div className="my-8">
+                        <div className="flex items-center gap-3 mb-5">
+                          <div className="h-px flex-1 bg-foreground/8" />
+                          <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.25em]">Built with</span>
+                          <div className="h-px flex-1 bg-foreground/8" />
+                        </div>
+                        <div className="flex flex-wrap gap-3 justify-center">
+                          {tools.map(tool => {
+                            const m = toolMeta[tool] ?? fallbackMeta;
+                            return (
+                              <div
+                                key={tool}
+                                className={`flex items-center gap-3 px-4 py-3 rounded-none border ${m.border} bg-card shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 min-w-[130px]`}
+                              >
+                                <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${m.iconBg}`}>
+                                  {m.logoEl
+                                    ? m.logoEl
+                                    : m.logoUrl
+                                      ? <img src={m.logoUrl} alt={tool} className="w-5 h-5 object-contain" />
+                                      : <span className="text-lg">🔧</span>
+                                  }
+                                </div>
+                                <div>
+                                  <p className="text-[13px] font-bold text-foreground/90 leading-tight">{tool}</p>
+                                  <p className="text-[11px] text-muted-foreground leading-tight mt-0.5">{m.category}</p>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    );
+                  }
+                  return <p className="text-[16px] text-foreground/75 leading-[1.85] mb-5">{children}</p>;
+                },
+                ul: ({ children }) => (
+                  <ul className="my-5 space-y-2.5 ml-1">
+                    {children}
+                  </ul>
+                ),
+                ol: ({ children }) => (
+                  <ol className="my-5 space-y-2.5 ml-1 list-decimal list-outside pl-5 text-foreground/75">
+                    {children}
+                  </ol>
+                ),
+                li: ({ children, ordered }: any) => (
+                  ordered ? (
+                    <li className="text-[15px] text-foreground/75 leading-relaxed pl-1">
+                      {children}
+                    </li>
+                  ) : (
+                    <li className="flex items-start gap-3 text-[15px] text-foreground/75 leading-relaxed">
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-foreground flex-shrink-0" />
+                      <span>{children}</span>
+                    </li>
+                  )
+                ),
+                img: ({ src, alt }) => (
+                  <figure className="my-8">
+                    <div
+                      className="overflow-hidden rounded-none cursor-zoom-in relative group"
+                      onClick={() => { setLightboxSrc(src || ''); setLightboxAlt(alt || ''); }}
+                    >
+                      <img src={src} alt={alt || ""} className="w-full h-auto object-contain" loading="lazy" />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200 flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/60 rounded-full p-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                        </div>
+                      </div>
+                    </div>
+                    {alt && alt !== "image" && (
+                      <figcaption className="text-center text-xs text-muted-foreground mt-3 font-medium tracking-wide uppercase">{alt}</figcaption>
+                    )}
+                  </figure>
+                ),
+                table: ({ children }) => (
+                  <div className="my-6 overflow-x-auto rounded-none">
+                    <table className="w-full text-sm border-collapse m-0">{children}</table>
+                  </div>
+                ),
+                thead: ({ children }) => (
+                  <thead className="bg-black">{children}</thead>
+                ),
+                tbody: ({ children }) => (
+                  <tbody className="divide-y divide-zinc-100">{children}</tbody>
+                ),
+                tr: ({ children }) => (
+                  <tr className="hover:bg-zinc-50 transition-colors even:bg-zinc-50/50">{children}</tr>
+                ),
+                th: ({ children }) => (
+                  <th className="text-left text-[11px] font-bold text-white uppercase tracking-wider px-4 py-3 border-r border-zinc-700 last:border-r-0 whitespace-nowrap">
+                    {children}
+                  </th>
+                ),
+                td: ({ children }) => (
+                  <td className="px-4 py-3 text-sm text-zinc-700 border-r border-zinc-100 last:border-r-0 align-top leading-relaxed">
+                    {children}
+                  </td>
+                ),
+                blockquote: ({ children }) => {
+                  const text = extractText(children);
+
+                  // ── ⚠️ The Problem — split editorial card ────────────────────
+                  if (text.includes('⚠') && /the problem/i.test(text)) {
+                    const body = text
+                      .replace(/⚠[️\uFE0F\s]*/g, '')
+                      .replace(/The Problem\s*/i, '')
+                      .trim();
+                    const sentences = body.match(/[^.!?]+[.!?]+/g) || [body];
+                    const impactLine = sentences[sentences.length - 1]?.trim() ?? '';
+                    const mainText = sentences.slice(0, -1).join(' ').trim();
+                    return (
+                      <div className="my-10 rounded-none overflow-hidden shadow-lg border border-red-200 dark:border-red-900/50">
+                        {/* Gradient header */}
+                        <div className="bg-gradient-to-r from-red-600 to-rose-500 px-6 py-4 flex items-center gap-3">
+                          <div className="bg-white/20 rounded-lg w-9 h-9 flex items-center justify-center flex-shrink-0">
+                            <span className="text-xl leading-none">⚠️</span>
+                          </div>
+                          <div>
+                            <p className="text-white/70 text-[9px] font-bold tracking-[0.4em] uppercase leading-none mb-0.5">Identifying</p>
+                            <p className="text-white text-[15px] font-black tracking-wide leading-none">The Problem</p>
+                          </div>
+                        </div>
+                        {/* Content */}
+                        <div className="bg-gradient-to-b from-red-50 to-white dark:from-red-950/20 dark:to-zinc-900 px-6 py-6">
+                          <p className="text-[15px] sm:text-[16px] text-foreground/75 leading-[1.85] mb-5">
+                            {mainText}
+                          </p>
+                          {impactLine && (
+                            <div className="flex items-start gap-3 bg-red-100/70 dark:bg-red-900/20 border border-red-200 dark:border-red-800/40 rounded-none px-4 py-3.5">
+                              <span className="text-red-500 text-lg leading-none mt-0.5 flex-shrink-0">↳</span>
+                              <p className="text-[14px] sm:text-[15px] font-semibold text-red-700 dark:text-red-400 leading-relaxed m-0">
+                                {impactLine}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  // ── ⏱ At a glance — colored stat cards ───────────────────────
+                  if (text.includes('⏱')) {
+                    const body = text.replace(/⏱\s*At a glance\s*/i, '').trim();
+                    const stats = body.split('·').map(s => s.trim()).filter(Boolean).map(part => {
+                      const idx = part.indexOf(':');
+                      return idx === -1
+                        ? { label: part, value: '' }
+                        : { label: part.slice(0, idx).trim(), value: part.slice(idx + 1).trim() };
+                    });
+                    const accents = [
+                      { icon: '⏱', bg: 'bg-violet-50 dark:bg-violet-950/25', border: 'border-violet-200 dark:border-violet-800/40', val: 'text-violet-700 dark:text-violet-300', lbl: 'text-violet-500/70 dark:text-violet-400/60' },
+                      { icon: '🔧', bg: 'bg-emerald-50 dark:bg-emerald-950/25', border: 'border-emerald-200 dark:border-emerald-800/40', val: 'text-emerald-700 dark:text-emerald-300', lbl: 'text-emerald-600/70 dark:text-emerald-400/60' },
+                      { icon: '💰', bg: 'bg-amber-50 dark:bg-amber-950/25', border: 'border-amber-200 dark:border-amber-800/40', val: 'text-amber-700 dark:text-amber-400', lbl: 'text-amber-600/70 dark:text-amber-400/60' },
+                    ];
+                    return (
+                      <div className="my-7">
+                        <p className="text-[10px] font-black tracking-[0.35em] text-muted-foreground uppercase mb-3">At a glance</p>
+                        <div className="flex flex-col sm:flex-row gap-3">
+                          {stats.map((s, i) => {
+                            const a = accents[i] ?? accents[0];
+                            return (
+                              <div key={i} className={`flex-1 rounded-none border ${a.border} ${a.bg} px-5 pt-4 pb-5`}>
+                                <span className="text-lg mb-3 block">{a.icon}</span>
+                                <div className={`text-[26px] sm:text-[30px] font-black leading-none tracking-tight mb-1.5 ${a.val}`}>{s.value}</div>
+                                <div className={`text-[12px] leading-snug font-medium ${a.lbl}`}>{s.label}</div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  // ── 🔴🟣🟢 Article cards ──────────────────────────────────────
+                  const circleColors: Record<string, { border: string; labelBg: string; labelText: string; dot: string }> = {
+                    '🔴': { border: 'border-red-200 dark:border-red-800/50',    labelBg: 'bg-red-100 dark:bg-red-900/40',     labelText: 'text-red-600 dark:text-red-400',     dot: 'bg-red-400' },
+                    '🟣': { border: 'border-violet-200 dark:border-violet-800/50', labelBg: 'bg-violet-100 dark:bg-violet-900/40', labelText: 'text-violet-600 dark:text-violet-400', dot: 'bg-violet-400' },
+                    '🟢': { border: 'border-emerald-200 dark:border-emerald-800/50', labelBg: 'bg-emerald-100 dark:bg-emerald-900/40', labelText: 'text-emerald-600 dark:text-emerald-400', dot: 'bg-emerald-400' },
+                  };
+                  const circleEmoji = ['🔴', '🟣', '🟢'].find(e => text.trimStart().startsWith(e));
+                  if (circleEmoji) {
+                    const c = circleColors[circleEmoji];
+                    const parts = text.split(' | ').map(s => s.trim());
+                    // parts: [emoji, label, title, source, stack]
+                    const label = parts[1] ?? '';
+                    const title = parts[2] ?? '';
+                    const source = parts[3] ?? '';
+                    const stackItems = (parts[4] ?? '').split('·').map(s => s.trim()).filter(Boolean);
+                    const href = extractLinkHref(children);
+                    return (
+                      <div
+                        onClick={() => href && window.open(href, '_blank', 'noopener,noreferrer')}
+                        className={`group my-3 flex items-center gap-4 px-5 py-4 rounded-none border ${c.border} bg-card cursor-pointer hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200`}
+                      >
+                        {/* Colored dot */}
+                        <span className={`w-2 h-2 rounded-full flex-shrink-0 ${c.dot}`} />
+
+                        {/* Content */}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1.5">
+                            <span className={`text-[10px] font-black px-2 py-0.5 rounded-full tracking-wide ${c.labelBg} ${c.labelText}`}>
+                              {label}
+                            </span>
+                            <span className="text-[11px] text-muted-foreground font-mono">{source}</span>
+                          </div>
+                          <p className="text-[14px] sm:text-[15px] font-semibold text-foreground leading-snug line-clamp-2 mb-2">
+                            {title}
+                          </p>
+                          <div className="flex flex-wrap gap-1">
+                            {stackItems.map(s => (
+                              <span key={s} className="text-[10px] px-2 py-0.5 rounded-md bg-muted text-muted-foreground font-medium">
+                                {s}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Arrow */}
+                        <span className="flex-shrink-0 text-slate-300 dark:text-slate-600 group-hover:text-slate-500 dark:group-hover:text-slate-400 transition-colors text-lg leading-none">
+                          ↗
+                        </span>
+                      </div>
+                    );
+                  }
+
+                  // ── Other emoji callouts ───────────────────────────────────────
+                  const match = CALLOUT_MAP.find(({ emoji }) => text.includes(emoji));
+                  if (match) {
+                    const { border, bg, pill, label } = match.config;
+                    return (
+                      <div className={`border-l-4 ${border} ${bg} rounded-none px-5 pt-3.5 pb-4 my-6`}>
+                        <span className={`inline-flex items-center text-xs font-bold px-2.5 py-1 rounded-full mb-3 ${pill}`}>
+                          {label}
+                        </span>
+                        <div className="text-foreground/80 text-[15px] leading-relaxed [&_p]:mb-1.5 [&_p:last-child]:mb-0 [&_strong]:font-bold [&_strong]:text-slate-900 dark:[&_strong]:text-white">
+                          {children}
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  // ── Default — pull quote style ────────────────────────────────
+                  return (
+                    <blockquote className="my-8 pl-6 border-l-[3px] border-foreground">
+                      <div className="text-lg sm:text-xl text-foreground/80 italic leading-relaxed font-medium [&_p]:mb-0">
+                        {children}
+                      </div>
+                    </blockquote>
+                  );
+                },
+                a: ({ href, children, style, ...rest }: any) => {
+                  if (style) {
+                    return (
+                      <a href={href} style={style} {...rest}>
+                        {children}
+                      </a>
+                    );
+                  }
+                  return (
+                    <a
+                      href={href}
+                      target={href?.startsWith("http") ? "_blank" : undefined}
+                      rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="text-foreground font-semibold underline underline-offset-2 decoration-slate-300 dark:decoration-slate-600 hover:decoration-black dark:hover:decoration-white transition-all"
+                    >
+                      {children}
+                    </a>
+                  );
+                },
+                code: ({ children, className }) => {
+                  const isInline = !className;
+                  return isInline ? (
+                    <code className="bg-muted px-1.5 py-0.5 rounded-md text-[13px] font-mono text-foreground/90 border border-border">
+                      {children}
+                    </code>
+                  ) : (
+                    <code className={`${className} text-slate-200 text-[13px] font-mono`}>{children}</code>
+                  );
+                },
+                pre: ({ children }) => {
+                  // A ```mermaid fence becomes a diagram, not a code window.
+                  let mermaidSource: string | null = null;
+                  React.Children.forEach(children as React.ReactNode, (child) => {
+                    if (React.isValidElement(child)) {
+                      const cls = (child.props as any).className || '';
+                      if (/language-mermaid/.test(cls)) {
+                        const getText = (node: React.ReactNode): string => {
+                          if (!node) return '';
+                          if (typeof node === 'string') return node;
+                          if (Array.isArray(node)) return node.map(getText).join('');
+                          if (React.isValidElement(node)) return getText((node.props as any).children);
+                          return '';
+                        };
+                        mermaidSource = getText((child.props as any).children);
+                      }
+                    }
+                  });
+                  if (mermaidSource) {
+                    return <MermaidDiagram chart={mermaidSource.trim()} />;
+                  }
+
+                  let language = '';
+                  React.Children.forEach(children as React.ReactNode, (child) => {
+                    if (React.isValidElement(child)) {
+                      const cls = (child.props as any).className || '';
+                      const m = cls.match(/language-(\w+)/);
+                      if (m) language = m[1];
+                    }
+                  });
+                  const langLabel: Record<string, string> = {
+                    js: 'JavaScript', ts: 'TypeScript', jsx: 'JSX', tsx: 'TSX',
+                    json: 'JSON', bash: 'Bash', sh: 'Shell', css: 'CSS',
+                    html: 'HTML', python: 'Python', py: 'Python', sql: 'SQL',
+                  };
+                  const label = langLabel[language] || language?.toUpperCase() || '';
+                  const [codeCopied, setCodeCopied] = React.useState(false);
+                  const handleCopy = () => {
+                    const el = document.createElement('div');
+                    el.innerHTML = '';
+                    const getText = (node: React.ReactNode): string => {
+                      if (!node) return '';
+                      if (typeof node === 'string') return node;
+                      if (Array.isArray(node)) return node.map(getText).join('');
+                      if (React.isValidElement(node)) return getText((node.props as any).children);
+                      return '';
+                    };
+                    navigator.clipboard.writeText(getText(children));
+                    setCodeCopied(true);
+                    setTimeout(() => setCodeCopied(false), 2000);
+                  };
+                  return (
+                    <div className="relative my-8 rounded-none overflow-hidden shadow-2xl border border-white/5" style={{background:'#1e1e2e'}}>
+                      {/* Mac window header */}
+                      <div className="flex items-center px-4 py-3 border-b border-white/8" style={{background:'#2a2a3d'}}>
+                        {/* Traffic lights */}
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-3 h-3 rounded-full flex items-center justify-center" style={{background:'#ff5f57'}} />
+                          <span className="w-3 h-3 rounded-full" style={{background:'#ffbd2e'}} />
+                          <span className="w-3 h-3 rounded-full" style={{background:'#28c840'}} />
+                        </div>
+                        {/* Centered language label */}
+                        <div className="flex-1 flex justify-center">
+                          {label && (
+                            <span className="text-xs font-medium px-3 py-0.5 rounded-md font-mono" style={{color:'#a9b1d6',background:'#1e1e2e',border:'1px solid rgba(255,255,255,0.08)'}}>{label}</span>
+                          )}
+                        </div>
+                        {/* Copy button */}
+                        <button
+                          onClick={handleCopy}
+                          className="flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-md transition-all"
+                          style={{color: codeCopied ? '#28c840' : '#a9b1d6', background:'rgba(255,255,255,0.06)', border:'1px solid rgba(255,255,255,0.08)'}}
+                        >
+                          {codeCopied ? (
+                            <><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copied</>
+                          ) : (
+                            <><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy</>
+                          )}
+                        </button>
+                      </div>
+                      <pre className="px-5 py-5 overflow-x-auto text-[13px] leading-relaxed font-mono" style={{background:'#1e1e2e',color:'#cdd6f4',margin:0}}>
+                        {children}
+                      </pre>
+                    </div>
+                  );
+                },
+                iframe: ({ src, title, ...props }) => (
+                  <div className="my-8 relative w-full rounded-none overflow-hidden shadow-lg border border-border" style={{ paddingBottom: '56.25%' }}>
+                    <iframe
+                      src={src}
+                      title={title || ""}
+                      className="absolute inset-0 w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  </div>
+                ),
+                hr: () => (
+                  <div className="flex items-center gap-4 my-10">
+                    <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
+                    <div className="flex gap-1">
+                      <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
+                      <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
+                      <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
+                    </div>
+                    <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
+                  </div>
+                ),
+                strong: ({ children }) => (
+                  <strong className="font-bold text-foreground">{children}</strong>
+                ),
+                em: ({ children }) => <em className="italic text-muted-foreground">{children}</em>,
+    }),
+    [post.title]
+  );
+
 
   return (
     <>
@@ -263,544 +825,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
-            components={{
-              h1: ({ children }) => {
-                // Skip duplicate title already shown on banner
-                if (extractText(children as React.ReactNode).trim() === post.title.trim()) return null;
-                return (
-                  <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground mt-10 mb-5 first:mt-0 tracking-tight leading-tight">
-                    {children}
-                  </h1>
-                );
-              },
-              h2: ({ children }) => {
-                const id = slugify(extractText(children as React.ReactNode));
-                return (
-                  <h2 id={id} className="scroll-mt-28 text-2xl sm:text-[28px] font-bold text-foreground mt-14 mb-4 tracking-tight leading-snug">
-                    {children}
-                  </h2>
-                );
-              },
-              h3: ({ children }) => {
-                const id = slugify(extractText(children as React.ReactNode));
-                return (
-                  <h3 id={id} className="scroll-mt-28 text-lg sm:text-xl font-bold text-foreground/90 mt-8 mb-3 tracking-tight">
-                    {children}
-                  </h3>
-                );
-              },
-              h4: ({ children }) => (
-                <h4 className="text-base font-semibold text-foreground/90 mt-5 mb-2">
-                  {children}
-                </h4>
-              ),
-              p: ({ children }) => {
-                const text = extractText(children as React.ReactNode);
-
-                // ── Notion DB Schema diagram ──────────────────────────────────
-                if (text.trim() === '{{notion-db-schema}}') {
-                  const TitleIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>;
-                  const TextIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>;
-                  const NumberIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>;
-                  const DateIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>;
-                  const SelectIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/></svg>;
-
-                  return (
-                    <div className="my-8 rounded-none overflow-hidden border border-border shadow-sm text-sm">
-                      {/* Notion DB title bar */}
-                      <div className="flex items-center gap-2 px-4 py-2.5 bg-slate-50 dark:bg-zinc-900 border-b border-border">
-                        <span className="text-base">🗃️</span>
-                        <span className="font-semibold text-foreground/80 text-[13px]">Competitor Intelligence DB</span>
-                        <span className="ml-auto text-[11px] text-slate-400 bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded-md font-medium">Notion Database</span>
-                      </div>
-
-                      {/* Column headers */}
-                      <div className="flex items-center px-4 py-2 bg-slate-50 dark:bg-zinc-900 border-b border-border">
-                        <div className="w-5 mr-3" />
-                        <div className="flex-1 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Property</div>
-                        <div className="w-28 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Type</div>
-                        <div className="w-48 text-[11px] font-semibold text-slate-400 uppercase tracking-wider hidden sm:block">Purpose</div>
-                      </div>
-
-                      {/* ── Section: Identity ── */}
-                      <div className="flex items-center gap-2 px-4 py-1.5 bg-blue-50 dark:bg-blue-950/20 border-b border-border">
-                        <span className="w-2 h-2 rounded-sm bg-blue-400 inline-block"/>
-                        <span className="text-[11px] font-bold text-blue-500 dark:text-blue-400 uppercase tracking-widest">Identity</span>
-                      </div>
-                      <div className="flex items-center px-4 py-3 border-b border-border hover:bg-muted transition-colors">
-                        <div className="w-5 mr-3 text-slate-400"><TitleIcon /></div>
-                        <div className="flex-1 font-medium text-foreground/90 text-[13px]">Competitor Name</div>
-                        <div className="w-28 flex items-center gap-1.5">
-                          <span className="text-[11px] text-muted-foreground bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">Title</span>
-                        </div>
-                        <div className="w-48 text-[11px] text-slate-400 hidden sm:block">Primary key / row label</div>
-                      </div>
-
-                      {/* ── Section: Weekly Scraped Data ── */}
-                      <div className="flex items-center gap-2 px-4 py-1.5 bg-amber-50 dark:bg-amber-950/20 border-b border-border">
-                        <span className="w-2 h-2 rounded-sm bg-amber-400 inline-block"/>
-                        <span className="text-[11px] font-bold text-amber-500 dark:text-amber-400 uppercase tracking-widest">Weekly Scraped Data</span>
-                        <span className="text-[10px] text-amber-500 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/30 px-2 py-0.5 rounded-full font-semibold ml-1">via Apify + n8n</span>
-                      </div>
-                      {[
-                        { name: 'Pricing Snapshot',  type: 'Text',   icon: <TextIcon />,   purpose: 'Latest scraped pricing page (2000 chars)' },
-                        { name: 'Previous Pricing',  type: 'Text',   icon: <TextIcon />,   purpose: "Last week's snapshot for diffing" },
-                        { name: 'G2 Rating',         type: 'Number', icon: <NumberIcon />, purpose: 'Current avg star rating on G2' },
-                        { name: 'Recent Reviews',    type: 'Text',   icon: <TextIcon />,   purpose: 'Latest 5 reviews (pros + cons)' },
-                        { name: 'App Store Rating',  type: 'Number', icon: <NumberIcon />, purpose: 'Current app store rating' },
-                        { name: 'Last Updated',      type: 'Date',   icon: <DateIcon />,   purpose: 'Timestamp of last automation run' },
-                      ].map((row, i, arr) => (
-                        <div key={row.name} className={`flex items-center px-4 py-3 hover:bg-muted transition-colors ${i < arr.length - 1 ? 'border-b border-border' : ''}`}>
-                          <div className="w-5 mr-3 text-slate-400">{row.icon}</div>
-                          <div className="flex-1 font-medium text-foreground/90 text-[13px]">{row.name}</div>
-                          <div className="w-28">
-                            <span className="text-[11px] text-muted-foreground bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">{row.type}</span>
-                          </div>
-                          <div className="w-48 text-[11px] text-slate-400 hidden sm:block">{row.purpose}</div>
-                        </div>
-                      ))}
-
-                      {/* ── Section: AI Analysis ── */}
-                      <div className="flex items-center gap-2 px-4 py-1.5 bg-purple-50 dark:bg-purple-950/20 border-b border-border border-t border-t-slate-200 dark:border-t-slate-700">
-                        <span className="w-2 h-2 rounded-sm bg-purple-400 inline-block"/>
-                        <span className="text-[11px] font-bold text-purple-500 dark:text-purple-400 uppercase tracking-widest">AI Analysis</span>
-                        <span className="text-[10px] text-purple-500 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/30 px-2 py-0.5 rounded-full font-semibold ml-1">via Claude</span>
-                      </div>
-                      <div className="flex items-center px-4 py-3 border-b border-border hover:bg-muted transition-colors">
-                        <div className="w-5 mr-3 text-slate-400"><TextIcon /></div>
-                        <div className="flex-1 font-medium text-foreground/90 text-[13px]">Claude Analysis</div>
-                        <div className="w-28">
-                          <span className="text-[11px] text-muted-foreground bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">Text</span>
-                        </div>
-                        <div className="w-48 text-[11px] text-slate-400 hidden sm:block">Output stored for historical reference</div>
-                      </div>
-                      <div className="flex items-center px-4 py-3 hover:bg-muted transition-colors">
-                        <div className="w-5 mr-3 text-slate-400"><SelectIcon /></div>
-                        <div className="flex-1 font-medium text-foreground/90 text-[13px]">Signal Flag</div>
-                        <div className="w-28">
-                          <span className="text-[11px] text-muted-foreground bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-medium">Select</span>
-                        </div>
-                        <div className="w-48 hidden sm:flex items-center gap-1.5">
-                          <span className="text-[10px] font-semibold bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400 px-2 py-0.5 rounded-full">🔴 HIGH</span>
-                          <span className="text-[10px] font-semibold bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-400 px-2 py-0.5 rounded-full">🟡 MED</span>
-                          <span className="text-[10px] font-semibold bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 px-2 py-0.5 rounded-full">🟢 LOW</span>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                }
-
-                // Style "Tools used:" line as a floating badge strip
-                if (text.startsWith('Tools used:')) {
-                  const tools = text.replace('Tools used:', '').split('·').map(t => t.trim()).filter(Boolean);
-                  const ApifyLogo = () => (
-                    <img src="/logos/apify.png" alt="Apify" className="w-5 h-5 object-contain" />
-                  );
-                  const SlackLogo = () => (
-                    <img src="/logos/slack.png" alt="Slack" className="w-5 h-5 object-contain" />
-                  );
-                  const toolMeta: Record<string, { logoEl?: React.ReactNode; logoUrl?: string; category: string; iconBg: string; border: string }> = {
-                    'Apify':        { logoEl: <ApifyLogo />,                                     category: 'Web Scraping',  iconBg: 'bg-orange-50 dark:bg-orange-900/20',  border: 'border-orange-200 dark:border-orange-800/40' },
-                    'Notion':       { logoUrl: 'https://cdn.simpleicons.org/notion/000000',       category: 'Database',      iconBg: 'bg-muted',      border: 'border-border' },
-                    'Claude API':   { logoUrl: 'https://cdn.simpleicons.org/anthropic/7C3AED',    category: 'AI Analysis',   iconBg: 'bg-violet-50 dark:bg-violet-900/20',  border: 'border-violet-200 dark:border-violet-800/40' },
-                    'Slack':        { logoEl: <SlackLogo />,                                      category: 'Notifications', iconBg: 'bg-muted',       border: 'border-border' },
-                    'n8n / Zapier': { logoUrl: 'https://cdn.simpleicons.org/n8n/EA4B71',          category: 'Automation',    iconBg: 'bg-rose-50 dark:bg-rose-900/20',      border: 'border-rose-200 dark:border-rose-800/40' },
-                  };
-                  const fallbackMeta: { logoEl?: React.ReactNode; logoUrl?: string; category: string; iconBg: string; border: string } = { category: 'Tool', iconBg: 'bg-muted', border: 'border-border' };
-                  return (
-                    <div className="my-8">
-                      <div className="flex items-center gap-3 mb-5">
-                        <div className="h-px flex-1 bg-foreground/8" />
-                        <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.25em]">Built with</span>
-                        <div className="h-px flex-1 bg-foreground/8" />
-                      </div>
-                      <div className="flex flex-wrap gap-3 justify-center">
-                        {tools.map(tool => {
-                          const m = toolMeta[tool] ?? fallbackMeta;
-                          return (
-                            <div
-                              key={tool}
-                              className={`flex items-center gap-3 px-4 py-3 rounded-none border ${m.border} bg-card shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 min-w-[130px]`}
-                            >
-                              <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${m.iconBg}`}>
-                                {m.logoEl
-                                  ? m.logoEl
-                                  : m.logoUrl
-                                    ? <img src={m.logoUrl} alt={tool} className="w-5 h-5 object-contain" />
-                                    : <span className="text-lg">🔧</span>
-                                }
-                              </div>
-                              <div>
-                                <p className="text-[13px] font-bold text-foreground/90 leading-tight">{tool}</p>
-                                <p className="text-[11px] text-muted-foreground leading-tight mt-0.5">{m.category}</p>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  );
-                }
-                return <p className="text-[16px] text-foreground/75 leading-[1.85] mb-5">{children}</p>;
-              },
-              ul: ({ children }) => (
-                <ul className="my-5 space-y-2.5 ml-1">
-                  {children}
-                </ul>
-              ),
-              ol: ({ children }) => (
-                <ol className="my-5 space-y-2.5 ml-1 list-decimal list-outside pl-5 text-foreground/75">
-                  {children}
-                </ol>
-              ),
-              li: ({ children, ordered }: any) => (
-                ordered ? (
-                  <li className="text-[15px] text-foreground/75 leading-relaxed pl-1">
-                    {children}
-                  </li>
-                ) : (
-                  <li className="flex items-start gap-3 text-[15px] text-foreground/75 leading-relaxed">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-foreground flex-shrink-0" />
-                    <span>{children}</span>
-                  </li>
-                )
-              ),
-              img: ({ src, alt }) => (
-                <figure className="my-8">
-                  <div
-                    className="overflow-hidden rounded-none cursor-zoom-in relative group"
-                    onClick={() => { setLightboxSrc(src || ''); setLightboxAlt(alt || ''); }}
-                  >
-                    <img src={src} alt={alt || ""} className="w-full h-auto object-contain" loading="lazy" />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200 flex items-center justify-center">
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/60 rounded-full p-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                      </div>
-                    </div>
-                  </div>
-                  {alt && alt !== "image" && (
-                    <figcaption className="text-center text-xs text-muted-foreground mt-3 font-medium tracking-wide uppercase">{alt}</figcaption>
-                  )}
-                </figure>
-              ),
-              table: ({ children }) => (
-                <div className="my-6 overflow-x-auto rounded-none">
-                  <table className="w-full text-sm border-collapse m-0">{children}</table>
-                </div>
-              ),
-              thead: ({ children }) => (
-                <thead className="bg-black">{children}</thead>
-              ),
-              tbody: ({ children }) => (
-                <tbody className="divide-y divide-zinc-100">{children}</tbody>
-              ),
-              tr: ({ children }) => (
-                <tr className="hover:bg-zinc-50 transition-colors even:bg-zinc-50/50">{children}</tr>
-              ),
-              th: ({ children }) => (
-                <th className="text-left text-[11px] font-bold text-white uppercase tracking-wider px-4 py-3 border-r border-zinc-700 last:border-r-0 whitespace-nowrap">
-                  {children}
-                </th>
-              ),
-              td: ({ children }) => (
-                <td className="px-4 py-3 text-sm text-zinc-700 border-r border-zinc-100 last:border-r-0 align-top leading-relaxed">
-                  {children}
-                </td>
-              ),
-              blockquote: ({ children }) => {
-                const text = extractText(children);
-
-                // ── ⚠️ The Problem — split editorial card ────────────────────
-                if (text.includes('⚠') && /the problem/i.test(text)) {
-                  const body = text
-                    .replace(/⚠[️\uFE0F\s]*/g, '')
-                    .replace(/The Problem\s*/i, '')
-                    .trim();
-                  const sentences = body.match(/[^.!?]+[.!?]+/g) || [body];
-                  const impactLine = sentences[sentences.length - 1]?.trim() ?? '';
-                  const mainText = sentences.slice(0, -1).join(' ').trim();
-                  return (
-                    <div className="my-10 rounded-none overflow-hidden shadow-lg border border-red-200 dark:border-red-900/50">
-                      {/* Gradient header */}
-                      <div className="bg-gradient-to-r from-red-600 to-rose-500 px-6 py-4 flex items-center gap-3">
-                        <div className="bg-white/20 rounded-lg w-9 h-9 flex items-center justify-center flex-shrink-0">
-                          <span className="text-xl leading-none">⚠️</span>
-                        </div>
-                        <div>
-                          <p className="text-white/70 text-[9px] font-bold tracking-[0.4em] uppercase leading-none mb-0.5">Identifying</p>
-                          <p className="text-white text-[15px] font-black tracking-wide leading-none">The Problem</p>
-                        </div>
-                      </div>
-                      {/* Content */}
-                      <div className="bg-gradient-to-b from-red-50 to-white dark:from-red-950/20 dark:to-zinc-900 px-6 py-6">
-                        <p className="text-[15px] sm:text-[16px] text-foreground/75 leading-[1.85] mb-5">
-                          {mainText}
-                        </p>
-                        {impactLine && (
-                          <div className="flex items-start gap-3 bg-red-100/70 dark:bg-red-900/20 border border-red-200 dark:border-red-800/40 rounded-none px-4 py-3.5">
-                            <span className="text-red-500 text-lg leading-none mt-0.5 flex-shrink-0">↳</span>
-                            <p className="text-[14px] sm:text-[15px] font-semibold text-red-700 dark:text-red-400 leading-relaxed m-0">
-                              {impactLine}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  );
-                }
-
-                // ── ⏱ At a glance — colored stat cards ───────────────────────
-                if (text.includes('⏱')) {
-                  const body = text.replace(/⏱\s*At a glance\s*/i, '').trim();
-                  const stats = body.split('·').map(s => s.trim()).filter(Boolean).map(part => {
-                    const idx = part.indexOf(':');
-                    return idx === -1
-                      ? { label: part, value: '' }
-                      : { label: part.slice(0, idx).trim(), value: part.slice(idx + 1).trim() };
-                  });
-                  const accents = [
-                    { icon: '⏱', bg: 'bg-violet-50 dark:bg-violet-950/25', border: 'border-violet-200 dark:border-violet-800/40', val: 'text-violet-700 dark:text-violet-300', lbl: 'text-violet-500/70 dark:text-violet-400/60' },
-                    { icon: '🔧', bg: 'bg-emerald-50 dark:bg-emerald-950/25', border: 'border-emerald-200 dark:border-emerald-800/40', val: 'text-emerald-700 dark:text-emerald-300', lbl: 'text-emerald-600/70 dark:text-emerald-400/60' },
-                    { icon: '💰', bg: 'bg-amber-50 dark:bg-amber-950/25', border: 'border-amber-200 dark:border-amber-800/40', val: 'text-amber-700 dark:text-amber-400', lbl: 'text-amber-600/70 dark:text-amber-400/60' },
-                  ];
-                  return (
-                    <div className="my-7">
-                      <p className="text-[10px] font-black tracking-[0.35em] text-muted-foreground uppercase mb-3">At a glance</p>
-                      <div className="flex flex-col sm:flex-row gap-3">
-                        {stats.map((s, i) => {
-                          const a = accents[i] ?? accents[0];
-                          return (
-                            <div key={i} className={`flex-1 rounded-none border ${a.border} ${a.bg} px-5 pt-4 pb-5`}>
-                              <span className="text-lg mb-3 block">{a.icon}</span>
-                              <div className={`text-[26px] sm:text-[30px] font-black leading-none tracking-tight mb-1.5 ${a.val}`}>{s.value}</div>
-                              <div className={`text-[12px] leading-snug font-medium ${a.lbl}`}>{s.label}</div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  );
-                }
-
-                // ── 🔴🟣🟢 Article cards ──────────────────────────────────────
-                const circleColors: Record<string, { border: string; labelBg: string; labelText: string; dot: string }> = {
-                  '🔴': { border: 'border-red-200 dark:border-red-800/50',    labelBg: 'bg-red-100 dark:bg-red-900/40',     labelText: 'text-red-600 dark:text-red-400',     dot: 'bg-red-400' },
-                  '🟣': { border: 'border-violet-200 dark:border-violet-800/50', labelBg: 'bg-violet-100 dark:bg-violet-900/40', labelText: 'text-violet-600 dark:text-violet-400', dot: 'bg-violet-400' },
-                  '🟢': { border: 'border-emerald-200 dark:border-emerald-800/50', labelBg: 'bg-emerald-100 dark:bg-emerald-900/40', labelText: 'text-emerald-600 dark:text-emerald-400', dot: 'bg-emerald-400' },
-                };
-                const circleEmoji = ['🔴', '🟣', '🟢'].find(e => text.trimStart().startsWith(e));
-                if (circleEmoji) {
-                  const c = circleColors[circleEmoji];
-                  const parts = text.split(' | ').map(s => s.trim());
-                  // parts: [emoji, label, title, source, stack]
-                  const label = parts[1] ?? '';
-                  const title = parts[2] ?? '';
-                  const source = parts[3] ?? '';
-                  const stackItems = (parts[4] ?? '').split('·').map(s => s.trim()).filter(Boolean);
-                  const href = extractLinkHref(children);
-                  return (
-                    <div
-                      onClick={() => href && window.open(href, '_blank', 'noopener,noreferrer')}
-                      className={`group my-3 flex items-center gap-4 px-5 py-4 rounded-none border ${c.border} bg-card cursor-pointer hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200`}
-                    >
-                      {/* Colored dot */}
-                      <span className={`w-2 h-2 rounded-full flex-shrink-0 ${c.dot}`} />
-
-                      {/* Content */}
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <span className={`text-[10px] font-black px-2 py-0.5 rounded-full tracking-wide ${c.labelBg} ${c.labelText}`}>
-                            {label}
-                          </span>
-                          <span className="text-[11px] text-muted-foreground font-mono">{source}</span>
-                        </div>
-                        <p className="text-[14px] sm:text-[15px] font-semibold text-foreground leading-snug line-clamp-2 mb-2">
-                          {title}
-                        </p>
-                        <div className="flex flex-wrap gap-1">
-                          {stackItems.map(s => (
-                            <span key={s} className="text-[10px] px-2 py-0.5 rounded-md bg-muted text-muted-foreground font-medium">
-                              {s}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Arrow */}
-                      <span className="flex-shrink-0 text-slate-300 dark:text-slate-600 group-hover:text-slate-500 dark:group-hover:text-slate-400 transition-colors text-lg leading-none">
-                        ↗
-                      </span>
-                    </div>
-                  );
-                }
-
-                // ── Other emoji callouts ───────────────────────────────────────
-                const match = CALLOUT_MAP.find(({ emoji }) => text.includes(emoji));
-                if (match) {
-                  const { border, bg, pill, label } = match.config;
-                  return (
-                    <div className={`border-l-4 ${border} ${bg} rounded-none px-5 pt-3.5 pb-4 my-6`}>
-                      <span className={`inline-flex items-center text-xs font-bold px-2.5 py-1 rounded-full mb-3 ${pill}`}>
-                        {label}
-                      </span>
-                      <div className="text-foreground/80 text-[15px] leading-relaxed [&_p]:mb-1.5 [&_p:last-child]:mb-0 [&_strong]:font-bold [&_strong]:text-slate-900 dark:[&_strong]:text-white">
-                        {children}
-                      </div>
-                    </div>
-                  );
-                }
-
-                // ── Default — pull quote style ────────────────────────────────
-                return (
-                  <blockquote className="my-8 pl-6 border-l-[3px] border-foreground">
-                    <div className="text-lg sm:text-xl text-foreground/80 italic leading-relaxed font-medium [&_p]:mb-0">
-                      {children}
-                    </div>
-                  </blockquote>
-                );
-              },
-              a: ({ href, children, style, ...rest }: any) => {
-                if (style) {
-                  return (
-                    <a href={href} style={style} {...rest}>
-                      {children}
-                    </a>
-                  );
-                }
-                return (
-                  <a
-                    href={href}
-                    target={href?.startsWith("http") ? "_blank" : undefined}
-                    rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="text-foreground font-semibold underline underline-offset-2 decoration-slate-300 dark:decoration-slate-600 hover:decoration-black dark:hover:decoration-white transition-all"
-                  >
-                    {children}
-                  </a>
-                );
-              },
-              code: ({ children, className }) => {
-                const isInline = !className;
-                return isInline ? (
-                  <code className="bg-muted px-1.5 py-0.5 rounded-md text-[13px] font-mono text-foreground/90 border border-border">
-                    {children}
-                  </code>
-                ) : (
-                  <code className={`${className} text-slate-200 text-[13px] font-mono`}>{children}</code>
-                );
-              },
-              pre: ({ children }) => {
-                // A ```mermaid fence becomes a diagram, not a code window.
-                let mermaidSource: string | null = null;
-                React.Children.forEach(children as React.ReactNode, (child) => {
-                  if (React.isValidElement(child)) {
-                    const cls = (child.props as any).className || '';
-                    if (/language-mermaid/.test(cls)) {
-                      const getText = (node: React.ReactNode): string => {
-                        if (!node) return '';
-                        if (typeof node === 'string') return node;
-                        if (Array.isArray(node)) return node.map(getText).join('');
-                        if (React.isValidElement(node)) return getText((node.props as any).children);
-                        return '';
-                      };
-                      mermaidSource = getText((child.props as any).children);
-                    }
-                  }
-                });
-                if (mermaidSource) {
-                  return <MermaidDiagram chart={mermaidSource.trim()} />;
-                }
-
-                let language = '';
-                React.Children.forEach(children as React.ReactNode, (child) => {
-                  if (React.isValidElement(child)) {
-                    const cls = (child.props as any).className || '';
-                    const m = cls.match(/language-(\w+)/);
-                    if (m) language = m[1];
-                  }
-                });
-                const langLabel: Record<string, string> = {
-                  js: 'JavaScript', ts: 'TypeScript', jsx: 'JSX', tsx: 'TSX',
-                  json: 'JSON', bash: 'Bash', sh: 'Shell', css: 'CSS',
-                  html: 'HTML', python: 'Python', py: 'Python', sql: 'SQL',
-                };
-                const label = langLabel[language] || language?.toUpperCase() || '';
-                const [codeCopied, setCodeCopied] = React.useState(false);
-                const handleCopy = () => {
-                  const el = document.createElement('div');
-                  el.innerHTML = '';
-                  const getText = (node: React.ReactNode): string => {
-                    if (!node) return '';
-                    if (typeof node === 'string') return node;
-                    if (Array.isArray(node)) return node.map(getText).join('');
-                    if (React.isValidElement(node)) return getText((node.props as any).children);
-                    return '';
-                  };
-                  navigator.clipboard.writeText(getText(children));
-                  setCodeCopied(true);
-                  setTimeout(() => setCodeCopied(false), 2000);
-                };
-                return (
-                  <div className="relative my-8 rounded-none overflow-hidden shadow-2xl border border-white/5" style={{background:'#1e1e2e'}}>
-                    {/* Mac window header */}
-                    <div className="flex items-center px-4 py-3 border-b border-white/8" style={{background:'#2a2a3d'}}>
-                      {/* Traffic lights */}
-                      <div className="flex items-center gap-1.5">
-                        <span className="w-3 h-3 rounded-full flex items-center justify-center" style={{background:'#ff5f57'}} />
-                        <span className="w-3 h-3 rounded-full" style={{background:'#ffbd2e'}} />
-                        <span className="w-3 h-3 rounded-full" style={{background:'#28c840'}} />
-                      </div>
-                      {/* Centered language label */}
-                      <div className="flex-1 flex justify-center">
-                        {label && (
-                          <span className="text-xs font-medium px-3 py-0.5 rounded-md font-mono" style={{color:'#a9b1d6',background:'#1e1e2e',border:'1px solid rgba(255,255,255,0.08)'}}>{label}</span>
-                        )}
-                      </div>
-                      {/* Copy button */}
-                      <button
-                        onClick={handleCopy}
-                        className="flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-md transition-all"
-                        style={{color: codeCopied ? '#28c840' : '#a9b1d6', background:'rgba(255,255,255,0.06)', border:'1px solid rgba(255,255,255,0.08)'}}
-                      >
-                        {codeCopied ? (
-                          <><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copied</>
-                        ) : (
-                          <><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy</>
-                        )}
-                      </button>
-                    </div>
-                    <pre className="px-5 py-5 overflow-x-auto text-[13px] leading-relaxed font-mono" style={{background:'#1e1e2e',color:'#cdd6f4',margin:0}}>
-                      {children}
-                    </pre>
-                  </div>
-                );
-              },
-              iframe: ({ src, title, ...props }) => (
-                <div className="my-8 relative w-full rounded-none overflow-hidden shadow-lg border border-border" style={{ paddingBottom: '56.25%' }}>
-                  <iframe
-                    src={src}
-                    title={title || ""}
-                    className="absolute inset-0 w-full h-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  />
-                </div>
-              ),
-              hr: () => (
-                <div className="flex items-center gap-4 my-10">
-                  <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
-                  <div className="flex gap-1">
-                    <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
-                    <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
-                    <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
-                  </div>
-                  <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
-                </div>
-              ),
-              strong: ({ children }) => (
-                <strong className="font-bold text-foreground">{children}</strong>
-              ),
-              em: ({ children }) => <em className="italic text-muted-foreground">{children}</em>,
-            }}
+            components={markdownComponents}
           >
             {content}
           </ReactMarkdown>

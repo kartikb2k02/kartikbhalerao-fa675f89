@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useRef, type ReactNode, type KeyboardEvent } from "react";
 import {
   Palette,
   Code,
@@ -41,58 +41,17 @@ import {
   SiReplit,
   SiTypeform,
   SiSurveymonkey,
+  SiHubspot,
+  SiWebflow,
+  SiIntercom,
+  SiMailchimp,
+  SiProducthunt,
+  SiLinkedin,
 } from "react-icons/si";
-import { MessageSquare, Users, FileText, Brain, Sparkles, PenTool } from "lucide-react";
+import { MessageSquare, Users, FileText, Brain, Sparkles, PenTool, Megaphone } from "lucide-react";
 import { VscVscode } from "react-icons/vsc";
+import { Highlighter } from "@/components/magicui/highlighter";
 
-// Counter animation hook
-const useCountUp = (end: number, isVisible: boolean, duration: number = 1500, delay: number = 0) => {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!isVisible) {
-      setCount(0);
-      return;
-    }
-    const startTime = Date.now() + delay;
-    let animationFrame: number;
-    const animate = () => {
-      const now = Date.now();
-      if (now < startTime) {
-        animationFrame = requestAnimationFrame(animate);
-        return;
-      }
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-
-      // Easing function for smooth animation
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      const currentCount = Math.round(easeOutQuart * end);
-      setCount(currentCount);
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      }
-    };
-    animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [end, isVisible, duration, delay]);
-  return count;
-};
-
-// Animated counter component
-const AnimatedCounter = ({
-  value,
-  isVisible,
-  delay = 0,
-  className,
-}: {
-  value: number;
-  isVisible: boolean;
-  delay?: number;
-  className?: string;
-}) => {
-  const count = useCountUp(value, isVisible, 1200, delay);
-  return <span className={className}>{count}%</span>;
-};
 // Text-based logo for brands without an SI icon
 const TI = ({ t }: { t: string }) => (
   <span className="w-5 h-5 flex-shrink-0 flex items-center justify-center bg-foreground text-background text-[8px] font-black tracking-tighter rounded-sm">
@@ -106,11 +65,77 @@ const HeartIcon = () => (
   </svg>
 );
 
+type Tool = {
+  name: string;
+  description: string;
+  color: string;
+  whiteBg?: boolean;
+  icon: ReactNode;
+  tooltip: string;
+  whyIUse: string;
+  useCases: string[];
+};
+
+type Category = { title: string; icon: ReactNode; tools: Tool[] };
+
+/**
+ * The tools are a loop, not a logo wall. Each stage names what goes in and what
+ * comes out, so the section reads as a process. `key` points at a category in
+ * `toolCategories` below; `collaboration` is deliberately not a stage — it runs
+ * under all six.
+ */
+const FLOW: { key: string; phase: string; io: string; note: string }[] = [
+  {
+    key: "feedback",
+    phase: "Listen",
+    io: "noise → signal",
+    note: "Talk to people before anything gets written down. Surveys for scale, recordings for the parts nobody says out loud.",
+  },
+  {
+    key: "management",
+    phase: "Decide",
+    io: "signal → bets",
+    note: "Turn what I heard into a small number of bets, written plainly enough that someone can argue with them.",
+  },
+  {
+    key: "design",
+    phase: "Draw",
+    io: "bets → shapes",
+    note: "Make the idea concrete enough to be wrong on paper, where being wrong is still cheap.",
+  },
+  {
+    key: "ai",
+    phase: "Build",
+    io: "shapes → a working thing",
+    note: "Prototype it myself. A spec that has survived contact with a running build is a different document.",
+  },
+  {
+    key: "development",
+    phase: "Ship",
+    io: "a working thing → live",
+    note: "Stay close to what actually goes out — the PR, the endpoint, the constraint that moves the date.",
+  },
+  {
+    key: "gtm",
+    phase: "Launch",
+    io: "live → in front of people",
+    note: "Shipped is not launched. Positioning, the page people land on, the email that explains it, and the first week of answering for it.",
+  },
+  {
+    key: "analytics",
+    phase: "Measure",
+    io: "live → evidence",
+    note: "Find out whether the bet paid and where it leaked, in numbers and in recordings of people struggling.",
+  },
+];
+
+const SUBSTRATE_KEY = "collaboration";
+
 export const SkillsSection = () => {
   const handleCertificationClick = () => {
     window.location.href = "/certifications";
   };
-  const toolCategories = {
+  const toolCategories: Record<string, Category> = {
     management: {
       title: "Product Management",
       icon: <Calendar className="w-4 h-4" />,
@@ -600,23 +625,182 @@ export const SkillsSection = () => {
         },
       ],
     },
+    gtm: {
+      title: "Go-to-Market",
+      icon: <Megaphone className="w-4 h-4" />,
+      tools: [
+        {
+          name: "HubSpot",
+          description: "CRM",
+          color: "from-[#FF7A59] to-[#FF9A76]",
+          icon: <SiHubspot className="w-5 h-5" />,
+          tooltip: "For seeing what happens to a launch after the announcement",
+          whyIUse:
+            "HubSpot is where a launch stops being a feature and becomes a pipeline. I use it to follow signups through to conversations, and to see which messaging actually moves someone forward.",
+          useCases: [
+            "Tracking launch signups through the funnel",
+            "Lifecycle email and nurture sequences",
+            "Feeding sales conversations back into the roadmap",
+            "Measuring which positioning converts",
+          ],
+        },
+        {
+          name: "Webflow",
+          description: "Landing Pages",
+          color: "from-[#4353FF] to-[#146EF5]",
+          icon: <SiWebflow className="w-5 h-5" />,
+          tooltip: "For shipping the launch page without booking an engineer",
+          whyIUse:
+            "Webflow lets me put a real page in front of people the same week. I use it to test positioning and headlines before any of it gets baked into the product.",
+          useCases: [
+            "Building and iterating launch pages",
+            "Testing positioning and headlines",
+            "Standing up waitlists quickly",
+            "Shipping marketing changes without a deploy",
+          ],
+        },
+        {
+          name: "Intercom",
+          description: "Onboarding",
+          color: "from-[#1F8DED] to-[#5FB3F5]",
+          icon: <SiIntercom className="w-5 h-5" />,
+          tooltip: "For meeting people inside the product on launch week",
+          whyIUse:
+            "Intercom is where the launch meets the person using it — announcements in-product, onboarding tours, and the support thread that tells me what the copy failed to explain.",
+          useCases: [
+            "In-product announcements for new features",
+            "Onboarding flows and product tours",
+            "Reading support threads for launch friction",
+            "Talking to users the week something ships",
+          ],
+        },
+        {
+          name: "Mailchimp",
+          description: "Launch Email",
+          color: "from-[#FFE01B] to-[#FFC800]",
+          icon: <SiMailchimp className="w-5 h-5" />,
+          tooltip: "For the email that explains what changed and why it matters",
+          whyIUse:
+            "Mailchimp handles the announcement itself. Writing the launch email is also the sharpest test of positioning — if it cannot be said in one paragraph, the feature is not clear yet.",
+          useCases: [
+            "Launch and release announcements",
+            "Segmented sends by user behaviour",
+            "A/B testing subject lines and framing",
+            "Re-engaging users who never tried the feature",
+          ],
+        },
+        {
+          name: "Product Hunt",
+          description: "Launch Day",
+          color: "from-[#DA552F] to-[#FF6154]",
+          icon: <SiProducthunt className="w-5 h-5" />,
+          tooltip: "For launch day and the feedback that arrives with it",
+          whyIUse:
+            "Product Hunt is a brutal one-day test of whether the pitch lands with strangers. The comments are unfiltered first-impression research you cannot buy.",
+          useCases: [
+            "Running launch day for a new product",
+            "Testing the one-line pitch on strangers",
+            "Collecting first-impression feedback",
+            "Finding early adopters and beta users",
+          ],
+        },
+        {
+          name: "LinkedIn",
+          description: "Distribution",
+          color: "from-[#0A66C2] to-[#378FE9]",
+          icon: <SiLinkedin className="w-5 h-5" />,
+          tooltip: "For getting the work in front of the people it is built for",
+          whyIUse:
+            "Most B2B launches live or die on distribution. LinkedIn is where I write about what shipped, what it is for, and what I learned building it.",
+          useCases: [
+            "Announcing what shipped and why",
+            "Writing up build and launch learnings",
+            "Reaching the buyers a B2B product needs",
+            "Recruiting people into early access",
+          ],
+        },
+      ],
+    },
   };
   const categories = Object.entries(toolCategories);
   const totalTools = categories.reduce((n, [, c]) => n + c.tools.length, 0);
 
+  const stages = FLOW.filter((stage) => Boolean(toolCategories[stage.key])).map(
+    (stage) => ({ ...stage, category: toolCategories[stage.key] }),
+  );
+  const substrate = toolCategories[SUBSTRATE_KEY];
+
+  const [active, setActive] = useState(0);
+  // The one line under the panel, swapped on hover. Null = the resting copy.
+  const [hint, setHint] = useState<Tool | null>(null);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const stage = stages[active];
+
+  const select = (i: number) => {
+    setActive(i);
+    setHint(null);
+  };
+
+  // Roving focus, the way a tablist is expected to behave.
+  const onTabKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    const n = stages.length;
+    let next: number | null = null;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") next = (active + 1) % n;
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = (active - 1 + n) % n;
+    else if (e.key === "Home") next = 0;
+    else if (e.key === "End") next = n - 1;
+    if (next === null) return;
+    e.preventDefault();
+    select(next);
+    tabRefs.current[next]?.focus();
+  };
+
+  // Keyed per stage so switching stages remounts the tiles, which is what
+  // replays the entrance. `now-in` is the same rise the hero ticker uses.
+  const toolTile = (tool: Tool, i: number, prefix: string, offsetMs = 0) => (
+    <div
+      key={`${prefix}-${tool.name}`}
+      title={tool.tooltip}
+      onMouseEnter={() => setHint(tool)}
+      onMouseLeave={() => setHint((h) => (h?.name === tool.name ? null : h))}
+      style={{ animationDelay: `${offsetMs + i * 55}ms` }}
+      className="now-in group/tool bg-background flex-1 basis-[49%] sm:basis-[32%] lg:basis-0 min-w-0 flex flex-col justify-center gap-2 px-3.5 py-4 hover:bg-primary/[0.055] transition-colors duration-200"
+    >
+      <span className="w-[22px] h-[22px] flex items-center justify-center [&>svg]:w-[22px] [&>svg]:h-[22px] [&>img]:w-[22px] [&>img]:h-[22px] [&>span]:w-[22px] [&>span]:h-[22px] group-hover/tool:scale-110 transition-transform duration-200">
+        {tool.icon}
+      </span>
+      <span className="text-[13px] text-foreground/80 group-hover/tool:text-foreground transition-colors leading-tight">
+        {tool.name}
+      </span>
+      <span className="data-mono text-[10px] text-muted-foreground/55 leading-tight">
+        {tool.description}
+      </span>
+    </div>
+  );
+
   return (
     <div className="w-full">
       {/* Header */}
-      <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
-        <h2
-          className="heading-display text-foreground leading-[1.04]"
-          style={{ fontSize: "clamp(28px, 4.2vw, 50px)" }}
-        >
-          What I reach for
-        </h2>
-        <div className="flex items-center gap-6">
+      <div className="flex items-end justify-between flex-wrap gap-5 mb-9">
+        <div className="min-w-0">
+          <h2
+            className="heading-display text-foreground leading-[1.04]"
+            style={{ fontSize: "clamp(28px, 4.2vw, 50px)" }}
+          >
+            What I reach for
+          </h2>
+          <p className="text-[15.5px] sm:text-[16.5px] text-muted-foreground leading-[1.6] max-w-[60ch] mt-4">
+            <Highlighter action="highlight" color="#fbe7a1" padding={3}>
+              Not a logo wall.
+            </Highlighter>{" "}
+            These are the stages a product actually moves through for me, and
+            what I run each one on. Pick a stage.
+          </p>
+        </div>
+        <div className="flex items-center gap-6 shrink-0">
           <span className="data-mono text-[11px] text-muted-foreground">
-            {totalTools} tools
+            {totalTools} tools · {stages.length} stages
           </span>
           <button
             onClick={handleCertificationClick}
@@ -629,38 +813,166 @@ export const SkillsSection = () => {
         </div>
       </div>
 
-      {/* A wall of tools — icon tiles in a hairline grid, grouped by what for */}
-      <div className="space-y-10">
-        {categories.map(([key, category]) => (
-          <div key={key}>
-            <div className="flex items-baseline justify-between gap-4 mb-3.5">
-              <p className="label-mono text-[10px] text-muted-foreground flex items-center gap-2.5">
-                <span className="w-1.5 h-1.5 bg-primary" aria-hidden="true" />
-                {category.title}
-              </p>
-              <span className="data-mono text-[11px] text-muted-foreground/50">
-                {String(category.tools.length).padStart(2, "0")}
+      {/* The stepper */}
+      <div
+        role="tablist"
+        aria-label="Stages of how I work"
+        onKeyDown={onTabKeyDown}
+        className="flex flex-wrap gap-px bg-border border-x border-t border-border"
+      >
+        {stages.map((s, i) => {
+          const on = i === active;
+          return (
+            <button
+              key={s.key}
+              ref={(el) => {
+                tabRefs.current[i] = el;
+              }}
+              role="tab"
+              id={`stage-tab-${s.key}`}
+              aria-selected={on}
+              aria-controls="stage-panel"
+              tabIndex={on ? 0 : -1}
+              onClick={() => select(i)}
+              className="group relative bg-background flex-1 basis-[49%] sm:basis-[32%] lg:basis-[13%] min-w-0 flex items-center gap-3 px-3.5 py-4 text-left transition-colors duration-200 hover:bg-foreground/[0.028]"
+            >
+              {on && (
+                <span
+                  className="absolute inset-0 bg-primary/[0.055]"
+                  aria-hidden="true"
+                />
+              )}
+              <span
+                className={`relative w-[26px] h-[26px] shrink-0 flex items-center justify-center border data-mono text-[10px] transition-colors duration-200 ${
+                  on
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border text-muted-foreground/70 group-hover:border-primary/50 group-hover:text-primary"
+                }`}
+              >
+                {String(i + 1).padStart(2, "0")}
               </span>
-            </div>
-
-            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-px bg-border border border-border">
-              {category.tools.map((tool, index) => (
-                <div
-                  key={index}
-                  className="group bg-background flex flex-col items-center justify-center gap-2.5 px-2 py-5 hover:bg-primary/[0.05] transition-colors duration-200"
+              <span className="relative min-w-0">
+                <span
+                  className={`label-mono block text-[10px] transition-colors duration-200 ${
+                    on ? "text-foreground" : "text-muted-foreground"
+                  }`}
                 >
-                  <span className="w-7 h-7 flex items-center justify-center [&>svg]:w-7 [&>svg]:h-7 [&>img]:w-7 [&>img]:h-7 group-hover:scale-110 transition-transform duration-200">
-                    {tool.icon}
-                  </span>
-                  <span className="text-[11.5px] text-foreground/70 text-center leading-tight group-hover:text-foreground transition-colors">
-                    {tool.name}
-                  </span>
-                </div>
-              ))}
+                  {s.phase}
+                </span>
+                <span className="data-mono block lg:hidden xl:block text-[10px] text-muted-foreground/50 mt-1 truncate">
+                  {s.io}
+                </span>
+              </span>
+              {on && (
+                <span
+                  className="absolute left-0 right-0 -bottom-px h-[2px] bg-primary"
+                  aria-hidden="true"
+                />
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* The panel for the selected stage */}
+      <div
+        role="tabpanel"
+        id="stage-panel"
+        aria-labelledby={`stage-tab-${stage.key}`}
+        className="border border-border"
+      >
+        <div key={stage.key}>
+          <div className="now-in flex items-baseline justify-between gap-4 flex-wrap px-4 sm:px-6 pt-6">
+            <div className="flex items-baseline gap-4">
+              <span className="data-mono text-[11px] text-primary">
+                {String(active + 1).padStart(2, "0")}
+              </span>
+              <h3
+                className="heading-display text-foreground leading-none"
+                style={{ fontSize: "clamp(23px, 2.6vw, 34px)" }}
+              >
+                {stage.phase}
+              </h3>
+            </div>
+            <span className="data-mono text-[11.5px] text-primary/85">
+              {stage.io}
+            </span>
+          </div>
+
+          <div
+            className="now-in flex items-end justify-between gap-6 flex-wrap px-4 sm:px-6 pt-3 pb-5"
+            style={{ animationDelay: "70ms" }}
+          >
+            <p className="text-[14.5px] sm:text-[15.5px] text-muted-foreground leading-[1.6] max-w-[58ch]">
+              {stage.note}
+            </p>
+            <span className="label-mono text-[9.5px] text-muted-foreground/50">
+              {stage.category.title} ·{" "}
+              {String(stage.category.tools.length).padStart(2, "0")}
+            </span>
+          </div>
+
+          <div className="px-4 sm:px-6 pb-5">
+            <div className="flex flex-wrap gap-px bg-border border border-border sm:min-h-[207px] lg:min-h-[104px]">
+              {stage.category.tools.map((tool, i) => toolTile(tool, i, stage.key, 140))}
             </div>
           </div>
-        ))}
+        </div>
+
+        {/* Hover reveals why a tool is in this stage */}
+        <div className="border-t border-border px-4 sm:px-6 py-3.5 flex items-start gap-3 min-h-[48px]">
+          <span className="data-mono text-[11px] text-primary shrink-0 leading-[1.5]" aria-hidden="true">
+            &#8594;
+          </span>
+          <p className="text-[13.5px] leading-[1.5] text-muted-foreground" aria-live="polite">
+            {hint ? (
+              <>
+                <span className="text-foreground">{hint.name}</span> — {hint.tooltip}
+              </>
+            ) : (
+              <span className="text-muted-foreground/60">
+                Hover a tool for what it is doing in this stage.
+              </span>
+            )}
+          </p>
+        </div>
       </div>
+
+      {/* The loop closes */}
+      <div className="flex items-center gap-3 mt-4">
+        <span className="data-mono text-[12px] text-primary" aria-hidden="true">
+          &#8630;
+        </span>
+        <p className="text-[13.5px] text-muted-foreground">
+          Measure is not the end. What the numbers cannot explain becomes the
+          next round of questions, and it starts again at{" "}
+          <button
+            onClick={() => select(0)}
+            className="data-mono text-[12px] text-primary border-b border-primary/40 hover:border-primary transition-colors"
+          >
+            01 Listen
+          </button>
+          .
+        </p>
+      </div>
+
+      {/* The layer under every stage */}
+      {substrate && (
+        <div className="mt-10 border border-border">
+          <div className="flex items-center justify-between gap-4 px-4 sm:px-6 py-3 border-b border-border">
+            <p className="label-mono text-[10px] text-muted-foreground flex items-center gap-2.5">
+              <span className="w-1.5 h-1.5 bg-primary" aria-hidden="true" />
+              Loaded at every stage · {substrate.title}
+            </p>
+            <span className="data-mono text-[11px] text-muted-foreground/50">
+              {String(substrate.tools.length).padStart(2, "0")}
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-px bg-border">
+            {substrate.tools.map((tool, i) => toolTile(tool, i, "substrate"))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -28,7 +28,10 @@ export default function Contact() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
           <div className="grid md:grid-cols-2 gap-5 items-stretch">
             <ContactForm />
-            <CalComBooking calUsername="kartik-bhalerao-qqae1f" eventType="secret" />
+            {/* Linked to as /contact#book from the About page close */}
+            <div id="book" className="scroll-mt-24 flex flex-col [&>div]:flex-1">
+              <CalComBooking calUsername="kartik-bhalerao-qqae1f" eventType="secret" />
+            </div>
           </div>
         </div>
       </main>

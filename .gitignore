@@ -26,3 +26,6 @@ next-env.d.ts
 *.njsproj
 *.sln
 *.sw?
+
+# Generated video output (/brag skill)
+brag-output

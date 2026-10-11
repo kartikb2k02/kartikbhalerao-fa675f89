@@ -1,6 +1,7 @@
 import { StickyNote } from "@/components/StickyNote";
 import { Reveal } from "@/components/Reveal";
 import { ContributionNotes } from "@/components/ContributionNotes";
+import { Highlighter } from "@/components/magicui/highlighter";
 import {
   DECISION_MACHINE,
   OCIUS,
@@ -65,7 +66,7 @@ function Act({
   role: string;
   period: string;
   title: string;
-  lede: string;
+  lede: React.ReactNode;
   note: React.ReactNode;
   items: Contribution[];
 }) {
@@ -145,7 +146,13 @@ export const AboutSection = () => {
         role="Founding Product Manager"
         period="Consumer voice product"
         title="Consumer tech app"
-        lede="Thirty plus interviews before a spec, a deliberately small first version, and an MVP shipped in 90 days."
+        lede={
+          <>
+            Thirty plus interviews before a spec, a deliberately small first
+            version, and an MVP shipped in{" "}
+            <Highlighter action="circle" padding={5}>90 days</Highlighter>.
+          </>
+        }
         items={YAPTICS}
         note={
           <StickyNote tilt={1.6} title="What I found">

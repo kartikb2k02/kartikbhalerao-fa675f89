@@ -66,6 +66,9 @@ export async function renderDiagram(
       securityLevel: "strict",
       theme: "base",
       fontFamily: "Switzer, Helvetica Neue, Arial, sans-serif",
+      // Mermaid's 14px default is squeezed small once a wide diagram is scaled
+      // down into the article column; 15.5px keeps labels readable at that size.
+      fontSize: 15.5,
       themeVariables: themeVariables(isDark),
     });
     initialisedFor = key;
@@ -76,5 +79,17 @@ export async function renderDiagram(
   const run = queue.then(() => mermaid.render(id, chart));
   queue = run.catch(() => undefined);
   const { svg } = await run;
-  return svg;
+  return normalise(svg);
+}
+
+/**
+ * Mermaid pins the diagram to its natural pixel width with an inline
+ * `max-width`, so on a wide column it sits small in the middle of its frame
+ * instead of using the space. The markup is vector, so letting it fill the
+ * container is sharper at any size, not just bigger.
+ */
+function normalise(svg: string): string {
+  return svg
+    .replace(/style="[^"]*max-width:\s*[\d.]+px;?[^"]*"/, 'style="max-width:100%"')
+    .replace(/<svg /, '<svg width="100%" ');
 }
