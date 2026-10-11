@@ -51,7 +51,7 @@ const personJsonLd = {
   sameAs: [
     "https://linkedin.com/in/kartik-bhalerao",
     "https://github.com/kartikbh6614",
-    "https://medium.com/@kartikbhalerao",
+    "https://x.com/KartikB43758249",
   ],
 };
 
