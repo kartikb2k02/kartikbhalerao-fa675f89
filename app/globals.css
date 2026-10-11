@@ -9,51 +9,53 @@
 
 @layer base {
   :root {
-    /* ── Ink + signal: warm paper, near-black ink, one signal colour ── */
-    --background: 38 24% 96%;
-    --foreground: 240 6% 8%;
-    --card: 38 30% 99%;
-    --card-foreground: 240 6% 8%;
-    --popover: 38 30% 99%;
-    --popover-foreground: 240 6% 8%;
+    /* ── SLATE: the four-colour magazine palette ──────────────
+       #FFFFFF paper · #000000 ink · #DC2626 signal · #6B7280 grey
+       Everything else is a tint of those four, so the page never
+       introduces a fifth hue. ───────────────────────────────── */
+    --background: 0 0% 100%;        /* #FFFFFF */
+    --foreground: 0 0% 0%;          /* #000000 */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
 
-    /* Signal — deep enough to pass as body text on paper */
-    --primary: 14 84% 42%;
-    --primary-foreground: 38 30% 98%;
+    /* Signal */
+    --primary: 0 72% 51%;           /* #DC2626 */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 38 14% 91%;
-    --secondary-foreground: 240 6% 8%;
-    --muted: 38 14% 91%;
-    --muted-foreground: 240 4% 42%;
-    --accent: 38 16% 89%;
-    --accent-foreground: 240 6% 8%;
-    --destructive: 0 65% 45%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 36 11% 85%;
-    --input: 36 11% 85%;
-    --ring: 14 84% 42%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%; /* #6B7280 */
+    --accent: 220 14% 93%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 87%;
+    --input: 220 13% 87%;
+    --ring: 0 72% 51%;
 
-    /* Faint signal wash — used for hover beds and the console surface */
-    --signal-wash: 14 84% 42%;
+    --signal-wash: 0 72% 51%;
 
-    --note: 48 92% 86%;
-    --note-ink: 32 45% 20%;
-    --note-edge: 44 58% 72%;
+    --note: 48 92% 88%;
+    --note-ink: 0 0% 0%;
+    --note-edge: 220 13% 80%;
 
-    --chart-1: 14 84% 42%;
-    --chart-2: 240 4% 55%;
-    --chart-3: 240 4% 38%;
-    --chart-4: 38 14% 72%;
-    --chart-5: 240 6% 18%;
+    --chart-1: 0 72% 51%;
+    --chart-2: 220 9% 46%;
+    --chart-3: 0 0% 0%;
+    --chart-4: 220 13% 80%;
+    --chart-5: 220 9% 30%;
 
-    --sidebar: 38 30% 99%;
-    --sidebar-foreground: 240 6% 8%;
-    --sidebar-primary: 14 84% 42%;
-    --sidebar-primary-foreground: 38 30% 98%;
-    --sidebar-accent: 38 16% 89%;
-    --sidebar-accent-foreground: 240 6% 8%;
-    --sidebar-border: 36 11% 85%;
-    --sidebar-ring: 14 84% 42%;
+    --sidebar: 0 0% 100%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 0 72% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 93%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 220 13% 87%;
+    --sidebar-ring: 0 72% 51%;
 
     --radius: 0rem;
 
@@ -61,62 +63,64 @@
     --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     --font-display: 'Bricolage Grotesque', 'Switzer', 'Helvetica Neue', Arial, sans-serif;
 
-    --shadow-2xs: 0 1px 2px 0 hsl(240 6% 8% / 0.04);
-    --shadow-xs: 0 1px 2px 0 hsl(240 6% 8% / 0.05);
-    --shadow-sm: 0 1px 2px 0 hsl(240 6% 8% / 0.06), 0 1px 3px -1px hsl(240 6% 8% / 0.06);
-    --shadow: 0 1px 2px 0 hsl(240 6% 8% / 0.06), 0 2px 6px -2px hsl(240 6% 8% / 0.08);
-    --shadow-md: 0 2px 4px -1px hsl(240 6% 8% / 0.07), 0 6px 14px -4px hsl(240 6% 8% / 0.09);
-    --shadow-lg: 0 4px 8px -2px hsl(240 6% 8% / 0.08), 0 14px 32px -8px hsl(240 6% 8% / 0.12);
-    --shadow-xl: 0 8px 16px -4px hsl(240 6% 8% / 0.1), 0 28px 60px -12px hsl(240 6% 8% / 0.16);
-    --shadow-2xl: 0 32px 80px -16px hsl(240 6% 8% / 0.26);
+    --shadow-2xs: 0 1px 2px 0 hsl(0 0% 0% / 0.04);
+    --shadow-xs: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.06), 0 1px 3px -1px hsl(0 0% 0% / 0.06);
+    --shadow: 0 1px 2px 0 hsl(0 0% 0% / 0.06), 0 2px 6px -2px hsl(0 0% 0% / 0.08);
+    --shadow-md: 0 2px 4px -1px hsl(0 0% 0% / 0.07), 0 6px 14px -4px hsl(0 0% 0% / 0.09);
+    --shadow-lg: 0 4px 8px -2px hsl(0 0% 0% / 0.08), 0 14px 32px -8px hsl(0 0% 0% / 0.12);
+    --shadow-xl: 0 8px 16px -4px hsl(0 0% 0% / 0.1), 0 28px 60px -12px hsl(0 0% 0% / 0.16);
+    --shadow-2xl: 0 32px 80px -16px hsl(0 0% 0% / 0.26);
 
     --tracking-normal: 0em;
     --spacing: 0.25rem;
   }
 
   .dark {
-    --background: 240 6% 5%;
-    --foreground: 40 14% 92%;
-    --card: 240 5% 8%;
-    --card-foreground: 40 14% 92%;
-    --popover: 240 5% 8%;
-    --popover-foreground: 40 14% 92%;
+    /* SLATE inverted — ink becomes paper. The signal lifts to a
+       brighter red because #DC2626 on pure black falls under 4.5:1. */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 18 92% 56%;
-    --primary-foreground: 240 6% 5%;
+    --primary: 0 84% 62%;           /* lifted #DC2626 */
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 240 4% 13%;
-    --secondary-foreground: 40 14% 92%;
-    --muted: 240 4% 13%;
-    --muted-foreground: 240 5% 60%;
-    --accent: 240 4% 15%;
-    --accent-foreground: 40 14% 92%;
-    --destructive: 0 62% 52%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 4% 17%;
-    --input: 240 4% 17%;
-    --ring: 18 92% 56%;
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 11%;
+    --muted-foreground: 220 9% 65%;
+    --accent: 0 0% 14%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 62%;
+    --destructive-foreground: 0 0% 0%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 84% 62%;
 
-    --signal-wash: 18 92% 56%;
+    --signal-wash: 0 84% 62%;
 
-    --note: 44 32% 19%;
-    --note-ink: 44 48% 86%;
-    --note-edge: 44 30% 30%;
+    --note: 48 24% 14%;
+    --note-ink: 48 40% 88%;
+    --note-edge: 0 0% 28%;
 
-    --chart-1: 18 92% 56%;
-    --chart-2: 240 5% 50%;
-    --chart-3: 240 5% 66%;
-    --chart-4: 240 4% 32%;
-    --chart-5: 40 14% 82%;
+    --chart-1: 0 84% 62%;
+    --chart-2: 220 9% 65%;
+    --chart-3: 0 0% 100%;
+    --chart-4: 0 0% 32%;
+    --chart-5: 220 9% 80%;
 
-    --sidebar: 240 5% 8%;
-    --sidebar-foreground: 40 14% 92%;
-    --sidebar-primary: 18 92% 56%;
-    --sidebar-primary-foreground: 240 6% 5%;
-    --sidebar-accent: 240 4% 15%;
-    --sidebar-accent-foreground: 40 14% 92%;
-    --sidebar-border: 240 4% 17%;
-    --sidebar-ring: 18 92% 56%;
+    --sidebar: 0 0% 4%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 84% 62%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 14%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 0 84% 62%;
 
     --shadow-2xs: 0 1px 2px 0 hsl(0 0% 0% / 0.3);
     --shadow-xs: 0 1px 2px 0 hsl(0 0% 0% / 0.35);
@@ -690,5 +694,144 @@
 
   .markdown-content img {
     @apply border border-border my-6;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   SLATE — editorial / magazine layer
+   Print-newspaper devices: a nameplate, kickers above heads,
+   hairline column rules, drop caps, and hard-edged cards that
+   lift off the page on hover.
+   ══════════════════════════════════════════════════════════ */
+@layer utilities {
+  /* ── Nameplate: the masthead wordmark ───────────────────── */
+  .nameplate {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.055em;
+    line-height: 0.82;
+  }
+
+  /* ── Kicker: the section word above a headline ──────────── */
+  .kicker {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    font-size: 10px;
+    color: hsl(var(--primary));
+  }
+
+  .kicker-muted {
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* ── Headlines ──────────────────────────────────────────── */
+  .headline {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+  }
+
+  /* ── Dateline: byline + date, as a newspaper sets it ────── */
+  .dateline {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: hsl(var(--muted-foreground));
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Rules: the heavy one under the nameplate, the hairline
+        between columns. Newspapers use weight to rank. ────── */
+  .rule-heavy {
+    border-top: 3px solid hsl(var(--foreground));
+  }
+
+  .rule-hair {
+    border-top: 1px solid hsl(var(--border));
+  }
+
+  /* Vertical hairline between grid columns, drawn only where
+     there is a neighbour to separate from. */
+  .col-rule {
+    border-left: 1px solid hsl(var(--border));
+  }
+
+  /* ── Drop cap on the lead paragraph ─────────────────────── */
+  .drop-cap::first-letter {
+    font-family: var(--font-display);
+    font-weight: 800;
+    float: left;
+    font-size: 3.1em;
+    line-height: 0.78;
+    padding-right: 0.08em;
+    padding-top: 0.06em;
+    color: hsl(var(--primary));
+  }
+
+  /* ── Hard card: the neubrutalist carry-over. Flat, hard
+        border, solid offset shadow, snaps up on hover. ────── */
+  .hard-card {
+    background: hsl(var(--card));
+    border: 2px solid hsl(var(--foreground));
+    box-shadow: 5px 5px 0 0 hsl(var(--foreground));
+    transition: transform 160ms cubic-bezier(0.2, 0, 0, 1),
+                box-shadow 160ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .hard-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0 0 hsl(var(--primary));
+  }
+
+  /* Signal variant — used for the one card that should shout */
+  .hard-card-signal {
+    box-shadow: 5px 5px 0 0 hsl(var(--primary));
+  }
+
+  /* ── Filter chip ────────────────────────────────────────── */
+  .chip {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 7px 13px;
+    border: 1.5px solid hsl(var(--foreground));
+    background: transparent;
+    color: hsl(var(--foreground));
+    transition: background-color 140ms ease, color 140ms ease;
+  }
+
+  .chip:hover {
+    background: hsl(var(--signal-wash) / 0.1);
+  }
+
+  .chip[aria-pressed="true"] {
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
+  }
+
+  /* ── Rank numerals in the Most Read rail ────────────────── */
+  .rank {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: hsl(var(--primary));
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hard-card {
+      transition: none !important;
+    }
+    .hard-card:hover {
+      transform: none;
+    }
   }
 }
