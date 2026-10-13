@@ -26,6 +26,57 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 15,
+    title: "Gemma 4's 2.85x Speedup: What I'd Ask Before Planning on It",
+    excerpt:
+      "Google says Gemini 4 Argon made Gemma 4 2.85x faster on vLLM. I read the pull requests behind the claim as a product manager, and here is what I'd check before it touches a cost forecast.",
+    category: "ai",
+    date: "2026-10-13",
+    readTime: "5 min read",
+    tags: [
+      "Product Management",
+      "AI Product Strategy",
+      "LLM Inference",
+      "Gemma 4",
+      "Gemini 4 Argon",
+    ],
+    image: "/lovable-uploads/blog/gemma-4-speedup-product-view.webp",
+    slug: "gemma-4-speedup-product-view",
+    featured: true,
+    faq: [
+      {
+        question: "Is Gemma 4 really 2.85x faster on vLLM?",
+        answer:
+          "That is Google's end-to-end figure for Gemma 4 E2B on an A100, from about 37,900 to over 108,000 tokens per second. No single pull request I opened reproduces it: the individual changes report 1.04x to 1.12x on prefill and 1.37x to 3.23x on the drafter loop. I could not find the combined run, and the post does not say what batch size or traffic mix produced it."
+      },
+      {
+        question: "Can I put the speedup in my cost forecast?",
+        answer:
+          "Not yet. The two pull requests I read in full are still open and one has merge conflicts, so the change is not in a vLLM release you can run. I would keep it as an upside scenario and move it into the base case only after measuring it on your own hardware."
+      },
+      {
+        question: "Does the speedup hurt output quality?",
+        answer:
+          "Probably not, but verify it. The attention pull request reports 92% to 99.6% agreement with previous outputs and accuracy moving between minus 0.5 and plus 1.5 points. Run your own eval set rather than relying on a public benchmark."
+      },
+      {
+        question: "Will faster inference actually cut my bill?",
+        answer:
+          "Only if your GPUs are already busy. Doubling throughput on the same GPUs roughly halves cost per token, but if the fleet sits half idle today a faster server just idles faster and the bill does not move."
+      },
+      {
+        question: "Which latency does this improve, first token or streaming?",
+        answer:
+          "Both, through different changes. The attention work mostly helps prefill, which is the wait before the first word appears. The drafter work helps how fast the rest of the answer streams. A chat reply is mostly a first-token problem; a long report is mostly a streaming problem."
+      },
+      {
+        question: "What should I ask engineering before acting on a vendor speed claim?",
+        answer:
+          "Five things I would send over: which release contains the change and whether you are on it, what GPU the vendor measured on, what batch size and request mix produced the headline number, how quality holds on your own evals, and how fast you can roll back if it is slower on your hardware."
+      }
+    ],
+  },
+  {
     id: 14,
     title: "The Evolution of Gemma: From Gemma 2 to Gemma 4",
     excerpt:
