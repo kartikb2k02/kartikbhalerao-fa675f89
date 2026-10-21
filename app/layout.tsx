@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
 
@@ -16,7 +18,14 @@ export const metadata: Metadata = {
   description: DEFAULT_DESCRIPTION,
   authors: [{ name: SITE_NAME }],
   icons: {
-    icon: "/favicon.png",
+    // SVG first for browsers that take it (sharp at any size), PNG as
+    // the fallback. The 1.3MB favicon.ico that was here is left on disk
+    // but no longer referenced.
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
   alternates: {
     canonical: "/",
@@ -57,7 +66,15 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    /* `suppressHydrationWarning` because next-themes writes the theme
+       class onto <html> before React hydrates, which would otherwise be
+       reported as a mismatch. Geist is wired here rather than imported in
+       CSS: next/font self-hosts it, so there is no blocking font request. */
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"

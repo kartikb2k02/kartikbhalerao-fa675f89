@@ -1,26 +1,40 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
-import { FooterSection } from "@/components/FooterSection";
-import { CaseStudiesSection } from "@/components/CaseStudiesSection";
+import { Nav } from "@/components/home/Nav";
+import { Shell, Section } from "@/components/home/Shell";
+import { BuildsView, type BuildEntry } from "@/components/home/BuildsView";
+import { SiteFooter } from "@/components/home/SiteFooter";
+import { caseStudies } from "@/data/caseStudies";
+import { desk, shortNames } from "@/data/buildMeta";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Builds",
   description:
-    "Real-world products built from discovery to launch, covering strategy, design and execution. Case studies and PRDs by Product Manager Kartik Bhalerao.",
+    "Products shipped, specs written, and teardowns of products worth studying — from discovery through launch.",
   path: "/builds",
 });
 
-export default function CaseStudies() {
+const builds: BuildEntry[] = caseStudies.map((study) => ({
+  id: study.id,
+  name: shortNames[study.id] ?? study.title,
+  image: study.image,
+  href: `/builds/${study.id}`,
+  external: false,
+  desk: desk[study.id],
+}));
+
+export default function Builds() {
   return (
-    <div className="min-h-screen w-full bg-background text-foreground">
-      <Header />
+    <>
+      <Nav />
 
-      <main className="pt-16">
-        <CaseStudiesSection />
-      </main>
+      <Shell>
+        <Section label="builds">
+          <BuildsView builds={builds} />
+        </Section>
+      </Shell>
 
-      <FooterSection />
-    </div>
+      <SiteFooter />
+    </>
   );
 }

@@ -1,67 +1,71 @@
-@import url("https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap");
+/* Instrument Serif carries the italic section labels. Geist and Geist Mono
+   are self-hosted by `next/font` from the `geist` package. */
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  /* ── Paper and ink ────────────────────────────────────────
+     Two themes off one set of names. Light is the default so a
+     crawler and a no-JS reader get a readable page; `.dark` is
+     applied by next-themes from the user's stored choice or their
+     system setting.
+     ──────────────────────────────────────────────────────── */
   :root {
-    /* ── SLATE: the four-colour magazine palette ──────────────
-       #FFFFFF paper · #000000 ink · #DC2626 signal · #6B7280 grey
-       Everything else is a tint of those four, so the page never
-       introduces a fifth hue. ───────────────────────────────── */
-    --background: 0 0% 100%;        /* #FFFFFF */
-    --foreground: 0 0% 0%;          /* #000000 */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card-foreground: 0 0% 7%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover-foreground: 0 0% 7%;
 
-    /* Signal */
-    --primary: 0 72% 51%;           /* #DC2626 */
+    --primary: 0 0% 7%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 0 0% 0%;
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%; /* #6B7280 */
-    --accent: 220 14% 93%;
-    --accent-foreground: 0 0% 0%;
-    --destructive: 0 72% 51%;
+    --secondary: 0 0% 96.5%;
+    --secondary-foreground: 0 0% 7%;
+    --muted: 0 0% 96.5%;
+    --muted-foreground: 0 0% 42%;
+    --accent: 0 0% 94%;
+    --accent-foreground: 0 0% 7%;
+    --destructive: 0 72% 45%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 13% 87%;
-    --input: 220 13% 87%;
-    --ring: 0 72% 51%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 30%;
 
-    --signal-wash: 0 72% 51%;
+    --signal: 142 62% 36%;
+    --signal-wash: 142 62% 36%;
 
-    --note: 48 92% 88%;
-    --note-ink: 0 0% 0%;
-    --note-edge: 220 13% 80%;
+    --note: 48 92% 92%;
+    --note-ink: 0 0% 7%;
+    --note-edge: 0 0% 86%;
 
-    --chart-1: 0 72% 51%;
-    --chart-2: 220 9% 46%;
-    --chart-3: 0 0% 0%;
-    --chart-4: 220 13% 80%;
-    --chart-5: 220 9% 30%;
+    --chart-1: 0 0% 7%;
+    --chart-2: 0 0% 38%;
+    --chart-3: 0 0% 56%;
+    --chart-4: 0 0% 72%;
+    --chart-5: 0 0% 86%;
 
     --sidebar: 0 0% 100%;
-    --sidebar-foreground: 0 0% 0%;
-    --sidebar-primary: 0 72% 51%;
+    --sidebar-foreground: 0 0% 7%;
+    --sidebar-primary: 0 0% 7%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 14% 93%;
-    --sidebar-accent-foreground: 0 0% 0%;
-    --sidebar-border: 220 13% 87%;
-    --sidebar-ring: 0 72% 51%;
+    --sidebar-accent: 0 0% 94%;
+    --sidebar-accent-foreground: 0 0% 7%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 0 0% 30%;
 
-    --radius: 0rem;
+    --radius: 0.75rem;
 
-    --font-sans: 'Switzer', 'Helvetica Neue', Helvetica, Arial, system-ui, sans-serif;
-    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    --font-display: 'Bricolage Grotesque', 'Switzer', 'Helvetica Neue', Arial, sans-serif;
+    --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui,
+      -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+      Monaco, Consolas, monospace;
+    --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+    --font-display: var(--font-sans);
 
     --shadow-2xs: 0 1px 2px 0 hsl(0 0% 0% / 0.04);
     --shadow-xs: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
@@ -77,50 +81,49 @@
   }
 
   .dark {
-    /* SLATE inverted — ink becomes paper. The signal lifts to a
-       brighter red because #DC2626 on pure black falls under 4.5:1. */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 4%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 4%;
-    --popover-foreground: 0 0% 100%;
+    --background: 0 0% 3%;          /* #070707 */
+    --foreground: 0 0% 98%;         /* #FAFAFA */
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 0 84% 62%;           /* lifted #DC2626 */
-    --primary-foreground: 0 0% 0%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 3%;
 
-    --secondary: 0 0% 11%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 11%;
-    --muted-foreground: 220 9% 65%;
-    --accent: 0 0% 14%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 62%;
-    --destructive-foreground: 0 0% 0%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 0 84% 62%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 58%;
+    --accent: 0 0% 13%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62% 52%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 70%;
 
-    --signal-wash: 0 84% 62%;
+    --signal: 142 65% 48%;
+    --signal-wash: 142 65% 48%;
 
-    --note: 48 24% 14%;
+    --note: 48 24% 12%;
     --note-ink: 48 40% 88%;
-    --note-edge: 0 0% 28%;
+    --note-edge: 0 0% 22%;
 
-    --chart-1: 0 84% 62%;
-    --chart-2: 220 9% 65%;
-    --chart-3: 0 0% 100%;
-    --chart-4: 0 0% 32%;
-    --chart-5: 220 9% 80%;
+    --chart-1: 0 0% 98%;
+    --chart-2: 0 0% 70%;
+    --chart-3: 0 0% 50%;
+    --chart-4: 0 0% 34%;
+    --chart-5: 0 0% 22%;
 
-    --sidebar: 0 0% 4%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 0 84% 62%;
-    --sidebar-primary-foreground: 0 0% 0%;
-    --sidebar-accent: 0 0% 14%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 0 84% 62%;
+    --sidebar: 0 0% 5%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0% 3%;
+    --sidebar-accent: 0 0% 13%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 0% 70%;
 
     --shadow-2xs: 0 1px 2px 0 hsl(0 0% 0% / 0.3);
     --shadow-xs: 0 1px 2px 0 hsl(0 0% 0% / 0.35);
@@ -238,8 +241,7 @@
   .heading-display {
     font-family: var(--font-display);
     font-weight: 700;
-    letter-spacing: -0.035em;
-    font-variation-settings: "wdth" 100, "opsz" 48;
+    letter-spacing: -0.03em;
   }
 
   .label-mono {
@@ -626,9 +628,11 @@
     @apply text-foreground mt-12 mb-4;
   }
 
-  .markdown-content h1 { @apply text-[32px] leading-tight; }
-  .markdown-content h2 { @apply text-[26px] leading-tight; }
-  .markdown-content h3 { @apply text-[20px] leading-snug; }
+  /* A step down from the old 32/26/20: the column is 760px now, and
+     a 32px heading in it overpowered the 15px body under it. */
+  .markdown-content h1 { @apply text-[22px] leading-snug; }
+  .markdown-content h2 { @apply text-[19px] leading-snug; }
+  .markdown-content h3 { @apply text-[16px] leading-snug; }
 
   .markdown-content p {
     @apply mb-5 text-[17px] text-foreground/80 leading-[1.75];
@@ -707,7 +711,7 @@
   /* ── Nameplate: the masthead wordmark ───────────────────── */
   .nameplate {
     font-family: var(--font-display);
-    font-weight: 800;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: -0.055em;
     line-height: 0.82;
@@ -776,49 +780,53 @@
         border, solid offset shadow, snaps up on hover. ────── */
   .hard-card {
     background: hsl(var(--card));
-    border: 2px solid hsl(var(--foreground));
-    box-shadow: 5px 5px 0 0 hsl(var(--foreground));
-    transition: transform 160ms cubic-bezier(0.2, 0, 0, 1),
-                box-shadow 160ms cubic-bezier(0.2, 0, 0, 1);
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 180ms ease, box-shadow 180ms ease;
   }
 
   .hard-card:hover {
-    transform: translate(-3px, -3px);
-    box-shadow: 8px 8px 0 0 hsl(var(--primary));
+    transform: translateY(-3px);
+    border-color: hsl(var(--foreground) / 0.4);
+    box-shadow: var(--shadow-lg);
   }
 
   /* Signal variant — used for the one card that should shout */
   .hard-card-signal {
-    box-shadow: 5px 5px 0 0 hsl(var(--primary));
+    border-color: hsl(var(--primary));
   }
 
   /* ── Filter chip ────────────────────────────────────────── */
   .chip {
-    font-family: var(--font-mono);
+    font-family: var(--font-display);
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 10px;
-    font-weight: 500;
-    padding: 7px 13px;
-    border: 1.5px solid hsl(var(--foreground));
+    letter-spacing: 0.08em;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: calc(var(--radius) - 2px);
+    border: 1.5px solid hsl(var(--border));
     background: transparent;
     color: hsl(var(--foreground));
-    transition: background-color 140ms ease, color 140ms ease;
+    transition: background-color 140ms ease, color 140ms ease,
+                border-color 140ms ease;
   }
 
   .chip:hover {
-    background: hsl(var(--signal-wash) / 0.1);
+    border-color: hsl(var(--foreground) / 0.45);
   }
 
   .chip[aria-pressed="true"] {
-    background: hsl(var(--foreground));
-    color: hsl(var(--background));
+    background: transparent;
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
   }
 
   /* ── Rank numerals in the Most Read rail ────────────────── */
   .rank {
     font-family: var(--font-display);
-    font-weight: 800;
+    font-weight: 700;
     font-size: 28px;
     line-height: 1;
     letter-spacing: -0.04em;
@@ -842,7 +850,373 @@
      promises an interaction that is not there. */
   .hard-card-static {
     background: hsl(var(--card));
-    border: 2px solid hsl(var(--foreground));
-    box-shadow: 5px 5px 0 0 hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
   }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BOMB — the display system.
+
+   Clash Display ships upright only: weights 200-700, no italic.
+   The reference design leans hard on a heavy oblique, and the honest
+   options were a synthetic skew or no slant at all. Nothing here skews
+   — a sheared grotesque shears the curves and bowls with it, and it
+   reads as a browser default rather than as a decision. The weight,
+   the tight tracking and the scale carry the display voice instead.
+   ═══════════════════════════════════════════════════════════ */
+@layer utilities {
+
+  /* The page title: "Programma" scale. Clamped so it stays one
+     line on a phone and still dominates on a wide screen. */
+  .bomb-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.75rem, 9vw, 7.5rem);
+    line-height: 0.94;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  /* The homepage name, one step past the page title. */
+  .bomb-mega {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(3.25rem, 14vw, 13rem);
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+  }
+
+  /* Category tags, filter chips, button labels. Uppercase and widely
+     tracked — at small sizes that spacing is what separates these from
+     body copy, now that the slant is gone. */
+  .bomb-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* Row headings. Body face, heavy, so headings in a list read as text
+     rather than as more display type. */
+  .bomb-row-title {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+
+  /* ── The four desks ────────────────────────────────────────
+     Text uses the -ink variants. The bright fills are for panels
+     and pills only; as type on cream they fail contrast badly. */
+  .desk-ai       { color: hsl(var(--lime-ink)); }
+  .desk-fintech  { color: hsl(var(--magenta-ink)); }
+  .desk-commerce { color: hsl(var(--blue-ink)); }
+  .desk-strategy { color: hsl(var(--green-ink)); }
+
+  .desk-bg-ai       { background-color: hsl(var(--lime)); }
+  .desk-bg-fintech  { background-color: hsl(var(--magenta)); }
+  .desk-bg-commerce { background-color: hsl(var(--blue)); }
+  .desk-bg-strategy { background-color: hsl(var(--green)); }
+
+  /* ── Pills ───────────────────────────────────────────────── */
+  /* Cream pill, dark ink, sitting a few degrees off square the way
+     a sticker never quite lands straight. */
+  .bomb-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: 0.375rem;
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
+    font-size: 0.6875rem;
+    transform: rotate(-2.5deg);
+    transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 180ms ease;
+  }
+
+  .bomb-pill:hover {
+    transform: rotate(-2.5deg) scale(1.04);
+  }
+
+  /* ── Chromatic sticker ───────────────────────────────────── */
+  /* Offset-print misregistration: the same text stacked in lime,
+     magenta and blue, each nudged a pixel or two, cream on top.
+     Done with text-shadow so it stays one element and one node. */
+  .bomb-sticker {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: lowercase;
+    color: hsl(var(--foreground));
+    text-shadow:
+      -3px -3px 0 hsl(var(--magenta)),
+       3px -2px 0 hsl(var(--lime)),
+       2px  3px 0 hsl(var(--blue));
+    /* On paper the plates need a hairline of ink to separate them
+       from the ground, or the lime plate dissolves into the cream. */
+    -webkit-text-stroke: 0.5px hsl(var(--foreground));
+  }
+
+  /* ── Hairline row rule ───────────────────────────────────── */
+  .bomb-rule {
+    border-top: 1px solid hsl(var(--border));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bomb-pill,
+    .bomb-pill:hover {
+      transition: none;
+      transform: rotate(-2.5deg);
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESULT CARDS
+
+   A portrait card whose whole surface is one hue: three offset
+   radial blooms over a diagonal base, so the gradient has somewhere
+   to travel instead of reading as a flat tint. Each desk sets
+   `--card-h` and `--card-s` and the rest follows.
+   ═══════════════════════════════════════════════════════════ */
+@layer utilities {
+
+  .result-card {
+    background:
+      radial-gradient(120% 85% at 18% 12%,
+        hsl(var(--card-h) var(--card-s) 48% / 0.95), transparent 62%),
+      radial-gradient(110% 95% at 85% 88%,
+        hsl(var(--card-h) var(--card-s) 22% / 0.95), transparent 58%),
+      radial-gradient(85% 70% at 55% 52%,
+        hsl(var(--card-h) var(--card-s) 44% / 0.75), transparent 72%),
+      linear-gradient(158deg,
+        hsl(var(--card-h) var(--card-s) 34%),
+        hsl(var(--card-h) var(--card-s) 16%));
+  }
+
+  /* The halftone bloom behind the number. Dots on a fixed grid, faded
+     out toward the edges by a mask so the texture reads as a glow
+     around the centre rather than as wallpaper. */
+  .result-halftone {
+    background-image: radial-gradient(
+      circle,
+      hsl(0 0% 100% / 0.22) 1.1px,
+      transparent 1.2px
+    );
+    background-size: 9px 9px;
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 12%, transparent 58%);
+    mask-image: radial-gradient(circle at 50% 50%, #000 12%, transparent 58%);
+  }
+
+  /* Per-desk hue and saturation. These feed the gradient above. */
+  .card-ai       { --card-h: 75;  --card-s: 85%; }
+  .card-fintech  { --card-h: 322; --card-s: 80%; }
+  .card-commerce { --card-h: 231; --card-s: 75%; }
+  .card-strategy { --card-h: 146; --card-s: 55%; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SURFACE — the one card style.
+
+   Every card on the site is this: a white grid panel with a 20px
+   radius lifted off the off-white page by a two-stop shadow. One
+   tight stop for the edge, one wide and soft for the lift.
+   ═══════════════════════════════════════════════════════════ */
+@layer utilities {
+
+  /* Drawn by a hairline and a barely-there fill rather than a shadow,
+     which is invisible on a near-black ground. The fill tints toward the
+     opposite of the theme so it reads in both. */
+  .surface {
+    display: grid;
+    border-radius: 0.875rem;
+    background: hsl(0 0% 0% / 0.015);
+    border: 1px solid hsl(0 0% 0% / 0.08);
+  }
+
+  .dark .surface {
+    background: hsl(0 0% 100% / 0.018);
+    border-color: hsl(0 0% 100% / 0.08);
+  }
+
+  /* Interactive surfaces lift a little further on hover. */
+  .surface-link {
+    transition: background-color 200ms ease, border-color 200ms ease;
+  }
+
+  .surface-link:hover {
+    background: hsl(0 0% 0% / 0.03);
+    border-color: hsl(0 0% 0% / 0.16);
+  }
+
+  .dark .surface-link:hover {
+    background: hsl(0 0% 100% / 0.04);
+    border-color: hsl(0 0% 100% / 0.16);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .surface-link,
+    .surface-link:hover {
+      transition: none;
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BRAND BUTTONS
+
+   Each contact button carries the colour of the thing it opens.
+   The colour lives in `--brand` and the button reads it, so the
+   shape is defined once and only the hue changes per action.
+
+   The tint is deliberately light — four saturated fills in a row
+   would shout on a page this quiet. The icon takes the full
+   colour, the background a tenth of it.
+   ═══════════════════════════════════════════════════════════ */
+@layer utilities {
+
+  .brand-btn {
+    --brand-bg: hsl(var(--brand) / 0.09);
+    --brand-border: hsl(var(--brand) / 0.22);
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--brand-border);
+    background: var(--brand-bg);
+    padding: 0.375rem 0.625rem;
+    font-size: 14px;
+    color: hsl(var(--foreground));
+    transition: background-color 160ms ease, border-color 160ms ease;
+  }
+
+  .brand-btn:hover {
+    --brand-bg: hsl(var(--brand) / 0.16);
+    --brand-border: hsl(var(--brand) / 0.38);
+  }
+
+  /* The icon carries the colour at full strength. */
+  .brand-btn svg {
+    color: hsl(var(--brand));
+  }
+
+  .brand-call  { --brand: 150 70% 32%; }  /* green  */
+  .brand-mail  { --brand: 24 88% 45%; }   /* orange */
+  .brand-in    { --brand: 207 90% 40%; }  /* #0A66C2 */
+  .brand-x     { --brand: 0 0% 10%; }     /* near-black */
+
+  /* Lifted for the dark ground — the light values go muddy on it,
+     and near-black would disappear entirely. */
+  .dark .brand-call { --brand: 150 65% 55%; }
+  .dark .brand-mail { --brand: 26 95% 62%; }
+  .dark .brand-in   { --brand: 207 95% 65%; }
+  .dark .brand-x    { --brand: 0 0% 92%; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .brand-btn {
+      transition: none;
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NAV MARK
+
+   The active nav item sits in a tinted rectangle, one hue per
+   destination. Pure CSS: the previous version drew a rough-notation
+   SVG, which measured the element and repainted on every route
+   change and every resize. This is a background and a colour.
+
+   Each item sets `--mark` and the rule does the rest, so adding a
+   nav entry means adding one line.
+   ═══════════════════════════════════════════════════════════ */
+@layer utilities {
+
+  .nav-mark {
+    border-radius: 3px;
+    padding: 0.125rem 0.375rem;
+    margin: -0.125rem -0.375rem;
+    background: hsl(var(--mark) 85% 72% / 0.45);
+    color: hsl(var(--mark) 70% 26%);
+  }
+
+  /* On the dark ground a pale wash turns to mud and the dark ink
+     disappears, so the fill drops to a hint and the text carries
+     the colour instead. */
+  .dark .nav-mark {
+    background: hsl(var(--mark) 80% 60% / 0.18);
+    color: hsl(var(--mark) 85% 72%);
+  }
+
+  .mark-home     { --mark: 42; }   /* amber   */
+  .mark-about    { --mark: 210; }  /* blue    */
+  .mark-builds   { --mark: 150; }  /* green   */
+  .mark-writings { --mark: 320; }  /* magenta */
+}
+
+/* ═══════════════════════════════════════════════════════════
+   WALK CYCLE
+
+   A side-view character built from filled capsules. Limbs are <g>
+   elements rotated about their joint, so the whole figure is four
+   rotations and a bob rather than a sprite sheet or a Lottie.
+
+   The phase relationships are what sell it: an arm swings opposite
+   its own side's leg, and the body bobs at twice the stride rate,
+   rising as each leg passes under the hip. Get either wrong and it
+   reads as a puppet rather than a person.
+   ═══════════════════════════════════════════════════════════ */
+@layer utilities {
+
+  /* Two stride beats per cycle, so the rise lands on each passing leg. */
+  @keyframes walk-bob {
+    0%, 50%, 100% { transform: translateY(0); }
+    25%, 75%      { transform: translateY(-1.5px); }
+  }
+
+  @keyframes limb-forward {
+    0%   { transform: rotate(28deg); }
+    50%  { transform: rotate(-28deg); }
+    100% { transform: rotate(28deg); }
+  }
+
+  @keyframes limb-back {
+    0%   { transform: rotate(-28deg); }
+    50%  { transform: rotate(28deg); }
+    100% { transform: rotate(-28deg); }
+  }
+
+  /* Arms swing shorter than legs; a full throw looks like a march. */
+  @keyframes arm-forward {
+    0%   { transform: rotate(-20deg); }
+    50%  { transform: rotate(20deg); }
+    100% { transform: rotate(-20deg); }
+  }
+
+  @keyframes arm-back {
+    0%   { transform: rotate(20deg); }
+    50%  { transform: rotate(-20deg); }
+    100% { transform: rotate(20deg); }
+  }
+
+  .walker-bob   { animation: walk-bob 0.62s ease-in-out infinite; }
+  .walker-leg-a { animation: limb-forward 0.62s ease-in-out infinite; }
+  .walker-leg-b { animation: limb-back 0.62s ease-in-out infinite; }
+  .walker-arm-a { animation: arm-back 0.62s ease-in-out infinite; }
+  .walker-arm-b { animation: arm-forward 0.62s ease-in-out infinite; }
+
+  /* Someone who asked for less motion should not get a figure pacing
+     their screen. The whole thing goes rather than freezing mid-stride. */
+  @media (prefers-reduced-motion: reduce) {
+    .walker-track { display: none; }
+  }
+}
+
+/* The greeting hues need more lightness on the dark ground than on
+   paper, or every one of them reads as the same muddy mid tone. */
+@layer utilities {
+  :root { --greeting-l: 42%; }
+  .dark { --greeting-l: 68%; }
 }

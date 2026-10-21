@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
 
 interface HeaderProps {
   scrollProgress?: number;
@@ -57,8 +56,6 @@ export const Header = ({ scrollProgress }: HeaderProps) => {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <AnimatedThemeToggler />
-
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden text-foreground"

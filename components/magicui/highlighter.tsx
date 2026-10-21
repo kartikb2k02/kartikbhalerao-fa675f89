@@ -54,7 +54,6 @@ export function Highlighter({
   const elementRef = useRef<HTMLSpanElement>(null);
   const annotationRef = useRef<RoughAnnotation | null>(null);
   const { resolvedTheme } = useTheme();
-
   const isInView = useInView(elementRef, { once: true, margin: "-8%" });
   const shouldShow = !isView || isInView;
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Header } from "@/components/Header";
-import { FooterSection } from "@/components/FooterSection";
+import { Nav } from "@/components/home/Nav";
+import { SiteFooter } from "@/components/home/SiteFooter";
 import { caseStudies, getCaseStudyById } from "@/data/caseStudies";
 import { CaseStudyDetailView } from "@/components/CaseStudyDetailView";
 import { pageMetadata } from "@/lib/seo";
@@ -41,12 +41,19 @@ export default async function CaseStudyDetail({ params }: { params: Promise<{ id
   if (!caseStudy) {
     return (
       <div className="min-h-screen w-full text-foreground relative bg-background">
-        <Header />
-        <main className="pt-32 text-center">
-          <h1 className="text-3xl font-bold mb-4">Case Study Not Found</h1>
-          <Link href="/builds" className="text-blue-600 hover:underline">← Back to Builds</Link>
+        <Nav />
+        <main className="mx-auto max-w-[640px] px-4 py-14">
+          <h1 className="mb-3 text-[24px] font-semibold tracking-tight">
+            Build not found
+          </h1>
+          <Link
+            href="/builds"
+            className="text-[14px] text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+          >
+            All builds
+          </Link>
         </main>
-        <FooterSection />
+        <SiteFooter />
       </div>
     );
   }

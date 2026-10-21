@@ -1,42 +1,53 @@
 import type { Metadata } from "next";
+import { Nav } from "@/components/home/Nav";
+import { Shell, Section } from "@/components/home/Shell";
+import { SiteFooter } from "@/components/home/SiteFooter";
 import { ContactForm } from "@/components/ContactForm";
 import { CalComBooking } from "@/components/CalComBooking";
-import { Header } from "@/components/Header";
-import { FooterSection } from "@/components/FooterSection";
-import { PageHeader } from "@/components/PageHeader";
+import { profile } from "@/data/profile";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact",
-  description: "Get in touch with Kartik Bhalerao, Product Manager. Send a message or book a call.",
+  description:
+    "Get in touch with Kartik Bhalerao — open to product roles and collaborations.",
   path: "/contact",
 });
 
 export default function Contact() {
   return (
-    <div className="min-h-screen w-full bg-background text-foreground">
-      <Header />
+    <>
+      <Nav />
 
-      <main className="pt-16">
-        <PageHeader
-          label="Contact"
-          title={<>Get in touch<span className="text-primary">.</span></>}
-          lede="Send a note, or put something on the calendar, whichever you prefer."
-          meta="Usually replies within a day"
-        />
+      <Shell>
+        <Section label="contact">
+          <p className="text-[15px] leading-snug text-muted-foreground">
+            Open to product roles and collaborations. Email is quickest —{" "}
+            <a
+              href={`mailto:${profile.email}`}
+              className="text-foreground underline underline-offset-4"
+            >
+              {profile.email}
+            </a>
+            .
+          </p>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-          <div className="grid md:grid-cols-2 gap-5 items-stretch">
+          <div className="surface p-4">
             <ContactForm />
-            {/* Linked to as /contact#book from the About page close */}
-            <div id="book" className="scroll-mt-24 flex flex-col [&>div]:flex-1">
-              <CalComBooking calUsername="kartik-bhalerao-qqae1f" eventType="secret" />
-            </div>
           </div>
-        </div>
-      </main>
+        </Section>
 
-      <FooterSection />
-    </div>
+        <Section label="book a call">
+          <div className="surface overflow-hidden p-4">
+            <CalComBooking
+              calUsername="kartik-bhalerao-qqae1f"
+              eventType="secret"
+            />
+          </div>
+        </Section>
+      </Shell>
+
+      <SiteFooter />
+    </>
   );
 }

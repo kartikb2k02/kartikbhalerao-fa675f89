@@ -1,40 +1,65 @@
 import type { Metadata } from "next";
 import { blogPosts } from "@/data/blogPosts";
-import { Header } from "@/components/Header";
-import { FooterSection } from "@/components/FooterSection";
-import { BlogIndex } from "@/components/BlogIndex";
-import { PageHeader } from "@/components/PageHeader";
+import { Nav } from "@/components/home/Nav";
+import { Shell, Section } from "@/components/home/Shell";
+import { ListRow, RowList } from "@/components/home/ListRow";
+import { SiteFooter } from "@/components/home/SiteFooter";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Blog",
+  title: "Writing",
   description:
-    "Blogs on AI-first product strategy, prioritization, user research, and lessons from building products, written by Product Manager Kartik Bhalerao.",
+    "Writing on product management, AI products, prioritisation, and teardowns of products worth studying.",
   path: "/blog",
 });
 
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+}
+
 export default function Blog() {
-  const published = blogPosts.filter((p) => !p.comingSoon).length;
+  const posts = [...blogPosts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header />
+    <>
+      <Nav />
 
-      <main className="pt-16">
-        <PageHeader
-          label="Writing"
-          title={<>What I&apos;ve figured out<span className="text-primary">.</span></>}
-          lede="Notes on building products: AI, prioritisation, user research, and the things that went wrong on the way."
-          meta={`${published} posts`}
-          container="max-w-[100rem]"
-        />
+      <Shell>
+        <Section label="writing">
+          <p className="text-[14px] leading-snug text-muted-foreground">
+            {posts.filter((p) => !p.comingSoon).length} published.
+          </p>
 
-        <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-          <BlogIndex posts={blogPosts} />
-        </div>
-      </main>
+          <RowList>
+            {posts.map((post) =>
+              post.comingSoon ? (
+                <ListRow
+                  key={post.slug}
+                  title={post.title}
+                  description={`Coming soon · ${post.excerpt}`}
+                  meta={formatDate(post.date)}
+                />
+              ) : (
+                <ListRow
+                  key={post.slug}
+                  title={post.title}
+                  href={`/blog/${post.slug}`}
+                  description={post.excerpt}
+                  meta={formatDate(post.date)}
+                />
+              )
+            )}
+          </RowList>
+        </Section>
+      </Shell>
 
-      <FooterSection />
-    </div>
+      <SiteFooter />
+    </>
   );
 }

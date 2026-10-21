@@ -19,6 +19,12 @@ export default {
     	},
     	extend: {
     		colors: {
+    			signal: 'hsl(var(--signal))',
+    			/* The four desks, doubling as the festival accents. */
+    			lime: 'hsl(var(--lime))',
+    			magenta: 'hsl(var(--magenta))',
+    			blue: 'hsl(var(--blue))',
+    			green: 'hsl(var(--green))',
     			border: 'hsl(var(--border))',
     			input: 'hsl(var(--input))',
     			ring: 'hsl(var(--ring))',
@@ -206,7 +212,7 @@ export default {
     		},
     		fontFamily: {
     			sans: [
-    				'Switzer',
+    				'Satoshi',
     				'ui-sans-serif',
     				'system-ui',
     				'-apple-system',
@@ -246,8 +252,7 @@ export default {
     				'monospace'
     			],
     			display: [
-    				'Bricolage Grotesque',
-    				'Switzer',
+    				'Clash Display',
     				'Helvetica Neue',
     				'Arial',
     				'sans-serif'

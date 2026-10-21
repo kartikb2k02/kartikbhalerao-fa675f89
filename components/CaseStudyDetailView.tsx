@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowLeft, ZoomIn, ArrowUp } from "lucide-react";
-import { Header } from "@/components/Header";
-import { FooterSection } from "@/components/FooterSection";
+import { Nav } from "@/components/home/Nav";
+import { TechStack } from "@/components/home/TechStack";
+import { SiteFooter } from "@/components/home/SiteFooter";
 import type { CaseStudy } from "@/data/caseStudies";
 import { ImageLightbox } from "@/components/ImageLightbox";
 import { RelatedCaseStudies } from "@/components/RelatedCaseStudies";
@@ -47,22 +48,22 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
 
   return (
     <div className="min-h-screen w-full text-foreground relative bg-background">
-      <Header scrollProgress={scrollProgress} />
+      <Nav width={760} />
 
-      <main className="pt-24 pb-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="py-14">
+        <div className="mx-auto max-w-[760px] px-4">
           <Link
             href="/builds"
-            className="label-mono mb-8 inline-flex items-center gap-2 px-3.5 py-1.5 border border-foreground/10 text-muted-foreground text-[12px] hover:text-slate-900 dark:hover:text-white hover:border-foreground/20 transition-all duration-200 group"
+            className="group mb-8 inline-flex items-center gap-1.5 text-[14px] text-muted-foreground transition-colors hover:text-foreground"
           >
-            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform duration-200" />
-            All Builds
+            <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" />
+            All builds
           </Link>
 
-          <h1 className="heading-display text-[32px] sm:text-[44px] leading-[1.05] text-foreground mb-3 max-w-3xl">
+          <h1 className="mb-3 max-w-3xl text-[24px] font-semibold leading-snug tracking-tight text-foreground">
             {caseStudy.title}
           </h1>
-          <p className="text-slate-500 dark:text-zinc-400 text-lg max-w-2xl mb-8">{caseStudy.subtitle}</p>
+          <p className="mb-8 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">{caseStudy.subtitle}</p>
 
           {id === "chatly-prd" ? (
             <ChatlyBanner />
@@ -101,7 +102,7 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
           <div className="space-y-14 mb-14">
             <section>
               <span className="label-mono text-[12px] text-foreground/40 mb-2 block">Overview</span>
-              <h2 className="heading-display text-2xl sm:text-[28px] text-foreground mb-4">
+              <h2 className="mb-4 text-[15px] font-medium text-foreground">
                 The Background
               </h2>
               <p className="text-slate-600 dark:text-zinc-300 text-[16px] leading-[1.8] max-w-3xl">
@@ -111,7 +112,7 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
 
             <section>
               <span className="label-mono text-[12px] text-foreground/40 mb-2 block">Problem</span>
-              <h2 className="heading-display text-2xl sm:text-[28px] text-foreground mb-4">
+              <h2 className="mb-4 text-[15px] font-medium text-foreground">
                 The Challenge
               </h2>
               <blockquote className="border-l-2 border-foreground pl-5 py-1 mb-5 max-w-3xl">
@@ -126,7 +127,7 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
 
             <section>
               <span className="label-mono text-[12px] text-foreground/40 mb-2 block">Approach</span>
-              <h2 className="heading-display text-2xl sm:text-[28px] text-foreground mb-4">
+              <h2 className="mb-4 text-[15px] font-medium text-foreground">
                 The Solution
               </h2>
               <p className="text-slate-600 dark:text-zinc-300 text-[16px] leading-[1.8] max-w-3xl mb-6">
@@ -144,7 +145,7 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
 
             <section>
               <span className="label-mono text-[12px] text-foreground/40 mb-2 block">Impact</span>
-              <h2 className="heading-display text-2xl sm:text-[28px] text-foreground mb-4">
+              <h2 className="mb-4 text-[15px] font-medium text-foreground">
                 The Outcome
               </h2>
               <div className="border-l-2 border-foreground pl-5 py-1 max-w-3xl">
@@ -155,20 +156,11 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
             </section>
 
             <section>
-              <span className="label-mono text-[12px] text-foreground/40 mb-3 block">Stack</span>
-              <h2 className="heading-display text-2xl sm:text-[28px] text-foreground mb-5">
+              <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground">Stack</span>
+              <h2 className="mb-4 text-[15px] font-medium text-foreground">
                 Tools Used
               </h2>
-              <div className="flex flex-wrap gap-2">
-                {caseStudy.tools.map(tool => (
-                  <span
-                    key={tool}
-                    className="label-mono px-3 py-1.5 text-[11px] border border-foreground/12 text-foreground/55"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
+              <TechStack items={caseStudy.tools} />
             </section>
           </div>
           )}
@@ -254,18 +246,18 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
         </div>
       </main>
 
-      <FooterSection />
+      <SiteFooter width={760} />
 
       <button
         onClick={scrollToTop}
         title="Back to top"
-        className={`fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-card border border-slate-200 dark:border-zinc-700 shadow-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 hover:border-blue-500 hover:text-blue-600 dark:hover:border-blue-500 dark:hover:text-blue-400 transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all duration-300 hover:border-foreground/40 hover:text-foreground ${
           showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
         }`}
       >
         <ArrowUp className="w-4 h-4" />
         <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 48 48">
-          <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-slate-200 dark:text-zinc-700" />
+          <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-border" />
           <circle
             cx="24" cy="24" r="22" fill="none"
             stroke="url(#topGrad)" strokeWidth="1.5" strokeLinecap="round"
@@ -273,8 +265,8 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
           />
           <defs>
             <linearGradient id="topGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#3b82f6" />
-              <stop offset="100%" stopColor="#8b5cf6" />
+              <stop offset="0%" stopColor="currentColor" />
+              <stop offset="100%" stopColor="currentColor" />
             </linearGradient>
           </defs>
         </svg>

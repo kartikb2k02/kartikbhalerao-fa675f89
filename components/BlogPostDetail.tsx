@@ -5,7 +5,8 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Clock, ArrowUp, ArrowRight } from "lucide-react";
 import { BlogPost, blogPosts } from "@/data/blogPosts";
-import { Header } from "@/components/Header";
+import { Nav } from "@/components/home/Nav";
+import { SiteFooter } from "@/components/home/SiteFooter";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -193,7 +194,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                   // Skip duplicate title already shown on banner
                   if (extractText(children as React.ReactNode).trim() === post.title.trim()) return null;
                   return (
-                    <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground mt-10 mb-5 first:mt-0 tracking-tight leading-tight">
+                    <h1 className="mb-4 mt-10 text-[22px] font-semibold leading-snug tracking-tight text-foreground first:mt-0">
                       {children}
                     </h1>
                   );
@@ -201,7 +202,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                 h2: ({ children }) => {
                   const id = slugify(extractText(children as React.ReactNode));
                   return (
-                    <h2 id={id} className="scroll-mt-28 text-2xl sm:text-[28px] font-bold text-foreground mt-14 mb-4 tracking-tight leading-snug">
+                    <h2 id={id} className="mb-3 mt-12 scroll-mt-28 text-[19px] font-semibold leading-snug tracking-tight text-foreground">
                       {children}
                     </h2>
                   );
@@ -732,7 +733,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
 
   return (
     <>
-      <Header scrollProgress={scrollProgress} />
+      <Nav width={760} />
 
       {/* Reading progress pill */}
       <div
@@ -765,11 +766,11 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
+      <div className="mx-auto max-w-[760px] px-4 py-14">
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="label-mono mb-6 inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/70 dark:bg-white/10 backdrop-blur-md border border-foreground/10 text-muted-foreground text-[12px] hover:text-slate-900 dark:hover:text-white hover:border-foreground/20 active:scale-95 transition-all duration-200 group"
+          className="group mb-6 inline-flex items-center gap-1.5 text-[14px] text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform duration-200" />
           All posts
@@ -780,21 +781,13 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
 
         {/* Title block */}
         <div className="mb-8 px-1">
-          <span className="label-mono inline-flex items-center px-3 py-1 border border-slate-300 dark:border-slate-600 text-[11px] text-muted-foreground mb-5">
+          <span className="mb-5 inline-flex items-center rounded-md border border-border px-2 py-0.5 text-[12px] text-muted-foreground">
             {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }).toUpperCase()}
           </span>
-          <h1
-            className="text-foreground mb-4"
-            style={{
-              fontFamily: "'Aspekta Variable Variable', Aspekta, sans-serif",
-              fontSize: "clamp(28px, 3vw, 40px)",
-              fontWeight: 1000,
-              fontVariationSettings: '"wght" 430',
-              fontFeatureSettings: '"ss05" on',
-              letterSpacing: "-0.02em",
-              lineHeight: 1.15,
-            }}
-          >
+          {/* Aspekta was named here but never loaded, so this was
+              falling back to the body face at weight 1000 anyway. Set in
+              the site's own scale instead of a font that does not exist. */}
+          <h1 className="mb-4 text-[clamp(1.5rem,2.6vw,1.875rem)] font-semibold leading-snug tracking-[-0.025em] text-foreground">
             {post.title}
           </h1>
           <p className="text-base sm:text-lg text-foreground/75 leading-relaxed mb-5">
@@ -805,7 +798,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
               {post.tags.map(tag => (
                 <span
                   key={tag}
-                  className="label-mono inline-flex items-center px-3 py-1.5 border border-border text-[11px] text-muted-foreground"
+                  className="inline-flex items-center rounded-md border border-border px-2 py-1 font-mono text-[11px] text-muted-foreground"
                 >
                   {tag}
                 </span>
@@ -832,7 +825,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
 
           {post.faq && post.faq.length > 0 && (
             <section className="mt-14 pt-10 border-t border-foreground/8">
-              <h2 className="text-2xl sm:text-[28px] font-bold text-foreground mb-6 tracking-tight">
+              <h2 className="mb-5 text-[19px] font-semibold tracking-tight text-foreground">
                 Frequently Asked Questions
               </h2>
               <div className="space-y-6">
@@ -855,7 +848,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
           {/* On this page — plain TOC */}
           {tocItems.length > 0 && (
             <aside className="no-scrollbar hidden lg:block w-56 flex-shrink-0 ml-auto sticky top-24 self-start max-h-[calc(100vh-8rem)] overflow-y-auto">
-              <p className="label-mono text-[11px] text-muted-foreground mb-3">
+              <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
                 On this page
               </p>
               <nav className="flex flex-col">
@@ -889,7 +882,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
         {relatedPosts.length > 0 && (
           <div className="mt-16 max-w-2xl">
             <div className="flex items-center gap-3 mb-6">
-              <p className="label-mono text-[11px] text-muted-foreground whitespace-nowrap">
+              <p className="whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
                 Similar Topics
               </p>
               <div className="h-px flex-1 bg-foreground/8" />
@@ -902,14 +895,14 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                   className="group cursor-pointer border border-foreground/10 hover:-translate-y-1 transition-transform duration-200 flex flex-col"
                 >
                   <div className="px-4 py-4 flex flex-col flex-1 gap-2.5">
-                    <span className="label-mono self-start px-2 py-0.5 bg-foreground/5 text-[9px] text-foreground/45">
+                    <span className="self-start rounded-md bg-secondary px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-muted-foreground">
                       {related.category === 'ai' ? 'AI' : related.category.charAt(0).toUpperCase() + related.category.slice(1)}
                     </span>
                     <h3 className="font-bold text-foreground text-[14px] leading-snug line-clamp-2 group-hover:opacity-75 transition-opacity duration-200">
                       {related.title}
                     </h3>
                     <div className="flex items-center justify-between mt-auto pt-2 border-t border-foreground/6">
-                      <div className="label-mono flex items-center gap-1.5 text-[10px] text-foreground/30">
+                      <div className="flex items-center gap-1.5 font-mono text-[10px] text-muted-foreground">
                         <Clock className="w-3 h-3" />
                         <span>{related.readTime}</span>
                         <span className="w-1 h-1 rounded-full bg-foreground/15" />
@@ -953,6 +946,8 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
       )}
 
       {/* Back to Top */}
+      <SiteFooter width={760} />
+
       <button
         onClick={scrollToTop}
         className={`fixed bottom-8 right-6 z-50 group transition-all duration-500 hover:scale-105 active:scale-95 ${
