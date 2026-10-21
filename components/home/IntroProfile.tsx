@@ -6,6 +6,7 @@ import { Avatar } from "@/components/home/Avatar";
 import { TextFlip } from "@/components/home/TextFlip";
 import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
 import { profile } from "@/data/profile";
+import { ease } from "@/lib/motion";
 
 /**
  * Hello in the languages that are actually around him — Marathi and
@@ -45,6 +46,99 @@ const ROLE = { ...DETAIL, delay: DETAIL.delay + 0.06 } as const;
 
 const AVATAR_ID = "home-profile-avatar";
 const NAME_ID = "home-profile-name";
+const CELEBRATION_DURATION = 2.8;
+const CELEBRATION_CLEANUP_MS = 3050;
+
+const CONFETTI_PARTICLES = [
+  { x: "-50vw", y: "-48vh", rotate: -120, color: "#A5B4FC", delay: 0.02, size: 11 },
+  { x: "-42vw", y: "-52vh", rotate: 84, color: "#FBD509", delay: 0.04, size: 13 },
+  { x: "-32vw", y: "-38vh", rotate: 142, color: "#52CD86", delay: 0.01, size: 9 },
+  { x: "-22vw", y: "-56vh", rotate: -72, color: "#F767C1", delay: 0.06, size: 12 },
+  { x: "-10vw", y: "-44vh", rotate: 112, color: "#A5B4FC", delay: 0.03, size: 10 },
+  { x: "2vw", y: "-54vh", rotate: -45, color: "#52CD86", delay: 0.08, size: 13 },
+  { x: "16vw", y: "-42vh", rotate: 96, color: "#FBD509", delay: 0.02, size: 9 },
+  { x: "30vw", y: "-56vh", rotate: -130, color: "#F767C1", delay: 0.05, size: 12 },
+  { x: "44vw", y: "-38vh", rotate: 64, color: "#52CD86", delay: 0.09, size: 10 },
+  { x: "52vw", y: "-14vh", rotate: -88, color: "#F767C1", delay: 0.03, size: 13 },
+  { x: "-56vw", y: "-16vh", rotate: 126, color: "#A5B4FC", delay: 0.06, size: 9 },
+  { x: "-48vw", y: "4vh", rotate: -52, color: "#FBD509", delay: 0.01, size: 12 },
+  { x: "-58vw", y: "24vh", rotate: 70, color: "#52CD86", delay: 0.07, size: 10 },
+  { x: "-46vw", y: "42vh", rotate: -116, color: "#A5B4FC", delay: 0.04, size: 13 },
+  { x: "-30vw", y: "54vh", rotate: 54, color: "#FBD509", delay: 0.09, size: 9 },
+  { x: "-14vw", y: "46vh", rotate: -76, color: "#F767C1", delay: 0.05, size: 12 },
+  { x: "2vw", y: "58vh", rotate: 108, color: "#FBD509", delay: 0.08, size: 10 },
+  { x: "18vw", y: "48vh", rotate: -102, color: "#52CD86", delay: 0.03, size: 13 },
+  { x: "34vw", y: "56vh", rotate: 72, color: "#F767C1", delay: 0.07, size: 10 },
+  { x: "48vw", y: "40vh", rotate: -64, color: "#A5B4FC", delay: 0.02, size: 12 },
+  { x: "58vw", y: "18vh", rotate: 118, color: "#52CD86", delay: 0.1, size: 9 },
+  { x: "50vw", y: "-4vh", rotate: -136, color: "#FBD509", delay: 0.05, size: 11 },
+  { x: "-36vw", y: "-22vh", rotate: 66, color: "#52CD86", delay: 0.04, size: 8 },
+  { x: "-18vw", y: "-12vh", rotate: -148, color: "#F767C1", delay: 0.08, size: 9 },
+  { x: "18vw", y: "-18vh", rotate: 44, color: "#A5B4FC", delay: 0.06, size: 8 },
+  { x: "36vw", y: "-10vh", rotate: -92, color: "#FBD509", delay: 0.03, size: 10 },
+  { x: "-38vw", y: "18vh", rotate: 124, color: "#FBD509", delay: 0.05, size: 9 },
+  { x: "-20vw", y: "30vh", rotate: -58, color: "#52CD86", delay: 0.09, size: 8 },
+  { x: "22vw", y: "28vh", rotate: 104, color: "#F767C1", delay: 0.04, size: 9 },
+  { x: "38vw", y: "20vh", rotate: -122, color: "#A5B4FC", delay: 0.08, size: 8 },
+] as const;
+
+function WelcomeCelebration() {
+  return (
+    <motion.div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-[3] overflow-hidden"
+      initial={{ opacity: 1 }}
+      animate={{ opacity: [1, 1, 0] }}
+      transition={{ duration: CELEBRATION_DURATION, times: [0, 0.68, 1], ease: ease.inOut }}
+    >
+      <motion.div
+        className="absolute inset-0 bg-white/10 dark:bg-white/5"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 0.3, 0] }}
+        transition={{ duration: 0.46, times: [0, 0.18, 1], ease: ease.inOut }}
+      />
+
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle at center, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.12) 22%, transparent 68%)",
+        }}
+        initial={{ opacity: 0, scale: 0.35 }}
+        animate={{ opacity: [0, 0.9, 0.35, 0], scale: [0.35, 1, 1.18, 1.32] }}
+        transition={{ duration: CELEBRATION_DURATION, times: [0, 0.14, 0.42, 1], ease: ease.out }}
+      />
+
+      <div className="absolute left-1/2 top-1/2">
+        {CONFETTI_PARTICLES.map((particle, index) => (
+          <motion.span
+            key={index}
+            className="absolute left-0 top-0 block rounded-[2px]"
+            style={{
+              width: particle.size,
+              height: particle.size * 1.7,
+              backgroundColor: particle.color,
+            }}
+            initial={{ x: 0, y: 0, scale: 0, rotate: 0, opacity: 0 }}
+            animate={{
+              x: particle.x,
+              y: particle.y,
+              scale: [0, 1.12, 1.08, 0.86],
+              rotate: particle.rotate,
+              opacity: [0, 1, 1, 0],
+            }}
+            transition={{
+              duration: 2.45,
+              times: [0, 0.16, 0.75, 1],
+              delay: particle.delay,
+              ease: ease.inOut,
+            }}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+}
 
 export type IntroMode = "pending" | "play" | "skip";
 type Phase = "greetings" | "identity" | "profile";
@@ -114,6 +208,7 @@ export function IntroProfile({ mode }: { mode: IntroMode }) {
   const reduced = useReducedMotion();
   const [phase, setPhase] = useState<Phase>("greetings");
   const [greeting, setGreeting] = useState(0);
+  const [celebration, setCelebration] = useState(false);
   const [done, setDone] = useState(false);
 
   const playing = mode === "play" && !reduced;
@@ -130,6 +225,8 @@ export function IntroProfile({ mode }: { mode: IntroMode }) {
 
     const identityAt = GREETINGS.length * GREETING_MS;
     timers.push(
+      window.setTimeout(() => setCelebration(true), 2 * GREETING_MS),
+      window.setTimeout(() => setCelebration(false), 2 * GREETING_MS + CELEBRATION_CLEANUP_MS),
       window.setTimeout(() => setPhase("identity"), identityAt),
       window.setTimeout(() => setPhase("profile"), identityAt + IDENTITY_HOLD_MS)
     );
@@ -175,6 +272,8 @@ export function IntroProfile({ mode }: { mode: IntroMode }) {
             <span>{GREETINGS[greeting].text}</span>
           </p>
         )}
+
+        {playing && celebration && <WelcomeCelebration />}
 
         {playing && visible === "identity" && (
           <div

@@ -2,6 +2,7 @@ import { Nav } from "@/components/home/Nav";
 import { Shell, Section } from "@/components/home/Shell";
 import { IntroSection } from "@/components/home/IntroSection";
 import { IntroCard } from "@/components/home/IntroCard";
+import { ScrollWordReveal } from "@/components/home/ScrollWordReveal";
 import { Currently } from "@/components/home/Currently";
 import { Walker } from "@/components/home/Walker";
 import { ListRow, RowList } from "@/components/home/ListRow";
@@ -42,16 +43,7 @@ export default function Index() {
 
       <Shell>
         <IntroSection>
-          <div className="space-y-3.5">
-            {profile.homeIntro.map((para) => (
-              <p
-                key={para.slice(0, 32)}
-                className="text-[15px] leading-relaxed text-muted-foreground"
-              >
-                {para}
-              </p>
-            ))}
-          </div>
+          <ScrollWordReveal paragraphs={profile.homeIntro} />
 
           <Currently />
 

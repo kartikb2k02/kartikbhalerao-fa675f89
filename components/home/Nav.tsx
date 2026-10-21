@@ -6,6 +6,7 @@ import { Linkedin } from "lucide-react";
 import { IconButton } from "@/components/home/IconButton";
 import { SoundToggle } from "@/components/home/SoundToggle";
 import { ThemeToggle } from "@/components/home/ThemeToggle";
+import { RollingText } from "@/components/home/RollingText";
 import { profile } from "@/data/profile";
 
 const NAV = [
@@ -54,7 +55,7 @@ export function Nav({ width = 640 }: { width?: number }) {
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
-                  {item.label}
+                  <RollingText text={item.label} />
                 </Link>
               </li>
             );
