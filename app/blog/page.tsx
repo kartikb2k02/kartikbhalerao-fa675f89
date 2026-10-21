@@ -30,7 +30,7 @@ export default function Blog() {
     <>
       <Nav />
 
-      <Shell>
+      <Shell className="page-entrance">
         <Section label="writing">
           <p className="text-[14px] leading-snug text-muted-foreground">
             {posts.filter((p) => !p.comingSoon).length} published.

@@ -510,6 +510,26 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  /* Interior pages enter as a quiet sequence of sections. The content stays
+     exactly where it belongs; only opacity and a compositor-friendly rise
+     change on the first paint. */
+  .page-entrance > section {
+    animation: page-section-in 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .page-entrance > section:nth-child(1) { animation-delay: 60ms; }
+  .page-entrance > section:nth-child(2) { animation-delay: 120ms; }
+  .page-entrance > section:nth-child(3) { animation-delay: 180ms; }
+  .page-entrance > section:nth-child(4) { animation-delay: 240ms; }
+  .page-entrance > section:nth-child(5) { animation-delay: 300ms; }
+  .page-entrance > section:nth-child(6) { animation-delay: 360ms; }
+  .page-entrance > section:nth-child(7) { animation-delay: 420ms; }
+
+  @keyframes page-section-in {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   /* ── Scroll reveal (driven by IntersectionObserver) ────────── */
   .reveal {
     opacity: 0;
@@ -525,7 +545,8 @@
 
   @media (prefers-reduced-motion: reduce) {
     .mega-line > span,
-    .fade-up {
+    .fade-up,
+    .page-entrance > section {
       animation: none !important;
     }
     .reveal {
@@ -1157,60 +1178,65 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   WALK CYCLE
+   ROAMING DOG
 
-   A side-view character built from filled capsules. Limbs are <g>
-   elements rotated about their joint, so the whole figure is four
-   rotations and a bob rather than a sprite sheet or a Lottie.
-
-   The phase relationships are what sell it: an arm swings opposite
-   its own side's leg, and the body bobs at twice the stride rate,
-   rising as each leg passes under the hip. Get either wrong and it
-   reads as a puppet rather than a person.
+   A tiny side-view dog with a two-beat trot. The body bob, alternating
+   legs, and a loose tail keep it playful while the actual travel stays
+   on the Motion timeline in the component.
    ═══════════════════════════════════════════════════════════ */
 @layer utilities {
 
-  /* Two stride beats per cycle, so the rise lands on each passing leg. */
-  @keyframes walk-bob {
+  @keyframes dog-bob {
     0%, 50%, 100% { transform: translateY(0); }
     25%, 75%      { transform: translateY(-1.5px); }
   }
 
-  @keyframes limb-forward {
-    0%   { transform: rotate(28deg); }
-    50%  { transform: rotate(-28deg); }
-    100% { transform: rotate(28deg); }
+  @keyframes dog-step-a {
+    0%, 100% { transform: rotate(18deg); }
+    50%      { transform: rotate(-20deg); }
   }
 
-  @keyframes limb-back {
-    0%   { transform: rotate(-28deg); }
-    50%  { transform: rotate(28deg); }
-    100% { transform: rotate(-28deg); }
+  @keyframes dog-step-b {
+    0%, 100% { transform: rotate(-20deg); }
+    50%      { transform: rotate(18deg); }
   }
 
-  /* Arms swing shorter than legs; a full throw looks like a march. */
-  @keyframes arm-forward {
-    0%   { transform: rotate(-20deg); }
-    50%  { transform: rotate(20deg); }
-    100% { transform: rotate(-20deg); }
+  @keyframes dog-tail {
+    0%, 100% { transform: rotate(-8deg); }
+    50%      { transform: rotate(20deg); }
   }
 
-  @keyframes arm-back {
-    0%   { transform: rotate(20deg); }
-    50%  { transform: rotate(-20deg); }
-    100% { transform: rotate(20deg); }
+  .dog-bob   { animation: dog-bob 0.62s ease-in-out infinite; }
+  .dog-leg-a { animation: dog-step-a 0.62s ease-in-out infinite; }
+  .dog-leg-b { animation: dog-step-b 0.62s ease-in-out infinite; }
+  .dog-tail { animation: dog-tail 0.62s ease-in-out infinite; transform-box: fill-box; transform-origin: 17px 25px; }
+
+  .dog-message { transform: translateX(-50%) translateY(3px); }
+  .dog-message::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    width: 8px;
+    height: 8px;
+    background: hsl(var(--foreground));
+    transform: translateX(-50%) rotate(45deg);
   }
 
-  .walker-bob   { animation: walk-bob 0.62s ease-in-out infinite; }
-  .walker-leg-a { animation: limb-forward 0.62s ease-in-out infinite; }
-  .walker-leg-b { animation: limb-back 0.62s ease-in-out infinite; }
-  .walker-arm-a { animation: arm-back 0.62s ease-in-out infinite; }
-  .walker-arm-b { animation: arm-forward 0.62s ease-in-out infinite; }
+  .dog-hover-target {
+    transition: transform 180ms ease;
+    will-change: transform;
+  }
+  .dog-hover-target:hover,
+  .dog-hover-target:focus-visible { transform: scale(1.08); }
+
+  .dog-hover-target:hover .dog-message,
+  .dog-hover-target:focus-visible .dog-message { transform: translateX(-50%) translateY(0); }
 
   /* Someone who asked for less motion should not get a figure pacing
      their screen. The whole thing goes rather than freezing mid-stride. */
   @media (prefers-reduced-motion: reduce) {
-    .walker-track { display: none; }
+    .dog-track { display: none; }
   }
 }
 

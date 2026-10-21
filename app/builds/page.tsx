@@ -28,7 +28,7 @@ export default function Builds() {
     <>
       <Nav />
 
-      <Shell>
+      <Shell className="page-entrance">
         <Section label="builds">
           <BuildsView builds={builds} />
         </Section>

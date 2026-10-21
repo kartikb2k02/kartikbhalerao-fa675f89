@@ -5,8 +5,8 @@ import type { ReactNode } from "react";
  * and bottom. Sections handle their own horizontal padding, so nothing
  * here does, and a full-bleed child can reach the column edge.
  */
-export function Shell({ children }: { children: ReactNode }) {
-  return <main className="mx-auto w-full max-w-[640px] py-14">{children}</main>;
+export function Shell({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return <main className={`mx-auto w-full max-w-[640px] py-14 ${className}`}>{children}</main>;
 }
 
 /**
