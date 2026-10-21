@@ -4,9 +4,6 @@ import { blogPosts } from "@/data/blogPosts";
 import { DESKS } from "@/data/buildMeta";
 
 const PAGES = [
-  { label: "Builds", href: "/builds" },
-  { label: "Writing", href: "/blog" },
-  { label: "About", href: "/about" },
   { label: "Certifications", href: "/certifications" },
   { label: "Contact", href: "/contact" },
 ];

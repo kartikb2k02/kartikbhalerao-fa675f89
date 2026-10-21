@@ -1,15 +1,8 @@
-import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "@/data/profile";
 
-const LINKS = [
-  { label: "builds", href: "/builds" },
-  { label: "writings", href: "/blog" },
-  { label: "about", href: "/about" },
-];
-
 /**
- * Copyright, the same routes as the nav, and the off-site links.
+ * Copyright and the off-site links.
  */
 export function SiteFooter({ width = 640 }: { width?: number }) {
   return (
@@ -19,15 +12,6 @@ export function SiteFooter({ width = 640 }: { width?: number }) {
           <p className="text-[13px] text-muted-foreground">
             © {new Date().getFullYear()} {profile.name}
           </p>
-          {LINKS.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="text-[13px] text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {l.label}
-            </Link>
-          ))}
         </div>
 
         <div className="flex items-center gap-1">

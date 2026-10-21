@@ -356,6 +356,36 @@
     display: none;
   }
 
+  /* ── Custom crosshair cursor ──────────────────────────────── */
+  @media (hover: hover) and (pointer: fine) {
+    html.custom-cursor-active body,
+    html.custom-cursor-active a,
+    html.custom-cursor-active button,
+    html.custom-cursor-active summary,
+    html.custom-cursor-active [role="button"] { cursor: none; }
+    html.custom-cursor-active input,
+    html.custom-cursor-active textarea,
+    html.custom-cursor-active select { cursor: text; }
+  }
+
+  .custom-cursor-orbit {
+    width: 38px;
+    height: 38px;
+    border: 1px solid hsl(var(--primary) / 0.6);
+    border-radius: 999px;
+    will-change: transform;
+  }
+
+  .custom-cursor-dot {
+    width: 10px;
+    height: 10px;
+    border: 2px solid hsl(var(--background));
+    border-radius: 999px;
+    background: hsl(var(--primary));
+    box-shadow: 0 0 0 1px hsl(var(--primary));
+    will-change: transform;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .animate-rise,
     .animate-sheet-in,

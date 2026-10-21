@@ -11,6 +11,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { AskProvider } from "@/components/AskConsole";
 import { SoundProvider } from "@/components/home/SoundProvider";
 import { HoverSound } from "@/components/home/HoverSound";
+import { CustomCursor } from "@/components/home/CustomCursor";
+import { PageCurtains } from "@/components/home/PageCurtains";
 
 function ErrorFallback({ error }: { error: Error }) {
   return (
@@ -63,6 +65,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
           <MotionConfig reducedMotion="user">
             <SoundProvider>
               <HoverSound />
+              <CustomCursor />
+              <PageCurtains />
               <TooltipProvider delayDuration={200}>
                 <Toaster />
                 <Sonner />
