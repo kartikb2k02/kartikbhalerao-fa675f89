@@ -194,7 +194,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                   // Skip duplicate title already shown on banner
                   if (extractText(children as React.ReactNode).trim() === post.title.trim()) return null;
                   return (
-                    <h1 className="mb-4 mt-10 text-[22px] font-semibold leading-snug tracking-tight text-foreground first:mt-0">
+                    <h1 className="mb-4 mt-10 text-[32px] font-bold leading-[36px] tracking-tight text-[var(--type-ink)] first:mt-0">
                       {children}
                     </h1>
                   );
@@ -202,7 +202,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                 h2: ({ children }) => {
                   const id = slugify(extractText(children as React.ReactNode));
                   return (
-                    <h2 id={id} className="mb-3 mt-12 scroll-mt-28 text-[19px] font-semibold leading-snug tracking-tight text-foreground">
+                    <h2 id={id} className="mb-3 mt-12 scroll-mt-28 text-[31px] font-bold leading-[36px] tracking-tight text-[var(--type-ink)]">
                       {children}
                     </h2>
                   );
@@ -367,7 +367,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                       </div>
                     );
                   }
-                  return <p className="text-[16px] text-foreground/75 leading-[1.85] mb-5">{children}</p>;
+                  return <p className="text-[19px] font-normal text-[var(--type-ink)] leading-[30.4px] mb-5">{children}</p>;
                 },
                 ul: ({ children }) => (
                   <ul className="my-5 space-y-2.5 ml-1">
@@ -381,11 +381,11 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
                 ),
                 li: ({ children, ordered }: any) => (
                   ordered ? (
-                    <li className="text-[15px] text-foreground/75 leading-relaxed pl-1">
+                    <li className="text-[19px] font-normal text-[var(--type-ink)] leading-[30.4px] pl-1">
                       {children}
                     </li>
                   ) : (
-                    <li className="flex items-start gap-3 text-[15px] text-foreground/75 leading-relaxed">
+                    <li className="flex items-start gap-3 text-[19px] font-normal text-[var(--type-ink)] leading-[30.4px]">
                       <span className="mt-2 w-1.5 h-1.5 rounded-full bg-foreground flex-shrink-0" />
                       <span>{children}</span>
                     </li>
@@ -578,8 +578,8 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
 
                   // ── Default — pull quote style ────────────────────────────────
                   return (
-                    <blockquote className="my-8 pl-6 border-l-[3px] border-foreground">
-                      <div className="text-lg sm:text-xl text-foreground/80 italic leading-relaxed font-medium [&_p]:mb-0">
+                    <blockquote className="my-8 pl-6 border-l-[3px] border-foreground text-[19px] font-normal text-[var(--type-ink)] leading-[30.4px]">
+                      <div className="text-[19px] text-[var(--type-ink)] italic leading-[30.4px] font-normal [&_p]:mb-0">
                         {children}
                       </div>
                     </blockquote>
@@ -776,21 +776,18 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
           All posts
         </button>
 
-        {/* Article body — Aspekta to match reference typography; hero banner above is untouched */}
-        <div style={{ fontFamily: "'Aspekta Variable Variable', Aspekta, ui-sans-serif, system-ui, sans-serif" }}>
+        {/* Article body — newsletter typography; hero banner above is untouched */}
+        <div className="blog-post-article">
 
         {/* Title block */}
         <div className="mb-8 px-1">
           <span className="mb-5 inline-flex items-center rounded-md border border-border px-2 py-0.5 text-[12px] text-muted-foreground">
             {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }).toUpperCase()}
           </span>
-          {/* Aspekta was named here but never loaded, so this was
-              falling back to the body face at weight 1000 anyway. Set in
-              the site's own scale instead of a font that does not exist. */}
-          <h1 className="mb-4 text-[clamp(1.5rem,2.6vw,1.875rem)] font-semibold leading-snug tracking-[-0.025em] text-foreground">
+          <h1 className="post-title mb-4 tracking-[-0.025em]">
             {post.title}
           </h1>
-          <p className="text-base sm:text-lg text-foreground/75 leading-relaxed mb-5">
+          <p className="post-subtitle mb-5">
             {post.excerpt}
           </p>
           {post.tags && post.tags.length > 0 && (
@@ -814,7 +811,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
         <div className="flex gap-10 items-start">
           <div className="flex-1 min-w-0 max-w-2xl">
             {/* Post Content */}
-            <div className="mb-6" ref={contentRef}>
+            <div className="post-body mb-6" ref={contentRef}>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}

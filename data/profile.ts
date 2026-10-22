@@ -150,7 +150,19 @@ export const roles: Role[] = [
       "Onboarding and activation are product problems: users need to reach value quickly and understand what to do next.",
       "Post-launch optimisation is essential. Shipping a module is a milestone, not proof that the module is successful.",
     ],
-    tools: ["Product strategy", "Roadmapping", "AI workflows", "GTM", "Analytics"],
+    tools: [
+      "Jira",
+      "Confluence",
+      "Notion",
+      "Asana",
+      "Figma",
+      "Claude",
+      "Langfuse",
+      "LangChain",
+      "OpenAI",
+      "n8n",
+      "Slack",
+    ],
   },
   {
     slug: "ocius",
@@ -187,7 +199,7 @@ export const roles: Role[] = [
     lessons: [
       "Retention work is often a sequence of small, specific improvements — not one large feature. Customer feedback can identify the friction, but the team still needs to validate the root cause, choose the right intervention, and check whether behaviour changes after release.",
     ],
-    tools: ["Discovery", "User research", "UX experiments", "QA"],
+    tools: ["Jira", "Confluence", "Notion", "Asana", "Figma", "Typeform"],
   },
 ];
 

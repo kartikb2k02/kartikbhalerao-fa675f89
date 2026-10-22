@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, Globe, Linkedin } from "lucide-react";
 import { Nav } from "@/components/home/Nav";
 import { Shell } from "@/components/home/Shell";
-import { TechStack } from "@/components/home/TechStack";
+import { ExperienceTools } from "@/components/home/ExperienceTools";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { roles } from "@/data/profile";
 import { pageMetadata } from "@/lib/seo";
@@ -149,7 +149,7 @@ export default async function RoleDetail({
 
           <section className="space-y-3">
             <h2 className="text-[15px] font-medium text-foreground">Worked with</h2>
-            <TechStack items={role.tools} />
+            <ExperienceTools items={role.tools} />
           </section>
 
           <div className="pt-2">

@@ -1,6 +1,6 @@
-/* Instrument Serif carries the italic section labels. Geist and Geist Mono
-   are self-hosted by `next/font` from the `geist` package. */
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
+/* Instrument Serif carries the italic section labels. Geist Mono is
+   self-hosted by `next/font` from the `geist` package for metadata labels. */
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Spectral:wght@400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -60,12 +60,15 @@
 
     --radius: 0.75rem;
 
-    --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui,
-      -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-sans: "SF Pro Display", -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
       Monaco, Consolas, monospace;
-    --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
-    --font-display: var(--font-sans);
+    --font-serif: "Spectral", ui-serif, Georgia, serif;
+    --font-display: "SF Pro Display", -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --type-ink: #363737;
+    --type-muted: #777777;
 
     --shadow-2xs: 0 1px 2px 0 hsl(0 0% 0% / 0.04);
     --shadow-xs: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
@@ -125,6 +128,9 @@
     --sidebar-border: 0 0% 15%;
     --sidebar-ring: 0 0% 70%;
 
+    --type-ink: #eeeeee;
+    --type-muted: #b5b5b5;
+
     --shadow-2xs: 0 1px 2px 0 hsl(0 0% 0% / 0.3);
     --shadow-xs: 0 1px 2px 0 hsl(0 0% 0% / 0.35);
     --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.4), 0 1px 3px -1px hsl(0 0% 0% / 0.4);
@@ -145,7 +151,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-sans);
+    font-family: var(--font-display);
     font-feature-settings: "ss01" 1, "cv01" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-osx-font-smoothing: grayscale;
@@ -159,6 +165,77 @@
   :focus-visible {
     outline: 2px solid hsl(var(--primary));
     outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Newsletter/article type scale */
+  .newsletter-name {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    color: var(--type-ink);
+  }
+
+  /* Fixed viewport grid inspired by the reference homepage background. */
+  .home-grid-background {
+    background-image:
+      linear-gradient(to right, rgb(0 0 0 / 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(0 0 0 / 0.04) 1px, transparent 1px);
+    background-size: 70px 70px;
+    opacity: 0.8;
+  }
+
+  .dark .home-grid-background {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+  }
+
+  .blog-post-article {
+    color: var(--type-ink);
+  }
+
+  .blog-post-article .post-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 36px;
+    color: var(--type-ink);
+  }
+
+  .blog-post-article .post-subtitle {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--type-muted);
+  }
+
+  .blog-post-article .post-body,
+  .blog-post-article .post-body li,
+  .blog-post-article .post-body blockquote {
+    font-family: var(--font-serif);
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 30.4px;
+    color: var(--type-ink);
+  }
+
+  .blog-post-article .post-body h1,
+  .blog-post-article .post-body h2,
+  .blog-post-article .post-body h3,
+  .blog-post-article .post-body h4 {
+    font-family: var(--font-display);
+  }
+
+  .blog-post-article .post-body h2 {
+    font-family: var(--font-display);
+    font-size: 31px;
+    font-weight: 700;
+    line-height: 36px;
+    color: var(--type-ink);
   }
 }
 

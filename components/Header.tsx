@@ -33,7 +33,7 @@ export const Header = ({ scrollProgress }: HeaderProps) => {
         {/* Name */}
         <Link
           href="/"
-          className="heading-display text-[17px] text-foreground hover:text-primary transition-colors duration-200 shrink-0"
+          className="newsletter-name hover:text-primary transition-colors duration-200 shrink-0"
         >
           Kartik Bhalerao<span className="text-primary">.</span>
         </Link>

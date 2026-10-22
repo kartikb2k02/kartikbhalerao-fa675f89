@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
@@ -68,12 +67,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     /* `suppressHydrationWarning` because next-themes writes the theme
        class onto <html> before React hydrates, which would otherwise be
-       reported as a mismatch. Geist is wired here rather than imported in
-       CSS: next/font self-hosts it, so there is no blocking font request. */
+       reported as a mismatch. Geist Mono remains wired here for metadata
+       labels; the page typography is defined in the global type system. */
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      className={GeistMono.variable}
     >
       <head>
         <script
