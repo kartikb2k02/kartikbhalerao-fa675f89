@@ -1,5 +1,6 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "@/data/profile";
+import { AskAI } from "@/components/home/AskAI";
 
 /**
  * Copyright and the off-site links.
@@ -7,7 +8,11 @@ import { profile } from "@/data/profile";
 export function SiteFooter({ width = 640 }: { width?: number }) {
   return (
     <footer className="mx-auto w-full px-4 pb-12" style={{ maxWidth: width }}>
-      <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6">
+      <div className="border-t border-border pt-6">
+        <AskAI />
+      </div>
+
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           <p className="text-[13px] text-muted-foreground">
             © {new Date().getFullYear()} {profile.name}

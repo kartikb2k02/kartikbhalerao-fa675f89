@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowUp, ExternalLink, ZoomIn } from "lucide-react";
+import { ArrowLeft, ArrowUp, ZoomIn } from "lucide-react";
 import { Nav } from "@/components/home/Nav";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { ImageLightbox } from "@/components/ImageLightbox";
@@ -277,22 +277,6 @@ export function NeoHealthDetail({ caseStudy }: { caseStudy: CaseStudy }) {
               ))}
             </div>
           </section>
-
-          <div className="mb-16 flex flex-wrap items-center justify-between gap-4 border-b border-border pb-8">
-            <div>
-              <p className="label-mono mb-2 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">Discipline</p>
-              <p className="text-[14px] text-foreground/75">{caseStudy.tools.join(" · ")}</p>
-            </div>
-            <a
-              href={caseStudy.externalLink}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 text-[14px] text-foreground underline decoration-foreground/25 underline-offset-4 transition-colors hover:decoration-foreground"
-            >
-              View reference source
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
-          </div>
 
           <ImageLightbox
             images={caseStudy.gallery}

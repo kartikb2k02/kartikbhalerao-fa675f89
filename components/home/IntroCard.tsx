@@ -17,7 +17,7 @@ const SOCIALS = [
   {
     label: "X",
     href: profile.links.x,
-    className: "bg-[#111111] text-white hover:bg-[#2b2b2b] dark:bg-[#f5f5f5] dark:text-[#191919] dark:hover:bg-white",
+    className: "bg-[#111111] text-white hover:bg-[#2b2b2b] dark:bg-[#272727] dark:hover:bg-[#363636]",
     icon: X_ICON,
   },
 ];
@@ -25,6 +25,10 @@ const SOCIALS = [
 /**
  * The social-only CTA under the bio. The links use their brand colours
  * directly instead of sitting inside the translucent surface treatment.
+ *
+ * X is the exception: its mark is near-black, so on a dark background it
+ * takes the same neutral fill as the secondary reference button rather than
+ * inverting to white, which made it the single brightest thing on the page.
  */
 export function IntroCard() {
   return (

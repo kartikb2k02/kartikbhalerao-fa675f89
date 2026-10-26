@@ -203,10 +203,13 @@
     color: #fff;
   }
 
+  /* One hue per destination, set by the `.mark-*` class the active item
+     carries. Falls back to the signal green if an item ever ships without
+     one, so a new nav entry degrades rather than going invisible. */
   .reference-nav-link-active,
   .reference-nav-link-active:hover,
   .reference-nav-link-active:focus-visible {
-    color: hsl(var(--signal));
+    color: hsl(var(--mark-h, var(--signal-h, 142)) var(--mark-s, 62%) var(--mark-l, 36%));
   }
 
   @media (max-width: 560px) {
@@ -302,13 +305,6 @@
     pointer-events: none;
   }
 
-  .work-banner-view-button {
-    position: absolute;
-    right: 16px;
-    bottom: 16px;
-    pointer-events: none;
-  }
-
   .reference-button {
     display: inline-flex;
     align-items: center;
@@ -339,6 +335,13 @@
 
   .reference-button-secondary:hover {
     background: #363636;
+  }
+
+  /* Inline next to a title rather than standing alone under a section. */
+  .reference-button-sm {
+    height: 32px;
+    padding: 0 14px;
+    font-size: 13px;
   }
 
   .work-banner-card h3 {
@@ -1377,6 +1380,31 @@
     color: hsl(var(--brand));
   }
 
+  /* One button per group may take the colour at full strength, so a group
+     of equals becomes a primary and its alternatives. The icon flips to the
+     fill colour since it can no longer sit on top of it. */
+  .brand-btn-solid {
+    --brand-bg: hsl(var(--brand));
+    --brand-border: hsl(var(--brand));
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .brand-btn-solid:hover {
+    --brand-bg: hsl(var(--brand) / 0.86);
+    --brand-border: hsl(var(--brand) / 0.86);
+  }
+
+  .brand-btn-solid svg {
+    color: currentColor;
+  }
+
+  /* The dark-mode brand values are lifted for legibility as tints, which
+     makes them too bright to carry white ink as a solid. */
+  .dark .brand-btn-solid {
+    color: hsl(0 0% 8%);
+  }
+
   .brand-call  { --brand: 150 70% 32%; }  /* green  */
   .brand-mail  { --brand: 24 88% 45%; }   /* orange */
   .brand-in    { --brand: 207 90% 40%; }  /* #0A66C2 */
@@ -1425,10 +1453,19 @@
     color: #fff;
   }
 
-  .mark-home     { --mark: 42; }   /* amber   */
-  .mark-about    { --mark: 210; }  /* blue    */
-  .mark-builds   { --mark: 150; }  /* green   */
-  .mark-writings { --mark: 320; }  /* magenta */
+  /* Hues match the route curtains in `lib/routeTheme.ts`. The dark values
+     ARE those curtain colours; the light ones are the same hue taken down
+     until it clears 4.5:1 on white, which each hue reaches at a different
+     lightness — yellow and green need far more darkening than indigo. */
+  .mark-home     { --mark-h: 51;  --mark-s: 92%; --mark-l: 31%; }  /* #FBD509 */
+  .mark-about    { --mark-h: 229; --mark-s: 68%; --mark-l: 50%; }  /* #A5B4FC */
+  .mark-builds   { --mark-h: 144; --mark-s: 60%; --mark-l: 29%; }  /* #52CD86 */
+  .mark-writings { --mark-h: 320; --mark-s: 70%; --mark-l: 41%; }  /* #F767C1 */
+
+  .dark .mark-home     { --mark-s: 96%; --mark-l: 51%; }
+  .dark .mark-about    { --mark-s: 94%; --mark-l: 82%; }
+  .dark .mark-builds   { --mark-s: 56%; --mark-l: 56%; }
+  .dark .mark-writings { --mark-s: 88%; --mark-l: 69%; }
 }
 
 /* The greeting hues need more lightness on the dark ground than on

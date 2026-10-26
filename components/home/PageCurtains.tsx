@@ -4,24 +4,17 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, useReducedMotion } from "motion/react";
 import { ease } from "@/lib/motion";
+import { getRouteColor, getRouteWord } from "@/lib/routeTheme";
 
-const CURTAIN_DURATION = 0.62;
+const CURTAIN_DURATION = 0.58;
 const REVEAL_DELAY = 55;
-const BLIND_COUNT = 10;
-const BLIND_STAGGER = 0.035;
-const BLIND_COVER_DELAY =
-  (CURTAIN_DURATION + BLIND_STAGGER * (BLIND_COUNT - 1)) * 1000 + 45;
+/** Long enough for the word to land and be read before the slab leaves. */
+const HOLD = 0.16;
+const COVER_DELAY = (CURTAIN_DURATION + HOLD) * 1000 + 45;
 const CURTAIN_ROUTES = ["/about", "/builds", "/blog"];
 
 function isCurtainRoute(pathname: string) {
   return CURTAIN_ROUTES.includes(pathname);
-}
-
-function getCurtainColor(pathname: string) {
-  if (pathname.startsWith("/about")) return "#A5B4FC";
-  if (pathname.startsWith("/builds")) return "#52CD86";
-  if (pathname.startsWith("/blog")) return "#F767C1";
-  return "#FBD509";
 }
 
 function isDetailToLanding(from: string, to: string) {
@@ -35,6 +28,12 @@ function isDetailToLanding(from: string, to: string) {
  * Route curtains for the three primary interior landing pages. Targeted link
  * clicks are briefly held so the current page is covered before Next changes
  * the route; the new page then renders underneath the reveal.
+ *
+ * The slab sweeps up from below carrying the destination's name, holds a
+ * beat, then keeps travelling in the same direction and off the top — so the
+ * move reads as one continuous pass rather than a cover that backs out the
+ * way it came. The word rides a clipped mask, the site's `maskRise`, which
+ * is how display type arrives everywhere else here.
  */
 export function PageCurtains() {
   const pathname = usePathname();
@@ -76,7 +75,7 @@ export function PageCurtains() {
     timeoutRef.current = window.setTimeout(() => {
       setOpen(true);
       timeoutRef.current = null;
-    }, isAfterCoveredNavigation ? REVEAL_DELAY : BLIND_COVER_DELAY);
+    }, isAfterCoveredNavigation ? REVEAL_DELAY : COVER_DELAY);
 
     return () => {
       if (timeoutRef.current !== null) {
@@ -130,7 +129,7 @@ export function PageCurtains() {
       timeoutRef.current = window.setTimeout(() => {
         timeoutRef.current = null;
         router.push(`${destination.pathname}${destination.search}${destination.hash}`);
-      }, BLIND_COVER_DELAY);
+      }, COVER_DELAY);
     };
 
     document.addEventListener("click", onLinkClick, true);
@@ -139,37 +138,39 @@ export function PageCurtains() {
 
   if (!visible || reduced) return null;
 
-  const curtainColor = getCurtainColor(transitionPathname);
-  const panelTransition = {
-    duration: CURTAIN_DURATION,
-    ease: ease.inOut,
-  } as const;
+  const curtainColor = getRouteColor(transitionPathname);
+  const curtainWord = getRouteWord(transitionPathname);
 
   return (
     <div
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 z-[10001] overflow-hidden"
     >
-      {Array.from({ length: BLIND_COUNT }, (_, index) => (
-        <motion.div
-          key={index}
-          className="absolute inset-x-0"
-          style={{
-            top: `${(index * 100) / BLIND_COUNT}%`,
-            height: `${100 / BLIND_COUNT + 0.5}%`,
-            backgroundColor: curtainColor,
-            transformOrigin: "center center",
-          }}
-          initial={{ scaleY: 0 }}
-          animate={{ scaleY: open ? 0 : 1 }}
-          transition={{
-            ...panelTransition,
-            delay: open
-              ? (BLIND_COUNT - index - 1) * BLIND_STAGGER
-              : index * BLIND_STAGGER,
-          }}
-        />
-      ))}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center overflow-hidden"
+        style={{ backgroundColor: curtainColor }}
+        initial={{ y: "100%" }}
+        animate={{ y: open ? "-100%" : "0%" }}
+        transition={{ duration: CURTAIN_DURATION, ease: ease.inOut }}
+      >
+        {/* The mask is the parent's overflow; the word starts below its own
+            line box and rises into it, slightly behind the slab so it reads
+            as settling into place rather than being painted on. */}
+        <span className="block overflow-hidden px-6">
+          <motion.span
+            className="bomb-mega block whitespace-nowrap text-[#111111]"
+            initial={{ y: "110%" }}
+            animate={{ y: open ? "-110%" : "0%" }}
+            transition={{
+              duration: CURTAIN_DURATION,
+              ease: ease.inOut,
+              delay: open ? 0 : 0.08,
+            }}
+          >
+            {curtainWord}
+          </motion.span>
+        </span>
+      </motion.div>
     </div>
   );
 }

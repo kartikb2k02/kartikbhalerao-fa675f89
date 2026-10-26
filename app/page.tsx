@@ -14,7 +14,7 @@ import { caseStudies } from "@/data/caseStudies";
 import { shortNames, liveProducts } from "@/data/buildMeta";
 import { blogPosts } from "@/data/blogPosts";
 
-const FEATURED = ["neo-health", "monosend", "blinkit-analysis", "ether-prd"];
+const FEATURED = ["neo-health", "monosend", "blinkit-analysis", "chatly-prd"];
 
 const banners = FEATURED.map((id) => {
   const study = caseStudies.find((s) => s.id === id);

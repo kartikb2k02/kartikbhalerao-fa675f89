@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
 import { DESKS } from "@/data/buildMeta";
+import { AskAI } from "@/components/home/AskAI";
 
 const PAGES = [
   { label: "Certifications", href: "/certifications" },
@@ -114,7 +115,11 @@ export const FooterSection = () => {
           </Column>
         </div>
 
-        <div className="mt-14 flex flex-wrap items-baseline justify-between gap-4 border-t border-border pt-6">
+        <div className="mt-14 border-t border-border pt-6">
+          <AskAI />
+        </div>
+
+        <div className="mt-6 flex flex-wrap items-baseline justify-between gap-4">
           <p className="bomb-label text-[11px] text-muted-foreground">
             © {new Date().getFullYear()} Kartik Bhalerao
           </p>

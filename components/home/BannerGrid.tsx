@@ -100,11 +100,6 @@ function BannerCard({
           </svg>
         </>
       )}
-      {isWorkVariant && (
-        <span className="work-banner-view-button reference-button reference-button-secondary" aria-hidden="true">
-          View
-        </span>
-      )}
     </Link>
   );
 }
@@ -185,7 +180,22 @@ export function BannerGrid({
           )}
           {isWorkVariant && (b.title || b.description) && (
             <div className="mt-2.5 flex flex-col gap-2.5">
-              {b.title && <h3 className="text-[18px] font-medium leading-tight tracking-[-0.02em] text-foreground">{b.title}</h3>}
+              {/* The View control sits on the name line rather than floating
+                  over the artwork: on a video banner it covered the frame,
+                  and as an overlay it was decorative — here it is the real
+                  link, reachable by keyboard and readable out loud. */}
+              <div className="flex items-center justify-between gap-4">
+                {b.title && <h3 className="text-[18px] font-medium leading-tight tracking-[-0.02em] text-foreground">{b.title}</h3>}
+                <Link
+                  href={b.href}
+                  target={b.external ? "_blank" : undefined}
+                  rel={b.external ? "noopener noreferrer" : undefined}
+                  aria-label={`View ${b.name}`}
+                  className="reference-button reference-button-secondary reference-button-sm shrink-0"
+                >
+                  View
+                </Link>
+              </div>
               {b.description && <p className="text-[14px] leading-relaxed text-muted-foreground">{b.description}</p>}
             </div>
           )}

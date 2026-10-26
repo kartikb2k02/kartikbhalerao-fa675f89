@@ -19,6 +19,11 @@ const NAV = [
  * Plain text links left, controls right. The current route is indicated
  * by text colour only so the navigation stays quiet and lightweight.
  *
+ * That colour is the destination's own — the same one its route curtain
+ * paints on the way in — so the slab a reader just watched and the word
+ * now lit in the header are recognisably one thing. The `mark` class
+ * carries the hue; `.mark-*` in `globals.css` holds the per-theme values.
+ *
  * Contact is not here — the contact actions live in the intro card and
  * the footer, and a nav item for a page that is one button away was the
  * fifth thing competing for the same row.
@@ -45,7 +50,7 @@ export function Nav({ width = 640 }: { width?: number }) {
                 <Link
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`reference-nav-link ${active ? "reference-nav-link-active" : ""}`}
+                  className={`reference-nav-link ${active ? `reference-nav-link-active ${item.mark}` : ""}`}
                 >
                   {item.label}
                 </Link>

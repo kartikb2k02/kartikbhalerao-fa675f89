@@ -733,7 +733,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
 
   return (
     <>
-      <Nav width={760} />
+      <Nav width={1267} />
 
       {/* Reading progress pill */}
       <div
@@ -766,7 +766,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[760px] px-4 py-14">
+      <div className="mx-auto max-w-[1267px] px-4 py-14">
         {/* Back Button */}
         <button
           onClick={onBack}
@@ -943,7 +943,7 @@ export const BlogPostDetail = ({ post, content }: BlogPostDetailProps) => {
       )}
 
       {/* Back to Top */}
-      <SiteFooter width={760} />
+      <SiteFooter width={1267} />
 
       <button
         onClick={scrollToTop}

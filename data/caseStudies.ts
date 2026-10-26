@@ -265,12 +265,12 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "chatly-prd",
-    title: "Chatly PRD",
+    title: "Chatly",
     subtitle: "AI Conversation Operationalization Platform",
     tags: ["Product Strategy", "AI/ML", "SaaS", "PRD"],
     externalLink: "",
     bgGradient: "from-[#6366f1] to-[#8b5cf6]",
-    image: "/lovable-uploads/chatly-logo.webp",
+    image: "/lovable-uploads/chatly-banner.webp",
     overview:
       "Chatly automatically transforms AI conversations into structured execution pipelines, bridging the gap between AI-generated insights and real-world task execution. Pre-seed SaaS targeting Q2 2026 MVP Beta.",
     challenge:
@@ -303,7 +303,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "blinkit-analysis",
-    title: "Blinkit Product Analysis",
+    title: "Blinkit",
     subtitle: "Order Efficiency & Conversion Optimization",
     tags: ["Product Analysis", "E-commerce", "UX Research"],
     externalLink: "https://www.canva.com/design/DAGxiHLuc1A/cdCbIj30b6LODnEBr_bT-Q/view",
@@ -612,7 +612,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "ether-prd",
-    title: "Ether Feature PRD",
+    title: "Ether",
     subtitle: "Product Improvement",
     tags: ["Product Market Fit", "EdTech", "Web Design", "App Design"],
     externalLink: "https://www.canva.com/design/DAGw3QSmRIY/eIMrFE0YSiUhYc50vbS_vA/view",

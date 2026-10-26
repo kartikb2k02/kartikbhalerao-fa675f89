@@ -39,7 +39,7 @@ export const shortNames: Record<string, string> = {
   "pm-copilot": "PM Co-Pilot",
   "neo-health": "Neo Health",
   monosend: "Monosend",
-  "chatly-prd": "Chatly PRD",
+  "chatly-prd": "Chatly",
   "blinkit-analysis": "Blinkit",
   "google-pay-analysis": "Google Pay",
   "google-pay-prd": "Google Pay PRD",
