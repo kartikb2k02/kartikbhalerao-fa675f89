@@ -1,5 +1,6 @@
 import { Nav } from "@/components/home/Nav";
 import { Shell, Section } from "@/components/home/Shell";
+import { IntroSection } from "@/components/home/IntroSection";
 import { IntroCard } from "@/components/home/IntroCard";
 import { ScrollWordReveal } from "@/components/home/ScrollWordReveal";
 import { Currently } from "@/components/home/Currently";
@@ -52,7 +53,7 @@ export default function Index() {
         <Nav />
 
         <Shell>
-          <section className="space-y-4 px-4 py-6">
+          <IntroSection>
             <ScrollWordReveal paragraphs={profile.homeIntro} />
 
             <p className="text-[15px] leading-relaxed text-muted-foreground">
@@ -71,7 +72,7 @@ export default function Index() {
             <Currently />
 
             <IntroCard />
-          </section>
+          </IntroSection>
 
           <Section label="my product teardowns">
             <BannerGrid banners={banners} columns={1} variant="work-home" />
