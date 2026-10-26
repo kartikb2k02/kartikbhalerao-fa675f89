@@ -30,7 +30,9 @@ const banners = FEATURED.map((id) => {
         ? "/lovable-uploads/neo-health-banner.mp4"
         : id === "monosend"
           ? "/lovable-uploads/monosend-banner.mp4"
-          : undefined,
+          : id === "blinkit-analysis"
+            ? "/lovable-uploads/blinkit-home-banner.mp4"
+            : undefined,
     href: isLive ? study.externalLink : `/builds/${id}`,
     external: isLive,
   };
