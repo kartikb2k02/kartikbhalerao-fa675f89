@@ -58,8 +58,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
             its own media query. */}
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <MotionConfig reducedMotion="user">

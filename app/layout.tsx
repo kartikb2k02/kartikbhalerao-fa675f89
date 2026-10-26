@@ -72,7 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       suppressHydrationWarning
-      className={GeistMono.variable}
+      className={`${GeistMono.variable} dark`}
     >
       <head>
         <script

@@ -1,3 +1,5 @@
+import { NEO_HEALTH_GALLERY, NEO_HEALTH_HERO } from "@/data/neoHealth";
+
 export interface CaseStudy {
   id: string;
   title: string;
@@ -150,6 +152,116 @@ export const caseStudies: CaseStudy[] = [
       "Tailwind CSS",
     ],
     gallery: [],
+  },
+  {
+    id: "neo-health",
+    title: "Neo Health",
+    subtitle: "Modern healthcare for Africans and the diaspora",
+    tags: ["Healthcare", "Product Design", "Research", "Cross-Border Care"],
+    externalLink: "https://chiefpriest.design/work/neo-health",
+    bgGradient: "from-[#0f766e] to-[#0f172a]",
+    image: NEO_HEALTH_HERO,
+    overview:
+      "Neo Health is a holistic healthcare concept designed to help people living abroad coordinate care for family members at home. The product brings appointments, provider discovery, payments, records, fundraising, and care updates into one connected experience.",
+    challenge:
+      "Cross-border care often breaks into scattered messages, second-hand updates, disconnected clinic records, and difficult payment flows. The product needed to make remote coordination trustworthy while still feeling simple for patients, families, providers, and donors.",
+    solution:
+      "The concept combines care booking, a verified provider network, a moderated health community, shared medical records, pharmacy support, and CareFund fundraising into one ecosystem. Each surface is designed around visibility, trust, and a clear next step.",
+    outcome:
+      "A broad product direction that turns a fragmented healthcare journey into a coordinated service: family members can arrange care, track progress, share records, pay for treatment, and support urgent needs from wherever they live.",
+    keyFeatures: [
+      "Care booking for home visits, virtual consultations, appointments, and emergency transport",
+      "Verified provider profiles with ratings, reviews, availability, and direct communication",
+      "Anonymous community discussions with expert-verified responses and support groups",
+      "Portable health records with sharing permissions, medication tracking, and appointment history",
+      "Pharmacy workflows for prescriptions, delivery, tracking, and refill reminders",
+      "CareFund campaigns with medical verification, transparent disbursement, and progress updates",
+    ],
+    tools: [
+      "User interviews",
+      "Market analysis",
+      "Product strategy",
+      "Service design",
+      "UX/UI design",
+      "Healthcare workflow mapping",
+    ],
+    gallery: [...NEO_HEALTH_GALLERY],
+  },
+  {
+    id: "monosend",
+    title: "Monosend",
+    subtitle: "Cross-border transactions with fiat currency & stablecoins",
+    tags: ["Fintech", "Product Design", "Payments", "Stablecoins"],
+    externalLink: "https://chiefpriest.design/work/monosend",
+    bgGradient: "from-[#102a43] to-[#0b132b]",
+    image:
+      "https://framerusercontent.com/images/TntB04JHAqDIMGUr7SRy0ggoXHw.webp?width=2048&height=2048",
+    overview:
+      "A cross-border payment platform designed to bring fiat transfers, stablecoins, and everyday financial tools into one clear experience.",
+    challenge:
+      "Cross-border payments can be slow, expensive, and difficult to understand, while crypto interfaces often introduce extra complexity and uncertainty for everyday users.",
+    solution:
+      "A unified product direction covering fiat transfers, USDT payments, quick sends, a virtual card, real-time alerts, and spending analytics.",
+    outcome:
+      "A more approachable financial experience that connects traditional payment reliability with the flexibility of stablecoin transfers.",
+    keyFeatures: [
+      "Fiat transfers with clear fees and exchange rates",
+      "USDT support for lower-volatility crypto transfers",
+      "Quick Send for repeat transfers and tracking",
+      "Virtual card generation and controls",
+      "Real-time spending alerts and analytics",
+    ],
+    tools: ["Product strategy", "UX research", "UX/UI design", "Fintech workflows"],
+    gallery: [
+      {
+        src: "https://framerusercontent.com/images/TntB04JHAqDIMGUr7SRy0ggoXHw.webp?height=3248&width=3248",
+        caption: "Monosend product overview",
+      },
+      {
+        src: "https://framerusercontent.com/images/kIu3fSTljhcp4BpWtMU9Dqa9U.webp?height=2576&width=5096",
+        caption: "Cross-border payments experience",
+      },
+      {
+        src: "https://framerusercontent.com/images/2iEFZMnJwjbtMTfVfTbXeRKMow.png?height=5024&width=7748",
+        caption: "Product challenge and context",
+      },
+      {
+        src: "https://framerusercontent.com/images/QeGrUTIegoMN3rZF1AjujpBwg.png?height=5024&width=7748",
+        caption: "Research and user insights",
+      },
+      {
+        src: "https://framerusercontent.com/images/y2BEbHv6Kx09f0iumzB9js05nc.png?height=5024&width=7748",
+        caption: "Competitive landscape",
+      },
+      {
+        src: "https://framerusercontent.com/images/YqQ20gUYC2TuV0giBrQy8a4rM.png?height=5024&width=7748",
+        caption: "Transfer flow",
+      },
+      {
+        src: "https://framerusercontent.com/images/Sse2xZdYowlde7SEnSvya6m94eI.png?height=5024&width=7748",
+        caption: "Money transfer experience",
+      },
+      {
+        src: "https://framerusercontent.com/images/sjCPHcliSfplM3CRn7H7cvAM.png?height=5024&width=7748",
+        caption: "Virtual card experience",
+      },
+      {
+        src: "https://framerusercontent.com/images/RWyqOG5A7tAI0VxBBflO10mOgaE.png?height=1820&width=2850",
+        caption: "Monosend website UI",
+      },
+      {
+        src: "https://framerusercontent.com/images/9SqfnT4Oh7sb9bqkWKumjFymLj8.png?height=1824&width=2846",
+        caption: "Website interaction detail",
+      },
+      {
+        src: "https://framerusercontent.com/images/9yligHm4xvWvYZ6S4518YOuM8PA.png?height=1774&width=2834",
+        caption: "Website visual system",
+      },
+      {
+        src: "https://framerusercontent.com/images/kSHXvzD53hKPQa2fIDThvaVYpzU.png?height=1744&width=2864",
+        caption: "Website animation direction",
+      },
+    ],
   },
   {
     id: "chatly-prd",

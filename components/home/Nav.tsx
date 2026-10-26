@@ -6,7 +6,6 @@ import { Linkedin } from "lucide-react";
 import { IconButton } from "@/components/home/IconButton";
 import { SoundToggle } from "@/components/home/SoundToggle";
 import { ThemeToggle } from "@/components/home/ThemeToggle";
-import { RollingText } from "@/components/home/RollingText";
 import { profile } from "@/data/profile";
 
 const NAV = [
@@ -17,11 +16,8 @@ const NAV = [
 ];
 
 /**
- * Lowercase text links left, controls right. No bar and no rule — it
- * sits on the page ground. The current route sits in a tinted
- * rectangle, a different hue per destination, so where you are reads at
- * a glance instead of by comparing two greys — and the colour becomes a
- * second cue people learn without being told.
+ * Plain text links left, controls right. The current route is indicated
+ * by text colour only so the navigation stays quiet and lightweight.
  *
  * Contact is not here — the contact actions live in the intro card and
  * the footer, and a nav item for a page that is one button away was the
@@ -40,8 +36,8 @@ export function Nav({ width = 640 }: { width?: number }) {
       className="mx-auto flex w-full items-center justify-between gap-4 px-4 pt-10"
       style={{ maxWidth: width }}
     >
-      <nav aria-label="Primary">
-        <ul className="flex items-center gap-4">
+      <nav aria-label="Primary" className="min-w-0 flex-1">
+        <ul className="reference-nav-tabs">
           {NAV.map((item) => {
             const active = isActive(item.href);
             return (
@@ -49,13 +45,9 @@ export function Nav({ width = 640 }: { width?: number }) {
                 <Link
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`text-[14px] transition-colors ${
-                    active
-                      ? `nav-mark ${item.mark}`
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
+                  className={`reference-nav-link ${active ? "reference-nav-link-active" : ""}`}
                 >
-                  <RollingText text={item.label} />
+                  {item.label}
                 </Link>
               </li>
             );

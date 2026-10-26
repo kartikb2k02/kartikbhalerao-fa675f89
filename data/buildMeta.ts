@@ -16,6 +16,8 @@ export type Desk = (typeof DESKS)[number];
 export const desk: Record<string, Desk> = {
   figprd: "AI",
   "pm-copilot": "AI",
+  "neo-health": "Strategy",
+  monosend: "Fintech",
   "chatly-prd": "AI",
   "google-pay-analysis": "Fintech",
   "google-pay-prd": "Fintech",
@@ -35,6 +37,8 @@ export const shortNames: Record<string, string> = {
   figprd: "figprd",
   "tenzo-product-discovery": "Tenzo",
   "pm-copilot": "PM Co-Pilot",
+  "neo-health": "Neo Health",
+  monosend: "Monosend",
   "chatly-prd": "Chatly PRD",
   "blinkit-analysis": "Blinkit",
   "google-pay-analysis": "Google Pay",

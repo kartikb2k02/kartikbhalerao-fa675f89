@@ -1,6 +1,5 @@
-/* Instrument Serif carries the italic section labels. Geist Mono is
-   self-hosted by `next/font` from the `geist` package for metadata labels. */
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Spectral:wght@400;700&display=swap");
+/* Inter Display is the reference site's primary type voice. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -60,13 +59,11 @@
 
     --radius: 0.75rem;
 
-    --font-sans: "SF Pro Display", -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
       Monaco, Consolas, monospace;
-    --font-serif: "Spectral", ui-serif, Georgia, serif;
-    --font-display: "SF Pro Display", -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --type-ink: #363737;
     --type-muted: #777777;
 
@@ -84,26 +81,26 @@
   }
 
   .dark {
-    --background: 0 0% 3%;          /* #070707 */
-    --foreground: 0 0% 98%;         /* #FAFAFA */
-    --card: 0 0% 5%;
+    --background: 0 0% 10%;         /* #191919 — matches the reference site */
+    --foreground: 0 0% 100%;        /* #FFFFFF */
+    --card: 0 0% 12%;               /* #1F1F1F */
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 5%;
+    --popover: 0 0% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 3%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 10%;
 
-    --secondary: 0 0% 10%;
+    --secondary: 0 0% 15%;         /* #262626 */
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 58%;
-    --accent: 0 0% 13%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 67%;  /* #AAAAAA */
+    --accent: 0 0% 17%;             /* #2B2B2B */
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62% 52%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
+    --border: 0 0% 16%;             /* #292929 */
+    --input: 0 0% 16%;
     --ring: 0 0% 70%;
 
     --signal: 142 65% 48%;
@@ -119,13 +116,13 @@
     --chart-4: 0 0% 34%;
     --chart-5: 0 0% 22%;
 
-    --sidebar: 0 0% 5%;
+    --sidebar: 0 0% 10%;
     --sidebar-foreground: 0 0% 98%;
     --sidebar-primary: 0 0% 98%;
     --sidebar-primary-foreground: 0 0% 3%;
-    --sidebar-accent: 0 0% 13%;
+    --sidebar-accent: 0 0% 17%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 15%;
+    --sidebar-border: 0 0% 16%;
     --sidebar-ring: 0 0% 70%;
 
     --type-ink: #eeeeee;
@@ -180,17 +177,188 @@
 
   /* Fixed viewport grid inspired by the reference homepage background. */
   .home-grid-background {
-    background-image:
-      linear-gradient(to right, rgb(0 0 0 / 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(0 0 0 / 0.04) 1px, transparent 1px);
-    background-size: 70px 70px;
-    opacity: 0.8;
+    background-image: none;
+    opacity: 0;
+  }
+
+  .reference-nav-tabs {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .reference-nav-link {
+    display: inline-flex;
+    align-items: center;
+    color: hsl(var(--muted-foreground));
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    transition: color 160ms ease;
+  }
+
+  .reference-nav-link:hover,
+  .reference-nav-link:focus-visible {
+    color: #fff;
+  }
+
+  .reference-nav-link-active,
+  .reference-nav-link-active:hover,
+  .reference-nav-link-active:focus-visible {
+    color: hsl(var(--signal));
+  }
+
+  @media (max-width: 560px) {
+    .reference-nav-tabs {
+      gap: 0.75rem;
+    }
+
+    .reference-nav-link {
+      font-size: 12px;
+    }
   }
 
   .dark .home-grid-background {
-    background-image:
-      linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+    background-image: none;
+  }
+
+  /* Work-grid tile treatment copied from the reference card geometry. */
+  .work-banner {
+    background: transparent;
+  }
+
+  .work-banner-flip {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 372 / 225;
+    perspective: 1200px;
+    transition: opacity 150ms ease;
+  }
+
+  .work-banner-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 650ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .work-banner-flip:hover .work-banner-flip-inner,
+  .work-banner-flip:focus-within .work-banner-flip-inner {
+    transform: rotateY(180deg);
+  }
+
+  .work-banner-flip-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .work-banner-flip-face > .work-banner {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .work-banner-flip-back {
+    transform: rotateY(180deg);
+  }
+
+  .work-banner-media {
+    position: absolute;
+    top: 0;
+    left: 0.5376%;
+    width: 98.9247%;
+    height: 98.6667%;
+    overflow: hidden;
+    background: #fff;
+    -webkit-mask: url("/work-card-mask.svg") 50% / cover no-repeat;
+    mask: url("/work-card-mask.svg") 50% / cover no-repeat;
+  }
+
+  .work-banner-media > video {
+    position: absolute;
+    inset: -0.4505% -5.7065% -5.8559% 0;
+    object-fit: cover;
+  }
+
+  .work-banner-top-stripes {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 31.1828%;
+    height: 12%;
+    pointer-events: none;
+    overflow: visible;
+  }
+
+  .work-banner-bottom-accent {
+    position: absolute;
+    width: 7.5269%;
+    height: 12.4444%;
+    bottom: 2.2222%;
+    left: 6.9892%;
+    pointer-events: none;
+  }
+
+  .work-banner-view-button {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    pointer-events: none;
+  }
+
+  .reference-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 20px;
+    border-radius: 8px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+  }
+
+  .reference-button-primary {
+    background: #5300e1;
+    color: #fff;
+  }
+
+  .reference-button-primary:hover {
+    background: #650bff;
+  }
+
+  .reference-button-secondary {
+    background: #272727;
+    color: #fff;
+  }
+
+  .reference-button-secondary:hover {
+    background: #363636;
+  }
+
+  .work-banner-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.6;
+  }
+
+  .work-banner-card p {
+    color: hsl(0 0% 67%);
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .work-banner-flip-inner {
+      transition: none;
+    }
   }
 
   .blog-post-article {
@@ -617,26 +785,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Interior pages enter as a quiet sequence of sections. The content stays
-     exactly where it belongs; only opacity and a compositor-friendly rise
-     change on the first paint. */
-  .page-entrance > section {
-    animation: page-section-in 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  .page-entrance > section:nth-child(1) { animation-delay: 60ms; }
-  .page-entrance > section:nth-child(2) { animation-delay: 120ms; }
-  .page-entrance > section:nth-child(3) { animation-delay: 180ms; }
-  .page-entrance > section:nth-child(4) { animation-delay: 240ms; }
-  .page-entrance > section:nth-child(5) { animation-delay: 300ms; }
-  .page-entrance > section:nth-child(6) { animation-delay: 360ms; }
-  .page-entrance > section:nth-child(7) { animation-delay: 420ms; }
-
-  @keyframes page-section-in {
-    from { opacity: 0; transform: translateY(18px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
   /* ── Scroll reveal (driven by IntersectionObserver) ────────── */
   .reveal {
     opacity: 0;
@@ -652,8 +800,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .mega-line > span,
-    .fade-up,
-    .page-entrance > section {
+    .fade-up {
       animation: none !important;
     }
     .reveal {
@@ -1263,88 +1410,25 @@
 @layer utilities {
 
   .nav-mark {
-    border-radius: 3px;
-    padding: 0.125rem 0.375rem;
-    margin: -0.125rem -0.375rem;
-    background: hsl(var(--mark) 85% 72% / 0.45);
-    color: hsl(var(--mark) 70% 26%);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    margin: -0.5rem -0.75rem;
+    background: #5300e1;
+    color: #fff;
   }
 
   /* On the dark ground a pale wash turns to mud and the dark ink
      disappears, so the fill drops to a hint and the text carries
      the colour instead. */
   .dark .nav-mark {
-    background: hsl(var(--mark) 80% 60% / 0.18);
-    color: hsl(var(--mark) 85% 72%);
+    background: #5300e1;
+    color: #fff;
   }
 
   .mark-home     { --mark: 42; }   /* amber   */
   .mark-about    { --mark: 210; }  /* blue    */
   .mark-builds   { --mark: 150; }  /* green   */
   .mark-writings { --mark: 320; }  /* magenta */
-}
-
-/* ═══════════════════════════════════════════════════════════
-   ROAMING DOG
-
-   A tiny side-view dog with a two-beat trot. The body bob, alternating
-   legs, and a loose tail keep it playful while the actual travel stays
-   on the Motion timeline in the component.
-   ═══════════════════════════════════════════════════════════ */
-@layer utilities {
-
-  @keyframes dog-bob {
-    0%, 50%, 100% { transform: translateY(0); }
-    25%, 75%      { transform: translateY(-1.5px); }
-  }
-
-  @keyframes dog-step-a {
-    0%, 100% { transform: rotate(18deg); }
-    50%      { transform: rotate(-20deg); }
-  }
-
-  @keyframes dog-step-b {
-    0%, 100% { transform: rotate(-20deg); }
-    50%      { transform: rotate(18deg); }
-  }
-
-  @keyframes dog-tail {
-    0%, 100% { transform: rotate(-8deg); }
-    50%      { transform: rotate(20deg); }
-  }
-
-  .dog-bob   { animation: dog-bob 0.62s ease-in-out infinite; }
-  .dog-leg-a { animation: dog-step-a 0.62s ease-in-out infinite; }
-  .dog-leg-b { animation: dog-step-b 0.62s ease-in-out infinite; }
-  .dog-tail { animation: dog-tail 0.62s ease-in-out infinite; transform-box: fill-box; transform-origin: 17px 25px; }
-
-  .dog-message { transform: translateX(-50%) translateY(3px); }
-  .dog-message::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -4px;
-    width: 8px;
-    height: 8px;
-    background: hsl(var(--foreground));
-    transform: translateX(-50%) rotate(45deg);
-  }
-
-  .dog-hover-target {
-    transition: transform 180ms ease;
-    will-change: transform;
-  }
-  .dog-hover-target:hover,
-  .dog-hover-target:focus-visible { transform: scale(1.08); }
-
-  .dog-hover-target:hover .dog-message,
-  .dog-hover-target:focus-visible .dog-message { transform: translateX(-50%) translateY(0); }
-
-  /* Someone who asked for less motion should not get a figure pacing
-     their screen. The whole thing goes rather than freezing mid-stride. */
-  @media (prefers-reduced-motion: reduce) {
-    .dog-track { display: none; }
-  }
 }
 
 /* The greeting hues need more lightness on the dark ground than on

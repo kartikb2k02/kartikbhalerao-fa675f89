@@ -8,14 +8,14 @@ import { TechStack } from "@/components/home/TechStack";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import type { CaseStudy } from "@/data/caseStudies";
 import { ImageLightbox } from "@/components/ImageLightbox";
-import { RelatedCaseStudies } from "@/components/RelatedCaseStudies";
 import { ChatlyPRDDetail } from "@/components/ChatlyPRDDetail";
 import { ChatlyBanner } from "@/components/ChatlyBanner";
 import { TenzoCardBanner } from "@/components/TenzoCardBanner";
 import { FigPRDCardBanner } from "@/components/FigPRDCardBanner";
 import { PMCopilotCardBanner } from "@/components/PMCopilotCardBanner";
+import { NeoHealthDetail } from "@/components/NeoHealthDetail";
 
-const A4_GALLERY_IDS = ['ether-prd', 'gullak-fintech', 'google-pay-prd', 'cloudeagle-ai', 'metis-improvement', 'codeant-ai', 'tenzo-product-discovery'];
+const A4_GALLERY_IDS = ['ether-prd', 'gullak-fintech', 'google-pay-prd', 'cloudeagle-ai', 'metis-improvement', 'codeant-ai', 'tenzo-product-discovery', 'monosend'];
 
 export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
   const id = caseStudy.id;
@@ -45,6 +45,10 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
 
   // First sentence of the challenge, used as a pull-quote
   const challengeQuote = caseStudy.challenge.match(/[^.!?]+[.!?]+/)?.[0]?.trim() || caseStudy.challenge;
+
+  if (id === "neo-health") {
+    return <NeoHealthDetail caseStudy={caseStudy} />;
+  }
 
   return (
     <div className="min-h-screen w-full text-foreground relative bg-background">
@@ -242,7 +246,6 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
             onOpenChange={setLightboxOpen}
           />
 
-          <RelatedCaseStudies currentStudyId={id || ""} />
         </div>
       </main>
 

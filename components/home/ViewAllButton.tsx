@@ -18,7 +18,7 @@ export function ViewAllButton({
   return (
     <Link
       href={href}
-      className="group inline-flex items-center gap-1.5 rounded-lg border border-border bg-secondary px-3 py-2 text-[14px] text-foreground transition-colors hover:border-foreground/30 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="reference-button reference-button-secondary group inline-flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       {children}
       <ArrowRight className="h-3.5 w-3.5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5" />

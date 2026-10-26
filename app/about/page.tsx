@@ -23,7 +23,7 @@ export default function About() {
     <>
       <Nav />
 
-      <Shell className="page-entrance">
+      <Shell>
         <Section label="my intro">
           <div className="space-y-4">
             {profile.story.map((para) => (

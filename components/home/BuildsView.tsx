@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ChevronDown, Check } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,18 +10,23 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { BannerGrid, type Banner } from "@/components/home/BannerGrid";
-import { DESKS, type Desk } from "@/data/buildMeta";
+import type { CaseStudy } from "@/data/caseStudies";
+import { DESKS, desk, shortNames } from "@/data/buildMeta";
 
 const FILTERS = ["All", ...DESKS] as const;
 type Filter = (typeof FILTERS)[number];
 
-export interface BuildEntry extends Banner {
-  desk: Desk;
-}
+const FEATURED_BUILD_ORDER = [
+  "neo-health",
+  "monosend",
+  "blinkit-analysis",
+  "zepto-efficiency",
+  "chatly-prd",
+] as const;
 
 /**
- * Every build in one grid, narrowed by a dropdown rather than split into
- * a section per desk.
+ * Every build in one two-column banner grid, narrowed by a dropdown rather
+ * than split into a section per desk.
  *
  * Sections meant four headings and four short grids; a single grid with
  * a filter keeps the page one object and lets someone look at everything
@@ -30,19 +35,29 @@ export interface BuildEntry extends Banner {
  * The count beside the label updates with the filter, so the control
  * says what it did without needing to be read twice.
  */
-export function BuildsView({ builds }: { builds: BuildEntry[] }) {
+export function BuildsView({ builds }: { builds: CaseStudy[] }) {
   const [filter, setFilter] = useState<Filter>("All");
 
   const counts = useMemo(() => {
     const base: Record<string, number> = { All: builds.length };
-    for (const d of DESKS) base[d] = builds.filter((b) => b.desk === d).length;
+    for (const d of DESKS) base[d] = builds.filter((b) => desk[b.id] === d).length;
     return base;
   }, [builds]);
 
-  const visible = useMemo(
-    () => (filter === "All" ? builds : builds.filter((b) => b.desk === filter)),
-    [builds, filter]
-  );
+  const visible = useMemo(() => {
+    const filtered = filter === "All" ? builds : builds.filter((b) => desk[b.id] === filter);
+    const originalOrder = new Map(builds.map((build, index) => [build.id, index]));
+    const featuredOrder = new Map<string, number>(
+      FEATURED_BUILD_ORDER.map((id, index) => [id, index])
+    );
+
+    return [...filtered].sort(
+      (a, b) =>
+        (featuredOrder.get(a.id) ?? FEATURED_BUILD_ORDER.length) -
+          (featuredOrder.get(b.id) ?? FEATURED_BUILD_ORDER.length) ||
+        (originalOrder.get(a.id) ?? 0) - (originalOrder.get(b.id) ?? 0)
+    );
+  }, [builds, filter]);
 
   return (
     <>
@@ -83,10 +98,22 @@ export function BuildsView({ builds }: { builds: BuildEntry[] }) {
 
       {/* Keyed on the filter so the grid remounts and the browser does not
           try to reuse tiles across two different sets of images. */}
-      {/* One per row. At two up each banner is about 300px wide, which
-          is too small for the cover art to read; full width gives each
-          one the whole measure. */}
-      <BannerGrid key={filter} banners={visible} columns={1} />
+      <div className="mx-auto w-full max-w-[864px]">
+        <BannerGrid
+          key={filter}
+          columns={2}
+          variant="work"
+          banners={visible.map<Banner>((study) => ({
+            id: study.id,
+            name: shortNames[study.id] ?? study.title,
+            title: study.title,
+            description: study.subtitle,
+            image: study.image,
+            href: `/builds/${study.id}`,
+            external: false,
+          }))}
+        />
+      </div>
     </>
   );
 }

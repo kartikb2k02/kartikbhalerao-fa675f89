@@ -1,4 +1,4 @@
-import { Calendar, Mail, Linkedin } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import { profile } from "@/data/profile";
 
 const X_ICON = (
@@ -7,62 +7,41 @@ const X_ICON = (
   </svg>
 );
 
-const ACTIONS = [
-  {
-    label: "Book an intro call",
-    href: "/contact",
-    tone: "brand-call",
-    icon: <Calendar className="h-3.5 w-3.5" />,
-    external: false,
-  },
-  {
-    label: "Send an email",
-    href: `mailto:${profile.email}`,
-    tone: "brand-mail",
-    icon: <Mail className="h-3.5 w-3.5" />,
-    external: false,
-  },
+const SOCIALS = [
   {
     label: "LinkedIn",
     href: profile.links.linkedin,
-    tone: "brand-in",
+    className: "bg-[#0A66C2] text-white hover:bg-[#084f96]",
     icon: <Linkedin className="h-3.5 w-3.5" />,
-    external: true,
   },
   {
     label: "X",
     href: profile.links.x,
-    tone: "brand-x",
+    className: "bg-[#111111] text-white hover:bg-[#2b2b2b] dark:bg-[#f5f5f5] dark:text-[#191919] dark:hover:bg-white",
     icon: X_ICON,
-    external: true,
   },
 ];
 
 /**
- * The card under the bio: the ask, and four ways to act on it, each
- * carrying the colour of the thing it opens.
- *
- * Only the icon takes the colour at full strength — four saturated
- * fills side by side would be the loudest thing on a page that is
- * otherwise greyscale, and would read as advertising rather than as
- * contact details.
+ * The social-only CTA under the bio. The links use their brand colours
+ * directly instead of sitting inside the translucent surface treatment.
  */
 export function IntroCard() {
   return (
-    <div className="surface p-4">
+    <div className="pt-1">
       <p className="text-[14px] leading-snug text-muted-foreground">
         Interested in working together? Open to product roles and
         collaborations.
       </p>
 
       <div className="mt-3 flex flex-wrap items-center gap-2">
-        {ACTIONS.map((action) => (
+        {SOCIALS.map((action) => (
           <a
             key={action.label}
             href={action.href}
-            target={action.external ? "_blank" : undefined}
-            rel={action.external ? "noopener noreferrer" : undefined}
-            className={`brand-btn ${action.tone}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`reference-button inline-flex items-center justify-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${action.className}`}
           >
             {action.icon}
             {action.label}

@@ -27,11 +27,10 @@ export const profile = {
   email: "kartikbhalerao948@gmail.com",
   pronouns: "he/him",
 
-  /** The homepage introduction. Kartik's own words, unedited. Final. */
+  /** The homepage introduction. Kartik's own words, unedited. */
   homeIntro: [
-    "I'm Kartik. I somehow went from building products to figuring out why nobody was using them. I've worked across AI, fintech, B2B SaaS, and consumer apps, doing a bit of everything from product discovery and development to GTM (because apparently shipping a product isn't the finish line).",
-    "These days, I spend a lot of time experimenting with AI, breaking workflows, and figuring out why something that worked perfectly in a demo suddenly stops working with real users.",
-    "I like building things, asking too many questions, and getting into problems that probably looked much simpler at first.",
+    "I'm Kartik, working across AI, fintech, B2B SaaS, and consumer apps, figuring out what to build, how to grow it, and why shipping a product is never the finish line.",
+    "I spend my time experimenting with AI, breaking things, asking too many questions, and solving problems that usually turn out to be more complicated than they looked.",
   ],
 
   /**

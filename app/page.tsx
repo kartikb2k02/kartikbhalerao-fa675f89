@@ -1,11 +1,8 @@
-import { ArrowUpRight } from "lucide-react";
 import { Nav } from "@/components/home/Nav";
 import { Shell, Section } from "@/components/home/Shell";
-import { IntroSection } from "@/components/home/IntroSection";
 import { IntroCard } from "@/components/home/IntroCard";
 import { ScrollWordReveal } from "@/components/home/ScrollWordReveal";
 import { Currently } from "@/components/home/Currently";
-import { Walker } from "@/components/home/Walker";
 import { ListRow, RowList } from "@/components/home/ListRow";
 import { ExperienceItem } from "@/components/home/ExperienceItem";
 import { BannerGrid } from "@/components/home/BannerGrid";
@@ -16,7 +13,7 @@ import { caseStudies } from "@/data/caseStudies";
 import { shortNames, liveProducts } from "@/data/buildMeta";
 import { blogPosts } from "@/data/blogPosts";
 
-const FEATURED = ["blinkit-analysis", "ether-prd", "gullak-fintech", "cloudeagle-ai"];
+const FEATURED = ["neo-health", "monosend", "blinkit-analysis", "ether-prd"];
 
 const banners = FEATURED.map((id) => {
   const study = caseStudies.find((s) => s.id === id);
@@ -26,6 +23,14 @@ const banners = FEATURED.map((id) => {
     id,
     name: shortNames[id] ?? study.title,
     image: study.image,
+    title: study.title,
+    description: study.subtitle,
+    video:
+      id === "neo-health"
+        ? "/lovable-uploads/neo-health-banner.mp4"
+        : id === "monosend"
+          ? "/lovable-uploads/monosend-banner.mp4"
+          : undefined,
     href: isLive ? study.externalLink : `/builds/${id}`,
     external: isLive,
   };
@@ -43,10 +48,9 @@ export default function Index() {
 
       <div className="relative z-10">
         <Nav />
-        <Walker />
 
         <Shell>
-          <IntroSection>
+          <section className="space-y-4 px-4 py-6">
             <ScrollWordReveal paragraphs={profile.homeIntro} />
 
             <p className="text-[15px] leading-relaxed text-muted-foreground">
@@ -55,11 +59,9 @@ export default function Index() {
                 href="https://product.kartikbhalerao.in"
                 target="_blank"
                 rel="noreferrer"
-                style={{ color: "#2563eb" }}
-                className="inline-flex items-center gap-0.5 rounded bg-blue-100 px-1 font-bold text-blue-600 underline decoration-blue-300 underline-offset-2 transition-colors hover:bg-blue-200 hover:text-blue-800 dark:bg-blue-900/40 dark:text-blue-300 dark:decoration-blue-500 dark:hover:bg-blue-900/60 dark:hover:text-blue-200"
+                className="brightness-100 font-medium text-[#1d4ed8] underline decoration-[#1e3a8a] underline-offset-2 transition-colors hover:text-[#1d4ed8]"
               >
                 product.kartikbhalerao.in
-                <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
               </a>
               .
             </p>
@@ -67,10 +69,10 @@ export default function Index() {
             <Currently />
 
             <IntroCard />
-          </IntroSection>
+          </section>
 
           <Section label="my product teardowns">
-            <BannerGrid banners={banners} columns={2} />
+            <BannerGrid banners={banners} columns={1} variant="work-home" />
             <div className="flex justify-center pt-1">
               <ViewAllButton href="/builds">
                 View all {caseStudies.length} teardowns
