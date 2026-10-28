@@ -16,6 +16,13 @@ import { blogPosts } from "@/data/blogPosts";
 
 const FEATURED = ["neo-health", "monosend", "blinkit-analysis", "chatly-prd"];
 
+const bannerVideos: Record<string, string> = {
+  "neo-health": "/lovable-uploads/neo-health-banner.mp4",
+  monosend: "/lovable-uploads/monosend-banner.mp4",
+  "blinkit-analysis": "/lovable-uploads/blinkit-home-banner.mp4",
+  "chatly-prd": "/lovable-uploads/chatly-home-banner.mp4",
+};
+
 const banners = FEATURED.map((id) => {
   const study = caseStudies.find((s) => s.id === id);
   if (!study) throw new Error(`Homepage references unknown build "${id}".`);
@@ -26,14 +33,7 @@ const banners = FEATURED.map((id) => {
     image: study.image,
     title: study.title,
     description: study.subtitle,
-    video:
-      id === "neo-health"
-        ? "/lovable-uploads/neo-health-banner.mp4"
-        : id === "monosend"
-          ? "/lovable-uploads/monosend-banner.mp4"
-          : id === "blinkit-analysis"
-            ? "/lovable-uploads/blinkit-home-banner.mp4"
-            : undefined,
+    video: bannerVideos[id],
     href: isLive ? study.externalLink : `/builds/${id}`,
     external: isLive,
   };
