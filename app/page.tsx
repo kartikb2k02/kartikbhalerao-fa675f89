@@ -57,7 +57,7 @@ export default function Index() {
             <ScrollWordReveal paragraphs={profile.homeIntro} />
 
             <p className="text-[15px] leading-relaxed text-muted-foreground">
-              These days, I’m documenting my product journey, ideas, and things I’m building at{" "}
+              These days, I’m sharing my learnings and experiences around Product, Growth, AI, and GTM at{" "}
               <a
                 href="https://product.kartikbhalerao.in"
                 target="_blank"

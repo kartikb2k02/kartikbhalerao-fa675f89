@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "@/data/profile";
 import { AskAI } from "@/components/home/AskAI";
@@ -12,7 +13,22 @@ export function SiteFooter({ width = 640 }: { width?: number }) {
         <AskAI />
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+      {/* Decorative sign-off. The cream paper it was drawn on is keyed out,
+          so the page background reads through; in dark mode the ink is
+          inverted and hue-rotated back — a plain invert would flip the
+          purple accents to green. */}
+      <div aria-hidden="true" className="mt-4 select-none">
+        <Image
+          src="/footer-illustration.webp"
+          alt=""
+          width={1400}
+          height={537}
+          sizes="(max-width: 1280px) 100vw, 1280px"
+          className="h-auto w-full dark:invert dark:hue-rotate-180"
+        />
+      </div>
+
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-4">
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           <p className="text-[13px] text-muted-foreground">
             © {new Date().getFullYear()} {profile.name}
