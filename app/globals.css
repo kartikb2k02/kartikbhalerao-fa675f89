@@ -1474,3 +1474,155 @@
   :root { --greeting-l: 42%; }
   .dark { --greeting-l: 68%; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   GLOBE BAND
+
+   "Built in India, shipped with teams worldwide." — the line on the
+   left, a cobe canvas on the right, ruled off top and bottom from the
+   lists either side of it.
+
+   The card rides cobe's own anchor name for the Pune marker
+   (`--cobe-pune`) and its visibility variable, which goes to 0 while
+   India is round the back, so the card travels with the pin and blurs
+   away with it. Browsers without CSS anchor positioning get no card;
+   the line beside it carries the message on its own.
+   ═══════════════════════════════════════════════════════════ */
+@layer components {
+
+  /* The line holds the left column, the globe the right. Below 560px
+     they stack and both centre. A rule top and bottom sets the band off
+     from the experience list above and the writing list below. */
+  .globe-band {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-block: 1px solid hsl(var(--border));
+    padding-block: 1.25rem;
+  }
+
+  .globe-line {
+    max-width: 14ch;
+    text-wrap: balance;
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 4.4vw, 1.875rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: hsl(var(--foreground));
+  }
+
+  .globe-line span {
+    color: hsl(var(--muted-foreground));
+  }
+
+  .globe-stage {
+    position: relative;
+    flex: 0 0 auto;
+    width: min(48%, 270px);
+    aspect-ratio: 1;
+    /* cobe draws the sphere at 0.8 of the canvas, so the square carries
+       its own margin and the band needs none of its own here. */
+    margin-block: -0.75rem;
+  }
+
+  @media (max-width: 559px) {
+    .globe-band {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .globe-stage {
+      width: min(100%, 300px);
+      margin-right: 0;
+    }
+  }
+
+  .globe-canvas {
+    width: 100%;
+    height: 100%;
+    /* Zero until the first frame lands, so no empty black square. */
+    opacity: 0;
+    cursor: grab;
+    contain: layout paint size;
+    transition: opacity 600ms ease;
+    touch-action: pan-y;
+  }
+
+  .globe-card {
+    display: none;
+  }
+
+  @supports (anchor-name: --a) {
+    .globe-card {
+      position: absolute;
+      position-anchor: --cobe-pune;
+      bottom: anchor(top);
+      left: anchor(center);
+      /* Pune spends half of every turn on the right-hand limb, where a
+         card hung off its centre would reach past the text measure.
+         The fallback swings it inside the sphere instead. */
+      position-try-fallbacks: flip-inline;
+      max-width: 170px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      translate: -50% -10px;
+      white-space: nowrap;
+      border: 1px solid hsl(var(--border));
+      border-radius: 10px;
+      background: hsl(var(--background) / 0.82);
+      padding: 0.3rem 0.5rem 0.3rem 0.3rem;
+      box-shadow: 0 6px 20px -8px hsl(0 0% 0% / 0.35);
+      backdrop-filter: blur(6px);
+      pointer-events: none;
+      /* cobe drives this variable to 0 while Pune is round the back,
+         so the card blurs away with the pin rather than hanging in
+         space over the far side of the sphere. */
+      opacity: var(--cobe-visible-pune, 0);
+      filter: blur(calc((1 - var(--cobe-visible-pune, 0)) * 6px));
+      scale: calc(0.9 + var(--cobe-visible-pune, 0) * 0.1);
+      transition: opacity 340ms ease, filter 340ms ease, scale 340ms ease;
+    }
+
+    .globe-card-mark {
+      display: grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      background: hsl(var(--foreground));
+      color: hsl(var(--background));
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .globe-card-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+      font-size: 10px;
+      color: hsl(var(--muted-foreground));
+    }
+
+    .globe-card-text strong {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: hsl(var(--foreground));
+    }
+  }
+
+  /* No auto-spin — the drag still works, and the globe renders a
+     single static frame facing India. */
+  @media (prefers-reduced-motion: reduce) {
+    .globe-canvas {
+      transition: none;
+    }
+    .globe-card {
+      transition: none;
+    }
+  }
+}

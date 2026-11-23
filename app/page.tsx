@@ -7,6 +7,7 @@ import { Currently } from "@/components/home/Currently";
 import { ListRow, RowList } from "@/components/home/ListRow";
 import { ExperienceItem } from "@/components/home/ExperienceItem";
 import { BannerGrid } from "@/components/home/BannerGrid";
+import { GlobeSection } from "@/components/home/GlobeSection";
 import { ViewAllButton } from "@/components/home/ViewAllButton";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { profile, roles, HOMEPAGE_ROLE_COUNT } from "@/data/profile";
@@ -93,6 +94,10 @@ export default function Index() {
             <div className="flex justify-center pt-1">
               <ViewAllButton href="/about">View all experience</ViewAllButton>
             </div>
+          </Section>
+
+          <Section>
+            <GlobeSection />
           </Section>
 
           <Section label="writing">
