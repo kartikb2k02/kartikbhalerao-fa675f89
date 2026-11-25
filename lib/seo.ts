@@ -4,7 +4,10 @@ import type { Metadata } from "next";
 
 export const BASE_URL = "https://kartikbhalerao.in";
 export const SITE_NAME = "Kartik Bhalerao";
-const DEFAULT_OG_IMAGE = "/favicon.png";
+/** 1200×630. favicon.png lived here once and is 32×32 — below the floor
+ *  LinkedIn, X and Slack will render, which is why those previews came back
+ *  as plain text. Regenerate with `node scripts/make-og.mjs`. */
+const DEFAULT_OG_IMAGE = "/og/home.png";
 
 // LinkedIn and Twitter/X reject SVG previews outright, so an SVG `image` needs a
 // PNG stand-in. Most images compressed via scripts/compress-images.mjs have a

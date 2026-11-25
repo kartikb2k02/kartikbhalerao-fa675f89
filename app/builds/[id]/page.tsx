@@ -29,7 +29,9 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     title: caseStudy.title,
     description: ogDescription,
     path: `/builds/${caseStudy.id}`,
-    image: caseStudy.image || "/favicon.png",
+    // Builds with no artwork of their own fall back to the section banner,
+    // not the 32×32 favicon — crawlers drop anything that small.
+    image: caseStudy.image || "/og/builds.png",
     type: "article",
   });
 }
@@ -60,7 +62,7 @@ export default async function CaseStudyDetail({ params }: { params: Promise<{ id
 
   const ogImage = caseStudy.image?.startsWith("http")
     ? caseStudy.image
-    : `https://kartikbhalerao.in${caseStudy.image || "/favicon.png"}`;
+    : `https://kartikbhalerao.in${caseStudy.image || "/og/builds.png"}`;
   const ogDescription = caseStudy.subtitle || caseStudy.overview?.slice(0, 160) || "A product case study by Kartik Bhalerao";
 
   const jsonLd = {

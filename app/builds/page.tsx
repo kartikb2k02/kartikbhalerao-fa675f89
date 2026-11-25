@@ -11,6 +11,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     "Products shipped, specs written, and teardowns of products worth studying — from discovery through launch.",
   path: "/builds",
+  image: "/og/builds.png",
 });
 
 export default function Builds() {
