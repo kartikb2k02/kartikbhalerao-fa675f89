@@ -15,13 +15,14 @@ import { caseStudies } from "@/data/caseStudies";
 import { shortNames, liveProducts } from "@/data/buildMeta";
 import { blogPosts } from "@/data/blogPosts";
 
-const FEATURED = ["neo-health", "monosend", "blinkit-analysis", "chatly-prd"];
+const FEATURED = ["neo-health", "monosend", "blinkit-analysis", "notion-growth-story"];
 
 const bannerVideos: Record<string, string> = {
   "neo-health": "/lovable-uploads/neo-health-banner.mp4",
   monosend: "/lovable-uploads/monosend-banner.mp4",
   "blinkit-analysis": "/lovable-uploads/blinkit-home-banner.mp4",
   "chatly-prd": "/lovable-uploads/chatly-home-banner.mp4",
+  "notion-growth-story": "/lovable-uploads/notion-home-banner.mp4",
 };
 
 const banners = FEATURED.map((id) => {

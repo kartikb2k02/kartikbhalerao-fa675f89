@@ -19,6 +19,7 @@ type Filter = (typeof FILTERS)[number];
 const FEATURED_BUILD_ORDER = [
   "neo-health",
   "monosend",
+  "notion-growth-story",
   "blinkit-analysis",
   "zepto-efficiency",
   "chatly-prd",
