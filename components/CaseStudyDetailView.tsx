@@ -14,6 +14,7 @@ import { TenzoCardBanner } from "@/components/TenzoCardBanner";
 import { FigPRDCardBanner } from "@/components/FigPRDCardBanner";
 import { PMCopilotCardBanner } from "@/components/PMCopilotCardBanner";
 import { NeoHealthDetail } from "@/components/NeoHealthDetail";
+import { NotionGrowthDetail } from "@/components/NotionGrowthDetail";
 
 const A4_GALLERY_IDS = ['ether-prd', 'gullak-fintech', 'google-pay-prd', 'cloudeagle-ai', 'metis-improvement', 'codeant-ai', 'tenzo-product-discovery', 'monosend'];
 
@@ -48,6 +49,10 @@ export function CaseStudyDetailView({ caseStudy }: { caseStudy: CaseStudy }) {
 
   if (id === "neo-health") {
     return <NeoHealthDetail caseStudy={caseStudy} />;
+  }
+
+  if (id === "notion-growth-story") {
+    return <NotionGrowthDetail caseStudy={caseStudy} />;
   }
 
   return (

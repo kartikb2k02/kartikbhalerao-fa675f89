@@ -24,6 +24,37 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    id: "notion-growth-story",
+    title: "Notion",
+    subtitle: "How a near-dead startup reached 100M users by letting users sell it",
+    tags: ["Growth Teardown", "Product-Led Growth", "Community-Led Growth", "SaaS"],
+    externalLink: "",
+    bgGradient: "from-[#0f172a] to-[#475569]",
+    image: "/lovable-uploads/notion-growth-banner.webp",
+    overview:
+      "A growth teardown of Notion: from a crashed v1 and a layoff in 2015 to 100M users, $500M+ in annual revenue and an $11B valuation, built on a $2M seed and a community that did the selling.",
+    challenge:
+      "Notion is hard to explain. A blank page that can become anything converts worse than a product with one obvious job, and the company nearly died in 2015 proving it.",
+    solution:
+      "Instead of explaining the product, Notion let users show it: curated user-made templates, creators earning real money, ambassadors paid in status, and localisation that followed the community rather than the market size.",
+    outcome:
+      "100M users by August 2024, past $500M revenue by September 2025, profitable for most of its life, and about half of its B2B customers arriving as personal users first.",
+    keyFeatures: [
+      "Three acts: the Kyoto rewrite, the template flywheel, the AI re-acceleration",
+      "Revenue and user curves, with company-stated figures separated from analyst estimates",
+      "Funding, acquisitions and pricing changes on one timeline",
+      "Notion against monday.com, Asana, Airtable and Glean on growth and multiple",
+      "Four moves a smaller SaaS can copy, and where the sources contradict each other",
+    ],
+    tools: [
+      "Desk research",
+      "Primary sources (Notion blog, Sequoia, First Round)",
+      "Sacra market estimates",
+      "Growth loop modelling",
+    ],
+    gallery: [],
+  },
+  {
     id: "figprd",
     title: "figprd",
     subtitle: "Figma → PRD Generator",

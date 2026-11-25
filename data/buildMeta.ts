@@ -14,6 +14,7 @@ export const DESKS = ["AI", "Fintech", "Commerce", "Strategy"] as const;
 export type Desk = (typeof DESKS)[number];
 
 export const desk: Record<string, Desk> = {
+  "notion-growth-story": "Strategy",
   figprd: "AI",
   "pm-copilot": "AI",
   "neo-health": "Strategy",
@@ -34,6 +35,7 @@ export const desk: Record<string, Desk> = {
 
 /** Short display names — full titles live on the detail page. */
 export const shortNames: Record<string, string> = {
+  "notion-growth-story": "Notion",
   figprd: "figprd",
   "tenzo-product-discovery": "Tenzo",
   "pm-copilot": "PM Co-Pilot",
