@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { blogPosts } from "@/data/blogPosts";
 import { getMarkdownContent } from "@/lib/getMarkdownContent";
 import { BlogPostDetail } from "@/components/BlogPostDetail";
+import { MonetizationGrowthDetail } from "@/components/MonetizationGrowthDetail";
 import { pageMetadata, toOgImage, absoluteUrl, BASE_URL } from "@/lib/seo";
 
 const publishedPosts = blogPosts.filter((post) => !post.comingSoon);
@@ -51,7 +52,16 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     );
   }
 
-  const content = getMarkdownContent(post.slug, post);
+  // Posts whose argument does not fit the markdown template ship their own
+  // component instead, the way the Notion teardown does under /builds. They
+  // render the whole page (nav, shell and footer included), so only the
+  // structured data is shared with the default article layout below.
+  const custom =
+    post.slug === "monetization-models-growth-engines" ? (
+      <MonetizationGrowthDetail post={post} />
+    ) : null;
+
+  const content = custom ? "" : getMarkdownContent(post.slug, post);
   const ogImage = absoluteUrl(toOgImage(post.image, post.ogImage));
 
   const jsonLd = {
@@ -85,11 +95,13 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       {faqJsonLd && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       )}
-      <div className="min-h-screen w-full text-foreground relative bg-background">
-        <div className="relative z-10 pt-16">
-          <BlogPostDetail post={post} content={content} />
+      {custom ?? (
+        <div className="min-h-screen w-full text-foreground relative bg-background">
+          <div className="relative z-10 pt-16">
+            <BlogPostDetail post={post} content={content} />
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

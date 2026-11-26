@@ -1626,3 +1626,267 @@
     }
   }
 }
+
+/* ── Monetization teardown ────────────────────────────────────────────
+   Scoped to `.mz`, so none of it reaches the rest of the site.
+
+   The page is built the way Linktree builds theirs: flat, saturated
+   colour blocks running edge to edge, chunky type in a contrasting
+   brand colour, generous radii, pill buttons — and no gradients, no
+   hairline borders and no glows anywhere. Depth comes from colour
+   blocking alone.
+
+   The palette is Linktree's own, read off their live stylesheet:
+
+     lime       210 232 35     dark green  37 79 26
+     cobalt     38 101 214     navy         6 20 146
+     cream     232 239 214     maroon     120  0 22
+     pink      233 192 233     purple      80 34 116
+     off-white 243 243 241     ink         30 35 48
+
+   Two layers of colour, and keeping them apart is what makes the page
+   work:
+
+   `--surf` / `--ink` / `--pop` are the BAND. A section sets them once
+   and everything directly on the colour reads them — the band is often
+   dark, so `--ink` is often near-white and `--pop` is the bright
+   accent that carries the heading.
+
+   `--g1` is the FIGURE hue, and every figure sits on a white `--tile`,
+   so `--g1` is always dark enough to hold on white. `--g2` is set
+   equal to `--g1` on purpose: it collapses every gradient inside the
+   eleven drawings to a flat fill without touching a line of Figures.tsx.
+
+   `.mz-onlight` / `.mz-ondark` pin the site's own theme tokens inside a
+   band. The colour blocks do not flip between light and dark mode —
+   lime is lime at 1am — so anything theme-aware that sits on one (the
+   nav, most of all) has to be told which way round it is.
+   ──────────────────────────────────────────────────────────────────── */
+@layer components {
+  .mz {
+    /* Linktree's palette, as raw `R G B` so any of it can be written
+       `rgb(var(--pop) / 0.5)` without a second variable per shade. */
+    --lime: 210 232 35;
+    --leaf: 37 79 26;
+    --cobalt: 38 101 214;
+    --navy: 6 20 146;
+    --cream: 232 239 214;
+    --maroon: 120 0 22;
+    --blush: 233 192 233;
+    --purple: 80 34 116;
+    --paper: 243 243 241;
+    --slate: 30 35 48;
+    /* Linktree's gold, which is what the figures annotate with. */
+    --amber: 150 110 20;
+
+    /* Link blue. Cobalt on anything light; on the dark connective
+       sections cobalt only reaches about 2.6:1, so dark mode gets a
+       lighter sibling of it rather than the palette value. */
+    --link: var(--cobalt);
+
+    /* Defaults, for the neutral sections that carry no band. */
+    --surf: 255 255 255;
+    --ink: 30 35 48;
+    --pop: 6 20 146;
+    --pop-ink: 255 255 255;
+    --tile: 255 255 255;
+    --tile-ink: 30 35 48;
+
+    --g1: var(--navy);
+    --g2: var(--g1);
+
+    /* Ink on a `--g1` fill. Every figure hue is dark, and every figure
+       sits on a white tile, so this is white and stays white. */
+    --on-grad: 255 255 255;
+  }
+
+  /* The connective sections between the bands carry no colour block:
+     they sit on the page's own background and follow the reader's
+     theme. They still need the band variables set, because the pills,
+     steps and prose inside them read nothing else — `--g1` stays dark
+     in both themes, since the figures it colours are on white tiles. */
+  .mz-neutral {
+    /* Linktree's off-white, so the white tiles sitting on it have an
+       edge without needing a border drawn around them. */
+    background-color: rgb(var(--paper));
+    --surf: var(--paper);
+    --ink: var(--slate);
+    --pop: var(--navy);
+    --pop-ink: 255 255 255;
+    --g1: var(--navy);
+    --g2: var(--g1);
+  }
+
+  .dark .mz {
+    --link: 126 166 247;
+  }
+
+  .dark .mz-neutral {
+    background-color: rgb(25 25 25);
+    --surf: 25 25 25;
+    --ink: 240 240 240;
+    --pop: var(--lime);
+    --pop-ink: var(--leaf);
+  }
+
+  /* A fixed-light band: pin the site tokens to the light theme so the
+     nav, the footer and any shared component inside render dark-on-light
+     whatever the reader's theme is. */
+  .mz-onlight {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
+    --secondary: 0 0% 96.5%;
+    --muted-foreground: 0 0% 42%;
+    --border: 0 0% 90%;
+  }
+
+  /* The same trick the other way, for a band dark enough to need it. */
+  .mz-ondark {
+    --background: 0 0% 10%;
+    --foreground: 0 0% 100%;
+    --secondary: 0 0% 15%;
+    --muted-foreground: 0 0% 72%;
+    --border: 0 0% 100% / 0.16;
+  }
+
+  /* ── type ──────────────────────────────────────────────────────── */
+
+  /* Measured off Linktree's own headings: 800 at display size, tracking
+     -0.02em, leading 1.05. Heavier and looser-tracked than the rest of
+     the site, which is the whole point. */
+  .mz-display {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  .mz-kicker {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    line-height: 1;
+  }
+
+  /* ── the two colour layers ─────────────────────────────────────── */
+
+  /* Band level: the bright accent on whatever the band is. */
+  .mz-pop {
+    background-color: rgb(var(--pop));
+    color: rgb(var(--pop-ink));
+  }
+
+  .mz-pop-text {
+    color: rgb(var(--pop));
+  }
+
+  /* Figure level: a flat fill of the figure hue, always on a white tile.
+     Still named `grad` because eleven drawings and a page call it that;
+     there is no gradient left in it. */
+  .mz-grad {
+    background-color: rgb(var(--g1));
+    background-image: none;
+  }
+
+  .mz-grad-text {
+    color: rgb(var(--g1));
+    background-image: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+  }
+
+  .mz-on-grad {
+    color: rgb(var(--on-grad));
+  }
+
+  .mz-on-grad-dim {
+    color: rgb(var(--on-grad) / 0.75);
+  }
+
+  .mz-fill-on-grad {
+    fill: rgb(var(--on-grad));
+  }
+
+  .mz-fill-on-grad-dim {
+    fill: rgb(var(--on-grad) / 0.8);
+  }
+
+  /* ── blocks and tiles ──────────────────────────────────────────── */
+
+  /* A model's full-bleed band: one flat colour, edge to edge. */
+  .mz-band {
+    background-color: rgb(var(--surf));
+    color: rgb(var(--ink));
+  }
+
+  /* The page's one container: a solid tile with a large radius and no
+     border. On a coloured band it is white; on a neutral section it is
+     the page's own surface. */
+  .mz-tile {
+    background-color: rgb(var(--tile));
+    color: rgb(var(--tile-ink));
+    /* Their card scale: 64px on the largest blocks, 32 on the medium.
+       40 is the middle of it, and the one that holds at both widths. */
+    border-radius: 40px;
+
+    /* A tile is white on every band, in both themes, so the site tokens
+       are pinned light inside it. That is what lets all eleven figures
+       keep using `text-foreground`, `border-border` and `bg-background`
+       untouched and still read correctly on a maroon or cobalt band. */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
+    --secondary: 0 0% 96.5%;
+    --muted-foreground: 0 0% 42%;
+    --border: 0 0% 90%;
+
+    /* A tile is white in both themes, so it takes the light-mode blue
+       whatever the reader's theme is. */
+    --link: var(--cobalt);
+  }
+
+  /* Linktree has no shadows, so neither does this. A hover is a small
+     lift and nothing else. */
+  .mz-lift {
+    transition: transform 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .mz-lift-hover:hover {
+    transform: translateY(-4px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mz-lift,
+    .mz-lift-hover:hover {
+      transition: none;
+      transform: none;
+    }
+  }
+
+  /* The oversized index behind a model's heading. A flat wash of the
+     band's own accent at low alpha — a watermark the type sits on. */
+  .mz-ghost {
+    color: rgb(var(--pop) / 0.16);
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 0.75;
+  }
+
+  /* Bars and funnels run out from nothing the first time they are seen.
+     Transition rather than keyframes, so the resting state is the real
+     value and a non-JS or reduced-motion reader gets the finished chart. */
+  .mz-grow {
+    transition: height 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mz-run {
+    transition: width 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mz-grow,
+    .mz-run {
+      transition: none;
+    }
+  }
+}

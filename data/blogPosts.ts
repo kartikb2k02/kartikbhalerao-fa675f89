@@ -26,6 +26,19 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 16,
+    title: "5 Monetization Models That Are Secretly Growth Engines",
+    excerpt:
+      "How you charge decides how fast you grow. Five pricing models, the growth loop behind each, and real numbers from Snowflake, Figma, Apple, Shopify, Toast and Intercom.",
+    category: "growth",
+    date: "2026-11-25",
+    readTime: "9 min read",
+    tags: ["Growth", "Pricing", "Monetization", "Product-Led Growth", "SaaS"],
+    image: "/lovable-uploads/blog/monetization-models-growth-engines.webp",
+    slug: "monetization-models-growth-engines",
+    featured: true,
+  },
+  {
     id: 15,
     title: "Gemma 4's 2.85x Speedup: What I'd Ask Before Planning on It",
     excerpt:
